@@ -82,7 +82,7 @@ But as for technical changes to pypy itself:
      except SomeException, e:
        ... <-- here   
 
-   - removal of most *args call sites used in the multi-method slicing
+   - removal of most ``*args`` call sites used in the multi-method slicing
      mechanism, like what was done for gateways. The annotator no longer
      chokes on such call sites.  :-) 
 
