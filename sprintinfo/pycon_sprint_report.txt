@@ -33,11 +33,22 @@ We then had a discussion about what to focus on and how to divide the work.
 We decided to put our energies into making Pypy as compliant to the CPython
 implementation as possible by trying to fulfil the CPython regression tests.
 
-Christian and Alex worked on implementing Pickle, fixing a large number of
-bugs and corner cases in the process.
+Christian and Alex worked on implementing Pickle, fixing a large
+number of bugs and corner cases in the process. Samuele helped
+Christian tracking a bunch of those.
+
+Related to pickling failing tests, we discovered that our
+type.__base__ implementation was too naive, Armin reworked it.  Also
+Samuele found out that some of our string operations because they were
+dispatching on ANY ended up being executed by unicode code (unicode
+being a better match than ANY) after an automatic conversion which
+would fail for non-ascii characters. This has been fixed.
 
 Anders and Richard worked on completing the builtin types, especially
-focusing on the FrameType.
+focusing on the FrameType. In particular they enabled sys.set_trace
+and sys.set_profile functionality, also paying attention that
+app-level helper frames are appropriately hidden. The design of how
+to achieve the latter was discussed with Armin and Samuele.
 
 Jacob found an already implemented version of the datetime module by talking
 to Tim Peters. This required some adjustments before it was put into the
@@ -47,14 +58,25 @@ that the module needed some further fixes, which Christian applied.
 Jacob then turned to the binascii module and was later joined by Brian
 in this work. About half the module was implemented by the end of the sprint.
 
-Holger and Brian initially worked on making the CPython tests work under
-py.test. Holger then went on to assist Michael and Jonathan while Brian
-went to work with Jacob.
+Holger and Brian initially worked on making the CPython tests work
+under py.test. Samuele also paired a bit on this with Holger. Holger
+then went on to assist Michael and Jonathan while Brian went to work
+with Jacob.
+
+Holger alone and then pairing with Samuele reworked our tool to track
+our builtins implementations such that there's a summary page and it
+is run on codespeak after each check-in, the latest output can always
+be seen at http://codespeak.net/pypy/rev/current/ .
 
 Jonathan focussed on implementing a Python parser in Python.
 
 Michael wanted to interface the sre module with Pypy, and got started
 on the project.
+
+Armin wrote an example object space that can wrap a given other space
+and implements lazy objects and a become operation similar to the one
+found in Smalltalk implementations.
+
 
 [More stuff about what people did. I have no clue about what Alan,
 Armin, Lutz or Samuele did. Also, what I have written above is
