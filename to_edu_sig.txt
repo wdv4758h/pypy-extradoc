@@ -1,0 +1,79 @@
+Happy New Year, Dethe!  Thank you for your interest.  You write:
+
+  >PyPy uses a similar approach to Pyrex, called Psyco, which compiles
+  >directly to 80x86 machine code (Pyrex compiles to cross-platform C
+  >code).  This allows PyPy to attempt to be faster than C-Python by
+  >creating compiler optimizations.  Not sure what the PyPy story is for
+  >non-x86 platforms.  There is also a project to recreate Python on top
+  >of Smalltalk, by L. Peter Deutch, which he expects to be faster than
+  >C-Python (and if anyone can do it, he could).
+
+  >Nice to see y'all again.  Happy New Year (or Gnu Year?).
+
+  x>--Dethe
+
+
+I'd like to clarify a few misunderstandings I think you have.  Psyco
+is not a technique, but rather a specialising compiler available as a
+Python extension module.  It compiles directly to 386 machine
+code. PyPy, on the other hand, currently emits C code.  Our previous
+version emitted Pyrex code.  Some people in Korea are making a version
+that emits Lisp code.  PyPy doesn't use Psyco, though many ideas are
+common to both.
+
+What's more there is nothing magic about machine code that makes it
+automatically fast -- an inefficiently-coded algorithm in assembler is
+still a turtle.  The win in using PyPy is not about 'saving the time
+it takes to have a conversation with your C compiler', but instead
+about making such conversations more productive and useful.  The more
+information you can tell your C compiler about your data, the better
+code it is prepared to generate.  This is the tradeoff between
+flexibility and speed.
+
+When your Python system sees x = a + b it has no clue as to what types
+a and b are.  They could be anything. This 'being ready to handle
+everything' has a large performance penalty.  The runtime system has
+to do be prepared to do a _lot_, so it has to be fairly intelligent.
+All this intelligence is in the form of code instructions, and there
+are a lot of them that the runtime system has to execute, every time
+it wants to do anything at all.  On the other hand, at code _reading_
+time, the Python interpreter is purposefully stupid-but-straightforward.  
+It doesn't have much to do, and so can be relatively quick about not doing it.
+
+A statically-typed compiled language works in precisely the other way.
+When the runtime system of a statically typed language sees x = a + b,
+it already knows all about x, a and b and their types.  All the hard
+work was done in the compiling phase.  There is very little left to
+worry about -- you might get an overflow exception or something -- but
+as an oversimplification, all the runtime system of a statically typed
+langauge has to know how to do is how to load and run.  That's fast.
+
+So, one way you could speed up Python is to add type declarations,
+thus simplifying the life of the runtime system.  This proposed
+solution is more than a little drastic for those of us who like duck
+typing, signature based polymorphism, and the particular way coding in
+Python makes you think and feel.
+
+The PyPy alternative is to make the interpreter even smarter, and a
+whole lot better at remembering what it is doing. For instance, when
+it sees x = a + b instead of just adding this particular int to this
+particular int, it could generate some general purpose code for adding
+ints to ints.  This code could be thus used for all ints that you wish
+to add this way.  So while the first time is slow, the _next_ time
+will be a lot faster.  And that is where the performance speedup
+happens -- in code where the same lines get run again, and again, and
+again.  If all you have is a mainline where each line of code gets
+executed once, then we won't help you at all.
+
+Psyco is about as far as you can get with this approach and be left
+with a module you can import and use with regular python 2.2 or
+better.  See: http://psyco.sourceforge.net/ PyPy is what you get when
+you pitch the old interpreter and write your own.  See:
+http://codespeak.net/pypy/
+
+And we should probably move further disussion to pypy-dev, here:
+http://codespeak.net/mailman/listinfo/pypy-dev
+
+Thanks for your interest, and thanks for writing,
+Laura Creighton (for PyPy)
+
