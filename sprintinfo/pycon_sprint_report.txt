@@ -9,20 +9,19 @@ ZODB, Mailman, Zope and others. The environment was quite inspiring
 and there was quite a bit of exchange between the different sprints.
 
 Participants at the Pypy sprint were:
-Michael Chermside
+Michael Chermside <mcherm@mcherm.com>
 Anders Chrigström
-Brian Dorsey
-Richard Emslie
+Brian Dorsey <briandorsey@gmail.com>
+Richard Emslie <richardemslie@gmail.com>
 Jacob Hallén
 Holger Krekel
-Alex Martelli
-Alan Mcintyre
-Lutz Pälike
+Alex Martelli <aleaxit@yahoo.com>
+Alan Mcintyre <alan.mcintyre@esrgtech.com>
+Lutz Pälike <lutz@fxcenter.de>
 Samuele Pedroni
-Jonathan Riehl
+Jonathan Riehl <jriehl@cs.uchicago.edu>
 Armin Rigo
 Christian Tismer
-
 
 Alan Mcintyre was only present the first day. Michael Chermside joined
 the sprint Monday. All the others stayed for the whole sprint.
