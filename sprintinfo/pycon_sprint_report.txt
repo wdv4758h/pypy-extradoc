@@ -45,8 +45,8 @@ being a better match than ANY) after an automatic conversion which
 would fail for non-ascii characters. This has been fixed.
 
 Anders and Richard worked on completing the builtin types, especially
-focusing on the FrameType. In particular they enabled sys.set_trace
-and sys.set_profile functionality, also paying attention that
+focusing on the FrameType. In particular they enabled sys.settrace
+and sys.setprofile functionality, also paying attention that
 app-level helper frames are appropriately hidden. The design of how
 to achieve the latter was discussed with Armin and Samuele.
 
