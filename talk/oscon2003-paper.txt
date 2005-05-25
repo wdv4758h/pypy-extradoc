@@ -606,13 +606,13 @@ whenever we feel like it would have been close to impossible.
 .. [#] The Jython homespage: http://www.jython.org/
 .. [#] The complete text is as follows:
  
-..  line-block::
+..  ::
 
    *The Zen of Python*
     
     by Tim Peters
    
-..  line-block::
+..  ::
 
    *Beautiful is better than ugly.
    Explicit is better than implicit.
@@ -634,11 +634,9 @@ whenever we feel like it would have been close to impossible.
    If the implementation is easy to explain, it may be a good idea.
    Namespaces are one honking great idea -- let's do more of those!*
 
-.. [#] The full text for historians and other curious people is:
+.. [#] The full text for historians and other curious people is:: 
 
-..  line-block::      
-     
-     slips=[
+       slips=[
        (1, 'Kals MatMarkn', 6150, 'Chutney for Curry', 'dinner Saturday'),
        (2, 'Kals MatMarkn', 32000, 'Spaghetti, Beer', 'dinner Monday'),
        (2, 'Kals MatMarkn', -810, 'Deposit on Beer Bottles', 'various'),
