@@ -1,0 +1,40 @@
+
+Post-EuroPython 2005 PyPy Sprint Announcement 
+============================================== 
+
+Time: 1st-7th July 2005 (both days including) 
+Location: Goetheborg, Sweden (more details to follow) 
+
+
+Draft topic announcement 
+
+The main, though not the only, focus of the sprint will be on the
+"translation" aspect of PyPy.  We will progress towards a completely
+translated PyPy.  How much will already have been done before EuroPython
+is unknown; as a guess, we will be left with:
+ 
+- completing the "rtyper", the piece of code that assigns low-level
+  C-like types to high-level RPython objects (lists, dicts, instances,
+  etc.) and low-level control flow graphs to high-level ones;
+   
+- polish off the GenC and GenLLVM back-ends, responsible for turning
+  the low-level C-like flow graphs into real C or LLVM source code.
+ 
+Non-translation-related topics are welcome too.  Here are some suggestions
+from the issue tracker:
+   
+- integrate the parser module, possibly making it RPython
+  conformant;
+ 
+- rewrite in Python a C module you are familiar with
+  (partial list of missing/incomplete modules: os, math, array,
+  regular expressions, binascii...)
+
+- implement Python 2.3's import hook extensions (zip-imports etc.)
+
+- fix Windows-related issues, '%'-formatting rounding errors,
+  add missing docstrings on app-level built-in types and functions,
+  etc.
+
+- weakrefs (but this requires discussion and planning on pypy-dev
+  before the sprint! feel free to start such a discussion, though.)
