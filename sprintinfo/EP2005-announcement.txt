@@ -1,17 +1,29 @@
+Post-EuroPython 2005 PyPy Sprint 1st - 7th July 2005 
+======================================================
 
-Post-EuroPython 2005 PyPy Sprint Announcement 
-============================================== 
+The next PyPy sprint is scheduled right after EuroPython 2005
+in Gothenborg, Sweden.  It's main focus is translation to 
+lower level backends but there are also other possible topics. 
+We'll give newcomer-friendly introductions.  To learn more
+about the new PyPy Python-in-Python implementation look here: 
 
-Time: 1st-7th July 2005 (both days including) 
-Location: Goetheborg, Sweden (more details to follow) 
+    http://codespeak.net/pypy 
 
+On a side note, there are a number of sub projects that may be
+interesting for participating in google's summer-of-code
+event.  Apart from refining and discussing tasks, the sprint 
+could possibly serve as a good meeting and kick-off point with  
+mentors from the PyPy group.  Further down you'll find some
+first areas, but there are certainly more and bigger ones :-) 
 
-Draft topic announcement 
+Goals and topics of the sprint 
+------------------------------
 
-The main, though not the only, focus of the sprint will be on the
-"translation" aspect of PyPy.  We will progress towards a completely
-translated PyPy.  How much will already have been done before EuroPython
-is unknown; as a guess, we will be left with:
+The main, though not the only, focus of the sprint will be on
+the "translation" aspect of PyPy.   The goal here is to
+progress towards a completely translated PyPy.  How much will
+already have been done before EuroPython is unknown; as a
+guess, we will be left with:
  
 - completing the "rtyper", the piece of code that assigns low-level
   C-like types to high-level RPython objects (lists, dicts, instances,
@@ -38,3 +50,9 @@ from the issue tracker:
 
 - weakrefs (but this requires discussion and planning on pypy-dev
   before the sprint! feel free to start such a discussion, though.)
+
+
+Accomodation, Location and meeting points
+------------------------------------------ 
+
+XXX
