@@ -73,6 +73,7 @@ Nearest, and probably cheapest is to book accomodation at SGS Veckobostäder
 through the Europython website. This option will be available until about
 20 June.
 
+.. _`EuroPython special accomodation`: http://www.europython.org/sections/accomodation/special_accomodation
 .. _`EuroPython Wiki`: http://www.europython.org/sections/sprints_and_wiki
 
 Exact times 
@@ -97,7 +98,7 @@ There are some pizzerias, kebab places and the like close to the venue.
 Their food is edible and cheap, but not very good. For good food, you need to
 go downtown.
 
-You need a wirless network card to access the network. You will be 
+You need a wireless network card to access the network. You will be 
 issued a login to the Chalmers NOMAD network. This will allow you to 
 use access points all over Chalmers.  However, we can likely provide 
 a wireless/ethernet bridge.  
