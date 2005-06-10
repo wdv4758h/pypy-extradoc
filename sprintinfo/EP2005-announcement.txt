@@ -52,7 +52,59 @@ from the issue tracker:
   before the sprint! feel free to start such a discussion, though.)
 
 
-Accomodation, Location and meeting points
------------------------------------------- 
+Location & Accomodation  
+------------------------ 
 
-XXX
+The sprint will be held in the former Math Center building
+near the crossing of Gibraltargatan and Eklandagatan. Entrance
+is on the middle of the side facing Gibraltargatan. The doors
+to the building are normally locked, so you need the phone number
+of somebody inside to get in. Instructions on whom to call will be
+posted on the door.
+
+The sprint will be co-located with several other sprints. See the 
+`EuroPython Wiki`_, to find out what other sprints will be running.
+
+Nearest, and probably cheapest is to book accomodation at SGS Veckobostäder
+through the Europython website. This option will be available until about
+20 June.
+
+.. _`EuroPython Wiki`: http://www.europython.org/sections/sprints_and_wiki
+
+Exact times 
+-----------
+
+The public Pypy sprint is held Friday 1st July - Thursday 7 July 2005.
+Hours will be from 09:00 until people have had enough. It's a good 
+idea to arrive a day before the sprint starts.   
+
+(There is a sprint for people who are familiar with the Pypy codebase
+before Europython as well. This will be held at Jacob & Laura's home
+on Götabergsgatan 22.)
+
+
+Network, Food, currency 
+------------------------ 
+
+Sweden is not part of the Euro zone. One SEK (krona in singular, kronor
+in plural) is roughly 1/10th of a Euro (9.15 SEK to 1 Euro).
+
+There are some pizzerias, kebab places and the like close to the venue.
+Their food is edible and cheap, but not very good. For good food, you need to
+go downtown.
+
+You need a wirless network card to access the network. You will be 
+issued a login to the Chalmers NOMAD network. This will allow you to 
+use access points all over Chalmers.  However, we can likely provide 
+a wireless/ethernet bridge.  
+
+Sweden uses the same kind of plugs as Germany. 230V AC.
+
+Registration etc.pp. 
+-------------------- 
+
+Please subscribe to the `PyPy sprint mailing list`_ and introduce
+yourself and post a note that you want to come and ask any questions! 
+
+.. _`PyPy sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
+
