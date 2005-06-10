@@ -11,7 +11,7 @@ about the new PyPy Python-in-Python implementation look here:
 
 On a side note, there are a number of sub projects that may be
 interesting for participating in google's summer-of-code event
-(deadline the 14th!).  The PyPy group is willing to mentor
+(deadline June 14th!).  The PyPy group is willing to mentor
 projects that have some link with PyPy, so if you are accepted
 in such a project, the sprint could also serve as a good
 meeting and kick-off point.  Further down you'll find some
@@ -107,8 +107,9 @@ Sweden uses the same kind of plugs as Germany. 230V AC.
 Registration etc.pp. 
 -------------------- 
 
-Please subscribe to the `PyPy sprint mailing list`_ and introduce
-yourself and post a note that you want to come and ask any questions! 
+Please subscribe to the `PyPy sprint mailing list`_, introduce
+yourself and post a note that you want to come.  Feel free
+to ask any questions there! 
 
 .. _`PyPy sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 
