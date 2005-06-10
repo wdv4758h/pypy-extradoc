@@ -2,7 +2,7 @@ Post-EuroPython 2005 PyPy Sprint 1st - 7th July 2005
 ======================================================
 
 The next PyPy sprint is scheduled right after EuroPython 2005
-in Gothenborg, Sweden.  It's main focus is translation to 
+in Gothenborg, Sweden.  Its main focus is translation to 
 lower level backends but there are also other possible topics. 
 We'll give newcomer-friendly introductions.  To learn more
 about the new PyPy Python-in-Python implementation look here: 
@@ -10,11 +10,12 @@ about the new PyPy Python-in-Python implementation look here:
     http://codespeak.net/pypy 
 
 On a side note, there are a number of sub projects that may be
-interesting for participating in google's summer-of-code
-event.  Apart from refining and discussing tasks, the sprint 
-could possibly serve as a good meeting and kick-off point with  
-mentors from the PyPy group.  Further down you'll find some
-first areas, but there are certainly more and bigger ones :-) 
+interesting for participating in google's summer-of-code event
+(deadline the 14th!).  The PyPy group is willing to mentor
+projects that have some link with PyPy, so if you are accepted
+in such a project, the sprint could also serve as a good
+meeting and kick-off point.  Further down you'll find some
+examples, but there are certainly more and bigger ones :-)
 
 Goals and topics of the sprint 
 ------------------------------
@@ -31,9 +32,12 @@ guess, we will be left with:
    
 - polish off the GenC and GenLLVM back-ends, responsible for turning
   the low-level C-like flow graphs into real C or LLVM source code.
+
+See http://codespeak.net/pipermail/pypy-dev/2005q2/002136.html for more
+information (10th of June status).
  
 Non-translation-related topics are welcome too.  Here are some suggestions
-from the issue tracker:
+from the issue tracker (https://codespeak.net/issue/pypy-dev/):
    
 - integrate the parser module, possibly making it RPython
   conformant;
