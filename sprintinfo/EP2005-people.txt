@@ -11,6 +11,7 @@ List Of Attendants for pre-EP sprint (4 full days 23rd-26th)
 Armin Rigo          23rd-          private 
 Samuele Pedroni     23rd-          private 
 Holger Krekel       23rd-          ? 
+Anders Lehmann      22nd-26th      SGS 
 =================== ============== =====================
 
 
@@ -32,7 +33,6 @@ Laura Creighton     ?              private
 Christian Tismer    ?              ? 
 Adrien Di Mascio    ?              ?
 Ludovic Aubry       ?              ? 
-Anders Lehmann      ?              ? 
 =================== ============== =====================
 
 
