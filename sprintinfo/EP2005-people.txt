@@ -26,8 +26,8 @@ Carl Friedrich Bolz 1st-7th July   ?
 Eric van Riet Paap  1st-7th July   ?
 Holger Krekel       1st-7th July   ? 
 Richard Emslie      1st-7th July   ? 
-Jacob Hallen        ?              ? 
-Laura Creighton     ?              ? 
+Jacob Hallen        ?              private 
+Laura Creighton     ?              private 
 Christian Tismer    ?              ? 
 Adrien Di Mascio    ?              ?
 Ludovic Aubry       ?              ? 
@@ -45,8 +45,8 @@ Armin Rigo          8th July       private
 Samuele Pedroni     8th July       private 
 Holger Krekel       8th July       ? 
 Bea During          8th July       private 
-Jacob Hallen        8th July       ? 
-Laura Creighton     8th July       ? 
+Jacob Hallen        8th July       private 
+Laura Creighton     8th July       private
 Christian Tismer    8th July       ? 
 Stephan Busemann    8th July       ? 
 =================== ============== =====================
