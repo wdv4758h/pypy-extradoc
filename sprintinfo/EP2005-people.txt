@@ -26,6 +26,7 @@ Carl Friedrich Bolz 1st-7th July   ?
 Eric van Riet Paap  1st-7th July   ?
 Holger Krekel       1st-7th July   ? 
 Richard Emslie      1st-7th July   ? 
+Bert Freudenberg    1st-7th July   ? 
 Jacob Hallen        ?              private 
 Laura Creighton     ?              private 
 Christian Tismer    ?              ? 
