@@ -1,0 +1,52 @@
+
+People coming to PyPy EuroPython Sprints/Events
+==================================================
+
+List Of Attendants for pre-EP sprint (23rd-26th)
+-------------------------------------------------
+
+=================== ============== =====================
+       Name             Time          Accomodation 
+=================== ============== =====================
+Armin Rigo          23rd-26th June private 
+Samuele Pedroni     23rd-26th June private 
+Holger Krekel       23rd-26th June ? 
+=================== ============== =====================
+
+
+List Of Attendants for POST-EP sprint (1st-7th)
+-------------------------------------------------
+
+=================== ============== =====================
+       Name             Time          Accomodation 
+=================== ============== =====================
+Armin Rigo          1st-7th July   private 
+Samuele Pedroni     1st-7th July   private 
+Carl Friedrich Bolz 1st-7th July   ? 
+Eric van Riet Paap  1st-7th July   ?
+Holger Krekel       1st-7th July   ? 
+Richard Emslie      1st-7th July   ? 
+Jacob Hallen        ?              ? 
+Laura Creighton     ?              ? 
+Christian Tismer    ?              ? 
+Adrien Di Mascio    ?              ?
+Ludovic Aubry       ?              ? 
+Anders Lehmann      ?              ? 
+=================== ============== =====================
+
+
+List Of Attendants for EU workshop July 8th 
+-------------------------------------------------
+
+=================== ============== =====================
+       Name             Time          Accomodation 
+=================== ============== =====================
+Armin Rigo          8th July       private 
+Samuele Pedroni     8th July       private 
+Holger Krekel       8th July       ? 
+Bea During          8th July       private 
+Jacob Hallen        8th July       ? 
+Laura Creighton     8th July       ? 
+Christian Tismer    8th July       ? 
+Stephan Busemann    8th July       ? 
+=================== ============== =====================
