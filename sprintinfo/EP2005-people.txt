@@ -48,6 +48,7 @@ Holger Krekel       8th July       ?
 Bea During          8th July       private 
 Jacob Hallen        8th July       private 
 Laura Creighton     8th July       private
+Lene Wagner         8th July       ?
 Christian Tismer    8th July       ? 
 Stephan Busemann    8th July       ? 
 =================== ============== =====================
