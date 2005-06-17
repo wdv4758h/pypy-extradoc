@@ -2,20 +2,20 @@
 People coming to PyPy EuroPython Sprints/Events
 ==================================================
 
-List Of Attendants for pre-EP sprint (23rd-26th)
--------------------------------------------------
+List Of Attendants for pre-EP sprint (4 full days 23rd-26th)
+---------------------------------------------------------------
 
 =================== ============== =====================
-       Name             Time          Accomodation 
+       Name          Arrive/Depart Accomodation 
 =================== ============== =====================
-Armin Rigo          23rd-26th June private 
-Samuele Pedroni     23rd-26th June private 
-Holger Krekel       23rd-26th June ? 
+Armin Rigo          23rd-          private 
+Samuele Pedroni     23rd-          private 
+Holger Krekel       23rd-          ? 
 =================== ============== =====================
 
 
-List Of Attendants for POST-EP sprint (1st-7th)
--------------------------------------------------
+List Of Attendants for POST-EP sprint (7 full days 1st-7th)
+------------------------------------------------------------ 
 
 =================== ============== =====================
        Name             Time          Accomodation 
@@ -35,11 +35,11 @@ Anders Lehmann      ?              ?
 =================== ============== =====================
 
 
-List Of Attendants for EU workshop July 8th 
--------------------------------------------------
+List Of Attendants for EU workshop July 8th (whole day)
+----------------------------------------------------------
 
 =================== ============== =====================
-       Name             Time          Accomodation 
+       Name            Time          Accomodation 
 =================== ============== =====================
 Armin Rigo          8th July       private 
 Samuele Pedroni     8th July       private 
