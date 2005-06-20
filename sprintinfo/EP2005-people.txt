@@ -14,6 +14,7 @@ Holger Krekel       23rd-          ?
 Beatrice Düring     visiting       private 
 Anders Lehmann      22nd-26th      SGS 
 Michael Hudson      23rd-          private
+Anders Chrigström   23rd-          private
 =================== ============== =====================
 
 
@@ -36,6 +37,7 @@ Laura Creighton     ?              private
 Christian Tismer    ?              ? 
 Adrien Di Mascio    1st-5th July   Nice Hotel
 Ludovic Aubry       1st-5th July   Nice Hotel
+Anders Chrigström   1st-7th July   private
 =================== ============== =====================
 
 
@@ -54,4 +56,5 @@ Laura Creighton     8th July       private
 Lene Wagner         8th July       ?
 Christian Tismer    8th July       ? 
 Stephan Busemann    8th July       ? 
+Anders Chrigström   8th July       private
 =================== ============== =====================
