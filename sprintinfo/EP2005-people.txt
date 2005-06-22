@@ -15,6 +15,7 @@ Beatrice Düring     visiting       private
 Anders Lehmann      22nd-26th      SGS 
 Michael Hudson      23rd-          private
 Anders Chrigström   23rd-          private
+Christian Tismer    23rd-          ?
 =================== ============== =====================
 
 
@@ -38,6 +39,7 @@ Christian Tismer    ?              ?
 Adrien Di Mascio    1st-5th July   Nice Hotel
 Ludovic Aubry       1st-5th July   Nice Hotel
 Anders Chrigström   1st-7th July   private
+Christian Tismer    1st-8th July   ?
 =================== ============== =====================
 
 
