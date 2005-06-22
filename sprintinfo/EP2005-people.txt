@@ -35,11 +35,10 @@ Bert Freudenberg    1st-7th July   ?
 Beatrice Düring     visiting       private 
 Jacob Hallen        ?              private 
 Laura Creighton     ?              private 
-Christian Tismer    ?              ? 
 Adrien Di Mascio    1st-5th July   Nice Hotel
 Ludovic Aubry       1st-5th July   Nice Hotel
 Anders Chrigström   1st-7th July   private
-Christian Tismer    1st-8th July   ?
+Christian Tismer    1st-7th July   ?
 =================== ============== =====================
 
 
@@ -56,7 +55,7 @@ Bea During          8th July       private
 Jacob Hallen        8th July       private 
 Laura Creighton     8th July       private
 Lene Wagner         8th July       ?
-Christian Tismer    8th July       ? 
 Stephan Busemann    7+8th July     Hotel Lilton 
 Anders Chrigström   8th July       private
+Christian Tismer    8th July       ? 
 =================== ============== =====================
