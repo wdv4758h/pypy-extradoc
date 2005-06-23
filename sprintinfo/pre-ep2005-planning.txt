@@ -43,7 +43,7 @@ Still missing are:
   - DONE (easy) tuple concatenation
         task: do it
 
-  - (easy) string slices
+  - DONE (easy) string slices
         task: do it (see rlist)
 
   - DONE (easy) equality and non-equality are generally missing
