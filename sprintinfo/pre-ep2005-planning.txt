@@ -35,8 +35,8 @@ Still missing are:
               are all uses of hex, oct, repr.
     mostly DONE apart from instances which we're not sure we need anyway
 
-  - (easy) list methods reverse, pop, insert, index(?)
-        task: only left: remove the single index() call in PyPy (typeobject.py)
+  - DONE (easy) list methods reverse, pop, insert, index(!)
+        task: do it. also support contains
 
   - (easy) tuple concatenation
         task: do it
