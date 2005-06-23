@@ -1,0 +1,61 @@
+
+Open areas in translation 
+------------------------------------- 
+
+Still missing are:
+
+* GenC knows little about float operations.  Need to complete
+  translator/c/float_include.h.
+
+* Almost all the topics from the rtyper, from the previous
+  status report:
+
+  - (hard) prebuilt constants -- PBCs -- and dicts with PBC keys
+        tasks: 1. call to memoized functions, at first with a single PBC arg 
+               2. find out if we really have visible dicts with PBC keys
+
+  - (medium) dicts with non-wrapped string keys to any object, and 
+        iterators over them
+        tasks: do it (iterators in a second step) 
+
+  - (medium) iterators over tuples
+        task: the built-in list() should convert from homogenous tuples
+              to lists
+
+  - (varying) all built-in functions listed in annotation/builtin.py
+        task: write them into rpython/rbuiltin.py
+              possibly remove support for some of them
+
+  - (mostly easy) a few more operations: issubtype, str(?)
+        task: go through them one by one and decide if they should
+              be supported
+
+  - (easy) list methods reverse, pop, insert, index(?)
+        task: only left: remove the single index() call in PyPy (typeobject.py)
+
+  - (easy) tuple concatenation
+        task: do it
+
+  - (easy) string slices
+        task: do it (see rlist)
+
+  - (easy) equality and non-equality are generally missing
+        task: 1. missing for lists of primitives, and lists of strings
+              2. annotator fix: unify lists when they are compared
+              3. for instances, 'eq' is 'is'
+
+  - (medium) limited form of string formatting: 'constant template' only
+             which should only generate a sequence of simple ll-function 
+             invocations like concatenation and str() on integers
+        task: 1. figure out what kind of formatting we use in PyPy
+              2. implement them
+
+* lltype will also need to grow a new primitive type, UnicodeChar.
+
+* convert each file that does 'from ... import *' to use explicit 
+  imports (e.g. from pypy.rpython import lltype and then use lltype.*) 
+
+* progress on translation of example targets:
+    python demo/bpnn.py
+    python pypy/translator/goal/translate_pypy.py targetrichards.py
+
