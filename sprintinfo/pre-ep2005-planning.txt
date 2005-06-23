@@ -38,7 +38,7 @@ Still missing are:
   - DONE (easy) list methods reverse, pop, insert, index(!)
         task: do it. also support contains
 
-  - (easy) tuple concatenation
+  - DONE (easy) tuple concatenation
         task: do it
 
   - (easy) string slices
