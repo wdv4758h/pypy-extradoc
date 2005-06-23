@@ -27,6 +27,14 @@ Still missing are:
               possibly remove support for some of them
         
         Done removing zip from PyPy codebase
+        DONE min
+
+        to be done:
+        - list(list)
+        - list(tuple)
+        - isinstance
+        - float(int), int(float), float(str) (likely delegate to backend)
+       
 
   - (mostly easy) a few more operations: issubtype, ...?
         task: go through them one by one and decide if they should
