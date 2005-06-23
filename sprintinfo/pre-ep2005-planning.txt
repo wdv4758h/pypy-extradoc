@@ -18,13 +18,15 @@ Still missing are:
         iterators over them
         tasks: do it (iterators in a second step) 
 
-  - (medium) iterators over tuples
+  - (mostly easy) tuple to list
         task: the built-in list() should convert from homogenous tuples
               to lists
 
   - (varying) all built-in functions listed in annotation/builtin.py
         task: write them into rpython/rbuiltin.py
               possibly remove support for some of them
+        
+        Done removing zip from PyPy codebase
 
   - (mostly easy) a few more operations: issubtype, ...?
         task: go through them one by one and decide if they should
