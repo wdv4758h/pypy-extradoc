@@ -43,7 +43,7 @@ Still missing are:
   - (easy) string slices
         task: do it (see rlist)
 
-  - (easy) equality and non-equality are generally missing
+  - DONE (easy) equality and non-equality are generally missing
         task: 1. missing for lists of primitives, and lists of strings
               2. annotator fix: unify lists when they are compared
               3. for instances, 'eq' is 'is'
