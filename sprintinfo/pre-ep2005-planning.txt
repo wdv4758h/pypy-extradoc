@@ -26,9 +26,13 @@ Still missing are:
         task: write them into rpython/rbuiltin.py
               possibly remove support for some of them
 
-  - (mostly easy) a few more operations: issubtype, str(?)
+  - (mostly easy) a few more operations: issubtype, ...?
         task: go through them one by one and decide if they should
               be supported
+  
+  - (probably easy): operations: str for ints, instances (only something
+              very simple for the latter).  all other uses are cheating, as
+              are all uses of hex, oct, repr.
 
   - (easy) list methods reverse, pop, insert, index(?)
         task: only left: remove the single index() call in PyPy (typeobject.py)
