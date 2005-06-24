@@ -15,10 +15,9 @@ Still missing are:
                2. find out if we really have visible dicts with PBC keys
 
   - DONE (medium) dicts with non-wrapped string keys to any object, and 
-        iterators over them
-        - basic getitem/setitem/delitem is done (ported Algos from CPython
-          actually!) 
-        - remaining: dict iterators  
+    iterators over them
+    - basic getitem/setitem/delitem is done (ported Algos from CPython actually!) 
+    - remaining: dict iterators  
 
   - DONE (mostly easy) tuple to list
         task: the built-in list() should convert from homogenous tuples
@@ -44,8 +43,9 @@ Still missing are:
               be supported
   
   - (probably easy): operations: str for ints, instances (only something
-              very simple for the latter).  all other uses are cheating, as
-              are all uses of hex, oct, repr.
+    very simple for the latter).  all other uses are cheating, as
+    are all uses of hex, oct, repr.
+
     mostly DONE apart from instances which we're not sure we need anyway
 
   - DONE (easy) list methods reverse, pop, insert, index(!)
@@ -65,9 +65,9 @@ Still missing are:
   - (medium) limited form of string formatting: 'constant template' only
              which should only generate a sequence of simple ll-function 
              invocations like concatenation and str() on integers
-        task: 1. figure out what kind of formatting we use in PyPy
-              2. implement them
-     mostly DONE apart from possibly '%s' % some random instance
+    task: 1. figure out what kind of formatting we use in PyPy
+          2. implement them
+          mostly DONE apart from possibly '%s' % some random instance
 
 * lltype will also need to grow a new primitive type, UnicodeChar.
 
