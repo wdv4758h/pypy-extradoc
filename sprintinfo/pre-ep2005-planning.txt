@@ -30,11 +30,11 @@ Still missing are:
         
         Done removing zip from PyPy codebase
         DONE min
+        DONE isinstance
 
         to be done:
         - list(list)
         - list(tuple)
-        - DONE isinstance
         - float(int), int(float), float(str) (likely delegate to backend)
        
 
