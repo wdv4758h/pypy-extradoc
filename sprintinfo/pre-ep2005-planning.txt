@@ -4,77 +4,49 @@ Open areas in translation
 
 Still missing are:
 
-* GenC knows little about float operations.  Need to complete
-  translator/c/float_include.h.
-
 * Almost all the topics from the rtyper, from the previous
   status report:
 
-  - (hard) prebuilt constants -- PBCs -- and dicts with PBC keys
+  - (hard) (holger, armin) prebuilt constants -- PBCs -- and dicts with PBC keys
         tasks: 1. call to memoized functions, at first with a single PBC arg 
                2. find out if we really have visible dicts with PBC keys
 
-  - DONE (medium) dicts with non-wrapped string keys to any object, and 
-    iterators over them
-    - basic getitem/setitem/delitem is done (ported Algos from CPython actually!) 
-    - remaining: dict iterators  
+  - (probably trivial) verify that we've done all the builtins we
+    need for translation.     
 
-  - DONE (mostly easy) tuple to list
-        task: the built-in list() should convert from homogenous tuples
-              to lists
-
-  - (varying) all built-in functions listed in annotation/builtin.py
-        task: write them into rpython/rbuiltin.py
-              possibly remove support for some of them
-        
-        DONE removing zip from PyPy codebase
-        DONE min
-        DONE isinstance
-
-        to be done:
-        - DONE list(list
-        - DONE list(tuple)
-        - DONE float(str) (or rather, the need for it removed)
-        - float(int), int(float) (likely delegate to backend)
-       
-
-  - (mostly easy) a few more operations: issubtype, ...?
-        task: go through them one by one and decide if they should
-              be supported
+  - (hard) a few more operations: issubtype, ...?
+        task: go through all space operations listed in baseobjspace.py
+              annotator/{unary.py,binary.py} 
+              one by one and decide if they should be supported
   
-  - (probably easy): operations: str for ints, instances (only something
+  - (probably easy): operations: str for instances (only something
     very simple for the latter).  all other uses are cheating, as
-    are all uses of hex, oct, repr.
+    are all uses of hex, oct, repr.  Add some '%s' support of instances 
+    as well. 
 
     mostly DONE apart from instances which we're not sure we need anyway
 
-  - DONE (easy) list methods reverse, pop, insert, index(!)
-        task: do it. also support contains
-
-  - DONE (easy) tuple concatenation
-        task: do it
-
-  - DONE (easy) string slices
-        task: do it (see rlist)
-
-  - DONE (easy) equality and non-equality are generally missing
-        task: 1. missing for lists of primitives, and lists of strings
-              2. annotator fix: unify lists when they are compared
-              3. for instances, 'eq' is 'is'
-
-  - (medium) limited form of string formatting: 'constant template' only
-             which should only generate a sequence of simple ll-function 
-             invocations like concatenation and str() on integers
-    task: 1. figure out what kind of formatting we use in PyPy
-          2. implement them
-          mostly DONE apart from possibly '%s' % some random instance
-
 * lltype will also need to grow a new primitive type, UnicodeChar.
 
-* convert each file that does 'from ... import *' to use explicit 
-  imports (e.g. from pypy.rpython import lltype and then use lltype.*) 
+* (partially DONE) convert each file that does 
+  'from ... import *' to use explicit imports (e.g. 
+  from pypy.rpython import lltype and then use lltype.*) 
+
+* (samuele, michael) GenC knows little about float operations.  Need to complete
+  translator/c/float_include.h.
 
 * progress on translation of example targets:
-    python demo/bpnn.py
+    python demo/bpnn.py (samuele, michael) 
     python pypy/translator/goal/translate_pypy.py targetrichards.py
 
+* (medium) write a tool that discovers which revision of the pypy tree 
+  broke the high level annotator (in that it produced SomeObjects). 
+  Consider distributing the actual annotation to multiple hosts. 
+
+* (medium) experiment in a branch with using Python 2.4 semantics 
+  and the standard library (lib-python/2.4.1 ...)
+
+* (medium) finish objspace/std/longobject.py.
+
+* (hard) try out if genpickle.py can be used to save and load 
+  the high level annotated flowgraphs of PyPy 
