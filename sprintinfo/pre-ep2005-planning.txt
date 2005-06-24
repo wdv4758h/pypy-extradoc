@@ -35,7 +35,8 @@ Still missing are:
         to be done:
         - DONE list(list
         - DONE list(tuple)
-        - float(int), int(float), float(str) (likely delegate to backend)
+        - DONE float(str) (or rather, the need for it removed)
+        - float(int), int(float) (likely delegate to backend)
        
 
   - (mostly easy) a few more operations: issubtype, ...?
