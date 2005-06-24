@@ -20,7 +20,7 @@ Still missing are:
           actually!) 
         - remaining: dict iterators  
 
-  - Done (mostly easy) tuple to list
+  - DONE (mostly easy) tuple to list
         task: the built-in list() should convert from homogenous tuples
               to lists
 
@@ -28,13 +28,13 @@ Still missing are:
         task: write them into rpython/rbuiltin.py
               possibly remove support for some of them
         
-        Done removing zip from PyPy codebase
+        DONE removing zip from PyPy codebase
         DONE min
         DONE isinstance
 
         to be done:
-        - list(list) Done
-        - list(tuple) Done
+        - DONE list(list
+        - DONE list(tuple)
         - float(int), int(float), float(str) (likely delegate to backend)
        
 
