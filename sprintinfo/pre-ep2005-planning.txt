@@ -34,7 +34,7 @@ Still missing are:
         to be done:
         - list(list)
         - list(tuple)
-        - isinstance
+        - DONE isinstance
         - float(int), int(float), float(str) (likely delegate to backend)
        
 
