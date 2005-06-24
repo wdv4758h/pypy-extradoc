@@ -16,7 +16,9 @@ Still missing are:
 
   - (medium) dicts with non-wrapped string keys to any object, and 
         iterators over them
-        tasks: do it (iterators in a second step) 
+        - basic getitem/setitem/delitem is done (ported Algos from CPython
+          actually!) 
+        - remaining: dict iterators  
 
   - (mostly easy) tuple to list
         task: the built-in list() should convert from homogenous tuples
