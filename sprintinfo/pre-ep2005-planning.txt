@@ -19,13 +19,6 @@ Still missing are:
               annotator/{unary.py,binary.py} 
               one by one and decide if they should be supported
   
-  - (probably easy): operations: str for instances (only something
-    very simple for the latter).  all other uses are cheating, as
-    are all uses of hex, oct, repr.  Add some '%s' support of instances 
-    as well. 
-
-    mostly DONE apart from instances which we're not sure we need anyway
-
 * lltype will also need to grow a new primitive type, UnicodeChar.
 
 * (partially DONE) convert each file that does 
