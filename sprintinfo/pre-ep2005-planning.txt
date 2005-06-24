@@ -14,7 +14,7 @@ Still missing are:
         tasks: 1. call to memoized functions, at first with a single PBC arg 
                2. find out if we really have visible dicts with PBC keys
 
-  - (medium) dicts with non-wrapped string keys to any object, and 
+  - DONE (medium) dicts with non-wrapped string keys to any object, and 
         iterators over them
         - basic getitem/setitem/delitem is done (ported Algos from CPython
           actually!) 
