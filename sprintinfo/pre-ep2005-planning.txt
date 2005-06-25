@@ -15,8 +15,6 @@ Still missing are:
             (medium) applevel sys module should not refer to 
                      interplevel sys.getdefaultencoding
 
-            (easy) time.time (see how time.clock is done)
-
             implement in RPython (and change importing.py accordingly) 
             os.path.dirname/normpath/join (including the closure of what they use) 
 
