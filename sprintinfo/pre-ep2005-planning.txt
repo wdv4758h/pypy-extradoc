@@ -36,9 +36,6 @@ Still missing are:
                    (DONE) (easy) contains		  
             (easy) rstr: str.split(single_constant_character)
 
-            (easy) rpbc: is_true  -->  False for None
-                                       True for all other PBCs
-
 
             Binary operations
             -----------------
