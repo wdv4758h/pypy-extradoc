@@ -15,10 +15,79 @@ Still missing are:
     need for translation.     
 
   - (hard) a few more operations: issubtype, ...?
-        task: go through all space operations listed in baseobjspace.py
-              annotator/{unary.py,binary.py} 
-              one by one and decide if they should be supported
-  
+      found to be missing (ale, arigo):
+
+            Builtins
+            --------
+
+            apply
+            callable
+            compile
+            hasattr
+            long
+            slice
+            tuple
+            unicode
+            zip
+            xrange
+            max
+
+            math_floor
+            math_fmod
+            ovfcheck
+            ovfcheck_lshift
+
+            sys.getrefcount
+            sys.getdefaultencoding
+
+            time.time
+
+            os.path.dirname
+            os.path.normpath
+            os.path.join
+            os.path.exists
+            os.path.isdir
+
+            __import__
+
+
+            Unary operations
+            ----------------
+
+            rclass: issubtype
+
+            rdict: method_get
+                   method_copy
+                   method_update
+                   method_keys
+                   method_values
+                   method_items
+
+            fix the code not to use str.split()
+
+            rpbc: is_true
+
+
+            Binary operations
+            -----------------
+
+            cmp ?
+            rint: divmod
+            coerce ??
+
+            rstr: mul, inplace_mul
+
+
+            Overridden functions in PyPy
+            ----------------------------
+
+            override:ignore
+            override:instantiate
+            override:wrap_exception_cls
+            override:fake_object
+            override:cpy_compile
+
+
 * DONE (ale, arre) lltype will also need to grow a new primitive type, UnicodeChar.
 
 * (partially DONE) convert each file that does 
