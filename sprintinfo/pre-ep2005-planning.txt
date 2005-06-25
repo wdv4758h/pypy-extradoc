@@ -51,19 +51,16 @@ Still missing are:
                    (easy) method_values
                    (easy) method_items
 
-            fix the code not to use str.split()
+            (easy) rstr: str.split(single_constant_character)
 
-            rpbc: is_true
+            (easy) rpbc: is_true  -->  False for None
+                                       True for all other PBCs
 
 
             Binary operations
             -----------------
 
-            cmp ?
-            rint: divmod
-            coerce ??
-
-            rstr: mul, inplace_mul
+            (easy) rstr: mul, inplace_mul  (for CharRepr only!)
 
 
             Overridden functions in PyPy
