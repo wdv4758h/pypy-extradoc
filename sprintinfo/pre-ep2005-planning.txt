@@ -19,35 +19,35 @@ Still missing are:
             Builtins
             --------
 
-            apply
-            callable
-            compile
-            hasattr
-            long
-            slice
-            tuple
-            unicode
-            zip
-            xrange
-            max
+            (discuss) apply
+            (remove) callable
+            (should be hidden by the specialcase)compile
+            (remove) hasattr
+            (is not there)long
+            (easy) slice
+            (easy) tuple
+            (easy) unicode
+            (removed) zip
+            (easy) xrange
+            (easy) max
 
-            math_floor
-            math_fmod
-            ovfcheck
-            ovfcheck_lshift
+            (easy) math_floor
+            (easy) math_fmod
+            (easy) ovfcheck
+            (easy) ovfcheck_lshift
 
-            sys.getrefcount
-            sys.getdefaultencoding
+            (strange)(delegating to backend?) sys.getrefcount
+            (medium) sys.getdefaultencoding
 
-            time.time
+            (easy) time.time
 
-            os.path.dirname
-            os.path.normpath
-            os.path.join
-            os.path.exists
-            os.path.isdir
+            (delegating to backend) os.path.dirname
+            (delegating to backend) os.path.normpath
+            (delegating to backend) os.path.join
+            (delegating to backend) os.path.exists
+            (delegating to backend)os.path.isdir
 
-            __import__
+            (should not be there) __import__
 
 
             Unary operations
