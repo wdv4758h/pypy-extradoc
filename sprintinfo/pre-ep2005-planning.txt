@@ -19,15 +19,6 @@ Still missing are:
             Builtins
             --------
 
-            (discuss) apply
-            (remove) callable
-            (should be hidden by the specialcase)compile
-            (remove) hasattr
-            (is not there)long
-            (easy) slice
-            (easy) tuple
-            (easy) unicode
-            (removed) zip
             (easy) xrange
             (easy) max
 
@@ -47,20 +38,18 @@ Still missing are:
             (delegating to backend) os.path.exists
             (delegating to backend)os.path.isdir
 
-            (should not be there) __import__
-
 
             Unary operations
             ----------------
 
-            rclass: issubtype
+            rclass: (easy) issubtype
 
-            rdict: method_get
-                   method_copy
-                   method_update
-                   method_keys
-                   method_values
-                   method_items
+            rdict: (easy) method_get
+                   (easy) method_copy
+                   (easy) method_update
+                   (easy) method_keys
+                   (easy) method_values
+                   (easy) method_items
 
             fix the code not to use str.split()
 
