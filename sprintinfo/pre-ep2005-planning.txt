@@ -11,9 +11,6 @@ Still missing are:
             Builtins
             --------
 
-            (easy) math.floor
-            (easy) math.fmod
-
             (strange)(delegating to backend?) sys.getrefcount
             (medium) applevel sys module should not refer to 
                      interplevel sys.getdefaultencoding
