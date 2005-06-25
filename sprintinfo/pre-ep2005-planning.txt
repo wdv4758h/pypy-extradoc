@@ -27,13 +27,13 @@ Still missing are:
             rclass: (easy) issubtype
 
             (arre, christian): 
-            rdict: (easy) method_get (?)
-                   (easy) method_copy
-                   (easy) method_update (?)
-                   (easy) method_keys (?)
-                   (easy) method_values (?)
-                   (easy) method_items (?)
-
+            rdict: (DONE) (easy) method_get (?)
+                   (DONE) (easy) method_copy
+                   (DONE) (easy) method_update (?)
+                   (DONE) (easy) method_keys (?)
+                   (DONE) (easy) method_values (?)
+                   (DONE) (easy) method_items (?)
+                   (easy) contains		  
             (easy) rstr: str.split(single_constant_character)
 
             (easy) rpbc: is_true  -->  False for None
