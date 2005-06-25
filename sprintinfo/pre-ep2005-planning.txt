@@ -50,6 +50,17 @@ Still missing are:
 
             (easy) rstr: mul, inplace_mul  (for CharRepr only!)
 
+            (easy) 'contains' applied on:
+                     * dict of string keys
+                     * constant tuple of ints
+                     * constant tuple of strings
+                     * constant tuple of unicode characters
+                     * constant dict with int keys (which are pending now)
+                     * constant string
+                     * string
+                     * list of instances
+                     * list of strings
+                     * list of unicode characters
 
             Overridden functions in PyPy
             ----------------------------
@@ -60,6 +71,8 @@ Still missing are:
                 override:wrap_exception_cls
                 override:fake_object
                 override:cpy_compile
+
+* prebuilt immutable dictionaries with int keys
 
 * (partially DONE) convert each file that does 
   'from ... import *' to use explicit imports (e.g. 
