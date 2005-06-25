@@ -6,50 +6,40 @@ Still missing are:
 
 * currently remaining rtyper topics: 
 
-  - (hard) (holger, armin) prebuilt constants -- PBCs -- and dicts with PBC keys
-    DONE 1. call to memoized functions, at first with a single PBC arg 
-    DONE 2. removed the only usage of specialize:memo with more than one PBC key
-
-  - (probably trivial) verify that we've done all the builtins we
-    need for translation.     
-
-  - (hard) a few more operations: issubtype, ...?
-      found to be missing (ale, arigo):
+  - found to be missing (ale, arigo)::
 
             Builtins
             --------
 
-            (easy) xrange
             (easy) max
 
-            (easy) math_floor
-            (easy) math_fmod
-            (easy) ovfcheck
-            (easy) ovfcheck_lshift
+            (easy) math.floor
+            (easy) math.fmod
 
             (strange)(delegating to backend?) sys.getrefcount
-            (medium) sys.getdefaultencoding
+            (medium) applevel sys module should not refer to 
+                     interplevel sys.getdefaultencoding
 
-            (easy) time.time
+            (easy) time.time (see how time.clock is done)
 
-            (delegating to backend) os.path.dirname
-            (delegating to backend) os.path.normpath
-            (delegating to backend) os.path.join
-            (delegating to backend) os.path.exists
-            (delegating to backend)os.path.isdir
+            implement in RPython (and change importing.py accordingly) 
+            os.path.dirname/normpath/join (including the closure of what they use) 
 
+            (generate c_api calls) os.path.exists 
+            (generate c_api calls) os.path.isdir 
 
             Unary operations
             ----------------
 
             rclass: (easy) issubtype
 
-            rdict: (easy) method_get
+            (arre, christian): 
+            rdict: (easy) method_get (?)
                    (easy) method_copy
-                   (easy) method_update
-                   (easy) method_keys
-                   (easy) method_values
-                   (easy) method_items
+                   (easy) method_update (?)
+                   (easy) method_keys (?)
+                   (easy) method_values (?)
+                   (easy) method_items (?)
 
             (easy) rstr: str.split(single_constant_character)
 
@@ -66,24 +56,22 @@ Still missing are:
             Overridden functions in PyPy
             ----------------------------
 
-            override:ignore
-            override:instantiate
-            override:wrap_exception_cls
-            override:fake_object
-            override:cpy_compile
-
-
-* DONE (ale, arre) lltype will also need to grow a new primitive type, UnicodeChar.
+            (easy) override:ignore
+            (easy) override:instantiate
+            (hard, probably needs to be implemented at C/CPython level): 
+                override:wrap_exception_cls
+                override:fake_object
+                override:cpy_compile
 
 * (partially DONE) convert each file that does 
   'from ... import *' to use explicit imports (e.g. 
   from pypy.rpython import lltype and then use lltype.*) 
 
-* (samuele, michael) GenC knows little about float operations.  Need to complete
+* INPROGESS (holger, michael) GenC knows little about float operations.  Need to complete
   translator/c/float_include.h.
 
 * progress on translation of example targets:
-    python demo/bpnn.py (samuele, michael) 
+    python demo/bpnn.py  
     python pypy/translator/goal/translate_pypy.py targetrichards.py
 
 * (medium) write a tool that discovers which revision of the pypy tree 
@@ -95,5 +83,6 @@ Still missing are:
 
 * (medium) finish objspace/std/longobject.py.
 
-* (hard) try out if genpickle.py can be used to save and load 
-  the high level annotated flowgraphs of PyPy 
+* (hard) find a way to generate c_api calls with automated 
+  conversions from ll-strings to c-like strings 
+
