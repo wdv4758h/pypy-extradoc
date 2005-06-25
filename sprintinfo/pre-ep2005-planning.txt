@@ -11,8 +11,6 @@ Still missing are:
             Builtins
             --------
 
-            (easy) max
-
             (easy) math.floor
             (easy) math.fmod
 
