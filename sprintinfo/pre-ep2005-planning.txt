@@ -19,7 +19,7 @@ Still missing are:
               annotator/{unary.py,binary.py} 
               one by one and decide if they should be supported
   
-* lltype will also need to grow a new primitive type, UnicodeChar.
+* DONE (ale,arre) lltype will also need to grow a new primitive type, UnicodeChar.
 
 * (partially DONE) convert each file that does 
   'from ... import *' to use explicit imports (e.g. 
