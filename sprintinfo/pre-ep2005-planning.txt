@@ -4,12 +4,11 @@ Open areas in translation
 
 Still missing are:
 
-* Almost all the topics from the rtyper, from the previous
-  status report:
+* currently remaining rtyper topics: 
 
   - (hard) (holger, armin) prebuilt constants -- PBCs -- and dicts with PBC keys
     DONE 1. call to memoized functions, at first with a single PBC arg 
-    2. find out if we really have visible dicts with PBC keys
+    DONE 2. removed the only usage of specialize:memo with more than one PBC key
 
   - (probably trivial) verify that we've done all the builtins we
     need for translation.     
