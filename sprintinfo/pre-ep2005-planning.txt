@@ -33,7 +33,7 @@ Still missing are:
                    (DONE) (easy) method_keys (?)
                    (DONE) (easy) method_values (?)
                    (DONE) (easy) method_items (?)
-                   (easy) contains		  
+                   (DONE) (easy) contains		  
             (easy) rstr: str.split(single_constant_character)
 
             (easy) rpbc: is_true  -->  False for None
