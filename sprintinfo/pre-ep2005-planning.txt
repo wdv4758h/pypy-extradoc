@@ -67,11 +67,10 @@ Still missing are:
   'from ... import *' to use explicit imports (e.g. 
   from pypy.rpython import lltype and then use lltype.*) 
 
-* INPROGESS (holger, michael) GenC knows little about float operations.  Need to complete
-  translator/c/float_include.h.
+* DONE (holger, michael) translator/c/float_include.h should be complete. 
 
 * progress on translation of example targets:
-    python demo/bpnn.py  
+    python demo/bpnn.py   (holger, michael, samuele) 
     python pypy/translator/goal/translate_pypy.py targetrichards.py
 
 * (medium) write a tool that discovers which revision of the pypy tree 
