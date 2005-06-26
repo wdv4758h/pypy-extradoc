@@ -1,0 +1,139 @@
+
+PyPy EuroPython 2005 sprint planning (1st-7th July)
+-------------------------------------------------------
+
+overall time planning:: 
+
+    1st-3rd July (both including) we sprint at Chalmers from 10am-open 
+
+    4th first half is "break" time, afternoon 3pm is meeting time at 
+        LAURA's house (not chalmers anymore) on Götabergsgatan 22. 
+
+    5th-7th sprint continues from 10am-open at laura's house 
+
+1st July start at 10am:: 
+    - holger starts the session 
+
+    - introduction to PyPy 
+        high level architecture (Armin or Holger?)
+    - introduction to Annotation + RTyping?  (Samuele or Armin)
+        working on examples
+    - introduction to LLVM2 + status 
+        Carl, holger
+    - introduction to GenC + status
+        Armin 
+
+other suggested events:: 
+    3rd July 5pm: Bert talks about Squeak's VM architecture 
+
+we decide about pairing at the venue (after everybody tells 
+what he/she is interested in). These are the people expected currently:: 
+
+    Armin Rigo          
+    Samuele Pedroni     
+    Niklaus Haldimann 
+    Carl Friedrich Bolz
+    Eric van Riet Paap
+    Holger Krekel    
+    Richard Emslie  
+    Bert Freudenberg    
+    Adrien Di Mascio
+    Ludovic Aubry  
+    Anders Chrigstroem
+    Christian Tismer 
+    Jacob Hallen      
+    Laura Creighton  
+    Beatrice Duering   
+
+
+Translation tasks 
+------------------
+
+* currently remaining rtyper topics: 
+
+  - found to be missing (ale, arigo)::
+
+            Builtins
+            --------
+
+            (strange)(delegating to backend?) sys.getrefcount
+            (medium) applevel sys module should not refer to 
+                     interplevel sys.getdefaultencoding
+            (generate c_api calls) os.path.exists 
+            (generate c_api calls) os.path.isdir 
+
+            Unary operations
+            ----------------
+
+            rclass: (easy) issubtype
+
+            Overridden functions in PyPy
+            ----------------------------
+
+            (easy) override:ignore
+            (easy) override:instantiate
+            (hard, probably needs to be implemented at C/CPython level): 
+                override:wrap_exception_cls
+                override:fake_object
+                override:cpy_compile
+
+* (partially DONE) convert each file that does 
+  'from ... import *' to use explicit imports (e.g. 
+  from pypy.rpython import lltype and then use lltype.*) 
+
+* translator/c/int_include.h needs unsigned arithmetic operations.
+
+* progress on translation of example targets:
+    python pypy/translator/goal/translate_pypy.py targetrichards.py
+
+Move to Python 2.4.1
+----------------------- 
+
+experiment in a branch with using Python 2.4 semantics 
+and the standard library 
+
+* use lib-python/2.4.1 instead of 2.3.4, review all modified 
+  tests and library modules
+
+* semantic differences: comparison of recursive data structures,
+  more?
+
+* new required C-level modules: 'sets', 'collections'
+
+* run tests (including compatibility lib-python tests) 
+
+Misc
+-------- 
+
+* (medium) write a tool that discovers which revision of the pypy tree 
+  broke the high level annotator (in that it produced SomeObjects). 
+  Consider distributing the actual annotation to multiple hosts. 
+
+* (medium) finish objspace/std/longobject.py.
+
+* (hard) find a way to generate c_api calls with automated 
+  conversions from ll-strings to c-like strings 
+
+* fix Windows-related issues, '%'-formatting rounding errors,
+  add missing docstrings on app-level built-in types and functions,
+  etc.
+
+* GC discussion in the middle of the sprint  (kickoff Carl Friedrich)
+
+Rewriting important C functionality in Python 
+--------------------------------------------------
+
+* integrate the parser module, trying to make it RPython
+  conformant;
+
+* re module reimplementation kickoff 
+
+* rewrite in Python a C module you are familiar with
+  (partial list of missing/incomplete modules: os, math, array,
+  regular expressions, binascii...)
+
+* implement Python 2.3's import hook extensions (zip-imports etc.)
+
+* weakrefs (but this requires discussion and planning on pypy-dev
+  before the sprint! feel free to start such a discussion, though.)
+
