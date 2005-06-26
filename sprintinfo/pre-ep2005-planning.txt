@@ -34,7 +34,7 @@ Still missing are:
                    (DONE) (easy) method_values (?)
                    (DONE) (easy) method_items (?)
                    (DONE) (easy) contains		  
-            (easy) rstr: str.split(single_constant_character)
+            (DONE) (easy) rstr: str.split(single_constant_character)
 
 
             Binary operations
@@ -43,11 +43,12 @@ Still missing are:
             (easy) rstr: mul, inplace_mul  (for CharRepr only!)
 
             (easy) 'contains' applied on:
-                     * dict of string keys
-                     * constant tuple of ints
-                     * constant tuple of strings
+                     * (DONE) dict of string keys
+                     * (DONE) constant tuple of ints
+                     * (DONE) constant tuple of strings
                      * constant tuple of unicode characters
-                     * constant dict with int keys (which are pending now)
+                                  -- needs constant dict of unichr keys
+                     * (DONE) constant dict with int keys
                      * constant string
                      * string
 
@@ -61,7 +62,7 @@ Still missing are:
                 override:fake_object
                 override:cpy_compile
 
-* prebuilt immutable dictionaries with int keys
+* (DONE) prebuilt immutable dictionaries with int keys
 
 * (partially DONE) convert each file that does 
   'from ... import *' to use explicit imports (e.g. 
