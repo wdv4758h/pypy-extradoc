@@ -1,4 +1,4 @@
-﻿
+
 PyPy EuroPython 2005 sprint planning (1st-7th July)
 -------------------------------------------------------
 
