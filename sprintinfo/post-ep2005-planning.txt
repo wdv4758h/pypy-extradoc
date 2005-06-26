@@ -1,4 +1,4 @@
-
+﻿
 PyPy EuroPython 2005 sprint planning (1st-7th July)
 -------------------------------------------------------
 
@@ -80,8 +80,6 @@ Translation tasks
 * (partially DONE) convert each file that does 
   'from ... import *' to use explicit imports (e.g. 
   from pypy.rpython import lltype and then use lltype.*) 
-
-* translator/c/int_include.h needs unsigned arithmetic operations.
 
 * progress on translation of example targets:
     python pypy/translator/goal/translate_pypy.py targetrichards.py
