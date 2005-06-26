@@ -25,7 +25,7 @@ A status report on PyPy, the Python interpreter implemented in Python.
    5 minutes                   /
 
 5) Conclusions & roadmap 2005/2006 
-   5 minutes 
+   5 minutes (Armin)
 
     the previous technqiues will be used internally to translate PyPy 
     to low level languages.  In particular we aim for: 
@@ -37,4 +37,6 @@ A status report on PyPy, the Python interpreter implemented in Python.
 
     - tool for building custom PyPy versions by end 2006
 
+6) questions and answers 
+   (armin)
 
