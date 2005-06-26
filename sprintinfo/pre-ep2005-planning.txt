@@ -50,9 +50,6 @@ Still missing are:
                      * constant dict with int keys (which are pending now)
                      * constant string
                      * string
-                     * list of instances
-                     * list of strings
-                     * list of unicode characters
 
             Overridden functions in PyPy
             ----------------------------
