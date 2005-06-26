@@ -71,7 +71,7 @@ Still missing are:
 
 * DONE (holger, michael) translator/c/float_include.h should be complete. 
 
-* translator/c/int_include.h needs unsigned arithmetic operations.
+DONE * translator/c/int_include.h needs unsigned arithmetic operations.
 
 * progress on translation of example targets:
     python demo/bpnn.py   (holger, michael, samuele) 
