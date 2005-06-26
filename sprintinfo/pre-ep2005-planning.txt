@@ -40,7 +40,7 @@ Still missing are:
             Binary operations
             -----------------
 
-            (easy) rstr: mul, inplace_mul  (for CharRepr only!)
+            (DONE) (easy) rstr: mul, inplace_mul  (for CharRepr only!)
 
             (easy) 'contains' applied on:
                      * (DONE) dict of string keys
