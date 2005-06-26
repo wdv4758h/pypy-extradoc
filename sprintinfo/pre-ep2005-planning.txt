@@ -35,6 +35,7 @@ Still missing are:
                    (DONE) (easy) method_items (?)
                    (DONE) (easy) contains		  
             (DONE) (easy) rstr: str.split(single_constant_character)
+            (DONE) method_replace with char/char
 
 
             Binary operations
@@ -49,8 +50,8 @@ Still missing are:
                      * constant tuple of unicode characters
                                   -- needs constant dict of unichr keys
                      * (DONE) constant dict with int keys
-                     * constant string
-                     * string
+                     * (DONE via string) constant string
+                     * (DONE) string
 
             Overridden functions in PyPy
             ----------------------------
