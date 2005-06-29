@@ -28,7 +28,8 @@ List Of Attendants for POST-EP sprint (7 full days 1st-7th)
 Armin Rigo          1st-7th July   private 
 Samuele Pedroni     1st-7th July   private 
 Carl Friedrich Bolz 1st-6th July   private 
-Eric van Riet Paap  1st-7th July   SGS
+Niklaus Haldimann   1st-5th July   SGS
+Eric van Riet Paap  1st-8th July   SGS
 Holger Krekel       1st-7th July   private 
 Richard Emslie      1st-7th July   private
 Bert Freudenberg    1st-7th July   ?
