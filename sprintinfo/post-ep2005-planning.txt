@@ -81,8 +81,11 @@ Translation tasks
   'from ... import *' to use explicit imports (e.g. 
   from pypy.rpython import lltype and then use lltype.*) 
 
-* progress on translation of example targets:
-    python pypy/translator/goal/translate_pypy.py targetrichards.py
+* fix floats::
+    - translator/c/float_include.h should catch floating-point signals
+      with a technique similar to CPython's.
+    - objspace/std/floatobject.py needs some clean-ups:
+      look for XXX, for %reimplement% and for all try:except: blocks.
 
 Move to Python 2.4.1
 ----------------------- 
