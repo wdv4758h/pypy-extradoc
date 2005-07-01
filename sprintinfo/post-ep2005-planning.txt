@@ -6,20 +6,30 @@ overall time planning::
 
     1st-3rd July (both including) we sprint at Chalmers from 10am-open 
 
-    4th first half is "break" time, afternoon 3pm is meeting time at 
-        LAURA's house (not chalmers anymore) on Götabergsgatan 22. 
+    4th July is "break" time, afternoon visiting sites together? 
 
-    5th-7th sprint continues from 10am-open at laura's house 
+    5th July sprint from 10am-open at Laura's house 
+             (Goetabergsgatan 22)
+    -7th sprint continues from 10am-open at laura's house 
+
+3rd July evening: Going to Hitchhikers Guide? 
+
+
 
 1st July start at 10am:: 
     - holger starts the session 
 
     - introduction to PyPy 
         high level architecture (Armin or Holger?)
+
     - introduction to Annotation + RTyping?  (Samuele or Armin)
         working on examples
+
     - introduction to LLVM2 + status 
         Carl, holger
+
+    - status of Parser efforts
+
     - introduction to GenC + status
         Armin 
 
@@ -29,21 +39,40 @@ other suggested events::
 we decide about pairing at the venue (after everybody tells 
 what he/she is interested in). These are the people expected currently:: 
 
-    Armin Rigo          
-    Samuele Pedroni     
-    Niklaus Haldimann 
-    Carl Friedrich Bolz
-    Eric van Riet Paap
-    Holger Krekel    
-    Richard Emslie  
-    Bert Freudenberg    
-    Adrien Di Mascio
-    Ludovic Aubry  
-    Anders Chrigstroem
-    Christian Tismer 
-    Jacob Hallen      
-    Laura Creighton  
-    Beatrice Duering   
+
+    Gustavo Niemeyer      until 2nd (including)
+    Adrien Di Mascio      until 4th (including)
+
+    Eric van Riet Paap    until 8th 
+    Carl Friedrich Bolz   until 5th afternoon
+    Richard Emslie        whole-time  
+
+    Gintas M.             until 2nd (including)
+    Marius Gedminas       until 2nd (including) 
+    Mikael Jansson        until 3rd (probably)
+
+    Armin Rigo            whole-time  
+    Niklaus Haldimann     until 4th (including)
+    Ludovic Aubry         until 4th (including)
+    Anders Chrigstroem    whole-time (likely) 
+    Anders Qvist          whole-time (likely)
+    Ignas M.              until 2nd (including)
+
+    Bert Freudenberg      whole-time
+    Holger Krekel         whole-time 
+
+    Jacob Hallen          whole-time
+    Christian Tismer      whole-time 
+
+    Laura Creighton       whole-time
+
+    Samuele Pedroni       whole-time  
+
+
+    Beatrice Duering   (visiting, 5th-)
+    Rob Collins           until 2nd afternoon
+    #Joe Wrigley           until 2nd morning 
+    Volker Gietz          2nd only 
 
 
 Translation tasks 
@@ -87,8 +116,13 @@ Translation tasks
     - objspace/std/floatobject.py needs some clean-ups:
       look for XXX, for %reimplement% and for all try:except: blocks.
 
+
 Move to Python 2.4.1
 ----------------------- 
+
+subcoach: Armin
+Niklaus, Gintas, Ignas, Arre, Anders, Mikael 
+
 
 experiment in a branch with using Python 2.4 semantics 
 and the standard library 
@@ -115,19 +149,27 @@ Misc
 * (hard) find a way to generate c_api calls with automated 
   conversions from ll-strings to c-like strings 
 
-* fix Windows-related issues, '%'-formatting rounding errors,
-  add missing docstrings on app-level built-in types and functions,
+* fix Windows-related issues
+
+* '%'-formatting rounding errors  (  '%.3f' % (2.999999,))
+
+* add missing docstrings on app-level built-in types and functions,
   etc.
 
-* GC discussion in the middle of the sprint  (kickoff Carl Friedrich)
+* GC discussion in the middle of the sprint  (kickoff Carl Friedrich) 
+  3rd 
 
 Rewriting important C functionality in Python 
 --------------------------------------------------
 
-* integrate the parser module, trying to make it RPython
-  conformant;
+* parsing/compiling  (Adrien, Gustavo)
 
-* re module reimplementation kickoff 
+    * translate to C (fix annotation problems by either
+      tweaking the code or extending the annotator on 
+      a case-by-case basis) 
+    * move towards a rpython compliant (translatable) compiler 
+
+* _sre module reimplementation kickoff 
 
 * rewrite in Python a C module you are familiar with
   (partial list of missing/incomplete modules: os, math, array,
@@ -135,6 +177,18 @@ Rewriting important C functionality in Python
 
 * implement Python 2.3's import hook extensions (zip-imports etc.)
 
-* weakrefs (but this requires discussion and planning on pypy-dev
+* (hard) weakrefs (but this requires discussion and planning on pypy-dev
   before the sprint! feel free to start such a discussion, though.)
+
+
+LLVM Backend
+-------------------
+
+- implement variable sized structs (Richard, Eric / Carl)
+
+- support function pointers 
+
+- implement exceptions (Carl, Ludovic)  
+
+- try to integrate Boehm GC 
 
