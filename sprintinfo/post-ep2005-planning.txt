@@ -39,36 +39,33 @@ other suggested events::
 we decide about pairing at the venue (after everybody tells 
 what he/she is interested in). These are the people expected currently:: 
 
-
     Gustavo Niemeyer      until 2nd (including)
+
     Adrien Di Mascio      until 4th (including)
 
-    Eric van Riet Paap    until 8th 
     Carl Friedrich Bolz   until 5th afternoon
-    Richard Emslie        whole-time  
-
-    Gintas M.             until 2nd (including)
-    Marius Gedminas       until 2nd (including) 
-    Mikael Jansson        until 3rd (probably)
+    Richard Emslie        whole-time (until 10th)
 
     Armin Rigo            whole-time  
+
+    Mikael Jansson        until 2nd (including)
     Niklaus Haldimann     until 4th (including)
+
     Ludovic Aubry         until 4th (including)
     Anders Chrigstroem    whole-time (likely) 
     Anders Qvist          whole-time (likely)
-    Ignas M.              until 2nd (including)
-
-    Bert Freudenberg      whole-time
     Holger Krekel         whole-time 
-
     Jacob Hallen          whole-time
     Christian Tismer      whole-time 
-
     Laura Creighton       whole-time
-
     Samuele Pedroni       whole-time  
 
+    Eric van Riet Paap    until 8th 
+    Bert Freudenberg      whole-time
 
+    Marius Gedminas       until 2nd (including) 
+    Gintas M.             until 2nd (including)
+    Ignas M.              until 2nd (including)
     Beatrice Duering   (visiting, 5th-)
     Rob Collins           until 2nd afternoon
     #Joe Wrigley           until 2nd morning 
@@ -128,14 +125,20 @@ experiment in a branch with using Python 2.4 semantics
 and the standard library 
 
 * use lib-python/2.4.1 instead of 2.3.4, review all modified 
-  tests and library modules
+  tests and library modules (good progress, we still need to
+  review ca. 25 modified test files) 
 
-* semantic differences: comparison of recursive data structures,
-  more?
+* DONE: semantic differences: comparison of recursive 
+  data structures, more? 
 
-* new required C-level modules: 'sets', 'collections'
+* new required C-level modules: 
+     - MOSTLY DONE: 'sets'
+     - implement 'collections' module
+     - (probably) revert 'bisect' module to the 2.3 version (or 2.5)
+     - (probably) revert 'heapq' module to the 2.3 version (2.5)
 
-* run tests (including compatibility lib-python tests) 
+* check that test results page still works (and fix)
+  
 
 Misc
 -------- 
@@ -145,35 +148,44 @@ Misc
   Consider distributing the actual annotation to multiple hosts. 
 
 * (medium) finish objspace/std/longobject.py.
+  - div implementation (christian, jacob)
 
-* (hard) find a way to generate c_api calls with automated 
-  conversions from ll-strings to c-like strings 
+* (hard, starting soon to be discussed) find a way 
+  to generate c_api calls (including automated 
+  conversions from ll-strings to c-like strings)
 
 * fix Windows-related issues
 
 * '%'-formatting rounding errors  (  '%.3f' % (2.999999,))
 
-* add missing docstrings on app-level built-in types and functions,
-  etc.
+* (progressing) add missing docstrings on app-level built-in types and functions,
+  etc. (Laura): there now is a program that generates the docstrings
+  into the appropriate places but it needs prettification. 
 
-* GC discussion in the middle of the sprint  (kickoff Carl Friedrich) 
-  3rd 
+* (should start sunday) GC discussion in the middle of the sprint  
+  (kickoff Carl Friedrich) 
+
+* (should start sunday) _sre module reimplementation kickoff 
 
 Rewriting important C functionality in Python 
 --------------------------------------------------
 
-* parsing/compiling  (Adrien, Gustavo)
+* parsing/compiling  (Adrien)
 
-    * translate to C (fix annotation problems by either
+    * (PROGRESS): translate to C (fix annotation problems by either
       tweaking the code or extending the annotator on 
-      a case-by-case basis) 
-    * move towards a rpython compliant (translatable) compiler 
-
-* _sre module reimplementation kickoff 
+      a case-by-case basis).  
+        - (DONE) Parser is fully annotable
+        - not translated and run in C, yet. 
+        
+    * (starting, Ludovic, Adrien) move towards a rpython 
+      compliant (translatable) compiler 
 
 * rewrite in Python a C module you are familiar with
-  (partial list of missing/incomplete modules: os, math, array,
+  (partial list of missing/incomplete modules: math, array,
   regular expressions, binascii...)
+
+* (Jacob, progressing) finish binascii implementation  
 
 * implement Python 2.3's import hook extensions (zip-imports etc.)
 
@@ -184,9 +196,17 @@ Rewriting important C functionality in Python
 LLVM Backend
 -------------------
 
-- implement variable sized structs (Richard, Eric / Carl)
+- (DONE, eric, bert) make llvm work on osx 
 
-- support function pointers 
+- (PROGRESS, cfbolz, rxe) implement variable 
+  sized structs (Richard, Eric / Carl)
+
+- (Eric, Bert) more void transformations 
+     
+- there are problems with voids all around the flowgraph, 
+  which is being reduced by a cfg transformation
+
+- DONE: support function pointers 
 
 - implement exceptions (Carl, Ludovic)  
 
