@@ -39,7 +39,7 @@ other suggested events::
 we decide about pairing at the venue (after everybody tells 
 what he/she is interested in). These are the people expected currently:: 
 
-    Gustavo Niemeyer      until 2nd (including)
+    Gustavo Niemeyer      until 3rd (including)
 
     Adrien Di Mascio      until 4th (including)
 
@@ -48,7 +48,6 @@ what he/she is interested in). These are the people expected currently::
 
     Armin Rigo            whole-time  
 
-    Mikael Jansson        until 2nd (including)
     Niklaus Haldimann     until 4th (including)
 
     Ludovic Aubry         until 4th (including)
@@ -63,14 +62,7 @@ what he/she is interested in). These are the people expected currently::
     Eric van Riet Paap    until 8th 
     Bert Freudenberg      whole-time
 
-    Marius Gedminas       until 2nd (including) 
-    Gintas M.             until 2nd (including)
-    Ignas M.              until 2nd (including)
     Beatrice Duering   (visiting, 5th-)
-    Rob Collins           until 2nd afternoon
-    #Joe Wrigley           until 2nd morning 
-    Volker Gietz          2nd only 
-
 
 Translation tasks 
 ------------------
@@ -118,26 +110,29 @@ Move to Python 2.4.1
 ----------------------- 
 
 subcoach: Armin
-Niklaus, Gintas, Ignas, Arre, Anders, Mikael 
-
+Niklaus, Arre, Anders
 
 experiment in a branch with using Python 2.4 semantics 
 and the standard library 
 
-* use lib-python/2.4.1 instead of 2.3.4, review all modified 
-  tests and library modules (good progress, we still need to
-  review ca. 25 modified test files) 
+* (MOSTLY DONE) use lib-python/2.4.1 instead of 2.3.4, review all 
+  modified tests and library modules (good progress, we still need to
+  review ca. 1 modified test files) 
+
+* Merge 2.4.1 branch (blocked by parser/compiler being able 
+  to process 2.4.1 files on top of CPython 2.3.4) 
 
 * DONE: semantic differences: comparison of recursive 
   data structures, more? 
 
 * new required C-level modules: 
-     - MOSTLY DONE: 'sets'
-     - implement 'collections' module
+     - DONE: 'sets'
+     - (mostly naively mostly done) implement 'collections' module
      - (probably) revert 'bisect' module to the 2.3 version (or 2.5)
      - (probably) revert 'heapq' module to the 2.3 version (2.5)
 
-* check that test results page still works (and fix)
+* check that test results page still works (and fix) after
+  we merged 2.4.1 branch 
   
 
 Misc
@@ -148,24 +143,26 @@ Misc
   Consider distributing the actual annotation to multiple hosts. 
 
 * (medium) finish objspace/std/longobject.py.
-  - div implementation (christian, jacob)
+  - (MOSTLY DONE) div implementation (christian, jacob)
 
 * (hard, starting soon to be discussed) find a way 
   to generate c_api calls (including automated 
   conversions from ll-strings to c-like strings)
+  -> conceptually discussed, needs to be written 
+  down and posted to pypy-dev (samuele/holger)
 
 * fix Windows-related issues
 
 * '%'-formatting rounding errors  (  '%.3f' % (2.999999,))
 
-* (progressing) add missing docstrings on app-level built-in types and functions,
-  etc. (Laura): there now is a program that generates the docstrings
-  into the appropriate places but it needs prettification. 
+* (mostly done) add missing docstrings on app-level built-in types and 
+  functions, etc. (Laura): there now is a program that generates the 
+  docstrings into the appropriate places but it needs prettification. 
 
-* (should start sunday) GC discussion in the middle of the sprint  
-  (kickoff Carl Friedrich) 
+* (should start sometime soon) GC discussion in the middle of the sprint  
+  (kickoff Carl Friedrich with Armin/Samuele) 
 
-* (should start sunday) _sre module reimplementation kickoff 
+* DONE: (should start sunday) _sre module reimplementation kickoff 
 
 Rewriting important C functionality in Python 
 --------------------------------------------------
@@ -177,15 +174,21 @@ Rewriting important C functionality in Python
       a case-by-case basis).  
         - (DONE) Parser is fully annotable
         - not translated and run in C, yet. 
+
+    * (DONE) parser integrated in PyPy ("py.py --pyparse" for
+      non-interactive usage), needs more testing. 
+
+    * (progress, Ludovic, Adrien) try to make 2.4.1 compiler 
+      package work for PyPy and using the parser. 
         
-    * (starting, Ludovic, Adrien) move towards a rpython 
-      compliant (translatable) compiler 
+    * move towards a rpython compliant (translatable) compiler 
 
 * rewrite in Python a C module you are familiar with
   (partial list of missing/incomplete modules: math, array,
   regular expressions, binascii...)
 
-* (Jacob, progressing) finish binascii implementation  
+* (Jacob, progress) binascii implementation, needs more tests 
+                    (but compliancy tests already pass) 
 
 * implement Python 2.3's import hook extensions (zip-imports etc.)
 
@@ -198,17 +201,25 @@ LLVM Backend
 
 - (DONE, eric, bert) make llvm work on osx 
 
-- (PROGRESS, cfbolz, rxe) implement variable 
-  sized structs (Richard, Eric / Carl)
+- (DONE) arrays work (special case of variable sized structs) 
 
-- (Eric, Bert) more void transformations 
+- (PROGRESS, cfbolz, hpk) implement variable 
+  sized structs 
+
+- DONE: (Eric, Bert) added some void-helpers to Structs 
      
 - there are problems with voids all around the flowgraph, 
   which is being reduced by a cfg transformation
 
 - DONE: support function pointers 
 
-- implement exceptions (Carl, Ludovic)  
+- implement exceptions  
 
-- try to integrate Boehm GC 
+- (DONE, bert, eric) try to integrate Boehm GC
 
+after 9am at Lauras place: 
+Niklaus, Adrien, Arre, Christian, Ludovic, (Samuele and Eric for a bit), 
+
+next sprint: in heidelberg end of august: very likely 22nd-29th August 
+    (Carl will try to fix this until 15th July) 
+next sprint after that: supposedly in Paris, no dates yet 
