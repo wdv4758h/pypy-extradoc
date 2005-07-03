@@ -172,8 +172,8 @@ Rewriting important C functionality in Python
     * (PROGRESS): translate to C (fix annotation problems by either
       tweaking the code or extending the annotator on 
       a case-by-case basis).  
-        - (DONE) Parser is fully annotable
-        - not translated and run in C, yet. 
+      - (DONE) Parser is fully annotable
+      - not translated and run in C, yet. 
 
     * (DONE) parser integrated in PyPy ("py.py --pyparse" for
       non-interactive usage), needs more testing. 
@@ -221,5 +221,5 @@ after 9am at Lauras place:
 Niklaus, Adrien, Arre, Christian, Ludovic, (Samuele and Eric for a bit), 
 
 next sprint: in heidelberg end of august: very likely 22nd-29th August 
-    (Carl will try to fix this until 15th July) 
+(Carl will try to fix this until 15th July) 
 next sprint after that: supposedly in Paris, no dates yet 
