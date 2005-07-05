@@ -39,18 +39,9 @@ other suggested events::
 we decide about pairing at the venue (after everybody tells 
 what he/she is interested in). These are the people expected currently:: 
 
-    Gustavo Niemeyer      until 3rd (including)
-
-    Adrien Di Mascio      until 4th (including)
-
     Carl Friedrich Bolz   until 5th afternoon
     Richard Emslie        whole-time (until 10th)
-
     Armin Rigo            whole-time  
-
-    Niklaus Haldimann     until 4th (including)
-
-    Ludovic Aubry         until 4th (including)
     Anders Chrigstroem    whole-time (likely) 
     Anders Qvist          whole-time (likely)
     Holger Krekel         whole-time 
@@ -58,7 +49,6 @@ what he/she is interested in). These are the people expected currently::
     Christian Tismer      whole-time 
     Laura Creighton       whole-time
     Samuele Pedroni       whole-time  
-
     Eric van Riet Paap    until 8th 
     Bert Freudenberg      whole-time
 
@@ -74,18 +64,15 @@ Translation tasks
             Builtins
             --------
 
-            implement int(string) and int(string, 16)
+            (arre, bert) implement int(string) and int(string, 16)
+            rclass: (easy) issubtype (use issubclass to generate 
+            an example that has issubtype in the annotated flow graph) 
 
             (strange)(delegating to backend?) sys.getrefcount
             (medium) applevel sys module should not refer to 
                      interplevel sys.getdefaultencoding
             (generate c_api calls) os.path.exists 
             (generate c_api calls) os.path.isdir 
-
-            Unary operations
-            ----------------
-
-            rclass: (easy) issubtype
 
             Overridden functions in PyPy
             ----------------------------
@@ -112,7 +99,7 @@ Move to Python 2.4.1
 ----------------------- 
 
 subcoach: Armin
-Niklaus, Arre, Anders
+Arre, Anders
 
 experiment in a branch with using Python 2.4 semantics 
 and the standard library 
@@ -122,14 +109,15 @@ and the standard library
   review ca. 1 modified test files) 
 
 * Merge 2.4.1 branch (blocked by parser/compiler being able 
-  to process 2.4.1 files on top of CPython 2.3.4) 
+  to process 2.4.1 files on top of CPython 2.3.4, Armin looks
+  into that)
 
 * DONE: semantic differences: comparison of recursive 
   data structures, more? 
 
 * new required C-level modules: 
      - DONE: 'sets'
-     - (mostly naively mostly done) implement 'collections' module
+     - (DONE except for one test) implement 'collections' module
      - (probably) revert 'bisect' module to the 2.3 version (or 2.5)
      - (probably) revert 'heapq' module to the 2.3 version (2.5)
 
@@ -144,10 +132,11 @@ Misc
   broke the high level annotator (in that it produced SomeObjects). 
   Consider distributing the actual annotation to multiple hosts. 
 
-* (medium) finish objspace/std/longobject.py.
+* (Christian, cfbolz) (medium) finish objspace/std/longobject.py.
   - (MOSTLY DONE) div implementation (christian, jacob)
 
-* (hard, starting soon to be discussed) find a way 
+* (Samuele, Eric) (hard, doc in
+  pypy/documentation/ext-functions-draft.txt) find a way 
   to generate c_api calls (including automated 
   conversions from ll-strings to c-like strings)
   -> conceptually discussed, needs to be written 
@@ -161,7 +150,7 @@ Misc
   functions, etc. (Laura): there now is a program that generates the 
   docstrings into the appropriate places but it needs prettification. 
 
-* (should start sometime soon) GC discussion in the middle of the sprint  
+* (DONE) GC discussion in the middle of the sprint  
   (kickoff Carl Friedrich with Armin/Samuele) 
 
 * DONE: (should start sunday) _sre module reimplementation kickoff 
@@ -169,7 +158,7 @@ Misc
 Rewriting important C functionality in Python 
 --------------------------------------------------
 
-* parsing/compiling  (Adrien)
+* parsing/compiling  
 
     * (PROGRESS): translate to C (fix annotation problems by either
       tweaking the code or extending the annotator on 
@@ -186,11 +175,11 @@ Rewriting important C functionality in Python
     * move towards a rpython compliant (translatable) compiler 
 
 * rewrite in Python a C module you are familiar with
-  (partial list of missing/incomplete modules: math, array,
-  regular expressions, binascii...)
+  (partial list of missing/incomplete modules: math, array (Nik),
+  regular expressions (Nik))
 
-* (Jacob, progress) binascii implementation, needs more tests 
-                    (but compliancy tests already pass) 
+* DONE: binascii implementation, needs more tests 
+        (but compliancy tests already pass) 
 
 * implement Python 2.3's import hook extensions (zip-imports etc.)
 
@@ -205,13 +194,11 @@ LLVM Backend
 
 - (DONE) arrays work (special case of variable sized structs) 
 
-- (PROGRESS, cfbolz, hpk) implement variable 
-  sized structs 
+- (PROGRESS, cfbolz, hpk) implement variable sized structs 
 
 - DONE: (Eric, Bert) added some void-helpers to Structs 
      
-- there are problems with voids all around the flowgraph, 
-  which is being reduced by a cfg transformation
+- (PROGRESS) make prebuilt values work 
 
 - DONE: support function pointers 
 
