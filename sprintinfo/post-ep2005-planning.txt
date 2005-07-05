@@ -64,7 +64,7 @@ Translation tasks
             Builtins
             --------
 
-            (arre, bert) implement int(string) and int(string, 16)
+            DONE: (arre, bert) implement int(string) and int(string, 16)
             rclass: (easy) issubtype (use issubclass to generate 
             an example that has issubtype in the annotated flow graph) 
 
