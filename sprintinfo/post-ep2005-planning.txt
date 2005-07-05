@@ -74,6 +74,8 @@ Translation tasks
             Builtins
             --------
 
+            implement int(string) and int(string, 16)
+
             (strange)(delegating to backend?) sys.getrefcount
             (medium) applevel sys module should not refer to 
                      interplevel sys.getdefaultencoding
