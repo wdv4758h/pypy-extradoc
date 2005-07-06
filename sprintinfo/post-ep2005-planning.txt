@@ -65,7 +65,7 @@ Translation tasks
             --------
 
             DONE: (arre, bert) implement int(string) and int(string, 16)
-            rclass: (easy) issubtype (use issubclass to generate 
+            DONE: rclass: (easy) issubtype (use issubclass to generate 
             an example that has issubtype in the annotated flow graph) 
 
             (strange)(delegating to backend?) sys.getrefcount
@@ -104,11 +104,11 @@ Arre, Anders
 experiment in a branch with using Python 2.4 semantics 
 and the standard library 
 
-* (MOSTLY DONE) use lib-python/2.4.1 instead of 2.3.4, review all 
+* (DONE) use lib-python/2.4.1 instead of 2.3.4, review all 
   modified tests and library modules (good progress, we still need to
   review ca. 1 modified test files) 
 
-* Merge 2.4.1 branch (blocked by parser/compiler being able 
+* (DONE) Merge 2.4.1 branch (blocked by parser/compiler being able 
   to process 2.4.1 files on top of CPython 2.3.4, Armin looks
   into that)
 
