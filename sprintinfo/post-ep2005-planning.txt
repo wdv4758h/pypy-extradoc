@@ -69,7 +69,7 @@ Translation tasks
             an example that has issubtype in the annotated flow graph) 
 
             (strange)(delegating to backend?) sys.getrefcount
-            (medium) applevel sys module should not refer to 
+            DONE: (medium) applevel sys module should not refer to 
                      interplevel sys.getdefaultencoding
             (generate c_api calls) os.path.exists 
             (generate c_api calls) os.path.isdir 
