@@ -57,37 +57,6 @@ what he/she is interested in). These are the people expected currently::
 Translation tasks 
 ------------------
 
-* currently remaining rtyper topics: 
-
-  - found to be missing (ale, arigo)::
-
-            Builtins
-            --------
-
-            DONE: (arre, bert) implement int(string) and int(string, 16)
-            DONE: rclass: (easy) issubtype (use issubclass to generate 
-            an example that has issubtype in the annotated flow graph) 
-
-            (strange)(delegating to backend?) sys.getrefcount
-            DONE: (medium) applevel sys module should not refer to 
-                     interplevel sys.getdefaultencoding
-            (generate c_api calls) os.path.exists 
-            (generate c_api calls) os.path.isdir 
-
-            Overridden functions in PyPy
-            ----------------------------
-
-            (easy) override:ignore
-            (easy) override:instantiate
-            (hard, probably needs to be implemented at C/CPython level): 
-                override:wrap_exception_cls
-                override:fake_object
-                override:cpy_compile
-
-* (partially DONE) convert each file that does 
-  'from ... import *' to use explicit imports (e.g. 
-  from pypy.rpython import lltype and then use lltype.*) 
-
 * fix floats::
     - translator/c/float_include.h should catch floating-point signals
       with a technique similar to CPython's.
@@ -98,28 +67,9 @@ Translation tasks
 Move to Python 2.4.1
 ----------------------- 
 
-subcoach: Armin
-Arre, Anders
+* revert 'bisect' module to the 2.3 version (or 2.5)
 
-experiment in a branch with using Python 2.4 semantics 
-and the standard library 
-
-* (DONE) use lib-python/2.4.1 instead of 2.3.4, review all 
-  modified tests and library modules (good progress, we still need to
-  review ca. 1 modified test files) 
-
-* (DONE) Merge 2.4.1 branch (blocked by parser/compiler being able 
-  to process 2.4.1 files on top of CPython 2.3.4, Armin looks
-  into that)
-
-* DONE: semantic differences: comparison of recursive 
-  data structures, more? 
-
-* new required C-level modules: 
-     - DONE: 'sets'
-     - (DONE except for one test) implement 'collections' module
-     - (probably) revert 'bisect' module to the 2.3 version (or 2.5)
-     - (probably) revert 'heapq' module to the 2.3 version (2.5)
+* revert 'heapq' module to the 2.3 version (2.5)
 
 * check that test results page still works (and fix) after
   we merged 2.4.1 branch 
@@ -135,13 +85,6 @@ Misc
 * (Christian, cfbolz) (medium) finish objspace/std/longobject.py.
   - (MOSTLY DONE) div implementation (christian, jacob)
 
-* (Samuele, Eric) (hard, doc in
-  pypy/documentation/ext-functions-draft.txt) find a way 
-  to generate c_api calls (including automated 
-  conversions from ll-strings to c-like strings)
-  -> conceptually discussed, needs to be written 
-  down and posted to pypy-dev (samuele/holger)
-
 * fix Windows-related issues
 
 * '%'-formatting rounding errors  (  '%.3f' % (2.999999,))
@@ -149,11 +92,6 @@ Misc
 * (mostly done) add missing docstrings on app-level built-in types and 
   functions, etc. (Laura): there now is a program that generates the 
   docstrings into the appropriate places but it needs prettification. 
-
-* (DONE) GC discussion in the middle of the sprint  
-  (kickoff Carl Friedrich with Armin/Samuele) 
-
-* DONE: (should start sunday) _sre module reimplementation kickoff 
 
 Rewriting important C functionality in Python 
 --------------------------------------------------
@@ -190,21 +128,9 @@ Rewriting important C functionality in Python
 LLVM Backend
 -------------------
 
-- (DONE, eric, bert) make llvm work on osx 
-
-- (DONE) arrays work (special case of variable sized structs) 
-
-- (PROGRESS, cfbolz, hpk) implement variable sized structs 
-
-- DONE: (Eric, Bert) added some void-helpers to Structs 
-     
 - (PROGRESS) make prebuilt values work 
 
-- DONE: support function pointers 
-
 - implement exceptions  
-
-- (DONE, bert, eric) try to integrate Boehm GC
 
 after 9am at Lauras place: 
 Niklaus, Adrien, Arre, Christian, Ludovic, (Samuele and Eric for a bit), 
