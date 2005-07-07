@@ -58,8 +58,6 @@ Translation tasks
 ------------------
 
 * fix floats::
-    - translator/c/float_include.h should catch floating-point signals
-      with a technique similar to CPython's.
     - objspace/std/floatobject.py needs some clean-ups:
       look for XXX, for %reimplement% and for all try:except: blocks.
 
