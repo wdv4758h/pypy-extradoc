@@ -5,7 +5,7 @@ The next internal PyPy sprint is scheduled 25th-31st July 2005
 at Trillke-Gut, Hildesheim, Germany.  Its focus will be 
 intensely working on getting a self-contained PyPy version. 
 
-Currently scheduled to come: 
+Currently scheduled to come:: 
 
     Armin Rigo 25th-31st (?)
     Samuele Pedroni 24th-1st 
@@ -37,10 +37,9 @@ Take a train to "Hildesheim Hauptbahnhof" (there are ICE's from
 Berlin and the south of germany, or trains from Hannover, use 
 http://www.bahn.de to plan).  Then take the bus number 3 
 direction "Hildesheimer Wald" and get out at "Waldquelle". 
-The full address is: 
+The full address is:: 
 
     Trillke-Gut 
     Steinbergstr. 42
     31139 Hildesheim 
-    Tel. +49 5121 47247 
 
