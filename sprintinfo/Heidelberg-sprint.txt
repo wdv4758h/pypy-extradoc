@@ -32,7 +32,7 @@ group (WG).
 
 .. _`See here`: http://www.physi.uni-heidelberg.de/physi/front/anfahrt.en.php
 .. _hotels: http://www.cvb-heidelberg.de/index_eng.html
-.. _`hotel in Mannheim`: www.hotel.de/mannheim
+.. _`hotel in Mannheim`: http://www.hotel.de/mannheim
 
 Exact times 
 -----------
