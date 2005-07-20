@@ -1,0 +1,62 @@
+PyPy Sprint in Heidelberg 22nd - 29th August 2005 
+==================================================
+
+The next PyPy sprint is scheduled for end of August in
+Heidelberg, Germany. Its main focus is to translate the whole
+PyPy interpreter to a low level language. To learn more
+about the new PyPy Python-in-Python implementation look here: 
+
+    http://codespeak.net/pypy 
+
+
+Goals and topics of the sprint 
+------------------------------
+
+XXX The focus will probably be translation issues,
+possibly including garbage collection and threading (?).
+
+Location & Accomodation  
+------------------------ 
+
+The sprint will be held in a conference room of the Institute of Physics,
+University of Heidelberg. We have WLAN connection there and small kitchen
+to make tea and coffee. `See here`_ how to get there from the Heidelberg
+main station.
+
+There is a huge number of hotels_ in Heidelberg, all of which are
+unfortunately rather expensive. It should be no problem to reach the sprint
+venue from anywhere in Heidelberg. As an alternative you could also take a
+`hotel in Mannheim`_ which you can reach in 15 min from Heidelberg with the
+train. If there is enough interest Carl could try to rent a room in a living
+group (WG).
+
+.. _`See here`: http://www.physi.uni-heidelberg.de/physi/front/anfahrt.en.php
+.. _hotels: http://www.cvb-heidelberg.de/index_eng.html
+.. _`hotel in Mannheim`: www.hotel.de/mannheim
+
+Exact times 
+-----------
+
+The Pypy sprint is held Monday 22nd August - Monday 29th August 2005.
+Hours will be from 09:00 until people have had enough. It's a good 
+idea to arrive a day before the sprint starts.   
+
+
+Network, Food
+------------- 
+
+The Heidelberg Altstadt can be reached in approximately 10 min from the sprint
+venue. There you will find all kinds of restaurants and fast food places.
+
+You need a wireless network card to access the network. 
+
+
+Registration etc.pp. 
+-------------------- 
+
+Please subscribe to the `PyPy sprint mailing list`_, introduce
+yourself and post a note that you want to come.  Feel free
+to ask any questions there! 
+
+.. _`PyPy sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
+
