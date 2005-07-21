@@ -3,7 +3,7 @@ pypy-sync developer meeting 21st July 2005
 =============================================
 
 Attendees:  Anders Chrigstroem, Samuele Pedroni, Adrien Di Mascio, 
-         Ludovic Aubrien, Carl-Friedrich Bolz, Holger Krekel (minutes), 
+         Ludovic Aubry, Carl-Friedrich Bolz, Holger Krekel (minutes), 
          Richard Emslie (partly)
 
 with pre-sent info: Anders Lehmann
