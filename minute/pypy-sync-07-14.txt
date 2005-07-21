@@ -3,7 +3,7 @@ pypy-sync developer meeting 14th July 2005
 =============================================
 
 
-Attendees:  Samuele, Anders C., Anders L., Adrien Di Mascio, Ludovic Aubrien, 
+Attendees:  Samuele, Anders C., Anders L., Adrien Di Mascio, Ludovic Aubry, 
             Christian Tismer, Carl-Friedrich Bolz, Holger Krekel 
 
 Excused with Pre-Info: Armin 
