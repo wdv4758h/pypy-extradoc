@@ -7,7 +7,7 @@ intensely working on getting a self-contained PyPy version.
 
 Currently scheduled to come:: 
 
-    Armin Rigo 25th-31st (?)
+    Armin Rigo 23rd-1st
     Samuele Pedroni 24th-1st 
     Christian Tismer 25th-31st (?)
     Carl Friedrich Bolz 25th-31st (not there on 27th) 
