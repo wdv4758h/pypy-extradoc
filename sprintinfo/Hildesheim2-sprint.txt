@@ -12,6 +12,7 @@ Currently scheduled to come::
     Christian Tismer 25th-31st (?)
     Carl Friedrich Bolz 25th-31st (not there on 27th) 
     Holger Krekel 24th-31st 
+    Richard Emslie 24th-1st 
 
 Anyone, who is somewhat experienced with PyPy already, 
 is invited to come.  For new people it will make more 
