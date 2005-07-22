@@ -10,7 +10,7 @@ Currently scheduled to come::
     Armin Rigo 23rd-1st
     Samuele Pedroni 24th-1st 
     Christian Tismer 25th-31st (?)
-    Carl Friedrich Bolz 25th-31st (not there on 27th) 
+    Carl Friedrich Bolz 24th-31st (not there on 27th) 
     Holger Krekel 24th-31st 
     Richard Emslie 24th-1st 
 
