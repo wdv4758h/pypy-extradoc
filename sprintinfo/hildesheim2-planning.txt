@@ -1,0 +1,45 @@
+
+PyPy Hildesheim2 sprint planning (25th-31st July) 
+-------------------------------------------------------
+
+overall time planning:: 
+    25th full sprint day 
+    26th full sprint day 
+    27th afternoon break
+    28th morning break 
+    29th full sprint day   # (compliance test decision)
+    30th full sprint day 
+    31th more or less full sprint day 
+
+    each day:  
+        9-10 AM breakfast
+        10:30 planning session 
+        evening: dinner 
+
+    Carl Friedrich Bolz   
+    Richard Emslie        
+    Armin Rigo            
+    Holger Krekel         whole-time 
+    Christian Tismer      whole-time 
+    Samuele Pedroni       whole-time  
+
+Misc
+-------- 
+
+* -> TRACKER write a tool that discovers which revision of the pypy tree 
+  broke the high level annotator (in that it produced SomeObjects). 
+  Consider distributing the actual annotation to multiple hosts. 
+
+* -> TRACKER: (mostly done) add missing docstrings on app-level built-in types and 
+  functions, etc. (Laura): there now is a program that generates the 
+  docstrings into the appropriate places but it needs prettification. 
+
+Current Main task: RTYPER issues
+-----------------------------------
+
+- we want to work on pypy/translator/goal/ISSUES.txt
+
+pairs: 
+    Samuele, Carl Friedrich (progressing on External functions) 
+    Armin, Christian (random RTyper problems)
+    richard, holger (random RTyper problems)
