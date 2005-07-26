@@ -28,18 +28,60 @@ Misc
 
 * -> TRACKER write a tool that discovers which revision of the pypy tree 
   broke the high level annotator (in that it produced SomeObjects). 
-  Consider distributing the actual annotation to multiple hosts. 
+  Consider distributing the actual annotation to multiple hosts. (holger)
 
 * -> TRACKER: (mostly done) add missing docstrings on app-level built-in types and 
   functions, etc. (Laura): there now is a program that generates the 
   docstrings into the appropriate places but it needs prettification. 
+  (christian)
 
 Current Main task: RTYPER issues
 -----------------------------------
 
+- do we want to continue to work with the snapshsot? does it make sense
+  during the sprint?
+  decision: during the sprint use directly the trunk, mail pypy-dev 
+  about this (holger, samuele)
+
+
 - we want to work on pypy/translator/goal/ISSUES.txt
 
-pairs: 
+pairs::
     Samuele, Carl Friedrich (progressing on External functions) 
+    DONE: refactored math and os function out of annotation/builtin and
+    rpython/rbuiltin into the extfunctable, implemented some
+    math.*, os.* functions. fixed os.stat
+
+    Open issues:
+    -  RPython string -> C null-terminated string 
+       conversion. The null termination char is not there!
+  
+    - The flow  space kills exception  handling for built-ins,
+      this is not what we want e.g. for os.* functions;
+      decide new criteria. Maybe only for thing in __builtin__
+      or list only the built-ins we want exception handling 
+      suppressed.
+
+    - finish os.path.exists and os.path.isdir support
+
+     (Armin, Carl Friedrich)
+
+
     Armin, Christian (random RTyper problems)
-    richard, holger (random RTyper problems)
+    DONE: down to override:cpy_stablecompiler,
+    up to wrap/unwrap issues related to faking.
+    The hope is that we can get rid of faking.
+ 
+    Completing marshal, made it into a mixed-module
+    that can be geinterped. 
+
+    Plan: enable pyc loading to bootstrap compiler
+    at app-level (Christian, Richard)
+
+    Richard, Holger (getting rid of faked files) 
+    DONE: importing uses only os.* functions at
+    interp-level. With --file option sys.std*
+    use our own app-level implementation of files.
+    --file is on by default now when translating
+        
+        
