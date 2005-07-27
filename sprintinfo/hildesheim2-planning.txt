@@ -97,17 +97,17 @@ pairs::
         
     Remaining problem list:
 
-    - Samuele, Holger
+    - DONE Samuele, Holger
       make py.py --file --nofakedmodules work
       (crashes somehow)
 
-    - Samuele, Holger
+    - ? 
       allways enforce geninterping of marshal, maybe
       similar to what we did with exceptions
 
-    - Samuele, Holger
+    - DONE Samuele, Holger
       primitive math is done. Implement applevel math,
-      have many tests.
+      have many tests (we are using compliance tests only).
 
     - Samuele, Holger, transitional
       unify the way stdobjspace is configured.
