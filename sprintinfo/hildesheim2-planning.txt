@@ -52,17 +52,19 @@ pairs::
     DONE: refactored math and os function out of annotation/builtin and
     rpython/rbuiltin into the extfunctable, implemented some
     math.*, os.* functions. fixed os.stat
+
     Open issues:
-    - RPython string -> C null-terminated string 
+    - DONE (for C) RPython string -> C null-terminated string 
       conversion. The null termination char is not there!
-  
-    - The flow  space kills exception  handling for built-ins,
+    
+    - DONE (__builtin__/* don't raise, the rest does)
+      The flow space kills exception handling for built-ins,
       this is not what we want e.g. for os.* functions;
       decide new criteria. Maybe only for thing in __builtin__
       or list only the built-ins we want exception handling 
       suppressed.
 
-    - finish os.path.exists and os.path.isdir support
+    - DONE finish os.path.exists and os.path.isdir support
 
      (Armin, Carl Friedrich)
 
@@ -72,11 +74,20 @@ pairs::
     up to wrap/unwrap issues related to faking.
     The hope is that we can get rid of faking.
  
-    Completing marshal, made it into a mixed-module
-    that can be geinterped. 
+    DONE Completing marshal, made it into a mixed-module
+    that can be geninterped.
+    (chris wishes to redo it in interplevel)
 
+    DONE modulo some problems.
+    Inconsistency about problems on different machines.
+    PYC still untested. More tests needed.
     Plan: enable pyc loading to bootstrap compiler
     at app-level (Christian, Richard)
+    Todo:
+    Choose a PYC file version for PyPy (2.4.1)
+    Using this version is ok, because our compiler
+    exactly produces these. The extra functionality in
+    our marshal is not related to magic numbers.
 
     Richard, Holger (getting rid of faked files) 
     DONE: importing uses only os.* functions at
@@ -84,4 +95,52 @@ pairs::
     use our own app-level implementation of files.
     --file is on by default now when translating
         
-        
+    Remaining problem list:
+
+    - Samuele, Holger
+      make py.py --file --nofakedmodules work
+      (crashes somehow)
+
+    - Samuele, Holger
+      allways enforce geninterping of marshal, maybe
+      similar to what we did with exceptions
+
+    - Samuele, Holger
+      primitive math is done. Implement applevel math,
+      have many tests.
+
+    - Samuele, Holger, transitional
+      unify the way stdobjspace is configured.
+      the basic objspace configuration interface
+      becomes a set of keyword arguments. The current
+      command line arguments will be mapped onto this
+      interface.
+      This also includes configuration of which modules
+      should be loaded.
+
+    - Samuele, eleumaS
+      extend the testing framework to allow to specify
+      a space with options for a test. Related to the latter.
+
+    - Holger, Armin
+      bug to be fixed: applevel test stdout is no longer
+      captured.
+
+    - Armin, and everybody else, please
+      run translation and try to avoid any faking at all.
+      An example where it still happens is EllipsisType
+      which gets wrapped by geninterplevel.
+
+    - Richard, Chris
+      Choose a PYC file version for PyPy (2.4.1)
+      Using this version is ok, because our compiler
+      exactly produces these. The extra functionality in
+      our marshal is not related to magic numbers.
+
+    - Richard, Chris
+      track down remaining .pyc file issues.
+
+Concerning the sync meeting of tomorrow, and given that
+we stop working this afternoon, we agreed now for
+tomorrow, that Anders should be asked to work on the 
+complicancy test failures.
