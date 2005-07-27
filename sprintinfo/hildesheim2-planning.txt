@@ -131,7 +131,8 @@ pairs::
       An example where it still happens is EllipsisType
       which gets wrapped by geninterplevel.
 
-    - Richard, Chris
+    - DONE
+      Richard, Chris
       Choose a PYC file version for PyPy (2.4.1)
       Using this version is ok, because our compiler
       exactly produces these. The extra functionality in
