@@ -101,7 +101,7 @@ pairs::
       make py.py --file --nofakedmodules work
       (crashes somehow)
 
-    - ? 
+    - DONE (chris)
       allways enforce geninterping of marshal, maybe
       similar to what we did with exceptions
 
