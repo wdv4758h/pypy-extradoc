@@ -104,3 +104,24 @@ pairs::
 
     - Richard, Chris
       track down remaining .pyc file issues.
+
+
+
+Getting rid of faking::
+
+    DONE.  no faking left if you use --file --nofakedmodules.
+    (of course in this case you can't import most modules like
+    _sre at all.)
+
+
+    - DONE unify the way stdobjspace is configured.
+      the basic objspace configuration interface
+      becomes a set of keyword arguments. The current
+      command line arguments will be mapped onto this
+      interface.
+      This also includes configuration of which modules
+      should be loaded.
+
+    - DONE extend the testing framework to allow to specify
+      a space with options for a test. Related to the latter.
+
