@@ -57,7 +57,7 @@ Remaining problem about pyc files::
 
 Left::
 
-    - bug to be fixed: applevel test stdout is no longer
+    - DONE bug to be fixed: applevel test stdout is no longer
       captured.
 
     - running translate_pypy!
@@ -90,6 +90,6 @@ working on a subtask..
 
   - christian: rewriting marshal
 
-  - armin, holger: applevel stdout
+  - DONE armin, holger: applevel stdout
 
   - armin: write nik mail, fix the entrypoint
