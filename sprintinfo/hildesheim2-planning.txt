@@ -27,14 +27,10 @@ overall time planning::
 Misc
 -------- 
 
-* -> TRACKER write a tool that discovers which revision of the pypy tree 
-  broke the high level annotator (in that it produced SomeObjects). 
-  Consider distributing the actual annotation to multiple hosts. (holger)
-
-* -> TRACKER: (mostly done) add missing docstrings on app-level built-in types and 
-  functions, etc. (Laura): there now is a program that generates the 
-  docstrings into the appropriate places but it needs prettification. 
-  (christian)
+* -> TRACKER: (mostly done?) add missing docstrings on
+  app-level built-in types and functions, etc. (Laura): there 
+  now is a program that generates the docstrings into the 
+  appropriate places but it needs prettification.  (christian)
 
 Current Main task: RTYPER issues
 -----------------------------------
