@@ -27,11 +27,6 @@ overall time planning::
 Misc
 -------- 
 
-* -> TRACKER: (mostly done?) add missing docstrings on
-  app-level built-in types and functions, etc. (Laura): there 
-  now is a program that generates the docstrings into the 
-  appropriate places but it needs prettification.  (christian)
-
 Current Main task: RTYPER issues
 -----------------------------------
 
@@ -84,8 +79,6 @@ Left::
             __init__.py: (appleveldefs -> full_sre_projec/...) 
             Armin is going to ask niklaus about his plans and 
             suggest something along these lines. 
-
-    - (tracker ->) write a FAQ entry about "what and why is rpython?") 
 
     - (Carl, Samuele) finally start with garbage collection (CF)
 
