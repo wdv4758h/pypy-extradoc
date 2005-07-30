@@ -14,7 +14,7 @@ available yet from them.
 Armin Rigo          21st-29th Aug  ?
 Samuele Pedroni     ?21st-29th Aug ? 
 Carl Friedrich Bolz 21st-29th Aug  ? 
-Niklaus Haldimann   ?              private 
+Niklaus Haldimann   21st-29th Aug  private 
 Eric van Riet Paap  ?              probably private 
 Holger Krekel       21st-29th Aug  private 
 Richard Emslie      22nd-29th Aug  private
