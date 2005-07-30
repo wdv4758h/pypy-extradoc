@@ -35,47 +35,71 @@ Misc
 Current Main task: RTYPER issues
 -----------------------------------
 
-Remaining problem about pyc files::
-
-    The inconsistency problems are more or less solved now,
-    but PYC file support is disabled at the moment because
-    it is just too slow in general.
-
-    Bootstrapping is right but messy.  Christian will rewrite
-    marshal at interp-level at some point.
-
-    We won't use PYC file support for translate_pypy anyway.
-    We will construct and initialize the object space just like now,
-    and then import at app-level the 'compiler' package, and finally
-    patch the executioncontext.compiler to use this 'compiler'
-    package.  The resulting object space is what translate_pypy is
-    seeing.
-
-    Ultimately the compiler and marshal should both be at
-    interp-level anyway.
-
-
 Left::
-
-    - DONE bug to be fixed: applevel test stdout is no longer
-      captured.
 
     - running translate_pypy!
 
-    - finish and polish and test our own posix module
+    - (Armin, Holger) add a compiling option to the C backend that allows to 
+      generate a standalone binary (as opposed to a Python extension module) 
 
-    - try to plug in niklaus' sre implementation
+    - (Armin, Holger) likely we have a possibly deep exception handling problem:
+      implicitely exceptions are attached to the last (high level) 
+      operation in a block but when the RTyper converts this operation
+      into possibly many low-level operations then it's unlikely 
+      that we can preserve the implicit assumption that only 
+      the last (low-level) operation possibly raises an exception. 
 
-    - write an answer eMail/FAQ entry
+      solution: unknown at this point. 
 
-    - finally start with garbage collection (CF)
+      maybe describe a few scenarios regarding exception handling 
+      describing the interactions/processing of exceptions in 
+      flowobjspace/annotation/rtyping 
+
+    - (Holger, X) try to extend test framework a bit to make applevel 
+      tests allow to use 'self.somevalue' coming from interplevel 'self.w_somevalue'. 
+    - (Holger, X) finish and polish and test our own posix module
+
+    - (Carl, Samuele) finish/send out the Heidelberg sprint announcement 
+      goals: do the 0.7 release! 
+      (0.7 is meant as a first self-contained pypy release 
+      with quite some c-extension modules missing (everything
+      below 1.0 is implicitly alpha'ed or XXXed or both)  
+
+      - translation efforts 
+      - work on 2.4.1 compliancy (let's have a lib-python/ISSUE.txt well
+        before the sprint and let's try to count by failing tests not 
+        failing test files) 
+      - rewriting c-extension modules/integrating existing rewrites  
+      - all kinds of small release issues 
+      - possibly some more LLVM efforts 
+
+    - (Armin ...) integrate Niklaus's applevel _sre module as a mixed module  
+      (so that you can switch it in via usemodules=_sre). This may
+      also ease moving gradually to an interplevel implementation. 
+      
+        pypy/module/_sre/
+            full_sre_project/ # with manifest and so on 
+            conftest.py # don't recurse into full_sre_project (unless the unittests
+            are converted to py.test) 
+            __init__.py: (appleveldefs -> full_sre_projec/...) 
+            Armin is going to ask niklaus about his plans and 
+            suggest something along these lines. 
+
+    - (tracker ->) write a FAQ entry about "what and why is rpython?") 
+
+    - (Carl, Samuele) finally start with garbage collection (CF)
 
     - investigate the possibility of translating the interactive part of PyPy
       or alternatively (probably preferably) running it completely at applevel
 
-    - working on LLVM (need to contact Eric on LLVM)
+    - (Richard, with Armin's throwing-examples help) let llvm support
+      varsize structs and possibly refactor/cleanup a bit the current
+      code (richard already contacted Eric and also worked a bit on improving
+      PBC support for llvm)
 
-    - rewriting the marshal module on interplevel
+    - (Christian, Samuele) rewriting the marshal module on interplevel (mostly
+      done but there are difficult dependencies on the applevel _codecs.py 
+      and some builtins (like frozenset) that live at applevel) 
 
 
 Pairing
