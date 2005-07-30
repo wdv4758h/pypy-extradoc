@@ -10,11 +10,24 @@ look here:
 
     http://codespeak.net/pypy 
 
+
 Goals and topics of the sprint 
 ------------------------------
 
-XXX The focus will probably be translation issues,
-possibly including garbage collection and threading (?).
+One of the main goals of the sprint is going to be a 0.7 release of PyPy. The
+0.7 is meant to be the first self-contained PyPy version but still alpha with
+some C-extension modules missing and not meant for production use.
+
+Therefore the topics of the sprint will be:
+
+   - translation efforts: it's not completely clear now what related task will
+     be left at that time
+   - work on 2.4.1 compliancy: there are some failing compliancy tests on
+     which we plan to work
+   - rewriting c-extension modules/integrating existing rewrites
+   - all kinds of small release issues
+   - possibly some more LLVM efforts 
+
 
 Location & Accomodation  
 ------------------------ 
@@ -28,8 +41,7 @@ There is a huge number of hotels_ in Heidelberg, all of which are
 unfortunately rather expensive. It should be no problem to reach the sprint
 venue from anywhere in Heidelberg. As an alternative you could also take a
 `hotel in Mannheim`_ which you can reach in 15 min from Heidelberg with the
-train. If there is enough interest Carl could try to rent a room in a living
-group (WG).
+train.
 
 .. _`See here`: http://www.physi.uni-heidelberg.de/physi/front/anfahrt.en.php
 .. _hotels: http://www.cvb-heidelberg.de/index_eng.html
@@ -49,7 +61,8 @@ Network, Food
 The Heidelberg Altstadt can be reached in approximately 10 min from the sprint
 venue. There you will find all kinds of restaurants and fast food places.
 
-You need a wireless network card to access the network. 
+You will probably need a wireless network card to access the network although we
+could set up a WLAN to cable bridge if necessary.
 
 
 Registration etc.pp. 
