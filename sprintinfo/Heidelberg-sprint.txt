@@ -1,13 +1,14 @@
 PyPy Sprint in Heidelberg 22nd - 29th August 2005 
 ==================================================
 
-The next PyPy sprint is scheduled for end of August in
-Heidelberg, Germany. Its main focus is to translate the whole
-PyPy interpreter to a low level language. To learn more
-about the new PyPy Python-in-Python implementation look here: 
+The next PyPy sprint will take place at the Heidelberg University
+in Germany from 22nd August to 29th August (both days included). 
+Its main focus is translation of the whole PyPy interpreter 
+to a low level language and reaching 2.4.1 Python compliancy. 
+To learn more about the new PyPy Python implementation 
+look here: 
 
     http://codespeak.net/pypy 
-
 
 Goals and topics of the sprint 
 ------------------------------
@@ -56,7 +57,13 @@ Registration etc.pp.
 
 Please subscribe to the `PyPy sprint mailing list`_, introduce
 yourself and post a note that you want to come.  Feel free
-to ask any questions there! 
+to ask any questions there!  There also is a separate  
+`Heidelberg people`_ page tracking who is already thought
+to come.  If you have commit rights on codespeak then
+you can modify yourself a checkout of 
 
+    http://codespeak.net/svn/pypy/extradoc/sprintinfo/heidelberg-people.txt 
+
+.. _`Heidelberg people`: http://codespeak.net/pypy/index.cgi?extradoc/sprintinfo/heidelberg-people.html 
 .. _`PyPy sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 

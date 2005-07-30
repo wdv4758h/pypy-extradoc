@@ -1,0 +1,28 @@
+
+.. _`Heidelberg Sprint`: http://codespeak.net/pypy/index.cgi?extradoc/sprintinfo/Heidelberg-sprint.html 
+
+People coming to the `Heidelberg Sprint`_ 
+==================================================
+
+People who have a ``?`` in their arrive/depart or accomodation
+column are known to be coming but there are no details 
+available yet from them. 
+ 
+=================== ============== =====================
+       Name          Arrive/Depart Accomodation 
+=================== ============== =====================
+Armin Rigo          21st-29th Aug  ?
+Samuele Pedroni     21st-29th Aug  ? 
+Carl Friedrich Bolz 21st-29th Aug  ? 
+Niklaus Haldimann   ?              private 
+Eric van Riet Paap  ?              probably private 
+Holger Krekel       21st-29th Aug  private 
+Richard Emslie      21st-29th Aug  private
+Michael Hudson (?)  ?              ? 
+Beatrice Duering    ?              ? 
+Jacob Hallen        ?              ? 
+Laura Creighton     ?              ? 
+Ludovic Aubry       ?              ? 
+Anders Chrigstroem  ?              ? 
+Christian Tismer    21st-29th      ? 
+=================== ============== =====================
