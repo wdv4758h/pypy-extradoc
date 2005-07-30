@@ -102,18 +102,3 @@ Left::
       and some builtins (like frozenset) that live at applevel) 
 
 
-Pairing
--------
-
-basically everyone should keep an eye on targetpypymain, in the meantime
-working on a subtask..
-
-  - samuele, carl friedrich: garbage collection
-
-  - richard: plugin in sre
-
-  - christian: rewriting marshal
-
-  - DONE armin, holger: applevel stdout
-
-  - armin: write nik mail, fix the entrypoint
