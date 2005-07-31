@@ -153,7 +153,7 @@ Remaining problem about pyc files::
   tests allow to use 'self.somevalue' coming from interplevel 'self.w_somevalue'. 
 
 - DONE finish/send out the Heidelberg sprint announcement 
- goals: do the 0.7 release! 
+  goals: do the 0.7 release! 
   (0.7 is meant as a first self-contained pypy release 
   with quite some c-extension modules missing (everything
   below 1.0 is implicitly alpha'ed or XXXed or both)  
