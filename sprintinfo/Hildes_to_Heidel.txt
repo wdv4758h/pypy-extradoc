@@ -13,6 +13,9 @@ the following issues are meant to be 0.7 issues.
 - rtyper problem: exceptions are no longer always at the end of a code
   block because of the lowlevel rewriting
 
+- translation problem: frozen ids used as hashes are broken
+  in the post-translation program
+
 - move bits around in the annotator to make different uses
   more pluggable
 
