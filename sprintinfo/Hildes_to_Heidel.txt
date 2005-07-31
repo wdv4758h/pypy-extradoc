@@ -1,0 +1,47 @@
+planning for the time between the Hildesheim and Heidelberg sprints
+===================================================================
+
+clean-up areas
+--------------
+
+the following issues are meant to be 0.7 issues.
+
+- translate_pypy and the translator class need some cleanup
+
+- initialization of the object space is still messy
+
+- rtyper problem: exceptions are no longer always at the end of a code
+  block because of the lowlevel rewriting
+
+- move bits around in the annotator to make different uses
+  more pluggable
+
+- better support of math and float exceptions
+
+- reorganizing some wrongly named things
+
+- erasing useless files
+
+- cleanup of import dependencies
+
+- support for tests from external users and different platforms
+
+- preparing the next release
+
+- documentation about external function calls and implementing
+  builtin modules
+
+- related to the previous: documenting how interplevel marshal
+  is plugged into the system
+
+- prefixing all the C macros and names with pypy
+
+- look into XXX issues
+
+- support producing a windows binary, choose a suitable compiler
+
+additional wild ideas
+---------------------
+
+- thinking of an RPython flowgraph interpreter as an executable?
+
