@@ -43,6 +43,32 @@ the following issues are meant to be 0.7 issues.
 
 - support producing a windows binary, choose a suitable compiler
 
+other issues
+---------------------
+
+storing bound method on instances confuses the annotator (we can probably live with this limitation
+right now, I'm not sure but it may require a large refactoring to support this)
+
+>>> class H:
+...   def h():
+...    pass
+... 
+>>> class C:
+...   def __init__(self, func):
+...      self.f = func
+...   def do(self):
+...     self.f()
+... 
+>>> def g():
+...   h = H()        
+...   c = C(h.h)
+...   c.do()
+... 
+>>> t=Translator(g)
+>>> t.annotate([])
+
+
+
 additional wild ideas
 ---------------------
 
