@@ -147,3 +147,30 @@ Remaining problem about pyc files::
     - DONE bug to be fixed: applevel test stdout is no longer
       captured.
 
+- DONE running translate_pypy!
+  
+- DONE try to extend test framework a bit to make applevel 
+  tests allow to use 'self.somevalue' coming from interplevel 'self.w_somevalue'. 
+
+- DONE finish/send out the Heidelberg sprint announcement 
+ goals: do the 0.7 release! 
+  (0.7 is meant as a first self-contained pypy release 
+  with quite some c-extension modules missing (everything
+  below 1.0 is implicitly alpha'ed or XXXed or both)  
+
+  - translation efforts 
+  - work on 2.4.1 compliancy (let's have a lib-python/ISSUE.txt well
+    before the sprint and let's try to count by failing tests not 
+    failing test files) 
+  - rewriting c-extension modules/integrating existing rewrites  
+  - all kinds of small release issues 
+  - possibly some more LLVM efforts 
+
+- DONE finally start with garbage collection (CF)
+
+- DONE (plus no more segfaults, and all "class" tests are working)
+  let llvm support
+  varsize structs and possibly refactor/cleanup a bit the current
+  code (richard already contacted Eric and also worked a bit on improving
+  PBC support for llvm)
+
