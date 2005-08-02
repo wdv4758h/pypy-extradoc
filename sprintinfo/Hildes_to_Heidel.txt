@@ -1,6 +1,7 @@
 planning for the time between the Hildesheim and Heidelberg sprints
 ===================================================================
 
+
 clean-up areas
 --------------
 
@@ -10,16 +11,8 @@ the following issues are meant to be 0.7 issues.
 
 - initialization of the object space is still messy
 
-- rtyper problem: exceptions are no longer always at the end of a code
-  block because of the lowlevel rewriting
-
-- translation problem: frozen ids used as hashes are broken
-  in the post-translation program
-
 - move bits around in the annotator to make different uses
   more pluggable
-
-- better support of math and float exceptions
 
 - reorganizing some wrongly named things
 
@@ -27,21 +20,35 @@ the following issues are meant to be 0.7 issues.
 
 - cleanup of import dependencies
 
-- support for tests from external users and different platforms
-
 - preparing the next release
+
+- look into XXX issues
+
+
+filed as issues
+-------------
+
+- rtyper problem: exceptions are no longer always at the end of a code
+  block because of the lowlevel rewriting
+
+- translation problem: frozen ids used as hashes are broken
+  in the post-translation program
+
+- better support of math and float exceptions
 
 - documentation about external function calls and implementing
   builtin modules
 
+- prefixing all the C macros and names with pypy
+
+- support producing a windows binary, choose a suitable compiler
+
+
 - related to the previous: documenting how interplevel marshal
   is plugged into the system
 
-- prefixing all the C macros and names with pypy
+- support for tests from external users and different platforms
 
-- look into XXX issues
-
-- support producing a windows binary, choose a suitable compiler
 
 other issues
 ---------------------
