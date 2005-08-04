@@ -16,7 +16,7 @@ Samuele Pedroni     ?21st-29th Aug ?
 Carl Friedrich Bolz 21st-29th Aug  ? 
 Niklaus Haldimann   21st-29th Aug  private 
 Eric van Riet Paap  22nd-28th Aug  private 
-Holger Krekel       21st-29th Aug  private 
+Holger Krekel       21st-28th Aug  private 
 Richard Emslie      22nd-29th Aug  private
 Michael Hudson (?)  ?              ? 
 Beatrice Duering    ?              ? 
