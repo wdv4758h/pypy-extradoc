@@ -1,6 +1,8 @@
 =============================================
-pypy-sync developer meeting 4th August 2005
+pypy-sync developer meeting 11th August 2005
 =============================================
+
+Time & location: 1pm (30 minutes) at #pypy-sync 
 
 Attendees::
 
