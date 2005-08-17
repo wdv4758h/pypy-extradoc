@@ -24,6 +24,6 @@ Jacob Hallen        20st-30th Aug  Hotel Ibis
 Laura Creighton     20st-30th Aug  Hotel Ibis
 Ludovic Aubry       ?              ? 
 Anders Chrigstroem  20st-30th Aug  Hotel Ibis
-Christian Tismer    ?              ? 
+Christian Tismer    21st-27th Aug  Hotel Ibis
 Anders Lehmann      21st-29th Aug
 =================== ============== =====================
