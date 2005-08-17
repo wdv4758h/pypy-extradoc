@@ -12,7 +12,7 @@ available yet from them.
        Name          Arrive/Depart Accomodation 
 =================== ============== =====================
 Armin Rigo          21st-29th Aug  ?
-Samuele Pedroni     ?21st-29th Aug ? 
+Samuele Pedroni     20st-30th Aug  Hotel Ibis 
 Carl Friedrich Bolz 21st-29th Aug  ? 
 Niklaus Haldimann   21st-29th Aug  private 
 Eric van Riet Paap  22nd-28th Aug  private 
@@ -20,10 +20,10 @@ Holger Krekel       21st-28th Aug  private
 Richard Emslie      22nd-29th Aug  private
 Michael Hudson (?)  ?              ? 
 Beatrice Duering    21st-30th Aug  Hotel Ibis 
-Jacob Hallen        ?              ? 
-Laura Creighton     ?              ? 
+Jacob Hallen        20st-30th Aug  Hotel Ibis
+Laura Creighton     20st-30th Aug  Hotel Ibis
 Ludovic Aubry       ?              ? 
-Anders Chrigstroem  ?              ? 
+Anders Chrigstroem  20st-30th Aug  Hotel Ibis
 Christian Tismer    ?              ? 
 Anders Lehmann      21st-29th Aug
 =================== ============== =====================
