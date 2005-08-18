@@ -11,7 +11,7 @@ available yet from them.
 =================== ============== =====================
        Name          Arrive/Depart Accomodation 
 =================== ============== =====================
-Armin Rigo          21st-29th Aug  ?
+Armin Rigo          21st-30th Aug  Hotel Ibis
 Samuele Pedroni     20st-30th Aug  Hotel Ibis 
 Carl Friedrich Bolz 21st-29th Aug  ? 
 Niklaus Haldimann   21st-29th Aug  private 
