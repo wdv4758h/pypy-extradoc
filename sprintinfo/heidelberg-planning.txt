@@ -1,0 +1,65 @@
+
+PyPy Heidelberg sprint planning (22th-29st August) 
+-----------------------------------------------------
+
+* Translation
+
+  - Finish(?) GIL-based threading 
+
+  - (Decide whether to try to implement other threading locking policies)
+
+  - Isolate refcounting in genc, and
+    have an option to enable and use Boehm instead
+
+* 2.4.1 Compliance
+
+  - Fix/adjust/prioritize compliance test problems
+  - Do we want to try to pass test_unicode(/test_codecs) ?
+  - Some other "non-core" tests revealing real bugs/problems?
+
+* Compiler/Parser
+
+  - Fix bugs, missing features (some cause compliance regressions) 
+  - Work on making the compiler interp-level 
+
+* Built-in modules
+
+  - Do we still miss important os.* functionality?
+  - errno
+  - Enable our own array/_sre when translating
+  - (Review builtin modules again to see if we missed something)
+
+* Fix/garden issues for the release in the tracker
+
+  - Go over the issues in the tracker: close, postpone or fix them as needed
+    for the release
+  - Review Hildes_to_Heidel.txt contents too
+
+* Release
+
+  - Documentation work
+  - Other: README, announcement, licenses & contributors...
+  - Release cutting & testing (important!)
+  - *try to be ready to cut on Friday morning!* 
+
+* LLVM backend
+
+  - Improvement work to stabilize and match genc
+  - (Try to share code with genc?)
+ 
+* GC
+ 
+  - Complete SoC GC framework (cfbolz)
+  - (Start to think how/what is still missing to leverage it for Phase 2) 
+  - (related: isolating refcounting)
+
+* Cleanups
+
+  - We didn't really manage to tackle the cleanups listed in Hildes_to_Heidel.txt;
+    do we want, have we the time to address some of them during the sprint for the release
+
+* Future Planning
+
+  - Plan work until next sprint 
+  - Consider priorities up to review
+  - Start thinking about organizing Phase2 work, baseline status wrt this 
