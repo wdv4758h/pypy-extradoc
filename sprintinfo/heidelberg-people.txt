@@ -21,7 +21,7 @@ Richard Emslie      22nd-29th Aug  private
 Beatrice Duering    21st-30th Aug  Hotel Ibis 
 Jacob Hallen        20st-30th Aug  Hotel Ibis
 Laura Creighton     20st-30th Aug  Hotel Ibis
-Ludovic Aubry       ?              ? 
+Ludovic Aubry       21st-28th Aug  Hotel Ibis
 Anders Chrigstroem  20st-30th Aug  Hotel Ibis
 Christian Tismer    21st-27th Aug  Hotel Ibis
 Anders Lehmann      22st-29th Aug  Hotel Ibis
