@@ -60,7 +60,7 @@ Rough Week planning::
   - Work on making the compiler interp-level 
       st->ast mostly done, should go into the release (ludal, nik)
       ast->bytecode is not going to be done for the release
-         (kept at app-level)
+      (kept at app-level)
 
   - compiling unicode strings (see failing test_builtins)
     https://codespeak.net/issue/pypy-dev/issue97 
