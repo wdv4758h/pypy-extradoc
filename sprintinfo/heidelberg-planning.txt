@@ -64,7 +64,8 @@ Rough Week planning::
 
   - compiling unicode strings (see failing test_builtins)
     https://codespeak.net/issue/pypy-dev/issue97 
-  - interactive mode parsing (issue115 -- use "single" instead of "exec"?)
+  - interactive mode parsing (issue115 -- use "single" instead of "exec"?
+      look at code.py from lib-python/2.4.1/)
       high priority: why is "from __future__" not working? (flag missing?)
       inputs that are a single string are considered docstrings
       (also single unicode strings are considered docstrings)
