@@ -30,14 +30,33 @@ Rough Week planning::
     sunday 28th sprinting / technical summary/some future planning
     monday 29th sprinting/eu-meeting/cleanup
 
-* Release (PyPy-0.7)   (hpk, .)
+Release (PyPy-0.7)   (hpk, .)::
 
-  - Documentation work
-  - Other: README, announcement, licenses & contributors...
-  - Release cutting & testing (important!)
-  - *try to be ready to cut on Friday morning!* 
+  - Documentation work:
+    - update architecture "status of the implementation (May 2005)" 
+      to reflect the 0.7 situation 
+    - update getting_started.txt to reflect the 0.7 release
+      and include instruction on how to translate
+      - possibly streamline the tool chain
+      - do we have an easy-to-explain tool chain working for win32? 
+    - maybe globally use "bytecode interpreter" instead of "plain interpreter"  
+  - write 0.7.0 release announcement + README 
+  - fix download locations, prepare/try out packaging 
+  - regenerate contributors in LICENSE file 
+  - revisit/refine LICENSE files 
+    - put a LICENSE file in lib-python/
+    - strip out a number of names (especially the ones that
+      have agreed to that on pypy-dev with the 0.6 release) 
+  - RELEASE CUTTING friday morning: 
+    - copy pypy/dist to pypy/release/0.7.x 
+      and work on 0.7.x regarding remaining release issues 
+    - which documentation should be served on the web
+      page?   Probably just serving dist would fit for now. 
+      Later in September we should look into splitting
+      "trunk" and release-documentation. 
+    - do we introduce pypy/trunk finally? 
 
-* Translation
+Translation
 
   - Finish GIL-based threading: backend support, fix bugs? (arigo, rxe)
 
@@ -47,14 +66,14 @@ Rough Week planning::
   - Isolate refcounting in genc, and    (cfbolz, pedronis)
     have an option to enable and use Boehm instead
 
-* 2.4.1 Compliance  (arre, tismer)
+2.4.1 Compliance  (arre, tismer)
 
   - Recategorize the tests in core/non-core ( = language compliancy)
   - test_unicode, test_codecs (ale, jacob)
   - Fix/adjust/prioritize compliance test problems
   - Some other "non-core" tests revealing real bugs/problems?
 
-* Compiler/Parser
+Compiler/Parser
 
   - Fix bugs, missing features (some cause compliance regressions) 
   - Work on making the compiler interp-level 
@@ -80,29 +99,29 @@ Rough Week planning::
   - (Review builtin modules again to see if we missed something)
   - 'math' must be finished (math.log(<long object>))
 
-* Fix/garden issues for the release in the tracker
+Fix/garden issues for the release in the tracker
 
   - Go over the issues in the tracker: close, postpone or fix them as needed
     for the release
   - Review Hildes_to_Heidel.txt contents too
 
-* LLVM backend
+LLVM backend
 
   - Improvement work to stabilize and match genc
   - (Try to share code with genc?)
  
-* GC
+GC
  
   - Complete SoC GC framework (cfbolz)
   - (Start to think how/what is still missing to leverage it for Phase 2) 
   - (related: isolating refcounting)
 
-* Cleanups
+Cleanups
 
   - We didn't really manage to tackle the cleanups listed in Hildes_to_Heidel.txt;
     do we want, have we the time to address some of them during the sprint for the release
 
-* Future Planning
+Future Planning
 
   - Plan work until next sprint 
   - Consider priorities up to review
