@@ -1,46 +1,89 @@
-
 PyPy Heidelberg sprint planning (22th-29st August) 
 -----------------------------------------------------
 
+Armin Rigo          
+Samuele Pedroni     
+Carl Friedrich Bolz 
+Niklaus Haldimann  
+Holger Krekel    
+Richard Emslie  
+Jacob Hallen       
+Laura Creighton   
+Ludovic Aubry    
+Anders Chrigstroem 
+Christian Tismer  
+Anders Lehmann   
+Beatrice Duering 
+Eric van Riet Paap
+
+Rough Week planning::
+    each day: 10 AM - 7 PM (lunch break at ~1-3pm)
+
+    monday 22nd sprinting
+    tuesday 23rd sprinting 
+    wednesday 24th sprinting
+
+    thursday 25th break day!
+
+    friday 26th sprinting / release 
+    saturday 27th sprinting 
+    sunday 28th sprinting / technical summary/some future planning
+    monday 29th sprinting/eu-meeting/cleanup
+
+* Release (PyPy-0.7)   (hpk, .)
+
+  - Documentation work
+  - Other: README, announcement, licenses & contributors...
+  - Release cutting & testing (important!)
+  - *try to be ready to cut on Friday morning!* 
+
 * Translation
 
-  - Finish(?) GIL-based threading 
+  - Finish GIL-based threading: backend support, fix bugs? (arigo, rxe)
 
   - (Decide whether to try to implement other threading locking policies)
+    (probably not at the moment, let's see)
 
-  - Isolate refcounting in genc, and
+  - Isolate refcounting in genc, and    (cfbolz, pedronis)
     have an option to enable and use Boehm instead
 
-* 2.4.1 Compliance
+* 2.4.1 Compliance  (arre, tismer)
 
+  - Recategorize the tests in core/non-core ( = language compliancy)
+  - test_unicode, test_codecs (ale, jacob)
   - Fix/adjust/prioritize compliance test problems
-  - Do we want to try to pass test_unicode(/test_codecs) ?
   - Some other "non-core" tests revealing real bugs/problems?
 
 * Compiler/Parser
 
   - Fix bugs, missing features (some cause compliance regressions) 
   - Work on making the compiler interp-level 
+      st->ast mostly done, should go into the release (ludal, nik)
+      ast->bytecode is not going to be done for the release
+         (kept at app-level)
+
+  - compiling unicode strings (see failing test_builtins)
+    https://codespeak.net/issue/pypy-dev/issue97 
+  - interactive mode parsing (issue115 -- use "single" instead of "exec"?)
+      high priority: why is "from __future__" not working? (flag missing?)
+      inputs that are a single string are considered docstrings
+      (also single unicode strings are considered docstrings)
 
 * Built-in modules
 
   - Do we still miss important os.* functionality?
-  - errno
-  - Enable our own array/_sre when translating
+  - errno (easy for now)
+  - Enable our own array/_sre when translating (try with the current
+      _sre and its interp-level parts, otherwise just use the app-level
+      one)
   - (Review builtin modules again to see if we missed something)
+  - 'math' must be finished (math.log(<long object>))
 
 * Fix/garden issues for the release in the tracker
 
   - Go over the issues in the tracker: close, postpone or fix them as needed
     for the release
   - Review Hildes_to_Heidel.txt contents too
-
-* Release
-
-  - Documentation work
-  - Other: README, announcement, licenses & contributors...
-  - Release cutting & testing (important!)
-  - *try to be ready to cut on Friday morning!* 
 
 * LLVM backend
 
