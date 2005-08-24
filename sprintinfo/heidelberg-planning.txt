@@ -104,7 +104,7 @@ Compiler/Parser::
 Built-in modules::
 
   - Do we still miss important os.* functionality?
-  - errno (easy for now)
+  - FIXED: errno (easy for now)
   - Enable our own array/_sre when translating 
     (try with the current _sre and its interp-level parts, 
     otherwise just use the app-level
