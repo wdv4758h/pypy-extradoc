@@ -30,54 +30,38 @@ Rough Week planning::
     sunday 28th sprinting / technical summary/some future planning
     monday 29th sprinting/eu-meeting/cleanup
 
-Release (PyPy-0.7)   (hpk, .)::
+Release (PyPy-0.7)::
 
   - Documentation work:
-    - update architecture "status of the implementation (May 2005)" 
-      to reflect the 0.7 situation 
     - update getting_started.txt to reflect the 0.7 release
       and include instruction on how to translate
       - possibly streamline the tool chain (for genc/llvm) 
       - do we have an easy-to-explain tool chain working for win32? 
-    - maybe globally use "bytecode interpreter" instead of "plain interpreter"  
-  - write 0.7.0 release announcement + README 
   - fix download locations, prepare/try out packaging 
-  - regenerate contributors in LICENSE file 
-  - revisit/refine LICENSE files 
-    - put a LICENSE file in lib-python/
-    - strip out a number of names (especially the ones that
-      have agreed to that on pypy-dev with the 0.6 release) 
   - RELEASE CUTTING friday morning: 
     - copy pypy/dist to pypy/release/0.7.x 
       and work on 0.7.x regarding remaining release issues 
     - which documentation should be served on the web
       page?   Probably just serving dist would fit for now. 
-      Later in September we should look into splitting
-      "trunk" and release-documentation. 
-    - do we introduce pypy/trunk finally? 
 
 Translation
 
-  - Finish GIL-based threading: backend support, fix bugs? (arigo, rxe)
+  - Finish GIL-based threading: backend support, fix bugs?
     
-    adding backend support is in-progress
+    mostly done (missing: rtyper support for dict with int keys)
 
-  - (Decide whether to try to implement other threading locking policies)
-    (probably not at the moment, let's see)
-
-  - Isolate refcounting in genc, and    (cfbolz, pedronis)
+  - Isolate refcounting in genc, and
     have an option to enable and use Boehm instead
 
-    in progress of adding GCPolicy that encapsulates refcounting
-    and is to be called  from all places that now hardcode refcounting.
+    isolating done, there is a test for Boehm, but not implemented
 
-2.4.1 Compliance  (arre, tismer)::
+2.4.1 Compliance::
 
   - Recategorize the tests in core/non-core ( = language compliancy)
     41 current-core tests should not be in core, 
     11 current-non-core tests should be in core 
      5 are about threading (should be core?)
-  - test_unicode, test_codecs (ale, jacob)
+  - test_unicode, test_codecs
     test_unicode has one remaining error involving 
     eval(unicode) which means that compile(unicode) does not work
     currently. (see issue in the tracker, ludovic will try to look
@@ -90,7 +74,7 @@ Translation
   - Some other "non-core" tests revealing real bugs/problems?
 
   - from wednesday morning on most of us should work 
-    on compliancy related issues 
+    on compliancy related issues (mostly everybody)
 
   - (holger) try to fix the problem that you have to be in 
     2.4.1/test in order to successfully run tests 
@@ -105,8 +89,7 @@ Compiler/Parser::
       st->ast mostly done, should go into the release (ludal, nik)
         integrated with a runtime option
         need to fix astcompiler 
-      ast->bytecode is not going to be done for the release
-      (kept at app-level)
+      ast->bytecode may be done for the release? in-progress
 
   - compiling unicode strings (see failing test_builtins)
     https://codespeak.net/issue/pypy-dev/issue97 
@@ -116,6 +99,7 @@ Compiler/Parser::
       inputs that are a single string are considered docstrings
       (also single unicode strings are considered docstrings)
 
+    no progress on the bugs
 
 Built-in modules::
 
@@ -125,6 +109,7 @@ Built-in modules::
     (try with the current _sre and its interp-level parts, 
     otherwise just use the app-level
     one) (nik) in progress (trying to get '_sre' to translate)
+                            ^^^ getting there
   - (Review builtin modules again to see if we missed something)
   - 'math' must be finished (math.log(<long object>))
 
@@ -134,12 +119,12 @@ Fix/garden issues for the release in the tracker::
     for the release
   - Review Hildes_to_Heidel.txt contents too
 
-LLVM backend::
+LLVM backend (richard, eric)::
 
   - Improvement work to stabilize and match genc
   - (Try to share code with genc?)
  
-GC::
+GC (carl friedrich, samuele)::
  
   - Complete SoC GC framework (cfbolz)
     in-progress: two more nights or so. 
