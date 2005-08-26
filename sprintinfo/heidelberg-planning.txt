@@ -1,20 +1,20 @@
 PyPy Heidelberg sprint planning (22th-29st August) 
 -----------------------------------------------------
 
-Armin Rigo          
-Samuele Pedroni     
-Carl Friedrich Bolz 
-Niklaus Haldimann  
-Holger Krekel    
-Richard Emslie  
-Jacob Hallen       
-Laura Creighton   
-Ludovic Aubry    
-Anders Chrigstroem 
-Christian Tismer  
-Anders Lehmann   
-Beatrice Duering 
-Eric van Riet Paap
+Armin Rigo         rel 
+Samuele Pedroni    rel 
+Carl Friedrich Bolz  rel/GC
+Niklaus Haldimann [work on _sre]
+Holger Krekel   rel 
+Richard Emslie  llvm/rel
+Eric van Riet Paap [llvm/rel]
+Jacob Hallen    [manage]   
+Laura Creighton  [rel] 
+Ludovic Aubry    [rel] 
+Anders Chrigstroem [rel]
+Christian Tismer  [rel]
+Anders Lehmann  [rel]
+Beatrice Duering [rel/sprint-driven dev]
 
 Rough Week planning::
     each day: 10 AM - 7 PM (lunch break at ~1-3pm)
@@ -32,28 +32,39 @@ Rough Week planning::
 
 Release (PyPy-0.7)::
 
-  - Documentation work:
-    - update getting_started.txt to reflect the 0.7 release
-      and include instruction on how to translate
-      - possibly streamline the tool chain (for genc/llvm) 
-      - do we have an easy-to-explain tool chain working for win32? 
   - fix download locations, prepare/try out packaging 
-  - RELEASE CUTTING friday morning: 
+  - RELEASE CUTTING 
     - copy pypy/dist to pypy/release/0.7.x 
       and work on 0.7.x regarding remaining release issues 
+
+      documentation/all release-issues from the tracker  
+      are worked on in the release-branch, including documentation 
+
     - which documentation should be served on the web
       page?   Probably just serving dist would fit for now. 
+
+  - NOTE: the translated pypy versions should be named:
+
+            pypy-c [--info --version] richards.py 
+            pypy-c-boehm 
+            pypy-llvm 
+
+    the version should be 0.7.0 
+
+  - to be done: entry-point commandline option parsing/repr-of-info 
 
 Translation
 
   - Finish GIL-based threading: backend support, fix bugs?
-    
-    mostly done (missing: rtyper support for dict with int keys)
+   
+    seems to work: but still needs checks if it translates and 
+    then runs successfully (possibly lurking segfaults).  
 
   - Isolate refcounting in genc, and
     have an option to enable and use Boehm instead
 
-    isolating done, there is a test for Boehm, but not implemented
+    DONE: you can use boehm with a translation of PyPy 
+    interpreting richards.py. (translate_pypy.py -boehm) 
 
 2.4.1 Compliance::
 
@@ -66,14 +77,21 @@ Translation
     eval(unicode) which means that compile(unicode) does not work
     currently. (see issue in the tracker, ludovic will try to look
     into this briefly) 
+
   - Fix/adjust/prioritize compliance test problems
     done: fixed binascii problems. 
-  - (tismer) in-progress: speeding up compilation on the 
+
+  - (tismer) mostly done: speeding up compilation on the 
     translated pypy version by doing an external cpython-invocation 
     to produce the code object. 
+    one can use an external python invocation to compile 
+    from an AST to code objects to speed up compilation 
+    for the translated PyPy. pypy/fakecompiler should be moved 
+    to pypy/lib/_fakecompiler 
+
   - Some other "non-core" tests revealing real bugs/problems?
 
-  - from wednesday morning on most of us should work 
+  - DONE SO FAR: from wednesday morning on most of us should work 
     on compliancy related issues (mostly everybody)
 
   - (holger) try to fix the problem that you have to be in 
@@ -93,6 +111,7 @@ Compiler/Parser::
 
   - compiling unicode strings (see failing test_builtins)
     https://codespeak.net/issue/pypy-dev/issue97 
+
   - interactive mode parsing (issue115 -- use "single" instead of "exec"?
       look at code.py from lib-python/2.4.1/)
       high priority: why is "from __future__" not working? (flag missing?)
@@ -106,12 +125,11 @@ Built-in modules::
   - Do we still miss important os.* functionality?
   - FIXED: errno (easy for now)
   - Enable our own array/_sre when translating 
-    (try with the current _sre and its interp-level parts, 
-    otherwise just use the app-level
-    one) (nik) in progress (trying to get '_sre' to translate)
-                            ^^^ getting there
-  - (Review builtin modules again to see if we missed something)
-  - 'math' must be finished (math.log(<long object>))
+    applevel _sre should be put into pypy/lib/
+    (mixed re-module is well in progress towards becoming
+    translateable) 
+  - mostly done: 'math' must be finished (math.log(<long object>))
+    left: enable by default. 
 
 Fix/garden issues for the release in the tracker::
 
@@ -121,8 +139,15 @@ Fix/garden issues for the release in the tracker::
 
 LLVM backend (richard, eric)::
 
-  - Improvement work to stabilize and match genc
-  - (Try to share code with genc?)
+  - done (see next point) Improvement work to stabilize and match genc
+
+  - somewhat done: Try to share code with genc (c-code resused by)
+
+  - status: external function implementations are reused from gen-c 
+    by using the llvm-c-frontend.  The latter is installed on codespeak 
+    and can be run remotely from a client. (the underlying problem 
+    is that the llvm-c frontend is hard to install). 
+
  
 GC (carl friedrich, samuele)::
  
