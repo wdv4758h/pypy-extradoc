@@ -7,51 +7,51 @@ clean-up areas
 
 the following issues are meant to be 0.7 issues.
 
-- translate_pypy and the translator class need some cleanup
+- FILED translate_pypy and 
 
-- initialization of the object space is still messy
+- FILED the translator class need some cleanup
+
+- FILED initialization of the object space is still messy
 
 - move bits around in the annotator to make different uses
-  more pluggable
+  more pluggable ?
 
-- reorganizing some wrongly named things
+- reorganizing some wrongly named things ?
 
-- erasing useless files
+- FILED erasing useless files
 
-- cleanup of import dependencies
+- FILED cleanup of import dependencies
 
-- preparing the next release
-
-- look into XXX issues
+- ONGOING preparing the next release
 
 
 filed as issues
 -----------------
 
-- rtyper problem: exceptions are no longer always at the end of a code
+- DONE rtyper problem: exceptions are no longer always at the end of a code
   block because of the lowlevel rewriting
 
-- translation problem: frozen ids used as hashes are broken
+- DONE translation problem: frozen ids used as hashes are broken
   in the post-translation program
 
-- better support of math and float exceptions
+- DONE better support of math and float exceptions
 
-- documentation about external function calls and implementing
+- FILED documentation about external function calls and implementing
   builtin modules
 
-- prefixing all the C macros and names with pypy
+- DONE prefixing all the C macros and names with pypy
 
-- support producing a windows binary, choose a suitable compiler
+- DONE support producing a windows binary, choose a suitable compiler
 
-
-- related to the previous: documenting how interplevel marshal
+- OPEN related to the previous: documenting how interplevel marshal
   is plugged into the system
 
-- support for tests from external users and different platforms
+- FILED support for tests from external users and different platforms
 
 
 other issues
 ---------------------
+FILED
 
 storing bound method on instances confuses the annotator (we can probably live with this limitation
 right now, I'm not sure but it may require a large refactoring to support this)
@@ -76,7 +76,7 @@ right now, I'm not sure but it may require a large refactoring to support this)
 
 
 
-additional wild ideas
+Additional wild ideas
 ---------------------
 
 - thinking of an RPython flowgraph interpreter as an executable?
