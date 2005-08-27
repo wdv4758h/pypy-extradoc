@@ -1,4 +1,4 @@
-Distributed and agile development in PyPy
+﻿Distributed and agile development in PyPy
 =========================================
 
 PyPy isn't just about producing code - it's also about how we produce code.
@@ -30,7 +30,7 @@ Sprint driven development:
 
 What is a sprint and why are we sprinting?
 
-Originally the sprint methodology grew used in the Python community from
+Originally the sprint methodology used in the Python community grew from
 practices within Zope Corporation. The  definition of a sprint is "two-day or
 three-day focused development session, in which developers pair off together
 in a room and focus on building a particular subsystem". 
@@ -94,7 +94,7 @@ projects.
  
 As always with methodologies you have to adapt them to fit your project (and
 not the other way around which is much too common). The PyPy team have been
-sprinting since early 2003 and have done 12 sprints so far, 11 in Europe and 1
+sprinting since early 2003 and have done 11 sprints so far, 10 in Europe and 1
 in the USA. Certain practices have proven to be more successful within this
 team and those are the one we are summarizing here.
 
@@ -251,7 +251,6 @@ The PyPy team have been sprinting on the following occasions::
     Amsterdam       Dec     2003
     Europython
     /Gothenburg     June    2004
-    Dublin          Oct     2004
     Vilnius         Nov     2004
     Leysin          Jan     2005
     PyCon
@@ -268,7 +267,7 @@ contributing to PyPy::
     Holger Krekel
     Samuele Pedronis
     Christian Tismer
-    Laura Chreighton
+    Laura Creighton
     Jacob Hallén
     Michael Hudson
     Richard Emslie
@@ -299,7 +298,9 @@ contributing to PyPy::
     Marius Gedminas
     Jesus Cea Avion
     Olivier Dormond
+    Jacek Generowicz
     Brian Dorsey
+    Guido van Rossum
     Bob Ippolito
     Alan McIntyre
     Lutz Paelike
