@@ -87,7 +87,7 @@ AB Strakt www.strakt.com
 	(project manager)
 
 	Samuele Pedroni pedronis@strakt.com
-	(tehnical board)
+	(technical board)
 
 	Anders Chrigström ac@strakt.com
 
@@ -119,7 +119,7 @@ impara GmbH www.impara.de
 
 Also - as individual partners:
 
-Laura Creighton laura@strakt.com
+Laura Creighton lac@strakt.com
 Eric van Riet Paap eric@vanrietpaap.nl
 Richard Emslie rxe@ukshells.co.uk
 
