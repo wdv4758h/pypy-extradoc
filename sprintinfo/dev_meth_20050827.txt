@@ -1,4 +1,4 @@
-﻿Distributed and agile development in PyPy
+Distributed and agile development in PyPy
 =========================================
 
 PyPy isn't just about producing code - it's also about how we produce code.
@@ -185,7 +185,7 @@ There are several aspects of a sprint. In the PyPy team we focus on:
 
 4. Process - a typical PyPy sprint is 7 days with a break day in the
    middle. Usually sprinters show up the day before the sprint starts. The
-   first day has a start up meeting, with tutorials of there are participants 
+   first day has a start up meeting, with tutorials if there are participants 
    new to the project or if some new tool or feature have been implemented. A
    short presentation of the participants and their background and
    expectations is also good to do. Unfortunately there is always time spent
@@ -265,7 +265,7 @@ contributing to PyPy::
 
     Armin Rigo
     Holger Krekel
-    Samuele Pedronis
+    Samuele Pedroni
     Christian Tismer
     Laura Creighton
     Jacob Hallén
