@@ -137,7 +137,7 @@ Closing
 
 Holger closes the meeting in time at 13:30pm. 
 
-.. _`IRC-log`: :
+.. _`IRC-log`:
 
 Here is the full IRC log:: 
 
