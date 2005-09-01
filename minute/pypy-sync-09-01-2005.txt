@@ -13,6 +13,7 @@ Attendees::
          Christian Tismer, 
          Armin Rigo, Carl Friedrich Bolz (later) 
          Holger Krekel (minutes/moderation)
+         Eric van Riet Paap
 
 Regular Topics 
 ====================
