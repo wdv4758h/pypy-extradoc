@@ -25,7 +25,7 @@ For these reasons the main topics of this sprint will be on
 Location & Accomodation  
 ------------------------ 
 
-The sprint will be held in Logilab's offices in Paris. The exact address is
+The sprint will be held in Logilab's offices in Paris. The exact address is::
 
   10 rue Louis Vicat
   75015 Paris
@@ -42,10 +42,9 @@ There are two metro lines and three bus lines that stop close to Logilab's:
 Those are more or less within 5 minutes walk.
 
 There is a huge number of hotels_ in Paris, all of which are
-unfortunately rather expensive. It should be no problem to reach the sprint
-venue from anywhere in Paris using public transportation.
-Other links to `hotels en France`_ sites :
+unfortunately rather expensive. Here is another site for `hotels en France`_.
 
+It should be no problem to reach the sprint venue from anywhere in Paris using public transportation.
 However it would be better to find accomodation in the southern districts (14th, 15th)
 or in the nearby towns (Malakoff, Vanves) not far from Paris. Another good choice is
 to find an hotel near one of the metro line above. (avoid long bus trips as it takes
@@ -56,20 +55,22 @@ Looking at the map here: hotels_, the area you should look at is between (3) and
 
 As an alternative you could also try to group (4 or 5 people) and try to rent
 a furnished appartment for the week. Almost all announces from French websites come
-from `lodgis agency`_. They are rather expensive but most of the time it can be cheaper
+from `Lodgis agency`_. They are rather expensive but most of the time it can be cheaper
 than hotels. For the more adventurous you can look on the french site pap_. (select
 appartements, département=75, arrondissements=15,14,6)
 
 For transportation we strongly recommend the public transportation (metro and buses).
 There are weekly tickets (monday to sunday) from 15.70 euros (Zone 1-2). You need a
-picture (ID format) and ask for a "Carte Orange".
+picture (ID format) and ask for a *Carte Orange*.
 Don't get the tourist's cards which are more expensive and valid only for 5 days.
+Also note that zone 1-2 won't pay for your ticket from the airport and is valid only (mostly)
+inside Paris.
 
 .. _`See here`: http://www.logilab.fr/contact.html
 .. _hotels: http://www.hotel-paris.net/index-hotels-English.htm
 .. _`hotels en France`: http://www.0800paris-hotels.com/
 .. _pap: http://www.pap.fr/immobilier/offres/offre-location-vacances.asp
-.. _`lodgis agency`: http://www.lodgis.com/ 
+.. _`Lodgis agency`: http://www.lodgis.com/ 
 
 Exact times 
 -----------
@@ -88,8 +89,8 @@ You will probably need a wireless network card to access the network but we can 
 ethernet cables for those who don't have one.
 
 
-Registration etc.pp. 
--------------------- 
+Registration etc. 
+----------------- 
 
 Please subscribe to the `PyPy sprint mailing list`_, introduce
 yourself and post a note that you want to come.
