@@ -1,5 +1,5 @@
 Template for sprint reports
-Author: Beatrice Düring
+Author: Beatrice DÃ¼ring
 Date:20050827
 Version:1.0
 
