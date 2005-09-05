@@ -30,8 +30,8 @@ The sprint will be held in Logilab's offices in Paris. The exact address is::
   10 rue Louis Vicat
   75015 Paris
 
-We'll provide WLAN connection and there is a small kitchen to make tea and coffee.
-`See here`_ for a map of the area nearby.
+We'll provide WLAN connection and there is a small kitchen to make tea
+and coffee.  `See here`_ for a map of the area nearby.
 
 There are two metro lines and three bus lines that stop close to Logilab's:
  - Metro line 12 : stop "Porte de Versailles"
@@ -44,29 +44,36 @@ Those are more or less within 5 minutes walk.
 There is a huge number of hotels_ in Paris, all of which are
 unfortunately rather expensive. Here is another site for `hotels en France`_.
 
-It should be no problem to reach the sprint venue from anywhere in Paris using public transportation.
-However it would be better to find accomodation in the southern districts (14th, 15th)
-or in the nearby towns (Malakoff, Vanves) not far from Paris. Another good choice is
-to find an hotel near one of the metro line above. (avoid long bus trips as it takes
-a long time.)
-Looking at the map here: hotels_, the area you should look at is between (3) and (6),
-(5) is still ok.
+It should be no problem to reach the sprint venue from anywhere in
+Paris using public transportation. However it would be better to find
+accomodation in the southern districts (14th, 15th) or in the nearby
+towns (Malakoff, Vanves) not far from Paris. Another good choice is to
+find an hotel near one of the metro line above. (avoid long bus trips
+as it takes more time.)
+
+Looking at the map here: hotels_, the area you should look at is
+between (3) and (6), (5) is still ok.
 
 
-As an alternative you could also try to group (4 or 5 people) and try to rent
-a furnished appartment for the week. Almost all announces from French websites come
-from `Lodgis agency`_. They are rather expensive but most of the time it can be cheaper
-than hotels. For the more adventurous you can look on the french site pap_. (select
-appartements, département=75, arrondissements=15,14,6)
+As an alternative you could also try to group (4 or 5 people) and try
+to rent a furnished appartment for the week. Almost all announces from
+French websites come from `Lodgis agency`_. They are rather expensive
+but most of the time it can be cheaper than hotels. For the more
+adventurous you can look on the french site pap_ which lists rental
+ads. (select appartements, département=75, arrondissements=15,14,13)
 
-For transportation we strongly recommend the public transportation (metro and buses).
-There are weekly tickets (monday to sunday) from 15.70 euros (Zone 1-2). You need a
-picture (ID format) and ask for a *Carte Orange*.
-Don't get the tourist's cards which are more expensive and valid only for 5 days.
-Also note that zone 1-2 won't pay for your ticket from the airport and is valid only (mostly)
-inside Paris.
+For transportation we strongly recommend the public transportation
+(metro and buses).  There are weekly tickets (monday to sunday) from
+15.70 euros (Zone 1-2). You need a picture (ID format) and ask for a
+*Carte Orange*.
 
-.. _`See here`: http://www.logilab.fr/contact.html
+Don't get the tourist's cards which are more expensive and valid only
+for 5 days.  Also note that zone 1-2 won't pay for your ticket from
+the airport and is valid only (mostly) inside Paris. If you arrive by
+plane this will be most probably at Roissy airport and from there you
+can take the RER line B to Paris for about 8 euros.
+
+.. _`See here`: http://www.logilab.com/contact
 .. _hotels: http://www.hotel-paris.net/index-hotels-English.htm
 .. _`hotels en France`: http://www.0800paris-hotels.com/
 .. _pap: http://www.pap.fr/immobilier/offres/offre-location-vacances.asp
@@ -75,9 +82,9 @@ inside Paris.
 Exact times 
 -----------
 
-The Pypy sprint is held Monday 10th October - Sunday 16th October 2005.
-Hours will be from 09:00 until 20:00 or later. It's a good 
-idea to arrive a day before the sprint starts.
+The Pypy sprint is held Monday 10th October - Sunday 16th October
+2005.  Hours will be from 09:00 until 20:00. It's a good idea to
+arrive a day before the sprint starts.
 
 Network, Food
 ------------- 
