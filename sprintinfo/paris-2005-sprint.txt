@@ -21,7 +21,8 @@ sprint will be:
 
  - threading and GC
  - refactoring and translation features
- - discussing about the upcoming JIT, optimizations and stackless features 
+ - discussing/experimenting towards JIT_ and `continuation-passing`_
+   style translation 
 
 Moreover, we are open to work in other areas that participants are
 interested in.  Please raise topics on the mailinglist_. 
@@ -64,7 +65,7 @@ to rent a furnished appartment for the week. Almost all announces from
 French websites come from `Lodgis agency`_. They are rather expensive
 but most of the time it can be cheaper than hotels. For the more
 adventurous you can look on the french site pap_ which lists rental
-ads. (select appartements, département=75, arrondissements=15,14,13)
+ads. (select appartements, dÃ©partement=75, arrondissements=15,14,13)
 
 For transportation we strongly recommend the public transportation
 (metro and buses).  There are weekly tickets (monday to sunday) from
@@ -119,3 +120,5 @@ you can modify yourself a checkout of
 .. _`mailinglist`: 
 .. _`PyPy sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 .. _`pypy-0.7.0`: http://codespeak.net/pypy/dist/pypy/doc/release-0.7.0.html
+.. _JIT: http://en.wikipedia.org/wiki/Just-in-time_compilation
+.. _`continuation-passing`: http://en.wikipedia.org/wiki/Continuation_passing_style
