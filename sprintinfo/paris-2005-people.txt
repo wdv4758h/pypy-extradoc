@@ -9,7 +9,7 @@ column are known to be coming but there are no details
 available yet from them. 
  
 =================== ============== =====================
-       Name          Arrive/Depart Accomodation 
+    Name             Arrive/Depart     Accomodation 
 =================== ============== =====================
 Ludovic Aubry       10/10 - 16/10  Private
 Adrien Di Mascio    10/10 - 16/10  Private
@@ -19,13 +19,14 @@ Beatrice Duering    ?              ?
 Armin Rigo          ?              ?
 Samuele Pedroni     ?              ?
 Holger Krekel       ?              ?
-=================== =============  =====================
+=================== ============== =====================
 
 People on the following list are likely to come and were
-present at the previous sprint
+present at the previous sprints: 
+
 =================== ============== =====================
-       Name          Arrive/Depart Accomodation 
-=================== =============  =====================
+       Name         Arrive/Depart  Accomodation 
+=================== ============== =====================
 Carl Friedrich Bolz ?              ?
 Niklaus Haldimann   ?              ?
 Eric van Riet Paap  ?              ?
