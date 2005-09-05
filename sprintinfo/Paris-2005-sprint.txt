@@ -38,23 +38,27 @@ There are two metro lines and three bus lines that stop close to Logilab's:
  - Metro line 13 : stop "Malakoff plateau de Vanves"
  - Bus 89 or 58 : stop "Carrefour Albert Legris"
  - Bus PC1 : stop "Porte de la Plaine"
+
 Those are more or less within 5 minutes walk.
 
 There is a huge number of hotels_ in Paris, all of which are
 unfortunately rather expensive. It should be no problem to reach the sprint
 venue from anywhere in Paris using public transportation.
-Other links to _`hotels en France` sites :
+Other links to `hotels en France`_ sites :
 
 However it would be better to find accomodation in the southern districts (14th, 15th)
 or in the nearby towns (Malakoff, Vanves) not far from Paris. Another good choice is
 to find an hotel near one of the metro line above. (avoid long bus trips as it takes
 a long time.)
-Looking at the map here: _hotels, the area you should look at is between (3) and (6),
+Looking at the map here: hotels_, the area you should look at is between (3) and (6),
 (5) is still ok.
 
 
 As an alternative you could also try to group (4 or 5 people) and try to rent
-a furnished appartment for the week.
+a furnished appartment for the week. Almost all announces from French websites come
+from `lodgis agency`_. They are rather expensive but most of the time it can be cheaper
+than hotels. For the more adventurous you can look on the french site pap_. (select
+appartements, département=75, arrondissements=15,14,6)
 
 For transportation we strongly recommend the public transportation (metro and buses).
 There are weekly tickets (monday to sunday) from 15.70 euros (Zone 1-2). You need a
@@ -64,6 +68,8 @@ Don't get the tourist's cards which are more expensive and valid only for 5 days
 .. _`See here`: http://www.logilab.fr/contact.html
 .. _hotels: http://www.hotel-paris.net/index-hotels-English.htm
 .. _`hotels en France`: http://www.0800paris-hotels.com/
+.. _pap: http://www.pap.fr/immobilier/offres/offre-location-vacances.asp
+.. _`lodgis agency`: http://www.lodgis.com/ 
 
 Exact times 
 -----------
