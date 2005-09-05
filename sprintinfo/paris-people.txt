@@ -1,0 +1,36 @@
+
+.. _`Paris Sprint`: http://codespeak.net/pypy/index.cgi?extradoc/sprintinfo/Paris-2005-sprint.html 
+
+People coming to the `Paris Sprint`_ 
+==================================================
+
+People who have a ``?`` in their arrive/depart or accomodation
+column are known to be coming but there are no details 
+available yet from them. 
+ 
+=================== ============== =====================
+       Name          Arrive/Depart Accomodation 
+=================== ============== =====================
+Ludovic Aubry       10/10 - 16/10  Private
+Adrien Di Mascio    10/10 - 16/10  Private
+Jacob Hallen        ?              ?
+Laura Creighton     ?              ?
+Beatrice Duering    ?              ?
+Armin Rigo          ?              ?
+Samuele Pedroni     ?              ?
+Holger Krekel       ?              ?
+=================== =============  =====================
+
+People on the following list are likely to come and were
+present at the previous sprint
+=================== ============== =====================
+       Name          Arrive/Depart Accomodation 
+=================== =============  =====================
+Carl Friedrich Bolz ?              ?
+Niklaus Haldimann   ?              ?
+Eric van Riet Paap  ?              ?
+Richard Emslie      ?              ?
+Anders Chrigstroem  ?              ?
+Christian Tismer    ?              ?
+Anders Lehmann      ?              ?
+=================== ============== =====================
