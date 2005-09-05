@@ -63,7 +63,7 @@ Don't get the tourist's cards which are more expensive and valid only for 5 days
 
 .. _`See here`: http://www.logilab.fr/contact.html
 .. _hotels: http://www.hotel-paris.net/index-hotels-English.htm
-.. _`hotels en France`: http://www.hotels.fr/
+.. _`hotels en France`: http://www.0800paris-hotels.com/
 
 Exact times 
 -----------
