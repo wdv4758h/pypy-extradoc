@@ -24,8 +24,6 @@ overall time planning::
     Christian Tismer      whole-time 
     Samuele Pedroni       whole-time  
 
-Misc
--------- 
 
 Current Main task: RTYPER issues
 -----------------------------------
