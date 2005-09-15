@@ -68,8 +68,8 @@ Other activities, follow-up on sync meeting of last week
 Nobody showed up who wanted to do something last week, which resulted
 in Armin, Samuele, Carl and Holger will work on that. It was proposed
 to ask again and find a way to motivate each other to help with this.
-Carl claimed that reporting actually can be fun. We are awaiting his
-ideas on #pypy.
+Carl threw in that reporting actually can be fun. We should try to
+find ways tomotivate each other on #pypy.
 
 Making money out of PyPy
 ------------------------------
