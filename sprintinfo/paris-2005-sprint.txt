@@ -116,7 +116,7 @@ you can modify yourself a checkout of
 
     http://codespeak.net/svn/pypy/extradoc/sprintinfo/paris-2005-people.txt 
 
-.. _`Paris people`: http://codespeak.net/pypy/index.cgi?extradoc/sprintinfo/paris-2005-people.html 
+.. _`Paris people`: http://codespeak.net/pypy/extradoc/sprintinfo/paris-2005-people.html 
 .. _`mailinglist`: 
 .. _`PyPy sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 .. _`pypy-0.7.0`: http://codespeak.net/pypy/dist/pypy/doc/release-0.7.0.html
