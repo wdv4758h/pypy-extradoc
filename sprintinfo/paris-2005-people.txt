@@ -19,6 +19,7 @@ Beatrice Duering    ?              ?
 Armin Rigo          ?              ?
 Samuele Pedroni     ?              ?
 Holger Krekel       ?              ?
+Michael Hudson      ?              ?
 =================== ============== =====================
 
 People on the following list are likely to come and were
