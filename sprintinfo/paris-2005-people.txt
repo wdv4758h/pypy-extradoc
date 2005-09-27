@@ -20,6 +20,7 @@ Armin Rigo          ?              ?
 Samuele Pedroni     ?              ?
 Holger Krekel       ?              ?
 Michael Hudson      ?              ?
+Bert Freudenberg    09/10 - 17/10  ?
 =================== ============== =====================
 
 People on the following list are likely to come and were
