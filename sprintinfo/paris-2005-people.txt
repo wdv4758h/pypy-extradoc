@@ -20,6 +20,7 @@ Armin Rigo          ?              ?
 Samuele Pedroni     ?              ?
 Holger Krekel       ?              ?
 Michael Hudson      ?              ?
+Carl Friedrich Bolz 7/10? - 16/10  flat?
 Bert Freudenberg    09/10 - 17/10  ?
 =================== ============== =====================
 
@@ -29,7 +30,6 @@ present at the previous sprints:
 =================== ============== =====================
        Name         Arrive/Depart  Accomodation 
 =================== ============== =====================
-Carl Friedrich Bolz ?              ?
 Niklaus Haldimann   ?              ?
 Eric van Riet Paap  ?              ?
 Richard Emslie      ?              ?
