@@ -23,6 +23,7 @@ Lene Wagner         12th-13th Oct  flat
 Michael Hudson      ?              ?
 Carl Friedrich Bolz 7/10? - 16/10  flat?
 Bert Freudenberg    09/10 - 17/10  ?
+Anders Lehmann      09/10 - 14/10  Hotel Porte de Versailles
 =================== ============== =====================
 
 People on the following list are likely to come and were
@@ -36,5 +37,4 @@ Eric van Riet Paap  ?              ?
 Richard Emslie      ?              ?
 Anders Chrigstroem  ?              ?
 Christian Tismer    ?              ?
-Anders Lehmann      ?              ?
 =================== ============== =====================
