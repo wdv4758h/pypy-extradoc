@@ -1,0 +1,33 @@
+Reference/Call For Papers: http://www.ccc.de/congress/2005/cfp.html
+DEADLINE: 31st September 2005 (friday)
+
+Name: Carl Friedrich Bolz
+
+Public Name: Carl Friedrich Bolz
+
+Other Names: cfbolz on irc.freenode.org 
+
+Primary E-Mail address: cfbolz@gmx.de
+
+Phone number(s): +49 6221 7183177
+
+Statement: publishing contact info except for the phone number 
+           is fine with me. 
+
+Short Info: 
+
+    Carl Friedrich Bolz, student and developer of PyPy
+
+Bio: 
+
+    Carl Friedrich started to program C++ when he was 16, couldn't stant it
+    and turned to Python soon afterwards. He is a PyPy developer since the
+    beginning of 2005. At the moment he is supposed to study mathematics,
+    computer science and sometimes physics at the University of Heidelberg.
+    Since programming is more fun he is taking a semester off to work for
+    merlinux on PyPy and other projects.
+    
+Postal address: Carl Friedrich Bolz, Albert-Fritz-Str. 9, 69124 Heidelberg
+Bank information: 
+Expected day of arrival and departure: 27th-30th December. 
+
