@@ -16,6 +16,11 @@ Attendees::
          Carl Friedrich Bolz
          Bert Freudenberg 
 
+Absentees:
+         Ludovic Aubry
+         Adrien Di Mascio
+         Armin Rigo
+
 Regular Topics 
 ====================
 
@@ -40,10 +45,13 @@ Topics of the week
 
     It seems that pypy-c cant run py.test and that several tests in the lib-python testsuite will make pypy-c segfault. It was chosen to not invest time into solving these problems at this point since pypy-c is in such a flux anyway.
 
-3.Marketing
+3. Marketing
 
     The topic was deferred due to lack of time.
 
+4. Not announced topic - Status of AST-compiler.
+
+    It seems that there is only ony remaining problem left. There is hope that the parse/compiler multitude will be resolved before the Paris sprint.
 
 Next pypy-sync meeting
 -------------------------------
