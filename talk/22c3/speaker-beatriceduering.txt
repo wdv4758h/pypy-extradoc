@@ -1,5 +1,5 @@
 Reference/Call For Papers: http://www.ccc.de/congress/2005/cfp.html
-DEADLINE: 31st September 2005 (friday)
+DEADLINE: 30th September 2005 (friday)
 
 Name: Beatrice Düring
 
@@ -24,7 +24,9 @@ Public home page, weblog and other speaker-related websites:
 
 Short Info: 
 
-    Beatrice During, consultant in the project management field, assistant project manager in PyPy
+    Beatrice During (Sweden), consultant in the project management field, 
+    assistant project manager in PyPy
+
 Bio: 
 
     Beatrice Düring studied teaching/pedagogy at the University of Karlstad in
