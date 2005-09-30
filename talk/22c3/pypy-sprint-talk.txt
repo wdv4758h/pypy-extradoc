@@ -1,56 +1,54 @@
 Reference/Call For Papers: http://www.ccc.de/congress/2005/cfp.html
 DEADLINE: 31st September 2005 (friday)
 
-Title: PyPy - agility through diversity
+Title:  agile open-source methods <-> business/EU-funding 
 
-Subtitle: Sprint driven development in an Open Source Python project - funded 
-	  by the European Commission (FP6)  
+Subtitle: Sprint driven development in Open Source projects - 
+          agile methods in open-source related companies 
 
-Section: Hackerethik 
+Section: Hacker(ethik)
 
 Talkers: Holger Krekel, Beatrice Düring
 
 Abstract (max 250 letters): 
 
-    We´ll present the experiences from managing an agile and distributed OSS 
-    development process in the Pypy project, "sprint driven", during the last year 
-    and also connect this to the challenges of integrating this process with the requirements
-    from the European Commission who is partly funding the project through the 
-    6th Research Framework programme. 
+    There is a growing number of open-source developers organized 
+    and connected to company and business related work.  We 
+    report our experiences from the first year of the PyPy project which 
+    has a 7 company/university consortium and a 1.3 Million Euro research
+    grant from the European Union.  Moreover, we carry together
+    experiences from other projects and companies such as 
+    Canonical (doing infrastructure for the Ubuntu distribution). 
+
+    We´ll present our own experiences from managing an agile
+    and distributed OSS development process in the PyPy
+    project, XP-style "sprint driven", during the last year and 
+    relate this to the requirements from the European Union. 
+
+    We'd like to discuss models and experiences for connecting 
+    open-source culture driven development to business related 
+    projects and goals with the audience.  
+
+Description (250-500 words): 
+
+    We are going to briefly describe the organisation of the PyPy project, 
+    showing how formal stakeholders and OSS Python community interact 
+    through agile practices like sprinting.
+
     We will also reflect on the aspect of diversity, combining technical 
     and non technical people and skills in the PyPy project and learnings
     from this.
 
-    PyPy is a reimplementation of Python written in Python
-    itself, flexible and easy to experiment with.
-
-Description (250-500 words): 
-
-    We are going to briefly describe the organisation of the project, 
-    showing how formal stakeholders and OSS Python community interact 
-    through agile practices like sprinting.
-
     We will relate the various agile techniques used in PyPy to the 
     agile practices known from the work in the Agile Alliance (XP, Scrum, 
-    Crystal Clear) and show how the PyPy project is developing an ongoing 
-    customization of several of the known practices. 
+    Crystal Clear) and tell you what we know of how other projects
+    are doing it. 
 
     Lastly we will also share our experience of various challenges and 
     possibilities when integrating the different cultures and skills from 
     the OSS perspective, EU perspective and the Chaos Pilot/process management 
     perspective - managing diversities.   
 
-    PyPy is a reimplementation of Python written in Python
-    itself, flexible and easy to experiment with. Our
-    long-term goals are to target a large variety of
-    platforms, small and large, by providing a compiler
-    toolsuite that can produce custom Python versions.
-    Platform, Memory and Threading models will become 
-    aspects of the translation process - as opposed to
-    encoding low level details into a language implementation
-    itself. 
-
-    
 Statement: We intend to submit a paper (PDF) for the 22C3 proceedings. 
 Statement: We intend to submit a slides PDF as well. 
 
@@ -58,13 +56,15 @@ Duration of your talk: 45 minutes + questions
 
 Language of your talk: english 
 
-Links to background information on the talk: http://codespeak.net/pypy 
+Links to background information on the talk:  
+    http://codespeak.net/pypy/dist/pypy/doc/dev_method.html
+    http://codespeak.net/pypy/dist/pypy
 
 Target Group: Advanced Users, Pros 
 
 Resources you need for your talk: digital projector, internet 
 
-Related talks at 22C3 you know of: ... 
+Related talks at 22C3 you know of: PyPy - the new Python implementation on the block 
 
 A lecture logo, square format, min. 128x128 pixels (optional): 
     http://codespeak.net/pypy/img/py-web1.png 

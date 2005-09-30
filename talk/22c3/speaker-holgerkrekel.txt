@@ -13,7 +13,6 @@ Phone number(s): +49 171 464 8622
 
 A photo, square format, min. 128x128 pixels (optional): 
     http://merlinux.de/~hpk/holger.jpg
-
     (maybe i can find a better one, this is the one from 
     last 21C3 conference) 
    

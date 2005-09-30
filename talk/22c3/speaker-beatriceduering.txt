@@ -12,8 +12,8 @@ Primary E-Mail address: bea@changemaker.nu
 Phone number(s): +46 (0)734 22 89 06  
 
 A photo, square format, min. 128x128 pixels (optional): 
-    Holger - can I send you a photo that we can put somewhere on codespeak?
-    I will bring a digital camera so that we can take phoes of everyone in Paris for the website. 
+    (is also attached in the proposals zip file)
+    see http://codespeak.net/pypy/extradoc/talk/22C3/bea.jpg 
    
 Statement: publishing contact info except for the phone number 
            is fine with me. 
@@ -24,7 +24,7 @@ Public home page, weblog and other speaker-related websites:
 
 Short Info: 
 
-    Beatrice During, consultant in the project management field, assistant project manager in PyPY
+    Beatrice During, consultant in the project management field, assistant project manager in PyPy
 Bio: 
 
     Beatrice Düring studied teaching/pedagogy at the University of Karlstad in

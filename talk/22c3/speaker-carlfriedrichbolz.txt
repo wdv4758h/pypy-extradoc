@@ -16,13 +16,13 @@ Statement: publishing contact info except for the phone number
 
 Short Info: 
 
-    Carl Friedrich Bolz, student and developer of PyPy
+    Carl Friedrich Bolz, developer of PyPy, works with merlinux 
 
 Bio: 
 
-    Carl Friedrich started to program C++ when he was 16, couldn't stant it
+    Carl Friedrich started to program C++ when he was 16, couldn't stand it
     and turned to Python soon afterwards. He is a PyPy developer since the
-    beginning of 2005. At the moment he is supposed to study mathematics,
+    beginning of 2005.  At the moment he is supposed to study mathematics,
     computer science and sometimes physics at the University of Heidelberg.
     Since programming is more fun he is taking a semester off to work for
     merlinux on PyPy and other projects.
