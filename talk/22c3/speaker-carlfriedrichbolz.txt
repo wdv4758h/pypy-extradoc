@@ -11,6 +11,10 @@ Primary E-Mail address: cfbolz@gmx.de
 
 Phone number(s): +49 6221 7183177
 
+A photo, square format, min. 128x128 pixels (optional): 
+http://codespeak.net/~cfbolz/carl_friedrich_bolz.jpg
+
+
 Statement: publishing contact info except for the phone number 
            is fine with me. 
 
@@ -22,10 +26,9 @@ Bio:
 
     Carl Friedrich started to program C++ when he was 16, couldn't stand it
     and turned to Python soon afterwards. He is a PyPy developer since the
-    beginning of 2005.  At the moment he is supposed to study mathematics,
-    computer science and sometimes physics at the University of Heidelberg.
-    Since programming is more fun he is taking a semester off to work for
-    merlinux on PyPy and other projects.
+    beginning of 2005.  He  studies mathematics, computer science and physics 
+    at the University of Heidelberg and works for merlinux on PyPy and other
+    projects.
     
 Postal address: Carl Friedrich Bolz, Albert-Fritz-Str. 9, 69124 Heidelberg
 Bank information: 
