@@ -31,11 +31,9 @@ Description (250-500 words):
     skills and learnings from this.
 
     We will relate the various agile techniques used in PyPy
-    and other projects to the agile practices known from the
-    work in the Agile Alliance (XP, Scrum, Crystal) and tell
-    you what we know of how other projects are doing it.  We 
-    carry together related experiences from some other projects 
-    and companies. 
+    and other projects/companies to the agile practices known from 
+    the work in the Agile Alliance (XP, Scrum, Crystal) and tell
+    you what we know of how other projects are doing it.  
 
     Lastly we will also share our experience of various challenges and 
     possibilities when integrating the different cultures and skills from 
