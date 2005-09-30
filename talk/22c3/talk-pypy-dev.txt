@@ -25,15 +25,16 @@ Description (250-500 words):
     long-term goals are to target a large variety of
     platforms, small and large, by adapting the compiler
     toolsuite we developed to produce custom Python versions.
+    Platform, Memory and Threading models will become 
+    aspects of the translation process - as opposed to
+    encoding low level details into a language implementation
+    itself. 
 
-    Basically, we are implementing strategies to avoid writing
-    N x M x O interpreters for N dynamic languages, M platforms 
-    and O crucial design decisions (e.g. memory and threading 
-    models).  Moreover, hand-coding particular combinations can 
-    be hairy at best.  With PyPy, we aim to change any of these 
-    parameters independently.  They become aspects of the 
-    translation process.
-    
+    Basically, we think it's a good way to avoid writing
+    n x m x o interpreters for n dynamic languages and m
+    platforms with o crucial design decisions.  In PyPy
+    any one of these can be changed independently.
+
     We are going to briefly describe the concepts of
     object spaces, abstract interpretation and translation
     aspects and how they led us to a first self-contained 
