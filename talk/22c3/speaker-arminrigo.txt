@@ -24,7 +24,7 @@ Short Info:
 Bio: 
 
     Armin was born in 1976 in Lausanne, Switzerland.  He is officially a
-    researcher at the University of Düsseldorf but works from various
+    researcher at the University of Düsseldorf and works from various
     places around Europe.  He studied and Ph.D.ed in Mathematics.  At
     that time, he was the author of QuArK, a Quake map editor.
     Afterwards, he worked on various programs and hacks that are more
