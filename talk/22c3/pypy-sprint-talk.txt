@@ -41,7 +41,7 @@ Description (250-500 words):
 
     We will relate the various agile techniques used in PyPy to the 
     agile practices known from the work in the Agile Alliance (XP, Scrum, 
-    Crystal Clear) and tell you what we know of how other projects
+    Crystal) and tell you what we know of how other projects
     are doing it. 
 
     Lastly we will also share our experience of various challenges and 
