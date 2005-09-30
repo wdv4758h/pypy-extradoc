@@ -70,7 +70,7 @@ Target Group: Advanced Users, Pros
 
 Resources you need for your talk: digital projector, internet 
 
-Related talks at 22C3 you know of: ... 
+Related talks at 22C3 you know of: agile open-source methods <-> business/EU-funding 
 
 A lecture logo, square format, min. 128x128 pixels (optional): 
     http://codespeak.net/pypy/img/py-web1.png 
