@@ -13,12 +13,12 @@ available yet from them.
 =================== ============== =====================
 Ludovic Aubry       10/10 - 16/10  Private
 Adrien Di Mascio    10/10 - 16/10  Private
-Jacob Hallen        ?              ?
-Laura Creighton     ?              ?
+Jacob Hallen        8/10  - 17/10  Hotel Lenox, 15 Rue Delambre(+33 1 43353450)
+Laura Creighton     8/10  - 17/10  Hotel Lenox, 15 Rue Delambre(+33 1 43353450)
 Beatrice Duering    9/10 - 17/10   flat
 Armin Rigo          ?              ?
-Samuele Pedroni     9/10 - 17/10   Hotel
-Anders Chrigstroem  9/10 - 17/10   Hotel
+Samuele Pedroni     9/10 - 17/10   Hotel Lenox, 15 Rue Delambre(+33 1 43353450)
+Anders Chrigstroem  9/10 - 17/10   Hotel Lenox, 15 Rue Delambre(+33 1 43353450)
 Holger Krekel       6th-17th Oct   flat 
 Lene Wagner         12th-13th Oct  flat 
 Michael Hudson      ?              ?
