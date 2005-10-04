@@ -18,6 +18,13 @@ proposal preparations!
 Time & Location: 27th-30th December, Berlin. 
 
 
+Solution Linux 2006
+-------------------
+
+Logilab will present PyPy in the "free software models" track.
+
+Time and Location: 31st jan to feb 2nd, Paris.
+
 Pycon 2006 
 ---------------
 
