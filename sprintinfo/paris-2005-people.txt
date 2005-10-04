@@ -26,7 +26,7 @@ Bert Freudenberg    09/10 - 17/10  ?
 Anders Lehmann      09/10 - 14/10  Hotel Porte de Versailles
 Boris Feigin	    09/10 - 16/10  ?/looking for flatmates
 Amaury Forgeot d'Arc10/10 - 16/10  Private
-=================== ============== =====================
+Andrew Thompson     09/10 - 17/10  Citea Vanves Portes de Versailles
 
 People on the following list are likely to come and were
 present at the previous sprints: 
