@@ -17,7 +17,8 @@ Jacob Hallen        ?              ?
 Laura Creighton     ?              ?
 Beatrice Duering    9/10 - 17/10   flat
 Armin Rigo          ?              ?
-Samuele Pedroni     ?              ?
+Samuele Pedroni     9/10 - 17/10   Hotel
+Anders Chrigstroem  9/10 - 17/10   Hotel
 Holger Krekel       6th-17th Oct   flat 
 Lene Wagner         12th-13th Oct  flat 
 Michael Hudson      ?              ?
@@ -37,6 +38,5 @@ present at the previous sprints:
 Niklaus Haldimann   ?              ?
 Eric van Riet Paap  ?              ?
 Richard Emslie      ?              ?
-Anders Chrigstroem  ?              ?
 Christian Tismer    ?              ?
 =================== ============== =====================
