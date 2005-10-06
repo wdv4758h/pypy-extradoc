@@ -37,6 +37,9 @@ Implementation/translation
 - stack overflow detection (needed to be able to run many compliancy tests)
 - try more interp. level optimisations (dicts with string keys, more agressive use of fastcall*...)
 
+- compute correct max stack size in compiler (?)
+- cleanup our multiple compiler situation (if not already done before the sprint)
+
 - (socket module, PEP302)
 
 GC related tasks
