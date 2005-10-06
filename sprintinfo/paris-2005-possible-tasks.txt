@@ -50,6 +50,7 @@ GC related tasks
 -----------------
 
 - look into implementing weakrefs
+- Boehm: fix the all_interior_pointers=0 vs. Windows issue
 - (improve refcounting)
 - (passes toward integrating other GCs, rpython/memory)
 
