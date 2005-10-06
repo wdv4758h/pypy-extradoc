@@ -42,7 +42,7 @@ Implementation/translation
   testcompiler, fix the tests to work on CPython 2.3 too,
   decide what to put in lib-python/modified-2.4.1/compiler --
   stablecompiler or astcompiler? -- and submit it back to
-  CPython.
+  CPython.  Clean up pyparser/pythonutil.py.
 
 - (socket module, PEP302)
 
