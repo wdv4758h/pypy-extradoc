@@ -38,7 +38,11 @@ Implementation/translation
 - try more interp. level optimisations (dicts with string keys, more agressive use of fastcall*...)
 
 - compute correct max stack size in compiler (?)
-- cleanup our multiple compiler situation (if not already done before the sprint)
+- cleanup our multiple compiler situation: remove
+  testcompiler, fix the tests to work on CPython 2.3 too,
+  decide what to put in lib-python/modified-2.4.1/compiler --
+  stablecompiler or astcompiler? -- and submit it back to
+  CPython.
 
 - (socket module, PEP302)
 
