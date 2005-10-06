@@ -14,7 +14,7 @@ Annotator related tasks
 - support the notion of separate/external functions (and classes/PBCs)
   in preparation for separate compilations
 
-JIT work related
+JIT related work
 -----------------
 - an ll interpreter written in RPython
 - Saving ll graphs plus a loader written in RPython
@@ -50,7 +50,7 @@ GC related tasks
 Refactorings/cleanups
 ----------------------
 
-- cbuild/translator.Translator (use SCons?)
+- cbuild/translator.Translator (use SCons?, use/generalize TranslationDriver)
 - PyPy option handling unification, passing py.py options to targetpypy*
 - inline (transforms in general) 
 
