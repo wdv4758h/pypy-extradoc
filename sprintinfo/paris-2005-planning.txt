@@ -1,0 +1,54 @@
+
+
+Paris sprint planning 
+-------------------------------------
+
+Times (proposal): 
+
+    10:00 - 20:00   core sprinting time 
+    10:30 planning session 
+    ca. 01:00 pm lunch time 
+
+thursday: breakday  (for some of us: eu-consortium meeting) 
+
+
+pairing  monday
+======================= 
+
+stackless/cps: 
+    christian, armin 
+    Valentino, Amaury 
+    Adrien, Anders 
+ 
+andrew/michael: powerpc-backend 
+
+bert, samuele, boris, arre, aurelien: different specialization to more HL-backends  
+
+llinterpreter:  Carl, NN (holger later) 
+
+
+later wednesday: 
+discussing compiler & phase 2 work/tasks for the sprint WP09/WP10 
+
+peoples present 
+---------------------
+
+armin
+bert
+samuele
+anders 
+carl  
+boris
+amory 
+andrew thompson 
+adrien
+michael hudson
+arre
+aurelien 
+olivier 
+
+Bea
+Nicolas 
+jacob
+
+
