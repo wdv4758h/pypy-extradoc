@@ -16,6 +16,7 @@ Annotator related tasks
 
 JIT related work
 -----------------
+- support addresses in the backends
 - an ll interpreter written in RPython
 - Saving ll graphs plus a loader written in RPython
 
