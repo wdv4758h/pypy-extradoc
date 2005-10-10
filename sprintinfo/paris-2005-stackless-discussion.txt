@@ -1,0 +1,85 @@
+====================================================
+  Stackless / Continuation discussion group
+====================================================
+
+Bert Freudenberg, Jacob Hallèn, Adrien di Mascio,
+Valentino Volonghi, Christian Tismer
+
+Introduction to current ideas
+------------------------------
+
+We had a small introduction about Stackless Python and
+its implementation. We compared that to PyPy for similarities
+and differences.
+
+The idea is to keep recursion and stack usage as an efficient
+approach using the C compiler and current processor.
+The whole problem of making PyPy stackless is solved by providing
+RPython with a mechanism to unwind and save this stack structure.
+
+An implementation of an example was written by Armin. This
+is thought as a template of how the generated code (c|sh)ould look like.
+
+
+This approach supports
+
+- full continuations, because we can clone the saved block structures
+- restartable exceptions (yet only at the RPython level)
+- pickling program state
+- unlimited recursion
+- context switching
+- garbage collection with explicit knowledge of all roots
+
+
+General impressions
+--------------------
+
+The proposed stackless extension of the existing framework
+might be easier to implement than a new approach using
+continuation passing style. But we might want to try
+examples for both and compare performance.
+
+Needed independently of the backend:
+being able to capture variables of a block.
+This could work on the annotated flowgraph, but probably makes
+more sense after all the backend optimizations. It is still
+the same for all backends.
+
+Needed action:
+Find the set of necessary structures to describe the status of all blocks.
+Generate types for all the variants of blocks. The concrete implementation
+may vary. The current simple approach is a block number that encodes
+function, arity, return type of the function and relative block
+number. Different encodings are possible and may vary per backend.
+(In assembly, one would probably add descriptor info right before
+the function entrypoint...)
+
+Aliveness considerations, partially related to the backend:
+The state blocks take over the role of the stack. The stack may
+instead be considered as a cache for the state blocks. State
+blocks are actually a synonym for continuations.
+
+
+Backend:
+
+Tasks for implementation:
+
+- generating the structures for saving the blocks
+- generate extra code for function re-entry
+- write extra support for detecting stack overflows.
+
+  + have extra info about the stack size of every function.
+
+Thinking about re-use of the existing exception handling code,
+which is there for every function call. Adding yet another case
+might be cheap. See if this is simpler or more complex
+than using extra variables.
+
+Observations:
+-------------
+
+We can use this mechanism to produce restartable exceptions. But this
+is not about Python-level exceptions without further support.
+
+This approach appears to give us full continuations for free.
+
