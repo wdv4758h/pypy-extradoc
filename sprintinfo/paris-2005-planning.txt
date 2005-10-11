@@ -12,19 +12,26 @@ Times (proposal):
 thursday: breakday  (for some of us: eu-consortium meeting) 
 
 
-pairing  monday
+pairing  tuesday
 ======================= 
 
-stackless/cps: 
+stackless/cps:   (same group continues, "re-"pairing inside)
     christian, armin 
     Valentino, Amaury 
     Adrien, Anders 
  
-andrew/michael: powerpc-backend 
+andrew/michael: powerpc-backend   (getting there, continues)
 
-bert, samuele, boris, arre, aurelien: different specialization to more HL-backends  
+bert, samuele, boris, arre, aurelien: different specialization to more HL-backends
+(defined the "ootypes" model, like the "lltypes" but more OO-ish; will start
+ to work on the ootyper, as a branch of the rtyper for now; same group continues
+ and may split in two subgroups soon -- backend and ootyper.)
 
-llinterpreter:  Carl, NN (holger later) 
+llinterpreter:  Carl, Holger
+(starting on the data model of the ll flow graphs, continues)
+
+
+next status meeting: wed 10:30
 
 
 later wednesday: 
