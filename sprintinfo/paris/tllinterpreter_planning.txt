@@ -37,11 +37,15 @@ Questions
 
  * what to do about types? the layout has to be compatible with what the C
    compilers do
+   
     - one possiblity would be to encode the types in the serialized graphs in
       a platform dependent manner
+      
  * how would external function calls work?
+ 
     - you would probably have to have wrapper function for every signature that
       occurs
+      
  * it will probably be necessary to mix hl and ll. is that possible?
 
 Tasks

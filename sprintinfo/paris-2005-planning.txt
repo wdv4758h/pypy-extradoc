@@ -18,6 +18,7 @@ pairing wednesday
 ======================= 
 
 stackless/cps:   (same group continues, "re-"pairing inside)
+
     christian, armin 
     Valentino, Amaury 
     Adrien, Anders 
@@ -28,8 +29,8 @@ andrew/michael: powerpc-backend   (getting there, continues)
 
 bert, samuele, boris, arre, aurelien: different specialization to more HL-backends
 (defined the "ootypes" model, like the "lltypes" but more OO-ish; will start
- to work on the ootyper, as a branch of the rtyper for now; same group continues
- and has split in two subgroups soon -- annotator and ootyper.)
+to work on the ootyper, as a branch of the rtyper for now; same group continues
+and has split in two subgroups soon -- annotator and ootyper.)
 
 llinterpreter:  Carl, (Armin later) 
 (starting on the data model of the ll flow graphs, continues)
@@ -42,10 +43,11 @@ later wednesday:
 discussing compiler & phase 2 work/tasks for the sprint WP09/WP10 
 
 on friday:
+
    * short presentation from logilab/dfki about logic programming/AOP
    * (maybe) presentation about GC work during Summer of Code
 
-peoples present 
+people present 
 ---------------------
 
 armin
