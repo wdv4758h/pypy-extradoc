@@ -1,0 +1,51 @@
+===============================
+SDG Stackless Development Group
+===============================
+
+People:
+-------
+
+
+
+improving / refactoring
+-----------------------
+
+- move stack check out of stackless.h, let it
+  either unwind or raise RuntimeError
+  
+- always use automatic stack check detection
+  by default, and test:
+  
+  - test_annotated.test_recursion_detection()
+  - pypy-c running CPython´s test_builtins.py
+
+- make Stacklessness a translate_pypy option
+
+- add some documentation about how to make
+  a stand-alone target
+
+performance evaluation
+----------------------
+
+- merge stackless support and exception handling
+  to produce just one if clause. Use smnall test
+  programs to measure the effect (see below).
+
+- write smaller stand-alone applications
+  (rpystone, richards), provide benchmark
+  
+- check the efect of false branch predicition
+  (if slp_frame_stack_bottom etc.)
+  
+- instrument generated code to provide statistics
+
+  - do some source ordering by frequency
+
+
+large open tasks
+----------------
+
+- design an interface for RPython code to manipulate
+  the frame chains
+
+- expose to app-level a greenlet built-in module
