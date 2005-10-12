@@ -21,7 +21,8 @@ stackless/cps:   (same group continues, "re-"pairing inside)
     christian, armin 
     Valentino, Amaury 
     Adrien, Anders 
-(see stackless status text soon to be checked in) 
+    
+(see stackless status text http://codespeak.net/pypy/extradoc/sprintinfo/paris/stackless-workplan.txt) 
 
 andrew/michael: powerpc-backend   (getting there, continues)
 
