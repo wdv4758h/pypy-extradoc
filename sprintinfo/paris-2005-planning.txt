@@ -10,32 +10,39 @@ Times (proposal):
     ca. 01:00 pm lunch time 
 
 thursday: breakday  (for some of us: eu-consortium meeting) 
+(during the breakday the big room will be needed for the meeting
+from 1pm, so if somebody wants to work in the afternoon, he has to
+go to one of the small rooms)
 
-
-pairing  tuesday
+pairing wednesday
 ======================= 
 
 stackless/cps:   (same group continues, "re-"pairing inside)
     christian, armin 
     Valentino, Amaury 
     Adrien, Anders 
- 
+(see stackless status text soon to be checked in) 
+
 andrew/michael: powerpc-backend   (getting there, continues)
 
 bert, samuele, boris, arre, aurelien: different specialization to more HL-backends
 (defined the "ootypes" model, like the "lltypes" but more OO-ish; will start
  to work on the ootyper, as a branch of the rtyper for now; same group continues
- and may split in two subgroups soon -- backend and ootyper.)
+ and has split in two subgroups soon -- annotator and ootyper.)
 
-llinterpreter:  Carl, Holger
+llinterpreter:  Carl, (Armin later) 
 (starting on the data model of the ll flow graphs, continues)
 
 
-next status meeting: wed 10:30
+next status meeting: fri 10:30
 
 
 later wednesday: 
 discussing compiler & phase 2 work/tasks for the sprint WP09/WP10 
+
+on friday:
+   * short presentation from logilab/dfki about logic programming/AOP
+   * (maybe) presentation about GC work during Summer of Code
 
 peoples present 
 ---------------------
