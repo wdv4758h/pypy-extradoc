@@ -16,13 +16,13 @@ Annotator related tasks
 
 JIT related work
 -----------------
-- support addresses in the backends
+- (DONE) support addresses in the backends
 - an ll interpreter written in RPython
 - Saving ll graphs plus a loader written in RPython
 
 - Start thinking/experimenting with JIT generation at translation time
 
-- start a genasm back-end
+- (DONE the starting) start a genasm back-end
 
 Threading/concurrency
 ----------------------
@@ -30,12 +30,12 @@ Threading/concurrency
 - release the GIL around system calls
 - understand and possibly fix where the overhead, when threads are enabled, comes from
 
-- generating (single-threaded) stackless C code
+- (DONE) generating (single-threaded) stackless C code
 
 Implementation/translation
 ---------------------------
 
-- stack overflow detection (needed to be able to run many compliancy tests)
+- (somewhat DONE) stack overflow detection (needed to be able to run many compliancy tests)
 - try more interp. level optimisations (dicts with string keys, more agressive use of fastcall*...)
 
 - compute correct max stack size in compiler (?)

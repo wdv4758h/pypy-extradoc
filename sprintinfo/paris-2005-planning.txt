@@ -14,8 +14,25 @@ thursday: breakday  (for some of us: eu-consortium meeting)
 from 1pm, so if somebody wants to work in the afternoon, he has to
 go to one of the small rooms)
 
-pairing wednesday
+pairing friday
 ======================= 
+
+Compiler issues: adrien, arre
+
+ootypes: boris, michael, bert, (arre), (armin), (samuele)
+
+LLinterpreter requirements + plan: carl, holger, (armin), (samuele)
+
+compliancy testing on compiled PyPy, getting py.test to run on compiled PyPy:
+    anders, {christian}, [armin]
+
+- (improve refcounting)
+
+implementing the socket module: amaury, valentino
+
+working on an RPython Numeric module: ludovic, andrew
+
+experiment with callgraph analysis to reorder source code: Christian
 
 stackless/cps:   (same group continues, "re-"pairing inside)
 
