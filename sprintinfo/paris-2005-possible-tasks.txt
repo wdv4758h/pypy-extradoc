@@ -63,7 +63,7 @@ Refactorings/cleanups
 - PyPy option handling unification, passing py.py options to targetpypy*
 - inline (transforms in general) 
 
-- genc: producing multiple .h/.c files tracking Python code origin
+- (DONE) genc: producing multiple .h/.c files tracking Python code origin
 
 Larger whole projects
 ----------------------
