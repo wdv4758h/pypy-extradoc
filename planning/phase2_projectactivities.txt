@@ -1,0 +1,190 @@
+
+Rough preparation draft for saturday-afternoon 20051015 meeting Paris  
+------------------------------------------------------------- 
+
+sprints & conferences 
+-------------------------
+
+
+  *5-11th December (?): 
+  Meeting in Sweden? Change Maker?/Götabergsgatan? 
+  
+  A sprint around bruxelles might make sense, 
+  holger is checking with bruxelles and Louvain-la-neuve 
+  (near bruxelles) people for a sprint beginning of 
+  december.  Bea is checking with Mallorca/Barcelona 
+  regarding the same time frame.  Nothing definitive 
+  yet, alas!    
+
+  *23-29th January: CS Dep. of the Palma de Mallorca University/CS Dep. of the Barcelona University 
+   Bea check dates, Bruxelles/Louvain-la-neuve,  Holger check dates), 
+  
+  *27-29th February: PyCon (24-26 Feb, 2006 Dallas, Texas, Presperint?, Holger) 
+  
+  *April Japan: (1) April 23 to April 29, (2) April 30 to May 5, contact: Yutaka Niibe, 
+  National Institute of AIST, Japan (FSIJ) Akihabara, Tokyo (Bea)
+  
+  *6-9th (?) July: Europython Cern (3-5th July (?) Swizerland, Michael/Holger?) 
+  
+  *21-27th August: University of Limerick/Ireland (Bea)
+
+  *2-8th October: ?
+
+  Other possibilities: Romania, Switzerland (Leysin,Bern), Uganda (Nkozi)
+
+- Conference/y´talks planning: 
+
+  HALF-FIXED:8th December 2005 Calibre/agile development workshop in
+  Bruxelles, Bea, Holger, Alastair attending (or maybe
+  just two persons).  Bea coordinates (Alastair?). 
+
+  FIXED:27th October2005 PMI Chapter Sweden, methodology/PyPy talk in Linköping (Bea)
+
+  HALF-FIXED: CCC 27th-30th December Berlin (pypy technical talk accepted, 
+  non-technical talk pending, may be unlikely, holger is keeping 
+  contact)
+
+  HALF-FIXED: 17th January 2006 (16th and or 18th): IONA/University College Dublin (UCD)+second university, 
+  contact Joe Kiniry UCD, Sean Baker/Niall Donelly IONA)
+  Holger/Bea do talks about PyPy - methodology and tehnical aspects
+
+  FIXED: Solution Linux 2006 (31st Januray-2nd Feb): 
+  Logilab will present PyPy in the "free software models" track. 
+
+  OPEN: PyCon, 24th-26th Feburary: Holger wants to submit one or two proposals 
+  and go there, also doing a py lib and/or pypy-sprint. Bea wants to submit methodology talk.
+  Note that sprints are scheduled after the conf. 
+  DEADLINE: 30th October (in two weeks!) 
+
+  OPEN: 3 of March 2006 Skövde Sweden, CALIBRE Workshop on Distributed Development, 
+  Open Source & Industry- Opportunities, Suspicions, & Strategies (Bea)
+
+  OPEN: XP 2006, 17-22th June 2006 Oulu Finland 
+  Submission date: 1 march 2006 (methodology talk/workshop?/Bea) 
+
+  OPEN: 3-5th July 2006 Europython Cern Switzerland
+  Submission date: ?
+
+  OPEN: OOPSLA 2006 (no date?)
+  Submission date: ?  
+
+  OPEN: Calibre conferences
+
+  OPEN: Agile Alliance conferences?
+  Submission date: ?
+
+  OPEN: ACCU?
+  Submission date:?
+
+pypy technical task planning 
+----------------------------------
+
+Identify tasks to be done in between sprints, start with 
+see paris-2005-possible-tasks.txt:
+ 
+- full compiler/parser integration  
+
+- pypy-sync meetings should constantly track/amend/modify those 
+  technical tasks and in general focus on technical issues 
+  NOTE though: pypy-sync cannot focus too much on EU requirements 
+  because it's a more open/community forum. 
+
+EU-related Workpackage planning planning phase 2 
+------------------------------------------------- 
+
+- WP09 and WP10 done and coordinated by logilab/dfki 
+  people.  they should update the rest of us regarding 
+  planning and also communicate regarding 
+  possible related sprint topics. 
+
+- WP02 dev infrastructure is merlinux responsibility, 
+  should also suggest sprint topics (considering e.g. 
+  a py lib sprint at PyCon ...) 
+
+- other WPs in phase 2 are probably more generally in 
+  common responsibility (like WP04/WP05) with the lead 
+  partner taking special responsibility (towards the EU): 
+
+  - WP03 (HHU) synchronisation CPython 
+  - WP06 (HHU) core optimisations 
+  - WP07 (tismerysoft) translator optimisations 
+  - WP08 (Strakt) dynamic optimisations 
+  - WP14 (Changemaker) dissemination/project representation 
+
+  open: 
+
+  - WP05: left over work for Impara (when they get accepted)? 
+  
+
+EU-related report planning 
+------------------------------------------------- 
+
+People (primary) and co-reviewers (secondary) and completion dates: 
+(lead partner coordinating, technical board evaluating overall consistency)  
+
+DO1.1 Create QA plan for the project
+Primary/Secondary: Bea/Holger
+Completion date: 16th Oct 2005
+
+D04.1 Partial Python Impl:
+Primary/Secondary:Jacob/?
+Completion date:
+  
+D04.2 Complete Python Impl: 
+Primary/Secondary:Jacob?
+Completion date:
+
+D04.3 Parser report:  
+Primary/Secondary:Jacob?
+Completion date:
+
+D04.4 Release PyPy-research-tool: 
+Primary/Secondary:Jacob?
+Completion date:
+
+D05.1 Publish on translating a very-high-level description: 
+Primary/Secondary:Armin/
+Completion date:
+
+D05.2 A compiled, self-contained version of PyPy: 
+Primary/Secondary:Armin/
+Completion date:
+
+D05.3 Publish on implementation with translation aspects: 
+Primary/Secondary:Armin/
+Completion date:
+
+D05.4 Publish on encapsulating low level language aspects: 
+Primary/Secondary:Armin
+Completion date:
+
+D14.1 Report about Milestone/Phase 1:
+Primary/Secondary:Bea/Stephan
+Completion date:21th October 2005
+
+Review planning:
+
+Roadmap:
+
+*31th October 2005: all partners check completeness of timesheets Dec 2004-Oct 2005 
+(Stephan wp1, Jacob wp3,4,5, Bea wp14, all partners)
+
+*5th December 2005: all partners submit timesheets for November 2005
+(Stephan wp1, Jacob wp3,4,5, Bea wp14, all partners)
+
+*9th December 2005: Periodic management/activity reports updated with all data but costs
+(Jacob//Bea)
+
+*15th December 205: submit reports to EC/reviewers
+(Stephan)
+
+*16th December 2005: all partners submit FORM C:s to DFKI (or communicate a new 
+ completion date for this!)
+(Stephan, all partners)
+
+*10th January 2006: review in Brussels
+(Stephan)
+
+*15th of January 2006: submit FORM C:s to EC/PO and possible updated periodic management/
+activity reports
+(Stephan//Jacob,Bea
