@@ -70,4 +70,5 @@ Larger whole projects
 
 - Javascript frontend
 - support for developing C extensions for CPython with RPython code
-
+- writing a sort of flow object space for the llinterpreter
+  to experiment with JIT work
