@@ -2,79 +2,49 @@
 Rough preparation draft for saturday-afternoon 20051015 meeting Paris  
 ------------------------------------------------------------- 
 
-sprints & conferences 
--------------------------
+work group/pairing status 
+------------------------------
 
-
-  *5-11th December (?): 
-  Meeting in Sweden? Change Maker?/Götabergsgatan? 
+- ootypes / rtyper refactoring: 
+  Boris reports: continued to refactor rypting into 
+  non-ll specific and ll-specific parts.  still a lot 
+  of work to be done (currently you can specialize 
+  an empty class with the oo-type system). 
+  bert: squeak backend uses the oo-type system and 
+  creates squeak class definitions. (oo-types are
+  built manually there at the moment). 
   
-  A sprint around bruxelles might make sense, 
-  holger is checking with bruxelles and Louvain-la-neuve 
-  (near bruxelles) people for a sprint beginning of 
-  december.  Bea is checking with Mallorca/Barcelona 
-  regarding the same time frame.  Nothing definitive 
-  yet, alas!    
-
-  *23-29th January: CS Dep. of the Palma de Mallorca University/CS Dep. of the Barcelona University 
-   Bea check dates, Bruxelles/Louvain-la-neuve,  Holger check dates), 
+- socket module: 
+  all the interface is wrapped/implemented at interpreter-level 
+  and is reusing the underlying (cpython) socket module.  There is 
+  not translation/external function calls yet (which will introduce 
+  platform issues).  
   
-  *27-29th February: PyCon (24-26 Feb, 2006 Dallas, Texas, Presperint?, Holger) 
+- numeric module: 
+  started the basic Array type, you can construct such types that 
+  contain floats or integers, and you can have efficient slices 
+  (reusing the same underlying array).  The base Array class 
+  is not connected to storage, subclasses are (specific to floats/ints). 
+ 
+- l3interpreter: 
+  have a refined very-low-level flow graph model, and we can 
+  pass in integers and do addition. also the l3intepreter 
+  is translateable and passes tests.  
   
-  *April Japan: (1) April 23 to April 29, (2) April 30 to May 5, contact: Yutaka Niibe, 
-  National Institute of AIST, Japan (FSIJ) Akihabara, Tokyo (Bea)
-  
-  *6-9th (?) July: Europython Cern (3-5th July (?) Swizerland, Michael/Holger?) 
-  
-  *21-27th August: University of Limerick/Ireland (Bea)
-
-  *2-8th October: ?
-
-  Other possibilities: Romania, Switzerland (Leysin,Bern), Uganda (Nkozi)
-
-- Conference/y´talks planning: 
-
-  HALF-FIXED:8th December 2005 Calibre/agile development workshop in
-  Bruxelles, Bea, Holger, Alastair attending (or maybe
-  just two persons).  Bea coordinates (Alastair?). 
-
-  FIXED:27th October2005 PMI Chapter Sweden, methodology/PyPy talk in Linköping (Bea)
-
-  HALF-FIXED: CCC 27th-30th December Berlin (pypy technical talk accepted, 
-  non-technical talk pending, may be unlikely, holger is keeping 
-  contact)
-
-  HALF-FIXED: 17th January 2006 (16th and or 18th): IONA/University College Dublin (UCD)+second university, 
-  contact Joe Kiniry UCD, Sean Baker/Niall Donelly IONA)
-  Holger/Bea do talks about PyPy - methodology and tehnical aspects
-
-  FIXED: Solution Linux 2006 (31st Januray-2nd Feb): 
-  Logilab will present PyPy in the "free software models" track. 
-
-  OPEN: PyCon, 24th-26th Feburary: Holger wants to submit one or two proposals 
-  and go there, also doing a py lib and/or pypy-sprint. Bea wants to submit methodology talk.
-  Note that sprints are scheduled after the conf. 
-  DEADLINE: 30th October (in two weeks!) 
-
-  OPEN: 3 of March 2006 Skövde Sweden, CALIBRE Workshop on Distributed Development, 
-  Open Source & Industry- Opportunities, Suspicions, & Strategies (Bea)
-
-  OPEN: XP 2006, 17-22th June 2006 Oulu Finland 
-  Submission date: 1 march 2006 (methodology talk/workshop?/Bea) 
-
-  OPEN: 3-5th July 2006 Europython Cern Switzerland
-  Submission date: ?
-
-  OPEN: OOPSLA 2006 (no date?)
-  Submission date: ?  
-
-  OPEN: Calibre conferences
-
-  OPEN: Agile Alliance conferences?
-  Submission date: ?
-
-  OPEN: ACCU?
-  Submission date:?
+- compiler issues
+  ran the core compliancy tests (failing ones are mostly 
+  due to missing weakref support).  problem is that we 
+  are having a mix of all slightly incorrect compiler 
+  (or at least don't know if they/which are correct) 
+  variations.  It seems to make more sense to contribute the
+  whole astcompiler rather than trying to come up with patches
+  to the CPython version. 
+ 
+- translation issues: 
+  compliance tests start to run on pypy-c (test_builtin.py) 
+  but there are likely more bugs/issues lurking. 
+  christian is working on locality of references by 
+  analysing flowgraphs. 
 
 pypy technical task planning 
 ----------------------------------
@@ -88,6 +58,88 @@ see paris-2005-possible-tasks.txt:
   technical tasks and in general focus on technical issues 
   NOTE though: pypy-sync cannot focus too much on EU requirements 
   because it's a more open/community forum. 
+
+- idea is to collect all larger tasks and bring plannings 
+  to the pypy-sync meetings.  Carl is going to do the next 
+  pypy-sync meeting.  Send plans/larger task plannings to
+  the moderators and don't wait until the moderator generates
+  the idea himself. 
+
+
+sprints & conferences 
+-------------------------
+
+  next sprint: 5-11th December in Sweden (Change Maker?/Götabergsgatan?) 
+  Gborg. 
+ 
+  *(10 th January eu review workshop) 
+
+  *23-29th January: CS Dep. of the Palma de Mallorca University/CS Dep. of the Barcelona University 
+   Bea check dates, Bruxelles/Louvain-la-neuve,  Holger check dates), 
+  
+  *27-29th February: PyCon (24-26 Feb, 2006 Dallas, Texas, postsprint, 
+   Michael/Holger, Armin, Christian, Bea), DEADLINE 30th October 
+  
+  *April Japan: (1) April 23 to April 29, (2) April 30 to May 5, contact: Yutaka Niibe, 
+  National Institute of AIST, Japan (FSIJ) Akihabara, Tokyo (Bea), venue for 32 people. 
+  (However, check with the EU).  
+
+  * (IBM workshop possibly end June, holger) 
+  *6-9th (?) July: Europython Cern (3-5th July maybe in Leysin (Armin) Swizerland, 
+   and the post-sprint at CERN, Michael/Holger) 
+  
+  *21-27th August: University of Limerick/Ireland (Bea), maybe good possibility 
+   to present pypy results to researchers. 
+
+  * 2-8th October: ?
+  * November: closure sprint 
+
+  Other possibilities: Romania, Switzerland (Leysin,Bern), Bristol, Uganda (Nkozi), bruxelles 
+
+- Conference/y´talks planning: 
+
+  FIXED:27th October2005 PMI Chapter Sweden, methodology/PyPy talk in Linköping (Bea)
+
+  HALF-FIXED: 8th December 2005 Calibre/agile development workshop in
+  Bruxelles, Bea, Holger, Alastair attending (or maybe
+  just two persons).  Bea coordinates (Alastair?). 
+
+  HALF-FIXED: CCC 27th-30th December Berlin (pypy technical talk accepted, 
+  non-technical talk pending, may be unlikely, holger is keeping 
+  contact)
+
+  HALF-FIXED: 17th January 2006 (16th and or 18th): IONA/University College Dublin (UCD)+second university, 
+  contact Joe Kiniry UCD, Sean Baker/Niall Donelly IONA)
+  Holger/Bea do talks about PyPy - methodology and tehnical aspects
+
+  FIXED: Solution Linux 2006 (31st Januray-2nd Feb): 
+  Logilab will present PyPy in the "free software models" track in Paris. 
+
+  OPEN: PyCon, 24th-26th Feburary: michael/holger/christian/armin want to submit one or two proposals 
+  and go there, also doing a py lib and/or pypy-sprint. Bea wants to submit methodology talk.
+  Note that sprints are scheduled after the conf. 
+  DEADLINE: 30th October (in two weeks!) 
+
+  OPEN: 3 of March 2006 Skövde Sweden, CALIBRE Workshop on Distributed Development, 
+  Open Source & Industry- Opportunities, Suspicions, & Strategies (Bea)
+
+  OPEN: ACCU 19th-22nd April 2005 (michael, jacob) 
+  Submission date:?
+
+  OPEN: XP 2006, 17-22th June 2006 Oulu Finland 
+  Submission date: 1 march 2006 (methodology talk/workshop?/Bea) 
+
+  OPEN: 3-5th July 2006 Europython Cern Switzerland
+  Submission date: ?
+
+  OPEN: OOPSLA 2006 (Samuele, Armin)
+  Submission date: probably 20th March 2006 
+
+  OPEN: Calibre conferences
+
+  OPEN: Agile Alliance conferences?
+  Submission date: ?
+
 
 EU-related Workpackage planning planning phase 2 
 ------------------------------------------------- 
@@ -127,39 +179,39 @@ Primary/Secondary: Bea/Holger
 Completion date: 16th Oct 2005
 
 D04.1 Partial Python Impl:
-Primary/Secondary:Jacob/?
+Primary/Secondary: Jacob / Christian  
 Completion date:
   
 D04.2 Complete Python Impl: 
-Primary/Secondary:Jacob?
+Primary/Secondary: Jacob / Christian 
 Completion date:
 
 D04.3 Parser report:  
-Primary/Secondary:Jacob?
+Primary/Secondary: ludovic,adrien / Arre 
 Completion date:
 
 D04.4 Release PyPy-research-tool: 
-Primary/Secondary:Jacob?
+Primary/Secondary: Samuele / Ludovic 
 Completion date:
 
 D05.1 Publish on translating a very-high-level description: 
-Primary/Secondary:Armin/
+Primary/Secondary: Armin / Michael 
 Completion date:
 
 D05.2 A compiled, self-contained version of PyPy: 
-Primary/Secondary:Armin/
+Primary/Secondary: dfki/Anders L. / Jacob  
 Completion date:
 
 D05.3 Publish on implementation with translation aspects: 
-Primary/Secondary:Armin/
+Primary/Secondary: Carl / Armin, Christian
 Completion date:
 
 D05.4 Publish on encapsulating low level language aspects: 
-Primary/Secondary:Armin
+Primary/Secondary: Armin / holger 
 Completion date:
 
 D14.1 Report about Milestone/Phase 1:
-Primary/Secondary:Bea/Stephan
+Primary/Secondary: Bea/Stephan
 Completion date:21th October 2005
 
 Review planning:
@@ -175,7 +227,7 @@ Roadmap:
 *9th December 2005: Periodic management/activity reports updated with all data but costs
 (Jacob//Bea)
 
-*15th December 205: submit reports to EC/reviewers
+*15th December 2005: submit reports to EC/reviewers
 (Stephan)
 
 *16th December 2005: all partners submit FORM C:s to DFKI (or communicate a new 
