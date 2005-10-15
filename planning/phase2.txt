@@ -1,0 +1,100 @@
+
+Rough preparation draft for saturday-afternoon meeting Paris  
+------------------------------------------------------------- 
+
+sprints & conferences 
+-------------------------
+
+- 8th December Calibre/agile development workshop in
+  Bruxelles, Bea, Holger, Alastair attending (or maybe
+  just two persons).  Bea coordinates. 
+
+- December sprint: a sprint around bruxelles might make sense, 
+  holger is checking with bruxelles and Louvain-la-neuve 
+  (near bruxelles) people for a sprint beginning of 
+  december.  Bea is checking with Mallorca/Barcelona 
+  regarding the same time frame.  Nothing definitive 
+  yet, alas!  Do we have a double-fallback?  
+  Meeting in Sweden? 
+
+- more sprint planning: 
+
+  end january next sprint (mallorca/barcelona), 
+  february around PyCon (27th-XXX) (Dallas, Texas) 
+  beginning march romania or switzerland (bern?, swiss italian or leysin?) 
+  end of april Japan (Bea is investigating dates & location) 
+  June, EuroPython (CERN, switzerland, michael/holger?) 
+  August, Ireland (through Bea contacts) 
+  October, ... 
+
+- conference planning: 
+
+  HALF-FIXED: CCC 27th-30th December Berlin (pypy technical talk accepted, 
+  non-technical talk pending, may be unlikely, holger is keeping 
+  contact) 
+
+  FIXED: Solution Linux 2006 (31st Januray-2nd Feb): 
+  Logilab will present PyPy in the "free software models" track. 
+
+  OPEN: PyCon, 24th-26th Feburary: Holger wants to submit one or two proposals 
+  and go there, also doing a py lib and/or pypy-sprint.  Note that 
+  sprints are scheduled after the conf. 
+  DEADLINE: 30th October (in two weeks!) 
+
+  OPEN: OOPSLA? DEADLINE? 
+
+  OPEN: XP-conferences? DEADLINES? 
+
+pypy technical task planning 
+----------------------------------
+
+see paris-2005-possible-tasks.txt 
+- full compiler/parser integration  
+
+- pypy-sync meetings should constantly track/amend/modify those 
+  technical tasks and in general focus on technical issues 
+  NOTE though: pypy-sync cannot focus too much on EU requirements 
+  because it's a more open/community forum. 
+
+EU-related Workpackage planning planning phase 2 
+------------------------------------------------- 
+
+- WP09 and WP10 done and coordinated by logilab/dfki 
+  people.  they should update the rest of us regarding 
+  planning and also communicate regarding 
+  possible related sprint topics. 
+
+- WP02 dev infrastructure is in merlinux responsibility, 
+  should also suggest sprint topics (considering e.g. 
+  a py lib sprint at PyCon ...) 
+
+- other WPs in phase 2 are probably more generally in 
+  common responsibility (like WP04/WP05) with the lead 
+  partner taking special responsibility (towards the EU): 
+
+  - WP03 (HHU) synchronisation CPython 
+  - WP06 (HHU) core optimisations 
+  - WP07 (tismerysoft) translator optimisations 
+  - WP08 (Strakt) dynamic optimisations 
+  - WP14 (Changemaker) dissemination/project representation 
+
+  open: 
+
+  - WP05: left over work for Impara (when they get accepted)? 
+  
+
+EU-related report planning 
+------------------------------------------------- 
+
+people and co-reviewers (lead parnter coordinating, 
+technical board evaluating overall consistency)  
+
+D04.1 Partial Python Impl:  
+D04.2 Complete Python Impl: 
+D04.3 Parser report:  
+D04.4 Release PyPy-research-tool: 
+
+D05.1 ... 
+
+... 
+
