@@ -122,6 +122,10 @@ We introduce an RPython type ``continuation`` and a built-in function
 * every continuation must be resumed once and only once.  Not resuming
   it at all causes a leak.  Resuming it several times causes a crash.
 
+* a function that called ``yield_continuation()`` should not raise.  It
+  would have no implicit continuation to propagate the exception to.
+  That would be a crashingly bad idea.
+
 The following example would print the numbers from 1 to 7 in order::
 
     def g():
