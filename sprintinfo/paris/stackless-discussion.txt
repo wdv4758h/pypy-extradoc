@@ -83,3 +83,63 @@ is not about Python-level exceptions without further support.
 
 This approach appears to give us full continuations for free.
 
+
+Exposing an interface to RPython
+--------------------------------
+
+Here is a tentative design of a minimal interface that might be good
+enough to implement, say, app-level greenlets or tasklets as a mixed
+module.
+
+We introduce an RPython type ``continuation`` and a built-in function
+``yield_continuation()`` that work as follows (see example below):
+
+* The built-in function ``yield_continuation()`` causes the current
+  function's state to be captured in a new ``continuation`` object that
+  is returned to the parent.  Only one frame, the current one, is
+  captured this way.  The current frame is suspended and the caller
+  continues to run.
+
+* A ``continuation`` object can be jumped to by calling its ``switch()``
+  method with no argument.
+
+* ``yield_continuation()`` and ``switch()`` themselves return a new
+  ``continuation`` object: the freshly captured state of the caller of
+  the source ``switch()`` that was just executed, or None in the case
+  described below.
+
+* ``yield_continuation()`` only works when called from a function whose
+  return type is precisely ``continuation``.  In other words this
+  function must also contain a regular return statement that returns a
+  ``continuation``.  When the captured continuation is later resumed and
+  the function eventually returns via this regular return statement,
+  then the returned ``continuation`` object designates the place where
+  execution should switch to (i.e. execution does not return to the
+  original caller).  In such an implicit switch, a None is returned to
+  the ``switch()`` or ``yield_continuation()`` at place that we switch
+  to.
+
+* every continuation must be resumed once and only once.  Not resuming
+  it at all causes a leak.  Resuming it several times causes a crash.
+
+The following example would print the numbers from 1 to 7 in order::
+
+    def g():
+        print 2
+        cont_before_5 = yield_continuation()
+        print 4
+        cont_before_7 = cont_before_5.switch()
+        print 6
+        return cont_before_7
+
+    def f():
+        print 1
+        cont_before_4 = g()
+        print 3
+        cont_before_6 = cont_before_4.switch()
+        print 5
+        cont_after_return = cont_before_6.switch()
+        print 7
+        assert cont_after_return is None
+
+    f()
