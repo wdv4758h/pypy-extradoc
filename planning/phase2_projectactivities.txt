@@ -180,35 +180,35 @@ Completion date: 16th Oct 2005
 
 D04.1 Partial Python Impl:
 Primary/Secondary: Jacob / Christian  
-Completion date:
+Completion date: 28th Oct 2005
   
 D04.2 Complete Python Impl: 
 Primary/Secondary: Jacob / Christian 
-Completion date:
+Completion date: 4th Nov 2005
 
 D04.3 Parser report:  
 Primary/Secondary: ludovic,adrien / Arre 
-Completion date:
+Completion date: 11th Nov 2005
 
 D04.4 Release PyPy-research-tool: 
 Primary/Secondary: Samuele / Ludovic 
-Completion date:
+Completion date: 11th Nov 2005
 
 D05.1 Publish on translating a very-high-level description: 
 Primary/Secondary: Armin / Michael 
-Completion date:
+Completion date: 4th Nov 2005
 
 D05.2 A compiled, self-contained version of PyPy: 
 Primary/Secondary: dfki/Anders L. / Jacob  
-Completion date:
+Completion date: 28th Oct 2005
 
 D05.3 Publish on implementation with translation aspects: 
 Primary/Secondary: Carl / Armin, Christian
-Completion date:
+Completion date: TBA
 
 D05.4 Publish on encapsulating low level language aspects: 
 Primary/Secondary: Armin / holger 
-Completion date:
+Completion date: TBA
 
 D14.1 Report about Milestone/Phase 1:
 Primary/Secondary: Bea/Stephan
