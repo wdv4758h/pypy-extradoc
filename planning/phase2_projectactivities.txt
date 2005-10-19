@@ -77,8 +77,9 @@ sprints & conferences
   *23-29th January: CS Dep. of the Palma de Mallorca University/CS Dep. of the Barcelona University 
    Bea check dates, Bruxelles/Louvain-la-neuve,  Holger check dates), 
   
-  *27-29th February: PyCon (24-26 Feb, 2006 Dallas, Texas, postsprint, 
-   Michael/Holger, Armin, Christian, Bea), DEADLINE 30th October 
+  *27 Feb - 1st March: PyCon (24-26 Feb, 2006 Dallas, Texas,
+   postsprint, Michael/Holger, Armin, Christian, Bea), DEADLINE 30th
+   October
   
   *April Japan: (1) April 23 to April 29, (2) April 30 to May 5, contact: Yutaka Niibe, 
   National Institute of AIST, Japan (FSIJ) Akihabara, Tokyo (Bea), venue for 32 people. 
