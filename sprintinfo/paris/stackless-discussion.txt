@@ -98,7 +98,8 @@ We introduce an RPython type ``continuation`` and a built-in function
   function's state to be captured in a new ``continuation`` object that
   is returned to the parent.  Only one frame, the current one, is
   captured this way.  The current frame is suspended and the caller
-  continues to run.
+  continues to run.  Note that the caller is only resumed once: when
+  ``yield_continuation()`` is called.  See below.
 
 * A ``continuation`` object can be jumped to by calling its ``switch()``
   method with no argument.
@@ -108,16 +109,13 @@ We introduce an RPython type ``continuation`` and a built-in function
   the source ``switch()`` that was just executed, or None in the case
   described below.
 
-* ``yield_continuation()`` only works when called from a function whose
-  return type is precisely ``continuation``.  In other words this
-  function must also contain a regular return statement that returns a
-  ``continuation``.  When the captured continuation is later resumed and
-  the function eventually returns via this regular return statement,
-  then the returned ``continuation`` object designates the place where
-  execution should switch to (i.e. execution does not return to the
-  original caller).  In such an implicit switch, a None is returned to
-  the ``switch()`` or ``yield_continuation()`` at place that we switch
-  to.
+* the function that called ``yield_continuation()`` also has a normal
+  return statement, like all functions.  This statement must return
+  another ``continuation`` object.  The latter is *not* returned to the
+  original caller; there is no way to return several times to the
+  caller.  Instead, it designates the place to which the execution must
+  jump, as if by a ``switch()``.  The place to which we jump this way
+  will see a None as the source continuation.
 
 * every continuation must be resumed once and only once.  Not resuming
   it at all causes a leak.  Resuming it several times causes a crash.
