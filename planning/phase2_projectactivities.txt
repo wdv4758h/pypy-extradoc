@@ -142,7 +142,7 @@ sprints & conferences
   Submission date: ?
 
 
-EU-related Workpackage planning planning phase 2 
+EU-related Workpackage planning phase 2 
 ------------------------------------------------- 
 
 - WP09 and WP10 done and coordinated by logilab/dfki 
@@ -177,7 +177,7 @@ People (primary) and co-reviewers (secondary) and completion dates:
 
 DO1.1 Create QA plan for the project
 Primary/Secondary: Bea/Holger
-Completion date: 16th Oct 2005
+Completion date: 21th Oct 2005
 
 D04.1 Partial Python Impl:
 Primary/Secondary: Jacob / Christian  
