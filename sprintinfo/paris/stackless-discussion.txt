@@ -91,57 +91,57 @@ Here is a tentative design of a minimal interface that might be good
 enough to implement, say, app-level greenlets or tasklets as a mixed
 module.
 
-We introduce an RPython type ``continuation`` and a built-in function
-``yield_continuation()`` that work as follows (see example below):
+We introduce an RPython type ``frame_stack_top`` and a built-in function
+``yield_current_frame_to_caller()`` that work as follows (see example below):
 
-* The built-in function ``yield_continuation()`` causes the current
-  function's state to be captured in a new ``continuation`` object that
-  is returned to the parent.  Only one frame, the current one, is
-  captured this way.  The current frame is suspended and the caller
-  continues to run.  Note that the caller is only resumed once: when
-  ``yield_continuation()`` is called.  See below.
+* The built-in function ``yield_current_frame_to_caller()`` causes the current
+  function's state to be captured in a new ``frame_stack_top`` object that is
+  returned to the parent.  Only one frame, the current one, is captured this
+  way.  The current frame is suspended and the caller continues to run.  Note
+  that the caller is only resumed once: when
+  ``yield_current_frame_to_caller()`` is called.  See below.
 
-* A ``continuation`` object can be jumped to by calling its ``switch()``
+* A ``frame_stack_top`` object can be jumped to by calling its ``switch()``
   method with no argument.
 
-* ``yield_continuation()`` and ``switch()`` themselves return a new
-  ``continuation`` object: the freshly captured state of the caller of
-  the source ``switch()`` that was just executed, or None in the case
-  described below.
+* ``yield_current_frame_to_caller()`` and ``switch()`` themselves return a new
+  ``frame_stack_top`` object: the freshly captured state of the caller of the
+  source ``switch()`` that was just executed, or None in the case described
+  below.
 
-* the function that called ``yield_continuation()`` also has a normal
-  return statement, like all functions.  This statement must return
-  another ``continuation`` object.  The latter is *not* returned to the
-  original caller; there is no way to return several times to the
-  caller.  Instead, it designates the place to which the execution must
-  jump, as if by a ``switch()``.  The place to which we jump this way
-  will see a None as the source continuation.
+* the function that called ``yield_current_frame_to_caller()`` also has a
+  normal return statement, like all functions.  This statement must return
+  another ``frame_stack_top`` object.  The latter is *not* returned to the
+  original caller; there is no way to return several times to the caller.
+  Instead, it designates the place to which the execution must jump, as if by
+  a ``switch()``.  The place to which we jump this way will see a None as the
+  source frame stack top.
 
-* every continuation must be resumed once and only once.  Not resuming
+* every frame stack top must be resumed once and only once.  Not resuming
   it at all causes a leak.  Resuming it several times causes a crash.
 
-* a function that called ``yield_continuation()`` should not raise.  It
-  would have no implicit continuation to propagate the exception to.
-  That would be a crashingly bad idea.
+* a function that called ``yield_current_frame_to_caller()`` should not raise.
+  It would have no implicit parent frame to propagate the exception to.  That
+  would be a crashingly bad idea.
 
 The following example would print the numbers from 1 to 7 in order::
 
     def g():
         print 2
-        cont_before_5 = yield_continuation()
+        frametop_before_5 = yield_current_frame_to_caller()
         print 4
-        cont_before_7 = cont_before_5.switch()
+        frametop_before_7 = frametop_before_5.switch()
         print 6
-        return cont_before_7
+        return frametop_before_7
 
     def f():
         print 1
-        cont_before_4 = g()
+        frametop_before_4 = g()
         print 3
-        cont_before_6 = cont_before_4.switch()
+        frametop_before_6 = frametop_before_4.switch()
         print 5
-        cont_after_return = cont_before_6.switch()
+        frametop_after_return = frametop_before_6.switch()
         print 7
-        assert cont_after_return is None
+        assert frametop_after_return is None
 
     f()
