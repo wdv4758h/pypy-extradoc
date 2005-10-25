@@ -1,0 +1,38 @@
+Author Names
+------------
+
+(from) Michael Hudson, Holger Krekel, Armin Rigo, Christian Tismer
+
+Contact Information
+-------------------
+
+pypy-dev?
+
+Requested Timeslot
+------------------
+
+45 minutes?  Or two 30 minutes?  Or?
+
+Summary of proposed presentation
+--------------------------------
+
+I guess the main progress has been on translation stuff (rtyper, etc)
+since the last pycon.
+
+Presentation Outline
+--------------------
+
+Something like:
+
+- Introduction to PyPy
+- Overview (with the fruit object space again? :)
+- Where we are now
+- What we do next
+- ...
+- Profit!
+
+Intended audience
+-----------------
+
+Anyone interested, talk should be accessible to anyone who knows
+Python reasonably well.
