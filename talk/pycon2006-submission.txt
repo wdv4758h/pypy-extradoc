@@ -16,8 +16,11 @@ Requested Timeslot
 Summary of proposed presentation
 --------------------------------
 
-I guess the main progress has been on translation stuff (rtyper, etc)
-since the last pycon.
+PyPy, the notorious Python-in-Python project reached a significant
+milestone in the summer of 2005: being able to produce a standalone
+python interpreter with no dependencies on any of CPython's C code.
+This talk will describe the toolchain that got us to this point and
+what we plan on doing with it next.
 
 Presentation Outline
 --------------------
@@ -25,11 +28,11 @@ Presentation Outline
 Something like:
 
 - Introduction to PyPy
+- Demo of pypy-c.
 - Overview (with the fruit object space again? :)
-- Where we are now
-- What we do next
-- ...
-- Profit!
+- Our toolchain: the annotator, the rtyper, the backends.
+- Future plans: JIT, logic programming, other backends.
+- About the project: The EU, sprints, TDD, etc.
 
 Intended audience
 -----------------
