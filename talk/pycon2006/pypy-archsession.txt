@@ -1,0 +1,47 @@
+Author Names
+------------
+
+(from) Michael Hudson, Holger Krekel, Armin Rigo, Christian Tismer
+
+Contact Information
+-------------------
+
+pypy-dev?
+
+Requested Timeslot
+------------------
+
+45 minutes or 30 minutes. both possible. 
+
+Summary of proposed presentation
+--------------------------------
+
+After reaching important milestones, the PyPy project is 
+now heading towards building a specializing JIT-compiler, 
+stackless features and translation to higher level languages 
+into the code base.   In this session we will present 
+and interactively discuss with the audience basic 
+architectural pictures.  We'd are going to emphasize the 
+various emerging possibilities for further development 
+part of which will be an ongoing effort of the 
+European Union's funded part of the PyPy project. 
+
+Presentation Outline
+--------------------
+
+We'll describe architectural pictures and point 
+out extension and optimization possibilities: 
+
+- Language Implementation: Bytecode Interpreter and Object Space interaction
+- Translation to low level languages (C/LLVM)
+- Translation to higher level languages (e.g. Squeak/Java) 
+- JIT-compiler architecture (very-low-level interpreter) 
+- Interweaving of Garbage Collection, threading and stackless
+  operations into the translation process 
+
+Intended audience
+-----------------
+
+People who feel comfortable with receiving too much information 
+and accept that there are more levels of architecture involved 
+than a single person can instantly cope with. 
