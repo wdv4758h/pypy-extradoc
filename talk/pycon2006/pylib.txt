@@ -39,7 +39,7 @@ Apart from its intense usage in the PyPy project
 a number of other projects have adapted its methods. 
 We plan to give usage examples for various parts 
 of the py library.  The current key parts of the py lib 
-we are to present: 
+we will present are:
 
 - py.log: keyword & subscription based lazy logging 
 - py.compat: use newer standard library modules from older
@@ -63,4 +63,4 @@ Intended audience
 -----------------
 
 All python developers (who are interested in lightweight libraries and 
-lean pythonnic APIs in order to support agile development). 
+lean pythonic APIs in order to support agile development). 
