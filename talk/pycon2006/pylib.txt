@@ -1,12 +1,13 @@
 Author Names
 ------------
 
-(from) Holger Krekel 
+(from) Holger Krekel, Armin Rigo 
 
 Contact Information
 -------------------
 
 holger krekel <hpk@merlinux.de>
+py-dev@codespeak.net (py lib developers list) 
 
 Requested Timeslot
 ------------------
@@ -18,10 +19,10 @@ Summary of proposed presentation
 
 Title: using the py library (apart from py.test) 
 
-Already known for its widely used "py.test" testing tool, the
+Already known for the widely used py.test tool, the
 "py lib" has more to offer.  We are going to explore the
-experimental package "name export mechanism" involving lazy
-imports, a lightweight tag/keyword-based logging scheme, 
+experimental package "name export mechanism" which involves 
+lazy imports, a lightweight tag/keyword-based logging scheme, 
 subversion and local Path objects and compatibility modules that 
 make recent Python library modules uniformly available from older 
 Python versions.  We also will glance into the current state of 
@@ -57,10 +58,10 @@ We'll conclude with the next challenges for py lib development:
 - extending/refactoring py.path to support in-memory 
   and other filesystems 
 - integrating twisted testing functionality into py.test 
-- release plan 
+- a release plan 
 
 Intended audience
 -----------------
 
 All python developers (who are interested in lightweight libraries and 
-lean pythonic APIs in order to support agile development). 
+lean pythonic APIs in order to support agile development)
