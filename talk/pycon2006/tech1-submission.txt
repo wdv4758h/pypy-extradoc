@@ -20,21 +20,20 @@ PyPy, the notorious Python-in-Python project reached a significant
 milestone in the summer of 2005: being able to produce a standalone
 python interpreter with no dependencies on any of CPython's C code.
 
-This talk will describe the toolchain that got us to this point and
-what we plan on doing with it next.
+This talk will describe as much of the toolchain that got us to this
+point as it's possible to cram into 30 minutes :).
 
 Presentation Outline
 --------------------
 
-- Introduction to PyPy
+- Introduction to PyPy.
 - Demo of pypy-c.
-- Overview (with the fruit object space again? :)
-- Our toolchain: 
-  + the flow object space
-  + the annotator
-  + the rtyper
-  + the backends
-- Future plans: JIT, logic programming, other backends.
+- Overview.
+- Our Toolchain: 
+  + The Flow Object Space.
+  + The Annotator.
+  + The RTyper.
+  + The Backend(s)
 
 Intended audience
 -----------------
