@@ -34,7 +34,7 @@ Presentation Outline
   + The Flow Object Space.
   + The Annotator.
   + The RTyper.
-  + The Backend(s)
+  + The low level backend(s)
 
 Intended audience
 -----------------
