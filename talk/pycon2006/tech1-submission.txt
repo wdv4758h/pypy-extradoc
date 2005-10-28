@@ -1,12 +1,13 @@
 Author Names
 ------------
 
-(from) Michael Hudson, (anyone else?)
+Michael Hudson (anyone else?)
 
 Contact Information
 -------------------
 
-pypy-dev?
+pypy-dev@codespeak.net <- preferred.
+mwh@python.net <- if the above is unacceptable for some reason.
 
 Requested Timeslot
 ------------------
