@@ -16,15 +16,15 @@ Requested Timeslot
 Summary of proposed presentation
 --------------------------------
 
-After reaching important milestones, the PyPy project is 
-now heading towards building a specializing JIT-compiler, 
-stackless features and translation to higher level languages 
-into the code base.   In this session we will present 
-and interactively discuss with the audience basic 
-architectural pictures.  We'd are going to emphasize the 
-various emerging possibilities for further development 
-part of which will be an ongoing effort of the 
-European Union's funded part of the PyPy project. 
+After reaching important milestones, the PyPy project is now
+(starting autumn 2005) heading towards building a specializing
+JIT-compiler, stackless features and translation to higher
+level languages into the code base.   In this session we will
+present and interactively discuss with the audience basic
+architectural pictures.  We'd are going to emphasize the
+various emerging possibilities for further development part of
+which will be an ongoing effort of the European Union's funded
+part of the PyPy project. 
 
 Presentation Outline
 --------------------
