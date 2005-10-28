@@ -1,12 +1,12 @@
 Author Names
 ------------
 
-Michael Hudson (anyone else?)
+Michael Hudson, Christian Tismer 
 
 Contact Information
 -------------------
 
-pypy-dev@codespeak.net <- preferred.
+pypy-dev@codespeak.net <- preferred (is a mailing list)
 mwh@python.net <- if the above is unacceptable for some reason.
 
 Requested Timeslot
