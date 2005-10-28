@@ -1,17 +1,20 @@
 Author Names
 ------------
 
-(from) Michael Hudson, Holger Krekel, Armin Rigo, Christian Tismer
+(from) Holger Krekel, Armin Rigo
 
 Contact Information
 -------------------
 
-pypy-dev?
+pypy-dev@codespeak.net (developer mailing list)
+arigo@tunes.org 
+hpk@merlinux.de 
 
 Requested Timeslot
 ------------------
 
-45 minutes or 30 minutes. both possible. 
+45 minutes or 30 minutes. both possible (the talk can be considered
+a kind of tutorial on PyPy architectural pictures). 
 
 Summary of proposed presentation
 --------------------------------
@@ -35,7 +38,7 @@ out extension and optimization possibilities:
 - Language Implementation: Bytecode Interpreter and Object Space interaction
 - Translation to low level languages (C/LLVM)
 - Translation to higher level languages (e.g. Squeak/Java) 
-- JIT-compiler architecture (very-low-level interpreter) 
+- JIT-compiler architecture (very-low-level/l3 interpreter) 
 - Interweaving of Garbage Collection, threading and stackless
   operations into the translation process 
 
