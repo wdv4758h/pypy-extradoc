@@ -1,7 +1,7 @@
 Author Names
 ------------
 
-(from) Michael Hudson, Holger Krekel, Armin Rigo, Christian Tismer
+(from) Michael Hudson, (anyone else?)
 
 Contact Information
 -------------------
@@ -11,7 +11,7 @@ pypy-dev?
 Requested Timeslot
 ------------------
 
-45 minutes?  Or two 30 minutes?  Or?
+30 minutes.
 
 Summary of proposed presentation
 --------------------------------
@@ -19,20 +19,22 @@ Summary of proposed presentation
 PyPy, the notorious Python-in-Python project reached a significant
 milestone in the summer of 2005: being able to produce a standalone
 python interpreter with no dependencies on any of CPython's C code.
+
 This talk will describe the toolchain that got us to this point and
 what we plan on doing with it next.
 
 Presentation Outline
 --------------------
 
-Something like:
-
 - Introduction to PyPy
 - Demo of pypy-c.
 - Overview (with the fruit object space again? :)
-- Our toolchain: the annotator, the rtyper, the backends.
+- Our toolchain: 
+  + the flow object space
+  + the annotator
+  + the rtyper
+  + the backends
 - Future plans: JIT, logic programming, other backends.
-- About the project: The EU, sprints, TDD, etc.
 
 Intended audience
 -----------------
