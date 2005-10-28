@@ -11,13 +11,12 @@ holger krekel <hpk@merlinux.de>
 Requested Timeslot
 ------------------
 
-30 minutes (or 45 minutes. both possible). 
-
+45 minutes tutorial.
 
 Summary of proposed presentation
 --------------------------------
 
-Title: py library and beyond 
+Title: using the py library (apart from py.test) 
 
 Already known for its widely used "py.test" testing tool, the
 "py lib" has more to offer.  We are going to explore the
@@ -28,7 +27,8 @@ make recent Python library modules uniformly available from older
 Python versions.  We also will glance into the current state of 
 "py.execnet" which explores new interprocess-communication 
 facilities.  All of these features are already used by a growing 
-number of projects.  We will give an overview of what comes next. 
+number of projects.  We will give interactive examples and 
+conclude with an overview of what comes next. 
 
 Presentation Outline
 --------------------
@@ -37,8 +37,9 @@ The py lib is a development support library
 and evolves from a strictly test-driven process. 
 Apart from its intense usage in the PyPy project 
 a number of other projects have adapted its methods. 
-
-The current key parts of the py lib we are to present: 
+We plan to give usage examples for various parts 
+of the py library.  The current key parts of the py lib 
+we are to present: 
 
 - py.log: keyword & subscription based lazy logging 
 - py.compat: use newer standard library modules from older
@@ -47,10 +48,10 @@ The current key parts of the py lib we are to present:
               is all you ever need to do).
 - py.path.*: path objects unifying access to svn- and
              local filesystems. 
-- py.execnet: distributing programs across ssh- and process
-              networks. 
+- py.execnet: ad-hoc distributing programs across ssh- and process
+              barriers. 
 
-We look at the next challenges for py lib development: 
+We'll conclude with the next challenges for py lib development: 
 
 - extending py.execnet to use it for peer-to-peer situations
 - extending/refactoring py.path to support in-memory 
