@@ -46,8 +46,8 @@ skills and learnings from this.
 
 We will relate the various agile techniques used in PyPy
 and other projects/companies to the agile practices known from 
-the work in the Agile Alliance (XP, Scrum, Crystal) and tell
-you what we know of how other projects are doing it.  
+the work in the Agile Alliance (XP, Scrum, Crystal) in order to show how 
+agile techniques have been adopted and evolved by the Python community. 
 
 Lastly we will also share our experience of various challenges and 
 possibilities when integrating the different cultures and skills from 
