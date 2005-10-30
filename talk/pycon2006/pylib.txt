@@ -7,7 +7,9 @@ Contact Information
 -------------------
 
 holger krekel <hpk@merlinux.de>
+Armin Rigo <arigo@tunes.org> 
 py-dev@codespeak.net (py lib developers list) 
+http://codespeak.net/py/  (web page)
 
 Requested Timeslot
 ------------------
@@ -21,7 +23,7 @@ Title: using the py library (apart from py.test)
 
 Already known for the widely used py.test tool, the
 "py lib" has more to offer.  We are going to explore the
-experimental package "name export mechanism" which involves 
+experimental package "name export mechanism" also involving
 lazy imports, a lightweight tag/keyword-based logging scheme, 
 subversion and local Path objects and compatibility modules that 
 make recent Python library modules uniformly available from older 
@@ -29,22 +31,20 @@ Python versions.  We also will glance into the current state of
 "py.execnet" which explores new interprocess-communication 
 facilities.  All of these features are already used by a growing 
 number of projects.  We will give interactive examples and 
-conclude with an overview of what comes next. 
+conclude with an outlook. 
 
 Presentation Outline
 --------------------
 
-The py lib is a development support library 
-and evolves from a strictly test-driven process. 
-Apart from its intense usage in the PyPy project 
-a number of other projects have adapted its methods. 
-We plan to give usage examples for various parts 
-of the py library.  The current key parts of the py lib 
-we will present are:
+The py lib is a development support library and evolves itself
+from a strictly test-driven development process.  Apart from
+its intense usage in the PyPy project a number of other
+projects have adapted its methods.  We plan to give usage
+examples for various parts of the py library.  The current key
+parts of the py lib we will present are:
 
-- py.log: keyword & subscription based lazy logging 
-- py.compat: use newer standard library modules from older
-             python versions
+- py.log: keyword/subscription based lazy logging 
+- py.compat: provides standard library modules for older python versions
 - py.initpkg: export name/lazy import mechanism ("import py" 
               is all you ever need to do).
 - py.path.*: path objects unifying access to svn- and
@@ -52,11 +52,12 @@ we will present are:
 - py.execnet: ad-hoc distributing programs across ssh- and process
               barriers. 
 
-We'll conclude with the next challenges for py lib development: 
+We'll conclude with some of the next challenges for py lib
+development: 
 
 - extending py.execnet to use it for peer-to-peer situations
 - extending/refactoring py.path to support in-memory 
-  and other filesystems 
+  and in general more filesystems 
 - integrating twisted testing functionality into py.test 
 - a release plan 
 
