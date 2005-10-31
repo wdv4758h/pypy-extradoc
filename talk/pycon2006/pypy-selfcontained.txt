@@ -37,7 +37,7 @@ Presentation Outline
 
   + "pypy-c" is the name of the binary produced by the translation
     process.
-  + Will just run some python commands interactively to show how
+  + We will run some python commands interactively to show how
     similar we are to CPython.
 
 - Overview.
