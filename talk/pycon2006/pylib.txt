@@ -21,45 +21,30 @@ Summary of proposed presentation
 
 Title: using the py library (apart from py.test) 
 
-Already known for the widely used py.test tool, the
-"py lib" has more to offer.  We are going to explore the
-experimental package "name export mechanism" also involving
-lazy imports, a lightweight tag/keyword-based logging scheme, 
-subversion and local Path objects and compatibility modules that 
-make recent Python library modules uniformly available from older 
-Python versions.  We also will glance into the current state of 
-"py.execnet" which explores new interprocess-communication 
-facilities.  All of these features are already used by a growing 
-number of projects.  We will give interactive examples and 
-conclude with an outlook. 
-
-Presentation Outline
---------------------
-
 The py lib is a development support library and evolves itself
-from a strictly test-driven development process.  Apart from
-its intense usage in the PyPy project a number of other
-projects have adapted its methods.  We plan to give usage
-examples for various parts of the py library.  The current key
-parts of the py lib we will present are:
+from a strictly test-driven development process.  Already
+known for the widely used py.test tool, the "py lib" has more
+to offer.  
 
-- py.log: keyword/subscription based lazy logging 
-- py.compat: provides standard library modules for older python versions
+Apart from its intense usage in the PyPy project a number of
+other projects have adapted its methods.  We plan to give
+usage examples for various parts of the py library: 
+
+- py.log:     keyword/subscription based lazy logging 
+- py.compat:  provides standard library modules for older python versions
 - py.initpkg: export name/lazy import mechanism ("import py" 
               is all you ever need to do).
-- py.path.*: path objects unifying access to svn- and
-             local filesystems. 
+- py.path:    path objects unifying access to svn- and
+              local filesystems. 
 - py.execnet: ad-hoc distributing programs across ssh- and process
               barriers. 
 
-We'll conclude with some of the next challenges for py lib
-development: 
+All of these features are already used by a growing number of 
+projects.  We will give interactive examples and conclude 
+with an outlook. 
 
-- extending py.execnet to use it for peer-to-peer situations
-- extending/refactoring py.path to support in-memory 
-  and in general more filesystems 
-- integrating twisted testing functionality into py.test 
-- a release plan 
+Presentation Outline (optional)
+---------------------------------
 
 Intended audience
 -----------------
