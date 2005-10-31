@@ -31,9 +31,6 @@ We report our experiences from the first year of the PyPy
 project which has a 7 company/university consortium and a
 1.3 Million Euro research grant from the European Union.
 
-Presentation outline 
---------------------
-
 We'd like to present and discuss models and experiences
 for connecting open-source/hacking culture driven development 
 to money related projects and goals with the audience.  
