@@ -29,11 +29,8 @@ various emerging possibilities for further development part of
 which will be an ongoing effort of the European Union's funded
 part of the PyPy project. 
 
-Presentation Outline
---------------------
-
-We'll describe architectural pictures and point 
-out extension and optimization possibilities: 
+In particular, we'll describe the following architectural pictures 
+and point out extension and optimization possibilities: 
 
 - Language Implementation: Bytecode Interpreter and Object Space interaction
 - Translation to low level languages (C/LLVM)
