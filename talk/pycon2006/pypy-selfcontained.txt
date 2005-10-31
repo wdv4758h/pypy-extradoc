@@ -28,13 +28,53 @@ Presentation Outline
 --------------------
 
 - Introduction to PyPy.
+
+  + PyPy is an implementation of Python, written in Python.
+  + Aims for more flexibility and performance than existing
+    implementations.
+
 - Demo of pypy-c.
+
+  + "pypy-c" is the name of the binary produced by the translation
+    process.
+  + Will just run some python commands interactively to show how
+    similar we are to CPython.
+
 - Overview.
-- Our Toolchain: 
-  + The Flow Object Space.
-  + The Annotator.
-  + The RTyper.
-  + The Low Level Backend(s).
+
+  + The interpreter/object space split.
+  + One sentence description of each part of the toolchain.
+
+- Our Toolchain (1): The Flow Object Space.
+
+  + The FlowObjectSpace abstractly interprets a function to build a
+    control flow graph of its structure.
+  + Works on function objects, not source code.
+  + Basically stable since early 2005, about 2000 lines of code.
+
+- Our Toolchain (2): The Annotator.
+
+  + The RPythonAnnotator analyses an RPython program to infer types
+    and inter-function control flow.
+  + Works on the graphs produced by the FlowObjectSpace.
+  + More or less stable since early summer 2005, about 4000 lines of code.
+
+- Our Toolchain (3): The RTyper.
+
+  + Converts the still-fairly-high-level output of the annotator into
+    lower level operations that are easier to translate into languages
+    like C.
+  + In particular, removes polymorphic calls from the graph.
+  + Basically working since summer 2005, restructuring in progress at
+    time of writing.  About 10000 lines of code.
+
+- Our Toolchain (4): The Low Level Backend(s).
+
+  + Take the low-level operations produced by the RTyper and converts
+    to a low-level language.
+  + At time of writing, C and LLVM are the supported targets.
+  + Working though not stable from spring 2005.  C backend about 4000
+    lines of code.
 
 Intended audience
 -----------------
