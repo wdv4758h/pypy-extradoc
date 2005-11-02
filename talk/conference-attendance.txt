@@ -7,7 +7,7 @@ CCC 2005
 
 Chaos Communication Conference 2005, a 2000-3000 people
 conference focusing on all things hacking (including 
-cultural events).  Non-Python Audience. 
+cultural events).  Non-Python specific Audience. 
 
 Call for Papers: http://www.ccc.de/congress/2005/cfp.html
 DEADLINE: 31st September 2005 
@@ -17,6 +17,13 @@ proposal preparations!
 
 Time & Location: 27th-30th December, Berlin. 
 
+holger submitted two proposals with help of Armin, Carl 
+and Bea. One very much regarding the technical implementation 
+and one regarding business/open-source 
+agile-development/pypy-sprint experiences. 
+
+Both talks were accepted into the CCC programme! 
+
 
 Solution Linux 2006
 -------------------
@@ -25,13 +32,20 @@ Logilab will present PyPy in the "free software models" track.
 
 Time and Location: 31st jan to feb 2nd, Paris.
 
+
 Pycon 2006 
 ---------------
+
+DEADLINE: 31st October 2005 
 
 Annual US Python conference, strong Python audience. 
 
 Call for Papers: http://www.python.org/pycon/2006/cfp
-DEADLINE: 31st October 2005 
 
 Time & location: 24-26 Feburary, 2006, Addison, Texas (near Dallas)
+
+out of the pypy group four talks were submitted.  
+Acceptance pending (15th November ASFAIK). 
+
+Due: sprint planning, possibly inviting Kaa Ping (regarding E-lang) 
 
