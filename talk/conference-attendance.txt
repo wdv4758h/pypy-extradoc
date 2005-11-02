@@ -47,5 +47,5 @@ Time & location: 24-26 Feburary, 2006, Addison, Texas (near Dallas)
 out of the pypy group four talks were submitted.  
 Acceptance pending (15th November ASFAIK). 
 
-Due: sprint planning, possibly inviting Kaa Ping (regarding E-lang) 
+Due: sprint planning, possibly inviting Ka Ping (regarding E-lang) 
 
