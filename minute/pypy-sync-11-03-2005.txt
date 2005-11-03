@@ -1,6 +1,6 @@
 =============================================
-pypy-sync developer meeting 27th October
-=============================================
+pypy-sync developer meeting 03th November
+============================================
 
 Time & location: 1pm (30 minutes), GMT+1 at #pypy-sync
 
