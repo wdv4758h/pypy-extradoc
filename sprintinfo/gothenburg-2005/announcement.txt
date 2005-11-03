@@ -1,0 +1,16 @@
+Topics
+------
+
+Unsorted possible topics for the sprint:
+
+* L3 interpreter, heading towards JIT work
+
+* Stackless, with an app-level interface (Stackless or
+  Greenlet?)
+
+* Threading: the main missing piece is thread-local storage in
+  RPython
+
+* Optimizations / Phase 2 work in general
+
+* Finish _socket and/or port other C modules from CPython
