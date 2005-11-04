@@ -1,6 +1,6 @@
 =============================================
 pypy-sync developer meeting 03th November
-============================================
+=============================================
 
 Time & location: 1pm (30 minutes), GMT+1 at #pypy-sync
 
@@ -45,6 +45,8 @@ finalizing the release
 The release seems to be ready. We distributed small tasks, like who sends the
 announcement to which mailing list.
 
+
+.. _`IRC-Log`:
 
 Complete IRC log
 =================
