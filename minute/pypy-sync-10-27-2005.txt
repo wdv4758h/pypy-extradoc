@@ -67,6 +67,7 @@ gothenburg sprint topics
 
 topic deferred to next pypy-sync.
 
+.. _`IRC-Log`:
 
 Complete IRC log
 =================
