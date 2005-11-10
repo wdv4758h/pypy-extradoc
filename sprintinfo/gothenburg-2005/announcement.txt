@@ -1,16 +1,26 @@
-Topics
-------
+Goals and topics of the sprint 
+------------------------------
 
-Unsorted possible topics for the sprint:
+We have released pypy-0.8.0_, which is officially a "research base" for
+future work.  The goal of the Gothenburg sprint is to start exploring
+new directions and continue in the directions started at the Paris
+sprint.
 
-* L3 interpreter, heading towards JIT work
+The currently scheduled main topics are:
 
-* Stackless, with an app-level interface (Stackless or
-  Greenlet?)
+ - The L3 interpreter, a small fast interpreter for "assembler-level"
+   flow graphs.  This is heading towards JIT work.
 
-* Threading: the main missing piece is thread-local storage in
-  RPython
+ - Stackless: write an app-level interface, which might be either
+   Tasklets, as in "Stackless CPython", or the more limited Greenlets.
 
-* Optimizations / Phase 2 work in general
+ - Porting C modules from CPython.  (_socket is not finished)
 
-* Finish _socket and/or port other C modules from CPython
+ - Optimization/debugging work in general.  In particular our thread
+   support is far from stable at the moment and unaccountably slow.
+
+ - Experimentation: logic programming in Python.  A first step might be
+   to try to add logic variables to PyPy.
+
+
+.. _`pypy-0.8.0`: http://codespeak.net/pypy/dist/pypy/doc/release-0.8.0.html
