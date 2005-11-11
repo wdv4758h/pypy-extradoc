@@ -15,8 +15,8 @@ or Meth(art-types-without-self, result-types)
 
 they have constructors:
 
-static_meth(STATICMETHOD, name, **attrs)
-meth(METHOD, **attrs)
+`static_meth(STATICMETHOD, name, **attrs)`
+`meth(METHOD, **attrs)`
 
 <methods> is dict mapping names to meths
 
