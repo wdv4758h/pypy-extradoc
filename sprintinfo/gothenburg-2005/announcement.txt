@@ -49,7 +49,8 @@ where many lines call.
 
 Probably cheapest and not too far away is to book accomodation at `SGS
 Veckobostader`_.  (You can have a 10% discount there; ask in the
-pypy-sprint mailing list for details.)
+pypy-sprint mailing list for details.  We also have some possibilites of
+free accomodation.)
 
 .. _`SGS Veckobostader`: http://www.sgsveckobostader.com
 
