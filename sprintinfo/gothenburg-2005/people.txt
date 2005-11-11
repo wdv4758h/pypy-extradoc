@@ -1,0 +1,41 @@
+
+People coming to the Gothenburg sprint 2005 II 
+==================================================
+
+People who have a ``?`` in their arrive/depart or accomodation
+column are known to be coming but there are no details 
+available yet from them. 
+ 
+==================== ============== =====================
+    Name              Arrive/Depart     Accomodation 
+==================== ============== =====================
+Ludovic Aubry        ?              ? 
+Adrien Di Mascio     ?              ?
+Jacob Hallen         ?              private
+Laura Creighton      ?              private
+Beatrice Duering     ?              private
+Armin Rigo           ?              private
+Samuele Pedroni      ?              private
+Anders Chrigstroem   ?              private
+Holger Krekel        ?              ?
+Michael Hudson       ?              ?
+Carl Friedrich Bolz  ?              ?
+Bert Freudenberg     ?              ?
+Anders Lehmann       ?              ?
+Christian Tismer     ?              ?
+==================== ============== =====================
+
+People on the following list were present at previous sprints: 
+
+==================== ============== =====================
+       Name          Arrive/Depart  Accomodation 
+==================== ============== =====================
+Niklaus Haldimann    ?              ?
+Eric van Riet Paap   ?              ?
+Richard Emslie       ?              ?
+Lene Wagner          ?              ?
+Amaury Forgeot d'Arc ?              ?
+Valentino Volonghi   ?              ?
+Boris Feigin	     ?              ?
+Andrew Thompson      ?              ?
+==================== ============== =====================
