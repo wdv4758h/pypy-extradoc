@@ -3,7 +3,7 @@ Gothenburg PyPy Sprint II: 7st - 11th December 2005
 
 The next PyPy sprint is scheduled to be in December 2005 in Gothenborg, Sweden.
 Its main focus is heading towards phase 2, which means JIT work, alternate
-threading models and logic programming.  (but there are also other possible
+threading models and logic programming (but there are also other possible
 topics).  We'll give newcomer-friendly introductions.  To learn more about the
 new PyPy Python-in-Python implementation look here: 
 
@@ -39,12 +39,18 @@ The currently scheduled main topics are:
 Location & Accomodation  
 ------------------------ 
 
-The sprint will be held in the apartment of Laura Creighton and Jacob Halen
-which is in Götabergsgatan 22. 
+The sprint will be held in the apartment of Laura Creighton and Jacob
+Halen which is in Gotabergsgatan 22.  The location is central in
+Gothenburg.  It is between the tram_ stops of Vasaplatsen and Valand,
+where many lines call.
 
-Nearest, and probably cheapest is to book accomodation at `SGS Veckobostäder`_.
+.. _tram: http://www.vasttrafik.se
 
-.. _`SGS Veckobostäder`: http://www.sgsveckobostader.com
+Probably cheapest and not too far away is to book accomodation at `SGS
+Veckobostader`_.  (You can have a 10% discount there; ask in the
+pypy-sprint mailing list for details.)
+
+.. _`SGS Veckobostader`: http://www.sgsveckobostader.com
 
 Exact times 
 -----------
@@ -61,12 +67,11 @@ Network, Food, currency
 Sweden is not part of the Euro zone. One SEK (krona in singular, kronor
 in plural) is roughly 1/10th of a Euro (9.15 SEK to 1 Euro).
 
-There are some pizzerias, kebab places and the like close to the venue.
-Their food is edible and cheap, but not very good. For good food, you need to
-go downtown (XXX that was the description for Chalmers, is that still valid?).
+The venue is central in Gothenburg.  There is a large selection of
+places to get food around, from edible-and-cheap to outstanding.
 
-You need a wireless network card to access the network. However, we can likely provide 
-a wireless/ethernet bridge (XXX).  
+You normally need a wireless network card to access the network, but we
+can provide a wireless/ethernet bridge.
 
 Sweden uses the same kind of plugs as Germany. 230V AC.
 
