@@ -2,11 +2,12 @@ Gothenburg PyPy Sprint II: 7th - 11th December 2005
 ======================================================
 (NOTE: internal EU-only sprint starts on the 5th!)
 
-The next PyPy sprint is scheduled to be in December 2005 in Gothenborg, Sweden.
-Its main focus is heading towards phase 2, which means JIT work, alternate
-threading models and logic programming (but there are also other possible
-topics).  We'll give newcomer-friendly introductions.  To learn more about the
-new PyPy Python-in-Python implementation look here: 
+The next PyPy sprint is scheduled to be in December 2005 in Gothenborg,
+Sweden.  Its main focus is heading towards phase 2, which means JIT
+work, alternate threading models and logic programming (but there are
+also other possible topics).  We'll give newcomer-friendly
+introductions.  To learn more about the new PyPy Python-in-Python
+implementation look here: 
 
     http://codespeak.net/pypy 
 
