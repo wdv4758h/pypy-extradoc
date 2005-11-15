@@ -21,7 +21,7 @@ Holger Krekel        ?              ?
 Michael Hudson       ?              ?
 Carl Friedrich Bolz  ?              ?
 Bert Freudenberg     ?              ?
-Anders Lehmann       ?              ?
+Anders Lehmann       4/12-11/12     SGS
 Christian Tismer     ?              ?
 ==================== ============== =====================
 
