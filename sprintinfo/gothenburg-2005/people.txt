@@ -17,6 +17,7 @@ Beatrice Duering     ?              private
 Armin Rigo           ?              private
 Samuele Pedroni      ?              private
 Anders Chrigstroem   ?              private
+Eric van Riet Paap   7/12-11/12     private
 Holger Krekel        ?              ?
 Michael Hudson       ?              ?
 Carl Friedrich Bolz  ?              ?
@@ -31,7 +32,6 @@ People on the following list were present at previous sprints:
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
 Niklaus Haldimann    ?              ?
-Eric van Riet Paap   ?              ?
 Richard Emslie       ?              ?
 Lene Wagner          ?              ?
 Amaury Forgeot d'Arc ?              ?
