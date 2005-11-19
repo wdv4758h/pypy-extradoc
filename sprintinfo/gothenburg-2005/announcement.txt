@@ -2,7 +2,7 @@ Gothenburg PyPy Sprint II: 7th - 11th December 2005
 ======================================================
 (NOTE: internal EU-only sprint starts on the 5th!)
 
-The next PyPy sprint is scheduled to be in December 2005 in Gothenborg,
+The next PyPy sprint is scheduled to be in December 2005 in Gothenburg,
 Sweden.  Its main focus is heading towards phase 2, which means JIT
 work, alternate threading models and logic programming (but there are
 also other possible topics).  We'll give newcomer-friendly
@@ -42,16 +42,19 @@ Location & Accomodation
 ------------------------ 
 
 The sprint will be held in the apartment of Laura Creighton and Jacob
-Halen which is in Gotabergsgatan 22.  The location is central in
+Hallén which is at Götabergsgatan 22.  Here is a map_.  This is in central
 Gothenburg.  It is between the tram_ stops of Vasaplatsen and Valand,
 where many lines call.
 
 .. _tram: http://www.vasttrafik.se
 
+.. _map: http://www.gulasidorna.se/query?stq=0&streetname=G%F6tabergsgatan+22%2C+G%F6teborg&what=map&asearch=1
+
 Probably cheapest and not too far away is to book accomodation at `SGS
 Veckobostader`_.  (You can have a 10% discount there; ask in the
 pypy-sprint mailing list for details.  We also have some possibilites of
-free accomodation.)
+free accomodation.)  There are also hotels to suit every price range
+and desire for luxury.  Just ask in the mailing list.
 
 .. _`SGS Veckobostader`: http://www.sgsveckobostader.com
 
