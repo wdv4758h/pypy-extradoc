@@ -13,7 +13,7 @@ Ludovic Aubry        5/12-10/12     some hotel
 Adrien Di Mascio     5/12-10/12     some hotel
 Jacob Hallen         ?              private
 Laura Creighton      ?              private
-Beatrice Duering     ?              private
+Beatrice Duering     5/12-11/12              private
 Armin Rigo           ?              private
 Samuele Pedroni      ?              private
 Anders Chrigstroem   ?              private
