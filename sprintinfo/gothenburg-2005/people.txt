@@ -9,8 +9,8 @@ available yet from them.
 ==================== ============== =====================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
-Ludovic Aubry        ?              ? 
-Adrien Di Mascio     ?              ?
+Ludovic Aubry        5/12-10/12     some hotel 
+Adrien Di Mascio     5/12-10/12     some hotel
 Jacob Hallen         ?              private
 Laura Creighton      ?              private
 Beatrice Duering     ?              private
