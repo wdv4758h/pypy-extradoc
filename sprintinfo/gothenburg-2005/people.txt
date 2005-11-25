@@ -17,7 +17,7 @@ Beatrice Duering     5/12-11/12              private
 Armin Rigo           ?              private
 Samuele Pedroni      ?              private
 Anders Chrigstroem   ?              private
-Eric van Riet Paap   7/12-11/12     private
+Eric van Riet Paap   6/12-11/12     private
 Holger Krekel        ?              ?
 Michael Hudson       ?              ?
 Carl Friedrich Bolz  ?              ?
