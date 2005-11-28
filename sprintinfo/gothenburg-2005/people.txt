@@ -22,7 +22,7 @@ Holger Krekel        ?              ?
 Michael Hudson       ?              ?
 Carl Friedrich Bolz  ?              ?
 Anders Lehmann       4/12-11/12     SGS
-Christian Tismer     ?              ?
+Christian Tismer     4/12-11/12     some Hotel              ?
 Niklaus Haldimann    6/12-11/12     private
 ==================== ============== =====================
 
