@@ -23,6 +23,7 @@ Carl Friedrich Bolz  ?              ?
 Anders Lehmann       4/12-11/12     SGS
 Christian Tismer     4/12-11/12     some Hotel              ?
 Niklaus Haldimann    6/12-11/12     private
+Richard Emslie       5/12-?         private
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -30,7 +31,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
-Richard Emslie       ?              ?
 Lene Wagner          ?              ?
 Amaury Forgeot d'Arc ?              ?
 Valentino Volonghi   ?              ?
