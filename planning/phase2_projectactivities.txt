@@ -1,6 +1,6 @@
 
 Rough preparation draft for saturday-afternoon 20051015 meeting Paris  
-------------------------------------------------------------- 
+-----------------------------------------------------------------------------
 
 work group/pairing status 
 ------------------------------
@@ -69,33 +69,35 @@ see paris-2005-possible-tasks.txt:
 sprints & conferences 
 -------------------------
 
-  next sprint: 5-11th December in Sweden (Change Maker?/Götabergsgatan?) 
-  Gborg. 
- 
-  *(10 th January eu review workshop) 
+plans: 
 
-  *23-29th January: CS Dep. of the Palma de Mallorca University/CS Dep. of the Barcelona University 
-   Bea check dates, Bruxelles/Louvain-la-neuve,  Holger check dates), 
+  * (10 th January eu review workshop) 
+
+  * 23-29th January: CS Dep. of the Palma de Mallorca University/CS Dep.
   
-  *27 Feb - 1st March: PyCon (24-26 Feb, 2006 Dallas, Texas,
-   postsprint, Michael/Holger, Armin, Christian, Bea), DEADLINE 30th
-   October
+  * of the Barcelona University. Bea check dates, Bruxelles/Louvain-la-neuve,  
   
-  *April Japan: (1) April 23 to April 29, (2) April 30 to May 5, contact: Yutaka Niibe, 
-  National Institute of AIST, Japan (FSIJ) Akihabara, Tokyo (Bea), venue for 32 people. 
-  (However, check with the EU).  
+  * 27 Feb - 1st March: PyCon (24-26 Feb, 2006 Dallas, Texas,
+    postsprint, Michael/Holger, Armin, Christian, Bea), DEADLINE 30th
+    October
+  
+  * April Japan: (1) April 23 to April 29, (2) April 30 to May 5, contact: Yutaka Niibe, 
+    National Institute of AIST, Japan (FSIJ) Akihabara, Tokyo (Bea), venue for 32 people. 
+    (However, check with the EU).  
 
   * (IBM workshop possibly end June, holger) 
-  *6-9th (?) July: Europython Cern (3-5th July maybe in Leysin (Armin) Swizerland, 
-   and the post-sprint at CERN, Michael/Holger) 
   
-  *21-27th August: University of Limerick/Ireland (Bea), maybe good possibility 
-   to present pypy results to researchers. 
+  * 6-9th (?) July: Europython Cern (3-5th July maybe in Leysin (Armin) Swizerland, 
+    and the post-sprint at CERN, Michael/Holger) 
+  
+  * 21-27th August: University of Limerick/Ireland (Bea), maybe good possibility 
+    to present pypy results to researchers. 
 
   * 2-8th October: ?
+  
   * November: closure sprint 
 
-  Other possibilities: Romania, Switzerland (Leysin,Bern), Bristol, Uganda (Nkozi), bruxelles 
+  * Other general possibilities: Romania, Switzerland (Leysin,Bern), Bristol, Uganda (Nkozi), bruxelles 
 
 - Conference/y´talks planning: 
 
@@ -219,25 +221,25 @@ Review planning:
 
 Roadmap:
 
-*31th October 2005: all partners check completeness of timesheets Dec 2004-Oct 2005 
-(Stephan wp1, Jacob wp3,4,5, Bea wp14, all partners)
+* 31th October 2005: all partners check completeness of timesheets Dec 2004-Oct 2005 
+  (Stephan wp1, Jacob wp3,4,5, Bea wp14, all partners)
 
-*5th December 2005: all partners submit timesheets for November 2005
-(Stephan wp1, Jacob wp3,4,5, Bea wp14, all partners)
+* 5th December 2005: all partners submit timesheets for November 2005
+  (Stephan wp1, Jacob wp3,4,5, Bea wp14, all partners)
 
-*9th December 2005: Periodic management/activity reports updated with all data but costs
-(Jacob//Bea)
+* 9th December 2005: Periodic management/activity reports updated with all data but costs
+  (Jacob//Bea)
 
-*15th December 2005: submit reports to EC/reviewers
-(Stephan)
+* 15th December 2005: submit reports to EC/reviewers
+  (Stephan)
 
-*16th December 2005: all partners submit FORM C:s to DFKI (or communicate a new 
- completion date for this!)
-(Stephan, all partners)
+* 16th December 2005: all partners submit FORM C:s to DFKI (or communicate a new 
+  completion date for this!)
+  (Stephan, all partners)
 
-*10th January 2006: review in Brussels
-(Stephan)
+* 10th January 2006: review in Brussels
+  (Stephan)
 
-*15th of January 2006: submit FORM C:s to EC/PO and possible updated periodic management/
-activity reports
-(Stephan//Jacob,Bea
+* 15th of January 2006: submit FORM C:s to EC/PO and possible updated periodic management/
+  activity reports
+  (Stephan//Jacob,Bea
