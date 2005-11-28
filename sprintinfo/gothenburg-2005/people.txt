@@ -18,7 +18,6 @@ Armin Rigo           ?              private
 Samuele Pedroni      ?              private
 Anders Chrigstroem   ?              private
 Eric van Riet Paap   6/12-11/12     private
-Holger Krekel        ?              ?
 Michael Hudson       ?              ?
 Carl Friedrich Bolz  ?              ?
 Anders Lehmann       4/12-11/12     SGS
