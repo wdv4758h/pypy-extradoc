@@ -1,12 +1,9 @@
 ==================================================
-PyPy - Architecture Overview 
+PyPy - The new Python Implemention on the Block 
 ==================================================
 
 .. contents::
 .. sectnum::
-
-This document gives an overview of the goals and architecture of PyPy.
-See also `getting started`_ for a practical introduction.
 
 Mission statement 
 ====================
@@ -287,6 +284,31 @@ standard library modules ported from C, PyPy is now 138'000
 lines of code and 32'000 lines of tests. Refer to 
 the `statistics web page`_ for more detailed information. 
 
+
+Future work and foreseen possibilities 
+================================================
+
+In 2006, the PyPy project aims to translate the standard Python
+Interpreter to a JIT-compiler and also to support massive parallelism
+aka micro-threads within the language.  These are not trivial tasks 
+especially if we want to retain and improve the modularity and 
+flexibility aspects of our implementation - like giving an 
+independent choice of memory or threading models for translation. 
+Moreover it is likely that work on javascript and other higher 
+level backends instead of our current lower level ones will 
+continue to evolve.  
+
+Apart from optimization-related translation choices PyPy is to enable new
+possibilities regarding persistence, security and distribution issues.  We 
+intend to experiment with ortoghonal persistence for Python objects, i.e. 
+one that doesn't require application objects to behave in a 
+particular manner.  Security wise we will look at sandboxing 
+or capabilities based schemes.   For distribution we already experimented
+with allowing transparent migration of objects between processes with
+the help of the existing (and translateable) Thunk Object Space. 
+In general, according experiments are much easier to conduct with PyPy 
+and should provide a resulting standalone executable in shorter time. 
+
 .. _`statistics web page`: http://codespeak.net/~hpk/pypy-stat/
 .. _`very compliant`: http://codespeak.net/~hpk/pypy-testresult/
 .. _`Boehm-Demers-Weiser garbage collector`: http://www.hpl.hp.com/personal/Hans_Boehm/gc/
@@ -299,6 +321,3 @@ the `statistics web page`_ for more detailed information.
 .. _`getting started`: getting-started.html
 
 .. include:: _ref.txt
-
-
-
