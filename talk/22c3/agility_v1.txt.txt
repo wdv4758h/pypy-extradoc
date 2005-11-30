@@ -1,0 +1,64 @@
+Agile Business and EU funding: sprint methodology in funded OSS project
+-----------------------------------------------------------------------
+
+Introduction:
+-------------
+<short summary of the content and structure of the talk>
+
+
+The vision: the creation of an OSS community
+--------------------------------------------
+
+Founding PyPy:
+
+Agile approaches:
+- sprints
+- testdriven development
+
+Community structure:
+- transparent communication
+- decision making
+- interaction with other communities
+
+
+The idea: Framework 6 programme IST funding for OSS work
+--------------------------------------------------------
+
+"Why do you want money - aren´t you guys non-profit?":
+- impact for the EU
+
+"Why do we want money - isn´t OSS non-profit?":
+- impact for the community
+
+Proposal and negotiations:
+- formal requirements
+- organizational limbo
+
+The Project: consortium and companies within a OSS community structure
+----------------------------------------------------------------------
+
+Forced entrepreneurship:
+
+Creating the consortium:
+
+Formalizing aspects of the community:
+- roles and responsibilities
+
+
+The challenge: balancing agile OSS community structures with EU requirements
+------------------------------------------------------------------------------ 
+
+Sprints - the key agile approach:
+
+Physical persons:
+
+Communication channels:
+
+Managing diversities: agile business - a succesful marriage ?
+-----------------------------------------------------------
+
+Agile EU-project:
+
+Agile businesses:
+
+
