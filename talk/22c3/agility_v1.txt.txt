@@ -7,11 +7,11 @@ Abstract
 
 This paper walks through different aspects of agility 
 within the open-source driven PyPy project.  Agility played a key role 
-from the beginning - the PyPy project started from some mails
-between a few people, quickly had a first one-week meeting, a "sprint"
+from the beginning. The PyPy project started from some mails
+between a few people, quickly had a first one-week meeting, a "sprint",
 from where it evolved into a structure that was able to carry
 out a research project - and got accepted by the European
-Union.  During the course, two companies got founded and are
+Union.  During the course, two companies were founded. They are
 now growing and employing key developers. 
 
 PyPy's technical development is strongly rooted in open-source
@@ -20,8 +20,8 @@ communication, co-operation and exchange with other people and
 projects.  
 
 The process of obtaining EU-funding is a continous challenge to 
-the community-rooted PyPy project: how to connect
-agile open source culture with formal structures: interaction
+the community-rooted PyPy project; how to connect
+agile open source culture with formal structures, interaction
 with requirements like planning, budget estimation, work
 distribution and resource tracking.  
 
@@ -39,9 +39,9 @@ Agile approaches: sprinting
 
 The first bits of PyPy started during a one-week meeting, a "sprint",
 held at Trillke-Gut in Hildesheim February 2003. The sprint was inspired by 
-practices used by other Python oriented projects such as Zope3.  Originally the 
+practices used by other Python projects such as Zope3.  Originally the 
 sprint methodology used in the Python community grew from practices applied by
-the Zope Corporation.  Their definition of a sprint was  "two-day or three-day focused
+the Zope Corporation.  Their definition of a sprint was:  "two-day or three-day focused
 development session, in which developers pair off together in a room and focus
 on building a particular subsystem". 
 
@@ -92,12 +92,12 @@ software).
 
 Seen from an Open Source community perspective it is a vitalising strategy -
 especially in combination with a transparent open process in which anyone
-interested can participate - if only for just a few days at a sprint.  Some of
+interested can participate - if only for just a few days at a sprint.  One of
 the key problems identified by Frederick P. Brooks in the latest version of
-"The Mythical Man-Month" (unfortunately still very actual today) are estimating
+"The Mythical Man-Month" (unfortunately still very actual today) is estimating
 correct amount of time for communication and testing/debugging.  Automated
 testing, rather barrier-free communication and strict version tracking helps 
-with those problems, especially in the hands of a team sprinting its way through 
+with that problem, especially in the hands of a team sprinting its way through 
 the Python community - welcoming everyone to participate.
 
 Apart from rewriting a practical programming language within
@@ -116,22 +116,22 @@ Another agility aspect relates to transparent and open
 communication within the project.  Only very few (EU-contract
 related) documents are access restricted, everything else is
 freely available.  There are no hierarchies for commit rights.
-In fact, the hosting server also gives home to a couple of
+In fact, the server also hosts a couple of
 other projects and all projects share commit rights ("Coding
 Wiki").  Announcing Sprints, Releases and development goals
-lead to increasdingly many people subscribing to mailing lists or
+lead to an increasing amount of people subscribing to mailing lists or
 participating in development. 
 
-Moreover, the PyPy developers installed a model of weekly 30-minute 
-IRC chat meetings where topics are briefly discussed, delegated
-or decided upon: those meetings are open to all active developers 
-and usually do not discuss internal EU matters much except that 
+Moreover, the PyPy developers implemented a method with weekly 30-minute 
+IRC chat meetings where topics were briefly discussed, delegated
+or decided upon. Those meetings are open to all active developers 
+and usually do not touch upon internal EU matters much except that 
 funded developers keep EU goals more in mind than others. 
 Minutes of these weekly developer meetings get archived and posted 
 to the development list. 
 
-A rather recent invention is the postings of "This week in PyPy" 
-which try to summarize what is going on in the lively IRC 
+A rather recent invention is the postings of "This week in PyPy".
+The text is a summary of what is going on in the lively IRC 
 development #pypy channel - main place of technical coordination. 
 
 .. image:: plots/subscribers.png 
@@ -156,37 +156,37 @@ Making things fit with EU perspectives
 
 There had been a growing interest from the European Commission, IST division,
 to look closer at the Open Source world and its achievements. Several funded
-research projects in the 5th framework programme studied the phenomenon
+research projects in the 5th framework programme studied the phenomen
 (FLOSS-POLS, FLOSS) - its organization, business models and licensings. A few
 other funded software projects used Open Source in their work as tools
 (languages and applications).  There was no previous experience of an Open
 Source community based project making a bid for funding. 
 
-The areas in the 6th Framework programme (second call) fitted very well 
+The areas in the 6th Framework programme (second call) fit very well 
 with the objectives of PyPy.  The idea of strengthening the European Software
 development companies and businesses with supporting an open source language
-implementation was new but appealing to the EU.  But being an Open Source
-project wasn´t enough - the challenges and the idea of an flexible,
+implementation was new but appealing to the EU.  However, being an Open Source
+project wasn´t enough. The challenges and the idea of a flexible,
 configurable "translator" or "compiler" met the research targets of the FP6, as
 well as trying out and documenting the agile methodology being used.  
 It is interesting to note that todays computer industrial language 
-research and development happens mostly in the US. 
+research and development occurs mostly in the US. 
 
-In short, we argued that EU funding allows the project to go for
+In short, we argued that EU funding allowed the project to go from
 reaching a critical mass and position to continue to evolve from 
-there and that it would help European Organisations to make some
+there, and that it would help European Organisations to make some
 ground. 
 
 Acting on this strategy proved to be a more difficult task. The
-entire proposal and negotiation process took over a year (Autumn 2003 till 
+entire proposal and negotiation process took over a year (Autumn 2003 until 
 November 2004). Satisfying the formal requirements, a proper description of 
 planned work, had not previously been part of the development focus and both the EU 
 and the parties involved had to adapt to the situation.  Yet, drafting the
-high-level requirements (in total 14 workpackages and 58 deliverables) was made
+high-level requirements (in total 14 workpackages and 58 deliverables) was done
 using the same version-control/open-communication based work style, including
 evolving the proposal at sprints.  Writing the proposal and specifying according 
 objectives on a higher level has proved to be generally useful for clarifying goals 
-on a longer term - also helping others better understand the project. 
+on a longer term. It also helps others to understand the project better. 
 
 Unfortunately the negotiations with the EU got stuck in
 organizational limbo and the project is still suffering from
@@ -195,13 +195,13 @@ contributors especially coming to sprints was originally
 based on a non-profit association.  This solution
 wasn't seen as realistic or feasible by the EU although
 we think it remains a viable approach for the future.   During
-negotiations, we got to an alternative solution which - however - 
-has a few drawbacks:  Contributors have to become Contract Partners within 
-the EU-level Consortium (which is by itself not hard) and can then at least
+negotiations, we got to an alternative solution which
+had a few drawbacks:  contributors have to become Contract Partners within 
+the EU-level Consortium (which is by itself not difficult) and can then at least
 claim travel and accomodation costs when attending sprints.
 
 However, this construction does not allow them to get paid for
-work time and also has some formal requirements.  This practically 
+work time and also has some formal requirements.  In practice this 
 leads to current considerations of developers to shift private money
 between them in order to circumvent the current problems with
 implementing an agile model within the EU contract framing. 
@@ -211,20 +211,20 @@ Seven Organisations / The consortium
 ----------------------------------------------------------------------
 
 The guiding idea for receiving funding is to have organisations 
-through which key developers and other parties are employed. 
+in which key developers and other parties are employed. 
 Two companies out of the seven organisations in the initial
-consortium got funded during the EU negotiation process - 
+consortium were funded during the EU negotiation process.
 what first might have felt as an EU-related obstacle became an
-opportunity, but with some overhead in legal and organizational 
+opportunity, but with some overhead like legal and organizational 
 responsibilities.  
 
 Other adjustments and recruiting companies with previous EU
 project experiences took place.  There also is one company 
-involved quite unrelated to the previous developer work - 
+involved quite unrelated to the previous developer work
 but rather focused on process management and
 designing learning processes with a background from the
 Chaospilot school in Aarhus, Denmark.  When creating the formal
-consortium of seven partners, new cultures and perspectives
+consortium of seven partners new cultures and perspectives
 were mixed with the strong collaborative Open Source core
 team, adding new complexities in communication and
 cooperation.  Getting the new "playmates" to adopt the vision,
@@ -251,7 +251,7 @@ universities and companies alike, to connect an ongoing
 medium-scale open-source project with EU regulations and
 requirements - not to speak of the fact that companies need to
 fund 50% of the costs themselves.  It is, in fact, too early
-to judge on the overall success of our approaches although 
+to judge the overall success of our approaches although 
 we are confident that things work out reasonably well. 
 
 
