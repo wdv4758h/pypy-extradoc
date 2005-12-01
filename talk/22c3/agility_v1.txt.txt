@@ -7,7 +7,7 @@ Open Source, EU Funding and Agile Methods
    \begin{abstract}
 
 This paper walks through different aspects of agility 
-within the open-source driven PyPy project.  Agility played a key role 
+within the open-source driven PyPy project [#]_.  Agility played a key role 
 from the beginning. The PyPy project started from some mails
 between a few people, quickly had a first one-week meeting, a "sprint",
 from where it evolved into a structure that was able to carry
@@ -30,6 +30,8 @@ After our first "funded" year we are reasonably happy with the
 balance we strike between organisations and EU funding on the
 one and the developers driving the technical aspects of the
 project on the other side. 
+   
+.. [#] http://codespeak.net/pypy
 
 .. raw:: latex
 
