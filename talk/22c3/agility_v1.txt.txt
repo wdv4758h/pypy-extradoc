@@ -255,21 +255,15 @@ to judge the overall success of our approaches although
 we are confident that things work out reasonably well. 
 
 
-challenge: balancing community interests with EU requirements
+challenges: balancing community interests with EU requirements
 ------------------------------------------------------------------------------ 
 
-The agile development process in the EU funded work of the
-PyPy project centers around sprints - which are planned to
-take place every 6th week at different places to allow many
-developers to get in direct touch with each other.  Sprinting
-around conferences also became a key strategy.
-
-But the nature of sprints changed when EU funding started.  The
+The nature of sprints changed when EU funding started.  The
 need to meet milestones of promised *deliverables* and the
 goal to keep an open sprint process, still welcoming newcomers
 into the world of Pypy, made the sprints longer (at least 7
 days with a break day in the middle) but also changed the
-nature of the sprints. The team started to distuingish between
+nature of the sprints.  The team started to distuingish between
 sprints open for all to attend, without any prior PyPy experience,
 and sprints requiring earlier PyPy involvement.  Tutorials, start up
 planning meetings as well as daily status meetings evolved,
@@ -284,7 +278,7 @@ visiting developers with EU-related work. It could also be argued that the
 prolonged sprints could possibly make it more difficult for non consortium
 members to attend the full time, disturbing other engagements etc. 
 
-The project continues to try to enhance the method of sprinting, evaluating
+The project continues to try to adapt the method of sprinting, evaluating
 feedback from sprint participants.  Maybe the implementation within the PyPy
 team is slowly conforming to the Scrum standard of sprinting, but not as a
 conscious effort?
