@@ -1,7 +1,7 @@
 Agile Business and EU funding: sprint methodology in funded OSS project
 -----------------------------------------------------------------------
 
-Introduction:
+Abstract:
 -------------
 This paper uses an evolutionary approach, a walkthrough of the history of the 
 PyPy project, touching down on different aspects of agility. 
