@@ -100,6 +100,9 @@ community - welcoming everyone to participate.
 Apart from rewriting the language within itself, PyPy also evolved a number of 
 development tools useful for writing tests and glueing things together. 
 
+.. image:: plots/loc.png 
+.. test driven development 
+
 Agility: Open Communication and organisation
 ----------------------------------------------------
 
@@ -117,7 +120,8 @@ funded developers probably keep EU goals more in mind than others.
 Minutes of these weekly developer meetings get archived and posted 
 to the development list. 
 
-.. image:: plots/subscribe.png 
+.. image:: plots/subscribers.png 
+
 .. overview of PyPy mailing list subscriptions 
 
 
@@ -127,10 +131,10 @@ How and why EU Framework 6 programme IST funding for OSS work
 Mid 2003 the idea of trying to get EU-funding for the project was born. 
 It became clear that the project had a very large scale and that
 receiving some funding would dramatically increase the pace and seriousness
-of the project.  The community stretched outside of the regular Open Source world 
+of the project.  The community stretched outside of the Open Source ecologies
 to try to gather as much information and contacts as possible in order to answer the
-question: "Should we go for it?" To be able to answer that question - two other
-questions needed to be understood and answered:
+question: "Should we go for it?"  to which the answer quickly became 
+"Let's see how far we get!". 
 
 "Why do you want money - aren´t you guys non-profit?"
 ------------------------------------------------------
