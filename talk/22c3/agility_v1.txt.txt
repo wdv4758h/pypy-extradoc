@@ -294,8 +294,14 @@ helpful at various levels: you cannot make all-encompassing
 plans and hope to simply follow them and succeed.  New developments, 
 twists and opportunities evolve all the time.  
 
-Agile EU-project:
+Our experience with evolving PyPy from an non profit Open Source project to a partially funded EU research project shows the following:
 
-Agile businesses:
+- what first seemed like too diverse interests and views, impossible to tailor into a single project, was instead a fruitful mix of diversities. The challenge is to manage these diversities and channel them into constructive team efforts. Homogenity is the real threat.  
+
+- what first seemed like unbeatable odds and too big obstacles turned into new frontiers of possibilities. The challenge is to create an atmosphere in which a team can act on those and within the short timeframe of opportunity. Change is inevitable - how you handle it is the real challenge.
+
+Concluding  - the cumulative effects of an agile, open and dynamic team process combined with a market and curious clients creates new business models - agile business. A path that we hope others will follow.
+
+
 
 
