@@ -3,7 +3,14 @@ Agile Business and EU funding: sprint methodology in funded OSS project
 
 Introduction:
 -------------
-<short summary of the content and structure of the talk>
+This paper uses an evolutionary approach, a walkthrough of the history of the 
+PyPy project, touching down on different aspects of agility. 
+
+In the founding of the community there was a clear vision of agile development and sprints as the key method. The idea of EU-funding and the process in achieving this created a paradox: how to keep the agile open source community structure with key aspects of the project being funded through EU. 
+
+This then exposed the project to formal requirements planning, estimation,resource tracking and the challenge was to design a process in which a balance was struck between community and consortium, between a developer driven process and formal organinizational structure. 
+
+The evolution of the project - from a non profit Open Source initiative to a partial funded EU project - made possible the growth of Agile Business. 
 
 
 The vision: the creation of an OSS community
