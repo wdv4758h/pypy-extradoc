@@ -77,8 +77,11 @@ requirement gathering).   This means that most of the time a sprint is a great
 way of getting results and getting new people aquainted - a good 
 method for dissemination of knowledge and learning within the team. 
 
-.. image:: sprintprocess.gif 
-
+.. raw:: latex
+   
+   \begin{figure*}[htbp]\begin{center}
+   \scalebox{0.500000}{\includegraphics{sprintprocess.png}}
+   \end{center}\end{figure*}
 
 Agile approaches: test-driven development
 -----------------------------------------
@@ -105,9 +108,13 @@ itself, PyPy also evolved a number of development tools useful
 for writing tests and glueing things together. PyPy's testing
 tool ("py.test") is used separately and evolves on its own by now. 
 
-.. image:: plots/loc.png 
-.. test driven development 
+.. raw:: latex
 
+   \begin{figure*}[htbp]\begin{center}
+   \scalebox{0.75}{\includegraphics{plots/loc.pdf}}
+   \end{center}\end{figure*}
+
+.. test driven development 
 
 Agility: Open Communication and organisation
 ----------------------------------------------------
@@ -134,7 +141,12 @@ A rather recent invention is the postings of "This week in PyPy".
 The text is a summary of what is going on in the lively IRC 
 development #pypy channel - main place of technical coordination. 
 
-.. image:: plots/subscribers.png 
+
+.. raw:: latex
+
+   \begin{figure*}[htbp]\begin{center}
+   \scalebox{0.75}{\includegraphics{plots/subscribers.pdf}}
+   \end{center}\end{figure*}
 
 .. overview of PyPy mailing list subscriptions 
 
