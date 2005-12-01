@@ -2,8 +2,9 @@
 Open Source, EU Funding and Agile Methods 
 =========================================================================
 
-Abstract
-==========
+.. raw:: latex
+
+   \begin{abstract}
 
 This paper walks through different aspects of agility 
 within the open-source driven PyPy project.  Agility played a key role 
@@ -30,6 +31,9 @@ balance we strike between organisations and EU funding on the
 one and the developers driving the technical aspects of the
 project on the other side. 
 
+.. raw:: latex
+
+   \end{abstract}
 
 Agility in Technical Development and Organisation 
 =========================================================
@@ -111,8 +115,9 @@ tool ("py.test") is used separately and evolves on its own by now.
 .. raw:: latex
 
    \begin{figure*}[htbp]\begin{center}
-   \scalebox{0.75}{\includegraphics{plots/loc.pdf}}
+   \scalebox{0.7}{\includegraphics{plots/loc.pdf}}
    \end{center}\end{figure*}
+
 
 .. test driven development 
 
@@ -141,14 +146,11 @@ A rather recent invention is the postings of "This week in PyPy".
 The text is a summary of what is going on in the lively IRC 
 development #pypy channel - main place of technical coordination. 
 
-
 .. raw:: latex
 
    \begin{figure*}[htbp]\begin{center}
-   \scalebox{0.75}{\includegraphics{plots/subscribers.pdf}}
+   \scalebox{0.7}{\includegraphics{plots/subscribers.pdf}}
    \end{center}\end{figure*}
-
-.. overview of PyPy mailing list subscriptions 
 
 
 How and why EU funding? 
