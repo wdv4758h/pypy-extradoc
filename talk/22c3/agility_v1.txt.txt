@@ -65,7 +65,7 @@ methodology and future sprints.
 
 To our knowledge, open-source projects these days are sprinting for at most
 a week which reflects the fact that many contributors give their time 
-and even money to gather and work together.  This is odifferent 
+and even money to gather and work together.  This is different 
 from having fully funded people from one company working together. 
 
 Why did PyPy choose sprinting as a key technique?  It is a method that fits
