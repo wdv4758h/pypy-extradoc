@@ -2,27 +2,35 @@
 Agile Business and EU funding: sprint methodology in a funded OSS project
 =========================================================================
 
-Abstract:
+Abstract
 ==========
 
-This paper uses an evolutionary approach, a walkthrough through the history of
-the PyPy project, touching down on different aspects of agility. 
+This paper uses an evolutionary approach, a walkthrough
+through the history of the PyPy project, touching down on
+different aspects of agility.  Agility played a key role from
+the beginning - the PyPy project started from some mails
+between a few people, quickly had a first one-week "sprint"
+from where it evolved into a structure that was able to carry
+out a research project - and got accepted by the European
+Union.  During the course, two companies got founded and are
+now growing and employing key developers. 
 
-In the founding of the community there was a clear vision of agile development
-and sprints as the key method. The idea of EU-funding and the process in
-achieving this created a paradox: how to keep the agile open source community
-structure with key aspects of the project being funded through EU. 
+Technical Development is strongly rooted in open-source
+contexts and this adds another agility aspect - dynamic
+communication, cooperation and exchange with other people and
+projects.  
 
-This then exposed the project to formal requirements planning, estimation,
-resource tracking and the challenge was to design a process in which a balance
-was struck between community and consortium, between a developer driven process
-and formal organinizational structure. 
+The process of getting EU-funding posed (and continues to pose) a
+challenge to the community-rooted PyPy project: how to connect
+agile open source culture with formal structures: exposition
+to requirements like planning, budget estimation, work
+distribution and resource tracking.  After our first year we
+are reasonably happy with the balance we strike between
+organisations and EU funding on the one and the developers 
+driving the technical aspects of the project on the other side. 
 
-The evolution of the project - from a non profit Open Source initiative to a
-partial funded EU project - made possible the growth of Agile Business. 
 
-
-The vision: the creation of an OSS community
+The vision: how the creation of an OSS community
 ==============================================
 
 Founding PyPy: <Holger?>
