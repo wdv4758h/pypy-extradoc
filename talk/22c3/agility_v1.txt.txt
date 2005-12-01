@@ -16,8 +16,7 @@ The evolution of the project - from a non profit Open Source initiative to a par
 The vision: the creation of an OSS community
 --------------------------------------------
 
-Founding PyPy:
-<Holger?>
+Founding PyPy: <Holger?>
 
 Agile approaches: sprinting
 
@@ -37,7 +36,14 @@ the team because of the pairprogramming.
 
 Agile approaches: testdriven development
 
+Testdriven development is the cornerstone of a developer driven process. Seen from an Agile Manifesto perspective it is right up there as one of the key elements since it puts focus on producing working code, rather than plans and papers and faulty software.
 
+Seen from an Open Source community perspective it is a vital strategy - especially when combined with an transparent open process in which anyone interested can participate - if only for just a few days at a sprint. Some of the key problems identified by Frederick P Brooks in the latest version of "The mythical Man-month" (unfortunately still very actual today) are estimating correct amount of time for communication and 
+testing/debugging. Automated test-driven development and version control will solve many of those problems, especially in the hands of a team sprinting its way through the Python community - welcoming everyone to participate.
+
+The early choice of the PyPy team was an almost extreme test driven approach. Experiences from the Subversion project, merged with the results of the py.lib (Holger????py.test - your other hobby project ;-) created a stable platform for the early development efforts. 
+
+These two agile approaches combined (sprints and test driven development) and the way they where implemented where the building block of the PyPy community. 
 
 Community structure:
 - transparent communication
@@ -48,11 +54,15 @@ Community structure:
 The idea: Framework 6 programme IST funding for OSS work
 --------------------------------------------------------
 
+In XXXX the idea of trying to get EU-funding for the project was identified. The community stretched outside of the regular Open Source world to try to gather as much information and contacts as possible in order to answer the question: "Should we go for it?" To be able to answer that question - two other questions needed to be understood and answered:
+
 "Why do you want money - aren´t you guys non-profit?":
-- impact for the EU
+There had been a growing interest from the European Commission, IST division, to look closer at the Open Source world and its achievements. Several funded research projects in the 5th framework programme studied the phenomenon (FLOSS-POLS, FLOSS) - its organization, business models and licensings. A few other funded software projects used Open Source in their work as tools (languages and applications). There was no previous experience of an Open Source community making a bid for funding. 
+
+The areas in the 6th Framework programme, second call fitted well enough with the objectives of PyPy (xxxxx). The idea of strengthening the european software development companies and businesses with supporting an open source language implementation was new but appealing to the EU. But being an Open Source project wasn´t enough - the challenges and the idea of an flexible, configurable "translator" or "compiler" met the research targets of the FP6, as well as trying out and documenting the agile methodology being used.The EU wanted the PyPy team to very concrete show how funding PyPy would have an strategic for Europe. 
 
 "Why do we want money - isn´t OSS non-profit?":
-- impact for the community
+There was of course the risk of alienating parts of the Open Source community that had evolved around PyPy, not to mention the "collegues" working with the other Python Implentation Projects. To make a bid for funding for core developers and trying to find a model to channel funding for others to be able to participate in sprints was the idea. The decision to stay true to the vision of working agile and the strategy to strengtening the community via eu-funding was the key. Previously, all sprints from 2003 and onwards had been funded privately by the participants. The idea of using eu-funding to make sure that more people could contribute and participate in sprints made sure thar the project wouldn´t abruptly change it´s nature and that contribution wouldn´t be exploited. In the end the response was somewhat opposite - other OSS projects became curious - "PyPy had opened a new market" (Paul Everitt, Zope Europe).  
 
 Proposal and negotiations:
 - formal requirements
