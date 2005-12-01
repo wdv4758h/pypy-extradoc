@@ -76,6 +76,7 @@ requirement gathering).   This means that most of the time a sprint is a great
 way of getting results, but also to get new people aquainted - a great 
 method for dissemination and learning within the team. 
 
+.. image:: sprintprocess.gif 
 
 Agile approaches: test-driven development
 -----------------------------------------
