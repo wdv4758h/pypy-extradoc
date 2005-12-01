@@ -1,5 +1,5 @@
 =========================================================================
-Agile Business and EU funding: sprint methodology in a funded OSS project
+Agile Business and EU funding: sprint methods in a funded OSS project
 =========================================================================
 
 Abstract
@@ -36,69 +36,71 @@ Agility in Technical Development and Organisation
 Agile approaches: sprinting
 ----------------------------
 
-The first drafts of ideas of what was to become PyPy started during a sprint,
-held at Trillke-Gut in Hildesheim in February 2003. The sprint was inspired by 
+The first bits of PyPy started during a one-week meeting, a "sprint",
+held at Trillke-Gut in Hildesheim February 2003. The sprint was inspired by 
 practices used by other Python oriented projects such as Zope3.  Originally the 
 sprint methodology used in the Python community grew from practices within Zope
 Corporation. Their definition of a sprint was  "two-day or three-day focused
 development session, in which developers pair off together in a room and focus
 on building a particular subsystem". 
 
-It turned out that sprinting got to be a key technique in evolving 
-the code base and the community/people around it.  The early PyPy sprints moved 
-around, being organised by core developers together with local Pythonistas 
+Sprinting up to a week became the initial driving factor in developing 
+the code base and the community/people around it.  The early PyPy sprints 
+were organised by core developers together with local Pythonistas 
 in Louvain LaNeuve, Gothenburg, Vilnius and Amsterdam.  Sprints gave
 the opportunity to both help, participate and influence the ideas within PyPy.
 
-Sprints as such are not part of the traditional Agile
+Sprints are not really part of the traditional Agile
 portfolio of techniques, the closest thing to it comes from
 Scrum who names the 30 days long programming iterations
-"sprints", covering a certain increment. In the Scrum method
+"sprints", covering a certain increment.  In the Scrum method
 considerable effort is put into performing the sprint planning
 as well as creating and documenting the "sprint backlog" which
-is then feedbacked into the "Product backlog". The sprint ends
+is then feedbacked into the "Product backlog".  The sprint ends
 with a "sprint review" - an informal planning session in which
-the team decides on upcoming work. There are also techniques
+the team decides on upcoming work.  There are also techniques
 in which the team looks at ways to improve the development
 methodology and future sprints.
 
-To our knowledge, most open-source projects are only sprinting up to a week
+To our knowledge, open-source projects are only sprinting up to a week
 which also reflects the fact that many contributors give their time 
-and even money to gather and work together and thus it's different 
+and even money to gather and work together.  This is different 
 from having fully funded people from one company working together. 
 
-Why did PyPy choose sprinting as a key technique? It is a method that fits
+Why did PyPy choose sprinting as a key technique?  It is a method that fits
 distributed teams well because it gets the team focused around visible 
 challenging goals while working collarobatively (pair-programming, status
 meetings, discussions etc) as well as acceleratedly (short increments and
 tasks, "doing" and testing instead of long startups of planning and
-requirement gathering). This means that most of the time a sprint is a great
-way of getting results, but also to get new people aquinted with the codebase.
-It is also a great method for dissemination and learning within the team
-because of the pair-programming.
+requirement gathering).   This means that most of the time a sprint is a great
+way of getting results, but also to get new people aquainted - a great 
+method for dissemination and learning within the team. 
 
 
 Agile approaches: test-driven development
 -----------------------------------------
 
-Test-driven development is a cornerstone for programming together
-in a distributed team effectively.  Seen from an Agile
-Manifesto perspective it is right up there as one of the key
-elements since it puts focus on producing working code, rather
-than diagrams, plans and papers and then faulty software.
+Test-driven development is a cornerstone for programming
+efficiently together in a distributed team.  Seen from the
+Agile Manifesto perspective it is right up there as one of the
+key elements since it puts focus on producing working code,
+rather than diagrams, plans and papers (and then faulty
+software).
 
 Seen from an Open Source community perspective it is a vitalising strategy -
-especially when combined with an transparent open process in which anyone
-interested can participate - if only for just a few days at a sprint. Some of
+especially in combination with a transparent open process in which anyone
+interested can participate - if only for just a few days at a sprint.  Some of
 the key problems identified by Frederick P. Brooks in the latest version of
 "The Mythical Man-Month" (unfortunately still very actual today) are estimating
 correct amount of time for communication and testing/debugging.  Automated
-testing development and version control help with many of those problems,
+testing development and strict version tracking helps with those problems,
 especially in the hands of a team sprinting its way through the Python
 community - welcoming everyone to participate.
 
 Apart from rewriting the language within itself, PyPy also evolved a number of 
-development tools useful for writing tests and glueing things together. 
+development tools useful for writing tests and glueing things together. PyPy's
+testing tool ("py.test") is used separately and continues to evolve on 
+its own by now. 
 
 .. image:: plots/loc.png 
 .. test driven development 
@@ -106,11 +108,14 @@ development tools useful for writing tests and glueing things together.
 Agility: Open Communication and organisation
 ----------------------------------------------------
 
-Another agility aspects relates to the transparent and open communication
+Another agility aspect relates to the transparent and open communication
 about the project.  Only very few (EU-contract related) documents are 
 access restricted, everything else is freely available and modifiable. 
-Announcing Sprints, Releases and development goals lead to more and 
-more people subscribing to mailing lists or participating in development. 
+There are no hierarchies for commit rights.  In fact, the hosting server
+also gives home to a couple of other projects and all projects share 
+commit rights ("Coding Wiki").  Announcing Sprints, Releases and development 
+goals lead to more and more people subscribing to mailing lists or 
+participating in development. 
 
 Moreover, the PyPy developers evolved a model of weekly 30-minute 
 IRC chat meetings where topics are briefly discussed, delegated
@@ -119,6 +124,10 @@ and usually do not discuss internal EU matters much except that
 funded developers probably keep EU goals more in mind than others. 
 Minutes of these weekly developer meetings get archived and posted 
 to the development list. 
+
+A rather recent invention is "This week in PyPy" which tries to 
+summarize what is going on in the lively IRC development #pypy 
+channel - main place of technical coordination. 
 
 .. image:: plots/subscribers.png 
 
@@ -131,7 +140,8 @@ How and why EU funding?
 Mid 2003 the idea of trying to get EU-funding for the project was born. 
 It became clear that the project had an arbitrarily large scale and that
 receiving some funding would dramatically increase the pace and seriousness
-of the project.  The involved developers and people stretched outside of the 
+of the project - because funded developers can dedicate more of their time
+to the project.  The involved developers and people stretched outside of the 
 Open Source ecologies to try to gather as much information and contacts as 
 possible in order to answer the question: "Should we go for it?"  to which 
 the answer quickly became "Let's see how far we get!". 
@@ -147,26 +157,29 @@ other funded software projects used Open Source in their work as tools
 (languages and applications).  There was no previous experience of an Open
 Source community based project making a bid for funding. 
 
-The areas in the 6th Framework programme (second call) luckily fitted very well 
-with the objectives of PyPy.  The idea of strengthening the european software
+The areas in the 6th Framework programme (second call) fitted very well 
+with the objectives of PyPy.  The idea of strengthening the European Software
 development companies and businesses with supporting an open source language
 implementation was new but appealing to the EU.  But being an Open Source
 project wasn´t enough - the challenges and the idea of an flexible,
 configurable "translator" or "compiler" met the research targets of the FP6, as
 well as trying out and documenting the agile methodology being used.  
+It is interesting to note that todays computer industrial language 
+research and development happens mostly in the US. 
 
 In short, we argued that EU funding allows the project to go for
 reaching a critical mass and position to continue to evolve from 
-there. 
+there and that it would help European Organisations to make some
+ground. 
 
-Acting on this proved to be a more difficult task. The
+Acting on this strategy proved to be a more difficult task. The
 entire proposal and negotiation process took over a year (Autumn 2003 till 
-November 2004). Satisfying the formal requirements, the description of work,
-had not previously been a part of the development process and both the EU 
+November 2004). Satisfying the formal requirements, a proper description of 
+planned work, had not previously been part of the development focus and both the EU 
 and the parties involved had to adapt to the situation.  Yet, drafting the
 high-level requirements (in total 14 workpackages and 58 deliverables) was made
 using the same version-control/open-communication based work style, including
-evolving the proposal at sprints. Writing the proposal and specifying according 
+evolving the proposal at sprints.  Writing the proposal and specifying according 
 objectives on a higher level has proved to be generally useful for clarifying goals 
 on a longer term - also helping others better understand the project. 
 
@@ -176,74 +189,88 @@ the effects of this even today.  The goal of funding
 contributors especially coming to sprints was originally
 based on a non-profit association.  This solution
 wasn't seen as realistic or feasible by the EU although
-it remains an interesting approach for the future.   During
+we think it remains a viable approach for the future.   During
 negotiations, we got to an alternative solution which - however - 
-has a few drawbacks:  Contributors have to become Partners within the
-EU-level Consortium (which is by itself not hard) and can then at least
+has a few drawbacks:  Contributors have to become Contract Partners within 
+the EU-level Consortium (which is by itself not hard) and can then at least
 claim travel and accomodation costs when attending sprints.
-However, this does not easily allow them to get paid for
-working and also has some formal requirements.  This leads to
-current considerations of developers to shift private money
+
+However, this construction does not allow them to get paid for
+work time and also has some formal requirements.  This practically 
+leads to current considerations of developers to shift private money
 between them in order to circumvent the current problems with
 implementing an agile model within the EU contract framing. 
 
 
-consortium and companies within a OSS community structure
+Seven Organisations / The consortium 
 ----------------------------------------------------------------------
 
-Two of the core developers founded companies allowing them to
-participate in EU funding - what first might have felt as an
-EU-related obstacle became an opportunity, but with an added
-load of legal and organizational responsibilities, in itself
-adding inertia to an agile process.  
+The guiding idea for receiving funding is to have organisations 
+through which key developers and other parties are employed. 
+Two companies out of the seven organisations in the initial
+consortium got funded during the EU negotiation process - 
+what first might have felt as an EU-related obstacle became an
+opportunity, but with some overhead in legal and organizational 
+responsibilities.  
 
-Other adjustments, recruiting companies with previous EU project experiences
-and not part of the original PyPy community, were done. There was also an
-recruitment of a company totally unrelated to the developer work being done in
-the PyPy community - focused on process management and designing learning
-processes with a background from the Chaospilot school in Aarhus, Denmark. When
-creating the formal consortium of seven partners, new cultures and perspectives
-were mixed with the strong collaborative Open Source core team, adding new
-complexities in communication and cooperation. Getting the new "playmates" to
-adopt the vision, culture and spirit of the original idea and holding true to
-it during the work on the proposal and negotiation process was a challenge
-indeed.
+Other adjustments and recruiting companies with previous EU
+project experiences took place.  There was also an recruitment
+of a company totally unrelated to the developer work being
+done so far - focused on process management and
+designing learning processes with a background from the
+Chaospilot school in Aarhus, Denmark.  When creating the formal
+consortium of seven partners, new cultures and perspectives
+were mixed with the strong collaborative Open Source core
+team, adding new complexities in communication and
+cooperation.  Getting the new "playmates" to adopt the vision,
+culture and spirit of the original idea and holding true to it
+during the work on the proposal and negotiation process was a
+challenge indeed.
 
-The formal project organization required by the EU imposed more structure on
-the previous more free-floating agile process. Roles and responsibilities where 
-staked out, conforming with the requirements of the roles but delegating as much as
-possible of the responsibilities and decision-making to the core developers.
-The strategy was to keep "conceptual integrity" (Brooks) of the vision and the
-idea in the hands of the core developers.  A somewhat negative result was 
-the added workload and responsibility on developers regarding EU related work. 
-It is interesting, though, that the consortium with its member organisation
-now employs a version-control/review based scheme regarding EU documents
+The formal project organization required by the EU imposed
+more structure on the previous more free-floating agile
+process. Roles and responsibilities where staked out,
+conforming with the requirements of the roles but delegating
+as much as possible of the responsibilities and
+decision-making to the core developers.  The strategy was to
+keep "conceptual integrity" (Brooks) of the vision and the
+idea in the hands of the core developers.  A somewhat negative
+result was the added workload and responsibility on developers
+regarding EU related work.  It is interesting, though, that
+the consortium with its member organisation now employs a
+version-control/review based scheme regarding EU documents
 similar to the technical development approaches. 
 
 It remains a challenge for all partners of the consortium,
 universities and companies alike, to connect an ongoing
 medium-scale open-source project with EU regulations and
 requirements - not to speak of the fact that companies need to
-fund 50% of the costs themselves. 
+fund 50% of the costs themselves.  It is, in fact, too early
+to judge on the overall success of our approaches although 
+we are confident that things work out reasonably well. 
+
 
 challenge: balancing agile OSS community structures with EU requirements
 ------------------------------------------------------------------------------ 
 
-The agile development process in the funded work of the PyPy project
-centers around the sprints (see picture - sprint process) - which are planned
-to take place every 6th week at different places to allow many developers
-to get in direct touch with each other.  Sprinting in connection with 
-major conferences also became a key strategy.
+The agile development process in the EU funded work of the
+PyPy project centers around sprints - which are planned to
+take place every 6th week at different places to allow many
+developers to get in direct touch with each other.  Sprinting
+around conferences also became a key strategy.
 
-The nature of sprints changed.  The need to meet milestones of the EU-funded
-deliverables and the need to keep an open sprint process, still welcoming
-newcomers into the world of Pypy, made the sprints longer (at least 7 days with a 
-break day in the middle) but also changed the nature of the sprints. The team started
-to distuingish between sprints open for all to attend, without prior PyPy
-experience, and sprints requiring PyPy experience.  Tutorials, start up planning
-meetings as well as daily status meetings evolved, the latest additions to the
-sprints are closing planning meetings (planning the work between sprints) and
-work-groups - a version of pair-programming in groups.
+Tut the nature of sprints changed when EU funding started.  The
+need to meet milestones of promised *deliverables* and the
+goal to keep an open sprint process, still welcoming newcomers
+into the world of Pypy, made the sprints longer (at least 7
+days with a break day in the middle) but also changed the
+nature of the sprints. The team started to distuingish between
+sprints open for all to attend, without any prior PyPy experience,
+and sprints requiring earlier PyPy involvement.  Tutorials, start up
+planning meetings as well as daily status meetings evolved,
+the latest additions to the sprints are closing planning
+meetings (planning the work between sprints) and work-groups -
+a version of pair-programming in groups.
 
 Some other effects of sprinting within the EU-structure is that the sprint
 becomes a forum for non-development work - coordinating and tracking the
