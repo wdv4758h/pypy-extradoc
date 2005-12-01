@@ -6,8 +6,10 @@ PyPy - The new Python Implemention on the Block
 .. rst2latex --use-latex-citations --use-latex-footnotes --use-latex-toc --documentoptions=twocolumn,10pt,a4paper --hyperlink-color=0 techpaper.txt --use-latex-docinfo --stylesheet=techpaper.sty techpaper.tex
 .. manual tweaking of the title in the latex file is necessary :-(
 
-Abstract 
-========
+
+.. raw:: latex
+
+   \begin{abstract}
 
 PyPy [#]_ is an implementation of the Python [#]_ programming language written in
 Python itself, flexible and easy to experiment with.  Our long-term goals are
@@ -20,6 +22,10 @@ translation aspect - should become robust against language changes.
 
 .. [#] http://codespeak.net/pypy
 .. [#] http://docs.python.org/ref
+
+.. raw:: latex
+
+   \end{abstract}
 
 PyPy - an implementation of Python in Python
 ============================================
