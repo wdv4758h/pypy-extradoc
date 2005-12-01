@@ -64,9 +64,10 @@ The areas in the 6th Framework programme, second call fitted well enough with th
 "Why do we want money - isn´t OSS non-profit?":
 There was of course the risk of alienating parts of the Open Source community that had evolved around PyPy, not to mention the "collegues" working with the other Python Implentation Projects. To make a bid for funding for core developers and trying to find a model to channel funding for others to be able to participate in sprints was the idea. The decision to stay true to the vision of working agile and the strategy to strengtening the community via eu-funding was the key. Previously, all sprints from 2003 and onwards had been funded privately by the participants. The idea of using eu-funding to make sure that more people could contribute and participate in sprints made sure thar the project wouldn´t abruptly change it´s nature and that contribution wouldn´t be exploited. In the end the response was somewhat opposite - other OSS projects became curious - "PyPy had opened a new market" (Paul Everitt, Zope Europe).  
 
-Proposal and negotiations:
-- formal requirements
-- organizational limbo
+Acting on the answer to these questions proved to be a more difficult task. The entire proposal and negotiation process took over a year (Autumn 2003 to Dec 2004 Holger???). 
+Creating the formal requirements, the description of work, had not previously been a part of the development process. Drafting the high-level requirements (in total 14 workpackages and 58 deliverables) was made during sprints as well as distributed between sprints. This first eu-related work have been useful for the project and the community, clearly stating the idea of the PyPy, a design document on a high level - helping others better understand the vision to be implemented.
+
+Unfortunately the negotiations got stuck in organizational limbo and the project is still suffering from the effects of this even today. The vision of funding contribution during and between sprints to people inside and outside of the formal funding project structure was based on a neutral non-profit party - Python Business Forum. This solution wasn´t seen as realistic or feasible by the EU. The agile approach, keeping the process developer driven as much as possible, needed to be restructured.
 
 The Project: consortium and companies within a OSS community structure
 ----------------------------------------------------------------------
