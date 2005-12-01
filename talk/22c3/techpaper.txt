@@ -106,7 +106,7 @@ one of these parameters changeable independently from each other:
 * we can tweak the translation process to produce low-level code based
   on different models and tradeoffs.
 
-By contrast, a standardized target environment -- say .NET -- 
+By contrast, a standardized target environment - say .NET - 
 enforces ``m=1`` as far as it is concerned.  This helps making ``o`` a
 bit smaller by providing a higher-level base to build upon.  Still,
 we believe that enforcing the use of one common environment 
@@ -116,7 +116,7 @@ to the ``n * m * o`` problem that does not rely on standardization.
 
 This is the *meta-goal*; a more concrete goal worth mentioning at this
 point is that language specifications can be used to generate cool stuff
-in addition to traditional interpreters -- e.g. Just-In-Time compilers. 
+in addition to traditional interpreters - e.g. Just-In-Time compilers. 
 
 .. [#] http://llvm.cs.uiuc.edu/
 
