@@ -327,6 +327,6 @@ is that a lot of people within the PyPy context found
 enjoyable jobs and there now already is evolving commercial
 interest despite the still early stages of the project - mostly 
 from US companies though ... why european companies, especially
-larger ones, appear to prefer taking dumb views on agile open-source 
-development ("great, it's cheaper, no license fees!") is 
-another interesting topic ... 
+larger ones, appear to prefer taking rather naive views on agile 
+open-source development ("great, it's cheaper, no license fees!") 
+is another interesting topic. 
