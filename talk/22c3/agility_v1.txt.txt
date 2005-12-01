@@ -125,18 +125,18 @@ to the development list.
 .. overview of PyPy mailing list subscriptions 
 
 
-How and why EU Framework 6 programme IST funding for OSS work
+How and why EU funding? 
 =====================================================================
 
 Mid 2003 the idea of trying to get EU-funding for the project was born. 
-It became clear that the project had a very large scale and that
+It became clear that the project had an arbitrarily large scale and that
 receiving some funding would dramatically increase the pace and seriousness
-of the project.  The community stretched outside of the Open Source ecologies
-to try to gather as much information and contacts as possible in order to answer the
-question: "Should we go for it?"  to which the answer quickly became 
-"Let's see how far we get!". 
+of the project.  The involved developers and people stretched outside of the 
+Open Source ecologies to try to gather as much information and contacts as 
+possible in order to answer the question: "Should we go for it?"  to which 
+the answer quickly became "Let's see how far we get!". 
 
-"Why do you want money - aren´t you guys non-profit?"
+Making things fit with EU perspectives 
 ------------------------------------------------------
 
 There had been a growing interest from the European Commission, IST division,
@@ -165,24 +165,27 @@ November 2004). Satisfying the formal requirements, the description of work,
 had not previously been a part of the development process and both the EU 
 and the parties involved had to adapt to the situation.  Yet, drafting the
 high-level requirements (in total 14 workpackages and 58 deliverables) was made
-using the same version-control/review based work style and also papers 
-were written during sprints.  Writing the proposal and specifying according 
-objectives on a higher level has been useful for clarifying goals on a 
-longer term - also helping - helping others better understand the visions. 
+using the same version-control/open-communication based work style, including
+evolving the proposal at sprints. Writing the proposal and specifying according 
+objectives on a higher level has proved to be generally useful for clarifying goals 
+on a longer term - also helping others better understand the project. 
 
-Unfortunately the negotiations got stuck in organizational limbo and the
-project is still suffering from the effects of this even today. The vision of
-funding contribution during and between sprints to people inside and outside of
-the formal funding project structure was originally based on a neutral 
-non-profit association.  This solution wasn't seen as realistic or feasible by
-the EU.  In the course, we reached an alternative solution that has a few
-drawbacks:  Contributors have to become Partners within the Consortium 
-(which is by itself not hard) and can then at least claim travel and 
-accomodation costs when attending sprints.  However, this does not 
-easily allow them to get paid for working and also has some formal 
-requirements.  This leads to current considerations of developers 
-to shift private money between them in order to circumvent the 
-current problems with implementing an agile model with the EU. 
+Unfortunately the negotiations with the EU got stuck in
+organizational limbo and the project is still suffering from
+the effects of this even today.  The goal of funding
+contributors especially coming to sprints was originally
+based on a non-profit association.  This solution
+wasn't seen as realistic or feasible by the EU although
+it remains an interesting approach for the future.   During
+negotiations, we got to an alternative solution which - however - 
+has a few drawbacks:  Contributors have to become Partners within the
+EU-level Consortium (which is by itself not hard) and can then at least
+claim travel and accomodation costs when attending sprints.
+However, this does not easily allow them to get paid for
+working and also has some formal requirements.  This leads to
+current considerations of developers to shift private money
+between them in order to circumvent the current problems with
+implementing an agile model within the EU contract framing. 
 
 
 consortium and companies within a OSS community structure
@@ -192,7 +195,7 @@ Two of the core developers founded companies allowing them to
 participate in EU funding - what first might have felt as an
 EU-related obstacle became an opportunity, but with an added
 load of legal and organizational responsibilities, in itself
-adding inertia to an agile process.
+adding inertia to an agile process.  
 
 Other adjustments, recruiting companies with previous EU project experiences
 and not part of the original PyPy community, were done. There was also an
@@ -206,32 +209,38 @@ adopt the vision, culture and spirit of the original idea and holding true to
 it during the work on the proposal and negotiation process was a challenge
 indeed.
 
-The formal project organization required by the EU imposed new restrictions on
-the previous agile process. Roles and responsibilities where staked out,
-conforming with the requirements of the roles but delegating as much as
+The formal project organization required by the EU imposed more structure on
+the previous more free-floating agile process. Roles and responsibilities where 
+staked out, conforming with the requirements of the roles but delegating as much as
 possible of the responsibilities and decision-making to the core developers.
 The strategy was to keep "conceptual integrity" (Brooks) of the vision and the
-idea in the hands of the core developers. The result was just that but also an
-added workload when the project got started, which had a negative effect -
-adding inertia and hindering the agility of the process.
+idea in the hands of the core developers.  A somewhat negative result was 
+the added workload and responsibility on developers regarding EU related work. 
+It is interesting, though, that the consortium with its member organisation
+now employs a version-control/review based scheme regarding EU documents
+similar to the technical development approaches. 
 
+It remains a challenge for all partners of the consortium,
+universities and companies alike, to connect an ongoing
+medium-scale open-source project with EU regulations and
+requirements - not to speak of the fact that companies need to
+fund 50% of the costs themselves. 
 
-The challenge: balancing agile OSS community structures with EU requirements
+challenge: balancing agile OSS community structures with EU requirements
 ------------------------------------------------------------------------------ 
 
-The designed agile development process in the funded work of the PyPy project
-centers arund the sprints (see picture - sprint process). A budget had been
-calculated to fund contribution from the community (the non consortium members)
-and the strategy of the project was to sprint every 6th week, moving around and
-making it possible for developers to get in touch with the project. Sprinting
-in connection with major conferences was also a key strategy.
+The agile development process in the funded work of the PyPy project
+centers around the sprints (see picture - sprint process) - which are planned
+to take place every 6th week at different places to allow many developers
+to get in direct touch with each other.  Sprinting in connection with 
+major conferences also became a key strategy.
 
-The nature of sprints changed. The need to meet milestones of the EU-funded
+The nature of sprints changed.  The need to meet milestones of the EU-funded
 deliverables and the need to keep an open sprint process, still welcoming
-newcomers into the world of Pypy, made the sprints longer (7 days with a break
-day in the middle) but also changed the nature of the sprints. The team started
+newcomers into the world of Pypy, made the sprints longer (at least 7 days with a 
+break day in the middle) but also changed the nature of the sprints. The team started
 to distuingish between sprints open for all to attend, without prior PyPy
-experience, and sprints requiring PyPy experience. Tutorials, start up planning
+experience, and sprints requiring PyPy experience.  Tutorials, start up planning
 meetings as well as daily status meetings evolved, the latest additions to the
 sprints are closing planning meetings (planning the work between sprints) and
 work-groups - a version of pair-programming in groups.
@@ -248,12 +257,14 @@ feedback from sprint participants. Maybe the implementation within the PyPy
 team is slowly conforming to the Scrum standard of sprinting, but not as a
 conscious effort?
 
-Physical persons:
-
-Communication channels:
 
 Managing diversities: agile business - a succesful marriage ?
 --------------------------------------------------------------
+
+For a diverse group of organisations and people, agility is 
+helpful at various levels: you cannot make all-encompassing 
+plans and hope to simply follow them and succeed.  New developments, 
+twists and opportunities evolve all the time.  
 
 Agile EU-project:
 
