@@ -1,5 +1,5 @@
 =========================================================================
-Open Source and EU funding: agile methods in a funded OSS project
+Open Source, EU Funding and Agile Methods 
 =========================================================================
 
 Abstract
@@ -296,7 +296,7 @@ team is slowly conforming to the Scrum standard of sprinting, but not as a
 conscious effort?
 
 
-Managing diversities: agile business - a succesful marriage?
+Managing diversities: agile business 
 --------------------------------------------------------------
 
 For a diverse group of organisations and people, agility is
