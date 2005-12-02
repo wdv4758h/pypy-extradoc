@@ -43,13 +43,13 @@ Agility in Technical Development and Organisation
 Agile approaches: sprinting
 ----------------------------
 
-PyPy first started during a one-week meeting, a "sprint",
-held at Trillke-Gut in Hildesheim February 2003. The sprint was inspired by 
-practices used by other Python projects such as Zope3.  Originally the 
-sprint methodology used in the Python community grew from practices applied by
-the Zope Corporation.  Their definition of a sprint was:  "two-day or three-day focused
-development session, in which developers pair off together in a room and focus
-on building a particular subsystem". 
+PyPy first started during a one-week meeting, a "sprint", held at Trillke-Gut
+in Hildesheim February 2003. The sprint was inspired by practices used by other
+Python projects such as Zope3.  Originally the sprint methodology used in the
+Python community grew from practices applied by the Zope Corporation.  Their
+definition of a sprint was:  "two-day or three-day focused development session,
+in which developers pair off together in a room and focus on building a
+particular subsystem". 
 
 Sprinting up to a week became the initial driving factor in developing 
 the code base and the community/people around it.  The early PyPy sprints 
@@ -59,7 +59,7 @@ the opportunity to both help, participate and influence the ideas within PyPy.
 
 Sprints are actually not part of the traditional Agile
 portfolio of techniques, the closest thing to it comes from
-Scrum who names the 30 days long programming iterations
+Scrum [#]_ who names the 30 days long programming iterations
 "sprints", covering a certain increment.  With the Scrum method, 
 considerable effort is put into performing the sprint planning
 as well as creating and documenting the "sprint backlog" which
@@ -83,8 +83,14 @@ requirement gathering).   This means that most of the time a sprint is a great
 way of getting results and getting new people aquainted - a good 
 method for dissemination of knowledge and learning within the team. 
 
-A key insight, wothwhile for other EU-projects to ponder about, is how an agile 
-process like sprinting is much more suited for creative work between groups of distributed people. Traditional software development, as well as traditional project management techniques have a tendency to hinder creativity due to the inbuilt over-structured, segmented and control-oriented approach which in most cases end in less quality when results are being measured.
+A key insight, worthwhile for other EU-projects to ponder, is how an agile
+process like sprinting is much more suited for creative work between groups of
+distributed people. Traditional software development, as well as traditional
+project management techniques have a tendency to hinder creativity due to the
+inbuilt over-structured, segmented and control-oriented approach which in most
+cases ends in less quality when results are being measured.
+
+.. [#] "Agile project management with Scrum", Ken Schwaber, Microsoft Professional 2004, p. 8-9
 
 .. raw:: latex
    
@@ -106,7 +112,7 @@ Seen from an Open Source community perspective it is a vitalising strategy -
 especially in combination with a transparent open process in which anyone
 interested can participate - if only for just a few days at a sprint.  One of
 the key problems identified by Frederick P. Brooks in the latest version of
-"The Mythical Man-Month" (unfortunately still very actual today) is estimating
+"The Mythical Man-Month" [#]_ (unfortunately still very actual today) is estimating
 correct amount of time for communication and testing/debugging.  Automated
 testing, rather barrier-free communication and strict version tracking helps 
 with that problem, especially in the hands of a team sprinting its way through 
@@ -116,6 +122,8 @@ Apart from rewriting a practical programming language within
 itself, PyPy also evolved a number of development tools useful
 for writing tests and glueing things together. PyPy's testing
 tool ("py.test") is used separately and evolves on its own by now. 
+
+.. [#] "The mythical man-month, anniversary edition", Frederick P. Brooks, Jr, Addison-Wesley 2004
 
 .. raw:: latex
 
@@ -181,29 +189,31 @@ other funded software projects used Open Source in their work as tools
 (languages and applications).  There was no previous experience of an Open
 Source community based project making a bid for funding. 
 
-The areas in the 6th Framework programme (second call) fit very well 
-with the objectives of PyPy.  The idea of strengthening the European Software
+The areas in the 6th Framework programme (second call) fit very well with the
+objectives of PyPy.  The idea of strengthening the European Software
 development companies and businesses with supporting an open source language
 implementation was new but appealing to the EU.  However, being an Open Source
-project wasn´t enough. The challenges and the idea of a flexible,
-configurable "translator" or "compiler" met the research targets of the FP6, as
-well as trying out and documenting the agile methodology being used.  
-It is interesting to note that most of today's computer language research and development happens in the US 
+project wasn´t enough. The challenges and the idea of a flexible, configurable
+"translator" or "compiler" met the research targets of the FP6, as well as
+trying out and documenting the agile methodology being used.  It is interesting
+to note that most of today's computer language research and development happens
+in the US.
 
 In short, we argued that EU funding allowed the project to go from
 reaching a critical mass and position to continue to evolve from 
 there, and that it would help European Organisations to make some
 ground. 
 
-Acting on this strategy proved to be a more difficult task. The
-entire proposal and negotiation process took over a year (Autumn 2003 until 
-November 2004).A proper description of planned work, necessary to satisfy formal requirements, had not previously been part of the development focus and both the EU 
-and the parties involved had to adapt to the situation.  Yet, drafting the
-high-level requirements (in total 14 workpackages and 58 deliverables) was done
-using the same version-control/open-communication based work style, including
-evolving the proposal at sprints.  Writing the proposal and specifying according 
-objectives on a higher level has proved to be generally useful for clarifying goals 
-on a longer term. It also helps others to understand the project better. 
+Acting on this strategy proved to be a more difficult task. The entire proposal
+and negotiation process took over a year (Autumn 2003 until November 2004).A
+proper description of planned work, necessary to satisfy formal requirements,
+had not previously been part of the development focus and both the EU and the
+parties involved had to adapt to the situation.  Yet, drafting the high-level
+requirements (in total 14 workpackages and 58 deliverables) was done using the
+same version-control/open-communication based work style, including evolving
+the proposal at sprints.  Writing the proposal and specifying according
+objectives on a higher level has proved to be generally useful for clarifying
+goals on a longer term. It also helps others to understand the project better. 
 
 Unfortunately the negotiations with the EU got stuck in
 organizational limbo and the project is still suffering from
