@@ -7,7 +7,7 @@ Open Source, EU Funding and Agile Methods
    \begin{abstract}
 
 This paper walks through different aspects of agility 
-within the open-source driven PyPy project [#]_.  Agility played a key role 
+within the open-source PyPy project [#]_.  Agility has played a key role 
 from the beginning. The PyPy project started from some mails
 between a few people, quickly had a first one-week meeting, a "sprint",
 from where it evolved into a structure that was able to carry
@@ -43,7 +43,7 @@ Agility in Technical Development and Organisation
 Agile approaches: sprinting
 ----------------------------
 
-The first bits of PyPy started during a one-week meeting, a "sprint",
+PyPy first started during a one-week meeting, a "sprint",
 held at Trillke-Gut in Hildesheim February 2003. The sprint was inspired by 
 practices used by other Python projects such as Zope3.  Originally the 
 sprint methodology used in the Python community grew from practices applied by
@@ -82,6 +82,9 @@ tasks, "doing" and testing instead of long startups of planning and
 requirement gathering).   This means that most of the time a sprint is a great
 way of getting results and getting new people aquainted - a good 
 method for dissemination of knowledge and learning within the team. 
+
+A key insight, wothwhile for other EU-projects to ponder about, is how an agile 
+process like sprinting is much more suited for creative work between groups of distributed people. Traditional software development, as well as traditional project management techniques have a tendency to hinder creativity due to the inbuilt over-structured, segmented and control-oriented approach which in most cases end in less quality when results are being measured.
 
 .. raw:: latex
    
@@ -185,8 +188,7 @@ implementation was new but appealing to the EU.  However, being an Open Source
 project wasn´t enough. The challenges and the idea of a flexible,
 configurable "translator" or "compiler" met the research targets of the FP6, as
 well as trying out and documenting the agile methodology being used.  
-It is interesting to note that todays computer industrial language 
-research and development occurs mostly in the US. 
+It is interesting to note that most of today's computer language research and development happens in the US 
 
 In short, we argued that EU funding allowed the project to go from
 reaching a critical mass and position to continue to evolve from 
@@ -195,8 +197,7 @@ ground.
 
 Acting on this strategy proved to be a more difficult task. The
 entire proposal and negotiation process took over a year (Autumn 2003 until 
-November 2004). Satisfying the formal requirements, a proper description of 
-planned work, had not previously been part of the development focus and both the EU 
+November 2004).A proper description of planned work, necessary to satisfy formal requirements, had not previously been part of the development focus and both the EU 
 and the parties involved had to adapt to the situation.  Yet, drafting the
 high-level requirements (in total 14 workpackages and 58 deliverables) was done
 using the same version-control/open-communication based work style, including
@@ -318,7 +319,7 @@ to a partially funded EU research project shows the following:
   efforts.  Aiming for homogenity is the real threat.  
 
 - what first seemed like unbeatable odds and too big obstacles
-  even turned sometimes into new possibilities. The challenge is
+  sometimes even turned into new possibilities. The challenge is
   to maintain an atmosphere in which a team can act on those and
   within short timeframes of opportunities.  Change is
   inevitable - how you handle it is the real challenge.
