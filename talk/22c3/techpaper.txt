@@ -17,7 +17,7 @@ to target a large variety of platforms, small and large, by providing a
 compiler toolsuite that can produce custom Python versions.  Platform, memory
 and threading models are to become aspects of the translation process - as
 opposed to encoding low level details into the language implementation itself.
-Eventually, dynamic optimisation techniques - implemented as another
+Eventually, dynamic optimization techniques - implemented as another
 translation aspect - should become robust against language changes.
 
 .. [#] http://codespeak.net/pypy
@@ -49,8 +49,8 @@ of a number of independent modules with clearly defined and well tested API's.
 This eases reuse and allows experimenting with multiple implementations 
 of specific features.
 
-Later in the project we will introduce optimisations, following the
-ideas of Psyco [#]_, a Just in Time Specialiser, that should make PyPy
+Later in the project we will introduce optimizations, following the
+ideas of Psyco [#]_, a Just in Time Specializer, that should make PyPy
 run Python programs faster than CPython. Extensions that increase the
 expressive power are also planned. For instance, we will include the
 ideas of Stackless [#]_, which moves the execution frames off the stack into
@@ -68,7 +68,7 @@ Traditionally, interpreters are written in a target platform language
 like C/Posix, Java or C#.  Each such interpreter provides a "mapping"
 from application source code to the target environment.  One of the
 goals of the "all-encompassing" environments, like the .NET framework
-and to some extent the Java virtual machine, is to provide standardised
+and to some extent the Java virtual machine, is to provide standardized
 and higher level functionalities to language implementors.  This reduces
 the burden of having to write and maintain many interpreters or
 compilers.
@@ -151,7 +151,7 @@ is willing to pay the performance penalty for double-interpretation.
 The *bytecode interpreter* is the part that interprets the compact
 bytecode format produced from user Python sources by a preprocessing
 phase, the *bytecode compiler*.  The bytecode compiler itself is
-implemented as a chain of flexible passes (tokeniser, lexer, parser,
+implemented as a chain of flexible passes (tokenizer, lexer, parser,
 abstract syntax tree builder, bytecode generator).  The bytecode
 interpreter then does its work by delegating all actual manipulation of
 user objects to the *object space*.  The latter can be thought of as the
@@ -202,12 +202,12 @@ effectively, we need to restrict the dynamism of our interpreter-level
 Python code at some point.  However, in the start-up phase, we are
 completely free to use all kinds of powerful Python constructs, including
 metaclasses and execution of dynamically constructed strings.  However,
-when the initialisation phase finishes, all code objects involved need to
+when the initialization phase finishes, all code objects involved need to
 adhere to a more static subset of Python:
 Restricted Python, also known as RPython. 
 
 The Flow Object Space then, with the help of our bytecode interpreter,
-works through those initialised RPython code objects.  The result of
+works through those initialized RPython code objects.  The result of
 this abstract interpretation is a flow graph: yet another
 representation of a Python program, but one which is suitable for
 applying translation and type inference techniques.  The nodes of the
@@ -268,7 +268,7 @@ support for process creation.
 The self-contained PyPy version (single-threaded and using the
 Boehm-Demers-Weiser garbage collector [#]_) now runs around 10-20
 times slower than CPython, i.e. around 10 times faster than 0.7.0.
-This is the result of optimisations, adding short cuts for some common
+This is the result of optimizations, adding short cuts for some common
 paths in our interpreter and adding relatively straight forward
 optimising transforms to our tool chain, like inlining paired with
 simple escape analysis to remove unnecessary heap allocations.  We
@@ -308,7 +308,7 @@ choice of memory or threading models for translation.  Moreover it is
 likely that our Javascript and other higher level backends (in
 contrast to our current low-level ones) will continue to evolve.
 
-Apart from optimisation-related translation choices PyPy is to enable
+Apart from optimization-related translation choices PyPy is to enable
 new possibilities regarding persistence, security and distribution
 issues.  We intend to experiment with ortoghonal persistence for
 Python objects, i.e. one that doesn't require application objects to
