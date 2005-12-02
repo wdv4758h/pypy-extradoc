@@ -17,7 +17,7 @@ to target a large variety of platforms, small and large, by providing a
 compiler toolsuite that can produce custom Python versions.  Platform, memory
 and threading models are to become aspects of the translation process - as
 opposed to encoding low level details into the language implementation itself.
-Eventually, dynamic optimization techniques - implemented as another
+Eventually, dynamic optimisation techniques - implemented as another
 translation aspect - should become robust against language changes.
 
 .. [#] http://codespeak.net/pypy
@@ -49,10 +49,12 @@ of a number of independent modules with clearly defined and well tested API's.
 This eases reuse and allows experimenting with multiple implementations 
 of specific features.
 
-Later in the project we will introduce optimizations, following the ideas
-of Psyco [#]_ that should make PyPy run Python programs faster than CPython,
-and extensions, following the ideas of Stackless [#]_ and others, that will
-increase the expressive power available to python programmers.
+Later in the project we will introduce optimisations, following the
+ideas of Psyco [#]_, a Just in Time Specialiser, that should make PyPy
+run Python programs faster than CPython. Extensions that increase the
+expressive power are also planned. For instance, we will include the
+ideas of Stackless [#]_, which moves the execution frames off the stack into
+heap space, allowing for massive parallellism.
 
 .. [#] http://psyco.sourceforge.net
 .. [#] http://stackless.com 
@@ -66,19 +68,19 @@ Traditionally, interpreters are written in a target platform language
 like C/Posix, Java or C#.  Each such interpreter provides a "mapping"
 from application source code to the target environment.  One of the
 goals of the "all-encompassing" environments, like the .NET framework
-and to some extent the Java virtual machine, is to provide standardized
+and to some extent the Java virtual machine, is to provide standardised
 and higher level functionalities to language implementors.  This reduces
 the burden of having to write and maintain many interpreters or
 compilers.
 
 PyPy is experimenting with a different approach.  We are not writing a
 Python interpreter for a specific target platform.  We have written a
-Python interpreter in Python, without many references to low-level
-details.  (Because of the nature of Python, this is already a
-complicated task, although not as much as writing it in - say - C.)
-Then we use this as a "language specification" and manipulate it to
-produce the more traditional interpreters that we want.  In the above
-sense, we are generating the concrete "mappings" of Python into
+Python interpreter in Python, with as few references as possible to
+low-level details.  (Because of the nature of Python, this is already
+a complicated task, although not as complicated as writing it in - say
+- C.)  Then we use this as a "language specification" and manipulate
+it to produce the more traditional interpreters that we want.  In the
+above sense, we are generating the concrete "mappings" of Python into
 lower-level target platforms.
 
 So far (autumn 2005), we have already succeeded in turning this "language
@@ -149,7 +151,7 @@ is willing to pay the performance penalty for double-interpretation.
 The *bytecode interpreter* is the part that interprets the compact
 bytecode format produced from user Python sources by a preprocessing
 phase, the *bytecode compiler*.  The bytecode compiler itself is
-implemented as a chain of flexible passes (tokenizer, lexer, parser,
+implemented as a chain of flexible passes (tokeniser, lexer, parser,
 abstract syntax tree builder, bytecode generator).  The bytecode
 interpreter then does its work by delegating all actual manipulation of
 user objects to the *object space*.  The latter can be thought of as the
@@ -173,7 +175,7 @@ is done in four steps:
 - producing a *flow graph* representation of the standard interpreter. 
   A combination of the bytecode interpreter and a *flow object space*
   performs *abstract interpretation* to record the flow of objects
-  and execution throughout a python program into such a *flow graph*;
+  and execution throughout a Python program into such a *flow graph*;
 
 - the *annotator* which performs type inference on the flow graph;
 
@@ -198,16 +200,16 @@ bytecode interpreter and standard object space into a lower-level language.
 In order for our translation and type inference mechanisms to work
 effectively, we need to restrict the dynamism of our interpreter-level
 Python code at some point.  However, in the start-up phase, we are
-completely free to use all kinds of powerful python constructs, including
+completely free to use all kinds of powerful Python constructs, including
 metaclasses and execution of dynamically constructed strings.  However,
-when the initialization phase finishes, all code objects involved need to
+when the initialisation phase finishes, all code objects involved need to
 adhere to a more static subset of Python:
 Restricted Python, also known as RPython. 
 
 The Flow Object Space then, with the help of our bytecode interpreter,
-works through those initialized RPython code objects.  The result of
+works through those initialised RPython code objects.  The result of
 this abstract interpretation is a flow graph: yet another
-representation of a python program, but one which is suitable for
+representation of a Python program, but one which is suitable for
 applying translation and type inference techniques.  The nodes of the
 graph are basic blocks consisting of Object Space operations, flowing
 of values, and an exitswitch to one, two or multiple links which connect
@@ -255,30 +257,31 @@ documentation section on the PyPy homepage [#]_.
 Status of the implementation (Nov 2005)
 ========================================== 
 
-With the pypy-0.8.0 release we have integrated our AST compiler with
-the rest of PyPy. The compiler gets translated with the rest to a
-static self-contained version of our standard interpreter.  Like
-with 0.7.0 this version is very compliant [#]_ to CPython 2.4.1 but you
-cannot run many existing programs on it yet because we are
-still missing a number of C-modules like socket or support for process
-creation.
+With the pypy-0.8.0 release we have integrated our Abstract Syntax
+Tree (AST) compiler with the rest of PyPy. The compiler gets
+translated with the rest to a static self-contained version of the
+standard interpreter.  Like with 0.7.0 this version is very compliant
+[#]_ to CPython 2.4.1 but you cannot run many existing programs on it
+yet because we are still missing a number of C-modules like socket or
+support for process creation.
 
 The self-contained PyPy version (single-threaded and using the
-Boehm-Demers-Weiser garbage collector [#]_) now runs around 10-20 times
-slower than CPython, i.e. around 10 times faster than 0.7.0.
-This is the result of optimizing, adding short
-cuts for some common paths in our interpreter and adding relatively
-straightforward optimization transforms to our tool chain, like inlining
-paired with simple escape analysis to remove unnecessary heap allocations.
-We still have some way to go, and we still expect most of our speed
-will come from our Just-In-Time compiler work, which we have barely started
-at the moment.
+Boehm-Demers-Weiser garbage collector [#]_) now runs around 10-20
+times slower than CPython, i.e. around 10 times faster than 0.7.0.
+This is the result of optimisations, adding short cuts for some common
+paths in our interpreter and adding relatively straight forward
+optimising transforms to our tool chain, like inlining paired with
+simple escape analysis to remove unnecessary heap allocations.  We
+still have some way to go. However we expect that most of our speed
+will come from the Just-In-Time compiler - work which we have barely
+started yet.
 
-With the 0.8.0 release the "thunk" object space can also be translated, 
-obtaining a self-contained version of PyPy
-with its features (and some speed degradation), show-casing at a small
-scale how our whole tool-chain supports flexibility from the interpreter
-written in Python to the resulting self-contained executable.
+With the 0.8.0 release the "Thunk Object Space" can also be
+translated. This is a module that proxies the Standard Object Space,
+adding lazy evaluation features to Python. It is a small scale
+show-case for how our whole tool-chain supports flexibility from the
+interpreter written in Python to the resulting self-contained
+executable.
 
 Our rather complete and Python 2.4-compliant interpreter consists 
 of about 30,000-50,000 lines of code (depending on the way you
@@ -298,23 +301,23 @@ Future work and foreseen possibilities
 
 In 2006, the PyPy project aims to translate the standard Python
 Interpreter to a JIT-compiler and also to support massive parallelism
-aka micro-threads within the language.  These are not trivial tasks 
-especially if we want to retain and improve the modularity and 
-flexibility aspects of our implementation - like giving an 
-independent choice of memory or threading models for translation. 
-Moreover it is likely that our javascript and other higher 
-level backends (in contrast to our current low-level ones) will
-continue to evolve. 
+(micro-threads) within the language.  These are not trivial tasks
+especially if we want to retain and improve the modularity and
+flexibility aspects of our implementation - like giving an independent
+choice of memory or threading models for translation.  Moreover it is
+likely that our Javascript and other higher level backends (in
+contrast to our current low-level ones) will continue to evolve.
 
-Apart from optimization-related translation choices PyPy is to enable new
-possibilities regarding persistence, security and distribution issues.  We 
-intend to experiment with ortoghonal persistence for Python objects, i.e. 
-one that doesn't require application objects to behave in a 
-particular manner.  Security wise we will look at sandboxing 
-or capabilities based schemes.   For distribution we already experimented
-with allowing transparent migration of objects between processes with
-the help of the existing (and translateable) Thunk Object Space. 
-In general, according experiments are much easier to conduct with PyPy 
-and should provide a resulting standalone executable in shorter time. 
+Apart from optimisation-related translation choices PyPy is to enable
+new possibilities regarding persistence, security and distribution
+issues.  We intend to experiment with ortoghonal persistence for
+Python objects, i.e. one that doesn't require application objects to
+behave in a particular manner.  Security-wise we will look at
+sandboxing or capabilities based schemes.  For distribution we already
+experimented with allowing transparent migration of objects between
+processes with the help of the existing (and translateable) Thunk
+Object Space.  In general, all experiments are much easier to conduct
+in PyPy and should provide a resulting standalone executable in
+a shorter time than traditional approaches.
 
 
