@@ -1,3 +1,20 @@
+﻿Time: 2005-03-19-2005-03-22
+Participants:
+Michael Chermside 
+Anders Chrigström
+Brian Dorsey 
+Richard Emslie 
+Jacob Hallén
+Holger Krekel
+Alex Martelli 
+Alan Mcintyre 
+Lutz Pälike 
+Samuele Pedroni
+Jonathan Riehl 
+Armin Rigo
+Christian Tismer
+
+
 Pypy sprint and conference report
 
 The Pypy project held a 4 day sprint at the Marvin Center, George
