@@ -1,0 +1,42 @@
+SEMINAR
+Best Practice in the Use and Development of Free and Open Source Software
+3. Case study:
+
+Part 2/Holger:
+
+Slides:
+
+1. What makes Open Source communities like Python work: the people factor
+
+	- collaborative
+	- communication
+	- transparent
+	- organization (decision making)
+
+2. What makes Open Source communities like Python work: the technical framework
+
+	- version control (Subversion)
+	- automated test driven development
+	- releases
+
+
+3. Typical aspects of the Python community?
+
+	- lively community
+	- lot´s of different python implementation projects
+	- good interaction between the projects
+	- different from other OSS communities?
+
+4. PyPy: the vision
+
+	- grew out of the Python community
+	- started through agile practices and evolved via them
+	- what is PyPy (short high level explanation - configurable "interpreter")
+	
+
+5. OSS and EU funding: PyPy as a case study
+
+	- why a fusion between an oss community and EU? (PyPyagenda)
+	- why fund a OSS community (EUagenda)
+	- impact so far
+
