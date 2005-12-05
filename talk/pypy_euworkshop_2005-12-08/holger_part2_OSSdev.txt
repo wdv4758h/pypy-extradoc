@@ -6,37 +6,56 @@ Part 2/Holger:
 
 Slides:
 
-1. What makes Open Source communities like Python work: the people factor
 
-	- collaborative
-	- communication
-	- transparent
-	- organization (decision making)
+1. personal background 
+   - worked in gaming companies, banks and car companies for
+     several years
+   - studied computer science 
+   - left job and went into open-source scenes (2001)
+   - various project involvements, started PyPy 2003 by
+     inviting people to the first "sprint"
 
-2. What makes Open Source communities like Python work: the technical framework
+2. What makes Open Source communities like Python work: the people factor
 
-	- version control (Subversion)
+	- collaborative - driven by interest 
+	- communication - quite transparent to everyone involved 
+	- email / IRC / version-control 
+	- organization - rather informal 
+
+3. the technical factors 
+
 	- automated test driven development
+    - specific expertise/special interest 
+	- version control (Subversion)
 	- releases
 
-
-3. Typical aspects of the Python community?
+4. Typical aspects of the Python community?
 
 	- lively community
-	- lot´s of different python implementation projects
-	- good interaction between the projects
-	- different from other OSS communities?
+	- lots of different python implementation projects
+	- good contactsbetween the projects
+	- maybe less fragmented than other OSS communities?
 
-4. PyPy: the vision
+5. PyPy: the vision
 
-	- grew out of the Python community
-	- started through agile practices and evolved via them
-	- what is PyPy (short high level explanation - configurable "interpreter")
+	- founders came from the Python community
+	- "sprints" were the inital factor
+	- what is PyPy/Python - one of the five most used programming
+	  languages today 
 	
 
-5. OSS and EU funding: PyPy as a case study
+6. OSS and EU funding: PyPy as a case study
 
-	- why a fusion between an oss community and EU? (PyPyagenda)
-	- why fund a OSS community (EUagenda)
-	- impact so far
+	- driven by EU funded and non-EU funded parties 
+	- technically challenging 
+    - IBM or Sun have done similarly challenging projects
+      in much more time and with more funding 
+
+7. PyPy: It's all about communication ... 
+	- pypy-sync meetings, 30 minutes IRC 
+    - pypy-svn/eu-tracking tracks all code and document
+      changes 
+    - around 20000 visitors per month on website
+    - lots of blogs and subscribers to pypy-dev (dev-list) 
+    - 300-500 people across the world following the project 
 
