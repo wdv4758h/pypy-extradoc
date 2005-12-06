@@ -44,8 +44,28 @@ Call for Papers: http://www.python.org/pycon/2006/cfp
 
 Time & location: 24-26 Feburary, 2006, Addison, Texas (near Dallas)
 
-out of the pypy group four talks were submitted.  
+Out of the pypy group four talks were submitted.  
 Acceptance pending (15th November ASFAIK). 
+The 3 PyPy talks where accepted into the PyCon programme!
 
 Due: sprint planning, possibly inviting Ka Ping (regarding E-lang) 
 
+
+Agile 2006
+-----------
+
+DEADLINE: 23 June 2005 (end of early bird registration)
+
+Annual US agile conference (the main agile alliance conference) - last year were
+sold out.
+
+Call for papers:
+http://www.agile2006.org./
+- 31 January for research papers
+- 28 February for experience reports
+
+Time and location: 23-28th of July 2006, Minneapolis, Minnesota, USA
+
+Change Maker (Bea) will plan to submit:
+- experience report
+- research paper
