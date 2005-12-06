@@ -62,7 +62,7 @@ Notes:
 
   - Handouts
 
-  - Weblinks for further inforamtion.
+  - Weblinks for further information.
 
   - Contacts.
 
@@ -179,7 +179,7 @@ Notes:
 
 F/OSS Community Practices - Formal Structure
 
-  - Sub-comunities in larger projects - special interest groups.
+  - Sub-communities in larger projects - special interest groups.
 
   - Regular meetings and conferences.
 
