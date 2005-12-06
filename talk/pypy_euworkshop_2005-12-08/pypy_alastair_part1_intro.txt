@@ -172,7 +172,7 @@ Notes:
   - Formal documentation spotty - forums and IRC can provide excellent
     support. This can be a deciding factor in choosing software.
 
-  - Related projects - friendly rivalry. Much resuing of ideas and
+  - Related projects - friendly rivalry. Much reusing of ideas and
     some code.
 
 ---------------------------------------------------------------------------
