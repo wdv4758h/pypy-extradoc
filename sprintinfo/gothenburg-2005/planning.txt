@@ -1,0 +1,94 @@
+
+Gothenburg Coding Sprint 7/12-11/12 2005
+==================================================
+
+Ludovic Aubry        5/12-10/12    
+Adrien Di Mascio     5/12-10/12   
+Jacob Hallen                     
+Laura Creighton                 
+Beatrice Duering     5/12-11/12 
+Armin Rigo           5/12-11/12 
+Samuele Pedroni      5/12-11/12 
+Anders Chrigstroem   5/12-11/12 
+Eric van Riet Paap   6/12-11/12 
+Michael Hudson       5/12-11/12 
+Carl Friedrich Bolz  5/12-11/12 
+Anders Lehmann       4/12-11/12
+Christian Tismer     4/12-11/12
+Niklaus Haldimann    6/12-11/12
+Richard Emslie       5/12-11/12
+Johan Hahn           7/12-
+
+Possible sprint tasks
+=========================
+
+JIT work
+~~~~~~~~~
+see doc/discussion/draft-jit-ideas.txt
+
+- toy target intepreter
+- low-level graphs abstract interpreter
+(- L3 interpreter)
+
+Stackless
+~~~~~~~~~~
+
+- expose the low-level switching facilities
+- write RPython structures (tasklet, channel) and basic
+  functions for switching
+- add an app-level interface (mixed module)
+- implement support structures - a deque module exists already
+  which can be used for channel queues
+
+GC, __del__, weakref
+~~~~~~~~~~~~~~~~~~~~~
+
+- implement __del__ support in the RTyper and backends
+(- possibly implement weakref (at least with Boehm))
+
+- integrate GC construction framework in the backends
+ (quite a big task)
+
+_socket, C gluing for extensions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- work on _socket
+- this exposes limitations in our way to 
+  glue to C libraries, think/design solutions
+- support more basic integer types. Decide on the proper
+  design (explicit spelling of sizes, or the long-long way?)
+  note that we already have functions which return 64 bit values.
+
+threading
+~~~~~~~~~~~
+
+- fix stack_too_big with threads on Windows
+- investigate why enabling threads creates such a large overhead
+- think of a design to release the GIL around blocking calls
+
+possible optimisation work
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- look into the perfomance and code path for function calls
+  in our intepreter
+- look into converting the indirect call in the eval loop for bytecode
+  dispatch into a switch: probably needs a representation choice in the RTyper,
+  a transformation, and integer exitswitch implementation as switch in the backends
+- ...
+
+Logic programming, WP9
+~~~~~~~~~~~~~~~~~~~~~~~
+
+- export the AST nodes hierarchy to application level through the
+  compiler module
+- export the Grammar representation and provide means to (at least) add
+  new rules (long) which involve providing ST->AST transformation functions
+
+US travel report, maybe towards WP03/WP07
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- telling the story about a commercial travel to the states
+  to optimize some Python application - done using RPython
+- discussing possible advantages/new goals/extensions to the project
+- ideas about producing extension modules: a new object space?
+
