@@ -19,11 +19,15 @@ Niklaus Haldimann    6/12-11/12
 Richard Emslie       5/12-11/12
 Johan Hahn           7/12-
 
+Thursday afternoon: half-breakday (starting at 15.00)
+
 Possible sprint tasks
 =========================
 
-JIT work
-~~~~~~~~~
+JIT work 
+~~~~~~~~~~~~~~~~~
+(Armin, Carl Friedrich, Samuele, Arre, Eric)
+
 see doc/discussion/draft-jit-ideas.txt
 
 - toy target intepreter
@@ -32,8 +36,10 @@ see doc/discussion/draft-jit-ideas.txt
 
 Stackless
 ~~~~~~~~~~
+(Richard, Christian)
 
-- expose the low-level switching facilities
+Expose the low-level switching facilities:
+
 - write RPython structures (tasklet, channel) and basic
   functions for switching
 - add an app-level interface (mixed module)
@@ -51,10 +57,13 @@ GC, __del__, weakref
 
 _socket, C gluing for extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(Nik, Anders L)
 
 - work on _socket
 - this exposes limitations in our way to 
   glue to C libraries, think/design solutions
+
+(Johan, Michael)
 - support more basic integer types. Decide on the proper
   design (explicit spelling of sizes, or the long-long way?)
   note that we already have functions which return 64 bit values.
@@ -77,7 +86,8 @@ possible optimisation work
 - ...
 
 Logic programming, WP9
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(Ludovic, Adrien)
 
 - export the AST nodes hierarchy to application level through the
   compiler module
