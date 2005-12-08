@@ -30,8 +30,8 @@ JIT work
 
 see doc/discussion/draft-jit-ideas.txt
 
-- toy target intepreter
-- low-level graphs abstract interpreter
+- toy target intepreter + parser/assembler (DONE)
+- low-level graphs abstract interpreter (IN-PROGRESS)
 (- L3 interpreter)
 
 Stackless
@@ -41,7 +41,7 @@ Stackless
 Expose the low-level switching facilities:
 
 - write RPython structures (tasklet, channel) and basic
-  functions for switching
+  functions for switching (IN-PROGRESS, Richard wants annotation help)
 - add an app-level interface (mixed module)
 - implement support structures - a deque module exists already
   which can be used for channel queues
@@ -59,12 +59,12 @@ _socket, C gluing for extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 (Nik, Anders L)
 
-- work on _socket
+- work on _socket (IN-PROGRESS)
 - this exposes limitations in our way to 
   glue to C libraries, think/design solutions
 
 (Johan, Michael)
-- support more basic integer types. Decide on the proper
+- support more basic integer types. Decide on the proper (IN-PROGRESS)
   design (explicit spelling of sizes, or the long-long way?)
   note that we already have functions which return 64 bit values.
 
@@ -79,7 +79,7 @@ possible optimisation work
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - look into the perfomance and code path for function calls
-  in our intepreter
+  in our intepreter (Arre, Eric)
 - look into converting the indirect call in the eval loop for bytecode
   dispatch into a switch: probably needs a representation choice in the RTyper,
   a transformation, and integer exitswitch implementation as switch in the backends
@@ -90,7 +90,7 @@ Logic programming, WP9
 (Ludovic, Adrien)
 
 - export the AST nodes hierarchy to application level through the
-  compiler module
+  compiler module (IN-PROGRESS)
 - export the Grammar representation and provide means to (at least) add
   new rules (long) which involve providing ST->AST transformation functions
 
