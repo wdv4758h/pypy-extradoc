@@ -41,7 +41,7 @@ Stackless
 Expose the low-level switching facilities:
 
 - write RPython structures (tasklet, channel) and basic
-  functions for switching (IN-PROGRESS, Richard wants annotation help)
+  functions for switching (IN-PROGRESS)
 - add an app-level interface (mixed module)
 - implement support structures - a deque module exists already
   which can be used for channel queues
@@ -64,7 +64,7 @@ _socket, C gluing for extensions
   glue to C libraries, think/design solutions
 
 (Johan, Michael)
-- support more basic integer types. Decide on the proper (IN-PROGRESS)
+- (DONE) support more basic integer types. Decide on the proper
   design (explicit spelling of sizes, or the long-long way?)
   note that we already have functions which return 64 bit values.
 
@@ -79,7 +79,7 @@ possible optimisation work
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - look into the perfomance and code path for function calls
-  in our intepreter (Arre, Eric)
+  in our interpreter (Arre, Eric, with help from Richard)
 - look into converting the indirect call in the eval loop for bytecode
   dispatch into a switch: probably needs a representation choice in the RTyper,
   a transformation, and integer exitswitch implementation as switch in the backends
@@ -87,15 +87,20 @@ possible optimisation work
 
 Logic programming, WP9
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-(Ludovic, Adrien)
+(Ludovic, Adrien, maybe some help needed)
 
 - export the AST nodes hierarchy to application level through the
   compiler module (IN-PROGRESS)
+  - all the AST tree exported to applevel
+  - still need to create new nodes
 - export the Grammar representation and provide means to (at least) add
   new rules (long) which involve providing ST->AST transformation functions
+  - the grammar rules are exported too
 
 US travel report, maybe towards WP03/WP07
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Saturday morning
 
 - telling the story about a commercial travel to the states
   to optimize some Python application - done using RPython
