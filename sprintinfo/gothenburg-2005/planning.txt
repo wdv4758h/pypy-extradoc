@@ -50,9 +50,7 @@ Expose the low-level switching facilities:
 GC, __del__, weakref
 ~~~~~~~~~~~~~~~~~~~~~
 
-(Carl Friedrich)
-- implement __del__ support in the RTyper and backends (FINISHED for
-  refcounting, some work left for Boehm)
+- implement __del__ support in the RTyper and backends (DONE) 
 (- possibly implement weakref (at least with Boehm))
 
 - integrate GC construction framework in the backends
