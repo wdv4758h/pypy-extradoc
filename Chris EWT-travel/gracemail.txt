@@ -1,0 +1,129 @@
+Chris,
+ 
+Great talking to you -
+
+Grace
+415-503-3994
+ 
+Overview of the company - EWT:
+ 
+Profile of the Founders… Top Crude Oil Trader in the world, Wharton MBA, built 
+technology teams at Goldman Sachs, AIG.  He partnered with the Strategic Advisor 
+to the board of exchange, built largest day trading company (among other things 
+on his resume.)  They started EWT, LLC in Nov 01.  They hired their first VB 
+programmer to write software for them to conduct more effective trades.  Today, 
+they have about 20 people within the technology team; they have 4 traders and 
+$60+ million in profit. 
+
+Today, they have a very robust Trading Platform that operates in real time, 
+managing a huge number of threads under a single connection with a constant flow 
+of data.  It has huge concurrency, maximum uptime, super-low latency, highly 
+distributed architecture.  Their systems pipe directly into the stock exchange 
+and different electronics market, so you are executing trades at the source, not 
+through your e-trade / Charles Schwab broker.  They believe they have applied 
+Java and NIO technologies creatively to achieve the most robust, or high 
+performance system in the industry.  
+
+They also write their own proprietary Algorithmic Trading Model.  With over 50 
+years of trading experience combined, they build these trade strategies to 
+analyze and predict market movements based on economic data, news feed, 
+historical trends, etc…and as a result, trades are automated.  It’s tightly 
+integrated with their platform technologies where they use the news and data in 
+a real time bases to do quantitative analysis on viable trade options.
+
+They also have a back office application to do financial settlements, 
+reconciliation so they can move the money around (transactional applications, 
+etc). 
+
+Essentially, they have the complete trading system.
+
+They are planning to expand into other electronic markets… many opportunities to 
+make money, and they don’t have enough highly skilled programmers/coders to do 
+this. 
+
+They expect significant impacts on performance and latency as a result.  This 
+can be extremely costly because when they are trading at the level and volume 
+they do, (a few hundred thousand shares at a time, they make significant amount 
+even off small price fluctuations), every millisecond counts.  Bottle necks in 
+performance also affects their Algorithmic Trading Model, where they get data 
+from New York Stock Exchange, American Stock Exchange, etc. to execute 
+automated, quantitative based trading.
+
+This company presents a tremendous opportunity for highly skilled programmers 
+and developers to recognize immediate results from applied engineering 
+applications.  Huge opportunity to create wealth through applied engineering 
+systems.
+
+When we visited their office, it’s like a stock trading floor over there, with 
+Plasma TV displaying sticker symbols, charts… and get this, the traders are 
+executing their transactions on the click of a button, on the Plasma TV… it’s 
+where they display the GUI part of the application. 
+
+ Talk about geeks.  And talk about a recession proof industry.  And talk about 
+ using and tweaking the latest technologies to solve big problems.  And talk 
+ about seeing your work come to life in real time, immediately, and not having 
+ to wait for customers to buy or customer ship, or management’s red tape.  On 
+ top of it all, they definitely have some of the sharpest minds we have 
+ encountered in our recruiting experience, with low ego too.
+
+Open positions:
+
+In general, they are looking for a select group of people with:
+*  3-8 years of software development experience in highly complex and technical environments.
+*  Excellent working knowledge of Java and Linux environments.
+*  Technical agility and curiosity about the next generation of cutting edge technologies.
+*  Flexible personalities, adept in operating with ambiguity and rapid change.
+*  Very high work ethics - motivated and passionate about the success of their company, and driven by the contribution that they can make.
+*  Strong communication skills and a good sense of humor.
+ 
+Current Opportunities include:
+----------------------------------------------------------------------------------------
+Software Engineer (Platform) - 5-6 positions
+As a software engineer, you will work on our core trading
+platform, a high-performance geographically distributed system that
+executes proprietary trading algorithms.
+* Experience with networking, particularly TCP-based.  Java NIO is a plus.
+* Advanced skills in core Java technologies, especially with regards to concurrency
+and data structures.
+* Experience with distributed systems, multi-processing, thread migration, connection pooling or locking
+*Experience with Java I/O, JVM, developing Core Java APIs or writing Java class libraries.
+* Experience building high-performance, high-transaction volume servers from scratch a plus. 
+*Knowledge in areas such as fault tolerance, load balancing, high availability, low-latency and parallel computing is preferred.
+* C++, Python, Lisp and Ruby are a plus.
+* Knowledge of Java Swing and AWT is a plus.
+* Excellent communication skills are required.
+---
+Software Engineer (Trading) - 5-6 positions
+As a software engineer, you will work on proprietary trading
+strategies that will run on a high-performance, electronic trading
+platform.
+You will be involved in improving the scalability, performance, and
+efficiency of existing strategies. This position includes strong
+collaboration with traders to research and prototype new strategies.
+* Candidates should have an interest in trading and financial markets.
+* Candidates should enjoy working in a fast-paced, dynamic environment.
+* Analytic ability and raw talent are required.
+* Excellent programming skills usingJava in a Linux environment
+* Background in math, physics, or statistics is a plus.
+* Excellent communication skills are required.
+----------------------------------------------------------------------------------------
+Software Engineer (Database) - 3-4 positions
+As a software engineer, you will be developing our back-office
+financial systems. These systems form the core of our trading operations,
+including support for clearing, settlement, reconciliation, and financial
+accounting.
+* Experience with a variety of database systems, particularly MySQL.
+Sybase, Oracle, and/or MS SQL is a plus.
+* Candidates should know core Java, especially with regards to concurrency and data structures.
+* Experience building web-based database applications. PHP and/or
+Java+Struts is a plus.
+* Candidates should understand object-oriented design and design patterns, and be comfortable with rapid development.
+* Experience generating reports in various formats including CSV.
+Microsoft Excel and/or PDF is a plus.
+* Excellent communication skills are required.
+ 
+ 
+
+ 
+
+ 

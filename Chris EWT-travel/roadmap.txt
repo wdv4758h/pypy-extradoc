@@ -1,0 +1,175 @@
+
+Christian's travel to the USA
+=============================
+
+How it began
+------------
+
+September 2nd:
+
+Phone call from Amanda Arnett/Grace Law, Foundation Systems.
+"Would you like to work for EWT LLC?"
+
+--> company overview
+
+Found me by Email conversation on PyPy between Armin and me.
+
+Arrangements for phone calls with John Benediktsson (CTO), Jason Wells (CPM)
+Rodney Faragalla (CEO)
+
+Preference for full-time employees.
+
+Pause!
+
+
+October 15th:
+
+Phone call, "can you come"?
+
+Making plans for Nov. 4th to Nov. 11th.
+
+Arrived on the 3rd, started on Friday 4th.
+Introduction into the system, problem description.
+
+Java application, all written in Java. Looked into
+Wallstreet - Java cannot be good. Python?
+Recoded Python app 10 times slower.
+Needed a hard-core Pythoneer to speed that up. me? :-)
+
+Stopped them after 40 minutes: "I need to think"  :-)
+
+--> clob.py
+
+First approach:
+Using RPython to do parsing of the data into tuples as fast as possible.
+
+Only little faster than using Psyco, expense of the post-processing.
+
+Started over, half-heartedly: Translating the whole application.
+Will that work?
+
+After half time of stay, I was confident and asked for extension.
+"Stay as long as you like!".
+Extended to stay until Fri. 19th.
+
+Thu., 18th: Visit of a propellerhead company "Applied Minds Inc".
+Alan Kay has his office there. Is a consultant for EWT.
+
+Fri., 19th:
+Arrived at 65% of Java speed.
+
+David Salomon -> wants me badly to talk to Alan Kay
+
+Extending to Wed., 23rd.
+
+Tue., 22nd: 
+Got 102% of Java speed. Checking in.
+Colloquium with Alan Kaye.
+Talked 1.5 hours about PyPy, without preparation (phew).
+Alan: "Now that I know PyPy, I like Python *much* better".
+
+"Nice smalltalk, but no 'squeak' when shaking hands" :-)
+
+Future plans of EWT:
+
+After they saw what is possible with PyPy, David asked
+"How much money does the EU spend on this?" (Laugh)
+"I can do this alone, twice!"
+
+Modelled after Xerox PARC (Palo Alto Research Center)
+
+--  BARC  --  (Beverly Advanced Research Center?)
+
+Criteria: "The core Python people seem to have the right mind set"
+
+The best way to predict the future is to invent it!
+— Alan Kay
+
+
+Overall result:
+---------------
+
+EWT has a huge interest in using Python as their main development
+language and to be able to produce fast code at the same time.
+They are very happy with the RPython results and find the code
+readable enough.
+
+They want to support the PyPy project as much as they can.
+
+They are asking us how to do that. They don't want to break the project.
+
+Coming to the PyCon 2006 sprint
+
+Inviting to a sprint at EWT in Beverly hills?
+
+
+Problems with RPython
+---------------------
+
+- needs a bit more support
+
+- deriving from builtin types
+
+- properties would be convenient
+
+- some provision to publish an RPython object to CPython
+  currently did that by hand, by creating new objects.
+
+- explict spelling which objects are to be taken from CPython
+  and which are to be imported (I started that, but it needs more concept)
+ 
+- better error handling
+  the cause of errors is sometimes hard to track down.
+  
+- a new object space, describing what CPython is?
+
+We agreed that I shouldwrite this up, to be discussed in the TB meeting.
+
+Ideas
+-----
+
+Replace CPython modules by RPython generated code, step by step.
+Use that to make porting of Stackless Python simpler.
+Putting PyPy into production, right now.
+
+"Two-sided" approach of replacing CPython.
+PyPy from the top, RPython from the bottom.
+
+
+Personal Opinion:
+-----------------
+
+Biggest fish I ever landed.
+"Do it now, or loose forever".
+
+Consequences
+------------
+
+the PyPy project, long-term:
+++++++++++++++++++++++++++++
+
+EWT is most probably going to support PyPy very much
+and might take over sponsorship after the EU project ends.
+Provided we can find an arrangement that fits both parties.
+
+No intrusion into open-sourced-ness.
+
+myself, almost immediately
+++++++++++++++++++++++++++
+
+EWT wants me to work for them as much as possible.
+At the same time, they are aware of the bulk of promised work
+tismerysoft has to fulfil.
+
+Hire one or two people for tismerysoft, to get the funding? Whom?
+
+Not hiring in the first place, but asking EWT to give the money
+for employing part-time consultants?
+
+Interested/available people I've been talking with already:
+- Gromit
+- Stephan Diehl
+
+Ideas?
+
+Marius might be interested
