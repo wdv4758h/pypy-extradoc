@@ -26,12 +26,12 @@ Possible sprint tasks
 
 JIT work 
 ~~~~~~~~~~~~~~~~~
-(Armin, Carl Friedrich, Samuele, Arre, Eric)
+(Armin, Michael, Samuele, Arre, Eric)
 
 see doc/discussion/draft-jit-ideas.txt
 
 - toy target intepreter + parser/assembler (DONE)
-- low-level graphs abstract interpreter (IN-PROGRESS)
+- low-level graphs abstract interpreter (MORE PROGRESS)
 (- L3 interpreter)
 
 Stackless
@@ -42,6 +42,7 @@ Expose the low-level switching facilities:
 
 - write RPython structures (tasklet, channel) and basic
   functions for switching (IN-PROGRESS)
+- prototypes for channels and tasklets + tests (FINISHED)
 - add an app-level interface (mixed module)
 - implement support structures - a deque module exists already
   which can be used for channel queues
@@ -49,7 +50,9 @@ Expose the low-level switching facilities:
 GC, __del__, weakref
 ~~~~~~~~~~~~~~~~~~~~~
 
-- implement __del__ support in the RTyper and backends
+(Carl Friedrich)
+- implement __del__ support in the RTyper and backends (FINISHED for
+  refcounting, some work left for Boehm)
 (- possibly implement weakref (at least with Boehm))
 
 - integrate GC construction framework in the backends
@@ -63,7 +66,7 @@ _socket, C gluing for extensions
 - this exposes limitations in our way to 
   glue to C libraries, think/design solutions
 
-(Johan, Michael)
+
 - (DONE) support more basic integer types. Decide on the proper
   design (explicit spelling of sizes, or the long-long way?)
   note that we already have functions which return 64 bit values.
@@ -71,7 +74,7 @@ _socket, C gluing for extensions
 threading
 ~~~~~~~~~~~
 
-- fix stack_too_big with threads on Windows
+- fix stack_too_big with threads on Windows (Johan)
 - investigate why enabling threads creates such a large overhead
 - think of a design to release the GIL around blocking calls
 
@@ -79,7 +82,7 @@ possible optimisation work
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - look into the perfomance and code path for function calls
-  in our interpreter (Arre, Eric, with help from Richard)
+  in our interpreter (IN-PROGRESS) Arre, Eric, with help from Richard)
 - look into converting the indirect call in the eval loop for bytecode
   dispatch into a switch: probably needs a representation choice in the RTyper,
   a transformation, and integer exitswitch implementation as switch in the backends
@@ -100,7 +103,7 @@ Logic programming, WP9
 US travel report, maybe towards WP03/WP07
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Saturday morning
+Saturday morning  (waiting a bit for Richard?)
 
 - telling the story about a commercial travel to the states
   to optimize some Python application - done using RPython
