@@ -21,58 +21,56 @@ Johan Hahn           7/12-
 
 Thursday afternoon: half-breakday (starting at 15.00)
 
-Possible sprint tasks
-=========================
+Possible sprint tasks / Work distribution after the sprint
+=============================================================
 
 JIT work 
 ~~~~~~~~~~~~~~~~~
-(Armin, Michael, Samuele, Arre, Eric)
 
 see doc/discussion/draft-jit-ideas.txt
 
 - toy target intepreter + parser/assembler (DONE)
-- low-level graphs abstract interpreter (MORE PROGRESS)
-(- L3 interpreter)
+- low-level graphs abstract interpreter: Armin, Michael, Carl Friedrich,
+  Samuele)
+- (L3 interpreter: Carl Friedrich)
 
 Stackless
 ~~~~~~~~~~
-(Richard, Christian)
 
 Expose the low-level switching facilities:
 
+Christian, Richard?
+
 - write RPython structures (tasklet, channel) and basic
-  functions for switching (IN-PROGRESS)
-- prototypes for channels and tasklets + tests (FINISHED)
-- add an app-level interface (mixed module)
+  functions for switching
+- prototypes for channels and tasklets + tests
+- add an app-level interface
 - implement support structures - a deque module exists already
   which can be used for channel queues
 
 GC, __del__, weakref
 ~~~~~~~~~~~~~~~~~~~~~
 
-- implement __del__ support in the RTyper and backends (DONE) 
+- implement __del__ support in the RTyper and backends (DONE,
+  performance killer! 10 times slower! argh!!!), Samuele, Carl Friedrich 
 (- possibly implement weakref (at least with Boehm))
 
-- integrate GC construction framework in the backends
- (quite a big task)
+- integrate GC construction framework in the backends: Eric, Carl
+  Friedrich
 
 _socket, C gluing for extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-(Nik, Anders L)
 
-- work on _socket (IN-PROGRESS)
+- work on _socket: Nik, later
 - this exposes limitations in our way to 
-  glue to C libraries, think/design solutions
+  glue to C libraries, think/design solutions: Armin, maybe
 
-
-- (DONE) support more basic integer types. Decide on the proper
-  design (explicit spelling of sizes, or the long-long way?)
-  note that we already have functions which return 64 bit values.
 
 threading
 ~~~~~~~~~~~
 
-- fix stack_too_big with threads on Windows (Johan)
+- fix stack_too_big with threads on Windows (Johan, work started, help
+  needed, Christian)
 - investigate why enabling threads creates such a large overhead
 - think of a design to release the GIL around blocking calls
 
@@ -80,10 +78,11 @@ possible optimisation work
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - look into the perfomance and code path for function calls
-  in our interpreter (IN-PROGRESS) Arre, Eric, with help from Richard)
+  in our interpreter (MOSTLY DONE)
 - look into converting the indirect call in the eval loop for bytecode
   dispatch into a switch: probably needs a representation choice in the RTyper,
-  a transformation, and integer exitswitch implementation as switch in the backends
+  a transformation, and integer exitswitch implementation as switch in the
+  backends: Arre, Eric
 - ...
 
 Logic programming, WP9
@@ -101,10 +100,22 @@ Logic programming, WP9
 US travel report, maybe towards WP03/WP07
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Saturday morning  (waiting a bit for Richard?)
+Saturday morning  (DONE)
 
 - telling the story about a commercial travel to the states
   to optimize some Python application - done using RPython
 - discussing possible advantages/new goals/extensions to the project
 - ideas about producing extension modules: a new object space?
+
+Reports finalization (important!!!, done before 16th December)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- pdf generation (Carl Friedrich)
+- beautification (people responsible)
+
+next pypy-sync meeting topics (eric)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- pypy-sync meetings attendance
+- mallorca sprint topics
 
