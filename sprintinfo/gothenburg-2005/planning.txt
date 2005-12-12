@@ -53,7 +53,8 @@ GC, __del__, weakref
 
 - implement __del__ support in the RTyper and backends (DONE,
   performance killer! 10 times slower! argh!!!), Samuele, Carl Friedrich 
-(- possibly implement weakref (at least with Boehm))
+
+- (possibly implement weakref (at least with Boehm))
 
 - integrate GC construction framework in the backends: Eric, Carl
   Friedrich
