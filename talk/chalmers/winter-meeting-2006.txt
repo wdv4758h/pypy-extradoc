@@ -1,7 +1,7 @@
 Reference: http://www.cs.chalmers.se/wm/
 DEADLINE: 3rd January 2006 (Tuesday)
 
-Title: PyPy - the new Python implementation on the block 
+Title: PyPy: Dynamic optimizations for your favorite language
 
 Talker: Armin Rigo
 
@@ -10,7 +10,7 @@ Abstract (max 150 words):
     PyPy (http://codespeak.net/pypy/dist/pypy/doc/architecture.html) is
     an implementation of the Python (http://www.python.org) programming
     language written in Python itself, flexible and easy to experiment
-    with.  We are targetting a large variety of platforms, small and
+    with.  We are targeting a large variety of platforms, small and
     large, by providing a compiler toolsuite that can produce custom
     Python versions.  Platform, memory and threading models are aspects
     of the translation process - as opposed to encoding low level
