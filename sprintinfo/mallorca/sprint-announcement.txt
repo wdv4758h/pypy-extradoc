@@ -1,4 +1,4 @@
-Palma de Mallorca  PyPy Sprint II: 23rd - 29th January 2006 
+Palma de Mallorca  PyPy Sprint: 23rd - 29th January 2006 
 ============================================================
 
 The next PyPy sprint is scheduled to take place January 2006 in 
