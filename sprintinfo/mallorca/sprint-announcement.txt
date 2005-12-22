@@ -1,24 +1,21 @@
 Palma de Mallorca  PyPy Sprint II: 23rd - 29th January 2006 
 ============================================================
 
-The next PyPy sprint is scheduled to be in January 2006 in Palma De
-Mallorca, Balearic Isles, Spain. We'll give newcomer-friendly
-introductions. Its focus will mainly be on the current JIT work, garbage
+The next PyPy sprint is scheduled to take place January 2006 in 
+Palma De Mallorca, Balearic Isles, Spain. We'll give newcomer-friendly
+introductions and the focus will mainly be on current JIT work, garbage
 collection, alternative threading models, logic programming and on
 improving the interface with external functions. To learn more about the
-new PyPy Python-in-Python implementation look here: 
+new Python-in-Python implementation look here: 
 
     http://codespeak.net/pypy
-
 
 Goals and topics of the sprint 
 ------------------------------
 
 In Gothenburg we have made some first forays into the interesting topics
-of phase 2 of the PyPy project. In Mallorca we will continue the work
-that we started there.
-
-The currently scheduled main topics are:
+of Just-in-Time compilation. In Mallorca we will continue that
+and have the following ideas: 
 
   - Further work/experimentation with the Abstract Interpreter that was
     started in Gothenburg.
@@ -32,12 +29,14 @@ The currently scheduled main topics are:
     slow, we need to work on that. Furthermore there are still quite
     some slow places in the interpreter that could be improved.
 
-  - If someone feels like it: although vastly improved our socket module
-    is still far from complete
+  - getting the socket module to a more complete state (it is
+    already improved but still far from complete) 
 
-  - In general we need to improve the way we interface with external
-    functions.
+  - generally improving the way we interface with external functions.
 
+  - whatever participants want to do with PyPy (please send 
+    suggestions to the mailing list before to allow us to plan 
+    and give feedback) 
 
 
 Location & Accomodation  
@@ -56,11 +55,11 @@ urban trip costs 1 euro. You can also buy a card that is valid for 10
 trips and costs 7.51 euros.  Information about bus timetables and routes
 can be found on:
 
-http://www.a-palma.es.
+    http://www.a-palma.es
 
 A map over the UIB campus are can be found on:
 
-http://www.uib.es/imagenes/planoCampus.html
+    http://www.uib.es/imagenes/planoCampus.html
 
 The actual address is: 3r pis de l'Anselm Turmeda which can be found on
 the UIB Campus map.
@@ -79,14 +78,14 @@ LOCALISATION=ES%20ISLASBALEARES%20MALLORCA
 
 If you want to find a given street, you can search here:
 
-http://www.callejeando.com/Pueblos/pueblo7_1.htm
+    http://www.callejeando.com/Pueblos/pueblo7_1.htm
 
 To get to Palma De Mallorca almost all low fare airlines and travel
 agencies have cheap tickets to get there. Information about Mallorca and
 Palma (maps, tourist information, local transports, recommended air
 lines, ferries and much more) can be found on:
 
-http://www.palmademallorca.es/portalPalma/home.jsp
+    http://www.palmademallorca.es/portalPalma/home.jsp
 
 Comments on the weather: In January it is cold and wet on Mallorca
 
@@ -115,7 +114,7 @@ information.
 For those of you interested - here is his website where there also are
 paintings showing his studio:
 
-http://www.hermetex4.com/damnans/
+    http://www.hermetex4.com/damnans/
 
 For those interested in playing collectable card games, this will also
 be an opportunity to get aquainted with V:TES which will be demoed by
