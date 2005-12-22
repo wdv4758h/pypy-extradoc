@@ -1,0 +1,42 @@
+
+People coming to the Mallorca sprint 2006
+==================================================
+
+People who have a ``?`` in their arrive/depart or accomodation
+column are known to be coming but there are no details 
+available yet from them. 
+ 
+==================== ============== =====================
+    Name              Arrive/Depart     Accomodation 
+==================== ============== =====================
+Beatrice Duering     ?              ?
+Armin Rigo           ?              ?
+Samuele Pedroni      ?              ?
+Eric van Riet Paap   ?              ?
+Michael Hudson       ?              ?
+Carl Friedrich Bolz  ?              ?
+Anders Chrigstroem   ?              ?
+Christian Tismer     ?              ?
+Jacob Hallen         ?              ?         
+Holger Krekel        ?              ?
+==================== ============== =====================
+
+People on the following list were present at previous sprints: 
+
+==================== ============== =====================
+       Name          Arrive/Depart  Accomodation 
+==================== ============== =====================
+Ludovic Aubry        ?              ?          
+Adrien Di Mascio     ?              ?          
+Laura Creighton      ?              ?       
+Lene Wagner          ?              ?
+Anders Lehmann       ?              ?
+Niklaus Haldimann    ?              ?
+Richard Emslie       ?              ?
+Johan Hahn           ?              ?
+Amaury Forgeot d'Arc ?              ?
+Valentino Volonghi   ?              ?
+Boris Feigin	     ?              ?
+Andrew Thompson      ?              ?
+Bert Freudenberg     ?              ?
+==================== ============== =====================
