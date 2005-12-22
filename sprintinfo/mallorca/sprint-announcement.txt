@@ -17,8 +17,8 @@ In Gothenburg we have made some first forays into the interesting topics
 of Just-in-Time compilation. In Mallorca we will continue that
 and have the following ideas: 
 
-  - Further work/experimentation with the Abstract Interpreter that was
-    started in Gothenburg.
+  - Further work/experimentation toward Just-In-Time Compiler generation, 
+    which was initiated with the Abstract Interpreter started in Gothenburg.
 
   - Integrating our garbage collection toolkit with the backends and the
     code generation.
