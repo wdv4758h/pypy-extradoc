@@ -36,7 +36,7 @@ PyPy implementation facts
 
 - implements full Python language in Python itself 
 - parts implemented in a restricted subset: RPython 
-- "static enough" for full-programm type inference
+- "static enough" for full-program type inference
 - but at boot time we allow unrestricted python! 
 - 350 subscribers to pypy-dev, 150.000 LOCs, 20.000 visitors per month, 
 - MIT license 
@@ -143,11 +143,11 @@ Translation Aspects
 ====================
 
 - implementation decisions (GC, threading, CC) at translation time 
-- most language implementation do a "fixed" decision 
+- most other language implementations do a "fixed" decision 
 - translation aspects are weaved into the produced code
 - independent from language semantics (python interpreter)
 
-aspects: Memory Models
+Aspects: Memory Models
 ===================================
 
 - Currently implemented: refcounting, Boehm-collector
@@ -206,7 +206,7 @@ PyPy cross pollination
 the speed issue
 ===============
 - currently 5-15 times slower than CPython 
-- now seriously starting with optmisations at various levels 
+- now seriously starting with optimisations at various levels 
 - pypy can translate (R-)python code to something 10-50 times
   faster compared to running on top of CPython 
 
@@ -221,7 +221,7 @@ technical outlook 2006
 ======================
 
 - specialising JIT-compiler, processor backends
-- stackless/non-c calling conventions (CPS)
+- stackless/non-C calling conventions (CPS)
 - GC / threading integration + extensions
 - orthogonal persistence and distribution (see thunk example)
 - built-in security (e-lang ...)
