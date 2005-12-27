@@ -117,7 +117,7 @@ Type Inference
 
 - performs forward propagating type inference
 - is used to infer the types in flow graphs
-- needs types of the entry poing function's arguments
+- needs types of the entry point function's arguments
 - assumes that the used types are static
 - goes from very special to more general values
 
@@ -169,7 +169,7 @@ comparison to other approaches
 Project    languages   environments impl aspects 
 ========== =========== ============ =============
 PyPy       1 (for now) variable     variable        
-Java       variable    1            semi-variable
+JVM/Java   variable    1            semi-variable
 .NET       variable    1            semi-variable
 ========== =========== ============ =============
 
