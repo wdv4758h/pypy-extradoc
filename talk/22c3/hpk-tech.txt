@@ -6,8 +6,15 @@ PyPy - The new Python implementation on the block
 
 :Authors: Holger Krekel & Carl Friedrich Bolz 
 :Date: 28th December 2005 
+:Location: 22C3, Berlin 
 
 .. holger 
+
+The missing talker: Armin Rigo 
+===============================
+
+.. image:: armin_rigo.jpg
+
 
 Python implementation facts 
 ===========================
@@ -98,6 +105,7 @@ Builtin and Fundamental Modules
 - around 200 builtin functions and classes 
 - fundamental modules like 'sys' and 'os' implemented 
 - quite fully compliant to CPython's regression tests 
+- a number of modules missing or incomplete (socket ...)
 
 Animation on Interpreter/Objspace interaction 
 ===============================================
@@ -255,7 +263,7 @@ outlook on whole project level
 ==============================
 
 - surviving the EU review in Bruxelles 20th January 2006
-- better interactions with community & contribution
+- improve interactions with community & contribution
 - taking care about post-EU development (2007++)
 - visiting the US, Japan ... 
 - commercial opportunities ... 
