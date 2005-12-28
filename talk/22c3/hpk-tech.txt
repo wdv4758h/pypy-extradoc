@@ -9,12 +9,6 @@ PyPy - The new Python implementation on the block
 
 .. holger 
 
-PyPy/Translation overview
-=========================
-
-.. image:: translation-overview.png
-   :scale: 500
-
 Python implementation facts 
 ===========================
 
@@ -29,27 +23,42 @@ Python implementations
 - CPython: main Python version (BDFL'ed by Guido)
 - Jython: compiles to Java Bytecode
 - IronPython (MS): compiles to .NET's CLR 
-- PyPy: self-contained - self-translating 
+- PyPy: self-contained - self-translating - flexible
+
+PyPy project facts 
+=======================
+
+- started 2002 as a grass-root effort
+- aims: flexibility, research, speed 
+- test-driven development 
+- received EU-funding from end 2004 on  
+- 350 subscribers to pypy-dev, 150.000 LOCs, 20.000 visitors per month, 
+- MIT license
 
 PyPy implementation facts
 ============================
 
-- implements full Python language in Python itself 
+- implements Python language in Python itself 
 - parts implemented in a restricted subset: RPython 
 - "static enough" for full-program type inference
-- but at boot time we allow unrestricted python! 
-- 350 subscribers to pypy-dev, 150.000 LOCs, 20.000 visitors per month, 
-- MIT license 
+- at boot time we allow unrestricted python! 
 
 PyPy/Python architecture 
 =============================
-[picture]
 
 - parser and compiler
 - bytecode interpreter 
 - Standard Object Space / Type implementations 
 - Python VM = interpreter + Standard Object Space
 - builtin and fundamental modules 
+
+PyPy/Python architecture picture
+==================================
+
+.. image:: interpreter-overview.png
+   :width: 650
+   :height: 400
+
 
 Parser and Compiler
 ===================
@@ -58,23 +67,24 @@ Parser and Compiler
 - compiles AST to code objects (bytecode) 
 - works from the CPython grammar definition 
 - can be modified/extended at runtime (almost) 
-- [showing interactively] ... 
+- [interactive command line dis-example] ... 
 
 Bytecode interpreter
 ====================
 
-- interprets bytecode/code objects through "Frames" 
+- interprets bytecode/code objects through Frame objects 
 - Frames tie to global and local variable scopes
 - implements control flow (loops, branches, exceptions, calls)
 - dispatches all operations on objects to an Object Library
-  ("Space")
+  or "Object Space"
 
 Object Spaces
 =============
 
 - library of all python types and operations on them 
+- encapsulates all knowledge about app-level objects 
 - is not concerned with control flow or bytecode 
-- ... 
+- e.g. enough control to implement lazy evaluation 
 
 Builtin and Fundamental Modules
 ===============================
@@ -101,6 +111,12 @@ PyPy/Translation architecture
 - Specialising to lltypesystem / ootypesystem 
 - C and LLVM Backends to lltypesystem 
 
+PyPy/Translation overview
+=========================
+
+.. image:: translation-overview.png
+   :height: 422
+   :width: 760
 
 Abstract Interpretation
 ========================
@@ -215,7 +231,7 @@ pypy development method
 - sprints
 - test-driven 
 - open source culture 
-- see talk tomorrow 5pm  (29th Dec. 2005)
+- see talk tomorrow 2pm  (29th Dec. 2005)
 
 technical outlook 2006
 ======================
