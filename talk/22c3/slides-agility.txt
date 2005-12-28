@@ -20,8 +20,7 @@ key elements of the technical development
 
 - test-driven from the start
 - driven by architectural experiences
-- welcomed by python community (just ask for name for a
-  project :) 
+- welcomed by python community 
 - based on zen of python / python culture 
 - focus on correctness of concepts, then speed 
 
@@ -29,7 +28,7 @@ python community
 ==================================================
 
 - strong open-source cultural background 
-- strong focus on glue & integration esp. with C-libraries 
+- strong focus on glue & integration esp. with C/other languages 
 - few flaming fights inside / much collaboration
 - has many windows and unix hackers 
   
@@ -38,7 +37,7 @@ evolving agility
 
 - all large python projects rely and depend on automated testing 
 - several projects regularly "sprint" and work together distributedly 
-- first community conference EuroPython in 2002 (now yearly)
+- community conference EuroPython in 2002 (now yearly)
 - many test tools and methods available
 
 PyPy test-driven development 
@@ -118,18 +117,18 @@ Core of Agile practises: the people factor
 ============================================================
 
 - "Agile processes are designed to capitalize on each
-  individual and each team´s unique strenghts" (Cockburn, Highsmith, 2001)
+  individual and each team's unique strenghts" (Cockburn, Highsmith, 2001)
 - OSS nature of teams: self-organized, intensely 
   collaborative - fit the agile approach
 - OSS teams are an unique implementation of agile practices - why?
 
 Picture: man on the moon
 
-Agile approaches aim at:
+Agile approaches aim at ... 
 ============================================================
 
 * reducing ... "cost of information",distance from decision-making
-* by ... physical location, unorthodox dissemination
+* by ... physical location, unorthodox exchange of knowledge
 * resulting in ... improved sense of community, team "morale"
 
 Origins of sprinting
@@ -146,7 +145,8 @@ Origins of sprinting
    
 PyPy sprints
 ============================================================
-- The project "started" during a sprint
+
+- The project "started" with a sprint
 - Changing facilities and location as a strategy (Vilnius,
   Lovain LeNeuve, Leysin, Gothenburg, Paris, Heidelberg,
   Hildesheim, Washington etc)
@@ -157,56 +157,56 @@ Bidding for the EU-funding
 ============================================================
 - Project needed to reach critical mass, EU needed novel
   compiler design techniques in OSS contexts
-
 - Proposal was written during sprints as well as distributed
   (submitted Oct 2003)
 - Negotiations in Brussels (March 2004): key issues being 30% cuts in budget and  denied procedures for funding contribution
-- Project "started" 1 Dec 2004: troubles with creating
+- Project "started" Dec 2004: troubles with creating
   consortium agreement fitting the OSS structure needed
 
 Organising the consortium
 ============================================================
 - 7 partners, 3 previously not involved in the PyPy community
+- 6 partners only partially funded (50% cost models)
 - 2 new companies: "forced" entrepreneurship
-- All partners but one partially funded (50% cost models)
-- Less than 5% of the involved developers was covered by this partial funding
+- not all involved developers got/get funded!
 
 Organising the work
 ============================================================
 - 14 workpackages and 58 deliverables, 3 phases 
 - Need for consortium meetings every month (IRC)
 - Sprints every 6th week (coordinating development and management work)
+- EU project aspects helped to gain mid-term/long-term focus
 
 The different cultures of the PyPy project
 ============================================================
-- OSS (Python) culture (agile and distributed workstyle)
+- OSS/Python culture (agile and distributed workstyle)
 - EU project culture
 - Traditional project management culture
 - Chaospilot (actionlearning and process design) culture
-- 3 different national cultures
+- 5 different national cultures
 
 The challenge: managing diversities part 1.
 ============================================================
-- Formal project organization vs developer driven process
+- Developer driven process and Formal project organization 
 		- management team, technical board and partners
 		- sprint organising
-- Resulting in: increased risk of added workload of management
+- increased risk of added workload of management
   work on core developers 
 
 The challenge: managing diversities part 2.
 ============================================================
-- Formal EU requirements vs agile strategies
+- Agile strategies and Formal EU requirements 
 		- written high level requirements
 		- change control structures complicated
-- Resulting in:increased risk of missing opportunities and not
+- increased risk of missing opportunities and not
   creating/reacting to change fast enough
 
 The challenge: managing diversities part 3.
 ============================================================
-- OSS community vs "conceptual integrity"
-		- pypy-dev/core developers in technical board
-		- industrial usage vs research oriented work
-- Resulting in: increased risk for unbalancing the community
+- OSS community and hierarchies for "conceptual integrity"
+  - pypy-dev/core developers in technical board
+  - industrial usage vs research oriented work
+- increased risk for unbalancing the community
 
 Picture: chaos vs structure
 
@@ -215,10 +215,9 @@ problems and perspectives
 ==================================================
 
 - confrontation with people from 
-- same planet, different place 
-- different planet
-- different solar system 
-- ...
+    - same planet, different place 
+    - different planet
+    - different solar system 
 - what follows is slightly abstracted ... 
 
 working with people from the same planet 
@@ -241,6 +240,8 @@ different solar system
 
 - missing shared focus on project success?!
 - alien or alienating interests 
+- potential for defense/attack thinking, secret agendas
+
 
 the universal truth is ...
 ==================================================
@@ -248,37 +249,14 @@ the universal truth is ...
 - often good intentions (!) even from aliens 
 - confrontation with lots of levels, planets and solar systems
 - the challenge is to find a fitting model for case-by-case co-operation! 
-- determine location in universe and try to match and
-  synchronize 
+- identify location in universe and try to match and synchronize 
 
 cross-project pollination 
 ==================================================
 
-- zope-europe 
+- zope-europe, canonical 
 - dissemination: universities, IONA, Intel, HP ... 
 - Alan Kay / Squeak ... 
-
-business collaboration example: canonical 
-==================================================
-
-- founded and funded by Mark Shuttleworth (Thawte founder) 
-- drives infrastructure development for Ubuntu 
-- by now 30-50 developers worldwide 
-- main language is python 
-- weekly sync meetings / open-source collaborative work style 
-
-business collaboration example: merlinux 
-==================================================
-
-- founded just before the EU project (see last year's talk)
-- hires 8 people distributed across europe (and brasil)
-- weekly sync meetings 
-- looks for fitting contracting models, "making it fit"
-- it's not about products, but about viable solutions based on 
-  an efficient development model 
-
-.. |bullet| unicode:: U+02022
-.. footer:: Bea During, Holger Krekel |bullet| 22C3 |bullet| 29th December 2005 
 
 Conclusion
 ============================================================
@@ -288,9 +266,10 @@ Conclusion
 - Room for group learning and creating change - not just reacting to change
 - sprints 
 - how does that EU thing work 
-
 - EU review 
-
 - agile experiences from other projects 
 
-----------------
+
+
+.. |bullet| unicode:: U+02022
+.. footer:: Bea During, Holger Krekel |bullet| 22C3 |bullet| 29th December 2005 
