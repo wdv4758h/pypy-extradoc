@@ -5,7 +5,7 @@ Open Source, EU Funding and Agile Methods
 :Authors: Bea During (changemaker), Holger Krekel (merlinux) 
 :Date: 29th December 2005 
 
-how it got started  
+How it got started  
 ==================================================
 
 - 2003 first emails between Armin Rigo, Christian Tismer and
@@ -15,7 +15,7 @@ how it got started
 - participants got to know each other at conferences
 - goal: Python implementation in Python (various motivations)
 
-key elements of the technical development
+Key elements of the technical development
 ==================================================
 
 - test-driven from the start
@@ -24,7 +24,7 @@ key elements of the technical development
 - based on zen of python / python culture 
 - focus on correctness of concepts, then speed 
 
-python community 
+Python community 
 ==================================================
 
 - strong open-source cultural background 
@@ -32,7 +32,7 @@ python community
 - few flaming fights inside / much collaboration
 - has many windows and unix hackers 
   
-evolving agility 
+Evolving agility 
 ==================================================
 
 - all large python projects rely and depend on automated testing 
@@ -67,7 +67,18 @@ EU funding
 - 2 year project, 1.3 Million Euro funding 
 - contractual framework + reporting obligations 
 
-individuals ... need to organise 
+XXX SKIPXXXXBidding for the EU-funding
+============================================================
+
+- Project needed to reach critical mass, EU needed novel
+  compiler design techniques in OSS contexts
+- Proposal was written during sprints as well as distributed
+  (submitted Oct 2003)
+- Negotiations in Brussels (March 2004): key issues being 30% cuts in budget and  denied procedures for funding contribution
+- Project "started" Dec 2004: troubles with creating
+  consortium agreement fitting the OSS structure needed
+
+Individuals ... need to organise 
 ==================================================
 
 - PyPy was first and still is a network of people
@@ -75,7 +86,7 @@ individuals ... need to organise
 - two companies were founded
 - 7 partners form the EU consortium: 6 companies, 1 university
 
-balance of interests 
+Balance of interests 
 ==================================================
 
 - developers want to (continue to) drive the project
@@ -86,7 +97,7 @@ balance of interests
 - **at all levels it is about finding 
   models for co-operation that fit**
 
-free co-operation basics 
+Free co-operation basics 
 ==================================================
 
 - Christoph Spehr's "foundation of free co-operation": 
@@ -95,7 +106,7 @@ free co-operation basics
 - everyone can "leave" the co-operation without penalty
 - leaving party taking a share with him/her
 
-developers collaboration  
+Developers collaboration  
 ==================================================
 
 - weekly 30 minute synchronisation meetings 
@@ -104,7 +115,7 @@ developers collaboration
   within the EU project 
 - research/architecture informally guided by accepted experts 
 
-company collaboration 
+Company collaboration 
 ==================================================
 
 - contractually through the EU consortium 
@@ -112,6 +123,22 @@ company collaboration
 - evolving commercial opportunities 
   US companies asking for consulting (test tool)
   or wanting to hire/pay developers on pypy related tools
+  
+Organising the consortium
+============================================================
+
+- 7 partners, 3 previously not involved in the PyPy community
+- 6 partners only partially funded (50% cost models)
+- 2 new companies: "forced" entrepreneurship
+- not all involved developers get funded!
+
+Organising the work
+============================================================
+
+- 14 workpackages and 58 deliverables, 3 phases 
+- Need for consortium meetings every month (IRC)
+- Sprints every 6th week (coordinating development and management work)
+- EU project aspects helped to gain mid-term/long-term focus
 
 Core of Agile practises: the people factor
 ============================================================
@@ -121,8 +148,6 @@ Core of Agile practises: the people factor
 - OSS nature of teams: self-organized, intensely 
   collaborative - fit the agile approach
 - OSS teams are an unique implementation of agile practices - why?
-
-Picture: man on the moon
 
 Agile approaches aim at ... 
 ============================================================
@@ -152,33 +177,24 @@ PyPy sprints
   Hildesheim, Washington etc)
 - The nature of sprints have evolved since the project started
   2003 and since recieving partial EU-funding 2004/2005
-   
-Bidding for the EU-funding
+  
+Sprinting the PyPy way 1
 ============================================================
-- Project needed to reach critical mass, EU needed novel
-  compiler design techniques in OSS contexts
-- Proposal was written during sprints as well as distributed
-  (submitted Oct 2003)
-- Negotiations in Brussels (March 2004): key issues being 30% cuts in budget and  denied procedures for funding contribution
-- Project "started" Dec 2004: troubles with creating
-  consortium agreement fitting the OSS structure needed
 
-Organising the consortium
-============================================================
-- 7 partners, 3 previously not involved in the PyPy community
-- 6 partners only partially funded (50% cost models)
-- 2 new companies: "forced" entrepreneurship
-- not all involved developers got/get funded!
+- Planning: location, venue, rough goals and activities, preparation with local hosts
+- Doing: start up meeting, daily status meetings, pairprogramming
+- Closing: closure meeting (planning work between sprints), sprint reports, evaluations
 
-Organising the work
+Sprinting the PyPy way 2
 ============================================================
-- 14 workpackages and 58 deliverables, 3 phases 
-- Need for consortium meetings every month (IRC)
-- Sprints every 6th week (coordinating development and management work)
-- EU project aspects helped to gain mid-term/long-term focus
+
+- 7 days with 1 break day
+- "open" sprints and "closed" sprints - levels of PyPy knowledge in participants
+- sprints at conferences (PyCon, EuroPython)
 
 The different cultures of the PyPy project
 ============================================================
+
 - OSS/Python culture (agile and distributed workstyle)
 - EU project culture
 - Traditional project management culture
@@ -187,6 +203,7 @@ The different cultures of the PyPy project
 
 The challenge: managing diversities part 1.
 ============================================================
+
 - Developer driven process and Formal project organization 
 		- management team, technical board and partners
 		- sprint organising
@@ -195,6 +212,7 @@ The challenge: managing diversities part 1.
 
 The challenge: managing diversities part 2.
 ============================================================
+
 - Agile strategies and Formal EU requirements 
 		- written high level requirements
 		- change control structures complicated
@@ -203,13 +221,11 @@ The challenge: managing diversities part 2.
 
 The challenge: managing diversities part 3.
 ============================================================
+
 - OSS community and hierarchies for "conceptual integrity"
   - pypy-dev/core developers in technical board
   - industrial usage vs research oriented work
 - increased risk for unbalancing the community
-
-Picture: chaos vs structure
-
 
 problems and perspectives 
 ==================================================
@@ -230,6 +246,7 @@ working with people from the same planet
 
 different planet 
 ==================================================
+
 - shared view regarding the center (project success) 
 - quite different working perspectives / methods
   (e.g. "open-source collaborative" versus "formal traditional")
