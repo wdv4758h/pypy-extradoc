@@ -175,6 +175,9 @@ Sprinting the PyPy way 1
 - Planning: location, venue, rough goals and activities, preparation with local hosts
 
 .. image:: location.jpg
+   :width: 400
+   :height: 300
+
 
 
 Sprinting the PyPy way 2
@@ -182,6 +185,8 @@ Sprinting the PyPy way 2
 - Doing: start up meeting, daily status meetings, pairprogramming
 
 .. image:: pair.jpg
+   :width: 400
+   :height: 300
 
 Sprinting the PyPy way 3
 ============================================================
@@ -189,6 +194,8 @@ Sprinting the PyPy way 3
 - Closing: closure meeting (planning work between sprints), sprint reports, evaluations
 
 .. image:: closure.jpg
+   :width: 400
+   :height: 300
 
 
 Sprinting the PyPy way 4
@@ -207,7 +214,7 @@ The different cultures of the PyPy project
 - Chaospilot (actionlearning and process design) culture
 - 5+X different national cultures
 
-The challenge: managing diversities part 1.
+The challenge: managing diversities part 1
 ============================================================
 
 - Developer driven process and formal project organization
@@ -217,7 +224,7 @@ The challenge: managing diversities part 1.
 - constant risk of added workload of management
   work on core developers 
 
-The challenge: managing diversities part 2.
+The challenge: managing diversities part 2
 ============================================================
 
 - Agile strategies and Formal EU requirements 
@@ -226,7 +233,7 @@ The challenge: managing diversities part 2.
 - constant risk of missing opportunities and not
   creating/reacting to change fast enough
 
-The challenge: managing diversities part 3.
+The challenge: managing diversities part 3
 ============================================================
 
 - OSS community and hierarchies for "conceptual integrity"
@@ -234,7 +241,7 @@ The challenge: managing diversities part 3.
       - industrial usage vs research oriented work
 - risk for unbalancing the community
 
-hitchikers guide ... 
+Hitchikers guide ... 
 ============================================================
 
 .. image:: manmoon.png 
