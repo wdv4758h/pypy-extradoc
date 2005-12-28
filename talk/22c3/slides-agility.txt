@@ -227,16 +227,18 @@ The challenge: managing diversities part 3.
   - industrial usage vs research oriented work
 - increased risk for unbalancing the community
 
-problems and perspectives 
+Picture: man on the moon 
+
+Problems and perspectives 
 ==================================================
 
 - confrontation with people from 
     - same planet, different place 
     - different planet
     - different solar system 
-- what follows is slightly abstracted ... 
+- what follows is slightly abstract ... 
 
-working with people from the same planet 
+Working with people from the same planet 
 ==================================================
 
 - generally shared perspectives (synchronised 
@@ -244,7 +246,7 @@ working with people from the same planet
 - different continents can be hard enough
 - potential for misunderstanding/friction 
 
-different planet 
+Different planet 
 ==================================================
 
 - shared view regarding the center (project success) 
@@ -252,7 +254,7 @@ different planet
   (e.g. "open-source collaborative" versus "formal traditional")
 - potential for mistrust and dis-connection 
 
-different solar system 
+Different solar system 
 ==================================================
 
 - missing shared focus on project success?!
@@ -260,7 +262,7 @@ different solar system
 - potential for defense/attack thinking, secret agendas
 
 
-the universal truth is ...
+The universal truth is ...
 ==================================================
 
 - often good intentions (!) even from aliens 
@@ -268,7 +270,7 @@ the universal truth is ...
 - the challenge is to find a fitting model for case-by-case co-operation! 
 - identify location in universe and try to match and synchronize 
 
-cross-project pollination 
+Cross-project pollination 
 ==================================================
 
 - zope-europe, canonical 
@@ -281,11 +283,12 @@ Conclusion
 - Respecting and "exploiting" strengths of the different cultures involved
 - Designing minimalistic project structures channeling work, not hindering work
 - Room for group learning and creating change - not just reacting to change
+XXX ??
 - sprints 
 - how does that EU thing work 
 - EU review 
 - agile experiences from other projects 
-
+XXX
 
 
 .. |bullet| unicode:: U+02022
