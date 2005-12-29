@@ -24,6 +24,13 @@ Key elements of the technical development
 - based on zen of python / python culture 
 - focus on correctness of concepts, then speed 
 
+Lines of Code and tests 
+============================================================
+
+.. image:: plots/loc.png 
+   :width: 600
+   :height: 450
+
 Python community 
 ==================================================
 
@@ -205,6 +212,16 @@ Sprinting the PyPy way 4
 - "open" sprints and "closed" sprints - levels of PyPy knowledge in participants
 - sprints at conferences (PyCon, EuroPython)
 
+
+Effects of sprints on community participation 
+============================================================
+
+.. image:: plots/subscribers.png 
+   :width: 600
+   :height: 450
+
+
+
 The different cultures of the PyPy project
 ============================================================
 
@@ -303,6 +320,19 @@ Conclusion / Food for thought
 - Respecting and "exploiting" strengths of the different cultures involved
 - Designing minimalistic project structures channeling work, not hindering work
 - Room for group learning and creating change - not just reacting to change
+
+Outlook on whole project level 
+==============================
+
+- surviving the EU review in Bruxelles 20th January 2006
+- improve interactions with community & contribution
+- taking care about post-EU development (2007++)
+- visiting Mallorca, Texas, Tokyo, Ireland, ... 
+- commercial opportunities ... 
+- *Questions?* (talk to us ...)
+
+http://codespeak.net/pypy  and http://pypy.org 
+
 
 .. |bullet| unicode:: U+02022
 .. footer:: Bea During, Holger Krekel |bullet| 22C3 |bullet| 29th December 2005 
