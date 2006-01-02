@@ -9,7 +9,7 @@ available yet from them.
 ==================== ============== =====================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
-Beatrice Duering     ?              ?
+Beatrice Duering     22/1 -29/1            flat?
 Armin Rigo           ?              ?
 Samuele Pedroni      ?              ?
 Eric van Riet Paap   ?              ?
