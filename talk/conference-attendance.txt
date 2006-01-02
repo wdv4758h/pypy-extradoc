@@ -25,6 +25,21 @@ agile-development/pypy-sprint experiences.
 Both talks were accepted into the CCC programme! 
 
 
+Winter Meeting of Chalmers
+--------------------------
+
+This is an internal meeting of the Computer Science and Engineering --
+Chalmers University of Technology and Goteborg University.
+
+Time & Location: 11th-13th January 2006, Alingsas.
+
+Armin submitted a technical implementation talk (mostly the same paper
+as for the CCC conference, based on architecture.txt).  In principle no
+submissions are rejected.
+
+See http://www.cs.chalmers.se/wm/.
+
+
 Solution Linux 2006
 -------------------
 
