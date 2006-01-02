@@ -136,7 +136,8 @@ plans:
   Submission date: ?
 
   OPEN: OOPSLA 2006 (Samuele, Armin)
-  Submission date: probably 20th March 2006 
+  Submission date: 18th March 2006 
+  http://www.oopsla.org/2006/researchPapers.html
 
   OPEN: Calibre conferences
 
