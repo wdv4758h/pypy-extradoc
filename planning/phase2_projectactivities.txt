@@ -71,8 +71,6 @@ sprints & conferences
 
 plans: 
 
-  * (10 th January eu review workshop) 
-
   * 23-29th January: CS Dep. of the Palma de Mallorca University/CS Dep.
   
   * of the Barcelona University. Bea check dates, Bruxelles/Louvain-la-neuve,  
@@ -171,76 +169,3 @@ EU-related Workpackage planning phase 2
 
   - WP05: left over work for Impara (when they get accepted)? 
   
-
-EU-related report planning 
-------------------------------------------------- 
-
-People (primary) and co-reviewers (secondary) and completion dates: 
-(lead partner coordinating, technical board evaluating overall consistency)  
-
-DO1.1 Create QA plan for the project
-Primary/Secondary: Bea/Holger
-Completion date: 21th Oct 2005
-
-D04.1 Partial Python Impl:
-Primary/Secondary: Jacob / Christian  
-Completion date: 28th Oct 2005
-  
-D04.2 Complete Python Impl: 
-Primary/Secondary: Jacob / Christian 
-Completion date: 4th Nov 2005
-
-D04.3 Parser report:  
-Primary/Secondary: ludovic,adrien / Arre 
-Completion date: 11th Nov 2005
-
-D04.4 Release PyPy-research-tool: 
-Primary/Secondary: Samuele / Ludovic 
-Completion date: 11th Nov 2005
-
-D05.1 Publish on translating a very-high-level description: 
-Primary/Secondary: Armin / Michael 
-Completion date: 4th Nov 2005
-
-D05.2 A compiled, self-contained version of PyPy: 
-Primary/Secondary: dfki/Anders L. / Jacob  
-Completion date: 28th Oct 2005
-
-D05.3 Publish on implementation with translation aspects: 
-Primary/Secondary: Carl / Armin, Christian
-Completion date: TBA
-
-D05.4 Publish on encapsulating low level language aspects: 
-Primary/Secondary: Armin / holger 
-Completion date: TBA
-
-D14.1 Report about Milestone/Phase 1:
-Primary/Secondary: Bea/Stephan
-Completion date:21th October 2005
-
-Review planning:
-
-Roadmap:
-
-* 31th October 2005: all partners check completeness of timesheets Dec 2004-Oct 2005 
-  (Stephan wp1, Jacob wp3,4,5, Bea wp14, all partners)
-
-* 5th December 2005: all partners submit timesheets for November 2005
-  (Stephan wp1, Jacob wp3,4,5, Bea wp14, all partners)
-
-* 9th December 2005: Periodic management/activity reports updated with all data but costs
-  (Jacob//Bea)
-
-* 15th December 2005: submit reports to EC/reviewers
-  (Stephan)
-
-* 16th December 2005: all partners submit FORM C:s to DFKI (or communicate a new 
-  completion date for this!)
-  (Stephan, all partners)
-
-* 10th January 2006: review in Brussels
-  (Stephan)
-
-* 15th of January 2006: submit FORM C:s to EC/PO and possible updated periodic management/
-  activity reports
-  (Stephan//Jacob,Bea
