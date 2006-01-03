@@ -336,3 +336,4 @@ http://codespeak.net/pypy  and http://pypy.org
 
 .. |bullet| unicode:: U+02022
 .. footer:: Bea During, Holger Krekel |bullet| 22C3 |bullet| 29th December 2005 
+
