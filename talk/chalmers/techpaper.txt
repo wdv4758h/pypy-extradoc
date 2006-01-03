@@ -1,6 +1,6 @@
-===============================================
-PyPy - Architecture Overview
-===============================================
+======================================================
+PyPy: Dynamic Optimizations for Your Favorite Language
+======================================================
 
 .. command to produce latex file:
 .. rst2latex.py --use-latex-citations --use-latex-footnotes --use-latex-toc --documentoptions=a4paper,11pt --hyperlink-color=0 techpaper.txt --use-latex-docinfo --stylesheet=techpaper.sty techpaper.tex
