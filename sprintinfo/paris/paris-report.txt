@@ -27,6 +27,7 @@ Stephan Busemann
 Nicholas Chauvat
 
 -----------------------------------------------------------------------------------------------------------------------------------------
+
 The largest PyPy sprint yet (in terms of attendants) where done in the offices of Logilab in Paris 
 2005-10-16-2005-10-16.
 
@@ -40,6 +41,7 @@ RTyper tasks:
   devise a low-level model variation for this case
 
 Annotator related tasks:
+
 - support the notion of separate/external functions (and classes/PBCs)
   in preparation for separate compilations
 
@@ -85,12 +87,14 @@ Refactorings/cleanups:
 - (DONE) genc: producing multiple .h/.c files tracking Python code origin
 
 Larger whole projects:
+
 - Javascript frontend
 - support for developing C extensions for CPython with RPython code
 - writing a sort of flow object space for the llinterpreter
   to experiment with JIT work
 
 ----------------------------------------------------------------------------------------------------------------------------------------
+
 Activities during the sprint  - day-to-day:
 
 Monday-Wednesday:
