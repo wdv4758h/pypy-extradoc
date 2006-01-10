@@ -144,7 +144,7 @@ there!  There also is a separate `Mallorca people`_ page tracking who is
 already thought to come.  If you have commit rights on codespeak then
 you can modify yourself a checkout of
 
-  http://codespeak.net/svn/pypy/extradoc/sprintinfo/mallorca-2006/people.txt
+  http://codespeak.net/svn/pypy/extradoc/sprintinfo/mallorca/people.txt
 
 .. _`PyPy sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
-.. _`Mallorca people`: http://codespeak.net/pypy/extradoc/sprintinfo/mallorca-2006/people.html
+.. _`Mallorca people`: http://codespeak.net/pypy/extradoc/sprintinfo/mallorca/people.html
