@@ -126,7 +126,7 @@ Summary
 - regenerate Interpreters automatically
 - get Just-In-Time Compilers for free :-)
 
-For More Information
+Links
 =========================
 
 - http://codespeak.net/pypy
