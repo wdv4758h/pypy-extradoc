@@ -10,7 +10,7 @@ Dynamic optimizations for your favorite language
 :Author: Armin Rigo
 :URL: http://codespeak.net/pypy
 
-.. image:: py-web1.png
+.. image:: image/py-web1.png
    :align: right
 
 
@@ -53,7 +53,7 @@ Overview
 Translation Overview
 =========================
 
-.. image:: translation-overview.png
+.. image:: image/translation-overview.png
    :align: center
 
 Translation Aspects
@@ -68,7 +68,7 @@ Translation Aspects
 Translation Aspects (2)
 =========================
 
-- the execution stragegy can be tweaked at translation time too
+- the execution strategy can be tweaked at translation time too
 - if the input RPython program is an Interpreter_...
 - ...the output low-level program can be a Compiler_
 
@@ -92,42 +92,52 @@ PyPy JIT Overview
 
 - translation aspect
 
-:input:
-    PyPy Interpreter written in RPython
-
-:prev output:
-    an Interpreter -- like CPython
-
-:new output:
-    a Compiler -- like Psyco
+:input:         PyPy Interpreter written in RPython
+:normal output: an Interpreter -- like CPython
+:new output:    a Compiler -- like Psyco
 
 
-Recipe for a JIT
+Recipe for a JIT (1)
 ==========================
 
-- JIT part 1: high level, language dependent
-- JIT part 2: platform-specific code generation and optimizations
-- separation of concerns
-
-PyPy JIT part 1
-==========================
+JIT Part 1: high level, language dependent
 
 - generated as translation aspect from PyPy Interpreter
 - stays in sync with the evolution of the language
+- separation of concerns
 - same technique works for other languages
 
-PyPy JIT part 2
-=========================
+Recipe for a JIT (2)
+==========================
+
+JIT Part 2: platform-specific code generation and optimizations
 
 - no cross-platform code generation toolkit
 - needs to be manually rewritten for each platform
 - orthogonal to the source language
 - can reuse existing code generation and optimization projects
 
-Conclusion
+Summary
 =========================
 
-XXX
+- don't port new languages to new platforms manually
+- manually port general translation toolsuites
+- start from high-level Language Definitions
+- regenerate Interpreters automatically
+- get Just-In-Time Compilers for free :-)
+
+For More Information
+=========================
+
+- http://codespeak.net/pypy
+
+  .. image:: image/py-web1.png
+     :align: center
+
+- http://psyco.sf.net
+
+  .. image:: image/pipe-title.jpg
+     :align: center
 
 
 .. _Psyco: http://psyco.sourceforge.net
