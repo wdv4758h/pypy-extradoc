@@ -1,0 +1,139 @@
+.. include:: <s5defs.txt>
+
+======================================================
+                        PyPy
+======================================================
+
+Dynamic optimizations for your favorite language
+######################################################
+
+:Author: Armin Rigo
+:URL: http://codespeak.net/pypy
+
+.. image:: py-web1.png
+   :align: right
+
+
+Python Implementation Facts
+===========================
+
+- Parser/Compiler produces bytecode
+- Virtual Machine interprets bytecode
+- strongly dynamically typed
+- large library of built-in types
+- complicated semantics and object model
+
+Python Implementations 
+===========================
+
+- CPython: main Python version
+- Jython: compiles to Java Bytecode
+- IronPython (MS): compiles to .NET's CLR 
+- PyPy: self-contained - self-translating - flexible
+
+PyPy Project Facts 
+=======================
+
+- started 2002 as a grass-root effort
+- aims: flexibility, research, speed 
+- test-driven development 
+- received EU-funding from end 2004 on  
+- 350 subscribers to pypy-dev, 150.000 LOCs, 20.000 visitors per month, 
+- MIT license
+
+Overview
+==========================
+
+- Interpreter implements Python language in Python itself
+- parts implemented in a restricted subset: RPython
+- "static enough" for full-program type inference
+- but no low-level details
+- suitable for translation to many platforms
+
+Translation Overview
+=========================
+
+.. image:: translation-overview.png
+   :align: center
+
+Translation Aspects
+====================
+
+- can target very different platforms
+- implementation decisions at translation time (GC, threads_, calling conventions...)
+- most other language implementations do "fixed" decisions
+- translation aspects are weaved into the produced code
+- independent from language semantics (python interpreter)
+
+Translation Aspects (2)
+=========================
+
+- the execution stragegy can be tweaked at translation time too
+- if the input RPython program is an Interpreter_...
+- ...the output low-level program can be a Compiler_
+
+Partial Evaluation
+====================
+
+- Partial Evaluation: simplify a program for partially known inputs
+- in theory, can turn an interpreter into a compiler
+- many practical difficulties
+
+Psyco
+====================
+
+- Psyco_: hand-written prototype for CPython
+- makes CPython run faster, transparently
+- produces x86 machine code at run-time
+- a "generating extension": generates specialized versions of the CPython Interpreter
+
+PyPy JIT Overview
+====================
+
+- translation aspect
+
+:input:
+    PyPy Interpreter written in RPython
+
+:prev output:
+    an Interpreter -- like CPython
+
+:new output:
+    a Compiler -- like Psyco
+
+
+Recipe for a JIT
+==========================
+
+- JIT part 1: high level, language dependent
+- JIT part 2: platform-specific code generation and optimizations
+- separation of concerns
+
+PyPy JIT part 1
+==========================
+
+- generated as translation aspect from PyPy Interpreter
+- stays in sync with the evolution of the language
+- same technique works for other languages
+
+PyPy JIT part 2
+=========================
+
+- no cross-platform code generation toolkit
+- needs to be manually rewritten for each platform
+- orthogonal to the source language
+- can reuse existing code generation and optimization projects
+
+Conclusion
+=========================
+
+XXX
+
+
+.. _Psyco: http://psyco.sourceforge.net
+.. _threads: image/stackless_informal.png
+.. _Interpreter: image/interpreter.png
+.. _Compiler: image/compiler.png
+
+.. |bullet| unicode:: U+02022
+.. footer:: Armin Rigo |bullet| Winter Meeting |bullet| 12th January 2006
