@@ -13,7 +13,6 @@ Dynamic optimizations for your favorite language
 .. image:: image/py-web1.png
    :align: right
 
-
 Python Implementation Facts
 ===========================
 
@@ -26,15 +25,15 @@ Python Implementation Facts
 Python Implementations 
 ===========================
 
-- CPython: main Python version
-- Jython: compiles to Java Bytecode
-- IronPython (MS): compiles to .NET's CLR 
-- PyPy: self-contained - self-translating - flexible
+:CPython: main Python version
+:Jython: compiles to Java Bytecode
+:IronPython: compiles to .NET's CLR 
+:PyPy: self-contained - self-translating - flexible
 
 PyPy Project Facts 
 =======================
 
-- started 2002 as a grass-root effort
+- Open Source project, started 2002
 - aims: flexibility, research, speed 
 - test-driven development 
 - received EU-funding from end 2004 on  
@@ -50,11 +49,34 @@ Overview
 - but no low-level details
 - suitable for translation to many platforms
 
+Goals
+=========================
+
+Framework for language implementors:
+
+- Write interpreter once
+- compile it to very different platforms
+- low-level platform-specific details are modular
+- experiment with language-level extensions:
+  concurrency models, memory models, security, distribution, persistence...
+
 Translation Overview
 =========================
 
 .. image:: image/translation-overview.png
    :align: center
+
+References
+====================
+
+- http://codespeak.net/pypy
+
+  .. image:: image/py-web1.png
+     :align: center
+
+====
+
+- *Compiling dynamic language implementations*, to be submitted
 
 Translation Aspects
 ====================
@@ -68,7 +90,7 @@ Translation Aspects
 Translation Aspects (2)
 =========================
 
-- the execution strategy can be tweaked at translation time too
+- even the execution strategy can be tweaked at translation time
 - if the input RPython program is an Interpreter_...
 - ...the output low-level program can be a Compiler_
 
@@ -87,6 +109,20 @@ Psyco
 - produces x86 machine code at run-time
 - a "generating extension": generates specialized versions of the CPython Interpreter
 
+References
+=========================
+
+- http://psyco.sf.net
+
+  .. image:: image/pipe-title.jpg
+     :align: center
+
+====
+
+- Representation-Based Just-In-Time Specialization and the
+  Psyco Prototype for Python, ACM SIGPLAN PEPM'04, August 24-26, 2004,
+  Verona, Italy.
+
 PyPy JIT Overview
 ====================
 
@@ -95,7 +131,6 @@ PyPy JIT Overview
 :input:         PyPy Interpreter written in RPython
 :normal output: an Interpreter -- like CPython
 :new output:    a Compiler -- like Psyco
-
 
 Recipe for a JIT (1)
 ==========================
@@ -125,19 +160,7 @@ Summary
 - start from high-level Language Definitions
 - regenerate Interpreters automatically
 - get Just-In-Time Compilers for free :-)
-
-Links
-=========================
-
 - http://codespeak.net/pypy
-
-  .. image:: image/py-web1.png
-     :align: center
-
-- http://psyco.sf.net
-
-  .. image:: image/pipe-title.jpg
-     :align: center
 
 
 .. _Psyco: http://psyco.sourceforge.net
