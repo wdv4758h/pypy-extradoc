@@ -8,3 +8,6 @@
 
 /* styles that make the slides look good */
 @import url(pretty.css);
+
+/* pypy override */
+@import url(../py.css);
