@@ -2,7 +2,7 @@
 Open Source, EU Funding and Agile Methods
 ============================================================
 
-:Authors: Bea During (changemaker), Holger Krekel (merlinux) 
+:Authors: Bea During (Change Maker), Holger Krekel (merlinux) 
 :Date: 29th December 2005 
 
 How it got started  
@@ -23,6 +23,7 @@ Key elements of the technical development
 - welcomed by python community 
 - based on zen of python / python culture 
 - focus on correctness of concepts, then speed 
+- evolutionary step by step development 
 
 Lines of Code and tests 
 ============================================================
@@ -38,6 +39,10 @@ Python community
 - strong focus on glue & integration esp. with C/other languages 
 - few flaming fights inside / much collaboration
 - has many windows and unix hackers 
+- CPython: main Python version (BDFL'ed by Guido)
+- Jython: top scripting langauge for Java 
+- IronPython (MS): compiles to .NET's CLR
+- PyPy: self-contained - self-translating - flexible
   
 Evolving agility 
 ==================================================
@@ -46,6 +51,8 @@ Evolving agility
 - several projects regularly "sprint" and work together distributedly 
 - community conference EuroPython in 2002 (now yearly)
 - many test tools and methods available
+- next EuroPython 2006: June at CERN (Geneva) 
+- ... with dedicated agile development track
 
 PyPy test-driven development 
 ==================================================
@@ -328,7 +335,7 @@ Outlook on whole project level
 - improve interactions with community & contribution
 - taking care about post-EU development (2007++)
 - visiting Mallorca, Texas, Tokyo, Ireland, ... 
-- commercial opportunities ... 
+- commercial opportunities ... hiring opportunities ... 
 - *Questions?* (talk to us ...)
 
 http://codespeak.net/pypy  and http://pypy.org 

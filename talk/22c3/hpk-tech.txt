@@ -35,7 +35,7 @@ Python implementations
 PyPy project facts 
 =======================
 
-- started 2002 as a grass-root effort
+- started 2003 as a grass-root effort
 - aims: flexibility, research, speed 
 - test-driven development 
 - received EU-funding from end 2004 on  
