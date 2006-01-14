@@ -22,6 +22,7 @@ Stephan Diehl        22/1 - 28/1    ?
 Jacob Hallen         ?              ?         
 Anders Lehmann       22/1 -29/1     Hotel Almudainal
 Holger Krekel        ?              ?
+Richard Emslie       22/1 - 29/1    catalonia hotel
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -35,7 +36,6 @@ Laura Creighton      ?              ?
 Lene Wagner          ?              ?
 Anders Lehmann       ?              ?
 Niklaus Haldimann    ?              ?
-Richard Emslie       ?              ?
 Johan Hahn           ?              ?
 Amaury Forgeot d'Arc ?              ?
 Valentino Volonghi   ?              ?
