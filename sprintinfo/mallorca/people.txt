@@ -23,6 +23,7 @@ Jacob Hallen         ?              ?
 Anders Lehmann       22/1 -29/1     Hotel Almudainal
 Holger Krekel        ?              ?
 Richard Emslie       22/1 - 29/1    catalonia hotel
+Andrew Thompson	     22/1 - 29/1    Hotel Terminus
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -40,6 +41,5 @@ Johan Hahn           ?              ?
 Amaury Forgeot d'Arc ?              ?
 Valentino Volonghi   ?              ?
 Boris Feigin	     ?              ?
-Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
 ==================== ============== =====================
