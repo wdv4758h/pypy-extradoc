@@ -108,7 +108,7 @@ eXtreme programming and agile processes in software engineering.
 Time & location: 17-22th June 2006 Oulu, Finland 
 
 Call for papers:
-Submission date: 13th of January 2006 
+Submission date: 30th of January 2006 
 (Bea plan to submit an experience report)
 
 http://virtual.vtt.fi/virtual/xp2006/sivu1.html
