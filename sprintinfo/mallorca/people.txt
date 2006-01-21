@@ -14,7 +14,7 @@ Armin Rigo           21/1 - 30?/1   Hostal Terminus
 Michael Hudson       22/1 - 30/1    Hostal Terminus
 Samuele Pedroni      22/1 - 30/1    Hotel Colon
 Eric van Riet Paap   22/1 - 28/1    casa M.
-Carl Friedrich Bolz  ?              ?
+Carl Friedrich Bolz  21/1 - 29/1    flat
 Anders Chrigstroem   22/1 - 30/1    Hotel Colon
 Christian Tismer     22/1 - 30/1    ?
 Gerald Klix          22/1 - 30/1    ?
