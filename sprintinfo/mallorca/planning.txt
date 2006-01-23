@@ -30,7 +30,7 @@ Tasks
 
   - JIT: Armin
 
-  - stackless application level interface
+  - stackless application level interface: Christian, Eric
 
   - l3interp/offsetof/sizeof work: Michael, Arre, (Samuele)
 
@@ -38,7 +38,10 @@ Tasks
     offsetof work done: Carl Friedrich, Richard
 
   - improving the way we interface with external functions.
-    (also think about how exceptions fit in there)
+    (also think about how exceptions fit in there):
+    add static ctypes functionality into RPython itself
+    Gerald, Stephan (Samuele)
+
 
   - tutorial about the translator: Armin, Gerald, Stephan,
     Eric, Christian
