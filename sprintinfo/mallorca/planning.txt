@@ -1,0 +1,63 @@
+==================
+Mallorca planning
+==================
+
+
+People present
+=============================
+
+Armin Rigo 
+Michael Hudson
+Samuele Pedroni
+Eric van Riet Paap
+Carl Friedrich Bolz
+Anders Chrigstroem
+Christian Tismer
+Gerald Klix
+Stephan Diehl
+Richard Emslie
+Beatrice Duering 
+
+People supposedly present
+=========================
+
+Andrew Thompson
+Jacob Hallen
+
+
+Tasks
+======
+
+  - JIT: Armin
+
+  - stackless application level interface
+
+  - l3interp/offsetof/sizeof work: Michael, Arre, (Samuele)
+
+  - integration of the garbage collection toolkit with the
+    offsetof work done: Carl Friedrich, Richard
+
+  - improving the way we interface with external functions.
+    (also think about how exceptions fit in there)
+
+  - tutorial about the translator: Armin, Gerald, Stephan,
+    Eric, Christian
+
+
+later:
+======
+
+  - our threading implementation is still incredibly
+    slow, we need to work on that.
+
+  - refactor argument handling and calls in the object space
+
+  - look into how the LLVM JIT works
+
+  - transformations to be more clever with checking for
+    exceptions
+
+  - socket module
+    already improved but still far from complete
+
+
