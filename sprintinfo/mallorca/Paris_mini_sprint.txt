@@ -1,0 +1,14 @@
+Mini Sprint at Logilab
+-----------------
+
+Possible topics
+------------
+
+
+    Finish exposing the Grammar at application level
+    
+    Work on the constraint solving engine
+        Make an application level package without scheduling (awaits 
+        exposing of stackless features at applevel)
+        
+
