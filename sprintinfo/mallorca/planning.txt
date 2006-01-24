@@ -28,24 +28,22 @@ Jacob Hallen
 Tasks
 ======
 
-  - JIT: Armin
+  - JIT: Armin, Carl. Graph generating ops
 
   - stackless application level interface: Christian, Eric
+    Design thinking. Coding could start today.
 
-  - l3interp/offsetof/sizeof work: Michael, Arre, (Samuele)
+  - l3interp/offsetof/sizeof work: Michael, Arre
+    Progress. Next sizeof...
 
-  - integration of the garbage collection toolkit with the
+  (- integration of the garbage collection toolkit with the
     offsetof work done: Carl Friedrich, Richard
+    Offsetof refactoring finished. Continuing with sizeof ...)
 
   - improving the way we interface with external functions.
     (also think about how exceptions fit in there):
     add static ctypes functionality into RPython itself
-    Gerald, Stephan (Samuele)
-
-
-  - tutorial about the translator: Armin, Gerald, Stephan,
-    Eric, Christian
-
+    Gerald, Stephan, Samuele
 
 later:
 ======
