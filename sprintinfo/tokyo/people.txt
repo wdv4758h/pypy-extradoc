@@ -1,0 +1,32 @@
+People coming to the Tokyo sprint 2006
+==================================================
+
+People who have a ``?`` in their arrive/depart or accomodation
+column are known to be coming but there are no details 
+available yet from them. 
+ 
+==================== ============== =====================
+    Name              Arrive/Depart     Accomodation 
+==================== ============== =====================
+Beatrice Düring
+
+
+==================== ============== =====================
+
+People on the following list were present at previous sprints: 
+
+==================== ============== =====================
+       Name          Arrive/Depart  Accomodation 
+==================== ============== =====================
+Ludovic Aubry             
+Adrien Di Mascio               
+Laura Creighton             
+Lene Wagner          
+Anders Lehmann       
+Niklaus Haldimann    
+Johan Hahn           
+Amaury Forgeot d'Arc 
+Valentino Volonghi   
+Boris Feigin	     
+Bert Freudenberg     
+==================== ============== =====================
