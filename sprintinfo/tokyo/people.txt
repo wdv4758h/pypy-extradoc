@@ -9,6 +9,7 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Beatrice Düring
+Christian Tismer
 
 
 ==================== ============== =====================
