@@ -28,22 +28,38 @@ Jacob Hallen
 Tasks
 ======
 
-  - JIT: Armin, Carl. Graph generating ops
+  - JIT:  Arre, Samuele
+   Graph generating ops
+   Designed interface (see draft-jit-ideas),
+   started refactoring llabstractinterp to use the operations
+   (issues: llabsinterp was inspecting the graphs a lot )
 
-  - stackless application level interface: Christian, Eric
-    Design thinking. Coding could start today.
+  - stackless application level interface: Christian, 
+    started from the demo coroutine impl, trying to expose
+    at application level, both greenlet and stackless-like interfaces.
+    (issues: testing needs translation, the primitives are not
+     there on top of CPython, maybe use stackless or greenlet
+     to provide them or make the bytecode itself on top of CPython
+     stackless). Next step: fastest possible translation for testing.
 
-  - l3interp/offsetof/sizeof work: Michael, Arre
-    Progress. Next sizeof...
+  ( - l3interp/offsetof/sizeof work:
+    Progress. Progress needs either hacks and assuming Boehm
+    or GC integration. Try to progress assuming Boehm )
 
-  (- integration of the garbage collection toolkit with the
-    offsetof work done: Carl Friedrich, Richard
-    Offsetof refactoring finished. Continuing with sizeof ...)
-
+  - integration of the garbage collection toolkit with the
+    offsetof, sizeof work done: Carl Friedrich, Michael (Richard)
+    
   - improving the way we interface with external functions.
     (also think about how exceptions fit in there):
     add static ctypes functionality into RPython itself
-    Gerald, Stephan, Samuele
+    Gerald, Stephan, Armin
+    glued atoi from ctypes (cheating a bit)
+
+    Next: rtyper implementation of ctypes-like structures,
+          probably use Address as much as possible
+    
+     
+
 
 later:
 ======
