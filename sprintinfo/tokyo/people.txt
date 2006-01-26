@@ -11,8 +11,8 @@ available yet from them.
 Beatrice Düring
 Christian Tismer
 Eric van Riet Paap
-
-
+Jacob Hallén
+Laura Creighton
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -24,7 +24,6 @@ Ludovic Aubry
 Adrien Di Mascio               
 Laura Creighton             
 Lene Wagner          
-Anders Lehmann       
 Niklaus Haldimann    
 Johan Hahn           
 Amaury Forgeot d'Arc 
