@@ -257,8 +257,6 @@ JIT Overview
 
 
 
-http://codespeak.net/pypy
-
 
 .. |bullet| unicode:: U+02022
-.. footer:: Holger Krekel, Carl Friedrich Bolz (merlinux) |bullet| 22C3 |bullet| 28th December 2005 
+.. footer:: Samuele Pedroni, Carl Friedrich Bolz, Armin Rigo |bullet| UIB |bullet| 27th January 2006
