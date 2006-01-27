@@ -13,6 +13,7 @@ Christian Tismer
 Eric van Riet Paap
 Jacob Hallén
 Laura Creighton
+Anders Lehmann       
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
