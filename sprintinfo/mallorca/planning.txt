@@ -31,8 +31,8 @@ Tasks
   - JIT:  Arre, Samuele
    Graph generating ops
    Designed interface (see draft-jit-ideas),
-   started refactoring llabstractinterp to use the operations
-   (issues: llabsinterp was inspecting the graphs a lot )
+   Refactored llabstractinterp to use the operations
+   Next discussion: arre, samuele, armin +...
 
   - stackless application level interface: Christian, 
     started from the demo coroutine impl, trying to expose
@@ -41,25 +41,32 @@ Tasks
      there on top of CPython, maybe use stackless or greenlet
      to provide them or make the bytecode itself on top of CPython
      stackless). Next step: fastest possible translation for testing.
+     DONE: Exposed coroutines at application-level, support for flags on
+     the coroutines to use for other concurrency primitives to
+     construct on top of them.
+
+  - express exception raising operations in the graphs as
+    calls to helpers (backends could use their special 
+    operations)
+   Eric, Richard
 
   ( - l3interp/offsetof/sizeof work:
     Progress. Progress needs either hacks and assuming Boehm
     or GC integration. Try to progress assuming Boehm )
 
   - integration of the garbage collection toolkit with the
-    offsetof, sizeof work done: Carl Friedrich, Michael (Richard)
-    
+    DONE: offsetof, sizeof work done
+    Started: insert GC neeeded behaviour as graph transformations.
+    Carl, Michael
+
   - improving the way we interface with external functions.
     (also think about how exceptions fit in there):
     add static ctypes functionality into RPython itself
-    Gerald, Stephan, Armin
-    glued atoi from ctypes (cheating a bit)
-
-    Next: rtyper implementation of ctypes-like structures,
-          probably use Address as much as possible
-    
-     
-
+    DONE: glued atoi from ctypes (cheating a bit)
+    DONE: basic annotation for ctypes structures and basics types.
+    Working on annotating ctypes arrays
+    Next would be rtyping...
+    Gerald, Stephan
 
 later:
 ======
