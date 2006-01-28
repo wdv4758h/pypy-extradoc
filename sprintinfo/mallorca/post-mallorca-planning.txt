@@ -1,0 +1,36 @@
+===========================================
+Rough planning between Mallorca and PyCon
+===========================================
+
+Preparation for PyCon
+======================
+
+- sprint announcement (soon, i.e. by Friday 3rd Feb)
+- updated tutorial
+- talks
+
+JIT
+======
+
+- more JIT work :)
+
+GC integration
+=====================
+
+- continue Michael and Carl's genc-vs-gc refactoring
+- use and improve GCs written with the framework
+
+Concurrency 
+==================
+
+- finish high-level interfaces for greenlets and tasklets (nearly done?)
+- open: free threading
+- open: performance with GIL threading
+- open: tasklet pickling
+
+Compiling double use (PyPy+CPython) extensions
+========================================================
+
+- annotation and compilation of such double use extension modules
+- rctypes
+
