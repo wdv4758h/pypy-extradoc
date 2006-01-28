@@ -28,35 +28,27 @@ Jacob Hallen
 Tasks
 ======
 
-  - JIT:  Arre, Samuele
+  - JIT: 
    Graph generating ops
    Designed interface (see draft-jit-ideas),
    Refactored llabstractinterp to use the operations
-   Next discussion: arre, samuele, armin +...
+   Started trying to reuse the annotator framework
+   for off-line partial evaluation: arre, armin, samuele   
 
   - stackless application level interface: Christian, 
     started from the demo coroutine impl, trying to expose
     at application level, both greenlet and stackless-like interfaces.
-    (issues: testing needs translation, the primitives are not
-     there on top of CPython, maybe use stackless or greenlet
-     to provide them or make the bytecode itself on top of CPython
-     stackless). Next step: fastest possible translation for testing.
-     DONE: Exposed coroutines at application-level, support for flags on
-     the coroutines to use for other concurrency primitives to
-     construct on top of them.
-
-  - express exception raising operations in the graphs as
-    calls to helpers (backends could use their special 
-    operations)
-   Eric, Richard
-
-  ( - l3interp/offsetof/sizeof work:
-    Progress. Progress needs either hacks and assuming Boehm
-    or GC integration. Try to progress assuming Boehm )
+    DONE: Exposed coroutines at application-level, support for flags on
+    the coroutines to use for other concurrency primitives to
+    construct on top of them.
+    IN-PROGRESS: extending interface such that coroutines, tasklet,
+    greenlets can co-exist peacefully. Now implementing greenlets...
 
   - integration of the garbage collection toolkit with the
     DONE: offsetof, sizeof work done
     Started: insert GC neeeded behaviour as graph transformations.
+    Writing a new function generator in genc for the transformed
+    graphs... Added cleanup attribute to operations. 
     Carl, Michael
 
   - improving the way we interface with external functions.
@@ -65,8 +57,19 @@ Tasks
     DONE: glued atoi from ctypes (cheating a bit)
     DONE: basic annotation for ctypes structures and basics types.
     Working on annotating ctypes arrays
+    Annotating derefencing. Trying to track ownerships...
     Next would be rtyping...
     Gerald, Stephan
+
+  - express exception raising operations in the graphs as
+    calls to helpers (backends could use their special 
+    operations) SOME PROGRESS
+   Eric, Richard
+
+  ( - l3interp/offsetof/sizeof work:
+    Progress. Progress needs either hacks and assuming Boehm
+    or GC integration. Try to progress assuming Boehm )
+
 
 later:
 ======
