@@ -33,7 +33,18 @@ Tasks
    Designed interface (see draft-jit-ideas),
    Refactored llabstractinterp to use the operations
    Started trying to reuse the annotator framework
-   for off-line partial evaluation: arre, armin, samuele   
+   for off-line partial evaluation
+   Progress, now trying to annotate the toy language interp.
+   Arre,  Samuele, Armin on Virtual List
+
+  - integration of the garbage collection toolkit with the
+    DONE: offsetof, sizeof work done
+    Started: insert GC neeeded behaviour as graph transformations.
+    Writing a new function generator in genc for the transformed
+    graphs... Added cleanup attribute to operations. 
+    Branched, genc working again with refcounting. Next: finishing
+    plus Boehm policy and likely merging.
+    Michael (Samuele) 
 
   - stackless application level interface: Christian, 
     started from the demo coroutine impl, trying to expose
@@ -43,13 +54,6 @@ Tasks
     construct on top of them.
     IN-PROGRESS: extending interface such that coroutines, tasklet,
     greenlets can co-exist peacefully. Now implementing greenlets...
-
-  - integration of the garbage collection toolkit with the
-    DONE: offsetof, sizeof work done
-    Started: insert GC neeeded behaviour as graph transformations.
-    Writing a new function generator in genc for the transformed
-    graphs... Added cleanup attribute to operations. 
-    Carl, Michael
 
   - improving the way we interface with external functions.
     (also think about how exceptions fit in there):
