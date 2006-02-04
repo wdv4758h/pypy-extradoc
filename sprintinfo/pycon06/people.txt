@@ -13,8 +13,10 @@ Michael Hudson       23rd/2nd       Marriot
 Armin Rigo           23rd/2nd       Marriot
 Anders Chrigstroem   23rd/2nd       Marriot
 Beatrice Duering     23rd/2nd       Marriot
-Holger Krekel        23rd/2nd       Marriot
+Holger Krekel        23rd/3rd       Marriot (likely)
 Samuele Pedroni      23rd/2nd       Marriot
+Jan Balster          23rd/2nd       Marriot (likely)
+Wanja Saatkamp       23rd/3rd       Marriot (likely)
 Christian Tismer     ?              ?                
 Anders Lehmann       ?              ?
 Niklaus Haldimann    ?              ?
