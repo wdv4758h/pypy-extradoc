@@ -14,6 +14,7 @@ Eric van Riet Paap
 Jacob Hallén
 Laura Creighton
 Anders Lehmann       
+Niklaus Haldimann
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -25,7 +26,6 @@ Ludovic Aubry
 Adrien Di Mascio               
 Laura Creighton             
 Lene Wagner          
-Niklaus Haldimann    
 Johan Hahn           
 Amaury Forgeot d'Arc 
 Valentino Volonghi   

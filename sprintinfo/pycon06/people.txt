@@ -19,7 +19,7 @@ Jan Balster          23rd/2nd       Marriot (likely)
 Wanja Saatkamp       23rd/3rd       Marriot (likely)
 Christian Tismer     ?              ?                
 Anders Lehmann       ?              ?
-Niklaus Haldimann    ?              ?
+Niklaus Haldimann    23rd/3rd       Marriott
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
