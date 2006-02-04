@@ -1,12 +1,12 @@
 Post-PyCon PyPy Sprint: February 27th - March 2nd 2006 
 ============================================================
 
-The next PyPy sprint is scheduled to take place after PyCon 2006 in
-Dallas, Texas, USA.
+The next PyPy sprint is scheduled to take place right after 
+PyCon 2006 in Dallas, Texas, USA. 
 
 We hope to see lots of newcomers at this sprint, so we'll give
-friendly introductions.  The focus of the work will be on ....
-
+friendly introductions.  Note that during the Pycon conference 
+we are giving PyPy talks which serve well as preparation.  
 
 Goals and topics of the sprint 
 ------------------------------
@@ -14,18 +14,23 @@ Goals and topics of the sprint
 While attendees of the sprint are of course welcome to work on what
 they wish, we offer these ideas:
 
-  - Work on an 'rctypes' module that will let us use a ctypes
+  - Work on an 'rctypes' module aiming at letting us use a ctypes
     implementation of an extension module from the compiled pypy-c.
 
   - Writing ctypes implementations of modules so be used by the above
-    tool.
+    tool. 
 
   - Experimenting with difference garbage collection strategies.
 
   - Implementation of constraints solvers and integration of dataflow
     variables to PyPy.
 
-  - Work on the 'py' lib which is heavily used by PyPy.
+  - Implement new features and improve the 'py' lib and py.test 
+    which are heavily used by PyPy (doctests/test selection/...).
+
+  - generally experiment with PyPy - e.g. regarding
+    transparent distribution of objects, hacking with 
+    co-routines and stackless features at application level 
 
   - Have fun!
 
@@ -58,7 +63,7 @@ You normally need a wireless network card to access the network, but
 we can probably accommodate a few people with wired-only connectivity.
 
 Power is 120v through US-style sockets -- Europeans will need to
-remember their adaptors!
+remember bringing their adaptors!
 
 Registration, etc.
 ------------------ 
