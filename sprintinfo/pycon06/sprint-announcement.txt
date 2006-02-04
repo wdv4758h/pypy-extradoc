@@ -80,4 +80,4 @@ you can modify yourself a checkout of
   http://codespeak.net/svn/pypy/extradoc/sprintinfo/pycon06/people.txt
 
 .. _`PyPy sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
-.. _`PyCon 06 people`: http://codespeak.net/pypy/extradoc/sprintinfo/mallorca/people.html
+.. _`PyCon 06 people`: http://codespeak.net/pypy/extradoc/sprintinfo/pycon06/people.txt
