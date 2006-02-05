@@ -17,10 +17,10 @@ they wish, we offer these ideas:
   - Work on an 'rctypes' module aiming at letting us use a ctypes
     implementation of an extension module from the compiled pypy-c.
 
-  - Writing ctypes implementations of modules so be used by the above
+  - Writing ctypes implementations of modules to be used by the above
     tool. 
 
-  - Experimenting with difference garbage collection strategies.
+  - Experimenting with different garbage collection strategies.
 
   - Implementation of constraints solvers and integration of dataflow
     variables to PyPy.
