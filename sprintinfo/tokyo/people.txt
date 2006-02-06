@@ -15,6 +15,8 @@ Jacob Hallén
 Laura Creighton
 Anders Lehmann       
 Niklaus Haldimann
+Anders Chrigström
+Samuele Pedroni
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
