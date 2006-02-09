@@ -52,19 +52,6 @@ Exact times
 The PyPy sprint will from from Monday February 27th until Thursday
 March 2nd 2006. Hours will be from 10:00 until people have had enough.
 
-Network, Food, Currency 
------------------------- 
-
-Currency is the US Dollar.
-
-Food is available ... ?
-
-You normally need a wireless network card to access the network, but
-we can probably accommodate a few people with wired-only connectivity.
-
-Power is 120v through US-style sockets -- Europeans will need to
-remember to bring their adaptors!
-
 Registration, etc.
 ------------------ 
 
