@@ -29,14 +29,14 @@ Tasks
 ======
 
   - JIT: 
-   Graph generating ops
-   Designed interface (see draft-jit-ideas),
-   Refactored llabstractinterp to use the operations
-   Started trying to reuse the annotator framework
-   for off-line partial evaluation
-   Progress, now trying to annotate the toy language interp.
-   Arre,  Samuele, Armin on Virtual List
-
+    Graph generating ops
+    Designed interface (see draft-jit-ideas),
+    Refactored llabstractinterp to use the operations
+    Started trying to reuse the annotator framework
+    for off-line partial evaluation
+    Progress, now trying to annotate the toy language interp.
+    Arre,  Samuele, Armin on Virtual List
+ 
   - integration of the garbage collection toolkit with the
     DONE: offsetof, sizeof work done
     Started: insert GC neeeded behaviour as graph transformations.
@@ -68,7 +68,7 @@ Tasks
   - express exception raising operations in the graphs as
     calls to helpers (backends could use their special 
     operations) SOME PROGRESS
-   Eric, Richard
+    Eric, Richard
 
   ( - l3interp/offsetof/sizeof work:
     Progress. Progress needs either hacks and assuming Boehm

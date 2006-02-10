@@ -1,8 +1,8 @@
 Mini Sprint at Logilab
------------------
+--------------------------------
 
 Possible topics
-------------
+----------------------
 
 
     Finish exposing the Grammar at application level
