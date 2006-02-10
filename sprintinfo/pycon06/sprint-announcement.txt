@@ -58,7 +58,7 @@ Registration, etc.
 If you know before the conference that you definitely want to attend
 our sprint, please subscribe to the `PyPy sprint mailing list`_,
 introduce yourself and post a note that you want to come.  Feel free
-to ask any questions there!
+to ask any questions or make suggestions there!
 
 There is a separate `PyCon 06 people`_ page tracking who is already
 planning to come.  If you have commit rights on codespeak then you can
