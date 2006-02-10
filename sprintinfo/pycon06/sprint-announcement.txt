@@ -22,6 +22,8 @@ they wish, we offer these ideas:
 
   - Experimenting with different garbage collection strategies.
 
+  - Implementing Python 2.5 features in PyPy
+
   - Implementation of constraints solvers and integration of dataflow
     variables to PyPy.
 
