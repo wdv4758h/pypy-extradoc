@@ -21,6 +21,7 @@ Christian Tismer     ?              ?
 Anders Lehmann       ?              ?
 Niklaus Haldimann    23rd/3rd       Marriott
 Brian Dorsey         22nd/2nd       Marriott
+Patrick Maupin       23rd/2nd       Marriott
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
