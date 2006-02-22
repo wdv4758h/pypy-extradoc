@@ -16,7 +16,7 @@ Adrien Di Mascio     ?              ?
 Sylvain Thénault     ?              ?
 Anders Lehmann       ?              ?
 Samuele Pedroni      6/3 - 10/3     Le Relais
-Carl Friedrich Bolz  ?              ?
+Carl Friedrich Bolz  6/3 - 10/3     Le Relais
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
