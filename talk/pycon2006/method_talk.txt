@@ -41,7 +41,7 @@ PyPy test-driven development
 ==================================================
 
 - Identify problems/evolution by tests first 
-- Our own testing and development tools 
+- Our own testing and development tools (py.test)
 - Rule: first get the semantics and concepts right! 
   optimize later!
 - Today around 3000 tests (plus CPython regression tests)
@@ -67,9 +67,9 @@ Work organisation (in the EU proposal)
 Balance of interests 
 ==================================================
 
-- Developers want to (continue to) drive the project
+- Developers want to/continue to drive the project
 - Companies have to co-finance 50% of all costs
-  (travel/salary), commercial interests
+  (travel/salary), match commercial interests
 - EU wants challenging research goals and tracking of goals 
 
 - **at all levels it is about finding 
@@ -146,6 +146,7 @@ Effects of sprints on community participation
    :width: 600
    :height: 450
 
+.. SCRAP THE NEXT SLIDE? 
 The different cultures of the PyPy project
 ============================================================
 
@@ -192,7 +193,7 @@ Conclusion / Food for thought
 
 - A shared and challenging vision
 - Respecting and "exploiting" strengths of the different cultures involved
-- Designing minimalistic project structures channeling work, not hindering work 
+- Designing minimalistic project structures channeling, not hindering work 
 - Room for group learning and creating change - not just reacting to change
 
 Outlook on whole project level 
