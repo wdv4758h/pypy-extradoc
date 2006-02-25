@@ -7,19 +7,20 @@ Agile Open-Source Methods, Businesses and EU-funding
 :Date: 26th February 2006, PyCon 
 
 
-XXX Comments: we have ca 30 min - this suggestion has 18 text slides (and a couple of picture slides
-- it still needs to be shortened...XXX
+XXX Comments: we have ca 30 min - this suggestion has 17 text slides (and a couple of picture slides - 4
+- ishorten more?...XXX
 
 How it got started  
 ==================================================
 
 - 2003 first emails between Armin Rigo, Christian Tismer and
-  Holger Krekel 
+  Holger Krekel (Stackless & Psycho)
 - Participated in zope3 coding events ("sprints")
 - Initial invitation for a one-week sprint to Trillke, Hildesheim 
 - Participants got to know each other at conferences
 - Goal: Python implementation in Python (various motivations)
 
+XXX - take away this slide - not necessary with this group - XXX
 Key elements of the technical development
 ==================================================
 
@@ -146,15 +147,7 @@ Effects of sprints on community participation
    :width: 600
    :height: 450
 
-.. SCRAP THE NEXT SLIDE? 
-The different cultures of the PyPy project
-============================================================
-
-- OSS/Python culture 
-- EU project culture
-- Traditional project management culture
-- Agile development culture
-- - 5+X different national cultures
+..
 
 The challenge: managing diversities part 1
 ============================================================
