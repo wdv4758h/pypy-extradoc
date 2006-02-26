@@ -9,16 +9,16 @@ Agile Open-Source Methods, Businesses and EU-funding
 What is PyPy? 
 ==================================================
 
-- next generation Python implementation 
-- grass-root open source effort 
-- a partially funded research project 
-- technical aims: flexibility and speed 
-- method aims: evolve sprint-driven development 
+- Next generation Python implementation 
+- Grass-root open source effort 
+- A partially funded research project 
+- Technical aims: flexibility and speed 
+- Method aims: evolve sprint-driven development 
 
 Bootstrapping PyPy (2003) 
 ==================================================
 
-- initial sprint with Armin Rigo, Christian Tismer,
+- Initial sprint with Armin Rigo, Christian Tismer,
   Holger Krekel, Michael Hudson and then Samuele Pedroni ... 
 - Driven by psyco/stackless experiences 
 - "Minimal Python" inital project name 
@@ -39,7 +39,7 @@ PyPy is (not) a funded EU project
 - PyPy wasn't a funded project 
 - PyPy isn't a funded project
 - PyPy is a funded project 
-- conclusion: it's more complicated
+- Conclusion: it's more complicated
 
 EU project consortium 
 ============================================================
@@ -111,15 +111,15 @@ Origins of sprinting
 Sprinting the PyPy way 
 ============================================================
 
-- first-contact sprints e.g. around conferences 
-- core sprints for reaching milestones, releases
+- First-contact sprints e.g. around conferences 
+- Core sprints for reaching milestones, releases
 - 7 days with 1 break day, every 6th week 
-- typical activities: daily planning/status meetings, 
+- Typical activities: daily planning/status meetings, 
   closure meetings, sprint reports, pair-group programming, 
   tutorials, EU consortium issues 
-- rotating moderation/organisation
+- Rotating moderation/organisation
 
-sprints facilitate participation 
+Sprints facilitate participation 
 ============================================================
 
 .. image:: plots/subscribers.png 
@@ -128,7 +128,7 @@ sprints facilitate participation
 
 ..
 
-managing diversities 
+Managing diversities 
 ============================================================
 
 - Developer driven process and formal project organization
@@ -138,7 +138,7 @@ managing diversities
 - Constant risk of added workload of management
   work on core developers 
 
-more managing diversities 
+More managing diversities 
 ============================================================
 
 - Agile strategies and Formal EU requirements 
@@ -147,7 +147,7 @@ more managing diversities
 - Constant risk of missing opportunities and not
   creating/reacting to change fast enough
 
-even more diversities ... 
+Even more diversities ... 
 ============================================================
 
 - OSS community and hierarchies for "conceptual integrity"
@@ -176,7 +176,7 @@ Outlook on whole project level
 - Improve interactions with community & contribution
 - Exploring Commercial opportunities ... hiring opportunities ... 
 - Taking care about post-EU development (2007++)
-- sprints: Lovain La Neuve, Tokyo, EuroPython, Ireland 
+- Sprints: Lovain La Neuve, Tokyo, EuroPython, Ireland 
 - http://codespeak.net/pypy  and http://pypy.org
 
 
