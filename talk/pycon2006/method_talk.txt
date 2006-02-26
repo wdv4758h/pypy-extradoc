@@ -1,42 +1,28 @@
 ============================================================
 Agile Open-Source Methods, Businesses and EU-funding 
-
 ============================================================
 
 :Authors: Bea During (Change Maker), Holger Krekel (merlinux) 
-:Date: 26th February 2006, PyCon 
+:Date: 26th February 2006, PyCon, Dallas
 
 
-XXX Comments: we have ca 30 min - this suggestion has 17 text slides (and a couple of picture slides - 4
-- ishorten more?...XXX
-
-How it got started  
+What is PyPy? 
 ==================================================
 
-- 2003 first emails between Armin Rigo, Christian Tismer and
-  Holger Krekel (Stackless & Psycho)
-- Participated in zope3 coding events ("sprints")
-- Initial invitation for a one-week sprint to Trillke, Hildesheim 
-- Participants got to know each other at conferences
-- Goal: Python implementation in Python (various motivations)
+- next generation Python implementation 
+- grass-root open source effort 
+- a partially funded research project 
+- technical aims: flexibility and speed 
+- method aims: evolve sprint-driven development 
 
-XXX - take away this slide - not necessary with this group - XXX
-Key elements of the technical development
+Bootstrapping PyPy (2003) 
 ==================================================
 
-- Test-driven from the start
-- Driven by architectural experiences
-- Welcomed by python community (co-operative approach)
-- Based on zen of python / python culture 
-- Focus on correctness of concepts, then speed 
-- Evolutionary step by step development 
-
-Lines of Code and tests 
-============================================================
-
-.. image:: plots/loc.png 
-   :width: 600
-   :height: 450
+- initial sprint with Armin Rigo, Christian Tismer,
+  Holger Krekel, Michael Hudson and then Samuele Pedroni ... 
+- Driven by psyco/stackless experiences 
+- "Minimal Python" inital project name 
+- Focus on correctness of concepts, then speed
 
 PyPy test-driven development 
 ==================================================
@@ -47,36 +33,48 @@ PyPy test-driven development
   optimize later!
 - Today around 3000 tests (plus CPython regression tests)
 
-EU funding
+PyPy is (not) a funded EU project 
 ==================================================
 
-- Proposal written during sprints as well as distributed
-  (submitted Oct 2003)
-- Got good reviews from EU contracted experts 
-- Negotiation and finalisation: 1 year! 
-- 2 year project, 1.3 Million Euro funding 
-- Contractual framework + reporting obligations 
+- PyPy wasn't a funded project 
+- PyPy isn't a funded project
+- PyPy is a funded project 
+- conclusion: it's more complicated
 
-Work organisation (in the EU proposal)
+EU project consortium 
 ============================================================
 
+- AB Strakt (Sweden) 
+- merlinux (Germany)
+- Change Maker (Sweden)
+- Heinrich Heine University (Germany) 
+- DFKI (Germany)
+- Tismerysoft (Germany)
+- Logilab (France) 
+- Impara (Germany) 
+
+EU contractual work structure 
+===================================================
+
+- "Description of Work" for two years
 - 14 workpackages and 58 deliverables, 3 phases 
-- Need for consortium meetings every month (IRC)
 - Sprints every 6th week (coordinating development and management work)
-- EU project aspects helped to gain mid-term/long-term focus
+- EU project aspects enforced mid-term/long-term focus
+- not a usual open-source approach 
+- **good and bad**
 
 Balance of interests 
 ==================================================
 
-- Developers want to/continue to drive the project
-- Companies have to co-finance 50% of all costs
-  (travel/salary), match commercial interests
+- PyPy was first and still is a network of people
+- ...but EU only funds organisations 
+- Developers drive the technical project
+- Companies co-finance 50% of all costs 
 - EU wants challenging research goals and tracking of goals 
+- **it is all about finding 
+  good models for co-operation**
 
-- **at all levels it is about finding 
-  models for co-operation that fit**
-
-The developer community 
+Current developer work structure 
 ==================================================
 
 - Weekly 30 minute synchronisation meetings 
@@ -85,24 +83,10 @@ The developer community
   within the EU project 
 - Research/architecture informally guided by accepted experts 
 
-Organising the consortium
-============================================================
-
-- PyPy was first and still is a network of people
-- ...but EU only funds organisations 
-- 8 partners, 4 previously not involved in the PyPy community
-- 7 partners only partially funded (50% cost models)
-- 2 new companies: "forced" entrepreneurship
-
-Consortium Meetings ... 
-============================================================
-
-.. image:: saarbruecken_consortium.jpg 
-
 .. Bea
 
 
-Core of Agile practises: the people factor
+Agile practises: the people factor
 ============================================================
 
 - "Agile processes are designed to capitalize on each
@@ -111,12 +95,6 @@ Core of Agile practises: the people factor
   collaborative - fit the agile approach
 - OSS teams are an unique implementation of agile practices - why?
 
-Agile approaches aim at ... 
-============================================================
-
-* reducing ... "cost of information",distance from decision-making
-* by ... physical location, unorthodox exchange of knowledge
-* resulting in ... improved sense of community, team "morale"
 
 Origins of sprinting
 ============================================================
@@ -133,14 +111,15 @@ Origins of sprinting
 Sprinting the PyPy way 
 ============================================================
 
-- 7 days with 1 break day, every 6th week for 2 years
-- "open" sprints and "closed" sprints - levels of PyPy knowledge in participants
-- sprints at conferences (PyCon, EuroPython)
-- typical activities: start up planning sessions, daily status meetings, closure meetings, sprint
-   reports, pair-group programming, tutorials, talks (consortium activities)
+- first-contact sprints e.g. around conferences 
+- core sprints for reaching milestones, releases
+- 7 days with 1 break day, every 6th week 
+- typical activities: daily planning/status meetings, 
+  closure meetings, sprint reports, pair-group programming, 
+  tutorials, EU consortium issues 
+- rotating moderation/organisation
 
-
-Effects of sprints on community participation 
+sprints facilitate participation 
 ============================================================
 
 .. image:: plots/subscribers.png 
@@ -149,7 +128,7 @@ Effects of sprints on community participation
 
 ..
 
-The challenge: managing diversities part 1
+managing diversities 
 ============================================================
 
 - Developer driven process and formal project organization
@@ -159,7 +138,7 @@ The challenge: managing diversities part 1
 - Constant risk of added workload of management
   work on core developers 
 
-The challenge: managing diversities part 2
+more managing diversities 
 ============================================================
 
 - Agile strategies and Formal EU requirements 
@@ -168,7 +147,7 @@ The challenge: managing diversities part 2
 - Constant risk of missing opportunities and not
   creating/reacting to change fast enough
 
-The challenge: managing diversities part 3
+even more diversities ... 
 ============================================================
 
 - OSS community and hierarchies for "conceptual integrity"
@@ -181,25 +160,24 @@ Hitchikers guide ...
 
 .. image:: manmoon.png 
 
-Conclusion / Food for thought
+Learnings 
 ============================================================
 
-- A shared and challenging vision
-- Respecting and "exploiting" strengths of the different cultures involved
-- Designing minimalistic project structures channeling, not hindering work 
-- Room for group learning and creating change - not just reacting to change
+- Share a challenging vision!
+- Respect and utilize strengths of different cultures and
+  people involved
+- Design minimalistic project structures
+- Learn as a group and create changes, not just react to change
 
 Outlook on whole project level 
 ==============================
 
-- Less than 1 year of funding left (Nov 2006)
+- EU project to finish November 2006 
 - Improve interactions with community & contribution
+- Exploring Commercial opportunities ... hiring opportunities ... 
 - Taking care about post-EU development (2007++)
-- Visiting Lovain La Neuve, Tokyo, EuroPython, Ireland, ... 
-- Commercial opportunities ... hiring opportunities ... 
-- *Questions?* (talk to us ...)
-
-http://codespeak.net/pypy  and http://pypy.org 
+- sprints: Lovain La Neuve, Tokyo, EuroPython, Ireland 
+- http://codespeak.net/pypy  and http://pypy.org
 
 
 .. |bullet| unicode:: U+02022
