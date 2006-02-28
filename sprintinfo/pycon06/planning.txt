@@ -1,0 +1,40 @@
+Goals and topics of the sprint 
+------------------------------
+
+While attendees of the sprint are of course welcome to work on what
+they wish, we offer these ideas:
+
+  - Work on an 'rctypes' module aiming at letting us use a ctypes
+    implementation of an extension module from the compiled pypy-c.
+    Bob, Michael T, jiwon, gene, mwh + arigo, samuele around a bit
+
+  - Writing ctypes implementations of modules to be used by the above
+    tool. 
+    pmaupin, ...
+
+  - Implementing Python 2.5 features in PyPy
+    martin, arre, stewart, ...
+
+  - Implementation of constraints solvers and integration of dataflow
+    variables to PyPy.
+    george, anders l
+
+  - Implement new features and improve the 'py' lib and py.test 
+    which are heavily used by PyPy (doctests/test selection/...).
+    jan, brian, 
+
+  - JIT stuff
+    joshua, + arigo, samuele
+
+  - LLVM backend work
+    pmaupin, rxe
+
+  - ootypesystem improvements/smalltalk/lisp backend
+    nik, even more samuele, mwh?
+
+  - Generally experiment with PyPy -- for example, play with
+    transparent distribution of objects or coroutines and stackless
+    features at application level.
+
+  - Have fun!
+
