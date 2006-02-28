@@ -6,32 +6,68 @@ they wish, we offer these ideas:
 
   - Work on an 'rctypes' module aiming at letting us use a ctypes
     implementation of an extension module from the compiled pypy-c.
-    Bob, Michael T, jiwon, gene, mwh + arigo, samuele around a bit
+
+    PROGRESS: (armin, michael t, joshua, gene)
+              work on compatibility with various ctypes versions,
+              in particular cleaning up the ways of teaching the
+              annotator about stuff
+
+    TODAY: (armin, michael t, gene, ?joshua)
+           Work on rtyping, cleaning up existing code.
 
   - Writing ctypes implementations of modules to be used by the above
     tool. 
-    pmaupin, ...
+
+    PROGRESS: none
 
   - Implementing Python 2.5 features in PyPy
-    martin, arre, stewart, ...
+
+    PROGRESS: (arre, stuart, martin)
+              Tour of PyPy, implemented builtins all() and any()
+              Then implemented PEP 308, reminding Arre about the
+              parser mess, but succeeded.
+
+    TODAY: (arre, stuart, anders, ?martin)
+           More of same; maybe looking at fixing the stable compiler
+           mess.
 
   - Implementation of constraints solvers and integration of dataflow
     variables to PyPy.
-    george, anders l
+    
+    PROGRESS: (anders, george)
+              Tour of existing work, work on sudoku solver, but
+              kept bumping into bugs.
 
   - Implement new features and improve the 'py' lib and py.test 
     which are heavily used by PyPy (doctests/test selection/...).
-    jan, brian, 
+
+    PROGRESS: (brian, jan)
+              Work on making tests pass or skip on win32, packaging
+              Unfortunately, Brian is unwell.
 
   - JIT stuff
-    joshua, + arigo, samuele
+
+    PROGRESS: none
 
   - LLVM backend work
-    pmaupin, rxe
+
+    PROGRESS: (richard, pat)
+              Unbroke the backend, some cleaning up, LLVM compatibility
+              work, ctypes investigation.
+
+    TODAY: (richard, bob)
+           Exception policy stuff, more general LLVM stuff
+           (pat)
+           possibly some template cleanups
 
   - ootypesystem improvements/smalltalk/lisp backend
-    nik, even more samuele, mwh?
 
+    PROGRESS: (nik, samuele)
+              Keyword arguments for methods, partial __init__ support.
+
+    TODAY: (nik, samuele, michael h)
+           More!
+ 
   - Generally experiment with PyPy -- for example, play with
     transparent distribution of objects or coroutines and stackless
     features at application level.
