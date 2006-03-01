@@ -24,17 +24,24 @@ Nature: postsprint
 
 Primary organizer: Holger and Michael
 
-February/Europe
+March/Europe
 -------------------
 
-Time & location: ? parallell with PyCon and PyCon sprint (24th February-1 March)
-Brussels or Saarbruecken?
+Time & location: Louvain-La-Neuve 6th-10th March
 
-Nature: joint sprint with OZ community and Roel Wuyts/ULB attending ? 
-DFKI and Logilab primarily since other partners are sprinting
-at PyCon and also do the Malaga conference.
+Nature: joint sprint with OZ community and Roel Wuyts/ULB attending. 
+DFKI and Logilab primarily + Samuele, Carl F.
 
 Primary organizer: Nicolas Chauvat
+
+April/Leysin
+-------------
+
+Time & location: ?, Leysin, Switzerland
+
+Nature: closed/core
+
+Primary organizer: Armin
 
 April/Tokyo
 -------------
