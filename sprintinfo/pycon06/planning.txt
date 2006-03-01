@@ -7,13 +7,17 @@ they wish, we offer these ideas:
   - Work on an 'rctypes' module aiming at letting us use a ctypes
     implementation of an extension module from the compiled pypy-c.
 
-    PROGRESS: (armin, michael t, joshua, gene)
+    MONDAY: (armin, michael t, joshua, gene)
               work on compatibility with various ctypes versions,
               in particular cleaning up the ways of teaching the
               annotator about stuff
 
-    TODAY: (armin, michael t, gene, ?joshua)
-           Work on rtyping, cleaning up existing code.
+    TUESDAY: (armin, michael t, gene)
+             More cleanups, and eventually adding a feature:
+             beginnings of rtyping arrays.
+
+    TODAY: (armin, gene)
+           More of same.
 
   - Writing ctypes implementations of modules to be used by the above
     tool. 
@@ -22,14 +26,18 @@ they wish, we offer these ideas:
 
   - Implementing Python 2.5 features in PyPy
 
-    PROGRESS: (arre, stuart, martin)
-              Tour of PyPy, implemented builtins all() and any()
-              Then implemented PEP 308, reminding Arre about the
-              parser mess, but succeeded.
+    MONDAY: (arre, stuart, martin)
+            Tour of PyPy, implemented builtins all() and any()
+            Then implemented PEP 308, reminding Arre about the
+            parser mess, but succeeded.
 
-    TODAY: (arre, stuart, anders, ?martin)
-           More of same; maybe looking at fixing the stable compiler
-           mess.
+    TUESDAY: (arre, stuart, anders)
+             Some untangling of the stable compiler mess.
+             Implemented 'with' from PEP 343, missing some tests
+             and the __future__ support.
+
+    TODAY: (arre, sturart, anders)
+           Continue, maybe PEP 342.
 
   - Implementation of constraints solvers and integration of dataflow
     variables to PyPy.
@@ -44,6 +52,11 @@ they wish, we offer these ideas:
     PROGRESS: (brian, jan)
               Work on making tests pass or skip on win32, packaging
               Unfortunately, Brian is unwell.
+             
+    TUESDAY: (pat)
+             Working on template stuff
+    TODAY: (pat)
+           More documentation, and checking in.
 
   - JIT stuff
 
@@ -55,22 +68,30 @@ they wish, we offer these ideas:
               Unbroke the backend, some cleaning up, LLVM compatibility
               work, ctypes investigation.
 
-    TODAY: (richard, bob)
-           Exception policy stuff, more general LLVM stuff
-           (pat)
-           possibly some template cleanups
+    TUESDAY: (richard, bob)
+             Some exploration of LLVM's JIT (but mainly LLVM's build
+             system)
+
+    TODAY: (richard)
+           ?
 
   - ootypesystem improvements/smalltalk/lisp backend
 
-    PROGRESS: (nik, samuele)
+    MONDAY: (nik, samuele)
               Keyword arguments for methods, partial __init__ support.
 
-    TODAY: (nik, samuele, michael h)
-           More!
+    TUESDAY: (nik, samuele, michael h)
+             More PBC, __init__ support.  Fought with class attributes.
+
+    TODAY: (nik, samuele, mwh)
+           More fighting.
  
   - Generally experiment with PyPy -- for example, play with
     transparent distribution of objects or coroutines and stackless
     features at application level.
+
+    TUESDAY: (moshez, mwh)
+             Played with coroutines a bit.  Wrote a new test.
 
   - Have fun!
 
