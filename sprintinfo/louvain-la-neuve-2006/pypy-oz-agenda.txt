@@ -57,6 +57,7 @@ Discussions
   lightweight concurrency and support for
   asynchronous messages are really very important if you want to "future-proof" Python.  Monitors
   are terrible; transactions  are nice if you can support them in the language.
+  discuss futures/promises versus blocking on unbound logic variables
 
 * Distributed computing (peter)
   A single bullet does not do it justice by a long shot.  There are lots
