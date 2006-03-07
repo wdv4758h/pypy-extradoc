@@ -1,5 +1,5 @@
 PyPy/Oz meeting Agenda
-======================
+=======================
 
 Participants
 ------------
@@ -23,6 +23,51 @@ even better:
 
  * others ?
 
+
+Possible Agenda
+---------------
+
+Presentations
+
+* goals (nicolas ?)
+
+  Our goal is to add new programming approaches/paradigms to Python and
+  we would have a lot to learn from your experience with Oz. What
+  is possible and how far can we go with the current langage
+  definition? How to enhance Python with logic and keep a
+  consistent langage?
+
+  understanding of how Oz itself manages the relation between stateful programming and the
+  declarative parts.
+
+* PyPy quick description (samuele ?)
+
+* Adding a constraint store to Python (aurelien ?)
+
+* Languages integration of Soul (roel)
+
+Discussions
+
+* Mozart design philosophy vs. Python design philosophy (peter)
+  How a little bit of formal semantics can help a lot.  The Mozart
+  philosophy is based on having *two* things at all times: an efficient implementation and a simple
+  formal semantics.  This makes for an interesting balancing act, but the result is worth it I think.
+
+* Concurrent programming (peter)
+  lightweight concurrency and support for
+  asynchronous messages are really very important if you want to "future-proof" Python.  Monitors
+  are terrible; transactions  are nice if you can support them in the language.
+
+* Distributed computing (peter)
+  A single bullet does not do it justice by a long shot.  There are lots
+  of issues: degree of transparency, language design, distributed algorithms, fault tolerance,  openness, security.
+
+* security features (?)
+
+* garbage collection (samuele + ?)
+
+
+
 Topics
 ------
 
@@ -32,12 +77,12 @@ Excerpts from e-mails:
 
 Grégoire:
 """
- I can think of a few topics for discussion (non exhaustive):
-- your ongoing work on  implementing a constraint store in pypy
+I can think of a few topics for discussion (non exhaustive):
+- your ongoing work on implementing a constraint store in pypy
 - transparent distributed computing
 - garbage collection
 - constraint programming: constraint propagation, modeling, search and
-computation spaces.
+  computation spaces.
 - logic variables and unification
 - lazy computations
 - dataflow concurrency (through logic variables or future/promise)
@@ -123,13 +168,13 @@ happen, I expect that we will have a working prototype, written in full
 Python, that covers the following :
 
 - a constraint store (kind of first-class environment holding up
-variables and constraints) which knows how to bind and unify variables,
-and how to check satisfiability of constraints
-- dataflow variables (with method on them that give (Pyhton) thread
-access the wait-til-bound semantics, multiple albeit monotonic binding
-of compatible/unifiable values) and streams
+  variables, domains and constraints) which knows how to bind and unify variables,
+  and how to propagate constraints on the domains (AC3)
+- dataflow variables (with method on them that give (Python, ie OS-threads) thread
+  access the wait-til-bound semantics, multiple albeit monotonic binding
+  of compatible/unifiable values) and streams
 - computation space (embeds/extends a constraint store, provides the
-operators defined in CTM)
+  operators defined in CTM)
 - sample search strategies & distributors
 - sample problems exercizing the prototype
 
