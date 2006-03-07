@@ -1,0 +1,24 @@
+Louvain-la-Neuve Logic programming sprint
+=========================================
+
+Tasks:
+------
+
+ * identify parts of the current logic module that can be usefully implemented
+   in RPython
+ * take a look at existion logic programming software (pychinko,
+   GECODE, CWM, tableau, pylog) and at the RETE algorithm think about
+   integration with
+ * existing Python syntax/new syntax: look at and update document desicribing
+ * some of the ideas consistency for multi-paradigm programming languages in
+   Python especially
+
+
+Links:
+------
+
+ * description of the Rete algorithm: http://drools.org/Rete
+ * CWM (closed world machine): http://infomesh.net/2001/cwm/
+ * pychinko: http://www.mindswap.org/~katz/pychinko/ 
+ * pylog (implementation of prolog in python): http://christophe.delord.free.fr/en/pylog/
+ * cookbook receipt that lets one add arbitrary infix binary operators: http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/384122
