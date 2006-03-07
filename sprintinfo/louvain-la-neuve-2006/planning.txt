@@ -4,14 +4,14 @@ Louvain-la-Neuve Logic programming sprint
 Tasks:
 ------
 
+ * plan the agenda for tomorrow/thursday (Aurelien, Nicolas)
  * identify parts of the current logic module that can be usefully implemented
-   in RPython
- * take a look at existion logic programming software (pychinko,
-   GECODE, CWM, tableau, pylog) and at the RETE algorithm think about
-   integration with
+   in RPython (Ludovic, Samuele)
+ * take a look at existing logic programming software (pychinko,
+   GECODE, CWM, tableau, pylog) and at the RETE algorithm. Think about
+   integration (Alf, Carl Friedrich, Anders)
  * existing Python syntax/new syntax: look at and update document desicribing
- * some of the ideas consistency for multi-paradigm programming languages in
-   Python especially
+ * consistency for multi-paradigm programming languages (especially Python)
 
 
 Links:
