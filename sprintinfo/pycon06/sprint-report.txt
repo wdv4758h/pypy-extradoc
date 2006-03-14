@@ -14,7 +14,40 @@ planning session, where we divided up into pairs or threes and decided
 what we'd be working on for the rest of the day.
 
 This plan went out the window fairly quickly though, for a variety of
-reasons...
+reasons... (?)
+
+Armin and three PyPy newcomers -- Mick, Gene and Joshua -- dived into
+the ever popular rctypes. They made annotation work for all ctypes
+types and cleaned up bits and pieces. Along the way, they also started
+implementing a new registry mechanism for external functions, aiming
+at getting rid of the approximately 42 steps required to add a new
+external function.
+
+The two Canadian newcomers -- Stuart and Martin -- got introduced to
+PyPy by Arre, implementing the new 2.5 builtins any() and all().
+They proceeded with implementing the new with keyword (PEP 308),
+which despite some parser/compiler hairyness apparently went quite
+smoothly.
+
+Anders L. and George took a tour the logic programming facilities in
+PyPy and worked on a Sudoku solver using the computation space. But
+they were slowed down quite a bit by bugs. The code was not checked
+in until after the sprint.
+
+Richard and Pat -- who was hooked on PyPy at the last PyCon sprint --
+hacked the LLVM backend back into shape (it was broken due to ongoing
+work in the GC area). Various compatibility issues with LLVM versions
+were also tackled. 
+
+Samuele and Nik picked up the lately neglected ootypesystem and
+ported PBC tests over from lltypesystem, fixing various loose ends
+like __init__ and keyword arguments support.
+
+Let's not forget the py.lib sub-sprint happening in the same room as
+the PyPy sprint, starring Holger, Jan and Brian. Unfortunately the
+Texas Mystery Disease was making the rounds in the py.lib team, both
+Holger and Brian weren't feeling well, so there was only little
+progress generally improving win32 support of the py.lib.
 
 Day 2
 -----
