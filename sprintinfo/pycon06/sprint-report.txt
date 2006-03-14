@@ -65,4 +65,19 @@ By Wednesday, the sprint was thinning out...
 Day 4
 -----
 
-XXX Did enough work get done on Thursday to even bother mentioning it?
+The sprinters who had lasted this long were mostly in shutdown mode
+already, with many of them flying out in the afternoon. There wasn't
+any formal planning meeting. Some code was written anyway. Armin
+worked on SpaceOperation.cleanup; Gene and Armin on rctypes
+specialization; Samuele and Nik on __del__ support for ootypesystem;
+Arre, Anders L. and Stuart on making parser/compiler translatable
+again; and Richard on running LLVM tests with the isolate tool.
+
+Most people left during the afternoon. The remaining handful hung
+out at the hotel pool and were later joined by people from other
+sprints for a beer and pizza happening. The PyCon organizers even
+pointed a wireless router from one of their hotel rooms at the pool,
+for those who couldn't stop sprinting even at 9 pm, lying in a deck
+chair, typing single-handedly since one hand was clasping a beer ...
+
+We'll be back next year!
