@@ -1,0 +1,35 @@
+Post-PyCon 2006 Sprint Report
+=============================
+
+After PyCon this year, we held four days of sprints.  There were lots
+of people new to PyPy and a couple of old friends we hadn't seen for a
+while.
+
+Day 1
+-----
+
+Monday began with a 45 minute introduction/tutorial by Michael (which
+was videoed -- watch for it arriving on codespeak soon-ish) and then a
+planning session, where we divided up into pairs or threes and decided
+what we'd be working on for the rest of the day.
+
+This plan went out the window fairly quickly though, for a variety of
+reasons...
+
+Day 2
+-----
+
+The Tuesday began with a status meeting where we talked about what
+we'd acheived the day before and basically decided that most of us
+would carry on with the same things (this proved to be a much more
+accurate plan than the previous day's...).
+
+Day 3
+-----
+
+By Wednesday, the sprint was thinning out...
+
+Day 4
+-----
+
+XXX Did enough work get done on Thursday to even bother mentioning it?
