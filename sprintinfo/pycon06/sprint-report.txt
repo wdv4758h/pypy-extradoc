@@ -1,12 +1,61 @@
 Post-PyCon 2006 Sprint Report
 =============================
 
-After PyCon this year, we held four days of sprints.  There were lots
+After PyCon this year, we held four days of sprints, 27th Feb-2 March 2006.  There were lots
 of people new to PyPy and a couple of old friends we hadn't seen for a
 while.
 
+Here are the list of people participating in the sprint:
+( some for only for one day, others for the full sprint)
+
+Gene Oden
+Bob Ippolito
+Josh Gilbert
+Geroge Paci
+Pat Maupin
+Martin Blais
+Stuart Williams
+Jiwon Seo
+Michael Twomey
+Anders Lehmann
+Nik Haldimann
+Samuele Pedronis
+Armin Rigo
+Michael Hudson
+Wanja Saatkamp
+Beatrice Düring
+Anders Chrigstrom
+Richard Emslie
+(Christian Tismer)
+(Holger Krekel)
+
+
+The announced goals for the sprint was:
+
+- Work on an 'rctypes' module aiming at letting us use a ctypes
+    implementation of an extension module from the compiled pypy-c.
+
+  - Writing ctypes implementations of modules to be used by the above
+    tool. 
+
+  - Experimenting with different garbage collection strategies.
+
+  - Implementing Python 2.5 features in PyPy
+
+  - Implementation of constraints solvers and integration of dataflow
+    variables to PyPy.
+
+  - Implement new features and improve the 'py' lib and py.test 
+    which are heavily used by PyPy (doctests/test selection/...).
+
+  - Generally experiment with PyPy -- for example, play with
+    transparent distribution of objects or coroutines and stackless
+    features at application level.
+    
+
+
 Day 1
------
+-------
 
 Monday began with a 45 minute introduction/tutorial by Michael (which
 was videoed -- watch for it arriving on codespeak soon-ish) and then a
