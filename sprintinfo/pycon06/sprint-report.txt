@@ -25,8 +25,8 @@ external function.
 
 The two Canadian newcomers -- Stuart and Martin -- got introduced to
 PyPy by Arre, implementing the new 2.5 builtins any() and all().
-They proceeded with implementing the new with keyword (PEP 308),
-which despite some parser/compiler hairyness apparently went quite
+They proceeded with implementing conditional expressions which 
+despite some parser/compiler hairyness apparently went quite
 smoothly.
 
 Anders L. and George took a tour the logic programming facilities in
