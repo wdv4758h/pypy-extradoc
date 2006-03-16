@@ -6,8 +6,8 @@ pypy-sync developer meeting 16th March 2006
 Attendees:  Samuele
             Anders C.
             Anders L. (arrived late)
-            Carl Friedrich (minutes)
-            Michael
+            Carl Friedrich
+            Michael (minutes)
             Nik
             Eric
 
@@ -31,10 +31,12 @@ Summary
    have one almost ready to go, but it depends on Armin writing a JIT
    section and finishing up the PyCon sprint report.
 
-.. `the log`_
+.. _`the log`:
 
 Complete Log
 ============
+
+Complete IRC log::
 
   [16:09] mwh: hello
   [16:09] arigo: :-)
