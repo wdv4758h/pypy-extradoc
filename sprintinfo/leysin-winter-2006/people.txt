@@ -1,0 +1,44 @@
+
+People coming to the Leysin sprint Winter 2006
+==================================================
+
+People who have a ``?`` in their arrive/depart or accomodation
+column are known to be coming but there are no details 
+available yet from them.
+
+Use ``Accomodation = Ermina`` for the group booking at the Chalets.
+
+==================== ============== =====================
+    Name              Arrive/Depart     Accomodation 
+==================== ============== =====================
+Anders Chrigstroem   ?              Ermina?
+Holger Krekel        ?              Ermina?
+Samuele Pedroni      ?              Ermina?
+Armin Rigo           --             private
+Christian Tismer     ?              Ermina?
+==================== ============== =====================
+
+People on the following list were present at previous sprints: 
+
+==================== ============== =====================
+       Name          Arrive/Depart  Accomodation 
+==================== ============== =====================
+Lene Wagner          ?              ?
+Amaury Forgeot d'Arc ?              ?
+Valentino Volonghi   ?              ?
+Boris Feigin	     ?              ?
+Andrew Thompson      ?              ?
+Bert Freudenberg     ?              ?
+Ludovic Aubry        ?              ?
+Adrien Di Mascio     ?              ?
+Jacob Hallen         ?              ?
+Laura Creighton      ?              ?
+Beatrice Duering     ?              ?
+Eric van Riet Paap   ?              ?
+Michael Hudson       ?              ?
+Carl Friedrich Bolz  ?              ?
+Anders Lehmann       ?              ?
+Niklaus Haldimann    ?              ?
+Richard Emslie       ?              ?
+Johan Hahn           ?              ?
+==================== ============== =====================
