@@ -6,6 +6,7 @@ pypy-sync developer meeting 16th March 2006
 Attendees:  Samuele
             Anders C.
             Anders L. (arrived late)
+            Aurelien Campeas
             Carl Friedrich
             Michael (minutes)
             Nik
