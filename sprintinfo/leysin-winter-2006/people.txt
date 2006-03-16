@@ -17,6 +17,7 @@ Samuele Pedroni      ?              Ermina?
 Armin Rigo           --             private
 Christian Tismer     ?              Ermina?
 Michael Hudson       4th-10th?      Ermina?
+Anders Lehmann       2nd-9th        Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -38,7 +39,6 @@ Beatrice Duering     ?              ?
 Eric van Riet Paap   ?              ?
 Michael Hudson       ?              ?
 Carl Friedrich Bolz  ?              ?
-Anders Lehmann       ?              ?
 Niklaus Haldimann    ?              ?
 Richard Emslie       ?              ?
 Johan Hahn           ?              ?
