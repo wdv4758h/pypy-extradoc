@@ -122,9 +122,8 @@ Sprinting the PyPy way
 Sprints facilitate participation 
 ============================================================
 
-.. image:: plots/subscribers.png 
-   :width: 600
-   :height: 450
+.. image:: subscribers.png 
+   :scale: 60
 
 ..
 
