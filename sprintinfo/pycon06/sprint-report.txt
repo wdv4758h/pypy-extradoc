@@ -1,38 +1,39 @@
 Post-PyCon 2006 Sprint Report
 =============================
 
-After PyCon this year, we held four days of sprints, 27th Feb-2 March 2006.  There were lots
-of people new to PyPy and a couple of old friends we hadn't seen for a
-while.
+After PyCon this year, we held four days of sprints, from 27th of
+February to the 2nd of March 2006.  There were lots of people new to
+PyPy and a couple of old friends we hadn't seen for a while.
 
-Here are the list of people participating in the sprint:
-( some for only for one day, others for the full sprint)
+Here is the list of people participating in the sprint:
 
-Gene Oden
-Bob Ippolito
-Josh Gilbert
-Geroge Paci
-Pat Maupin
-Martin Blais
-Stuart Williams
-Jiwon Seo
-Michael Twomey
-Anders Lehmann
-Nik Haldimann
-Samuele Pedronis
-Armin Rigo
-Michael Hudson
-Wanja Saatkamp
-Beatrice Düring
-Anders Chrigstrom
-Richard Emslie
-(Christian Tismer)
-(Holger Krekel)
+  * Gene Oden
+  * Bob Ippolito
+  * Josh Gilbert
+  * Geroge Paci
+  * Pat Maupin
+  * Martin Blais
+  * Stuart Williams
+  * Jiwon Seo
+  * Michael Twomey (Mick)
+  * Anders Lehmann (Anders)
+  * Nik Haldimann
+  * Samuele Pedronis
+  * Armin Rigo
+  * Michael Hudson (Michael)
+  * Wanja Saatkamp
+  * Beatrice Düring
+  * Anders Chrigstrom (Arre)
+  * Richard Emslie
+  * (Christian Tismer -- worked mostly on stackless)
+  * (Holger Krekel -- was unfortunately ill for most of the sprint)
 
+Not all people participated for the full sprint; attendance generally
+tailed off over the course of the four days.
 
-The announced goals for the sprint was:
+The announced goals for the sprint were:
 
-- Work on an 'rctypes' module aiming at letting us use a ctypes
+  - Work on an 'rctypes' module aiming at letting us use a ctypes
     implementation of an extension module from the compiled pypy-c.
 
   - Writing ctypes implementations of modules to be used by the above
@@ -51,11 +52,9 @@ The announced goals for the sprint was:
   - Generally experiment with PyPy -- for example, play with
     transparent distribution of objects or coroutines and stackless
     features at application level.
-    
-
 
 Day 1
--------
+-----
 
 Monday began with a 45 minute introduction/tutorial by Michael (which
 was videoed -- watch for it arriving on codespeak soon-ish) and then a
@@ -99,13 +98,58 @@ Day 2
 
 The Tuesday began with a status meeting where we talked about what
 we'd acheived the day before and basically decided that most of us
-would carry on with the same things (this proved to be a much more
-accurate plan than the previous day's...).
+would carry on with the same things.
+
+Armin, Mick and Gene, having broken all the rctypes tests the day
+before, started to use the new 'extregistry' to get things to start
+working again.
+
+Nik, Michael and Samuele continued to move rtyper tests from being
+lltypesystem-only to running on both typesystems, and implementing the
+support thus required in the ootypesystem.  The hardest part off this
+was supporting class attributes, as this is not something we assume
+the to-be-targeted supports natively (this wasn't finished until
+Wednesday).
+
+Arre, Stuart and Anders implemented more Python 2.5 features, in
+particular those described by PEP 343.
+
+Bob and Richard played with the LLVM JIT.  The hardest part of this
+seemed to be working out which libraries to link against...
+
+Later in the day Moshe and Michael played around with the stackless
+features, in particular coroutines, and in the end made their play
+into a new test.
 
 Day 3
 -----
 
-By Wednesday, the sprint was thinning out...
+By Wednesday, the sprint was thinning out, but a fair amount of work
+still got done.
+
+Samuele and Nik finished off and merged the short-lived ooclassattrs
+branch, sorted out some exception issues and moved on to feared topic
+of 'specialized methods' -- when one method in the input source
+becomes more than one method in the backend's view.  This didn't turn
+out to be as bad as suspected, and by the end of the day the main the
+ootypesystem lacked was an actual backend...
+
+Richard took Michael on a quick tour of LLVM and then they both worked
+on adding support for the various offset types to LLVM, a prerequisite
+for LLVM being able to use the framework GCs.
+
+Armin and Gene worked more on rctypes, using the work of the previous
+two days to make it work again in a nicer and hopefully more
+sustainable way than before.
+
+Anders, Stuart and Arre worked on more Python 2.5 PEPs, finishing the
+343 work and generally tidying.
+
+In the afternoon, Michael compiled a fresh Python from SVN HEAD (many
+many new features had been implemented by the Python code sprint in
+the room next door) and attempted to run the PyPy test suite with it.
+This uncovered a number of problems both in PyPy and in Python, some
+of which were easier to fix than others.
 
 Day 4
 -----
