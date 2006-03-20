@@ -128,10 +128,10 @@ By Wednesday, the sprint was thinning out, but a fair amount of work
 still got done.
 
 Samuele and Nik finished off and merged the short-lived ooclassattrs
-branch, sorted out some exception issues and moved on to feared topic
+branch, sorted out some exception issues and moved on to the feared topic
 of 'specialized methods' -- when one method in the input source
 becomes more than one method in the backend's view.  This didn't turn
-out to be as bad as suspected, and by the end of the day the main the
+out to be as bad as suspected, and by the end of the day the main thing the
 ootypesystem lacked was an actual backend...
 
 Richard took Michael on a quick tour of LLVM and then they both worked
@@ -143,7 +143,7 @@ two days to make it work again in a nicer and hopefully more
 sustainable way than before.
 
 Anders, Stuart and Arre worked on more Python 2.5 PEPs, finishing the
-343 work and generally tidying.
+343 work and generally tidying some things up.
 
 In the afternoon, Michael compiled a fresh Python from SVN HEAD (many
 many new features had been implemented by the Python code sprint in
