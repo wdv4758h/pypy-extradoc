@@ -20,6 +20,8 @@ Michael Hudson       2nd-10th       Ermina
 Anders Lehmann       2nd-9th        Ermina
 Jacob Hallen         30/3 - 7/4     Ermina
 Niklaus Haldimann    2/4 - 5/4      Ermina
+Aurelien Campeas     3/4 - 7/4      Ermina
+Alexandre Fayolle    3/4 - 7/4      Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -33,8 +35,6 @@ Valentino Volonghi   ?              ?
 Boris Feigin	     ?              ?
 Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
-Ludovic Aubry        ?              ?
-Adrien Di Mascio     ?              ?
 Laura Creighton      ?              ?
 Beatrice Duering     ?              ?
 Eric van Riet Paap   ?              ?
