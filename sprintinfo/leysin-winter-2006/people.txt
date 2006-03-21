@@ -16,7 +16,7 @@ Holger Krekel        1st - 14       Ermina
 Samuele Pedroni      30/3 - 10/4    Ermina
 Armin Rigo           --             private
 Christian Tismer     ?              Ermina?
-Michael Hudson       3rd-10th?      Ermina?
+Michael Hudson       2nd-10th       Ermina
 Anders Lehmann       2nd-9th        Ermina
 Jacob Hallen         30/3 - 7/4     Ermina
 Niklaus Haldimann    2/4 - 5/4      Ermina
