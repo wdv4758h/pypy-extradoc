@@ -11,13 +11,14 @@ Use ``Accomodation = Ermina`` for the group booking at the Chalets.
 ==================== ============== =====================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
-Anders Chrigstroem   2/3 - 10/3     Ermina
+Anders Chrigstroem   30/3 - 10/4    Ermina
 Holger Krekel        1st - 14       Ermina 
-Samuele Pedroni      2/3 - 10/3     Ermina
+Samuele Pedroni      30/3 - 10/4    Ermina
 Armin Rigo           --             private
 Christian Tismer     ?              Ermina?
 Michael Hudson       3rd-10th?      Ermina?
 Anders Lehmann       2nd-9th        Ermina
+Jacob Hallen         30/3 - 7/4     Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -33,7 +34,6 @@ Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
 Ludovic Aubry        ?              ?
 Adrien Di Mascio     ?              ?
-Jacob Hallen         ?              ?
 Laura Creighton      ?              ?
 Beatrice Duering     ?              ?
 Eric van Riet Paap   ?              ?
