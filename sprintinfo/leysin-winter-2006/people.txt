@@ -12,7 +12,7 @@ Use ``Accomodation = Ermina`` for the group booking at the Chalets.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Anders Chrigstroem   2/3 - 10/3     Ermina
-Holger Krekel        ?              Ermina?
+Holger Krekel        1st - 14       Ermina 
 Samuele Pedroni      2/3 - 10/3     Ermina
 Armin Rigo           --             private
 Christian Tismer     ?              Ermina?
