@@ -6,6 +6,7 @@ pypy-sync developer meeting 23rd March 2006
 Attendees:
   - Anders C.
   - Anders L.
+  - Armin
   - Aurelien Campeas
   - Carl Friedrich
   - Christian
@@ -33,7 +34,8 @@ Summary
        If you're in `extradoc/sprintinfo/tokyo/people.txt`_, could you
        please update that file with your real intentions.
 
-   .. _`extradoc/sprintinfo/tokyo/people.txt`: http://codespeak.net/svn/pypy/extradoc/sprintinfo/tokyo/people.txt
+   .. _`extradoc/sprintinfo/tokyo/people.txt`: 
+           http://codespeak.net/svn/pypy/extradoc/sprintinfo/tokyo/people.txt
 
  - goals of the 0.9 release
 
