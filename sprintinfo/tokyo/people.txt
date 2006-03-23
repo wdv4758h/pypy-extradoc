@@ -24,6 +24,7 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
+Armin Rigo            not coming
 Ludovic Aubry             
 Adrien Di Mascio               
 Laura Creighton             
