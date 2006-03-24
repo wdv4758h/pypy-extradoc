@@ -1,12 +1,12 @@
 Tokyo PyPy Sprint: 23rd - 29th April 2006 
 ============================================================
 
-The next PyPy sprint is scheduled to take place 23rd- 29th April 2006 
-(Sunday-Saturday) in Akihabara, Tokyo, Japan. We will together with 
-FSIJ (Free Software Initiative of Japan) aim to promote Python and PyPy.  
-We therefor invite Japanese hackers knowledgeable in Python to join our sprint!
-We'll give newcomer-friendly introductions and the focus will 
-mainly be XXX. To learn more about the new Python-in-Python implementation look here: 
+The next PyPy sprint is scheduled to take place 23rd- 29th April 2006
+(Sunday-Saturday) in Akihabara, Tokyo, Japan. We will together with
+FSIJ (Free Software Initiative of Japan) aim to promote Python and
+PyPy.  We therefor invite Japanese hackers knowledgeable in Python to
+join our sprint!  We'll give newcomer-friendly introductions. To learn
+more about the new Python-in-Python implementation look here:
 
     http://codespeak.net/pypy
 
@@ -21,13 +21,27 @@ and would love to discuss and get feedback on optimisation efforts and the curre
 Goals and topics of the sprint 
 ------------------------------
 
-XXX
+Possible suggestions for topics are:
 
- - XXX
- - XXX
- - XXX
- - whatever participants want to do with PyPy (please send 
-    suggestions to the mailing list before to allow us to plan 
+  - Work on gensqueak (our Squeak backend) or possibly other backends.
+
+  - Implementing Python 2.5 features in PyPy.
+
+  - Progress further on an 'rctypes' module aiming at letting us use a ctypes
+    implementation of an extension module from the compiled pypy-c.
+
+  - Writing ctypes implementations of modules to be used by the above
+    tool.
+
+  - Experimenting and improving performance of our garbage collectors.
+
+  - Experiment with PyPy flexibility or other aspects of the implementation.
+
+  - Possibly experiment with writing modules translatable for use both
+    in PyPy and CPython.
+  
+  - Whatever participants want to do with PyPy or particular areas
+    of PyPy (please send suggestions to the mailing list before to allow us to plan 
     and give feedback) 
 
 
