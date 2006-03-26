@@ -65,16 +65,6 @@ The 3 PyPy talks where accepted into the PyCon programme!
 
 Due: sprint planning, possibly inviting Ka Ping (regarding E-lang) 
 
-FOSDEM 2006
-------------
-The sixth meeting of Free and Open Source European Developers meeting.
-Time & location: 25th-26th of February, 2006, Brussels
-
-A conference to attend - maybe for those not participating at PyCon?
-
-http://www.fosdem.org/2006/
-
-No papers submitted - attendance?
 
 Calibre workshop
 -----------------
@@ -86,6 +76,14 @@ Time & location: 3 of March 2006 Skövde Sweden
 www.calibre.ie
 
 No papers submitted - Bea will attend.
+( Bea didnt attend - Jacob did).
+
+XP France:
+--------------
+24-25th March? Nicholas?
+
+Logilab attended and did a talk.
+
 
 ACCU 2006
 ----------
@@ -99,6 +97,7 @@ Time & location: 19th -22nd of April, Oxford, UK
 http://www.accu.org/conference/
 
 No papers submitted - attendance - Michael H, Jacob?
+Michael will do a talk there about PyPy.
 
 XP 2006
 -----------
@@ -109,7 +108,7 @@ Time & location: 17-22th June 2006 Oulu, Finland
 
 Call for papers:
 Submission date: 30th of January 2006 
-(Bea plan to submit an experience report)
+Experience report accepted - Bea will go and present.
 
 http://virtual.vtt.fi/virtual/xp2006/sivu1.html
 
@@ -128,9 +127,8 @@ http://www.agile2006.org./
 
 Time and location: 23-28th of July 2006, Minneapolis, Minnesota, USA
 
-Change Maker (Bea) will plan to submit:
-- experience report
-- research paper
+Experience report proposal accepted - Bea will submit the report 
+(first draft 14th April, final draft 30th April) and go there. 
 
 OOPSLA 2006
 ------------
@@ -147,3 +145,18 @@ Submission deadline: 18th of March
 http://www.oopsla.org/2006/
 
 Samuele and Armin plan to submit paper and attend.
+
+No paper submitted - attendance (workshop dynamic languages)?
+
+MIDDLEWARE 2006
+-------------------------
+DEADLINE: 3rd April 2006/scientific papers
+
+Time & location: November 27 - December 1, MELBOURNE, AUSTRALIA
+ 
+ http://2006.middleware-conference.org/
+ 
+ACM/IFIP/USENIX 7th International Middleware Conference
+ "Novel development paradigms, APIs, and languages"/PyPy?
+ 
+ Suggestion by Holger. Submission/attendance?
