@@ -49,8 +49,8 @@ Location & Accomodation
 ------------------------ 
 
 The sprint will be held at National Institute of AIST 
- (National Institute of Advanced Industrial Science and Technology, 
- http://www.aist.go.jp/index_en.html), Akihahabara (the technical gadget
+(National Institute of Advanced Industrial Science and Technology, 
+http://www.aist.go.jp/index_en.html), Akihahabara (the technical gadget
 district in Tokyo). Yutaka Niibe is our contact person there,
 helping with arranging facilities. Niibe is the chairman of FSIJ and they have 
 invited us to sprint in Tokyo and we are very grateful for the help and interest
