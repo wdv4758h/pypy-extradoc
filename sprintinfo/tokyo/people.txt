@@ -8,7 +8,7 @@ available yet from them.
 ==================== ============== =====================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
-Beatrice Düring
+Beatrice Düring	21/4-25/4
 Christian Tismer
 Eric van Riet Paap
 Jacob Hallén
