@@ -22,7 +22,7 @@ Jacob Hallen         30/3 - 7/4     Ermina
 Niklaus Haldimann    2/4 - 5/4      Ermina
 Aurelien Campeas     3/4 - 7/4      Ermina
 Alexandre Fayolle    3/4 - 7/4      Ermina
-Gerald Klix          6/4? - 9/4     Ermina
+Gerald Klix          8/4? - 9/4     Ermina (if the short time makes sense)
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
