@@ -9,12 +9,12 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Beatrice Düring      21/4 - 25/4
-Christian Tismer     22/4 - 30/4
-Eric van Riet Paap   18/4 - 1/5     ?
+Christian Tismer     22/4 - 30/4    Akihabare Washington Hotel
+Eric van Riet Paap   18/4 - 1/5     Akihabare Washington Hotel
 Jacob Hallén
 Laura Creighton
-Anders Lehmann       23/4 - 1/5     ? 
-Niklaus Haldimann    20/4 - 1/5     ?
+Anders Lehmann       23/4 - 1/5     Akihabare Washington Hotel
+Niklaus Haldimann    20/4 - 1/5     Akihabare Washington Hotel
 Anders Chrigström    22/4 - 30/4
 Samuele Pedroni      22/4 - 30/4
 Valentino Volonghi   22/4 - 1/5     Hotel Edoya (Ueno)
