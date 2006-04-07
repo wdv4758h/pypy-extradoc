@@ -8,14 +8,14 @@ available yet from them.
 ==================== ============== =====================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
-Beatrice Düring      21/4 - 25/4
+Beatrice DÃ¼ring      21/4 - 25/4
 Christian Tismer     22/4 - 30/4
 Eric van Riet Paap   18/4 - 1/5     ?
-Jacob Hallén
+Jacob HallÃ©n
 Laura Creighton
 Anders Lehmann       23/4 - 1/5     ? 
 Niklaus Haldimann    20/4 - 1/5     ?
-Anders Chrigström    22/4 - 30/4
+Anders ChrigstrÃ¶m    22/4 - 30/4
 Samuele Pedroni      22/4 - 30/4
 ==================== ============== =====================
 
@@ -31,7 +31,7 @@ Laura Creighton
 Lene Wagner          
 Johan Hahn           
 Amaury Forgeot d'Arc 
-Valentino Volonghi   
+Valentino Volonghi   22/4 - 1/5     Hotel Edoya (Ueno)
 Boris Feigin	     
 Bert Freudenberg     
 ==================== ============== =====================
