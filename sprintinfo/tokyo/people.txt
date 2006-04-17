@@ -18,6 +18,7 @@ Niklaus Haldimann    20/4 - 1/5     Akihabare Washington Hotel
 Anders Chrigström    22/4 - 30/4    Akihabare Washington Hotel
 Samuele Pedroni      22/4 - 30/4    Akihabare Washington Hotel
 Valentino Volonghi   22/4 - 1/5     Hotel Edoya (Ueno)
+Seo Sanghyeon        22/4 - 29/4
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
