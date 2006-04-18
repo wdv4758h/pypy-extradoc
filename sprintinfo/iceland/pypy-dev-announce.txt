@@ -1,0 +1,22 @@
+Hi folks, 
+
+from 21st (arrival) till 28th (departure) May some of the PyPy 
+group are going to meet in Iceland and sprint on the upcoming
+0.9 release of PyPy.  This sprint is kindly hosted and sponsored 
+by EWT and CCPgames and thus we should be able to arrange 
+funding for travels and accomodation.  There are also non-pypy 
+activities going on and people such as Tim Peters and other
+python-dev core developers plan to attend.  If you'd like to 
+help and join PyPy hacking around some vulcanos (actually
+we are meeting in Reykjavik, but well :), please mail Armin 
+or Holger until end this week (friday 21st).  
+
+We intend to give a PyPy tutorial but will otherwise focus on
+release goals, so we may select participants by their 
+interest and ability to help there.  The release targets
+a variety of features (extension module compiler + extension coding, 
+stackless transformations, documentation & testing, many other 
+little topics like work on the CLI backend?) so don't feel 
+easily discouraged :) 
+
+... 
