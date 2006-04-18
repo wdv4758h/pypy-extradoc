@@ -9,8 +9,8 @@ and people such as Tim Peters and other python-dev core developers plan
 to attend.  If you'd like to help and join PyPy hacking around some
 geysers (actually we are meeting in Reykjavik, but well :), please mail
 us, preferrably on the `pypy-sprint mailing list`_.  Please state your
-interest *until end this week* (friday 21st) as planes and hotels 
-need to be booked. 
+interest *until end this week* (friday 21st) to help the organizers
+plan for the sprint.
 
 The sprint goals for PyPy are, as usual, kept open to the interest of
 the participants, especially more so that there will be many non-PyPy
@@ -37,7 +37,7 @@ release:
   framework, modified semantics (security/sandboxing...), etc.
 
 
-a bientot, 
+A bientot, 
 
     Armin + Holger 
 
