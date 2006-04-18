@@ -1,4 +1,4 @@
-People coming to the Tokyo sprint 2006
+﻿People coming to the Tokyo sprint 2006
 ==================================================
 
 People who have a ``?`` in their arrive/depart or accomodation
@@ -9,7 +9,6 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Beatrice Düring      21/4 - 25/4
-Christian Tismer     22/4 - 30/4    Akihabare Washington Hotel
 Eric van Riet Paap   18/4 - 1/5     Akihabare Washington Hotel
 Jacob Hallén
 Laura Creighton
@@ -27,6 +26,7 @@ People on the following list were present at previous sprints:
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
 Armin Rigo            not coming
+Christian Tismer      not coming
 Ludovic Aubry             
 Adrien Di Mascio               
 Laura Creighton             
