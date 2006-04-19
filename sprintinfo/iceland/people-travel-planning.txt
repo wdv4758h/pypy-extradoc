@@ -1,0 +1,109 @@
+Travel planning for Iceland PyPy sprinters 
+==================================================
+
+This sprint's travel organisation is to be handlded
+by EWT and CCP games, the sponsoring organisations. 
+Therefore we need to provide more information 
+(which is needed for bookings and asking back)
+Sprint core time is 21st till 28th (both including ASFAIK)
+
+
+Armin Rigo
+------------------------------
+
+preferred arrival date:               acceptable arrival dates: 
+preferred departure date:             acceptable departure dates: 
+start city / airport: 
+mail: arigo at tunes.org 
+birthdate: 
+address: 
+organisation: 
+comments: 
+
+Holger Krekel 
+------------------------------
+
+preferred arrival date:  20th         acceptable arrival dates: 19th, 21st
+preferred departure date: 28th        acceptable departure dates: 27th,29th
+start city / airport:  Hildesheim / Frankfurt (FRA) 
+mail: holger at merlinux.de 
+
+birthdate: 14th nov. 1969,  phone number: +49 171 464 8622
+address: Steinbergstr. 42, 31139 Hildesheim, Germany
+organisation: merlinux GmbH, Steinbergstr. 42, 31139 Hildesheim, Germany 
+comments: not before 11 AM as i need a 3 hour train travel to FRA airport 
+
+Samuele Pedroni 
+------------------------------
+
+preferred arrival date:               acceptable arrival dates: 
+preferred departure date:             acceptable departure dates: 
+start city / airport: 
+mail: pedronis@strakt.com 
+birthdate: 
+address: 
+organisation: AB Strakt, 
+comments: 
+
+Anders Chrigstroem 
+------------------------------
+
+preferred arrival date:               acceptable arrival dates: 
+preferred departure date:             acceptable departure dates: 
+start city / airport: 
+mail: pedronis@strakt.com 
+birthdate: 
+address: 
+organisation: AB Strakt, 
+comments: 
+
+Jan Balster 
+------------------------------
+
+preferred arrival date:              acceptable arrival dates: 
+preferred departure date:            acceptable departure dates: 
+start city / airport:  
+mail: jan at merlinux.de 
+
+birthdate: 
+address: 
+organisation: merlinux GmbH, Steinbergstr. 42, 31139 Hildesheim, Germany 
+comments: 
+
+
+Michael Hudson 
+------------------------------
+
+preferred arrival date:               acceptable arrival dates: 
+preferred departure date:             acceptable departure dates: 
+start city / airport: 
+mail: arigo at tunes.org 
+birthdate: 
+address: 
+organisation: 
+comments: 
+
+Antonio Cuni 
+------------------------------
+
+preferred arrival date:               acceptable arrival dates: 
+preferred departure date:             acceptable departure dates: 
+start city / airport: 
+mail: 
+birthdate: 
+address: 
+organisation: 
+comments: 
+
+
+(Wanja Saatkamp) 
+------------------------------
+
+preferred arrival date:               acceptable arrival dates: 
+preferred departure date:             acceptable departure dates: 
+start city / airport: 
+mail: wanja@merlinux.de 
+birthdate: 
+address: 
+organisation:
+comments: 
