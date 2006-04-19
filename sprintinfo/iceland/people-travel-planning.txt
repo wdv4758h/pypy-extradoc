@@ -48,26 +48,27 @@ comments: not before 11 AM as i need a 3 hour train travel to FRA airport
 Samuele Pedroni 
 ------------------------------
 
-preferred arrival date:               acceptable arrival dates: 
-preferred departure date:             acceptable departure dates: 
-start city / airport: 
+preferred arrival date: 21st          acceptable arrival dates: 21st-22nd
+preferred departure date: 29th        acceptable departure dates: 28th-31th
+start city / airport: Gothenburg / GOT or GSE
 mail: pedronis@strakt.com 
-birthdate: 
-address: 
+birthdate: 22nd dec 1974
+address: Norra Agatan 10A, 416 64 Gothenburg, Sweden 
 organisation: AB Strakt, 
-comments: 
+comments: need to be in Gothenburg on the 20th so cannot travel earlier,
+          direct flight preferred
 
 Anders Chrigstroem 
 ------------------------------
 
-preferred arrival date:               acceptable arrival dates: 
-preferred departure date:             acceptable departure dates: 
-start city / airport: 
-mail: pedronis@strakt.com 
-birthdate: 
-address: 
+preferred arrival date: 21st          acceptable arrival dates: 19th-22nd
+preferred departure date: 29th        acceptable departure dates: 28th-31th
+start city / airport: Gothenburg / GOT or GSE
+mail: ac@strakt.com 
+birthdate: 10th dec 1966
+address: Norra Agatan 10A, 416 64 Gothenburg, Sweden
 organisation: AB Strakt, 
-comments: 
+comments: direct flight preferred
 
 Jan Balster 
 ------------------------------
