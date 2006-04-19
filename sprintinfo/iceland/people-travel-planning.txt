@@ -99,15 +99,15 @@ comments:
 Antonio Cuni 
 ------------------------------
 
-preferred arrival date:               acceptable arrival dates: 
-preferred departure date:             acceptable departure dates: 
-start city / airport: 
-mail: 
-birthdate: 
-address: 
+preferred arrival date:  20th         acceptable arrival dates:  19th, 21st
+preferred departure date:  26th       acceptable departure dates:  27th
+start city / airport: Genova / Genova (GOA)
+mail:  anto.cuni@gmail.com
+birthdate: 13th may 1982
+address: Via Perniciaro 70, 16010 Mele(GE), Italy
 organisation: 
-comments: 
-
+comments: preferred start airport is Genova (GOA), but Milano Malpensa
+          (MXP) is acceptable, too. Need to be in Genova on the 28th.
 
 (Wanja Saatkamp) 
 ------------------------------
