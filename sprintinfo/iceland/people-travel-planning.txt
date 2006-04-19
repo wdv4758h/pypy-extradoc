@@ -20,6 +20,18 @@ address:
 organisation: 
 comments: 
 
+Beatrice During 
+------------------------------
+
+preferred arrival date:               acceptable arrival dates: 
+preferred departure date:             acceptable departure dates: 
+start city / airport: 
+mail: bea at changemaker.nu 
+birthdate: 
+address: 
+organisation: 
+comments: 
+
 Holger Krekel 
 ------------------------------
 
