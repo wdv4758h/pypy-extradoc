@@ -112,11 +112,12 @@ comments: preferred start airport is Genova (GOA), but Milano Malpensa
 (Wanja Saatkamp) 
 ------------------------------
 
-preferred arrival date:               acceptable arrival dates: 
-preferred departure date:             acceptable departure dates: 
-start city / airport: 
-mail: wanja@merlinux.de 
-birthdate: 
-address: 
-organisation:
-comments: 
+preferred arrival date:  20th         acceptable arrival dates: 19th, 21st
+preferred departure date: 28th        acceptable departure dates: 27th,29th
+start city / airport:  Hildesheim / Frankfurt (FRA), Hannover, Berlin or Hamburg
+mail: wanja at merlinux.de 
+birthdate: 22.02.1975
+address: Wrangelstr. 67, 10997 Berlin, Germany
+organisation: Merlinux GmbH, Steinbergstr. 42, 31139 Hildesheim, Germany 
+comments: - no flight departure before 12AM because of travel time to the airport;
+- my attendance is not decided yet (and i will not be coding but documenting the activities with the camera)
