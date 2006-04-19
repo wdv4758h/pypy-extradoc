@@ -11,13 +11,13 @@ Sprint core time is 21st till 28th (both including ASFAIK)
 Armin Rigo
 ------------------------------
 
-preferred arrival date:               acceptable arrival dates: 
-preferred departure date:             acceptable departure dates: 
-start city / airport: 
+preferred arrival date:   19th        acceptable arrival dates:   any
+preferred departure date: 29th        acceptable departure dates: any
+start city / airport: Gothenburg / Landvetter (GOT) or City Airport (GSE)
 mail: arigo at tunes.org 
-birthdate: 
-address: 
-organisation: 
+birthdate: 26 sep 1976
+address: App 22, c/o Hallén/Creighton, Linnégatan 47, 413 08 Göteborg, Sweden
+organisation: Heinrich-Heine Universitäts Düsseldorf, Germany
 comments: 
 
 Beatrice During 
