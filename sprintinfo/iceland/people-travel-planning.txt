@@ -123,4 +123,18 @@ birthdate: 22.02.1975
 address: Wrangelstr. 67, 10997 Berlin, Germany
 organisation: Merlinux GmbH, Steinbergstr. 42, 31139 Hildesheim, Germany 
 comments: - no flight departure before 12AM because of travel time to the airport;
+
 - my attendance is not decided yet (and i will not be coding but documenting the activities with the camera)
+
+Anders Lehmann
+------------------------------
+
+preferred arrival date:  20.05.06     acceptable arrival dates: 21.05.06
+preferred departure date: 28.05.06    acceptable departure dates: 29.05.06
+start city / airport: Holstebro, Denmark / Copenhagen
+mail: anders.lehmann@dfki.de
+birthdate: 30.11.1962
+address: Anna Anchersvej 206, DK - 7500 Denmark
+organisation: DFKI Gmbh
+comments: 
+
