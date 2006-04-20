@@ -87,14 +87,17 @@ comments:
 Michael Hudson 
 ------------------------------
 
-preferred arrival date:               acceptable arrival dates: 
-preferred departure date:             acceptable departure dates: 
-start city / airport: 
-mail: arigo at tunes.org 
-birthdate: 
-address: 
-organisation: 
-comments: 
+preferred arrival date: 21            acceptable arrival dates: 20-22
+preferred departure date: 28          acceptable departure dates: 27-29
+start city / airport: bristol, cardiff, birmingham, LHR, LGW 
+                      (in roughly that order)
+mail: mwh@python.net
+birthdate: 1978-10-07
+address: Flat 4 Plimsoll House, Ashgrove Road, Bristol BS6 6LZ, UK
+organisation: Heinrich-Heine Universitat Dusseldorf
+comments: I'd much rather travel up to london and take a direct 
+          flight than travel to a closer airport and have to change
+          planes
 
 Antonio Cuni 
 ------------------------------
