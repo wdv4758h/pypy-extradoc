@@ -13,6 +13,12 @@ Anders Chrigstroem
 Holger Krekel 
 Aurelien Campeas 
 
+People already registered as a PSF mentor:
+
+Michael Hudson
+
+On the 27th of April or so, mwh will send a list of all
+not-yet-registered mentors to Neal Norwitz.
 
 possible topics by keyword
 ----------------------------------------
