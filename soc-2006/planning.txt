@@ -1,0 +1,28 @@
+PyPy Summer of Code mentors and plans 
+==============================================
+
+mentors 
+------------------------
+
+Armin Rigo 
+Michael Hudson
+Carl Friedrich Bolz 
+Christian Tismer 
+Samuele Pedroni 
+Anders Chrigstroem 
+Holger Krekel 
+Aurelien Campeas 
+
+
+possible topics by keyword
+----------------------------------------
+
+- orthogonal persistence
+- implementing security models, e.g. sandboxing 
+- work on high level backends 
+- transactional memory 
+- writing extension modules 
+- various optimization approaches 
+- extending py.test to support distributed testing 
+
+
