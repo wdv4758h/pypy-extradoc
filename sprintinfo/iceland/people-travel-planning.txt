@@ -95,7 +95,7 @@ mail: anders.lehmann@dfki.de
 birthdate: 30.11.1962
 address: Anna Anchersvej 206, DK - 7500 Denmark
 organisation: DFKI Gmbh
-comments: 
+comments: I would like to return to Frankfurt, as I am going to Saarbrücken after the sprint
 
 Wanja Saatkamp 
 ------------------------------
