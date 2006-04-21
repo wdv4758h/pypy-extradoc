@@ -23,14 +23,15 @@ comments:
 Beatrice During 
 ------------------------------
 
-preferred arrival date:               acceptable arrival dates: 
-preferred departure date:             acceptable departure dates: 
-start city / airport: 
+preferred arrival date:  20th             acceptable arrival dates: 21th,22nd
+preferred departure date: 224th            acceptable departure dates: 25th
+start city / airport: Gothenburg
 mail: bea at changemaker.nu 
-birthdate: 
-address: 
-organisation: 
-comments: 
+birthdate: 3rd Dec 1973
+address: Eklandagatan5, 412 55 Göteborg, Sweden
+organisation: Change Maker
+comments: should we prioritize developers being funded whole time instead? 
+I do not want to stay away from Simone too long....
 
 Holger Krekel 
 ------------------------------
