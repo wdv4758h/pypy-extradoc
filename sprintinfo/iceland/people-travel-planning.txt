@@ -8,30 +8,17 @@ Therefore we need to provide more information
 Sprint core time is 21st till 28th (both including ASFAIK)
 
 
-Armin Rigo
-------------------------------
-
-preferred arrival date:   19th        acceptable arrival dates:   any
-preferred departure date: 29th        acceptable departure dates: any
-start city / airport: Gothenburg / Landvetter (GOT) or City Airport (GSE)
-mail: arigo at tunes.org 
-birthdate: 26 sep 1976
-address: App 22, c/o Hallén/Creighton, Linnégatan 47, 413 08 Göteborg, Sweden
-organisation: Heinrich-Heine Universitäts Düsseldorf, Germany
-comments: 
-
 Beatrice During 
 ------------------------------
 
 preferred arrival date:  20th             acceptable arrival dates: 21th,22nd
-preferred departure date: 224th            acceptable departure dates: 25th
+preferred departure date: 24th            acceptable departure dates: 25th
 start city / airport: Gothenburg
 mail: bea at changemaker.nu 
 birthdate: 3rd Dec 1973
 address: Eklandagatan5, 412 55 Göteborg, Sweden
 organisation: Change Maker
-comments: should we prioritize developers being funded whole time instead? 
-I do not want to stay away from Simone too long....
+comments: I do not want to stay away from Simone (my daughter) too long....
 
 Holger Krekel 
 ------------------------------
@@ -43,8 +30,8 @@ mail: holger at merlinux.de
 
 birthdate: 14th nov. 1969,  phone number: +49 171 464 8622
 address: Steinbergstr. 42, 31139 Hildesheim, Germany
-organisation: merlinux GmbH, Steinbergstr. 42, 31139 Hildesheim, Germany 
-comments: not before 11 AM as i need a 3 hour train travel to FRA airport 
+organisation: merlinux GmbH
+comments: departure not before 12 AM as i need a 3 hour train travel to FRA airport 
 
 Samuele Pedroni 
 ------------------------------
@@ -55,7 +42,7 @@ start city / airport: Gothenburg / GOT or GSE
 mail: pedronis@strakt.com 
 birthdate: 22nd dec 1974
 address: Norra Agatan 10A, 416 64 Gothenburg, Sweden 
-organisation: AB Strakt, 
+organisation: AB Strakt 
 comments: need to be in Gothenburg on the 20th so cannot travel earlier,
           direct flight preferred
 
@@ -81,24 +68,8 @@ mail: jan at merlinux.de
 
 birthdate: 11th jan. 1978,
 address: Buergerweide 1, 23562 Lübeck, Germany
-organisation: merlinux GmbH, Steinbergstr. 42, 31139 Hildesheim, Germany 
+organisation: merlinux GmbH
 comments: 
-
-
-Michael Hudson 
-------------------------------
-
-preferred arrival date: 21            acceptable arrival dates: 20-22
-preferred departure date: 28          acceptable departure dates: 27-29
-start city / airport: bristol, cardiff, birmingham, LHR, LGW 
-                      (in roughly that order)
-mail: mwh@python.net
-birthdate: 1978-10-07
-address: Flat 4 Plimsoll House, Ashgrove Road, Bristol BS6 6LZ, UK
-organisation: Heinrich-Heine Universitat Dusseldorf
-comments: I'd much rather travel up to london and take a direct 
-          flight than travel to a closer airport and have to change
-          planes
 
 Antonio Cuni 
 ------------------------------
@@ -113,19 +84,6 @@ organisation:
 comments: preferred start airport is Genova (GOA), but Milano Malpensa
           (MXP) is acceptable, too. Need to be in Genova on the 28th.
 
-(Wanja Saatkamp) 
-------------------------------
-
-preferred arrival date:  20th         acceptable arrival dates: 19th, 21st
-preferred departure date: 28th        acceptable departure dates: 27th,29th
-start city / airport:  Hildesheim / Frankfurt (FRA), Hannover, Berlin or Hamburg
-mail: wanja at merlinux.de 
-birthdate: 22.02.1975
-address: Wrangelstr. 67, 10997 Berlin, Germany
-organisation: Merlinux GmbH, Steinbergstr. 42, 31139 Hildesheim, Germany 
-comments: - no flight departure before 12AM because of travel time to the airport;
-
-- my attendance is not decided yet (and i will not be coding but documenting the activities with the camera)
 
 Anders Lehmann
 ------------------------------
@@ -138,4 +96,16 @@ birthdate: 30.11.1962
 address: Anna Anchersvej 206, DK - 7500 Denmark
 organisation: DFKI Gmbh
 comments: 
+
+Wanja Saatkamp 
+------------------------------
+
+preferred arrival date:  20th         acceptable arrival dates: 19th, 21st
+preferred departure date: 28th        acceptable departure dates: 27th,29th
+start city / airport:  Hildesheim / Frankfurt (FRA), Hannover, Berlin or Hamburg
+mail: wanja at merlinux.de 
+birthdate: 22.02.1975
+address: Wrangelstr. 67, 10997 Berlin, Germany
+organisation: Merlinux GmbH
+comments: no flight departure before 12AM because of travel time to the airport;
 
