@@ -9,7 +9,7 @@ Break day: Wednesday
 Sunday, 23. April 2006:
 ***********************
 
-Present: Samuele, Arre, Valentino, Eric, Yutaka, Sanghyeon, Yusei, Bea, Nik
+Present: Samuele, Arre, Valentino, Eric, Yutaka, Sanghyeon, Yusei, Bea, Nik, George
 
 General Interests:
 
@@ -42,7 +42,7 @@ Pairings today:
 
   - ctypes time and socket (and select ;)) (Arre, Valentino, Eric, Sanghyeon)
 
-  - ootypesystem introduction, gensqueak/gencl (Nik, Yutaka, Yusei)
+  - ootypesystem introduction, gensqueak/gencl (Nik, Yutaka, Yusei, George)
 
   - general wizardry (Samuele)
 
