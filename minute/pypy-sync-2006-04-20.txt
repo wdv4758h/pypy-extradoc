@@ -29,7 +29,7 @@ attendants: michael, anto, carl, samuele, christian, richard,
   distribution of tasks until and after Iceland.  This we
   agreed to do at a specific meeting for EU developers on 
   
-    TUESDAY, 23rd April, 5pm (UTC+2) 
+    TUESDAY, 25th April, 5pm (UTC+2) 
   
   where Christian, Michael, Samuele, Holger, Carl, Aurelien, Anders L., 
   and Gromit agreed to attend already. 
