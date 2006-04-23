@@ -1,0 +1,48 @@
+Tokyo Sprint Planning
+---------------------
+
+Sprint Times: 10 am to 7 pm
+
+Break day: Wednesday
+
+
+Sunday, 23. April 2006:
+***********************
+
+Present: Samuele, Arre, Valentino, Eric, Yutaka, Sanghyeon, Yusei, Bea, Nik
+
+General Interests:
+
+  - gensqueak/ootypesystem (Nik)
+
+  - Implementing Python 2.5 features in PyPy. (Yusei)
+
+  - Progress further on an 'rctypes' module aiming at letting us use a ctypes
+    implementation of an extension module from the compiled pypy-c.
+    - check status
+    - ctypes time and socket (and select ;))
+    (Arre, Valentino, Eric)
+
+  - rctypes support for LLVM (Eric)
+
+  - convert JS backend to ootypesystem (Eric, Nik, Yusei)
+
+  - genjs test failure fixes (Eric)
+
+  - raisingops transformation (Eric)
+
+  - PyPy debian packaging (Yutaka, Holger?)
+
+  - Fun with the Common Lisp backend (Yutaka, Valentino)
+
+  - Possibly experiment with writing modules translatable for use both
+    in PyPy and CPython. (Sanghyeon, Armin?)
+  
+Pairings today:
+
+  - ctypes time and socket (and select ;)) (Arre, Valentino, Eric, Sanghyeon)
+
+  - ootypesystem introduction, gensqueak/gencl (Nik, Yutaka, Yusei)
+
+  - general wizardry (Samuele)
+
