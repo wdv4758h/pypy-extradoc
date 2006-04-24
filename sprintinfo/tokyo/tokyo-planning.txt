@@ -6,8 +6,8 @@ Sprint Times: 10 am to 7 pm
 Break day: Wednesday
 
 
-Sunday, 23. April 2006:
-***********************
+Sunday, 23. April 2006
+**********************
 
 Present: Samuele, Arre, Valentino, Eric, Yutaka, Sanghyeon, Yusei, Bea, Nik, George
 
@@ -19,8 +19,10 @@ General Interests:
 
   - Progress further on an 'rctypes' module aiming at letting us use a ctypes
     implementation of an extension module from the compiled pypy-c.
+
     - check status
     - ctypes time and socket (and select ;))
+
     (Arre, Valentino, Eric)
 
   - rctypes support for LLVM (Eric)
@@ -46,7 +48,7 @@ Pairings today:
 
   - general wizardry (Samuele)
 
-Monday, 24th April 2006:
+Monday, 24th April 2006
 ***********************
 
 Present: Samuele, Arre, Valentino, Eric, Sanghyeon, Bea, Nik, Anders, Daiki
@@ -54,6 +56,7 @@ Present: Samuele, Arre, Valentino, Eric, Sanghyeon, Bea, Nik, Anders, Daiki
 Status after day 1:
 
   - gensqueak/ootypesystem (Nik)
+
     * introduction done
     * steps towards making genclisp use current infrastructure
 
@@ -61,26 +64,32 @@ Status after day 1:
 
   - Progress further on an 'rctypes' module aiming at letting us use a ctypes
     implementation of an extension module from the compiled pypy-c.
+
     - check status (DONE)
     - ctypes time and socket (and select ;))
+
         * added errno functionality
         * refactor to latest ctypes version
         * wrote test for finding missing socket methods+added stubs
+
     (Arre, Valentino, Eric) 
 
 Pairings today:
 
   - ctypes time and socket (and select ;))
     (Arre, Valentino, Eric, Sanghyeon)
+
     * Anders will join arre, Valentino and Eric
 
   - ootypesystem introduction, gensqueak/gencl
     (Nik, Yutaka, Yusei, George)
+
     * more steps towards making genclisp use current infrastructure
       (Nik, Sanghyeon)
     * during sprint some ootype issues will be resolved by
-    Samuele and Nik (tuples list...)
+      Samuele and Nik (tuples list...)
 
   - general wizardry (Samuele)
+
     * bit running around and working with Nik in the afternoon
       on ootype
