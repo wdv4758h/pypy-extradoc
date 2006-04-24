@@ -48,10 +48,11 @@ Pairings today:
 
   - general wizardry (Samuele)
 
+
 Monday, 24th April 2006
 ***********************
 
-Present: Samuele, Arre, Valentino, Eric, Sanghyeon, Bea, Nik, Anders, Daiki
+Present: Samuele, Arre, Valentino, Eric, Sanghyeon, Bea, Nik, Anders, Daiki, and later, Yutaka and Yusei
 
 Status after day 1:
 
@@ -72,20 +73,20 @@ Status after day 1:
         * refactor to latest ctypes version
         * wrote test for finding missing socket methods+added stubs
 
-    (Arre, Valentino, Eric) 
+    (Arre, Valentino, Eric, Sanghyeon)
 
 Pairings today:
 
   - ctypes time and socket (and select ;))
-    (Arre, Valentino, Eric, Sanghyeon)
+    (Arre, Valentino, Eric)
 
-    * Anders will join arre, Valentino and Eric
+    * Anders will join Arre, Valentino and Eric
 
   - ootypesystem introduction, gensqueak/gencl
-    (Nik, Yutaka, Yusei, George)
+    (Nik, Yusei, Sanghyeon)
 
-    * more steps towards making genclisp use current infrastructure
-      (Nik, Sanghyeon)
+    * more steps towards making gencl use current infrastructure
+      (Nik, Yusei, Sanghyeon)
     * during sprint some ootype issues will be resolved by
       Samuele and Nik (tuples list...)
 
