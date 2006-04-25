@@ -59,7 +59,7 @@ Status after day 1:
   - gensqueak/ootypesystem (Nik)
 
     * introduction done
-    * steps towards making genclisp use current infrastructure
+    * steps towards making gencl use current infrastructure
 
   - Implementing Python 2.5 features in PyPy. (Yusei)
 
@@ -95,6 +95,7 @@ Pairings today:
     * bit running around and working with Nik in the afternoon
       on ootype
 
+
 Tuesday, 25th April 2006
 ************************
 
@@ -127,9 +128,7 @@ Pairings today:
 
   - reorganize the new socket module in the right project location (Arre, Anders)
 
-  - gencl
-    * compile pystone in gencl
-    (Valentino, Sanghyeon)
+  - compile pystone in gencl (Valentino, Sanghyeon)
 
   - Coneptual design decisions about ootypesystem (tuples list...) (Samuele, Nik)
 
