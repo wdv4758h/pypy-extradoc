@@ -94,3 +94,42 @@ Pairings today:
 
     * bit running around and working with Nik in the afternoon
       on ootype
+
+Tuesday, 25th April 2006
+************************
+
+Present: Samuele, Arre, Valentino, Eric, Sanghyeon, Bea, Nik, Anders, Daiki
+
+Status after day 2:
+
+  - Orientation on pickling support for cells and generators for being able 
+    to pickle tasklets (Eric)
+
+  - gencl (Sanghyeon, Nik, Yusei)
+     * instance creation and function call
+     * code reorganization and cleanup (and Valentino)
+
+  - Progress further on an 'rctypes' module aiming at letting us use a ctypes
+    implementation of an extension module from the compiled pypy-c.
+
+    - ctypes time and socket (and select ;))
+
+        * sockets now listen for connections and connect correctly
+        * they also actually send and receive data
+        * lower level ctypes wrapper almost complete
+
+    (Arre, Valentino, Eric, Anders)
+
+Pairings today:
+
+  - Work on pickling support for cells and generators for being able 
+    to pickle tasklets (Eric)
+
+  - reorganize the new socket module in the right project location (Arre, Anders)
+
+  - gencl
+    * compile pystone in gencl
+    (Valentino, Sanghyeon)
+
+  - Coneptual design decisions about ootypesystem (tuples list...) (Samuele, Nik)
+
