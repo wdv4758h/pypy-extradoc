@@ -10,12 +10,12 @@ Christian Tismer
 Samuele Pedroni 
 Anders Chrigstroem 
 Holger Krekel 
-Aurelien Campeas 
 
 People already registered as a PSF mentor:
 
 Michael Hudson
 Carl Friedrich Bolz 
+Aurelien Campeas (pending)
 
 On the 27th of April or so, mwh will send a list of all
 not-yet-registered mentors to Neal Norwitz.
@@ -30,5 +30,8 @@ possible topics by keyword
 - writing extension modules 
 - various optimization approaches 
 - extending py.test to support distributed testing 
+- specialized propagators for the constraint solver [1]
+- efficient builtin numeric arrays [1]
+- a template system for python code [1]
 
-
+[1] see wp09_10_ideas.txt for more complete descriptions.
