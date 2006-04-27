@@ -130,5 +130,47 @@ Pairings today:
 
   - compile pystone in gencl (Valentino, Sanghyeon)
 
-  - Coneptual design decisions about ootypesystem (tuples list...) (Samuele, Nik)
+  - Conceptual design decisions about ootypesystem (tuples list...) (Samuele, Nik)
 
+Thursday, 27th April 2006
+************************
+
+Present: Samuele, Arre, Valentino, Eric, Sanghyeon, Nik, Anders
+
+Status after day 3:
+
+  - gencl (Sanghyeon, Valentino)
+    * refactored another bit
+    * superclasses and inheritance and isinstance and range
+    * Record type
+
+  - Pickle support for cell objects (Eric)
+    * works but breaks translation
+
+  - OOTypeSystem (Nik, Samuele)
+    * Improved forward references and made the List type lazily inittable.
+    * Introduced the Record type
+    * Introduced Range support in the OOTypeSystem.
+
+  - ctypes _socket (and select ;))  (Arre, Anders)
+    * Passing 14 tests for the translatable module
+    * It should be translatable now (although not tested)
+
+Pairings today:
+
+  - Pickling cells (Eric)
+    * fix translation
+    * add support for additional objects like code objects.
+
+  - ctypes _socket (Arre, Anders)
+    * Pass all previous tests.
+    * start proper translation work.
+
+  - OOTypeSystem (Nik, Sanghyeon)
+    * Dictionaries need to be lazy too.
+    * Record type for iterator and tuples and make it generic
+    * String type
+
+  - progress further on rpystone gencl translation (Valentino)
+
+  - general wizardry (Samuele)
