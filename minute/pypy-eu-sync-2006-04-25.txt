@@ -4,8 +4,8 @@ EU pypy-sync 25th April 2006, 05:10-06:30 PM (UTC+2)
 
 attendants: Michael Hudson, Armin Rigo, Christian Tismer, Carl Friedrich Bolz
             Samuele Pedroni, Aurelien Campeas,  Anders Chrigstroem, 
-            Anders Lehmann, Jan Balster, Stephan Diehl, Gerald Klix
-            Holger Krekel (moderation, minutes) 
+            Anders Lehmann, Jan Balster, Stephan Diehl, Gerald Klix,
+            Niklaus Haldimann, Holger Krekel (moderation, minutes) 
 
 The meeting's purpose was to synchronise work efforts related to the 
 PyPy EU project and more specifically to structure and plan work for 
