@@ -12,17 +12,16 @@ numbers, sets, etc.). There are two ways to provide them :
   with possibly subotpimal runtime performance but no external
   dependency, 
 
-* wrapping Gecode : first finish the c-wrapper around Gecode, then use
-  rctypes to provide interpreter access to low-level Gecode
-  functionality, and finally integrate it into the existing
-  interpreter-level constraint solver.
+* wrapping Gecode : first finish the c-wrapper around Gecode (unless
+  the wrapper for C++ becomes available), then use rctypes to provide
+  interpreter access to low-level Gecode functionality, and finally
+  integrate it into the existing interpreter-level constraint solver.
 
 Rctypes is what PyPy offers, mimicking python ctypes, to interface the
-interpreter with C code. The machinery is still very young and the
-advancement of the project might be hindered by defects or
-incompleteness of rctypes. The point is that, even if the actual
-wrapping of gecode is incomplete, the effort to build it at least
-should yield a better rctypes.
+interpreter with C code. The machinery is still young and the
+advancement of the project might be hindered by bugs of rctypes. The
+point is that, even if the actual wrapping of gecode is incomplete,
+the effort to build it at least should yield a better rctypes.
 
 One modest, reasonable target could be running the simple
 send-more-money problem with very few actual search steps due to the
