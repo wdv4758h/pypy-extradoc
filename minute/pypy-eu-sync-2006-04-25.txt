@@ -37,12 +37,12 @@ tasklet pickling and all those tasks are promised to be
 finished until June and raises the question if this is 
 still feasible. 
 
-Aurelien notes that WP09 (constraint engine) depends on the ability
-to clone threads.  Christian thinks that the upcoming stackless 
-support will allow the required usages.  Aurelien promises to write up
-documentation about his implementation approaches and goals 
-and the needed features but also notes that the need for tasklet 
-cloning was mentioned two months ago. 
+Aurelien notes that WP09 (logic engine) depends on the ability to
+clone threads.  Christian thinks that the upcoming stackless support
+will allow the required usages.  Aurelien promises to write up
+documentation about his implementation approaches and goals and the
+needed features but also notes that the need for tasklet cloning was
+mentioned two months ago.
 
 
 2. ext compiler being able to produce extensions for CPython and PyPy
@@ -78,28 +78,28 @@ this remains a matter of experimentation.
 4. high-level backend snapshots + documentation?
 ------------------------------------------------------------------------
 
-We have a number of sub projects going on to implement high level 
-backends on top of ootype model: .NET, Squeak and recently a LISP 
-one.  After short discussions everybody welcomed the idea and 
-would be glad to include a snapshot of the high-level backend 
-works.  For 0.9 this requires writing documentation.  Holger will care
-to ask Antonio and Samuele will ask Seo about it.  Niklaus
-already mentioned at the meeting that he will try to write 
-some documentation about ootypes. 
+We have a number of sub projects going on to implement high level
+backends on top of ootype model: .NET, Squeak and recently a Common
+Lisp one.  After short discussions everybody welcomed the idea and
+would be glad to include a snapshot of the high-level backend works.
+For 0.9 this requires writing documentation.  Holger will care to ask
+Antonio and Samuele will ask Seo about it.  Niklaus already mentioned
+at the meeting that he will try to write some documentation about
+ootypes.
 
 
 5. logic/constraint related goals?
 ------------------------------------------------------------------------
 
-Aurelien states that basic constraint coding work has been done
-though he is not sure that it can be translated.  He sees a
-correlation to WP10 work and also mentions that he will need
-some help.  Holger notes that the D9.1 report is thought
-to have an intermediate draft ready in June (as the original
-deliverable "initial constraint satisfaction engine" was scheduled
-for that time).  Aurelien agreed to document their current approaches 
-so that they can be advertised and snapshotted with 0.9 and
-also state missing/blocking features. 
+Aurelien states that basic constraint coding work has been done though
+he asserts that it is not currently translatable.  He sees a
+(non-vital) dependency on WP10 work and also mentions that he will
+need some help wrt translatability.  Holger notes that the D9.1 report
+is thought to have an intermediate draft ready in June (as the
+original deliverable "initial constraint satisfaction engine" was
+scheduled for that time).  Aurelien agreed to document their current
+approaches so that they can be advertised and snapshotted with 0.9 and
+also state missing/blocking features.
 
 
 6. _some_ amount of release polishing and updating documentation, fixing issues
