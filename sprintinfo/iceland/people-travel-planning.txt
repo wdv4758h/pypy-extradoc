@@ -122,3 +122,17 @@ address: Via Misano 16, 24047 Treviglio (BG), Italy
 organisation:
 comments: every departure date it's fine to me.
 
+
+Armin Rigo
+---------------------
+
+arrival date: 21
+departure date 31
+
+Michael Hudson
+------------------------
+
+arrival date: 21
+departure date: 28
+
+(Armin and Michael are being paid for by their employer, HHU)
