@@ -10,11 +10,11 @@ numbers, sets, intervals, etc.). There are two ways to provide them :
   with possibly subotpimal runtime performance but no external
   dependency, and a lot of fun,
 
-* wrapping Gecode[1] : first finish the c-wrapper around Gecode (unless
-  interfacing PyPy with C++ becomes available), then use rctypes to
-  provide interpreter access to low-level Gecode functionality, and
-  finally integrate it into the existing interpreter-level constraint
-  solver.
+* wrapping Gecode[1] : first finish the c-wrapper around Gecode
+  (unless interfacing PyPy with C++ becomes available), then use
+  rctypes to provide interpreter access to low-level Gecode
+  functionality, and finally integrate it into the existing
+  interpreter-level constraint solver.
 
 Rctypes is what PyPy offers, mimicking python ctypes, to interface the
 interpreter with C code. The machinery is still young and the
