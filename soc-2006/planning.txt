@@ -6,7 +6,6 @@ mentors
 
 Armin Rigo 
 Michael Hudson
-Carl Friedrich Bolz 
 Christian Tismer 
 Samuele Pedroni 
 Anders Chrigstroem 
@@ -16,6 +15,7 @@ Aurelien Campeas
 People already registered as a PSF mentor:
 
 Michael Hudson
+Carl Friedrich Bolz 
 
 On the 27th of April or so, mwh will send a list of all
 not-yet-registered mentors to Neal Norwitz.
