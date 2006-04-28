@@ -174,3 +174,44 @@ Pairings today:
   - progress further on rpystone gencl translation (Valentino)
 
   - general wizardry (Samuele)
+  
+Friday, 28th April 2006
+************************
+
+Present: Samuele, Arre, Valentino, Eric, Sanghyeon, Nik, Anders
+
+Status after day 4:
+
+  - gencl (Sanghyeon, Valentino)
+    * constant instances now supported which enables the metaclass
+      model and class variables
+    * refactoring is ongoing
+
+  - Pickle support for cell objects (Eric)
+    * cell, code, function partly there but needs moduledict support
+
+  - OOTypeSystem (Nik, Samuele)
+    * introducted recordtype for interators and tuples
+    * random smaller improvements
+
+  - ctypes _socket (and select ;))  (Arre, Anders)
+    * passing all tests
+    * uses only ctypes now but doesn't translate yet
+
+Pairings today:
+
+  - Pickling cells (Eric)
+    * add support for additional objects like code objects.
+
+  - ctypes _socket (Arre, Anders)
+    * continue translation work.
+
+  - OOTypeSystem (Nik, Sanghyeon)
+    * Dictionaries need to be lazy too.
+    * String type
+
+  - gencl (Valentino, Sanghyeon)
+    * exception handling
+    * rpystone translation
+
+  - general wizardry (Samuele)
