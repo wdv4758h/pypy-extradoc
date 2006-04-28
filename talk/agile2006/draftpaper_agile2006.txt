@@ -1,0 +1,163 @@
+Title: "Trouble in Paradise: Open Source projects, EU-funding and Agile practices"
+-------------------------------------------------------------------------------------
+
+Abstract:
+(200 words - write last)
+
+1.Introduction: 
+This paper will present the story and the experiences gathered so far in the PyPy project concerning
+how to integrate such diverse perspectives as agile practices being used in a distributed and dispersed development 
+style in an Open Source project that is partly funded by the European Union.
+
+The PyPy project started as a grass-root effort among core developers in the Python language community, aiming at 
+building a Python implementation purely built in Python (todays main language implementation is based on C, called Cpython. 
+It was a language implementation project that was purely driven from a non-profit perspective which  
+increased in complexity when the Open Source project applied for EU-funding. 
+We believe that the practice of “sprinting”, 
+as being used in the PyPy project, makes Agile and Distributed/dispersed workstyles more possible to 
+combine. We also believe it is a very useful practice for creating value and ensuring quality in a 
+projects with hybrid cultures and methodologies. It is our aim to start to show-case this  with 
+experiences from the first funded year of PyPy, combining Agile and Distributed/dispersed 
+Development in an Open Source Community with the Plan-driven approaches through EU-Funding.
+
+1.1 Project context
+Objectives:
+The Technical objective of the PyPy project is to build a implementation of the Open Source 
+Programming Language in the Python language itself. By employing novel combinations of known 
+techniques for building optimized compilers and interpreters the project will build an implementation 
+of Python that is easier to read and understand than the existing implementations, while only paying 
+a small performance penalty.
+
+The Scientific objectives of the project are to investigate a number of novel techniques based on 
+Aspect Oriented Programming code generation and abstract interpretation for the implementation of 
+practical dynamic languages The goal is to break the compromise between flexibility, simplicity and 
+performance trade-offs and to expand the range of directly supportable runtime platforms.
+
+The Method objective is to showcase a novel software engineering process: Sprint Driven Development. 
+This is an Agile methodology, providing a dynamic and adaptive environment, suitable for co-operative and 
+distributed development.
+
+Strategy:
+The strategy of the project is to leverage the community of PyPy and Python through open and transparent 
+communication and working style. The challenge has been to implement this strategy not only in the  
+F/OSS community part of the project but also in the partially funded consortium structure of the project. 
+The structure of the project and the  consortium needed to adhere to this strategy while also conforming 
+to the actual requirements of the 6th Framework Programme.
+
+The consortium consists of 8 partners: DFKI (Germany), Ab Strakt (Sweden), Logilab (France), merlinux GmbH 
+(Germany), tismerysoft GmbH (Germany), Change Maker (Sweden) , Impara GmbH (Germany) and Heinrich Heine 
+Universität Düsseldorf (Germany) and 4 physical person partners: Laura Creighton (Sweden), Richard Emslie (UK), 
+Eric Van Riet Paap (Netherlands) , Niklaus Haldiman (Switzerland). The project effort of work for the 2 years of 
+funding consists of 14 work-packages and in total 58 deliverables.
+
+History:
+Mid 2003 the idea of trying to get EU-funding for the project was born. It became clear that the project had an 
+arbitrarily large scale and that receiving some funding would dramatically increase the pace and seriousness of the 
+project - because funded developers can dedicate more of their time to the project.  The involved developers and 
+people stretched outside of the  Open Source ecologies to try to gather as much information and contacts as  
+possible in order to answer the question: "Should we go for it?"  to which the answer quickly became "Let's see 
+how far we get!". 
+
+There had been a growing interest from the European Commission, IST division to look closer at the Open Source world 
+and its achievements. Several funded research projects in the 5th framework programme studied the phenomenon 
+(FLOSS-POLS, FLOSS) - its organization, business models and licensing. A few other funded software projects used 
+Open Source in their work as tools (languages and applications).  There was no previous experience of an Open Source 
+community based project making a bid for funding. 
+
+The areas in the 6th Framework programme (second call) fit very well with the objectives of PyPy.  
+The idea of strengthening the European Software development companies and businesses with supporting 
+an open source language implementation was new but appealing to the EU.  However, being an Open Source 
+project was not enough. The challenges and the idea of a flexible, configurable "translator" or 
+"compiler" met the research targets of the FP6, as well as trying out and documenting the agile methodology 
+being used.  
+
+In short, we argued that EU funding allowed the project to go from reaching a critical mass and position 
+to continue to evolve from  there, and that it would help European organizations to make some ground. 
+
+Acting on this strategy proved to be a more difficult task. The entire proposal and negotiation process took 
+over a year (Autumn 2003 until November 2004).A proper description of planned work, necessary to satisfy 
+formal requirements, had not previously been part of the development focus and both the EU and the parties 
+involved had to adapt to the situation.  Yet, drafting the high-level requirements (in total 14 work-packages 
+and 58 deliverables) was done using the same version-control/open-communication based work style, including 
+evolving the proposal at sprints.  Writing the proposal and specifying according objectives on a higher level 
+has proved to be generally useful for clarifying goals on a longer term. 
+It also helps others to understand the project better. 
+
+Unfortunately the negotiations with the EU got stuck in organizational limbo and the project is still 
+suffering from the effects of this even today.  The goal of funding contributors especially coming to 
+sprints was originally based on a non-profit association.  This solution wasn't seen as realistic or 
+feasible by the EU although we think it remains a viable approach for the future. During negotiations, 
+we got to an alternative solution which had a few drawbacks:  contributors have to become Contract 
+Partners within  the EU-level Consortium (which is by itself not difficult) and can then at least claim travel and 
+accommodation costs when attending sprints.
+
+However, this construction does not allow them to get paid for work time and also has some formal requirements.  
+In practice this leads to current considerations of developers to shift private money between them in order to 
+circumvent the current problems withimplementing an agile model within the EU contract framing. 
+
+
+2. Influencing factors: the F/OSS Python community culture 
+2.1 The Python community
+2.2 The PyPy community 
+2.3 Supporting infrastructure
+2.4 Supporting practices
+    
+3. Influencing factors: agile practices in PyPy
+3.1 TDD 
+3.2 XP
+3.3 Sprints
+
+4. Influencing factors: EU-project practices
+The formal project organization required by the EU imposed more structure on the previous more free-floating 
+agile process. Roles and responsibilities where staked out,conforming with the requirements of the roles 
+but delegating as much as possible of the responsibilities and decision-making to the core developers.  The 
+strategy was to keep "conceptual integrity" (Brooks) of the vision and the idea in the hands of the core 
+developers.  A somewhat negative result was the added workload and responsibility on developers regarding 
+EU related work.  It was also a conscious strategy to employ the same version-control/review based scheme 
+regarding EU documents and Consortium level issues as those being used in the technical development. 
+
+It remains a challenge for all partners of the consortium, universities and companies alike, to connect an 
+ongoing medium-scale open-source project with EU regulations and requirements - not to speak of the fact that 
+companies need to fund 50% of the costs themselves.  It is, in fact, too early to judge the overall success 
+of our approaches although we are confident that things work out reasonably well. 
+
+4.1 Consortium structure
+4.2 Resource tracking and reporting
+4.3 Communication and documentation
+
+5. Troubles in Paradise:striking a balance 
+5.1 Developer driven versus formal project structure
+5.2 Agile strategies versus formal EU-contractual requirements
+5.3 F/OSS community versus hierarchies for "conceptual integrity"
+
+6. Conclusion:
+The important question is the following (and is also part of the methodological objective of the project):
+is there enough room to manage a project and Ope Source community within the plan-driven inspired methods 
+that are required in EU-funded projects, while still working agile and distributed?
+
+We believe so. The one clear dominating factor to make all this succeed is, as always, the people factor, 
+the CRACK performers as Boehm and Turner calls them (“Collaborative, Representative, Authorized, Committed, 
+Knowledgeable”) (4). 
+
+The core developers of the PyPy project had the right mix of various skills in order to succeed in setting 
+up a hybrid environment - enabling them to work full time on a project they strongly believed in. 
+The most crucial mix of skills for making this possible was/are:
+
+- social (the ability to communicate, "manage" groups and handle conflicts)
+- leadership abilities (both on technical levels as well on general social levels)
+- ability to network (to find and invite actors in the various cultures)
+- entrepreneurs (to instigate the idea of EU-funding and also to create consortium and companies)
+- curious and collaborative (towards other Python implementations and other languages and research approaches)
+- technical skills (programming language and implementation aspects, frameworks, mathematics, computer science etc) 
+- ability to balance "conceptual integrity" (Brooks) with open and transparent communication through sprints, documentation, tutorials, mentoring, sync-meetings, thus also increasing the group of the core developers during the project
+   
+Drawing from these different skills within the community of developers in the PyPy project one possible conclusion 
+would be that a truly agile approach dominating the workstyle of an Open Source project will increase the ability 
+of the community to spread the strategy of agility to other domains such as entrepreneurship and business models 
+(whether this is done by separate individuals, subgroups or the whole group). By doing this hybrid projects such 
+as PyPy and others (Zope Europe among others) are made possible.
+
+6.1 The vision factor
+6.2 Managing diversities
+6.3 Process design
+6.4 Group learning 
