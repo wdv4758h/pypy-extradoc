@@ -4,7 +4,6 @@ PyPy Summer of Code mentors and plans
 mentors 
 ------------------------
 
-Armin Rigo 
 Michael Hudson
 Christian Tismer 
 Anders Chrigstroem 
@@ -16,6 +15,7 @@ Michael Hudson
 Carl Friedrich Bolz 
 Aurelien Campeas (pending)
 Samuele Pedroni 
+Armin Rigo 
 
 On the 27th of April or so, mwh will send a list of all
 not-yet-registered mentors to Neal Norwitz.
