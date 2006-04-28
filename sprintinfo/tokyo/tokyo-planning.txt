@@ -191,7 +191,7 @@ Status after day 4:
     * cell, code, function partly there but needs moduledict support
 
   - OOTypeSystem (Nik, Samuele)
-    * introducted recordtype for interators and tuples
+    * introduced record type for iterators and tuples
     * random smaller improvements
 
   - ctypes _socket (and select ;))  (Arre, Anders)
