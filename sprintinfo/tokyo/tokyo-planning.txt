@@ -229,3 +229,56 @@ Pairings today:
     * rpystone translation
 
   - general wizardry (Samuele)
+  
+Saturday, 29th April 2006
+***************************
+
+Present: Samuele, Arre, Valentino, Eric, Anders, Yusei, Koichi
+
+Status after day 5:
+
+  - gencl (Sanghyeon, Valentino)
+
+    * Somewhat exception handling support using clisp.
+      Needs more work.
+
+  - Pickle support for objects (Eric, Samuele)
+    
+    * We added module, moduledict, functions
+
+  - OOTypeSystem (Nik, Samuele)
+
+    * fixed very obscure bug (see r26507 for the dirty details)
+    * splitting stringsupport between ootype and lltype system
+      (will need more work, since this broke translation)
+    
+  - ctypes _socket (and select ;))  (Arre, Anders)
+
+    * annotation workds, rtyping in progress.
+    * now supporting recursive structures in rctypes
+    * errno needs a bit more support in rctypes. More specifically,
+      errno can be many different things (a define, a function Xi
+      (sometimes thread specific)) but all platform specific.
+    * ipv6 support is not (ahum) complete
+    * no windows support yet
+    
+Pairings today:
+
+  - Pickling (Eric, Yusei)
+
+    * add support for additional objects like code objects.
+
+  - ctypes _socket (Arre, Anders)
+
+    * continue translation work.
+
+  - OOTypeSystem (Nik)
+
+    * fix String type translation issue
+
+  - gencl (Valentino)
+
+    * exception handling
+    * rpystone translation
+
+  - general wizardry (Samuele)
