@@ -282,3 +282,23 @@ Pairings today:
     * rpystone translation
 
   - general wizardry (Samuele)
+
+Saturday, 29th April - Closing session
+***************************************
+
+  - gencl (Valentino)
+    * exceptions are now correctly supported
+    * gencl has been resurrected and can translate most of the basic operations
+    * rpystone has not been translated yet because of Strings (and maybe other things)
+
+  - OOTypeSystem (Nik)
+    * We got rid of ForwardReferences and now have full support for recursive types
+    * New Record type
+    * preliminary string support
+
+  - Pickling (Eric, Yusei)
+    * Everything is picklable except: SequenceIterators, DictIterators, 
+         Frames, Traceback and generators
+
+  - ctypes and _socket: Please one of the anders should comment on this.
+
