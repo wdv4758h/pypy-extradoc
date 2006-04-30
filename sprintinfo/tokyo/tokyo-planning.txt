@@ -239,8 +239,8 @@ Status after day 5:
 
   - gencl (Sanghyeon, Valentino)
 
-    * Somewhat exception handling support using clisp.
-      Needs more work.
+    * Somewhat working exception handling support, but it violates
+      the specification.
 
   - Pickle support for objects (Eric, Samuele)
     
