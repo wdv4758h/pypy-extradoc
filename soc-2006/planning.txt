@@ -16,6 +16,7 @@ Carl Friedrich Bolz
 Aurelien Campeas (pending)
 Samuele Pedroni 
 Armin Rigo 
+Christian Tismer (pending)
 
 On the 27th of April or so, mwh will send a list of all
 not-yet-registered mentors to Neal Norwitz.
