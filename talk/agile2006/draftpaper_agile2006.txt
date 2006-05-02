@@ -3,7 +3,22 @@ Title: "Trouble in Paradise: Open Source projects, EU-funding and Agile practice
 ===================================================================================
 
 Abstract:
-(200 words - write last)
+
+PyPy is an Open Source project, partly funded by the European Union, employing
+agile techniques evolved within the Python Community such as "sprint-driven 
+development".The project started as a grass-root F/OSS effort in late 2002
+and recieved EU-funding from December 2004 until November 2006. 
+In this paper we will present the various influencing factors that creates
+the hybrid project process that is PyPy. These influencing factors are the F/OSS 
+Python Community (climate of the community from which PyPy grew from), agile 
+practices (such as the Python community evolved technique of "sprinting") and the 
+EU funding practices (resource tracking and reporting) impacting the project. These 
+influencing factors laid the foundation for the custom-made project process that 
+makes this unique hybrid project work and the main factor for driving this process 
+is the skills of the team of core developers instigating the project. PyPy, with it´s 
+open and transparent communication and collaborative workstyle, is again a proof 
+that the best agile practice is the people factor.
+
 
 Introduction: 
 =============
@@ -49,7 +64,7 @@ explain how these are implemented in PyPy.
 - The EU factor. PyPy is the first F/OSS community that organized themselves into an 
 EU-project, recieving EU-funding. It has had a huge impact on the project, and it is 
 important to identify how EU project and process requirements can be "weaved" into
-and Agile F/OSS project - a challenge indeed. The EU-funding has been and still is an 
+an Agile F/OSS project - a challenge indeed. The EU-funding has been and still is an 
 enourmous opportunity, the project would not have had the rapid progress and impact it 
 is now having without the funding. It is also very important to note that without striking the 
 right balance between the three main influencing factors (F/OSS, agile and EU-funding) this 
@@ -164,10 +179,6 @@ proper description of planned work, necessary to satisfy formal requirements,
 had not previously been part of the development focus and both the EU and the
 parties involved had to adapt to the situation.  
 
-During this time of the non-funded project, 2003-2005, 6 sprints were held in various
-locations in Europe, participation all funded privately. The locations hosting the sprints
-were universties and private persons interested in the aims of the project. 
-
 The contract with the EU was signed and the funded part of the project, with it´s
 consortium structure, started 1 of December 2004. The funded part of the project
 ends in November 2006.
@@ -238,8 +249,8 @@ to discuss over IRC (Internet-Relay-Chat) - open for all that are interested.
 Several mailinglists for discussions and information is also used. Webpages, 
 documentation, tutorials, talks and papers etc are all available on the central
 developer server for everyone.A very useful feature that really supports information
-and communication (the author can attest from her own experience) are the public
-email archives covering the key mailinglists - going back to start of 2003.
+and communication (the author can attest to this from her own experience) are the public
+email archives covering the key mailinglists - going back to the start of 2003.
 
 An extensive coding guide, published on codespeak.net (development website) 
 serves as an introduction to the set of specifications being used while coding PyPy.
@@ -305,16 +316,16 @@ development. Given the different development culture of the Zope community
 couldn't be done directly.  We decided to try to do "as much XP as possible" for short, 
 highly-focused sessions, with all active committers colocated."
 
-As Zope Corporation as well as other Python projects such as PyPy have seen is
+Zope Corporation as well as other Python projects such as PyPy have seen 
 that sprints have goals beyond the creation of software:
 
-- It helped evolving the community through participation and hands-on contact
+- It helped to evolve the community through participation and hands-on contact
 with the core developers.
 
 - It is a live training session not only in producing code but also in the development
 methods being used (TDD, pairprogramming etc, the sprint method in itself).
 
-- It supports activities such design decisions and high-level requirements discussions, 
+- It supports activities such as design decisions and high-level requirements discussions, 
 creating cohesion and understanding as well as minimizing risks with dispersed/distributed 
 work where these kind of activities can be really difficult to manage.
 
@@ -346,7 +357,7 @@ community.
 Why did PyPy choose sprinting as a key technique?  It is a method that fits
 distributed teams well because it gets the team focused around visible 
 challenging goals while working collarobatively (pair-programming, status
-meetings, discussions etc) as well as acceleratedly (short increments and
+meetings, discussions etc) as well as accelerated (short increments and
 tasks, "doing" and testing instead of long startups of planning and
 requirement gathering, continuous integration). This means that most of 
 the time a sprint is a great way of getting results and getting new 
@@ -510,7 +521,7 @@ F/OSS community versus hierarchies for "conceptual integrity"
 There are many examples of F/OSS projects and communities that have dried out
 because of the fear of the architects to allow the contributors to fully participate 
 and also influence features and vision of the software. In PyPy this challenge comes 
-twofold. Not only is there a the challenge to let the core developers keep "conceptual 
+twofold. Not only is there a  challenge to let the core developers keep "conceptual 
 integrity" while also allowing the community to influence the direction and features of 
 the software. There is also the consortium level of work in which the core developers
 could fear to "loose" the mandate of driving the architectural and design work. And 
