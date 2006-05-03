@@ -4,7 +4,7 @@ Trouble in Paradise: Open Source projects, EU-funding and Agile practices
 
 .. raw:: latex
 
-   \author{Bea Duering}
+   \author{Beatrice During}
    \begin{abstract}
 
 PyPy is an Open Source project, partly funded by the European Union, employing
@@ -340,7 +340,7 @@ definition of a sprint was:  "two-day or three-day focused development session,
 in which developers pair off together in a room and focus on building a
 particular subsystem". 
 
-Tres Seaver from the Zope Corporation, one of the instigators of the sprint
+Tres Seaver of the Zope Community, one of the instigators of the sprint
 method as it is used in the Python community says the following about how they
 evolved the method during 2001 and 2002:
 
@@ -351,7 +351,7 @@ the XP mantras /practices couldn't be done directly.  We decided to try to do
 "as much XP as possible" for short, highly-focused sessions, with all active
 committers colocated."
 
-Zope Corporation as well as other Python projects such as PyPy have seen that
+The Zope community as well as other Python projects such as PyPy have seen that
 sprints have goals beyond the creation of software:
 
 - It helped to evolve the community through participation and hands-on contact
@@ -375,6 +375,13 @@ Instead, we were pushing as fast as possible in order to maximize the benefit
 of limited face time.  Of all the XP practices, the one we gave shortest shrift
 to is "no overtime": as sprints often go far into the evening (or even the wee
 hours of the morning."
+
+To summarize the results of this first try out of the methodology shows that 
+sprinting was the driver for making Zope3 a community-driven project:  Zope 
+Corporation in fact ceded control over the development process to the new 
+"Zope3 core" group created via sprinting. Less than 2 years later the same effect
+was to be found in the F/OSS project PyPy - the community evolved through
+sprint driven development.
 
 The sprint method, as well as key aspects of F/OSS supportive infrastructure
 and practices was established within the project before PyPy recieved it´s
