@@ -88,7 +88,7 @@ The influencing factors of the PyPy project process are:
 
 Our conclusion so far in the project is that we believe that the practice of
 "sprinting", as being used in the PyPy project, makes Agile and
- Distributed/dispersed work styles more possible to combine. We also believe it
+Distributed/dispersed work styles more possible to combine. We also believe it
 is a very useful practice for creating value and ensuring quality in a projects
 with hybrid cultures and methodologies. It is our aim to start to show-case
 this with experiences from the first funded year of PyPy. We also feel that our
