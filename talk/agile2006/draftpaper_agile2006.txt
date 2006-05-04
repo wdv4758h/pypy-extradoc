@@ -64,9 +64,9 @@ The influencing factors of the PyPy project process are:
 - The Agile factor. Almost a subset of the F/OSS/Python community factor -
   agile practices that has been in use since the inception of the project, that
   in fact have been the main drivers of the project are very much inspired by
-  other projects in the Python community. A key factor in this influencing
+  other projects in the Python community. A key aspect of this influencing
   factor is the Python version of "sprinting". We will present this "agile"
-  practice, explain and trace it큦 origins within the Python community and
+  practice, explain and trace its origins within the Python community and
   identify which of the main agile practices inspired the Python world to go
   "sprinting" - a key technique today not only for the PyPy project but also
   for all main Python projects. We will also touch on aspects such as Test
@@ -76,7 +76,7 @@ The influencing factors of the PyPy project process are:
   into an EU-project, receiving EU-funding. It has had a huge impact on the
   project, and it is important to identify how EU project and process
   requirements can be "weaved" into an Agile F/OSS project - a challenge
-  indeed. The EU-funding has been and still is an enormous opportunity, the
+  indeed. The EU-funding has been and still is an enormous opportunity; the
   project would not have had the rapid progress and impact it is now having
   without the funding. It is also very important to note that without striking
   the right balance between the three main influencing factors (F/OSS, agile
@@ -88,8 +88,8 @@ The influencing factors of the PyPy project process are:
 
 Our conclusion so far in the project is that we believe that the practice of
 "sprinting", as being used in the PyPy project, makes Agile and
-Distributed/dispersed work styles more possible to combine. We also believe it
-is a very useful practice for creating value and ensuring quality in a projects
+ Distributed/dispersed work styles more possible to combine. We also believe it
+is a very useful practice for creating value and ensuring quality in projects
 with hybrid cultures and methodologies. It is our aim to start to show-case
 this with experiences from the first funded year of PyPy. We also feel that our
 experiences as a unique hybrid project would be of interest to other
@@ -105,21 +105,21 @@ Objectives:
 
 Due to the dual nature of the project even such a thing as objectives can get
 complicated. If you, as a potential PyPy user, would visit out main developer
-server codespeak you would find the following statement:
+server, Codespeak, you would find the following statement:
 
 "The PyPy project aims at producing a flexible and fast Python implementation.
 The guiding idea is to translate a Python-level description of the Python
 language itself to lower level languages. Rumors have it that the secret goal
 is being faster-than-C which is nonsense, isn't it? more..."
 
-Codespeak housed the F/OSS project since it큦 inception and it has been a
+Codespeak housed the F/OSS project since its inception and it has been a
 driving strategy to continue a look-and-feel of a purely F/OSS project in order
 to not confuse developers interested in just that - PyPy as a Python
 implementation.
 
 Digging a bit deeper you can find documentation which states the objectives of
 the EU-funded part of the project. The EU project큦 title is "PyPy" which is an
-acronym for "Researching a Highly Flexible and Modular Language Platform and
+"acronym" for "Researching a Highly Flexible and Modular Language Platform and
 Implementing it by Leveraging the Open Source Python Language and Community".
 The EU-project has three objectives: one technical, one research-oriented and
 one methodology-oriented objective. In short PyPy is about building an
@@ -132,28 +132,28 @@ Strategy:
 +++++++++
 
 The strategy of the project is to leverage the community of PyPy and Python
-through open and transparent communication and working style. The challenge has
-been to implement this strategy not only in the  F/OSS community part of the
-project but also in the partially funded consortium structure of the project.
+through an open and transparent communication and working style. The challenge has
+been to implement this strategy, not only in the  F/OSS community part of the
+project, but also in the partially funded consortium structure of the project.
 The structure of the project and the  consortium needed to adhere to this
 strategy while also conforming to the actual requirements of the 6th Framework
 Programme.
 
 The F/OSS part of PyPy has no budget tied to it and no formal organizational
 structure.  There are no resources tied to it other than the volunteers
-participating in the development process, ranging from the core developers and
-architects behind PyPy to people from all over the world, driven by a
+participating in the development process. These are the core developers and
+architects behind PyPy but also people from all over the world, driven by a
 combination of professional need and personal interest in Python language
 implementations such as PyPy and choosing to contribute to PyPy. There is also
-a large group of students on PHD level participating and contributing, using
-their areas of interest in PyPy as thesis material. 
+a large group of students on PHD levels participating and contributing, using
+their areas of interest in PyPy as thesis materials. 
 
 It is difficult to estimate the amount of people involved in PyPy but we
-estimate that ca 300-500 people "follow actively" the progress of the project -
+estimate that 300-500 people actively follow the progress of the project -
 this might mean reading emails, IRC logs and documentation in some cases, asking
-questions and sending bug reports in other cases. There are ca 50 people that
+questions and sending bug reports in others. There are around 50 people who
 have commit-rights to the source code. The core group of developers consists of
-ca 10 people. 
+around 10 people. 
 
 The EU part of the project is organized through a consortium which consists of
 8 partners: DFKI (Germany), Ab Strakt (Sweden), Logilab (France), merlinux GmbH
@@ -167,15 +167,15 @@ work-packages and in total 58 deliverables which are high-level functional and
 non-functional requirements that were formulated in a proposal and form the
 "Description of Work" in the contract with the European Commission. The funding
 received for this effort is 1.3 million euro. Of the core group of developers
-mentioned above almost all of them (ca 10 people) are involved in some sense in
+mentioned above almost all of them (10 people) are involved in some sense in
 the partner companies and organizations of the PyPy consortium.
 
 History:
 ++++++++
 
 The ideas behind PyPy started via discussions on European mailing-lists in the
-Python community late 2002 by people that had been active in the Python
-community for some time, core developers interested in language implementation.
+Python community late 2002 by people who had been active in the Python
+community for some time; core developers interested in language implementation.
 They based the discussions and ideas partly on their experiences with
 developing and driving some well-known projects in the Python community. They
 met up in February 2003 at a "sprint", a one week working meeting,to draft
@@ -205,7 +205,7 @@ project ends in November 2006.
 The first funded year of the project ended with a review in Brussels in January
 2006, hosted by the Commission, reviewing the 10 deliverables comprising the
 work of the first year. All deliverables were accepted and based on
-recommendations by the external reviewers the consortium and the Commission is
+recommendations by the external reviewers. The consortium and the Commission is
 now restructuring the volume of the remaining the deliverables (although not
 changing the scope of the project). 
 
@@ -218,13 +218,13 @@ The Python community
 Python is an Open Source language, published under an OSI approved open source
 license.  It was created by Guido van Rossum and is now one of the five most
 used languages in the world.  Due to the nature of the language there is a
-strong focus on glue and integration with other languages such as C and Java
-etc. Other typical aspects of the Python community is that it houses four large
-language implementations as separate projects that communicate and discuss
+strong focus on glue and integration with other languages such as C and Java. 
+Typical aspects of the Python community is that it houses four large
+language implementations as separate projects which communicate and discuss
 their experiences and approaches with each other. This intra-extra community
-focus and interest have created a collaborative atmosphere with an open and
+focus and interest has created a collaborative atmosphere with an open and
 transparent communication climate. The key to a lively and working community is
-the people factor, as always and of course so for the Python community as well.
+the people factor, as always, and of course so for the Python community as well.
 
 The PyPy community
 ------------------
@@ -245,7 +245,7 @@ arranged in various European cities, hosted by universities and private
 persons, participation funded privately. The effect on the evolving community
 was a stable subscriber participation on the development list of between
 140-150 people. After the EU-funding and the more systematic structure of
-sprinting every 6th week the amount of subscribers went from ca 150 people to
+sprinting every 6th week the amount of subscribers went from around 150 people to
 over 250 people.
 
 
@@ -255,14 +255,14 @@ Supporting infrastructure
 The amount of collaborative focus and open and transparent communication in an
 open source community will manifest itself in the supporting infrastructure.
 In PyPy version control is the primary means of providing a secure platform for
-incremental development. In PyPy, Subversion is being used, covering both
-program files and documentation. Several automated mailing lists makes sure
+incremental development. Subversion is used, covering both
+program files and documentation. Several automated mailing lists make sure
 that every person involved receives instant notification on changes -
 supporting peer review on all levels.
 
 PyPy is also in some sense very much test-driven. PyPy is one of the primary
 users of a separate F/OSS project called the py.test, tools for automated
-testing with PyPy developers contributing improvements to py.test.  py.test
+testing with PyPy developers contributing improvements to py.test.  Py.test
 contains a sophisticated system for running tests against the Python Standard
 Library, with automatic selection of overriding tests in case there is
 internally developed code that overrides the Python Standard Library -
@@ -273,8 +273,8 @@ generated web pages that show the status of all tests as per the latest checked
 in test results.
 
 The main communication channels between developers involved in PyPy is to
-discuss over IRC (Internet-Relay-Chat) - open for all that are interested.
-Several mailing lists for discussions and information is also used. Web pages,
+discuss over IRC (Internet-Relay-Chat) - open for all who are interested.
+Several mailing lists for discussions and information are also used. Web pages,
 documentation, tutorials, talks and papers etc are all available on the central
 developer server for everyone to access. A very useful feature that really supports
 information and communication (the author can attest to this from her own
@@ -298,9 +298,9 @@ strong automated tools covering tests, versions and back ups covering the
 technical level.
 
 In a distributed and dispersed work style these two (social and technical)
-levels needs to be consistent and support each other, discrepancies would be
-immediately noticed. As stated before - the people factor is again evident and
-in order to encourage participation and contribution there has to be trust as
+levels needs to be consistent and support each other. Discrepancies would be
+immediately noticed. As stated before - the people factor is again evident.
+If you wish to encourage participation and contribution there has to be trust as
 well as a supportive environment in order to manage a virtual collaborative
 workspace.
 
@@ -310,17 +310,17 @@ Supporting practices
 Another good example of the collaborative nature of the Python community is the
 way which the various projects share best practices. Core developers in the
 PyPy project picked up the practice of synchronization meetings as a powerful
-way of supporting distributed and dispersed development, implemented by
-Canonical.
+way of supporting distributed and dispersed development. This practice was inspired
+by the experiences of development processes at Canonical.
 
-Sync-meetings are weekly short coordination meetings between developers, open
-to all developers active in the PyPy community, usually but not necessarily
+Sync-meetings are weekly short coordination meetings between developers. These are
+open to all developers active in the PyPy community, usually but not necessarily
 involving aspects of EU-funded work on deliverables.  These 30 minute
 IRC-meetings serve a weekly synchronization for regular discussions and
 integration of ongoing work.  Meetings are prepared with an agenda sent out to
 pypy-dev and minutes are distributed on pypy-dev and archived in the repository
-with publicly accessible links. Preparing, managing and documenting the meetings
-is rotated between active developers and is self-organized as well.
+with publicly accessible links. The work of preparing, managing and documenting the 
+meetings is rotated between active developers and is self-organized as well.
 
 Sync-meetings have proved to be a very good complement to a process in which
 the project sprints every 6th week. Sync-meetings keep cohesion as well as a
@@ -352,7 +352,7 @@ the XP mantras /practices couldn't be done directly.  We decided to try to do
 committers collocated."
 
 The Zope community as well as other Python projects such as PyPy have seen that
-sprints have goals beyond the creation of software:
+sprints generate results beyond the creation of software:
 
 - It helped to evolve the community through participation and hands-on contact
   with the core developers.
@@ -429,7 +429,7 @@ Key requirements regarding organizational structures of an Framework Programme
 - a project co-coordinator managing contract administration and communication
   between consortium and the Commission
 
-- a project manager, responsible for the project reaching it큦 goals within the
+- a project manager, responsible for the project reaching its goals within the
   time frame and budget
 
 The challenge was to design a project process that created a minimal amount of
@@ -453,7 +453,7 @@ core developers were organized into a technical board, responsible for planning
 and coordinating the development work between the partners.
 
 This structure was the most difficult to design and implement due to the very
-different nature of it큦 purpose compared to the collaborative, self-organized
+different nature of its purpose compared to the collaborative, self-organized
 nature of the F/OSS project - again it succeeded the way it has because of the
 core developers acting as an interface between the developer group and the
 consortium level work - again we see the trust aspect and the people factor in
@@ -461,7 +461,7 @@ play.
 
 Sprints were budgeted for and designed into the process, together with a
 time plan for all deliverables. The project was divided into three different
-phases, depending on the nature of the work flow. In that sense you could
+phases, depending on the nature of the work flow. In that sense we could
 describe the EU-part of the project as a fixed-contract style of work, but with
 time plan, deliverables and work package descriptions on a high-level, not
 broken down into more granular tasks.
@@ -473,7 +473,7 @@ The nature of reporting on a consortium level is very much focused on the costs
 incurred by each partner compared to budget, by the consortium on a specific
 work package and of the consortium overall. The consortium is free to reallocate
 budgeted man month funding between partners during the project. The project
-reports costs per period - PyPy have two periods.
+reports costs per period, PyPy has two periods.
 
 Again - the need for open and transparent communication together with a
 collaborative climate created the need to have what we believe a unique view on
@@ -492,8 +492,8 @@ EU-level of reports. Again the strategy was to use the same tools and practices
 on consortium level work as is used in the development process.  Interesting to
 note is that the technical reports written for the Commission regarding certain
 deliverables and progress have also been a great help towards the community who
-also have free access to these reports and view them as extra, although
-peculiar formated, documentation.
+also has free access to these reports and view them as extra, although
+peculiarly formated, documentation.
 
 
 Communication and documentation
@@ -541,9 +541,9 @@ designing a process that allowed for a developer driven process regarding not
 only software development but also sprint administration and planning as well
 as consortium work.
 
-The majority of the partners on key roles in the consortium organization had
-been working together since before the funding, procedures and best practices
-had been tried out. The results from the first year showed that a minimalistic
+The majority of the partners with key roles in the consortium organization had
+been working together since before the funding. In that sense procedures and best 
+practices had been tried out. The results from the first year showed that a minimalistic
 path could be identified and that the important work would be to review and
 adjust the process when it did not support the work any more, or new situations
 arose that we had not planned for (and that did happen!).
@@ -566,17 +566,17 @@ but also on the community.  We had planned for a process that kept an
 "open-door" policy that allowed us to fund non-consortium persons from the
 community to attend sprints. The budget was allocated, the procedure within the
 sprint context of handling more newcomers were known to us - the main
-show stopper was that PyPy sprint funding did not fit within the customs and
+show stopper was that the PyPy sprint funding did not fit within the customs and
 practices of contracts for cost claims in the Commission.
 
-Every time we want to encourage participation and fund people to participate in
-sprints and contribute the procedure now is that they have to join the
-consortium as a full partner - but as a "physical person".This creates the need
-for a contractual amendment which adds administrative work to the project as
-well as for the persons in question. A too blunt instrument and today we  still
-do not have a working solution to this problem. It is an unfortunate example on
-how the influencing factor of F/OSS, agile practices and EU-funding collides
-and creates negative impact on the project.
+Every time we want to encourage participation and fund non-consortium 
+people to participate in sprints and contribute, the procedure now is that 
+they have to join the consortium as a full partner.
+This creates the need for a contractual amendment with the Commission which 
+adds administrative work to the project as well as for the persons in question. 
+A too blunt instrument and today we still do not have a working solution to this 
+problem. It is an unfortunate example on how the influencing factor of F/OSS, 
+agile practices and EU-funding collides and creates negative impact on the project.
 
 
 F/OSS community versus hierarchies for "conceptual integrity"
@@ -584,17 +584,17 @@ F/OSS community versus hierarchies for "conceptual integrity"
 
 There are many examples of F/OSS projects and communities that have dried out
 because of the fear of the architects to allow the contributors to fully
-participate and also influence features and vision of the software. In PyPy
+participate and also influence features and visions of the software. In PyPy
 this challenge comes twofold. Not only is there a  challenge to let the core
 developers keep "conceptual integrity" while also allowing the community to
 influence the direction and features of the software. There is also the
-consortium level of work in which the core developers could fear to "loose" the
+consortium level of work in which the core developers could fear to "lose" the
 mandate of driving the architectural and design work. And yet another layer of
 risk and complexity would be if the consortium level would "shut the door" on
 the community, enforcing a more closed development process.
 
 As in many cases - being risk aware is the first step to mitigate. Because the
-project is so deeply rooted in the F/OSS Python community, with it큦 specific
+project is so deeply rooted in the F/OSS Python community, with its specific
 culture and climate, and because so many people involved in the core work on
 both the development and consortium level also shared this background they took
 great pains to avoid situations like this to happen. In fact, what we have
