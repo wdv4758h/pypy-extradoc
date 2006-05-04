@@ -2,6 +2,7 @@
 Trouble in Paradise: Open Source projects, EU-funding and Agile practices
 ===================================================================================
 
+.. sectnum
 .. raw:: latex
 
    \author{Beatrice During}
@@ -88,7 +89,7 @@ The influencing factors of the PyPy project process are:
 
 Our conclusion so far in the project is that we believe that the practice of
 "sprinting", as being used in the PyPy project, makes Agile and
- Distributed/dispersed work styles more possible to combine. We also believe it
+Distributed/dispersed work styles more possible to combine. We also believe it
 is a very useful practice for creating value and ensuring quality in projects
 with hybrid cultures and methodologies. It is our aim to start to show-case
 this with experiences from the first funded year of PyPy. We also feel that our
@@ -344,12 +345,12 @@ Tres Seaver of the Zope Community, one of the instigators of the sprint
 method as it is used in the Python community says the following about how they
 evolved the method during 2001 and 2002:
 
-"The motivation was to begin using as much of XP as would fit to accelerate
-Zope3 development. Given the different development culture of the Zope
-community (framework-centric, distributed, no "business user" present), some of
-the XP mantras /practices couldn't be done directly.  We decided to try to do
-"as much XP as possible" for short, highly-focused sessions, with all active
-committers collocated."
+    *"The motivation was to begin using as much of XP as would fit to
+    accelerate Zope3 development. Given the different development culture of
+    the Zope community (framework-centric, distributed, no "business user"
+    present), some of the XP mantras /practices couldn't be done directly.  We
+    decided to try to do "as much XP as possible" for short, highly-focused
+    sessions, with all active committers collocated."*
 
 The Zope community as well as other Python projects such as PyPy have seen that
 sprints generate results beyond the creation of software:
@@ -369,12 +370,12 @@ sprints generate results beyond the creation of software:
 The reason for naming the method sprinting, not at all connected to Scrum and
 the usage of sprints in that context, according to Tres Seaver is:
 
-"... because of the fact that we weren't doing XP in its proper sense, which is
-more like running a long-distance race, where pacing oneself is critical.
-Instead, we were pushing as fast as possible in order to maximize the benefit
-of limited face time.  Of all the XP practices, the one we gave shortest shrift
-to is "no overtime": as sprints often go far into the evening (or even the wee
-hours of the morning."
+    *"... because of the fact that we weren't doing XP in its proper sense,
+    which is more like running a long-distance race, where pacing oneself is
+    critical.  Instead, we were pushing as fast as possible in order to
+    maximize the benefit of limited face time.  Of all the XP practices, the
+    one we gave shortest shrift to is "no overtime": as sprints often go far
+    into the evening (or even the wee hours of the morning."*
 
 To summarize the results of this first try out of the methodology shows that 
 sprinting was the driver for making Zope3 a community-driven project:  Zope 
