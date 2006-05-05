@@ -1,11 +1,11 @@
 ===================================================================================
-Trouble in Paradise: Open Source projects, EU-funding and Agile practices
+Trouble in Paradise: the Open Source project PyPy, EU-funding and Agile practices
 ===================================================================================
 
 .. sectnum
 .. raw:: latex
 
-   \author{Beatrice During}
+   \author{Beatrice During, Change Maker, bea@changemaker.nu}
    \begin{abstract}
 
 PyPy is an Open Source project, partly funded by the European Union, employing
@@ -45,7 +45,7 @@ the Open Source project applied for EU-funding.
 
 Today the project has over 4 years of intense activity as an Open Source
 community (F/OSS) effort and have completed a successful first year of the
-EU-funded effort.  In order to understand how the PyPy project managed and
+EU-funded effort.  In order to understand how the PyPy project
 manages to strike a balance between being an F/OSS community, while also having
 the core work of the project being funded by the European Union (with all the
 structure and process requirements that entails) we need to look at the
@@ -55,7 +55,7 @@ The influencing factors of the PyPy project process are:
 
 - The F/OSS/Python community factor. Different Open Source communities have
   different "flavors" regarding culture, communication climate, structure,
-  decision-process etc. PyPy was born out of the Python Community and share
+  decision-process etc. PyPy was born out of the Python Community and shares
   some of its characteristics which have had a huge influence on the project
   process so far. Aspects such as distributed/dispersed development and the
   supporting practices and infrastructure in place to quality assure software
@@ -63,7 +63,7 @@ The influencing factors of the PyPy project process are:
   factor. 
 
 - The Agile factor. Almost a subset of the F/OSS/Python community factor -
-  agile practices that has been in use since the inception of the project, that
+  agile practices that have been in use since the inception of the project, that
   in fact have been the main drivers of the project are very much inspired by
   other projects in the Python community. A key aspect of this influencing
   factor is the Python version of "sprinting". We will present this "agile"
@@ -128,6 +128,9 @@ optimized compiler and interpreter purely in Python, applying Aspect Oriented
 Programming and abstract interpretation techniques.  The methodology objective
 aims at showcasing the "sprint-driven development method" being used by PyPy
 and you can view this paper as part of fulfilling the methodology objective.
+See also a paper on the sprint method submitted to the XP 2006 conference titled
+"Sprint-Driven Development: Agile methodologies in a Distributed Open Source
+Project (PyPy)".
 
 Strategy:
 +++++++++
@@ -136,9 +139,6 @@ The strategy of the project is to leverage the community of PyPy and Python
 through an open and transparent communication and working style. The challenge has
 been to implement this strategy, not only in the  F/OSS community part of the
 project, but also in the partially funded consortium structure of the project.
-The structure of the project and the  consortium needed to adhere to this
-strategy while also conforming to the actual requirements of the 6th Framework
-Programme.
 
 The F/OSS part of PyPy has no budget tied to it and no formal organizational
 structure.  There are no resources tied to it other than the volunteers
@@ -200,7 +200,7 @@ had not previously been part of the development focus and both the EU and the
 parties involved had to adapt to the situation.  
 
 The contract with the EU was signed and the funded part of the project, with
-it´s consortium structure, started 1 of December 2004. The funded part of the
+its consortium structure, started 1 of December 2004. The funded part of the
 project ends in November 2006.
 
 The first funded year of the project ended with a review in Brussels in January
@@ -224,8 +224,7 @@ Typical aspects of the Python community is that it houses four large
 language implementations as separate projects which communicate and discuss
 their experiences and approaches with each other. This intra-extra community
 focus and interest has created a collaborative atmosphere with an open and
-transparent communication climate. The key to a lively and working community is
-the people factor, as always, and of course so for the Python community as well.
+transparent communication climate. 
 
 The PyPy community
 ------------------
@@ -238,12 +237,12 @@ expert skills of the core developers starting PyPy - again the people
 factor. Thus making it easier recruit people into the PyPy community.
 
 The PyPy project inherited the focus on collaborative approaches and open
-communication climate.  The nature of using sprints as a core technique as a
-way to kick-start the project as well as moving the sprints to different
-locations as a strategy to encourage participation by meeting people locally
-are clear examples of this. During the period of 2003-2004 6 sprints were
-arranged in various European cities, hosted by universities and private
-persons, participation funded privately. The effect on the evolving community
+communication climate.  The strategy of using sprints, as a core technique, to 
+kick-start the project as well as moving the sprints to different
+locations had clear effects.It encouraged participation by meeting people locally. 
+During the period of 2003-2004 6 sprints were arranged in various European cities.
+These sprints were hosted by universities and private
+individuals, participation was funded privately. The effect on the evolving community
 was a stable subscriber participation on the development list of between
 140-150 people. After the EU-funding and the more systematic structure of
 sprinting every 6th week the amount of subscribers went from around 150 people to
@@ -265,27 +264,31 @@ PyPy is also in some sense very much test-driven. PyPy is one of the primary
 users of a separate F/OSS project called the py.test, tools for automated
 testing with PyPy developers contributing improvements to py.test.  Py.test
 contains a sophisticated system for running tests against the Python Standard
-Library, with automatic selection of overriding tests in case there is
-internally developed code that overrides the Python Standard Library -
-important compliance features when the project is about language
-implementation.  There are also powerful mechanisms for disabling specific
+Library. It provides automatic selection of overriding tests in case there is
+internally developed code that overrides the Python Standard Library. These are 
+important compliance features when the project is about language implementation.
+There are also powerful mechanisms for disabling specific
 tests and for producing useful traceback output. There are also automatically
 generated web pages that show the status of all tests as per the latest checked
-in test results.
+in test results. This together with a public issue-tracker covering bugs keeps the 
+development group focused on the quality of the code when doing
+continous integration. It greatly reduces the need
+to coordinate and delegate refactoring work - this is handled in a self-organized way.
 
 The main communication channels between developers involved in PyPy is to
 discuss over IRC (Internet-Relay-Chat) - open for all who are interested.
 Several mailing lists for discussions and information are also used. Web pages,
 documentation, tutorials, talks and papers etc are all available on the central
 developer server for everyone to access. A very useful feature that really supports
-information and communication (the author can attest to this from her own
-experience) are the public email archives covering the key mailing lists - going
-back to the start of 2003.
-
-An extensive coding guide, published on codespeak.net (development website)
-serves as an introduction to the set of specifications being used while coding
-PyPy.  The coding guide covers not only naming conventions but also design,
-test and documentation guidelines.
+information and communication are the public email archives covering the key 
+mailing lists - going back to the start of 2003. As a newcomer to the project
+in the fall of 2003 these public and easily accessable mailing list archives
+was the primary means for me personally to get into the project. It provided answers
+to who had been key people in the process, what had been crucial topics, how had 
+discussions and decisions been handled. It is also regularly being used with newcomers
+in the development team, providing fast answers to questions and also providing context
+to technical decisions being made in the past. A useful just-in-time documentation
+and a unorthodox but very efficient way of disseminating information and knowledge.
 
 Now - all this infrastructure is being used in almost all larger open source
 projects and quite a few of them are much more hierarchical and non-transparent
@@ -298,18 +301,30 @@ code review, supporting communication channels, coaching, mentoring) and with
 strong automated tools covering tests, versions and back ups covering the
 technical level.
 
+An extensive coding guide, published on codespeak.net (development website)
+serves as an introduction to the set of specifications being used while coding
+PyPy.  Yet another piece of the puzzle, the coding guide together with 
+commit-access to both source code and tests supports cohesion in the development
+process. This increases readability and uniformity so that automated testing tools can 
+be more efficiently used. Again - simple and useful support that is much needed when 
+working dispersed in a larger team of developers that might never meet face to face.
+
 In a distributed and dispersed work style these two (social and technical)
 levels needs to be consistent and support each other. Discrepancies would be
 immediately noticed. As stated before - the people factor is again evident.
 If you wish to encourage participation and contribution there has to be trust as
 well as a supportive environment in order to manage a virtual collaborative
-workspace.
+workspace. The main feature of such a supportive infrastructure is to reduce
+the cost of information since coordination and communication is even more difficult
+in a dispersed environment. If this easily accessed information of the status of the software 
+is combined with trust (that is commit-rights) you have the basis for a proactive, 
+self-organized culture. 
 
 Supporting practices
 --------------------
 
 Another good example of the collaborative nature of the Python community is the
-way which the various projects share best practices. Core developers in the
+way in which the various projects share best practices. Core developers in the
 PyPy project picked up the practice of synchronization meetings as a powerful
 way of supporting distributed and dispersed development. This practice was inspired
 by the experiences of development processes at Canonical.
@@ -325,8 +340,40 @@ meetings is rotated between active developers and is self-organized as well.
 
 Sync-meetings have proved to be a very good complement to a process in which
 the project sprints every 6th week. Sync-meetings keep cohesion as well as a
-team focus-and-feel for the dispersed work style between sprints. 
-    
+team focus-and-feel for the dispersed work style between sprints. There are three 
+crucial aspects of this practice. The first one is that our experience as well as 
+that of Canonical points to keeping the time for the meeting brief. The reason for 
+30 minutes limit is that it forces prioritization on what topics to choose. However 
+complex your development situation is you should choose not more than 3 topics, 
+topics that could be discussed and decided upon during these 30 minutes. Not having 
+this timelimit would create long and tiresome IRC meetings which would demotivate
+people and also create more confusion than results.
+
+The second aspect is that it has a fixed format in which the meeting starts with 
+all developers participating in the meeting presents a very short status - answering
+the questions LAST (last week), NEXT (their focus for the upcoming week) 
+and BLOCKERS (if they are stuck and need help). This means that the group get
+overview and can track progress, albeit loosely. All individuals get an opportunity to 
+voice their personal situation and the group jointly discuss potential blockers and how 
+to solve them. The fixed format help to keep focus and creates a rythm that makes it 
+easier for newcomers to get into the flow of the meeting.
+
+The third aspect is also the main challenge with the practice. In PyPy we rotate
+the organization of the meetings between the developers. But because meeting
+moderation has to do with experience, people skills as well as a certain overview of 
+the project not everyone can actually do this task. Our experience shows that it is 
+also very important to have core people involved in identifying topics needing to be
+discussed - having the progress of the project in mind. It is very easy to choose
+topics that do not need the group mind to discuss, that are too detailed, that has
+too much focus on information distribution rather than discussions.
+
+Here is what one of the new core developers of PyPy says about sync-meetings:
+
+"Sync-meetings are useful because they enable developers to discuss and clarify issues 
+among themselves and to provide a common focus when working distributedly. They 
+are also a lightweight way to syncronize activities, resolve blockers and to get an 
+overview about who is currently doing what work."
+
 Influencing factors: agile practices in PyPy
 ============================================
 
@@ -359,15 +406,26 @@ sprints generate results beyond the creation of software:
   with the core developers.
 
 - It is a live training session not only in producing code but also in the
-  development methods being used (TDD, pair programming etc, the sprint method
-  in itself).
+  development methods being used (the sprint method in itself, pair programming 
+  and TDD).
 
 - It supports activities such as design decisions and high-level requirements
   discussions, creating cohesion and understanding as well as minimizing risks
   with dispersed/distributed work where these kind of activities can be really
   difficult to manage.
+  
+In order to provide examples - in PyPy these discussion sessions have been done in 
+various different ways during sprints. The proposal for the EU and the work package 
+descriptions were drafted through group discussions during sprints. Later sprints in which 
+the process needed design decisions, developers paired up in several groups of 2-4 
+people per group for daily discussion sessions. These sessions ended with brief 
+documentation and presentations for the other groups where decisions were made. 
+Usually what happens is that the daily sprint planning results in a pair of core developers 
+choosing a topic to discuss. These discussions have even acted as tutorials for other 
+developers sitting in and following the discussions. Some of these discussions have also
+been filmed for dissemination purposes.
 
-The reason for naming the method sprinting, not at all connected to Scrum and
+The reason for naming the method sprinting, is not at all connected to Scrum and
 the usage of sprints in that context, according to Tres Seaver is:
 
     *"... because of the fact that we weren't doing XP in its proper sense,
@@ -447,11 +505,15 @@ Although the responsibility rested on the different management roles and the
 management team the strategy implemented was to delegate as much as possible of
 the responsibilities and decision-making to the core developers.
 
-The strategy was to keep "conceptual integrity" (Brooks) of the vision and the
-idea in the hands of the core developers.  A somewhat negative result was the
-added workload and responsibility on developers regarding EU related work.  The
-core developers were organized into a technical board, responsible for planning
-and coordinating the development work between the partners.
+The strategy was to keep "conceptual integrity" [1] of the vision and the
+idea in the hands of the core developers. As Brooks stresses, a uniform system
+design is better than uncoordinated and independent design ideas. The core developers
+had a clear and agreed vision - but would they be allowed to implement it within a 
+fixed contract workstyle, with new partners involved that had not been involved in
+the process from the start? The core developers were organized into a technical 
+board, responsible for planning and coordinating the development work between 
+the partners, with the mandate to make decisions. A somewhat negative result 
+was the added workload and responsibility on developers regarding EU related work.  
 
 This structure was the most difficult to design and implement due to the very
 different nature of its purpose compared to the collaborative, self-organized
@@ -466,36 +528,6 @@ phases, depending on the nature of the work flow. In that sense we could
 describe the EU-part of the project as a fixed-contract style of work, but with
 time plan, deliverables and work package descriptions on a high-level, not
 broken down into more granular tasks.
-
-Resource tracking and reporting
--------------------------------
-
-The nature of reporting on a consortium level is very much focused on the costs
-incurred by each partner compared to budget, by the consortium on a specific
-work package and of the consortium overall. The consortium is free to reallocate
-budgeted man month funding between partners during the project. The project
-reports costs per period, PyPy has two periods.
-
-Again - the need for open and transparent communication together with a
-collaborative climate created the need to have what we believe a unique view on
-cost reporting within the project. In PyPy all time sheets are gathered on a
-monthly basis and stored in central repository, accessible for all consortium
-partners (managers and developers alike).  Cost claims from all partners are
-gathered on a six month basis. This data helps the management board and
-technical board to assess the status of work.
-
-Templates for time sheets, costs claims, resource tracking tools etc are created
-in open formats and all data is stored under the same version control that we
-use for the source code. All reports are produced with docutils/ReST format
-which together with automated mailing lists for covering updates in the version
-control repositories allows for collaborate peer-reviewing regarding the
-EU-level of reports. Again the strategy was to use the same tools and practices
-on consortium level work as is used in the development process.  Interesting to
-note is that the technical reports written for the Commission regarding certain
-deliverables and progress have also been a great help towards the community who
-also has free access to these reports and view them as extra, although
-peculiarly formated, documentation.
-
 
 Communication and documentation
 -------------------------------
@@ -594,7 +626,7 @@ mandate of driving the architectural and design work. And yet another layer of
 risk and complexity would be if the consortium level would "shut the door" on
 the community, enforcing a more closed development process.
 
-As in many cases - being risk aware is the first step to mitigate. Because the
+As in many cases - being risk aware is the first step to mitigation. Because the
 project is so deeply rooted in the F/OSS Python community, with its specific
 culture and climate, and because so many people involved in the core work on
 both the development and consortium level also shared this background they took
@@ -620,39 +652,65 @@ EU-funded projects, while still working agile and distributed?
 
 We believe so. The one clear dominating factor to make all this succeed is, as
 always, the people factor, the CRACK performers as Boehm and Turner calls them
-("Collaborative, Representative, Authorized, Committed, Knowledgeable").
-
+("Collaborative, Representative, Authorized, Committed, Knowledgeable"). [2]
 
 The core developers of the PyPy project had the right mix of various skills in
 order to succeed in setting up a hybrid environment - enabling them to work
 full time on a project they strongly believed in.  The most crucial mix of
 skills for making this possible was/are:
 
-- social (the ability to communicate, "manage" groups and handle conflicts)
+- Social 
+The ability to communicate open and transparent, to mentor and tutor dispersed
+as well as reinventing different collaborative workstyles of the sprint method, 
+"manage" groups and community as well as consortium, and handle conflicts)
 
-- leadership abilities (both on technical levels as well on general social
-  levels)
+- Leadership abilities 
+The ability to step into formal leadership roles in technical board structures, manage
+sprints and sync-meetings as well as the more informal management of the community
+of developers. Managing the balance between encouraging participation but still holding
+true to their vision, their "conceptual integrity".
 
-- ability to network (to find and invite actors in the various cultures)
+- Ability to network 
+To be open to other communities, inviting new partners in order to create a working 
+consortium structure in the EU-project, curious and collaborative towards other Python 
+implementations and other languages and research approaches, sharing knowledge and 
+experiences and seeking bets practices of other projects.
 
-- entrepreneurs (to instigate the idea of EU-funding and also to create
-  consortium and companies)
+- Entrepreneurs 
+To risk the community through pursuing the idea of EU-funding in order to fullfill the 
+ambitious vision, managing to not only create a consortium with innovative 
+structures of cooperation but also to create new companies.
 
-- curious and collaborative (towards other Python implementations and other
-  languages and research approaches)
+- Technical skills 
+Programming language and implementation aspects,frameworks, mathematics, computer 
+science - core skills for the project. Also the ability to design, setup and effectively manage
+supporting infrastructure for the development process.
 
-- technical skills (programming language and implementation aspects,
-  frameworks, mathematics, computer science etc) 
-
-- ability to balance "conceptual integrity" (Brooks) with open and transparent
-  communication through sprints, documentation, tutorials, mentoring,
-  sync-meetings, thus also increasing the group of the core developers during
-  the project
+- Managing the balance between encouraging participation but still holding
+true to their vision, their "conceptual integrity"
+This while working agile with open and transparent communication through sprints, 
+documentation, tutorials, mentoring, sync-meetings. Resulting in a lively and growing
+the F/OSS community around the project.   
   
 Drawing from these different skills within the community of developers in the
 PyPy project one possible conclusion would be that a truly agile approach
 dominating the work style of an Open Source project will increase the ability of
-the community to spread the strategy of agility to other domains such as
-entrepreneurship and business models (whether this is done by separate
-individuals, subgroups or the whole group). By doing this hybrid projects such
-as PyPy and others (Zope Europe among others) are made possible.
+the community to spread the strategy of agility to other domains. 
+By this we mean that what started as agile practices in the development process 
+quickly became influencing factors when designing other project processes. Examples of 
+this in PyPy is how the sprint-driven development acts as a focal point not just for the 
+development work (co-located as well as dispersed) but also for the formal and informal 
+management of the project. Sprints together with the CRACK performers was what made 
+the community grow and evolve. It was the foundation for a hybrid project where agile 
+practices and EU-funding can fit within a distributed Open Source context.
+
+
+References:
+==========
+
+[1] Fredrick P. Brooks, Jr, "The mythical man-month, anniversary edition",
+Addison-Wesley, 1995
+
+[2] Barry Boehm,Richard Turner, "Observations on Balancing Discipline and Agility",
+(drawn from the book "Balancing Agility and Discipline: A Guide to the Perplexed",
+Addison Wesley, 2003)
