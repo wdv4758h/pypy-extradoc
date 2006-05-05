@@ -691,11 +691,30 @@ true to their vision, their "conceptual integrity"
 This while working agile with open and transparent communication through sprints, 
 documentation, tutorials, mentoring, sync-meetings. Resulting in a lively and growing
 the F/OSS community around the project.   
-  
-Drawing from these different skills within the community of developers in the
-PyPy project one possible conclusion would be that a truly agile approach
+
+So, could it be said that for an agile software development process, especially one that is 
+distributed and community oriented, within a framework of EU-funding, that it is heavily 
+people dependent? Or to stress it even further, sprint-driven development as a methodology 
+does not exist and function without an agile group of people, Crack performers. The people 
+are the methodology in some sense and if you wish to draw upon the experience of the PyPy 
+team you need to look at the supporting practices around the people in order to find what can be 
+duplicated and tested in another project environment. This conclusion matches what Alistair 
+Cockburn writes in his paper "Characterizing People as Non-Linear, First-Order Components in 
+Software Development" [3]:
+
+"The fundamental characteristics of "people" have a first-order 
+effect on software development, not a lower-order effect." 
+
+If we accept this conclusion then we can also, thanks to the people, start to get innovative 
+regarding practices. Designing the project process based on the specific needs of the unique 
+project environment you are facing. In the case of PyPy this means that we are exploring
+the methodology as we go along, adjusting and finetuning the process as well as the software.
+
+So, when drawing from these different skills within the community of developers, the people, in 
+the PyPy project one possible conclusion would be that a truly agile approach
 dominating the work style of an Open Source project will increase the ability of
 the community to spread the strategy of agility to other domains. 
+
 By this we mean that what started as agile practices in the development process 
 quickly became influencing factors when designing other project processes. Examples of 
 this in PyPy is how the sprint-driven development acts as a focal point not just for the 
@@ -714,3 +733,14 @@ Addison-Wesley, 1995
 [2] Barry Boehm,Richard Turner, "Observations on Balancing Discipline and Agility",
 (drawn from the book "Balancing Agility and Discipline: A Guide to the Perplexed",
 Addison Wesley, 2003)
+
+[3] Alistair Cockburn, "Characterizing People as Non-Linear, First-Order Components in 
+Software Development", Presented at the 4th International Multi-Conference on Systems, 
+Cybernetics and Informatics, Orlando, Florida, June, 2000,
+http://alistair.cockburn.us/crystal/articles/cpanfocisd/characterizingpeopleasnonlinear.html
+
+The author would like to thank the following people who have in various ways helped with the 
+creation of this paper: Angela Martin, Emily Bache, Tres Seaver, Carl Friedrich Bolz.
+
+I would like to dedicate this paper to my dear friend and mentor of the Open Source Python and 
+PyPy community Holger Krekel.
