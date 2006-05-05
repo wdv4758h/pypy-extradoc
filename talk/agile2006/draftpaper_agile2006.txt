@@ -18,7 +18,7 @@ process that is PyPy. These influencing factors are the F/OSS Python Community
 the Python community evolved technique of "sprinting") and the EU funding
 practices (resource tracking and reporting) impacting the project. These
 influencing factors laid the foundation for the custom-made project process
-that makes this unique hybrid project work and the main factor for driving this
+that makes this unique hybrid project work. The main factor for driving this
 process is the skills of the team of core developers instigating the project.
 PyPy, with its open and transparent communication and collaborative work style,
 is again a proof that the best agile practice is the people factor.
@@ -44,12 +44,12 @@ driven from a non-profit perspective which rapidly increased in complexity when
 the Open Source project applied for EU-funding.  
 
 Today the project has over 4 years of intense activity as an Open Source
-community (F/OSS) effort and have completed a successful first year of the
-EU-funded effort.  In order to understand how the PyPy project
-manages to strike a balance between being an F/OSS community, while also having
-the core work of the project being funded by the European Union (with all the
-structure and process requirements that entails) we need to look at the
-influencing factors of the project process.
+community (F/OSS, Free Open Source Software) effort and have completed a 
+successful first year of the EU-funded effort.  In order to understand how the 
+PyPy project manages to strike a balance between being an F/OSS community, 
+while also having the core work of the project being funded by the European 
+Union (with all the structure and process requirements that entails) we need to 
+look at the influencing factors of the project process.
 
 The influencing factors of the PyPy project process are:
 
@@ -88,7 +88,7 @@ The influencing factors of the PyPy project process are:
   order to mitigate this risk.
 
 Our conclusion so far in the project is that we believe that the practice of
-"sprinting", as being used in the PyPy project, makes Agile and
+sprint-driven development, as being used in the PyPy project, makes Agile and
 Distributed/dispersed work styles more possible to combine. We also believe it
 is a very useful practice for creating value and ensuring quality in projects
 with hybrid cultures and methodologies. It is our aim to start to show-case
@@ -246,7 +246,8 @@ individuals, participation was funded privately. The effect on the evolving comm
 was a stable subscriber participation on the development list of between
 140-150 people. After the EU-funding and the more systematic structure of
 sprinting every 6th week the amount of subscribers went from around 150 people to
-over 250 people.
+over 250 people. Thus turning the prior experience of separate sprints into 
+a more systematic approach, sprint-driven development.
 
 
 Supporting infrastructure
@@ -467,12 +468,12 @@ gathering, continuous integration). This means that most of the time a sprint
 is a great way of getting results and getting new people acquainted - a good
 method for dissemination of knowledge and learning within the team. 
 
-A key insight, worthwhile for other EU-projects to ponder, is how an agile
-process like sprinting is much more suited for creative work between groups of
-distributed people. Traditional software development, as well as traditional
-project management techniques have a tendency to hinder creativity due to the
-inbuilt over-structured, segmented and control-oriented approach which in most
-cases ends in less quality when results are being measured.
+Another insight, worthwhile for other more discipline based projects to ponder, 
+is how an agile process like sprinting is much more suited for creative work 
+between groups of distributed people. Traditional software development, as well 
+as traditional project management techniques have a tendency to hinder creativity 
+due to the inbuilt over-structured, segmented and control-oriented approach 
+which in most cases ends in less quality when results are being measured.
 
 EU-project practices
 ====================
@@ -534,7 +535,7 @@ Communication and documentation
 
 All documentation and supporting communication infrastructure is hosted on the
 same developer server as the source code, covered by the same version control
-system. Only a few repositories are not public available (such as the resource
+system. Only a few repositories are not publically available (such as the resource
 tracking repositories) - but they are fully accessible for everyone employed by
 a partner organization.
 
