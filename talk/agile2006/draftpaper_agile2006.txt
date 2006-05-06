@@ -241,7 +241,7 @@ factor. Thus making it easier recruit people into the PyPy community.
 The PyPy project inherited the focus on collaborative approaches and open
 communication climate.  The strategy of using sprints, as a core technique, to 
 kick-start the project as well as moving the sprints to different
-locations had clear effects.It encouraged participation by meeting people locally. 
+locations had clear effects. It encouraged participation by meeting people locally. 
 During the period of 2003-2004 6 sprints were arranged in various European cities.
 These sprints were hosted by universities and private
 individuals, participation was funded privately. The effect on the evolving community
@@ -275,7 +275,7 @@ tests and for producing useful traceback output. There are also automatically
 generated web pages that show the status of all tests as per the latest checked
 in test results. This together with a public issue-tracker covering bugs keeps the 
 development group focused on the quality of the code when doing
-continous integration. It greatly reduces the need
+continuous integration. It greatly reduces the need
 to coordinate and delegate refactoring work - this is handled in a self-organized way.
 
 The main communication channels between developers involved in PyPy is to
@@ -285,7 +285,7 @@ documentation, tutorials, talks and papers etc are all available on the central
 developer server for everyone to access. A very useful feature that really supports
 information and communication are the public email archives covering the key 
 mailing lists - going back to the start of 2003. As a newcomer to the project
-in the fall of 2003 these public and easily accessable mailing list archives
+in the fall of 2003 these public and easily accessible mailing list archives
 was the primary means for me personally to get into the project. It provided answers
 to who had been key people in the process, what had been crucial topics, how had 
 discussions and decisions been handled. It is also regularly being used with newcomers
@@ -346,10 +346,10 @@ the project sprints every 6th week. Sync-meetings keep cohesion as well as a
 team focus-and-feel for the dispersed work style between sprints. There are three 
 crucial aspects of this practice. The first one is that our experience as well as 
 that of Canonical points to keeping the time for the meeting brief. The reason for 
-30 minutes limit is that it forces prioritization on what topics to choose. However 
+30 minutes limit is that it gives priority on what topics to choose. However 
 complex your development situation is you should choose not more than 3 topics, 
 topics that could be discussed and decided upon during these 30 minutes. Not having 
-this timelimit would create long and tiresome IRC meetings which would demotivate
+this time limit would create long and tiresome IRC meetings which would affect motivation
 people and also create more confusion than results.
 
 The second aspect is that it has a fixed format in which the meeting starts with 
@@ -374,7 +374,7 @@ Here is what one of the new core developers of PyPy says about sync-meetings:
 
     *"Sync-meetings are useful because they enable developers to discuss and
     clarify issues among themselves and to provide a common focus when working
-    distributedly. They are also a lightweight way to syncronize activities,
+    distributedly. They are also a lightweight way to synchronize activities,
     resolve blockers and to get an overview about who is currently doing what
     work."*
     -- Carl Friedrich Bolz
@@ -514,7 +514,7 @@ The strategy was to keep "conceptual integrity" :raw-latex:`\cite{key-2}` of
 the vision and the idea in the hands of the core developers. As Brooks
 stresses, a uniform system design is better than uncoordinated and independent
 design ideas. The core developers had a clear and agreed vision - but would
-they be allowed to implement it within a fixed contract workstyle, with new
+they be allowed to implement it within a fixed contract work style, with new
 partners involved that had not been involved in the process from the start? The
 core developers were organized into a technical board, responsible for planning
 and coordinating the development work between the partners, with the mandate to
@@ -667,7 +667,7 @@ full time on a project they strongly believed in.  The most crucial mix of
 skills for making this possible was/are:
 
 - **Social:** The ability to communicate open and transparent, to mentor and
-  tutor dispersed as well as reinventing different collaborative workstyles of
+  tutor dispersed as well as reinventing different collaborative work styles of
   the sprint method, "manage" groups and community as well as consortium, and
   handle conflicts)
 
@@ -684,7 +684,7 @@ skills for making this possible was/are:
   seeking bets practices of other projects.
 
 - **Entrepreneurs:** To risk the community through pursuing the idea of
-  EU-funding in order to fullfill the ambitious vision, managing to not only
+  EU-funding in order to fulfill the ambitious vision, managing to not only
   create a consortium with innovative structures of cooperation but also to
   create new companies.
 
@@ -718,7 +718,7 @@ If we accept this conclusion then we can also, thanks to the people, start to
 get innovative regarding practices. Designing the project process based on the
 specific needs of the unique project environment you are facing. In the case of
 PyPy this means that we are exploring the methodology as we go along, adjusting
-and finetuning the process as well as the software.
+and fine tuning the process as well as the software.
 
 So, when drawing from these different skills within the community of
 developers, the people, in the PyPy project one possible conclusion would be
@@ -735,7 +735,7 @@ with the CRACK performers was what made the community grow and evolve. It was
 the foundation for a hybrid project where agile practices and EU-funding can
 fit within a distributed Open Source context.
 
-Acknowledgements
+Acknowledgments
 ================
 
 The author would like to thank the following people who have in various ways
@@ -770,6 +770,5 @@ Source Python and PyPy community Holger Krekel.
    characterizingpeopleasnonlinear.html}
 
    \end{thebibliography}
-
 
 
