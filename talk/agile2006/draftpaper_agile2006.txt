@@ -131,9 +131,8 @@ optimized compiler and interpreter purely in Python, applying Aspect Oriented
 Programming and abstract interpretation techniques.  The methodology objective
 aims at showcasing the "sprint-driven development method" being used by PyPy
 and you can view this paper as part of fulfilling the methodology objective.
-See also a paper on the sprint method submitted to the XP 2006 conference titled
-"Sprint-Driven Development: Agile methodologies in a Distributed Open Source
-Project (PyPy)".
+For more references on sprint-driven development, please see our paper for
+the XP 2006 conference :raw-latex:`\cite{key-1}`.
 
 Strategy:
 +++++++++
@@ -208,7 +207,7 @@ project ends in November 2006.
 
 The first funded year of the project ended with a review in Brussels in January
 2006, hosted by the Commission, reviewing the 10 deliverables comprising the
-work of the first year. All deliverables were accepted and based on
+work of the first year. All deliverables were accepted; based on
 recommendations by the external reviewers. The consortium and the Commission is
 now restructuring the volume of the remaining the deliverables (although not
 changing the scope of the project). 
@@ -359,7 +358,7 @@ the questions LAST (last week), NEXT (their focus for the upcoming week)
 and BLOCKERS (if they are stuck and need help). This means that the group get
 overview and can track progress, albeit loosely. All individuals get an opportunity to 
 voice their personal situation and the group jointly discuss potential blockers and how 
-to solve them. The fixed format help to keep focus and creates a rythm that makes it 
+to solve them. The fixed format help to keep focus and creates a rhythm that makes it 
 easier for newcomers to get into the flow of the meeting.
 
 The third aspect is also the main challenge with the practice. In PyPy we rotate
@@ -378,6 +377,7 @@ Here is what one of the new core developers of PyPy says about sync-meetings:
     distributedly. They are also a lightweight way to syncronize activities,
     resolve blockers and to get an overview about who is currently doing what
     work."*
+    -- Carl Friedrich Bolz
 
 Influencing factors: agile practices in PyPy
 ============================================
@@ -448,7 +448,7 @@ was to be found in the F/OSS project PyPy - the community evolved through
 sprint driven development.
 
 The sprint method, as well as key aspects of F/OSS supportive infrastructure
-and practices was established within the project before PyPy received it´s
+and practices was established within the project before PyPy received its
 EU-funding.  Thus, in the proposal,we put much emphasis on the methodology in
 itself when designing the consortium level process. Examples of how this was
 done was that we created a methodology objective, specific deliverables
@@ -485,7 +485,7 @@ EU-project practices
 Consortium structure
 --------------------
 
-Key requirements regarding organizational structures of an Framework Programme
+Key requirements regarding organizational structures of a Framework Programme
 6 EU-project are:
 
 - a consortium of partners performing the work described in the contract
@@ -510,7 +510,7 @@ Although the responsibility rested on the different management roles and the
 management team the strategy implemented was to delegate as much as possible of
 the responsibilities and decision-making to the core developers.
 
-The strategy was to keep "conceptual integrity" :raw-latex:`\cite{key-1}` of
+The strategy was to keep "conceptual integrity" :raw-latex:`\cite{key-2}` of
 the vision and the idea in the hands of the core developers. As Brooks
 stresses, a uniform system design is better than uncoordinated and independent
 design ideas. The core developers had a clear and agreed vision - but would
@@ -559,8 +559,8 @@ coordinate specific issues between some partners or between all partners, have
 physical meetings and discussions between the management team and the technical
 board etc.
 
-Our funding have also resulted in the possibility to have a more unorthodox
-documentation - the project have experimented in filming sprints to show the
+Our funding have also resulted in the possibility to have a more unorthodox approach 
+to documentation - the project have experimented in filming sprints to show the
 development method as well as filming talks and discussion. Our film material
 is planned to be released before summer 2006.
 
@@ -659,7 +659,7 @@ EU-funded projects, while still working agile and distributed?
 We believe so. The one clear dominating factor to make all this succeed is, as
 always, the people factor, the CRACK performers as Boehm and Turner calls them
 ("Collaborative, Representative, Authorized, Committed, Knowledgeable")
-:raw-latex:`\cite{key-2}`.
+:raw-latex:`\cite{key-3}`.
 
 The core developers of the PyPy project had the right mix of various skills in
 order to succeed in setting up a hybrid environment - enabling them to work
@@ -709,7 +709,7 @@ need to look at the supporting practices around the people in order to find
 what can be duplicated and tested in another project environment. This
 conclusion matches what Alistair Cockburn writes in his paper "Characterizing
 People as Non-Linear, First-Order Components in Software Development"
-:raw-latex:`\cite{key-3}`:
+:raw-latex:`\cite{key-4}`:
 
     *"The fundamental characteristics of "people" have a first-order 
     effect on software development, not a lower-order effect."*
@@ -751,14 +751,18 @@ Source Python and PyPy community Holger Krekel.
 .. raw:: latex
 
    \begin{thebibliography}{1}
-   \bibitem{key-1} Fredrick P. Brooks, Jr, "The mythical man-month, anniversary
+   
+    \bibitem{key-1} Beatrice Düring, "Sprint-Driven Development: Agile methodologies 
+    in a Distributed Open Source Project (PyPy)", XP 2006
+    
+   \bibitem{key-2} Fredrick P. Brooks, Jr, "The mythical man-month, anniversary
    edition", Addison-Wesley, 1995
 
-   \bibitem{key-2} Barry Boehm,Richard Turner, "Observations on Balancing
+   \bibitem{key-3} Barry Boehm,Richard Turner, "Observations on Balancing
    Discipline and Agility", (drawn from the book "Balancing Agility and
    Discipline: A Guide to the Perplexed", Addison Wesley, 2003)
 
-   \bibitem{key-3} Alistair Cockburn, "Characterizing People as Non-Linear, First-Order
+   \bibitem{key-4} Alistair Cockburn, "Characterizing People as Non-Linear, First-Order
    Components in Software Development", Presented at the 4th International
    Multi-Conference on Systems, Cybernetics and Informatics, Orlando,
    Florida, June, 2000, \texttt{http://alistair.cockburn.us/crystal/\\
