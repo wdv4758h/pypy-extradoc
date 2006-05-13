@@ -1,0 +1,28 @@
+Duesseldorf internal-ish sprint 2-9 June 2006
+====================================================
+
+The next PyPy sprint will be held in the Computer Science department of
+Heinrich-Heine Universitaet Duesseldorf from the 2nd to the 9th of June.
+
+The main focus of the sprint will be on the goals of the upcoming June 0.9
+release:
+
+* The extension module compiler.  The goal is to be able to use a single
+  RPython source code as an extension module for both PyPy and CPython.
+  The means to get there is -- most likely -- by compiling ctypes-based
+  modules into either pypy-c or a CPython dll/so.
+
+* Write some more modules in this style with ctypes.
+
+* Stackless: the big missing feature is pickling running tasklets.
+  There is also some smaller work that needs to be done, like exposing
+  all the existing RPython-level interfaces to app-level
+  (e.g. greenlets).
+
+* Write more documentation.
+
+* Misc topics, depending on interests: back-ends (CLI, Squeak), testing
+  framework, modified semantics (security/sandboxing...), etc.
+
+
+.. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
