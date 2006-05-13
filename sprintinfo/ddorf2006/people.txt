@@ -10,6 +10,7 @@ available yet from them.
 ==================== ============== =====================
 Michael Hudson       ?              private
 Armin Rigo           ?              private
+Holger Krekel        2nd-9th        ?
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -18,7 +19,6 @@ People on the following list were present at previous sprints:
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
 Anders Chrigstroem   ?              ?
-Holger Krekel        ?              ?
 Samuele Pedroni      ?              ?
 Christian Tismer     ?              ?
 Anders Lehmann       ?              ?
