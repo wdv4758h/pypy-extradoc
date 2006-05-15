@@ -28,7 +28,7 @@ If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
 and drop a note about your interests and post any questions.  More 
 organisational information will be send to that list.  We'll keep
 a list of `people`_ which we'll update (which you can do so yourself
-if you codespeak commit rights). 
+if you have codespeak commit rights). 
 
 .. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 .. _`people`: http://codespeak.net/pypy/extradoc/sprintinfo/ddorf2006/people.html
