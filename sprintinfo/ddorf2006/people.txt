@@ -11,6 +11,7 @@ available yet from them.
 Michael Hudson       ?              private
 Armin Rigo           ?              private
 Holger Krekel        2nd-9th        ?
+Carl Friedrich Bolz  nope :-)       private
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -35,7 +36,6 @@ Bert Freudenberg     ?              ?
 Laura Creighton      ?              ?
 Beatrice Duering     ?              ?
 Eric van Riet Paap   ?              ?
-Carl Friedrich Bolz  ?              ?
 Richard Emslie       ?              ?
 Johan Hahn           ?              ?
 ==================== ============== =====================
