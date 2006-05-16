@@ -10,7 +10,7 @@ available yet from them.
 ==================== ============== =====================
 Michael Hudson       ?              private
 Armin Rigo           ?              private
-Holger Krekel        2nd-9th        ?
+Holger Krekel        1st-9th        ?
 Carl Friedrich Bolz  nope :-)       private
 Eric van Riet Paap   ?              ?
 ==================== ============== =====================
