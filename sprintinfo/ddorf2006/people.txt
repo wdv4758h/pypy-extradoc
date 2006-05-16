@@ -13,7 +13,7 @@ Armin Rigo           ?              private
 Holger Krekel        1st-9th        ?
 Carl Friedrich Bolz  nope :-)       private
 Eric van Riet Paap   ?              ?
-Maciej Fijalkowski   ?              ?
+Maciej Fijalkowski   3rd-9th        cfbolz
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
