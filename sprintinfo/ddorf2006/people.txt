@@ -14,6 +14,8 @@ Holger Krekel        1st-9th        ?
 Carl Friedrich Bolz  nope :-)       private
 Eric van Riet Paap   ?              ?
 Maciej Fijalkowski   3rd-9th        cfbolz
+Anders Chrigstroem   1st - 9th      ?
+Samuele Pedroni      1st - 9th      ?
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -21,8 +23,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
-Anders Chrigstroem   ?              ?
-Samuele Pedroni      ?              ?
 Christian Tismer     ?              ?
 Anders Lehmann       ?              ?
 Jacob Hallen         ?              ?
