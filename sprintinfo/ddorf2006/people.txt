@@ -16,6 +16,7 @@ Eric van Riet Paap   ?              ?
 Maciej Fijalkowski   3rd-9th        cfbolz
 Anders Chrigstroem   1st - 9th      ?
 Samuele Pedroni      1st - 9th      ?
+Antonio Cuni         1st - 9th      cfbolz
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
