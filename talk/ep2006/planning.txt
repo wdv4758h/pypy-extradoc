@@ -1,0 +1,15 @@
+we had a bit of a chat in the pypy-sync meeting on 2006-05-18 about the talks
+we want to give at europython this year.  we decided that we might give up to 4
+talks:
+
+    1. an introductory talk, probably based on michael's talk from the accu
+       conference (but likely a bit shorter)
+
+    2. a "what pypy can do for you" talk, covering the ext-compiler, stackless,
+       etc.
+
+    3. an architecture session, similar to that held at pycon this year.
+
+    4. a talk on the methodology side of the project.
+
+In addition Eric will probably give a lightning talk about the JS backend.
