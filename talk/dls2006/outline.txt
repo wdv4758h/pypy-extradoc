@@ -7,6 +7,7 @@ Introduction
 ============
 
 High-level architecture, VM portability+flexibility goals with comparisons
+(rigidity, less expressiveness of implementation languages)
 
 System programming with Python
 ==============================
@@ -40,4 +41,7 @@ Related work
 Conclusion
 ==========
 
-Works, reasonably efficient, quite confusing at times
+Works, effectively increases flexibility and expressiveness,
+ reasonably efficient, quite confusing at times;
+work in progress, some things are rough and could use more
+streamlined implementations and uniform approaches
