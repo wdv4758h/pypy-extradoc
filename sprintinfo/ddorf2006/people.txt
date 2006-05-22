@@ -12,7 +12,7 @@ Michael Hudson       ?              private
 Armin Rigo           ?              private
 Holger Krekel        1st-9th        ?
 Carl Friedrich Bolz  nope :-)       private
-Eric van Riet Paap   2nd-4th + 7th? ?
+Eric van Riet Paap   6th - 8th      private
 Maciej Fijalkowski   3rd-9th        cfbolz
 Anders Chrigstroem   1st - 9th      ?
 Samuele Pedroni      1st - 9th      ?
