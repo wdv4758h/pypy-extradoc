@@ -6,8 +6,13 @@
 Introduction
 ============
 
-High-level architecture, VM portability+flexibility goals with comparisons
+VM portability+flexibility goals with comparisons
 (rigidity, less expressiveness of implementation languages)
+
+Architecture
+============
+
+High-level architecture, shortly
 
 System programming with Python
 ==============================
@@ -26,6 +31,11 @@ Flow space, annotator overviews
 Not very precise, no automatic polymorphism, but easy to control, fast, easy
 and to reuse with different type systems: RPython, ll, oo, rctypes,
 BTA (binding-time analysis for the JIT)...  easy custom specializations
+
+Experimental results
+====================
+
+a few numbers
 
 Future work
 ===========
