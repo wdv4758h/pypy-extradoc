@@ -33,45 +33,68 @@
 ============================================================
 
 
-Despite the constant trend in the programming world towards portability
-and reusability, there are some areas in which it is still notoriously
-difficult to write flexible, portable, and reasonably efficient
-programs.  The implementation of virtual machines is one such area.  Building
-implementations of general programming languages, in particular highly
-dynamic ones, is typically a long-winded effort and produces a result
-that is quite [quite could be removed here?] tailored to a specific platform.
-For this and other
-reasons, standard platforms emerge; nowadays, a language implementer
-could cover most general platforms in use by writing three versions of
-his virtual machine: for C/Posix, for Java, and for CLI/.NET.  This is, at least, the
-current situation of the Python programming language, where independent
-volunteers have developed and are now maintaining Java and .NET versions of
-Python, which follow the evolution of the "official" C version
-(CPython).
+Despite the constant trend in the programming world towards
+portability and reusability, there are some areas in which it is still
+notoriously difficult to write flexible, portable, and reasonably
+efficient programs.  The implementation of virtual machines is one
+such area.  Building implementations of general programming languages,
+in particular highly dynamic ones, using a classic direct coding
+approach, is typically a long-winded effort and produces a result that
+is quite [quite could be removed here?] tailored to a specific
+platform and where architectural decisions (e.g. about GC) are spread
+across the code in a pervasive and invasive way.
 
-However, we believe that platform standardization does not have to be a
-necessary component of this equation.  We are basically using the
+For this and other reasons, standard platforms emerge; nowadays, a
+language implementer could cover most general platforms in use by
+writing three versions of his virtual machine: for C/Posix, for Java,
+and for CLI/.NET.  This is, at least, the current situation of the
+Python programming language, where independent volunteers have
+developed and are now maintaining Java and .NET versions of Python,
+which follow the evolution of the "official" C version (CPython).
+
+However, we believe that platform standardization does not have to be
+a necessary component of this equation.  We are basically using the
 standard "meta-programming" argument: if one could write the VM in a
 very high level language, then the VM itself could be automatically
-*translated* to any lower-level platform.  Moreover by writing the VM in
-such a language we would gain in flexibility and expressiveness.
+*translated* to any lower-level platform.  Moreover by writing the VM
+in such a language we would gain in flexibility in architectural
+choices and expressiveness.
 
 PyPy achieves this goal without giving up on the efficiency of the
-compiled VMs.  The key factors enabling this result are not to be found
+compiled VMs.  
+
+
+
+
+The key factors enabling this result are not to be found
 in recent advances in any particular research area - we are not using
 any sophisticated GC, any constraint-based type inference, any advanced
-meta-programming [surely not mega-programming? :)] concepts.
-Instead, we are following a novel overall
-architecture: it is split into many levels of stepwise translation from
-the high-level source of the VM to the final target platform.  Similar
-platforms can reuse many of these steps, while for very different
-platforms we have the option to perform very different translation
-steps.  Each step reuses a common type inference component, but with a
-different type system.
+meta-programmingconcepts.
+[this claim formulated this way is confusing, the GC aspect is marginal
+and we could adopt a sophisticated GC, the constraint based type inference
+is pertinent, but the meta-programming is a bit too vague,
+there's no accepted definition of what should be considered advanced meta-programming, and what we do is meta-programming for some definition,
+I would just cite the constraint type inference as example, and be happy]
+
+Instead, we are following a novel overall architecture: it is split
+into many levels of stepwise translation from the high-level source of
+the VM to the final target platform.  Similar platforms can reuse many
+of these steps, while for very different platforms we have the option
+to perform very different translation steps.  Each step reuses a
+common type inference component, but with a different type
+system. Steps are based on flow graph transformation and rewriting and
+by augmenting the program with further implementation code written in
+Python and analysed with the suitable type system.  For the various
+analyses used, not only type inference, we try to formulate them as
+abstract interpretation, mitigating the potential efficiency problem
+by wise choices and compromises for the domain used, but gaining much
+more freedom and controllability without needing to think
+sophisticated setup transformations to prepare the input for more
+tailored algorithms.
 
 Experiments also suggest a more mundane reason why such an approach is
-only practical today: a typical translation takes about half an hour on a
-modern PC and consumes close to 1GB of RAM.
+only practical today: a typical translation takes about half an hour
+on a modern PC and consumes close to 1GB of RAM.
 
 We shortly describe the architecture of PyPy in `section 2`_.  In
 `section 3`_ we describe our approach of varying the type systems at
