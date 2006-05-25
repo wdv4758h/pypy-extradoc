@@ -63,9 +63,6 @@ choices and expressiveness.
 PyPy achieves this goal without giving up on the efficiency of the
 compiled VMs.  
 
-
-
-
 The key factors enabling this result are not to be found
 in recent advances in any particular research area - we are not using
 any sophisticated GC, any constraint-based type inference, any advanced
