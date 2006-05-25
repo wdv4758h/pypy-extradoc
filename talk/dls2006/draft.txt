@@ -2,10 +2,12 @@
                   Still Missing a Cool Title
 ************************************************************
 
+.. title ideas: Implementing Virtual Machines in Dynamic Languages?
+
 :Abstract:
 
-    The PyPy project seeks to prove both on a research and on a
-    practical level the feasability of writing a virtual machine (VM)
+    The PyPy project seeks to prove both on a research and a
+    practical level the feasibility of writing a virtual machine (VM)
     for a dynamic language in a dynamic language - in this case, Python.
     The aim is to translate (i.e. compile) the VM to arbitrary target
     environments, ranging in level from C/Posix to Smalltalk/Squeak via
@@ -17,7 +19,7 @@
     programming language at various levels of our architecture and
     translation process.  For each level, we design a corresponding type
     system and apply a generic type inference engine - for example, the
-    garbage collector (GC) is written in a style that manipulates
+    garbage collector is written in a style that manipulates
     simulated pointer and address objects, and when translated to C
     these operations become C-level pointer and address instructions.
 
@@ -34,31 +36,33 @@
 Despite the constant trend in the programming world towards portability
 and reusability, there are some areas in which it is still notoriously
 difficult to write flexible, portable, and reasonably efficient
-programs.  Virtual machines (VM) is one such area.  Building
+programs.  The implementation of virtual machines is one such area.  Building
 implementations of general programming languages, in particular highly
 dynamic ones, is typically a long-winded effort and produces a result
-that is quite tailored to a specific platform.  For this and other
-reasons, standard platforms emerge; nowadays, a language implementor
+that is quite [quite could be removed here?] tailored to a specific platform.
+For this and other
+reasons, standard platforms emerge; nowadays, a language implementer
 could cover most general platforms in use by writing three versions of
-his VM: for C/Posix, for Java, and for CLI/.NET.  This is, at least, the
+his virtual machine: for C/Posix, for Java, and for CLI/.NET.  This is, at least, the
 current situation of the Python programming language, where independent
-volunteers developped and are now maintaining Java and .NET versions of
+volunteers have developed and are now maintaining Java and .NET versions of
 Python, which follow the evolution of the "official" C version
 (CPython).
 
 However, we believe that platform standardization does not have to be a
 necessary component of this equation.  We are basically using the
-standard "metaprogramming" argument: if one could write the VM in a
-very-high-level language, then the VM itself could be automatically
+standard "meta-programming" argument: if one could write the VM in a
+very high level language, then the VM itself could be automatically
 *translated* to any lower-level platform.  Moreover by writing the VM in
-such a language we would gain in flexibility and expressivity.
+such a language we would gain in flexibility and expressiveness.
 
 PyPy achieves this goal without giving up on the efficiency of the
 compiled VMs.  The key factors enabling this result are not to be found
 in recent advances in any particular research area - we are not using
 any sophisticated GC, any constraint-based type inference, any advanced
-mega-programming concepts.  Instead, we are following a novel overall
-architecture: it is split in many levels of stepwise translation from
+meta-programming [surely not mega-programming? :)] concepts.
+Instead, we are following a novel overall
+architecture: it is split into many levels of stepwise translation from
 the high-level source of the VM to the final target platform.  Similar
 platforms can reuse many of these steps, while for very different
 platforms we have the option to perform very different translation
@@ -66,13 +70,13 @@ steps.  Each step reuses a common type inference component, but with a
 different type system.
 
 Experiments also suggest a more mundane reason why such an approach is
-only practical today: a typical translation takes about an hour on a
+only practical today: a typical translation takes about half an hour on a
 modern PC and consumes close to 1GB of RAM.
 
 We shortly describe the architecture of PyPy in `section 2`_.  In
 `section 3`_ we describe our approach of varying the type systems at
 various levels of the translation.  `Section 4`_ gives an overview of
-the type inferencer we developped.  We present experimental results in
+the type inference engine we developed.  We present experimental results in
 `section 5`_ and future work directions in `section 6`_.  In `section 7`_
 we compare with related work, and finally we conclude in `section 8`_.
 
@@ -88,7 +92,7 @@ XXX it contains on
 the one hand an implementation of the Python programming language,
 mostly complete and compliant with the current version of the language,
 Python 2.4.  Our current efforts are focused on the second part, which
-is a translation toolsuite whose goal is, roughly speaking, to compile
+is a translation tool-suite whose goal is, roughly speaking, to compile
 various subsets of Python to various environment.
 
 
