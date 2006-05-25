@@ -88,13 +88,29 @@ we compare with related work, and finally we conclude in `section 8`_.
 ============================================================
 
 
-XXX it contains on
-the one hand an implementation of the Python programming language,
-mostly complete and compliant with the current version of the language,
-Python 2.4.  Our current efforts are focused on the second part, which
-is a translation tool-suite whose goal is, roughly speaking, to compile
-various subsets of Python to various environment.
+There are two major components in PyPy:
 
+1. the *Standard Interpreter*: an implementation of the Python programming
+language, mostly complete and compliant with the current version of the
+language, Python 2.4.
+
+2. the *Translation Process*: a translation tool-suite whose goal is to
+compile subsets of Python to various environment.
+
+In particular, we have defined a subset of the Python language called
+"restricted Python" or RPython.  This sublanguage is not restricted
+syntactically, but only in the way it manipulates objects of different
+types.  The restrictions are a compromise between the expressivity and
+the need to statically infer enough types to generate efficient code.
+The foremost purpose of the translation tool-suite is to compile such
+RPython programs to a variety of different platforms.
+
+Our current efforts, and the present paper, focus on this tool-suite.
+We will not talk about the Standard Interpreter component of PyPy in the
+sequel, other than mention that it is written in RPython and can thus be
+translated.  At close to 90'000 lines of code, it is the largest RPython
+program that we have translated so far.  More information can be found
+in `[1]`_.
 
 
 .. _`section 3`:
@@ -160,3 +176,6 @@ XXX
 
 
 XXX
+
+
+.. _`[1]`: http://codespeak.net/pypy/dist/pypy/doc/architecture.html#the-standard-interpreter
