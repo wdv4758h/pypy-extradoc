@@ -220,7 +220,7 @@ without giving up the ability to generate fully ANSI C code.  (This will
 be the subject of another paper.)
 
 Finally, currently under development is a variant of the very first
-transformation step, for use when targetting higher-level,
+transformation step, for use when targeting higher-level,
 object-oriented (OO) environments.  It is currently being designed
 together with back-ends for Smalltalk/Squeak [#]_ and CLI/.NET.  This
 first transformation step, for C-like environments, is called the
@@ -296,7 +296,7 @@ LLTyper.
 
 In the example of the ``malloc`` operation, replaced by a call to GC
 code, this GC code can invoke a complete collection of dead objects, and
-can thus be arbitrarily complicated.  Still, our GC code is entierely
+can thus be arbitrarily complicated.  Still, our GC code is entirely
 written in plain Python, and it manipulates "objects" that are still at
 a lower level: pointer and address objects.  Even with the restriction
 of having to use pointer-like and address-like objects, Python remains
@@ -387,7 +387,7 @@ Secondly, and anecdotically, as the type inference process (`section
 4`_) is based on abstract interpretation, we can use the following
 trick: the resulting type of most low-level operations is deduced simply
 by example.  Sample C-level objects are instantiated, used as arguments
-to a given operation, and produce a sample result, whose C-leve type
+to a given operation, and produce a sample result, whose C-level type
 must be the type of the result variable in the graph.
 
 The third reason is fundamental: we use these emulating objects to
