@@ -63,35 +63,19 @@ choices and expressiveness.
 PyPy achieves this goal without giving up on the efficiency of the
 compiled VMs.  
 
-The key factors enabling this result are not to be found
-in recent advances in any particular research area - we are not using
-any sophisticated GC, any constraint-based type inference, any advanced
-meta-programmingconcepts.
-[this claim formulated this way is confusing, the GC aspect is marginal
-and we could adopt a sophisticated GC, the constraint based type inference
-is pertinent, but the meta-programming is a bit too vague,
-there's no accepted definition of what should be considered advanced meta-programming, and what we do is meta-programming for some definition,
-I would just cite the constraint type inference as example, and be happy]
-
-Instead, we are following a novel overall architecture: it is split
-into many levels of stepwise translation from the high-level source of
-the VM to the final target platform.  Similar platforms can reuse many
-of these steps, while for very different platforms we have the option
-to perform very different translation steps.  Each step reuses a
-common type inference component, but with a different type
-system. Steps are based on flow graph transformation and rewriting and
-by augmenting the program with further implementation code written in
-Python and analysed with the suitable type system.  For the various
-analyses used, not only type inference, we try to formulate them as
-abstract interpretation, mitigating the potential efficiency problem
-by wise choices and compromises for the domain used, but gaining much
-more freedom and controllability without needing to think
-sophisticated setup transformations to prepare the input for more
-tailored algorithms.
+The key factors enabling this result are not to be found in recent
+advances in any particular research area - we are not for example using
+constraint-based type inference.  Instead, we are following a novel
+overall architecture: it is split into many levels of stepwise
+translation from the high-level source of the VM to the final target
+platform.  Similar platforms can reuse many of these steps, while for
+very different platforms we have the option to perform very different
+translation steps.  Each step reuses a common type inference component
+with a different, ad-hoc type system.
 
 Experiments also suggest a more mundane reason why such an approach is
 only practical today: a typical translation takes about half an hour
-on a modern PC and consumes close to 1GB of RAM.
+on a modern PC and consumes between 512MB and 1GB of RAM.
 
 We shortly describe the architecture of PyPy in `section 2`_.  In
 `section 3`_ we describe our approach of varying the type systems at
@@ -126,11 +110,11 @@ The foremost purpose of the translation tool-suite is to compile such
 RPython programs to a variety of different platforms.
 
 Our current efforts, and the present paper, focus on this tool-suite.
-We will not talk about the Standard Interpreter component of PyPy in the
+We will not describe the Standard Interpreter component of PyPy in the
 sequel, other than mention that it is written in RPython and can thus be
 translated.  At close to 90'000 lines of code, it is the largest RPython
 program that we have translated so far.  More information can be found
-in `[1]`_.
+in `[S]`_.
 
 
 .. _`section 3`:
@@ -140,7 +124,268 @@ in `[1]`_.
 ============================================================
 
 
-XXX
+The translation process
+-----------------------
+
+The translation process starts from RPython source code and eventually
+produces low-level code suitable for the target environment.  It can be
+described as performing a series of step-wise transformations.  Each
+step is based on control flow graph transformations and rewriting, and
+on the ability to augment the program with further implementation code
+written in Python and analysed with the suitable type system.
+
+The front-end part of the translation process analyses the input RPython
+program in two phases, as follows [#]_:
+
+.. [#] Note that the two phases are intermingled in time, because type
+       inference proceeds from an entry point function and follows all
+       calls, and thus only gradually discovers (the reachable parts of)
+       the input program.
+
+``[figure: flow graph and annotator, e.g. part of doc/image/translation.*]``
+
+1. We take as input RPython functions, and convert them to control flow
+   graphs -- a structure amenable to analysis.  These flow graphs contain
+   polymorphic operations only: in Python, almost all operations are
+   dynamically overloaded by type, whereas the absence of macros means
+   that the control flow is static.
+
+2. We perform type inference on the control flow graphs.  At this stage,
+   types inferred are part of the type system which is the very definition
+   of the RPython sub-language: they are roughly a subset of Python's
+   built-in types, with some more precision to describe e.g. the
+   items stored in container types.  Occasionally, a single input function
+   can produce several specialized versions, i.e. several similar but
+   differently typed graphs.  This type inference process is described in
+   more details in `section 4`_.
+
+At the end of the front-end analysis, the input RPython program is
+represented as a forest of flow graphs with typed variables.  Following
+this analysis are a number of transformation steps.  Each transformation
+step modifies the graphs in-place, by altering their structure and/or
+the operations they contain.  Each step inputs graphs typed in one type
+system and leaves them typed in a possibly different type system, as we
+will describe in the sequel.  Finally, a back-end turns the resulting
+graphs into code suitable for the target environment, e.g. C source code
+ready to be compiled.
+
+
+Transformations
+---------------
+
+When the translation target is C or C-like environments, the first of
+the transformation steps takes the RPython-typed flow graphs, still
+containing polymorphic operations only, and produces flow graphs with
+monomorphic C-like operations and C-like types.  In the simplest case,
+this is the only transformation step: these graphs are directly fed to
+the C back-end, which turns them into ANSI C source code.
+
+But RPython comes with automatic memory management, and this first
+transformation step produces flow graphs that also assume automatic
+memory management.  Generating C code directly from there produces a
+fully leaking program, unless we link it with an external garbage
+collector (GC) like the Boehm conservative GC [Boehm], which is a viable
+option.
+
+We have two alternatives, each implemented as a transformation step.
+The first one inserts naive reference counting throughout the whole
+program's graphs, which without further optimizations gives exceedingly
+bad performance (it should be noted that the CPython interpreter is also
+based on reference counting, and experience suggests that it was not a
+bad choice in this particular case; more in `section 5`_).
+
+The other, and better, alternative is an exact GC, coupled with a
+transformation, the *GC transformer*.  It inputs C-level-typed graphs
+and replaces all ``malloc`` operations with calls to a garbage
+collector's innards.  It can inspect all the graphs to discover the
+``struct`` types in use by the program, and assign a unique type id to
+each of them.  These type ids are collected in internal tables that
+describe the layout of the structures, e.g. their sizes and the location
+of the pointer fields.
+
+We have implemented other transformations as well, e.g. performing
+various optimizations, or turning the whole code into a
+continuation-passing style (CPS) that allows us to use coroutines
+without giving up the ability to generate fully ANSI C code.  (This will
+be the subject of another paper.)
+
+Finally, currently under development is a variant of the very first
+transformation step, for use when targetting higher-level,
+object-oriented (OO) environments.  It is currently being designed
+together with back-ends for Smalltalk/Squeak [#]_ and CLI/.NET.  This
+first transformation step, for C-like environments, is called the
+*LLTyper*: it produces C-level flow graphs, where the object-oriented
+features of RPython (classes and instances) become manipulations of C
+structs with explicit virtual table pointers.  By contrast, for OO
+environments the transformation step is called the *OOTyper*: it targets
+a simple object-oriented type system, and preserves the classes and
+instances of the original RPython program.  The LLTyper and OOTyper
+still have much code in common, to convert the more Python-specific
+features like its complex calling conventions.
+
+.. [#] Our simple OO type system is designed for *statically-typed* OO
+       environments, including Java; the presence of Smalltalk as a
+       back-end might be misleading in that respect.
+
+More information about these transformations can be found in `[T]`_.
+
+
+System code
+-----------
+
+A common pattern in all the transformation steps is to somehow lower the
+level at which the graphs are currently expressed.  Because of this,
+there are operations that were atomic in the input (higher-level) graphs
+but that need to be decomposed into several operations in the target
+(lower-level) graphs.  In some cases, the equivalent functionality
+requires more than a couple of operations: a single operation must be
+replaced by a call to whole new code -- functions and classes that serve
+as helpers.  An example of this is the ``malloc`` operation for the GC
+transformer.  Another example is the ``list.append()`` method, which is
+atomic for Python or RPython programs, but needs to be replaced in
+C-level code by a helper that possibly reallocates the array of items.
+
+This means that in addition to transforming the existing graphs, each
+transformation step also needs to insert new functions into the forest.
+A key feature of our approach is that we can write such "system-level"
+code -- relevant only to a particular transformation -- in plain Python
+as well:
+
+.. topic:: Figure 1 - a helper to implement ``list.append()``
+
+  ::
+
+    def ll_append(lst, newitem):
+        # Append an item to the end of the vector.
+        index = lst.length         # get the 'length' field
+        ll_resize(lst, index+1)    # call a helper not shown here
+        itemsarray = lst.items     # get the 'items' field
+        itemsarray[index] = item   # this behaves like a C array
+
+The idea is to feed these new Python functions into the front-end, using
+this time the transformation's target (lower-level) type system during
+the type inference.  In other words, we can write plain Python code that
+manipulates objects that conform to the lower-level type system, and
+have these functions automatically transformed into appropriately typed
+graphs.
+
+For example, ``ll_append()`` in figure 1 is a Python function that
+manipulates objects that behave like C structures and arrays.  This
+function is inserted by the LLTyper, as a helper to implement the
+``list.append()`` calls found in its RPython-level input graphs.  By
+going through the front-end reconfigured to use C-level types, the above
+function becomes a graph with such C-level types [#]_, which is then
+indistinguishable from the other graphs of the forest produced by the
+LLTyper.
+
+.. [#] The low-level type system specifies that the function should be
+       specialized by the C-level type of its input arguments, so it
+       actually turns into one graph per list type - list of integers,
+       list of pointers, etc.  This behavior gives the programmer a
+       feeling comparable to C++ templates, without the declarations.
+
+In the example of the ``malloc`` operation, replaced by a call to GC
+code, this GC code can invoke a complete collection of dead objects, and
+can thus be arbitrarily complicated.  Still, our GC code is entierely
+written in plain Python, and it manipulates "objects" that are still at
+a lower level: pointer and address objects.  Even with the restriction
+of having to use pointer-like and address-like objects, Python remains
+more expressive than, say, C to write a GC.  [see also Jikes]
+
+In the sequel, we will call *system code* functions written in Python
+that are meant to be analysed by the front-end.  For the purpose of this
+article we will restrict this definition to helpers introduced by
+transformations, as opposed to the original RPython program, although
+the difference is not fundamental to the translation process (and
+although our input RPython program, as seen in `section 2`_, is often
+itself a Python virtual machine!).
+
+Note that such system code cannot typically be expressed as normal
+RPython functions, because it corresponds to primitive operations at
+that level.  As an aside, let us remark that the number of primitive
+operations at RPython level is, comparatively speaking, quite large: all
+list and dictionary operations, instance and class attribute accesses,
+many string processing methods, a good subset of all Python built-in
+functions...  Compared to other approaches [e.g. Squeak], we do not try
+to minimize the number of primitives -- at least not at the source
+level.  It is fine to have many primitives at any high enough level,
+because they can all be implemented at the next lower level in a way
+that makes sense to that level.  The key reason why this is not
+burdensome is that the lower level implementations are also written in
+Python - with the only difference that they use (and have to be typeable
+in) the lower-level type system. [#]_
+
+.. [#] This is not strictly true: the type systems are even allowed to
+       co-exist in the same function.  The operations involving
+       higher-level type systems are turned into lower-level operations
+       by the previous transformations in the chain, which leave the
+       already-low-level operations untouched.
+
+
+Type systems
+------------
+
+The four levels that we considered so far are summarized in figure 2.
+
+::
+
+    [figure 2:    RPython
+                  /     \
+                 /       \
+       LLTypeSystem     OOTypeSystem
+               /
+              /
+      Raw addresses
+    ]
+
+The RPython level is a subset of Python, so the types mostly follow
+Python types, and the instances of these types are instances in the
+normal Python sense; e.g. whereas Python has only got a single type
+``list``, RPython has a parametric type ``list(T)`` for every RPython
+type ``T``, but instances of ``list(T)`` are just those Python lists
+whose items are all instances of ``T``.
+
+The other type systems, however, do not correspond to built-in Python
+types.  For each of them, we implemented:
+
+1. the types, which we use to tag the variables of the graphs at the
+   given level.  (Types are mostly just annotated formal terms, and
+   would have been implemented simply as such if Python supported
+   them directly.)
+
+2. the Python objects that emulate instances of these types.  (More
+   about them below.)
+
+We have defined well-typed operations between variables of these types,
+plugging on the standard Python operators.  These operations are the
+ones that the emulating instances implement.  As seen above, the types
+can also be used by type inference when analysing system code like the
+helpers of figure 1.
+
+Now, clearly, the purpose of types like a "C-like struct" or a "C-like
+array" is to be translated to a real ``struct`` or array declaration by
+the C back-end.  What, then, is the purpose of emulating such things in
+Python?  The answer is three-fold.  Firstly, if we have objects that
+live within the Python interpreter, but faithfully emulate the behavior
+of their C equivalent while performing additional safety checks, they
+are an invaluable help for testing and debugging.  For example, we can
+check the correctness of our hash table implementation, written in
+Python in term of struct- and array-like objects, just by running it.
+The same holds for the GC.
+
+Secondly, and anecdotically, as the type inference process (`section
+4`_) is based on abstract interpretation, we can use the following
+trick: the resulting type of most low-level operations is deduced simply
+by example.  Sample C-level objects are instantiated, used as arguments
+to a given operation, and produce a sample result, whose C-leve type
+must be the type of the result variable in the graph.
+
+The third reason is fundamental: we use these emulating objects to
+*represent* pre-built objects at that level.  For example, the GC
+transformer instantiates the objects emulating C arrays for the internal
+type id tables, and it fills them with the correct values.  These array
+objects are then either used directly when testing the GC, or translated
+by the C back-end into static pre-initialized arrays.
 
 
 
@@ -149,6 +394,22 @@ XXX
 ============================================================
                         Type inference
 ============================================================
+
+
+The various analyses used -- from type inference to lifetime analysis --
+are generally formulated as `abstract interpretation`_.  While this
+approach is known to be less efficient than more tailored algorithms
+like constraint-based type inference, we gain in freedom,
+controllability and simplicity.  This proved essential in our overall
+approach: as described in `section 3`_, we need to perform type
+inference with many different type systems, the details of which are
+still evolving.  We mitigate the potential efficiency problem by wise
+choices and compromises for the domain used; the foremost example of
+this is that our RPython type inference performs almost no automatic
+specialization of functions.  We achieved enough precision for our
+purpose, though, and in order to use the PyPy Standard Interpreter as
+the source RPython program we had to add only a few explicit
+specialization annotations manually.
 
 
 XXX
@@ -198,4 +459,6 @@ XXX
 XXX
 
 
-.. _`[1]`: http://codespeak.net/pypy/dist/pypy/doc/architecture.html#the-standard-interpreter
+.. _`[S]`: http://codespeak.net/pypy/dist/pypy/doc/architecture.html#the-standard-interpreter
+.. _`[T]`: http://codespeak.net/pypy/dist/pypy/doc/translation.html
+.. _`abstract interpretation`: http://en.wikipedia.org/wiki/Abstract_interpretation
