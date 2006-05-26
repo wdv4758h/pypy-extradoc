@@ -472,3 +472,6 @@ XXX
 .. _`[S]`: http://codespeak.net/pypy/dist/pypy/doc/architecture.html#the-standard-interpreter
 .. _`[T]`: http://codespeak.net/pypy/dist/pypy/doc/translation.html
 .. _`abstract interpretation`: http://en.wikipedia.org/wiki/Abstract_interpretation
+
+.. http://www.cs.jhu.edu/~scott/pll/constraints.html page to the reference
+   /recent result for constraint-based type inference 
