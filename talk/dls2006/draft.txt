@@ -144,11 +144,20 @@ program in two phases, as follows [#]_:
 
 ``[figure: flow graph and annotator, e.g. part of doc/image/translation.*]``
 
-1. We take as input RPython functions, and convert them to control flow
+1. We take as input RPython functions [#]_, and convert them to control flow
    graphs -- a structure amenable to analysis.  These flow graphs contain
    polymorphic operations only: in Python, almost all operations are
    dynamically overloaded by type, whereas the absence of macros means
    that the control flow is static.
+
+.. [#] The input to our translation chain are indeed loaded
+       runtime function objects, not source code or ASTs, this
+       allows us to use unrestricted python for meta-programming
+       purposes at load time, in a seemingly staged programming approach,
+       in which the whole of the source program as Python program
+       produces the RPython program input to the tool-chain as the 
+       object graph loaded in memory, and in particular the relevant
+       functions.
 
 2. We perform type inference on the control flow graphs.  At this stage,
    types inferred are part of the type system which is the very definition
@@ -205,7 +214,8 @@ of the pointer fields.
 
 We have implemented other transformations as well, e.g. performing
 various optimizations, or turning the whole code into a
-continuation-passing style (CPS) that allows us to use coroutines
+continuation-passing style (CPS) [I'm not sure our transformation
+can be classified as classical CPS, although there are known similar techniques but the terminology is quite confused] that allows us to use coroutines
 without giving up the ability to generate fully ANSI C code.  (This will
 be the subject of another paper.)
 
