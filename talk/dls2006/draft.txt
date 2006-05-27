@@ -359,9 +359,9 @@ The other type systems, however, do not correspond to built-in Python
 types.  For each of them, we implemented:
 
 1. the types, which we use to tag the variables of the graphs at the
-   given level.  (Types are mostly just annotated formal terms, and
-   would have been implemented simply as such if Python supported
-   them directly.)
+   given level.  (Types are actually annotated, self-recursive formal
+   terms, and would have been implemented simply as such if Python
+   supported them directly.)
 
 2. the Python objects that emulate instances of these types.  (More
    about them below.)
