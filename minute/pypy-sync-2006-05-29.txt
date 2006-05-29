@@ -54,7 +54,7 @@ Michael and holger will care tomorrow for co-ordinating/doing
 the pypy talk EuroPython 2006 submissions.  
 
 Christian reported that Gerald stopped working for tismerysoft
-from March on and that Eric will stop on 1st July. 
+by end of March on and that Eric will stop by end of June. 
  
 IRC logs 
 -------------
