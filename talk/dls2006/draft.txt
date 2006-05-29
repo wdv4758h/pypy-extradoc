@@ -639,29 +639,37 @@ The other type systems contain lower-level, C-like types that are mostly
 unordered, thus forming more trivial lattices than the one formed by
 RPython types.
 
-The set *A* of RPython types is defined as the following formal terms:
+The set :latexformula:`$A$` of RPython types is defined as the following
+formal terms:
 
-* Bot, Top -- the minimum and maximum elements (corresponding to
-  "impossible value" and "most general value");
+* :latexformula:`$Bot$`, :latexformula:`$Top$` -- the minimum and
+  maximum elements (corresponding to "impossible value" and "most
+  general value");
 
-* Int, NonNegInt, Bool -- integers, known-non-negative integers, booleans;
+* :latexformula:`$Int$`, :latexformula:`$NonNegInt$`,
+  :latexformula:`$Bool$` -- integers, known-non-negative integers,
+  booleans;
 
-* Str, Char -- strings, characters (which are strings of length 1);
+* :latexformula:`$Str$`, :latexformula:`$Char$` -- strings, characters
+  (which are strings of length 1);
 
-* Inst(*class*) -- instance of *class* or a subclass thereof (there is
-  one such term per *class*);
+* :latexformula:`$Inst(class)$` -- instance of :latexformula:`$class$`
+  or a subclass thereof (there is one such term per
+  :latexformula:`$class$`);
 
-* List(*v*) -- list; *v* is a variable summarising the items of the list
-  (there is one such term per variable);
+* :latexformula:`$List(v)$` -- list; :latexformula:`$v$` is a variable
+  summarising the items of the list (there is one such term per
+  variable);
 
-* Pbc(*set*) -- where the *set* is a subset of the (finite) set of all
-  prebuilt constant objects.  This set includes all the callables of the
-  input program: functions, classes, and methods.
+* :latexformula:`$Pbc(set)$` -- where the :latexformula:`$set$` is a
+  subset of the (finite) set of all prebuilt constant objects.  This set
+  includes all the callables of the input program: functions, classes,
+  and methods.
 
-* None -- stands for the singleton ``None`` object of Python.
+* :latexformula:`$None$` -- stands for the singleton ``None`` object of Python.
 
-* NullableStr, NullableInst(*class*) - a string or ``None``; resp. an
-  instance or ``None``.
+* :latexformula:`$NullableStr$`, :latexformula:`$NullableInst(class)$` -
+  a string or ``None``; resp. an instance or ``None``.
 
 Figures 6 and 7 shows how these types are ordered to form a lattice.  We
 mostly use its structure of `join-semilattice`_ only.
@@ -685,20 +693,24 @@ etc.  The complete list is described in `[T]`_.
 
 The type system moreover comes with a family of rules, which for every
 operation and every sensible combination of input types describes the
-type of its result variable.  Let *V* be the set of Variables that
-appear in the user program's flow graphs.  Let *b* be a map from *V* to
-*A*; it is a "binding" that gives to each variable a type.  The purpose
-of the annotator is to compute such a binding stepwise.
+type of its result variable.  Let :latexformula:`$V$` be the set of
+Variables that appear in the user program's flow graphs.  Let
+:latexformula:`$b$` be a map from :latexformula:`$V$` to
+:latexformula:`$A$`; it is a "binding" that gives to each variable a
+type.  The purpose of the annotator is to compute such a binding
+stepwise.
 
-Let *x*, *y* and *z* be Variables.  We introduce the rule::
+Let :latexformula:`$x$`, :latexformula:`$y$` and :latexformula:`$z$` be
+Variables.  We introduce the rule:
 
-         z=add(x,y), b(x)=Int, b(y)=Int
-      ------------------------------------------------------
-               b' = b with (z->Int)
+    :latexformula:`$$\begin{array}{c} z = \mathrm{add}(x, y), \; b(x) =
+    Int, \; Bool \leq b(y) \leq Int \\ \hline b' = b \hbox{\ with\ } (z
+    \rightarrow Int) \end{array}$$`
 
 which specify that if we see the addition operation applied to Variables
-whose current binding is ``Int``, a new binding *b'* can be produced:
-it is *b* except on *z*, where we have ``b'(z) = Int``.
+whose current binding is :latexformula:`$Int$`, a new binding
+:latexformula:`$b'$` can be produced: it is :latexformula:`$b$` except
+on :latexformula:`$z$`, where we have :latexformula:`$b'(z) = Int$`.
 
 The type inference engine can be seen as applying this kind of rules
 repeatedly.  It does not apply them in random order, but follows a
@@ -734,12 +746,13 @@ The worst case behaviors that can appear in the model described above
 involve the lattice of Pbcs, involving variables that could contain e.g.
 one function object among many.  An example of such behavior is code
 manipulating a table of function objects: when an item is read out of
-the table, its type is a large Pbc set: ``Pbc({f1, f2, f3, ...})``.  But
-in this example, the whole set is available at once, and not built
-incrementally by successive discoveries.  This seems to be often the
-case in practice: it is not very common for programs to manipulate
-objects that belong to a large but finite family - and when they do, the
-whole family tends to be available early on, requiring few reflowing.
+the table, its type is a large Pbc set: :latexformula:`$Pbc(\{f1, f2,
+f3, \ldots\})$`.  But in this example, the whole set is available at
+once, and not built incrementally by successive discoveries.  This seems
+to be often the case in practice: it is not very common for programs to
+manipulate objects that belong to a large but finite family - and when
+they do, the whole family tends to be available early on, requiring few
+reflowing.
 
 This means that *in practice* the complete process requires a time that
 is far lower than the worst case.  We have experimentally confirmed
@@ -773,21 +786,23 @@ form, which means that the ``x`` inside each basic block is a different
 Variable with a possibly different type as annotation.)
 
 This is implemented by introducing an extended family of types for
-boolean values::
+boolean values:
 
-    Bool(v_1: (t_1, f_1), v_2: (t_2, f_2), ...)
+    :latexformula:`$$Bool(v_1: (t_1, f_1), v_2: (t_2, f_2), ...)$$`
 
-where the *v_n* are variables and *t_n* and *f_n* are types.  The result
-of a check, like ``isintance()`` above, is typically annotated with such
-an extended ``Bool``.  The meaning of the type is as follows: if the
-run-time value of the boolean is True, then we know that each variable
-*v_n* has a type at most as general as *t_n*; and if the boolean is
-False, then each variable *v_n* has a type at most as general as *f_n*.
-This information is propagated from the check operation to the exit of
-the block via such an extended ``Bool`` type, and the conditional exit
-logic in the type inference engine uses it to trim the types it
-propagates into the next blocks (this is where the *meet* of the lattice
-is used).
+where the :latexformula:`$v_n$` are variables and :latexformula:`$t_n$`
+and :latexformula:`$f_n$` are types.  The result of a check, like
+``isintance()`` above, is typically annotated with such an extended
+``Bool``.  The meaning of the type is as follows: if the run-time value
+of the boolean is True, then we know that each variable
+:latexformula:`$v_n$` has a type at most as general as
+:latexformula:`$t_n$`; and if the boolean is False, then each variable
+:latexformula:`$v_n$` has a type at most as general as
+:latexformula:`$f_n$`.  This information is propagated from the check
+operation to the exit of the block via such an extended ``Bool`` type,
+and the conditional exit logic in the type inference engine uses it to
+trim the types it propagates into the next blocks (this is where the
+*meet* of the lattice is used).
 
 With the help of the above technique, we achieve a reasonable precision
 in small examples.  For larger examples, a different, non-local
