@@ -19,6 +19,7 @@ Samuele Pedroni      1st - 9th      Hotel an der Uni
 Christian Tismer     1st - 9th      Hotel an der Uni
 Antonio Cuni         1st - 9th      cfbolz
 Anders Lehmann       2nd - 9th      Hotel an der Uni 
+Niklaus Haldimann    2nd - 4th      cfbolz (?)
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -28,7 +29,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
 Christian Tismer     ?              ?
 Jacob Hallen         ?              ?
-Niklaus Haldimann    ?              ?
 Aurelien Campeas     ?              ?
 Alexandre Fayolle    ?              ?
 Lene Wagner          ?              ?
