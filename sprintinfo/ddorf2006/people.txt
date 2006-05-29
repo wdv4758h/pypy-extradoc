@@ -18,7 +18,7 @@ Anders Chrigstroem   1st - 9th      Hotel an der Uni
 Samuele Pedroni      1st - 9th      Hotel an der Uni
 Christian Tismer     1st - 9th      ?
 Antonio Cuni         1st - 9th      cfbolz
-Anders Lehmann       2nd - 9th      ?
+Anders Lehmann       2nd - 9th      Hotel an der Uni 
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
