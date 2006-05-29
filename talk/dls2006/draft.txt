@@ -563,8 +563,8 @@ sketched above is not entierely straightforward; we refer the reader to
 `[D]`_ for more information.
 
 
-Type inference
---------------
+The Annotator
+-------------
 
 The type inference engine, which we call the *annotator*, is the central
 component of the front-end part of the translation process.  Given a
@@ -688,8 +688,10 @@ All list terms for all variables are unordered.  The Pbcs form a
 classical finite set-of-subsets lattice.  In addition, we have left out
 a number of other annotations that are irrelevant for the basic
 description of the annotator and straightforward to handle:
-``Dictionary``, ``Tuple``, ``Float``, ``UnicodePoint``, ``Iterator``,
-etc.  The complete list is described in `[T]`_.
+:latexformula:`$Dictionary$`, :latexformula:`$Tuple$`,
+:latexformula:`$Float$`, :latexformula:`$UnicodePoint$`,
+:latexformula:`$Iterator$`, etc.  The complete list is described in
+`[T]`_.
 
 The type system moreover comes with a family of rules, which for every
 operation and every sensible combination of input types describes the
@@ -780,10 +782,11 @@ fragment::
         g(x)
 
 Although the type of ``x`` may be some parent class of ``MyClass``, it
-can be deduced to be of the more precise type ``Inst(MyClass)`` within
-the positive branch of the ``if``.  (Remember that our graphs are in SSI
-form, which means that the ``x`` inside each basic block is a different
-Variable with a possibly different type as annotation.)
+can be deduced to be of the more precise type
+:latexformula:`$Inst(MyClass)$` within the positive branch of the
+``if``.  (Remember that our graphs are in SSI form, which means that the
+``x`` inside each basic block is a different Variable with a possibly
+different type as annotation.)
 
 This is implemented by introducing an extended family of types for
 boolean values:
@@ -793,16 +796,16 @@ boolean values:
 where the :latexformula:`$v_n$` are variables and :latexformula:`$t_n$`
 and :latexformula:`$f_n$` are types.  The result of a check, like
 ``isintance()`` above, is typically annotated with such an extended
-``Bool``.  The meaning of the type is as follows: if the run-time value
-of the boolean is True, then we know that each variable
+:latexformula:`$Bool$`.  The meaning of the type is as follows: if the
+run-time value of the boolean is True, then we know that each variable
 :latexformula:`$v_n$` has a type at most as general as
 :latexformula:`$t_n$`; and if the boolean is False, then each variable
 :latexformula:`$v_n$` has a type at most as general as
 :latexformula:`$f_n$`.  This information is propagated from the check
-operation to the exit of the block via such an extended ``Bool`` type,
-and the conditional exit logic in the type inference engine uses it to
-trim the types it propagates into the next blocks (this is where the
-*meet* of the lattice is used).
+operation to the exit of the block via such an extended
+:latexformula:`$Bool$` type, and the conditional exit logic in the type
+inference engine uses it to trim the types it propagates into the next
+blocks (this is where the *meet* of the lattice is used).
 
 With the help of the above technique, we achieve a reasonable precision
 in small examples.  For larger examples, a different, non-local
