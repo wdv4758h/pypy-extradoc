@@ -446,16 +446,24 @@ that these objects have typically no text representation any more; for
 example, cyclic data structures may have been built at this point.  The
 translation tool-chain first turns these function objects into in-memory
 control flow graphs which contain direct references to the prebuilt data
-objects, and then handles and transforms these graphs.  We found
-in-process debugging sufficient and did not implement dumping of any
-intermediate step to disk.
+objects, and then handles and transforms these graphs.
+
+We found in-process debugging sufficient and did not implement dumping
+of any intermediate step to disk.  Figure 3 shows the control flow graph
+obtained for a simple function - this is a screenshot from our graph
+viewer, used for debugging; basic block placement is performed by
+Graphviz_.
+
+::
+
+    [figure 3: insert a nice pygame screenshot]
 
 The actual transformation from function objects - i.e. bytecode - to
 flow graph is performed by the Flow Object Space, a short but generic
 plug-in component for the Python interpreter of PyPy.  The architecture
-of our Python interpreter is shown in figure 3.
+of our Python interpreter is shown in figure 4.
 
-.. topic:: Figure 3 - the interpreter and object spaces
+.. topic:: Figure 4 - the interpreter and object spaces
 
     +------------------------------------------------------+
     |   forest of bytecode objects from the application    |
@@ -482,11 +490,11 @@ Object Space.  The Standard Object Space is a concrete domain, in which
 objects are the concrete Python objects of the various built-in types:
 lists, dictionaries, and so on.  By opposition, the Flow Object Space is
 really an abstract domain.  It handles objects that are placeholders.
-Its lattice order is shown in figure 4.
+Its lattice order is shown in figure 5.
 
 ::
 
-    [figure 4:                Variable
+    [figure 5:                Variable
 
                          /      |             \           \
                         /       |              \           \
@@ -544,14 +552,8 @@ bytecode.
 While the Flow Object Space is quite a short piece of code - its core
 functionality holds in 300 lines - the detail of the interactions
 sketched above is not entierely straightforward; we refer the reader to
-`[D]`_ for more information.  Figure 5 shows the control flow graph
-obtained for a simple function (this is a screenshot from our graph
-viewer, used for debugging; basic block placement is performed by
-Graphviz_).
+`[D]`_ for more information.
 
-::
-
-    [figure 5: insert a nice pygame screenshot]
 
 
 Type inference
