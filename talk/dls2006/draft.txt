@@ -80,9 +80,10 @@ on a modern PC and consumes between 512MB and 1GB of RAM.
 We shortly describe the architecture of PyPy in `section 2`_.  In
 `section 3`_ we describe our approach of varying the type systems at
 various levels of the translation.  `Section 4`_ gives an overview of
-the type inference engine we developed.  We present experimental results in
-`section 5`_ and future work directions in `section 6`_.  In `section 7`_
-we compare with related work, and finally we conclude in `section 8`_.
+the type inference engine we developed (and can be read independently
+from section 3.)  We present experimental results in `section 5`_ and
+future work directions in `section 6`_.  In `section 7`_ we compare with
+related work, and finally we conclude in `section 8`_.
 
 
 .. _`section 2`:
@@ -145,19 +146,18 @@ program in two phases, as follows [#]_:
 ``[figure: flow graph and annotator, e.g. part of doc/image/translation.*]``
 
 1. We take as input RPython functions [#]_, and convert them to control flow
-   graphs -- a structure amenable to analysis.  These flow graphs contain
+   graphs - a structure amenable to analysis.  These flow graphs contain
    polymorphic operations only: in Python, almost all operations are
-   dynamically overloaded by type, whereas the absence of macros means
-   that the control flow is static.
+   dynamically overloaded by type.
 
 .. [#] The input to our translation chain are indeed loaded
-       runtime function objects, not source code or ASTs, this
+       runtime function objects, not source code or ASTs.  This
        allows us to use unrestricted python for meta-programming
        purposes at load time, in a seemingly staged programming approach,
-       in which the whole of the source program as Python program
+       in which the whole of the source program - as Python program -
        produces the RPython program input to the tool-chain as the 
-       object graph loaded in memory, and in particular the relevant
-       functions.
+       object graph loaded in memory.  This includes both the relevant
+       functions and prebuilt data.
 
 2. We perform type inference on the control flow graphs.  At this stage,
    types inferred are part of the type system which is the very definition
@@ -217,7 +217,7 @@ various optimizations, or turning the whole code into a
 continuation-passing style (CPS) [I'm not sure our transformation
 can be classified as classical CPS, although there are known similar techniques but the terminology is quite confused] that allows us to use coroutines
 without giving up the ability to generate fully ANSI C code.  (This will
-be the subject of another paper.)
+be the subject of another paper.)  [mention exception transformer too]
 
 Finally, currently under development is a variant of the very first
 transformation step, for use when targeting higher-level,
@@ -249,7 +249,7 @@ there are operations that were atomic in the input (higher-level) graphs
 but that need to be decomposed into several operations in the target
 (lower-level) graphs.  In some cases, the equivalent functionality
 requires more than a couple of operations: a single operation must be
-replaced by a call to whole new code -- functions and classes that serve
+replaced by a call to whole new code - functions and classes that serve
 as helpers.  An example of this is the ``malloc`` operation for the GC
 transformer.  Another example is the ``list.append()`` method, which is
 atomic for Python or RPython programs, but needs to be replaced in
@@ -258,7 +258,7 @@ C-level code by a helper that possibly reallocates the array of items.
 This means that in addition to transforming the existing graphs, each
 transformation step also needs to insert new functions into the forest.
 A key feature of our approach is that we can write such "system-level"
-code -- relevant only to a particular transformation -- in plain Python
+code - relevant only to a particular transformation - in plain Python
 as well:
 
 .. topic:: Figure 1 - a helper to implement ``list.append()``
@@ -317,7 +317,7 @@ operations at RPython level is, comparatively speaking, quite large: all
 list and dictionary operations, instance and class attribute accesses,
 many string processing methods, a good subset of all Python built-in
 functions...  Compared to other approaches [e.g. Squeak], we do not try
-to minimize the number of primitives -- at least not at the source
+to minimize the number of primitives - at least not at the source
 level.  It is fine to have many primitives at any high enough level,
 because they can all be implemented at the next lower level in a way
 that makes sense to that level.  The key reason why this is not
@@ -406,21 +406,156 @@ by the C back-end into static pre-initialized arrays.
 ============================================================
 
 
-The various analyses used -- from type inference to lifetime analysis --
+The various analyses used - from type inference to lifetime analysis -
 are generally formulated as `abstract interpretation`_.  While this
 approach is known to be less efficient than more tailored algorithms
 like constraint-based type inference, we gain in freedom,
 controllability and simplicity.  This proved essential in our overall
 approach: as described in `section 3`_, we need to perform type
-inference with many different type systems, the details of which are
-still evolving.  We mitigate the potential efficiency problem by wise
-choices and compromises for the domain used; the foremost example of
-this is that our RPython type inference performs almost no automatic
-specialization of functions.  We achieved enough precision for our
-purpose, though, and in order to use the PyPy Standard Interpreter as
-the source RPython program we had to add only a few explicit
-specialization annotations manually.
+inference with many different type systems, the details of which have
+evolved along the road.
 
+We mitigate the potential efficiency problem by wise choices and
+compromises for the domain used; the foremost example of this is that
+our RPython type inference performs almost no automatic specialization
+of functions.  We achieved enough precision for our purpose, though.
+
+In the sequel, we give a more precise description of this process and
+justify our claim that good performance and enough precision can be
+achieved - at least in some contexts - without giving up the naive but
+flexible approach.
+
+
+Building control flow graphs
+----------------------------
+
+As described in the overview of `the translation process`_, the
+front-end of the translation tool-chain works in two phases: it first
+builds control flow graphs from Python functions, and then performs
+whole-program type inference on these graphs.
+
+Remember that building the control flow graphs is not done, as one might
+first expect, by following a function at the syntactic level.  Instead,
+the whole program is imported in a normal Python interpreter; the full
+Python language is used at this point as a kind of preprocessor with
+meta-programming capabilities.  Once the program is imported, the object
+data in memory consists of Python function objects in bytecode format,
+and any other kind of objects created at import-time, like class
+objects, prebuilt instances of those, prebuilt tables, and so on.  Note
+that these objects have typically no text representation any more; for
+example, cyclic data structures may have been built at this point.  The
+translation tool-chain first turns these function objects into in-memory
+control flow graphs which contain direct references to the prebuilt data
+objects, and then handles and transforms these graphs.  We found
+in-process debugging sufficient and did not implement dumping of any
+intermediate step to disk.
+
+The actual transformation from function objects - i.e. bytecode - to
+flow graph is performed by the Flow Object Space, a short but generic
+plug-in component for the Python interpreter of PyPy.  The architecture
+of our Python interpreter is shown in figure 3.
+
+.. topic:: Figure 3 - the interpreter and object spaces
+
+    +------------------------------------------------------+
+    |   forest of bytecode objects from the application    |
+    +------------------------------------------------------+
+    |               Python bytecode interpreter            |
+    +--------------------------------+---------------------+
+    |      Standard Object Space     |  Flow Object Space  |
+    +--------------------------------+---------------------+
+
+Note that the left column, i.e. the bytecode interpreter and the
+Standard Object Space, form the full Python interpreter of PyPy.  It is
+an RPython program, and the whole purpose of the translation process is
+to accept this as *input*, and translate it to an efficient form.  Its
+architecture is not relevant to the way it is translated.
+
+However, the bytecode interpreter plays a double role, at two different
+levels.  The so-called Object Spaces are *domains* in the abstract
+interpretation terminology.  By design, we cleanly separated these
+domains from the bytecode interpreter core; the latter is only
+responsible for decoding the bytecodes of an application and emulating
+the corresponding stack machine.  It treats all actual application-level
+objects as black boxes, and dispatches all operations on them to the
+Object Space.  The Standard Object Space is a concrete domain, in which
+objects are the concrete Python objects of the various built-in types:
+lists, dictionaries, and so on.  By opposition, the Flow Object Space is
+really an abstract domain.  It handles objects that are placeholders.
+Its lattice order is shown in figure 4.
+
+::
+
+    [figure 4:                Variable
+
+                         /      |             \           \
+                        /       |              \           \
+                       /        |               \           \
+      Constant(1) ... Constant(n) ... Constant([1,2,3])  ... Constant(<instance of class A>) ...
+    ]
+
+This order is extremely simple, because most actual analysis is delayed
+to the next phase, the type inference engine.  The objects are either
+*Variables*, which are pure placeholders for entierely unknown values,
+or *Constants* with a concrete Python object as value.  The order places
+Variable as the top, and keeps all *Constants* unordered.  Thus if two
+different constants merge during abstract interpretation, we immediately
+widen them to Variable.
+
+In conjunction with the Flow Object Space, the bytecode interpreter of
+PyPy thus performs abstract interpretation of Python bytecodes from the
+application. [#]_  In this case, the bytecodes in question come from the
+RPython application that we would like to translate.
+
+.. [#] Note that this process uses the *unmodified* bytecode
+       interpreter.  This means that it is independent of most language
+       details.  Changes in syntax or in bytecode format or opcode semantics
+       only need to be implemented once, in the bytecode interpreter.  In
+       effect, the Flow Object Space enables an interpreter for *any* language
+       to work as a front-end for the rest of the tool-chain.
+
+The Flow Object Space records all operations that the bytecode
+interpreter "would like" to do between the placeholder objects.  It
+records them into basic block objects that will eventually be part of
+the control flow graph of the whole function.  The recorded operations
+take Variables and Constants as argument, and produce new Variables as
+results.  The Constants serve two purposes: they are a way to introduce
+constant values into the flow graphs - these values may be arbitrarily
+complex objects, not just primitives - and they allow basic constant
+propagation. [#]_
+
+.. [#] This is useful at this level for some constructs of the bytecode
+       interpreter, which can temporarily wrap internal values and push them
+       onto the regular value stack among the other application-level objects.
+       We need to be able to unwrap them again later.
+
+In the flow graph, branching occurs when the bytecode interpreter tries
+to inspect the truth value of placeholder objects, as it would in
+response to conditional jump opcodes or other more complicated opcodes:
+at this point, the Flow Object Space starts two new basic blocks and -
+with a technique akin to continuations - tricks the interpreter into
+following both branches, one after the other.  Additionally, the
+bytecode interpreter sends simple positional signals that allow the Flow
+Object Space to detect when control paths merge, or when loops close.
+In this way, abstract interpretation quickly terminates and the recorded
+operations form a graph, which is the control flow graph of the original
+bytecode.
+
+While the Flow Object Space is quite a short piece of code - its core
+functionality holds in 300 lines - the detail of the interactions
+sketched above is not entierely straightforward; we refer the reader to
+`[D]`_ for more information.  Figure 5 shows the control flow graph
+obtained for a simple function (this is a screenshot from our graph
+viewer, used for debugging; basic block placement is performed by
+Graphviz_).
+
+::
+
+    [figure 5: insert a nice pygame screenshot]
+
+
+Type inference
+--------------
 
 XXX
 
@@ -469,9 +604,11 @@ XXX
 XXX
 
 
+.. _`[D]`: http://codespeak.net/pypy/dist/pypy/doc/dynamic-language-translation.html
 .. _`[S]`: http://codespeak.net/pypy/dist/pypy/doc/architecture.html#the-standard-interpreter
 .. _`[T]`: http://codespeak.net/pypy/dist/pypy/doc/translation.html
 .. _`abstract interpretation`: http://en.wikipedia.org/wiki/Abstract_interpretation
+.. _Graphviz: http://www.graphviz.org/
 
 .. http://www.cs.jhu.edu/~scott/pll/constraints.html page to the reference
    /recent result for constraint-based type inference 
