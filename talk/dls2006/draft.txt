@@ -426,6 +426,8 @@ achieved - at least in some contexts - without giving up the naive but
 flexible approach.
 
 
+.. _`Flow Object Space`:
+
 Building control flow graphs
 ----------------------------
 
@@ -549,17 +551,292 @@ In this way, abstract interpretation quickly terminates and the recorded
 operations form a graph, which is the control flow graph of the original
 bytecode.
 
+Note that we produce flow graphs in Static Single Information (SSI)
+form, an extension of Static Single Assignment (SSA_): each variable is
+only used in exactly one basic block.  All variables that are not dead
+at the end of a basic block are explicitly carried over to the next
+block and renamed.
+
 While the Flow Object Space is quite a short piece of code - its core
 functionality holds in 300 lines - the detail of the interactions
 sketched above is not entierely straightforward; we refer the reader to
 `[D]`_ for more information.
 
 
-
 Type inference
 --------------
 
-XXX
+The type inference engine, which we call the *annotator*, is the central
+component of the front-end part of the translation process.  Given a
+program considered as a family of control flow graphs, the annotator
+assigns to each variable of each graph a so-called *annotation*, which
+describes the possible run-time objects that this variable can contain.
+Following usual terminology, we will call such annotations *types* - not
+to be confused with the Python notion of the concrete type of an object.
+An annotation is a set of possible values, and such a set is not always
+the set of all objects of a specific Python type.
+
+Here is a simplified, static model of how the annotator works.  It can
+be considered as taking as input a finite family of functions calling
+each other, and working on the control flow graphs of each of these
+functions as built by the `Flow Object Space`_.  Additionally, for a
+particular "entry point" function, the annotator is provided with
+user-specified types for the function's arguments.
+
+The goal of the annotator is to find the most precise type that can be
+given to each variable of all control flow graphs while respecting the
+constraints imposed by the operations in which these variables are
+involved.
+
+More precisely, it is usually possible to deduce information about the
+result variable of an operation given information about its arguments.
+For example, we can say that the addition of two integers must be an
+integer.  Most programming languages have this property.  However,
+Python -- like many languages not specifically designed with type
+inference in mind -- does not possess a type system that allows much
+useful information to be derived about variables based on how they are
+*used*; only on how they were *produced*.  For example, a number of very
+different built-in types can be involved in an addition; the meaning of
+the addition and the type of the result depends on the type of the input
+arguments.  Merely knowing that a variable will be used in an addition
+does not give much information per se.  For this reason, our annotator
+works by flowing types forward, operation after operation, i.e. by
+performing abstract interpretation of the flow graphs.  In a sense, it
+is a more naive approach than the one taken by type systems specifically
+designed to enable more advanced inference algorithms.  For example,
+`Hindley-Milner`_ type inference works in an inside-out direction, by
+starting from individual operations and propagating type constraints
+outwards.
+
+Naturally, simply propagating types forward requires the use of a fixed
+point algorithm in the presence of loops in the flow graphs or in the
+inter-procedural call graph.  Indeed, we flow types forward from the
+beginning of the entry point function into each basic block, operation
+after operation, and follow all calls recursively.  During this process,
+each variable along the way gets a type.  In various cases, e.g. when we
+close a loop, the previously assigned types can be found to be too
+restrictive.  In this case, we generalise them to allow for a larger set
+of possible run-time values, and schedule the block where they appear
+for reflowing.  The more general type can generalise the types of the
+results of the variables in the block, which in turn can generalise the
+types that flow into the following blocks, and so on.  This process
+continues until a fixed point is reached.
+
+We can consider that all variables are initially assigned the "bottom"
+type corresponding to the empty set of possible run-time values.  Types
+can only ever be generalised, and the model is simple enough to show
+that there is no infinite chain of generalisation, so that this process
+necessarily terminates.
+
+
+RPython types
+-------------
+
+As seen in `section 3`_, we use the annotator with more than one type
+systems.  The more interesting and complex one is the RPython type
+system, which describes how the input RPython program can be annotated.
+The other type systems contain lower-level, C-like types that are mostly
+unordered, thus forming more trivial lattices than the one formed by
+RPython types.
+
+The set *A* of RPython types is defined as the following formal terms:
+
+* Bot, Top -- the minimum and maximum elements (corresponding to
+  "impossible value" and "most general value");
+
+* Int, NonNegInt, Bool -- integers, known-non-negative integers, booleans;
+
+* Str, Char -- strings, characters (which are strings of length 1);
+
+* Inst(*class*) -- instance of *class* or a subclass thereof (there is
+  one such term per *class*);
+
+* List(*v*) -- list; *v* is a variable summarising the items of the list
+  (there is one such term per variable);
+
+* Pbc(*set*) -- where the *set* is a subset of the (finite) set of all
+  prebuilt constant objects.  This set includes all the callables of the
+  input program: functions, classes, and methods.
+
+* None -- stands for the singleton ``None`` object of Python.
+
+* NullableStr, NullableInst(*class*) - a string or ``None``; resp. an
+  instance or ``None``.
+
+Figures 6 and 7 shows how these types are ordered to form a lattice.  We
+mostly use its structure of `join-semilattice`_ only.
+
+.. graphviz:: image/lattice1.dot
+
+:Figure 6: the lattice of annotations.
+
+.. graphviz:: image/lattice2.dot
+
+:Figure 7: The part about instances and nullable instances, assuming a
+           simple class hierarchy with only two direct subclasses of
+           ``object``.
+
+All list terms for all variables are unordered.  The Pbcs form a
+classical finite set-of-subsets lattice.  In addition, we have left out
+a number of other annotations that are irrelevant for the basic
+description of the annotator and straightforward to handle:
+``Dictionary``, ``Tuple``, ``Float``, ``UnicodePoint``, ``Iterator``,
+etc.  The complete list is described in `[T]`_.
+
+The type system moreover comes with a family of rules, which for every
+operation and every sensible combination of input types describes the
+type of its result variable.  Let *V* be the set of Variables that
+appear in the user program's flow graphs.  Let *b* be a map from *V* to
+*A*; it is a "binding" that gives to each variable a type.  The purpose
+of the annotator is to compute such a binding stepwise.
+
+Let *x*, *y* and *z* be Variables.  We introduce the rule::
+
+         z=add(x,y), b(x)=Int, b(y)=Int
+      ------------------------------------------------------
+               b' = b with (z->Int)
+
+which specify that if we see the addition operation applied to Variables
+whose current binding is ``Int``, a new binding *b'* can be produced:
+it is *b* except on *z*, where we have ``b'(z) = Int``.
+
+The type inference engine can be seen as applying this kind of rules
+repeatedly.  It does not apply them in random order, but follows a
+forward-propagation order typical of abstract interpretation.
+
+It is outside the scope of the present paper to describe the type
+inference engine and the rules more formally.  The difficult points
+involve mutable containers - e.g. initially empty list that are filled
+somewhere else - and the discovery of instance attributes - in Python,
+classes do not declare upfront a fixed set of attributes for their
+instances, let alone their types.  Both these examples require
+sophisticated reflowing techniques that invalidate existing types in
+already-annotated basic blocks, to account for the influence of more
+general types coming indirectly from a possibly distant part of the
+program.  The reader is referred to `[D]`_ for more information.
+
+
+Termination and complexity
+--------------------------
+
+The lattice model clearly contains no infinite chain.  Moreover, it is
+designed to convince oneself that the number of reflowings required in
+practice is small.  For example, we are not trying to do range analysis
+beyond detecting non-negatives - the reason is that range analysis is
+not an essential part of writing *reasonably* efficient code.  Consider
+that a translated RPython program runs hundreds of times faster than
+when the same program is executed by the standard Python interpreter: in
+this context, range analysis appears less critical.  It is a possible
+optimization that we can introduce in a later, optional analysis and
+transformation step.
+
+The worst case behaviors that can appear in the model described above
+involve the lattice of Pbcs, involving variables that could contain e.g.
+one function object among many.  An example of such behavior is code
+manipulating a table of function objects: when an item is read out of
+the table, its type is a large Pbc set: ``Pbc({f1, f2, f3, ...})``.  But
+in this example, the whole set is available at once, and not built
+incrementally by successive discoveries.  This seems to be often the
+case in practice: it is not very common for programs to manipulate
+objects that belong to a large but finite family - and when they do, the
+whole family tends to be available early on, requiring few reflowing.
+
+This means that *in practice* the complete process requires a time that
+is far lower than the worst case.  We have experimentally confirmed
+this: annotating the whole PyPy interpreter (90'000 lines) takes on the
+order of 5 to 10 minutes, and basic blocks are typically only reflown a
+handful of times, providing a close-to-linear practical complexity.
+
+We give formal termination and correctness proofs in `[D]`_, as well as
+worst-case bounds and some experimental evidence of their practical
+irrelevance.
+
+
+Precision
+---------
+
+Of course, this would be pointless if the annotation did not give
+precise enough information for our needs.  We must describe a detail of
+the abstract interpretation engine that is critical for precision: the
+propagation of conditional types.  Consider the following source code
+fragment::
+
+    if isinstance(x, MyClass):
+        f(x)
+    else:
+        g(x)
+
+Although the type of ``x`` may be some parent class of ``MyClass``, it
+can be deduced to be of the more precise type ``Inst(MyClass)`` within
+the positive branch of the ``if``.  (Remember that our graphs are in SSI
+form, which means that the ``x`` inside each basic block is a different
+Variable with a possibly different type as annotation.)
+
+This is implemented by introducing an extended family of types for
+boolean values::
+
+    Bool(v_1: (t_1, f_1), v_2: (t_2, f_2), ...)
+
+where the *v_n* are variables and *t_n* and *f_n* are types.  The result
+of a check, like ``isintance()`` above, is typically annotated with such
+an extended ``Bool``.  The meaning of the type is as follows: if the
+run-time value of the boolean is True, then we know that each variable
+*v_n* has a type at most as general as *t_n*; and if the boolean is
+False, then each variable *v_n* has a type at most as general as *f_n*.
+This information is propagated from the check operation to the exit of
+the block via such an extended ``Bool`` type, and the conditional exit
+logic in the type inference engine uses it to trim the types it
+propagates into the next blocks (this is where the *meet* of the lattice
+is used).
+
+With the help of the above technique, we achieve a reasonable precision
+in small examples.  For larger examples, a different, non-local
+technique is required: the specialization of functions.
+
+As described in the introduction, the most important downside of our
+approach is that automatic specialization is a potential
+performance-killer.  We *do* support specialization, however: we can
+generate several independently-annotated copies of the flow graphs of
+certain functions.  When annotating RPython programs, such
+specialization does not happen automatically: we rely on hints provided
+by the programmer in the source code, in the form of flags attached to
+function objects.  As we had this trade-off in mind when we wrote the
+Python interpreter of PyPy, we only had to add a dozen or so hints in
+the end.
+
+This does not mean that automatic specialization policies are difficult
+to implement.  Indeed, the simpler lower-level type systems rely quite
+heavily on them: this is because the system code helpers are often
+generic and can receive arguments of various C-level types.  In this
+case, because the types at this level are limited and mostly unordered,
+specializing all functions on their input argument's types works well.
+
+At the level of RPython, on the other hand, the range of specializations
+that make sense is much wider.  We have used anything between
+specialization by the type of an argument, to specialization by an
+expected-to-be-constant argument value, to memoized functions that the
+type inference engine will actually call during annotation and replace
+by look-up tables, to complete overriding of the annotator's behavior in
+extreme cases.  In this sense, the need for manual specialization turned
+into an advantage, in term of simplicity and flexibility of implementing
+and using new specialization schemes.
+
+This conclusion can be generalized.  We experimented with a simple
+approach to type inference that works well in practice, and that can
+very flexibly accomodate changes in the type system and even completely
+different type systems.  We think that the reasons for this success are
+to be found on the one hand in the (reasonable) restrictions we put on
+ourselves when designing the RPython language and writing the Python
+interpreter of PyPy in RPython, and on the other hand in an ad-hoc type
+system that is designed to produce enough precision (but not more) for
+the purpose of the subsequent transformations to C-level code.
+
+We should mention that restricting oneself to write RPython code instead
+of Python is still a burden, and that we are not proposing in any way
+that the Python language itself should evolve in this direction, nor
+even that RPython usage should become widespread.  It is a tool designed
+with a specific goal in mind, which is the ability to produce reasonably
+efficient, stand-alone code in a large variety of environment.
 
 
 
@@ -611,6 +888,9 @@ XXX
 .. _`[T]`: http://codespeak.net/pypy/dist/pypy/doc/translation.html
 .. _`abstract interpretation`: http://en.wikipedia.org/wiki/Abstract_interpretation
 .. _Graphviz: http://www.graphviz.org/
+.. _`Hindley-Milner`: http://en.wikipedia.org/wiki/Hindley-Milner_type_inference
+.. _`join-semilattice`: http://en.wikipedia.org/wiki/Semilattice
+.. _SSA: http://en.wikipedia.org/wiki/Static_single_assignment_form
 
 .. http://www.cs.jhu.edu/~scott/pll/constraints.html page to the reference
    /recent result for constraint-based type inference 
