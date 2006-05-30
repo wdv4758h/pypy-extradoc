@@ -1048,7 +1048,34 @@ explicitly written together in this style. Again simplicity and
 portability were the major goals, not sophisticated manipulation and
 analysis and waving in of features.
 
-Jikes XXX
+`Jikes RVM`_ is a Java VM and Just-In-Time compiler written in Java.
+Bootstrapping happens by self-applying the compiler on a host VM, and
+dumping a snapshot from memory of the resulting native code.
+
+This approach enables directly high performance, at the price of
+portability as usual with pure native code emitting
+approaches. Modularity of features, when possible, is achieved with
+normal software modularity. The indirection costs are taken care by
+the inlining done by the compiler, sometimes even through explicit
+ways to request for it. In particular this modular approach is used
+for implementing a range of choices for GC support XXX ref.  This was
+the inspiration for PyPy own GC framework, although much more tuning
+and work went into Jikes RVM. PyPy own GC framework also exploits
+inlining of helpers and barriers to recover performance.
+
+Jikes RVM native JIT compilers can likely not easily be retargeted to
+run on top and target another VM (for example a CLR runtime) instead
+of hardware processors. Also Jikes RVM pays the complexity of writing
+a JIT up-front, which also means that features and semantics of the
+language are encoded in the JIT compiler code, meaning likely that
+major changes would correspond to major surgery needed on it.
+
+PyPy more indirect approach, together hopefully with our future work
+on generating a JIT compiler, tries to overcome these limitations, at
+the price of some more effort required to achieve very good
+performance. It is too soon to compare completely the complexity (and
+performance) trade-offs of these approaches.
+
 
 XXX Jython, IronPython, UVM.
 
