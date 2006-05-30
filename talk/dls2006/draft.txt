@@ -418,7 +418,8 @@ evolved along the road.
 We mitigate the potential efficiency problem by wise choices and
 compromises for the domain used; the foremost example of this is that
 our RPython type inference performs almost no automatic specialization
-of functions.  We achieved enough precision for our purpose, though.
+of functions XXX class annotation vs concrete runtime class setsXXX.
+We achieved enough precision for our purpose, though.
 
 In the sequel, we give a more precise description of this process and
 justify our claim that good performance and enough precision can be
@@ -479,7 +480,7 @@ Note that the left column, i.e. the bytecode interpreter and the
 Standard Object Space, form the full Python interpreter of PyPy.  It is
 an RPython program, and the whole purpose of the translation process is
 to accept this as *input*, and translate it to an efficient form.  Its
-architecture is not relevant to the way it is translated.
+architecture is not relevant to the way it is translated. XXX?
 
 However, the bytecode interpreter plays a double role, at two different
 levels.  The so-called Object Spaces are *domains* in the abstract
@@ -537,7 +538,8 @@ propagation. [#]_
 .. [#] This is useful at this level for some constructs of the bytecode
        interpreter, which can temporarily wrap internal values and push them
        onto the regular value stack among the other application-level objects.
-       We need to be able to unwrap them again later.
+       We need to be able to unwrap them again later. XXX compile-time
+       computation in the helpers
 
 In the flow graph, branching occurs when the bytecode interpreter tries
 to inspect the truth value of placeholder objects, as it would in
@@ -786,7 +788,7 @@ can be deduced to be of the more precise type
 :latexformula:`$Inst(MyClass)$` within the positive branch of the
 ``if``.  (Remember that our graphs are in SSI form, which means that the
 ``x`` inside each basic block is a different Variable with a possibly
-different type as annotation.)
+different type as annotation.) XXX flow sensivity and SSA
 
 This is implemented by introducing an extended family of types for
 boolean values:
@@ -809,7 +811,7 @@ blocks (this is where the *meet* of the lattice is used).
 
 With the help of the above technique, we achieve a reasonable precision
 in small examples.  For larger examples, a different, non-local
-technique is required: the specialization of functions.
+technique is required: the specialization of functions. XXX use 'polymorphism'
 
 As described in the introduction, the most important downside of our
 approach is that automatic specialization is a potential
