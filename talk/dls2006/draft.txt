@@ -1169,7 +1169,9 @@ can be kept, the more we win from our investment in writing the
 tool-chain itself - a one-time effort.
 
 Dynamic languages enable the definition of multiple custom type systems,
-similar to *pluggable type systems* in Bracha_.  This proved a key
+similar to *pluggable type systems* in Bracha_
+but with simple type inference instead of explicit annotations.
+This proved a key
 feature in implementing our translation tool-chain, because it makes a
 many-levels approach convenient: each abstraction level can provide an
 implementation for some of the features that the higher levels
