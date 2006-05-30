@@ -866,8 +866,33 @@ efficient, stand-alone code in a large variety of environment.
                      Experimental results
 ============================================================
 
+Our tool-chain is capable of translating the Python interpreter of PyPy,
+written in RPython, producing right now ANSI C code as described before,
+and also LLVM [#]_ assembler then natively compiled with LLVM tools  
 
-XXX
+.. [#] the LLVM project is the realisation of a portable assembler
+       infrastructure, offering both a virtual machine with JIT
+       capabilities and static compilation. Currently we are using
+       the latter with its good high-level optimisations for PyPy.
+
+The tool-chain has been tested and can sucessfully apply
+transformations enabling various combinations of features. The
+translated interpreters are benchmarked using pystone (a Dhrystone_
+derivative traditionally used by the Python community, although is a
+rather poor benchmark) and the classical Richards_ benchmark and
+compared against CPython_ 2.4.3 results:
+
+
+Tue May 30 07:58:27 2006   python 2.4.3                        789ms (   1.0x)    40322 (   1.0x)
+Mon May 29 03:07:13 2006   pypy-llvm-27815-x86                5439ms (   6.9x)     5854 (   6.9x)
+Mon May 29 03:05:52 2006   pypy-llvm-27815-c-prof             2772ms (   3.5x)    10245 (   3.9x)
+Mon May 29 03:01:46 2006   pypy-llvm-27815-c                  3797ms (   4.8x)     7763 (   5.2x)
+Mon May 29 07:52:36 2006   pypy-c-27815-stackless--_thread     5322ms (   6.7x)     6016 (   6.7x)
+Mon May 29 06:13:50 2006   pypy-c-27815-stackless             4723ms (   6.0x)     6527 (   6.2x)
+Mon May 29 05:26:08 2006   pypy-c-27815-gc=framework          6327ms (   8.0x)     4960 (   8.1x)
+Mon May 29 07:01:06 2006   pypy-c-27815-_thread               4552ms (   5.8x)     7122 (   5.7x)
+Mon May 29 03:54:04 2006   pypy-c-27815                       4269ms (   5.4x)     7587 (   5.3x)
+
 
 
 
@@ -888,7 +913,9 @@ XXX
                         Related work
 ============================================================
 
-
+Scheme48 VLISP
+Squeak
+Jikes
 XXX
 
 
