@@ -908,21 +908,21 @@ on an Intel(R) Pentium(R) 4 CPU at 3.20GHz with 2GB of RAM and 1MB of
 cache.  The rows correspond to variants of the translation process, as
 follows:
 
-pypy-c
+{\bf pypy-c.}
     The simplest variant: translated to C code with no explicit memory
     management, and linked with the Boehm conservative GC [Boehm].
 
-pypy-c-thread
+{\bf pypy-c-thread.}
     The same, with OS thread support enabled.  (For measurement purposes,
     thread support is kept separate because it has an impact on the GC
     performance.)
 
-pypy-c-stackless
+{\bf pypy-c-stackless.}
     The same as pypy-c, plus the "stackless transformation" step which
     modifies the flow graph of all functions in a way that allows them
     to save and restore their local state, as a way to enable coroutines.
 
-pypy-c-gcframework
+{\bf pypy-c-gcframework.}
     In this variant, the "gc transformation" step inserts explicit
     memory management and a simple mark-and-sweep GC implementation.
     The resulting program is not linked with Boehm.  Note that it is not
@@ -930,7 +930,7 @@ pypy-c-gcframework
     in this variant each function explicitly pushes and pops all roots
     to an alternate stack around each subcall.
 
-pypy-c-stackless-gcframework
+{\bf pypy-c-stackless-gcframework.}
     This variant combines the "gc transformation" step with the
     "stackless transformation" step.  The overhead introduced by the
     stackless feature is theoretically balanced with the removal of the
@@ -942,13 +942,13 @@ pypy-c-stackless-gcframework
     by the extreme size of the executable in this case - 21MB, compared to
     6MB for the basic pypy-c.  Making it smaller is work in progress.)
 
-pypy-llvm-c
+{\bf pypy-llvm-c.}
     The same as pypy-c, but using the LLVM back-end instead of the C
     back-end.  The LLVM assembler-compiler gives the best results when -
     as we do here -- it optimizes its input and generates again C code,
     which is fed to GCC.
 
-pypy-llvm-c-prof
+{\bf pypy-llvm-c-prof.}
     The same as pypy-llvm-c, but using GCC's profile-driven
     optimizations.
 
@@ -959,7 +959,7 @@ seeks flexibility and high abstraction levels.  The other, probably
 dominant, factor is that various indices show that our approach places a
 very high load on the GC and on the memory caches of the machine.  The
 Boehm GC is known to be less efficient than more customized approach;
-kernel-level profiling shows that pypy-c typically spends 30% of its
+kernel-level profiling shows that pypy-c typically spends 30\% of its
 time in the Boehm library.  Our current, naively simple mark-and-sweep
 GC is even quite worse.  The interaction with processor caches is also
 hard to predict and account for; in general, we tend to produce
