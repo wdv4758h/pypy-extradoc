@@ -989,17 +989,17 @@ divided as follows:
 +-------------------------------------------+------------------------------+
 | LLTyper                                   |           10:38              |
 | (from RPython-level to C-level graphs     |                              |
-|  and data)                                |                              |
+| and data)                                 |                              |
 +-------------------------------------------+------------------------------+
 | Various low-level optimizations           |            6:51              |
 | (convert some heap allocations to local   |                              |
-|  variables, inlining, ...)                |                              |
+| variables, inlining, ...)                 |                              |
 +-------------------------------------------+------------------------------+
 | Database building                         |            8:39              |
 | (this initial back-end step follows all   |                              |
-|  graphs and prebuilt data structures      |                              |
-|  recursively, assigns names, and orders   |                              |
-|  them suitably for code generation)       |                              |
+| graphs and prebuilt data structures       |                              |
+| recursively, assigns names, and orders    |                              |
+| them suitably for code generation)        |                              |
 +-------------------------------------------+------------------------------+
 | Generating C source                       |            2:25              |
 +-------------------------------------------+------------------------------+
@@ -1117,6 +1117,13 @@ XXX
 .. _`Hindley-Milner`: http://en.wikipedia.org/wiki/Hindley-Milner_type_inference
 .. _`join-semilattice`: http://en.wikipedia.org/wiki/Semilattice
 .. _SSA: http://en.wikipedia.org/wiki/Static_single_assignment_form
+.. _`[Boehm]`: XXX
+.. _Dhrystone: XXX
+.. _Richards: XXX
+.. _CPython: XXX
+.. _Scheme48: XXX
+.. _Squeak: XXX
+.. _`Jikes RVM`: XXX
 
 .. http://www.cs.jhu.edu/~scott/pll/constraints.html page to the reference
    /recent result for constraint-based type inference 
