@@ -913,11 +913,38 @@ XXX
                         Related work
 ============================================================
 
-Scheme48 VLISP
-Squeak
-Jikes
-XXX
+Applying the expressiveness or at least syntax of very high-level and
+dynamically typed languages to their implementation has been
+investigated many times. 
 
+One typical approach is writing a static compiler.  The viability of
+and effort required for such an approach depend usually on the binding
+and dispatch semantics of the language.  Common Lisp native compilers,
+usable interactively and taking functions or files as compilation
+units are a well-known example of that approach.  Late binding for all
+names and load semantics make such an approach very hard for Python,
+if speed improvements are desired.
+
+It is more relevant to consider and compare with projects using
+dynamic and very-high level languages for interpreters and VM
+implementations, and Just-In-Time compilers.
+
+Scheme48_ was a Scheme implementation using a restricted Scheme, with
+static type inference based on Hindley-Milner, this is viable for
+Scheme as base language. Portability and simplicity were its major
+goals.
+
+Squeak_ is a Smalltalk implementation in Smalltalk. It uses SLang, a
+very restricted subset of Smalltalk with few types and strict
+conventions such that mostly direct translation to C is possible.
+Both the VM and the object memory and garbage collector support are
+explicitly written together in this style. Again simplicity and
+portability were the major goals, not sophisticated manipulation and
+analysis and waving in of features.
+
+Jikes XXX
+
+XXX Jython, IronPython, UVM.
 
 
 .. _`section 8`:
