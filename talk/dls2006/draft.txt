@@ -1142,18 +1142,41 @@ XXX Jython, IronPython, UVM.
 ============================================================
 
 
-XXX
+The PyPy project aims at showing that dynamic languages are suitable and
+quite useful for writing virtual machines in.  We believe that we have
+achieved this objective.  The present paper gave an overview of the
+architecture that enabled this result.  Experiments suggest that
+practical virtual machines could reasonably follow in the near future,
+with faster-than-current virtual machines with JIT specialization
+techniques for the mid-term future.
 
-nice interpreter not polluted by implementation details
-here Python, but any interpreter works
+Targetting platforms that are very different from C/Posix is work in
+progress, but given that many of the initial components are shared with
+the existing stack of transformations leading to C, we are confident
+that this work will soon give results.  Moreover, we believe that these
+results will show a reasonable efficiency, because the back-ends for VMs
+like Squeak and .NET can take advantage of high-level input (as opposed
+to trying to translate, say, C-like code to Smalltalk).
 
-architecture allows implementing features at the right level
+A desirable property of our approach is to allow a given language and VM
+to be specified only once, in the form of an interpreter.  Moreover, the
+interpreter can be kept simple (and thus keep its role as a
+specification): not only is it written in a high-level language, but it
+is not overloaded with low-level design choices and implementation
+details.  This makes language evolution and experimentation easier.
+More generally, this property is important because many interpreters for
+very difference languages can be written: the simpler these interpreters
+can be kept, the more we win from our investment in writing the
+tool-chain itself - a one-time effort.
 
-dynamic language enables defining our own various type systems
-[ref pluggable type systems]
-
-practical VMs will result with a bit more efforts
-
+Dynamic languages enable the definition of multiple custom type systems,
+similar to *pluggable type systems* in Bracha_.  This proved a key
+feature in implementing our translation tool-chain, because it makes a
+many-levels approach convenient: each abstraction level can provide an
+implementation for some of the features that the higher levels
+considered primitive.  It offsets the need to define a minimal kernel of
+primitives and build everything on top of it; instead, we have been able
+to implement, so to speak, the right feature at the right level.
 
 
 References
@@ -1177,6 +1200,7 @@ References
 .. _`[PE]`: XXX
 .. _`[BTA]`: XXX
 .. _Psyco: XXX
+.. _Bracha: XXX
 
 .. http://www.cs.jhu.edu/~scott/pll/constraints.html page to the reference
    /recent result for constraint-based type inference 
