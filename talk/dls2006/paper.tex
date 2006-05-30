@@ -865,7 +865,7 @@ efficient, stand-alone code in a large variety of environment.
 
 Our tool-chain is capable of translating the Python interpreter of
 PyPy, written in RPython, producing right now either ANSI C code as
-described before, or LLVM\footnote{the LLVM project is the realisation
+described before, or LLVM\footnote{The LLVM project is the realisation
 of a portable assembler infrastructure, offering both a virtual
 machine with JIT capabilities and static compilation. Currently we are
 using the latter with its good high-level optimisations for PyPy.}
@@ -889,11 +889,11 @@ compared against [CPython] 2.4.3 results:
 +------------------------------------+-------------------+-------------------+
 |  pypy-c-thread                     |  4552ms    (5.8x) |    7122    (5.7x) |
 +------------------------------------+-------------------+-------------------+
-|  pypy-c-stackless                  |  XXX       (6.0x) |    XXX     (6.2x) |
+|  pypy-c-stackless                  |  5121ms    (6.5x) |    6060    (6.7x) |
 +------------------------------------+-------------------+-------------------+
 |  pypy-c-gcframework                |  6327ms    (8.0x) |    4960    (8.1x) |
 +------------------------------------+-------------------+-------------------+
-|  pypy-c-stackless-gcframework      |  XXX       (    ) |    XXX     (    ) |
+|  pypy-c-stackless-gcframework      |  8743ms   (11.0x) |    3755   (10.7x) |
 +------------------------------------+-------------------+-------------------+
 |  pypy-llvm-c                       |  3797ms    (4.8x) |    7763    (5.2x) |
 +------------------------------------+-------------------+-------------------+
@@ -933,12 +933,14 @@ pypy-c-gcframework
 pypy-c-stackless-gcframework
     This variant combines the "gc transformation" step with the
     "stackless transformation" step.  The overhead introduced by the
-    stackless feature is balanced with the removal of the overhead of
-    pushing and popping roots explicitly on an alternate stack: indeed,
-    in this variant it is possible to ask the functions in the current C
-    call chain to save their local state and return.  This has the
-    side-effect of moving all roots to the heap, where the GC can find
-    them.
+    stackless feature is theoretically balanced with the removal of the
+    overhead of pushing and popping roots explicitly on an alternate
+    stack: indeed, in this variant it is possible to ask the functions
+    in the current C call chain to save their local state and return.
+    This has the side-effect of moving all roots to the heap, where the
+    GC can find them.  (We hypothesize that the large slowdown is caused
+    by the extreme size of the executable in this case - 21MB, compared to
+    6MB for the basic pypy-c.  Making it smaller is work in progress.)
 
 pypy-llvm-c
     The same as pypy-c, but using the LLVM back-end instead of the C
@@ -1007,7 +1009,7 @@ take more time, particuarly when used in combination with each other (we
 speculate it is because of the increase in size caused by the previous
 transformations).  A translation of pypy-c-stackless, without counting
 GCC time, takes 60 minutes; the same for pypy-c-stackless-gcframework
-takes XXX minutes.
+takes 129 minutes.
 
 
 
