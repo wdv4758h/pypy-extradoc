@@ -37,7 +37,7 @@ efficient programs.  The implementation of virtual machines is one
 such area.  Building implementations of general programming languages,
 in particular highly dynamic ones, using a classic direct coding
 approach, is typically a long-winded effort and produces a result that
-is quite [quite could be removed here?] tailored to a specific
+is quite [XXX quite could be removed here?] tailored to a specific
 platform and where architectural decisions (e.g. about GC) are spread
 across the code in a pervasive and invasive way.
 
@@ -211,10 +211,10 @@ of the pointer fields.
 
 We have implemented other transformations as well, e.g. performing
 various optimizations, or turning the whole code into a
-continuation-passing style (CPS) [I'm not sure our transformation
+continuation-passing style (CPS) [XXX I'm not sure our transformation
 can be classified as classical CPS, although there are known similar techniques but the terminology is quite confused] that allows us to use coroutines
 without giving up the ability to generate fully ANSI C code.  (This will
-be the subject of another paper.)  [mention exception transformer too]
+be the subject of another paper.)  [XXX mention exception transformer too]
 
 Finally, currently under development is a variant of the very first
 transformation step, for use when targeting higher-level,
@@ -296,7 +296,7 @@ can thus be arbitrarily complicated.  Still, our GC code is entirely
 written in plain Python, and it manipulates "objects" that are still at
 a lower level: pointer and address objects.  Even with the restriction
 of having to use pointer-like and address-like objects, Python remains
-more expressive than, say, C to write a GC.  [see also Jikes]
+more expressive than, say, C to write a GC.  [XXX see also Jikes]
 
 In the sequel, we will call \textit{system code} functions written in
 Python that are meant to be analysed by the front-end.  For the
