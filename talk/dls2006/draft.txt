@@ -143,7 +143,11 @@ program in two phases, as follows [#]_:
        calls, and thus only gradually discovers (the reachable parts of)
        the input program.
 
-``[figure: flow graph and annotator, e.g. part of doc/image/translation.*]``
+::
+
+  [figure 0: flow graph and annotator, e.g. part of doc/image/translation.*
+             then a stack of transformations
+  ]
 
 1. We take as input RPython functions [#]_, and convert them to control flow
    graphs - a structure amenable to analysis.  These flow graphs contain
@@ -193,15 +197,15 @@ But RPython comes with automatic memory management, and this first
 transformation step produces flow graphs that also assume automatic
 memory management.  Generating C code directly from there produces a
 fully leaking program, unless we link it with an external garbage
-collector (GC) like the Boehm conservative GC [Boehm], which is a viable
-option.
+collector (GC) like the Boehm conservative GC `[Boehm]`_, which is a
+viable option.
 
 We have two alternatives, each implemented as a transformation step.
 The first one inserts naive reference counting throughout the whole
 program's graphs, which without further optimizations gives exceedingly
 bad performance (it should be noted that the CPython interpreter is also
 based on reference counting, and experience suggests that it was not a
-bad choice in this particular case; more in `section 5`_).
+bad choice in this particular case).
 
 The other, and better, alternative is an exact GC, coupled with a
 transformation, the *GC transformer*.  It inputs C-level-typed graphs
@@ -867,32 +871,134 @@ efficient, stand-alone code in a large variety of environment.
 ============================================================
 
 Our tool-chain is capable of translating the Python interpreter of PyPy,
-written in RPython, producing right now ANSI C code as described before,
-and also LLVM [#]_ assembler then natively compiled with LLVM tools  
+written in RPython, producing right now either ANSI C code as described
+before, or LLVM [#]_ assembler which is then natively compiled with LLVM
+tools.
 
 .. [#] the LLVM project is the realisation of a portable assembler
        infrastructure, offering both a virtual machine with JIT
        capabilities and static compilation. Currently we are using
        the latter with its good high-level optimisations for PyPy.
 
-The tool-chain has been tested and can sucessfully apply
+The tool-chain has been tested with and can sucessfully apply
 transformations enabling various combinations of features. The
 translated interpreters are benchmarked using pystone (a Dhrystone_
-derivative traditionally used by the Python community, although is a
+derivative traditionally used by the Python community, although it is a
 rather poor benchmark) and the classical Richards_ benchmark and
 compared against CPython_ 2.4.3 results:
 
++------------------------------------+-------------------+-------------------+
+|  Interpreter                       | Richards,         | Pystone,          |
+|                                    | Time/iteration    | Iterations/second |
++====================================+===================+===================+
+|  CPython 2.4.3                     |   789ms    (1.0x) |   40322    (1.0x) |
++------------------------------------+-------------------+-------------------+
+|  pypy-c                            |  4269ms    (5.4x) |    7587    (5.3x) |
++------------------------------------+-------------------+-------------------+
+|  pypy-c-thread                     |  4552ms    (5.8x) |    7122    (5.7x) |
++------------------------------------+-------------------+-------------------+
+|  pypy-c-stackless                  |  XXX       (6.0x) |    XXX     (6.2x) |
++------------------------------------+-------------------+-------------------+
+|  pypy-c-gcframework                |  6327ms    (8.0x) |    4960    (8.1x) |
++------------------------------------+-------------------+-------------------+
+|  pypy-c-stackless-gcframework      |  XXX       (    ) |    XXX     (    ) |
++------------------------------------+-------------------+-------------------+
+|  pypy-llvm-c                       |  3797ms    (4.8x) |    7763    (5.2x) |
++------------------------------------+-------------------+-------------------+
+|  pypy-llvm-c-prof                  |  2772ms    (3.5x) |   10245    (3.9x) |
++------------------------------------+-------------------+-------------------+
 
-Tue May 30 07:58:27 2006   python 2.4.3                        789ms (   1.0x)    40322 (   1.0x)
-Mon May 29 03:07:13 2006   pypy-llvm-27815-x86                5439ms (   6.9x)     5854 (   6.9x)
-Mon May 29 03:05:52 2006   pypy-llvm-27815-c-prof             2772ms (   3.5x)    10245 (   3.9x)
-Mon May 29 03:01:46 2006   pypy-llvm-27815-c                  3797ms (   4.8x)     7763 (   5.2x)
-Mon May 29 07:52:36 2006   pypy-c-27815-stackless--_thread     5322ms (   6.7x)     6016 (   6.7x)
-Mon May 29 06:13:50 2006   pypy-c-27815-stackless             4723ms (   6.0x)     6527 (   6.2x)
-Mon May 29 05:26:08 2006   pypy-c-27815-gc=framework          6327ms (   8.0x)     4960 (   8.1x)
-Mon May 29 07:01:06 2006   pypy-c-27815-_thread               4552ms (   5.8x)     7122 (   5.7x)
-Mon May 29 03:54:04 2006   pypy-c-27815                       4269ms (   5.4x)     7587 (   5.3x)
+The numbers in parenthesis are slow-down factors compared to CPython.
+These measures reflect PyPy revision 27815, compiled with GCC 3.4.4.
+LLVM is version 1.8cvs (May 11, 2006).  The machine runs GNU/Linux SMP
+on an Intel(R) Pentium(R) 4 CPU at 3.20GHz with 2GB of RAM and 1MB of
+cache.  The rows correspond to variants of the translation process, as
+follows:
 
+pypy-c
+    The simplest variant: translated to C code with no explicit memory
+    management, and linked with the Boehm conservative GC `[Boehm]`_.
+
+pypy-c-thread
+    The same, with OS thread support enabled.  (For measurement purposes,
+    thread support is kept separate because it has an impact on the GC
+    performance.)
+
+pypy-c-stackless
+    The same as pypy-c, plus the "stackless transformation" step which
+    modifies the flow graph of all functions in a way that allows them
+    to save and restore their local state, as a way to enable coroutines.
+
+pypy-c-gcframework
+    In this variant, the "gc transformation" step inserts explicit
+    memory management and a simple mark-and-sweep GC implementation.
+    The resulting program is not linked with Boehm.  Note that it is not
+    possible to find all roots from the C stack in portable C; instead,
+    in this variant each function explicitly pushes and pops all roots
+    to an alternate stack around each subcall.
+
+pypy-c-stackless-gcframework
+    This variant combines the "gc transformation" step with the
+    "stackless transformation" step.  The overhead introduced by the
+    stackless feature is balanced with the removal of the overhead of
+    pushing and popping roots explicitly on an alternate stack: indeed,
+    in this variant it is possible to ask the functions in the current C
+    call chain to save their local state and return.  This has the
+    side-effect of moving all roots to the heap, where the GC can find
+    them.
+
+pypy-llvm-c
+    The same as pypy-c, but using the LLVM back-end instead of the C
+    back-end.  The LLVM assembler-compiler gives the best results when -
+    as we do here - it optimizes its input and generates again C code,
+    which is fed to GCC.
+
+pypy-llvm-c-prof
+    The same as pypy-llvm-c, but using GCC's profile-driven
+    optimizations.
+
+XXX explain slow.
+
+The complete translation of the pypy-c variant takes about 39 minutes,
+divided as follows:
+
++-------------------------------------------+------------------------------+
+| Step                                      |   Time (minutes:seconds)     |
++===========================================+==============================+
+| Front-end                                 |            9:01              |
+| (flow graphs and type inference)          |                              |
++-------------------------------------------+------------------------------+
+| LLTyper                                   |           10:38              |
+| (from RPython-level to C-level graphs     |                              |
+|  and data)                                |                              |
++-------------------------------------------+------------------------------+
+| Various low-level optimizations           |            6:51              |
+| (convert some heap allocations to local   |                              |
+|  variables, inlining, ...)                |                              |
++-------------------------------------------+------------------------------+
+| Database building                         |            8:39              |
+| (this initial back-end step follows all   |                              |
+|  graphs and prebuilt data structures      |                              |
+|  recursively, assigns names, and orders   |                              |
+|  them suitably for code generation)       |                              |
++-------------------------------------------+------------------------------+
+| Generating C source                       |            2:25              |
++-------------------------------------------+------------------------------+
+| Compiling (``gcc -O2``)                   |            3:23              |
++-------------------------------------------+------------------------------+
+
+An interesting feature of this table is that type inference is not the
+bottleneck.  Indeed, further transformation steps typically take longer
+than type inference alone.  This is the case for the LLTyper step,
+although it has a linear complexity on the size of its input (most
+transformations do).
+
+Other transformations like the "gc" and the "stackless" ones actually
+take more time, particuarly when used in combination with each other (we
+speculate it is because of the increase in size caused by the previous
+transformations).  A translation of pypy-c-stackless, without counting
+GCC time, takes 60 minutes; the same for pypy-c-stackless-gcframework
+takes XXX minutes.
 
 
 
