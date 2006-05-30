@@ -1057,80 +1057,106 @@ far, based on run-time specialization.
 \section{Related work}
 \label{relatedwork}
 
-Applying the expressiveness or at least syntax of very high-level and
-dynamically typed languages to their implementation has been
-investigated many times. 
 
-One typical approach is writing a static compiler.  The viability of
-and effort required for such an approach depend usually on the binding
+Applying the expressiveness - or at least the syntax - of very
+high-level and dynamically typed languages to their implementation has
+been investigated many times.
+
+One typical approach is writing a static compiler.  The viability of,
+and effort required for, such an approach depends usually on the binding
 and dispatch semantics of the language.  Common Lisp native compilers,
-usable interactively and taking functions or files as compilation
-units are a well-known example of that approach.  Late binding for all
-names and load semantics make such an approach very hard for Python,
-if speed improvements are desired.
+usable interactively and taking single functions or files as compilation
+units, are a well-known example of that approach.  However, the late
+binding for all names and the load semantics make such an approach very
+hard for Python, if speed improvements are desired.
 
-It is more relevant to consider and compare with projects using
-dynamic and very-high level languages for interpreters and VM
-implementations, and Just-In-Time compilers.
+In this context, it is more relevant to consider and compare with
+projects using dynamic and very-high-level languages for interpreters
+and VM implementations, and Just-In-Time compilers.
 
-[Scheme48] was a Scheme implementation using a restricted Scheme, with
-static type inference based on Hindley-Milner, this is viable for
-Scheme as base language. Portability and simplicity were its major
-goals.
+Scheme48 was a Scheme implementation using a restricted Scheme, PreScheme
+[PreScheme], with static type inference based on Hindley-Milner.  This is
+viable for Scheme as base language.  Simplicity and portability across C
+platforms were its major goals.
 
-[Squeak] is a Smalltalk implementation in Smalltalk. It uses SLang, a
+Squeak [Squeak] is a Smalltalk implementation in Smalltalk. It uses SLang, a
 very restricted subset of Smalltalk with few types and strict
-conventions such that mostly direct translation to C is possible.
-Both the VM and the object memory and garbage collector support are
+conventions, which can be mostly directly translated to C.
+The VM, the object memory and the garbage collector support are
 explicitly written together in this style. Again simplicity and
-portability were the major goals, not sophisticated manipulation and
-analysis and waving in of features.
+portability were the major goals, as opposed to sophisticated manipulation
+and analysis or "weaving" in of features as transformation aspects.
 
-[Jikes RVM] is a Java VM and Just-In-Time compiler written in Java.
+Jikes RVM [DBLP:journals/ibmsj/AlpernABBCCCFGHHLLMNRSSSSSSW00] is a
+Java VM and Just-In-Time compiler written in Java.
 Bootstrapping happens by self-applying the compiler on a host VM, and
 dumping a snapshot from memory of the resulting native code.
-
-This approach enables directly high performance, at the price of
-portability as usual with pure native code emitting
+This approach directly enables high performance, at the price of
+portability - as usual with pure native code emitting
 approaches. Modularity of features, when possible, is achieved with
-normal software modularity. The indirection costs are taken care by
-the inlining done by the compiler, sometimes even through explicit
-ways to request for it. In particular this modular approach is used
-for implementing a range of choices for GC support XXX ref.  This was
-the inspiration for PyPy own GC framework, although much more tuning
-and work went into Jikes RVM. PyPy own GC framework also exploits
+normal software modularity. The indirection costs are taken care of by
+the compiler performing inlining (which is sometimes even explicitly
+requested).  In particular this modular approach is used
+for implementing a range of choices for GC support [Jikes-GC].  This was
+the inspiration for PyPy's own GC framework, although much more tuning
+and work went into Jikes RVM.  PyPy's own GC framework also exploits
 inlining of helpers and barriers to recover performance.
 
-Jikes RVM native JIT compilers can likely not easily be retargeted to
-run on top and target another VM (for example a CLR runtime) instead
-of hardware processors. Also Jikes RVM pays the complexity of writing
+Jikes RVM's native JIT compilers [Jikes-JIT]
+are not meant to be retargetted to run in other environments
+that hardware processors, for example in a CLR/.NET
+runtime. Also Jikes RVM pays the complexity of writing
 a JIT up-front, which also means that features and semantics of the
-language are encoded in the JIT compiler code, meaning likely that
-major changes would correspond to major surgery needed on it.
+language are encoded in the JIT compiler code.  Major changes of the
+language are likely to correspond to major surgery of the JIT.
 
-PyPy more indirect approach, together hopefully with our future work
+PyPy's more indirect approach, together hopefully with our future work
 on generating a JIT compiler, tries to overcome these limitations, at
-the price of some more effort required to achieve very good
-performance. It is too soon to compare completely the complexity (and
-performance) trade-offs of these approaches.
+the price of some more efforts required to achieve very good
+performance. It is too soon for a complete comparison of the complexity,
+performance and trade-offs of these approaches.
 
 
-XXX Jython, IronPython, UVM.
 
 \section{Conclusion}
 \label{conclusion}
 
 
-XXX
+The PyPy project aims at showing that dynamic languages are suitable and
+quite useful for writing virtual machines in.  We believe that we have
+achieved this objective.  The present paper gave an overview of the
+architecture that enabled this result.  Experiments suggest that
+practical virtual machines could reasonably follow in the near future,
+with faster-than-current virtual machines with JIT specialization
+techniques for the mid-term future.
 
-nice interpreter not polluted by implementation details
-here Python, but any interpreter works
+Targetting platforms that are very different from C/Posix is work in
+progress, but given that many of the initial components are shared with
+the existing stack of transformations leading to C, we are confident
+that this work will soon give results.  Moreover, we believe that these
+results will show a reasonable efficiency, because the back-ends for VMs
+like Squeak and .NET can take advantage of high-level input (as opposed
+to trying to translate, say, C-like code to Smalltalk).
 
-architecture allows implementing features at the right level
+A desirable property of our approach is to allow a given language and VM
+to be specified only once, in the form of an interpreter.  Moreover, the
+interpreter can be kept simple (and thus keep its role as a
+specification): not only is it written in a high-level language, but it
+is not overloaded with low-level design choices and implementation
+details.  This makes language evolution and experimentation easier.
+More generally, this property is important because many interpreters for
+very difference languages can be written: the simpler these interpreters
+can be kept, the more we win from our investment in writing the
+tool-chain itself - a one-time effort.
 
-dynamic language enables defining our own various type systems
-[ref pluggable type systems]
-
-practical VMs will result with a bit more efforts
+Dynamic languages enable the definition of multiple custom type systems,
+similar to \textit{pluggable type systems} in [Bracha] but with simple
+type inference instead of explicit annotations.  This proved a key
+feature in implementing our translation tool-chain, because it makes a
+many-levels approach convenient: each abstraction level can provide an
+implementation for some of the features that the higher levels
+considered primitive.  It offsets the need to define a minimal kernel of
+primitives and build everything on top of it; instead, we have been able
+to implement, so to speak, the right feature at the right level.
 
 \end{document}
