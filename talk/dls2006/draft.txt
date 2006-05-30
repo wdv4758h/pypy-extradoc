@@ -870,6 +870,10 @@ efficient, stand-alone code in a large variety of environment.
                      Experimental results
 ============================================================
 
+
+Performance
+-----------
+
 Our tool-chain is capable of translating the Python interpreter of PyPy,
 written in RPython, producing right now either ANSI C code as described
 before, or LLVM [#]_ assembler which is then natively compiled with LLVM
@@ -957,9 +961,24 @@ pypy-llvm-c-prof
     The same as pypy-llvm-c, but using GCC's profile-driven
     optimizations.
 
-XXX explain slow.
+The speed difference with CPython 2.4.3 can be explained at two levels.
+One is that CPython is hand-crafted C code that has been continuously
+optimized for a decade now, whereas the Python interpreter of PyPy first
+seeks flexibility and high abstraction levels.  The other, probably
+dominant, factor is that various indices show that our approach places a
+very high load on the GC and on the memory caches of the machine.  The
+Boehm GC is known to be less efficient than more customized approach;
+kernel-level profiling shows that pypy-c typically spends 30% of its
+time in the Boehm library.  Our current, naively simple mark-and-sweep
+GC is even quite worse.  The interaction with processor caches is also
+hard to predict and account for; in general, we tend to produce
+relatively large amounts of code and prebuilt data.
 
-The complete translation of the pypy-c variant takes about 39 minutes,
+
+Translation times
+-----------------
+
+A complete translation of the pypy-c variant takes about 39 minutes,
 divided as follows:
 
 +-------------------------------------------+------------------------------+
