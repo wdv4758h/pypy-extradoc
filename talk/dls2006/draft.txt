@@ -12,7 +12,7 @@
     The aim is to translate (i.e. compile) the VM to arbitrary target
     environments, ranging in level from C/Posix to Smalltalk/Squeak via
     Java and CLI/.NET, while still being of reasonable efficiency within
-    that environment.
+    these environments.
 
     A key tool to achieve this goal is the systematic reuse of the
     (unmodified, dynamically typed) Python language as a system
@@ -1028,7 +1028,43 @@ takes XXX minutes.
 ============================================================
 
 
-XXX
+As described in `section 5`_, the performance of the compiled Python
+interpreters is still not up to competing with the well-established
+CPython.  We are always working to improve matters, considering new
+optimizations and better GCs.  Also, the OOTyper and back-ends for
+Smalltalk/Squeak and CLI/.NET are currently in progress.
+
+
+JIT Specializer
+---------------
+
+So far, the PyPy tool-chain can only translate the Python interpreter of
+PyPy into a program which is again an interpreter - the same interpreter
+translated to C, essentially, although we have already shown that some
+aspects can be "weaved" in at translation time, like support for
+coroutines.
+
+To achieve high performance for dynamic languages such as Python, the
+proven approach is to use dynamic compilation techniques, i.e. to write
+JITs.  With direct techniques, this is however a major endeavour, and
+increases the efforts to further evolve the language.
+
+In the context of the PyPy project, we are now exploring - as we planned
+from the start - the possibility to produce a JIT as a graph
+transformation aspect from the Python interpreter.  This idea is based
+on the theoretical possibiliy to turn interpreters into compilers by
+partial evaluation `[PE]`_.  In our approach, this is done by analysing
+the forest of flow graphs built from the Python interpreter, which is a
+well-suited input for this kind of techniques.  We can currently perform
+binding-time analysis `[BTA]`_ on these graphs, again with abstract
+interpretation techniques reusing the type inference engine.  The next
+step is to transform the graphs - following the binding-time annotations
+- into a compiler; more precisely, in partial evalution terminology, a
+generating extension.  We can currently do this on trivial examples.
+
+The resulting generating extension will be essentially similar to
+Psyco_, which is the only (and hand-written) JIT available for Python so
+far, based on run-time specialization.
 
 
 
@@ -1108,15 +1144,29 @@ XXX Jython, IronPython, UVM.
 
 XXX
 
+nice interpreter not polluted by implementation details
+here Python, but any interpreter works
+
+architecture allows implementing features at the right level
+
+dynamic language enables defining our own various type systems
+[ref pluggable type systems]
+
+practical VMs will result with a bit more efforts
+
+
+
+References
+----------
 
 .. _`[D]`: http://codespeak.net/pypy/dist/pypy/doc/dynamic-language-translation.html
 .. _`[S]`: http://codespeak.net/pypy/dist/pypy/doc/architecture.html#the-standard-interpreter
 .. _`[T]`: http://codespeak.net/pypy/dist/pypy/doc/translation.html
-.. _`abstract interpretation`: http://en.wikipedia.org/wiki/Abstract_interpretation
+.. _`abstract interpretation`: XXX http://en.wikipedia.org/wiki/Abstract_interpretation
 .. _Graphviz: http://www.graphviz.org/
-.. _`Hindley-Milner`: http://en.wikipedia.org/wiki/Hindley-Milner_type_inference
-.. _`join-semilattice`: http://en.wikipedia.org/wiki/Semilattice
-.. _SSA: http://en.wikipedia.org/wiki/Static_single_assignment_form
+.. _`Hindley-Milner`: XXX http://en.wikipedia.org/wiki/Hindley-Milner_type_inference
+.. _`join-semilattice`: XXX http://en.wikipedia.org/wiki/Semilattice
+.. _SSA: XXX http://en.wikipedia.org/wiki/Static_single_assignment_form
 .. _`[Boehm]`: XXX
 .. _Dhrystone: XXX
 .. _Richards: XXX
@@ -1124,6 +1174,9 @@ XXX
 .. _Scheme48: XXX
 .. _Squeak: XXX
 .. _`Jikes RVM`: XXX
+.. _`[PE]`: XXX
+.. _`[BTA]`: XXX
+.. _Psyco: XXX
 
 .. http://www.cs.jhu.edu/~scott/pll/constraints.html page to the reference
    /recent result for constraint-based type inference 
