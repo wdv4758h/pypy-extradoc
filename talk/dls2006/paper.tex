@@ -187,7 +187,7 @@ ready to be compiled.
 \begin{figure}
 \centering
 \includegraphics[scale=0.667]{image/arch.pdf}
-\caption{Overview of the translation process.}
+\caption{overview of the translation process.}
 \label{fig_arch}
 \end{figure}
 
@@ -303,7 +303,7 @@ def ll_append(lst, newitem):
   itemsarray = lst.items   # get the 'items' field
   itemsarray[index] = item # behaves like a C array
 \end{verbatim}
-\caption{A helper to implement \texttt{list.append()}.}
+\caption{a helper to implement \texttt{list.append()}.}
 \label{fig_llappend}
 \end{figure}
 
@@ -331,7 +331,8 @@ that level.  As an aside, let us remark that the number of primitive
 operations at RPython level is, comparatively speaking, quite large:
 all list and dictionary operations, instance and class attribute
 accesses, many string processing methods, a good subset of all Python
-built-in functions...  Compared to other approaches [e.g.\ Squeak], we
+built-in functions...  Compared to other approaches
+(e.g.\ Squeak \cite{Squeak}), we
 do not try to minimize the number of primitives -- at least not at the
 source level.  It is fine to have many primitives at any high enough
 level, because they can all be implemented at the next lower level in
@@ -418,9 +419,9 @@ by the C back-end into static pre-initialized arrays.
 
 
 The various analyses used -- from type inference to lifetime analysis -
-are generally formulated as [abstract interpretation].  While this
+are generally formulated as \textit{abstract interpretation.}  While this
 approach is known to be less efficient than more tailored algorithms
-like constraint-based type inference, we gain in freedom,
+like constraint-based type inference \cite{Constraint}, we gain in freedom,
 controllability and simplicity.  This proved essential in our overall
 approach: as described in section \ref{systemprog}, we need to perform
 type inference with many different type systems, the details of which
@@ -464,17 +465,19 @@ control flow graphs which contain direct references to the prebuilt data
 objects, and then handles and transforms these graphs.
 
 We found in-process debugging sufficient and did not implement dumping
-of any intermediate step to disk.  Figure 3 shows the control flow graph
+of any intermediate step to disk.  Figure \ref{fig_screenshot}
+shows the control flow graph
 obtained for a simple function -- this is a screenshot from our graph
 viewer, used for debugging; basic block placement is performed by
 Graphviz \cite{graphviz}.
 
-\begin{verbatim}
-::
+\begin{figure}
+\includegraphics[scale=0.59]{image/screenshot-bw.pdf}
+\caption{the control flow graph of a simple function, computed and
+displayed by our tool-chain.}
+\label{fig_screenshot}
+\end{figure}
 
-    [figure 3: insert a nice pygame screenshot]
-\end{verbatim}
-    
 The actual transformation from function objects -- i.e.\ bytecode -- to
 flow graph is performed by the Flow Object Space, a short but generic
 plug-in component for the Python interpreter of PyPy.  The architecture
@@ -482,13 +485,13 @@ of our Python interpreter is shown in figure \ref{interpobjspace}.
 
 \begin{figure}
   \centering
-  \caption{the interpreter and object spaces}
   \label{interpobjspace}
   \begin{tabular}{|c|c|} \hline
-\multicolumn{2}{|c|}{forest of bytecode objects from the application}    \\ \hline
-\multicolumn{2}{|c|}{Python bytecode interpreter}            \\ \hline
-    Standard Object Space     &  Flow Object Space  \\ \hline
+\multicolumn{2}{|c|}{\vphantom{\Large X}forest of bytecode objects from the application}    \\ \hline
+\multicolumn{2}{|c|}{\vphantom{\Large X}Python bytecode interpreter}            \\ \hline
+    \vphantom{\Large X} Standard Object Space     &  Flow Object Space  \\ \hline
   \end{tabular}
+  \caption{the interpreter and object spaces.}
 \end{figure}
 
 Note that the left column, i.e.\ the bytecode interpreter and the
@@ -515,7 +518,7 @@ figure \ref{flowlattice}.
 \begin{figure*}
 \centering
 \includegraphics[scale=0.75]{image/flowlattice.pdf}
-\caption{The lattice order of the flow object space}
+\caption{the lattice order of the flow object space.}
 \label{flowlattice}
 \end{figure*}
 
@@ -581,6 +584,13 @@ sketched above is not entirely straightforward; we refer the reader to
 
 
 \subsection{The Annotator}
+
+\begin{figure*}
+\centering
+\includegraphics[scale=0.667]{image/lattice1.pdf}
+\caption{the overall lattice.}
+\label{latticeoverall}
+\end{figure*}
 
 The type inference engine, which we call the \textit{annotator}, is the central
 component of the front-end part of the translation process.  Given a
@@ -688,22 +698,14 @@ Figures \ref{latticeoverall} and \ref{latticedetail} show how these
 types are ordered to form a lattice.  We mostly use its structure of
 join-semilattice only.
 
-\begin{figure*}
+\begin{figure}
 \centering
-\includegraphics[scale=0.75]{image/lattice1.pdf}
-\caption{The overall lattice}
-\label{latticeoverall}
-\end{figure*}
-
-\begin{figure*}
-\centering
-\includegraphics[scale=0.75]{image/lattice2.pdf}
-\caption{The part about instances and nullable instances, assuming a
+\includegraphics[scale=0.667]{image/lattice2.pdf}
+\caption{the part about instances and nullable instances, assuming a
   simple class hierarchy with only two direct subclasses of
   \texttt{object}.}
 \label{latticedetail}
-\end{figure*}
-
+\end{figure}
 
 All list terms for all variables are unordered.  The Pbcs form a
 classical finite set-of-subsets lattice.  In addition, we have left
@@ -923,7 +925,6 @@ results and are summarized in table \ref{perfsumm}.
 \begin{table*}
 % the layout of this table isn't wonderful, but it's probably OK.
 \centering
-\caption{Summary of interpreter performance}
 \label{perfsumm}
 \begin{tabular}{|l|c|c|} \hline
 \textbf{Interpreter} & 
@@ -938,6 +939,7 @@ pypy-c-stackless-gcframework &  8743ms (11.0x) &  3755 (10.7x) \\ \hline
 pypy-llvm-c                  &  3797ms  (4.8x) &  7763  (5.2x) \\ \hline
 pypy-llvm-c-prof             &  2772ms  (3.5x) & 10245  (3.9x) \\ \hline
 \end{tabular}
+\caption{summary of interpreter performance.}
 \end{table*}
 
 The numbers in parenthesis are slow-down factors compared to CPython.
@@ -1012,7 +1014,6 @@ divided as shown in table \ref{translationtimes}.
 
 \begin{table*}
 \centering
-\caption{Dividing overall translation time by stage}
 \label{translationtimes}
 \begin{tabular}{|p{0.65\linewidth}|c|} \hline
 \textbf{Step} & \textbf{Time (minutes:seconds)} \\ \hline
@@ -1038,6 +1039,7 @@ Generating C source
 Compiling (\texttt{gcc -O2})              
 & 3:23 \\ \hline
 \end{tabular}
+\caption{dividing overall translation time by stage.}
 \end{table*}
 
 An interesting feature of this table is that type inference is not the
