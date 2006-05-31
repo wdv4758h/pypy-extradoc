@@ -480,8 +480,9 @@ of our Python interpreter is shown in figure \ref{interpobjspace}.
 Note that the left column, i.e.\ the bytecode interpreter and the
 Standard Object Space, form the full Python interpreter of PyPy.  It is
 an RPython program, and the whole purpose of the translation process is
-to accept this as \textit{input}, and translate it to an efficient form.  Its
-architecture is not relevant to the way it is translated. XXX?
+to accept this as \textit{input}, and translate it to an efficient form.
+The description of this particular input program is beyond the scope of
+the present paper; see [S].
 
 However, the bytecode interpreter plays a double role, at two different
 levels.  The so-called Object Spaces are \textit{domains} in the abstract
@@ -535,7 +536,10 @@ basic constant propagation\footnote{This is useful at this level for
 some constructs of the bytecode interpreter, which can temporarily
 wrap internal values and push them onto the regular value stack among
 the other application-level objects.  We need to be able to unwrap
-them again later. XXX compile-time computation in the helpers.}
+them again later.  Moreover, we rely on this feature to perform
+compile-time computations, particularly in the generic system code
+helpers, which ask for and compute with the concrete types of the
+variables they receive.}
 
 In the flow graph, branching occurs when the bytecode interpreter tries
 to inspect the truth value of placeholder objects, as it would in
@@ -699,21 +703,34 @@ appear in the user program's flow graphs.  Let $b$ be a map from $V$
 to $A$; it is a "binding" that gives to each variable a type.  The
 purpose of the annotator is to compute such a binding stepwise.
 
-Let $x$, $y$ and $z$ be Variables.  We introduce the rule:
-
-% XXX format this!
+Let $x$, $y$ and $z$ be Variables.  We introduce the rules:
+%
 $$
 \begin{array}{c}
  z = \mathrm{add}(x, y), \; b(x) =
-    Int, \; Bool \leq b(y) \leq Int \\ \hline
+    Int, \; b(y) = Int \\ \hline
  b' = b \hbox{\ with\ } (z
     \rightarrow Int) 
 \end{array}
 $$
-
-which specify that if we see the addition operation applied to
+%
+$$
+\begin{array}{c}
+ z = \mathrm{add}(x, y), \; Bool \leq b(x), b(y) \leq
+    NonNegInt \\ \hline
+ b' = b \hbox{\ with\ } (z
+    \rightarrow NonNegInt) 
+\end{array}
+$$
+%
+The first rule specifies that if we see the addition operation applied to
 Variables whose current binding is $Int$, a new binding $b'$ can be
 produced: it is $b$ except on $z$, where we have $b'(z) = Int$.
+The second rule specifies that in a similar case, if both arguments are
+known to be non-negative, so is the result.  Extra rules control addition
+between other combinations of numbers, as well as strings, lists and tuples
+(for which addition is concatenation).  Similar sets of rules are
+introduced for each operation.
 
 The type inference engine can be seen as applying this kind of rules
 repeatedly.  It does not apply them in random order, but follows a
