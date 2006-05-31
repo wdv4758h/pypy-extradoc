@@ -1,7 +1,7 @@
 Abstract for Agile track at Europython 2006
 --------------------------------------------
 
-Kill -9: process refactoring in the PyPy project
+Kill -1: process refactoring in the PyPy project
 =============================
 
 In this talk we will present the experiences of running a collaborative
