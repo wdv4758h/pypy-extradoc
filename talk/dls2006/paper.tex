@@ -61,11 +61,11 @@ writing three versions of his virtual machine: for C/Posix, for Java,
 and for CLI/.NET.  This is, at least, the current situation of the
 Python programming language, where independent volunteers have
 developed and are now maintaining Java and .NET versions of Python,
-which follow the evolution of the "official" C version (CPython).
+which follow the evolution of the ``official'' C version (CPython).
 
 However, we believe that platform standardization does not have to be
 a necessary component of this equation.  We are basically using the
-standard "meta-programming" argument: if one could write the VM in a
+standard ``meta-programming'' argument: if one could write the VM in a
 very high level language, then the VM itself could be automatically
 \textit{translated} to any lower-level platform.  Moreover by writing
 the VM in such a language we would gain in flexibility in
@@ -112,7 +112,7 @@ compile subsets of Python to various environment.
 \end{enumerate}
 %
 In particular, we have defined a subset of the Python language called
-"restricted Python" or RPython.  This sublanguage is not restricted
+``restricted Python'' or RPython.  This sublanguage is not restricted
 syntactically, but only in the way it manipulates objects of different
 types.  The restrictions are a compromise between the expressivity and
 the need to statically infer enough types to generate efficient code.
@@ -267,7 +267,7 @@ C-level code by a helper that possibly reallocates the array of items.
 
 This means that in addition to transforming the existing graphs, each
 transformation step also needs to insert new functions into the forest.
-A key feature of our approach is that we can write such "system-level"
+A key feature of our approach is that we can write such ``system-level''
 code -- relevant only to a particular transformation -- in plain Python
 as well.  The idea is to feed these new Python functions into the
 front-end, using this time the transformation's target (lower-level)
@@ -307,7 +307,7 @@ def ll_append(lst, newitem):
 In the example of the \texttt{malloc} operation, replaced by a call to
 GC code, this GC code can invoke a complete collection of dead
 objects, and can thus be arbitrarily complicated.  Still, our GC code
-is entirely written in plain Python, and it manipulates "objects" that
+is entirely written in plain Python, and it manipulates ``objects'' that
 are still at a lower level: pointer and address objects.  Even with
 the restriction of having to use pointer-like and address-like
 objects, Python remains more expressive than, say, C to write a GC
@@ -380,8 +380,8 @@ ones that the emulating instances implement.  As seen above, the types
 can also be used by type inference when analysing system code like the
 helpers of figure \ref{fig_llappend}.
 
-Now, clearly, the purpose of types like a "C-like struct" or a "C-like
-array" is to be translated to a real \texttt{struct} or array declaration by
+Now, clearly, the purpose of types like a ``C-like struct'' or a ``C-like
+array'' is to be translated to a real \texttt{struct} or array declaration by
 the C back-end.  What, then, is the purpose of emulating such things in
 Python?  The answer is three-fold.  Firstly, if we have objects that
 live within the Python interpreter, but faithfully emulate the behavior
@@ -535,7 +535,7 @@ question come from the RPython application that we would like to
 translate.
 
 The Flow Object Space records all operations that the bytecode
-interpreter "would like" to do between the placeholder objects.  It
+interpreter ``would like'' to do between the placeholder objects.  It
 records them into basic block objects that will eventually be part of
 the control flow graph of the whole function.  The recorded operations
 take Variables and Constants as argument, and produce new Variables as
@@ -591,7 +591,7 @@ Here is a simplified, static model of how the annotator works.  It can
 be considered as taking as input a finite family of functions calling
 each other, and working on the control flow graphs of each of these
 functions as built by the Flow Object Space (section \ref{flowobjspace}).
-Additionally, for a particular "entry point" function, the annotator
+Additionally, for a particular ``entry point'' function, the annotator
 is provided with user-specified types for the function's arguments.
 
 The goal of the annotator is to find the most precise type that can be
@@ -634,7 +634,7 @@ results of the variables in the block, which in turn can generalise the
 types that flow into the following blocks, and so on.  This process
 continues until a fixed point is reached.
 
-We can consider that all variables are initially assigned the "bottom"
+We can consider that all variables are initially assigned the ``bottom''
 type corresponding to the empty set of possible run-time values.  Types
 can only ever be generalised, and the model is simple enough to show
 that there is no infinite chain of generalisation, so that this process
@@ -654,7 +654,7 @@ The set $A$ of RPython types is defined as the following formal terms:
 %
 \begin{itemize}
 \item $Bot$, $Top$ -- the minimum and maximum elements (corresponding
-      to "impossible value" and "most general value");
+      to ``impossible value'' and ``most general value'');
 
 \item $Int$, $NonNegInt$, $Bool$ -- integers, known-non-negative
       integers, booleans;
@@ -711,7 +711,7 @@ The type system moreover comes with a family of rules, which for every
 operation and every sensible combination of input types describes the
 type of its result variable.  Let $V$ be the set of Variables that
 appear in the user program's flow graphs.  Let $b$ be a map from $V$
-to $A$; it is a "binding" that gives to each variable a type.  The
+to $A$; it is a ``binding'' that gives to each variable a type.  The
 purpose of the annotator is to compute such a binding stepwise.
 
 Let $x$, $y$ and $z$ be Variables.  We introduce the rules:
@@ -952,12 +952,12 @@ follows:
     performance.)
 
 {\bf pypy-c-stackless.}
-    The same as pypy-c, plus the "stackless transformation" step which
+    The same as pypy-c, plus the ``stackless transformation'' step which
     modifies the flow graph of all functions in a way that allows them
     to save and restore their local state, as a way to enable coroutines.
 
 {\bf pypy-c-gcframework.}
-    In this variant, the "gc transformation" step inserts explicit
+    In this variant, the ``gc transformation'' step inserts explicit
     memory management and a simple mark-and-sweep GC implementation.
     The resulting program is not linked with Boehm.  Note that it is not
     possible to find all roots from the C stack in portable C; instead,
@@ -965,8 +965,8 @@ follows:
     to an alternate stack around each subcall.
 
 {\bf pypy-c-stackless-gcframework.}
-    This variant combines the "gc transformation" step with the
-    "stackless transformation" step.  The overhead introduced by the
+    This variant combines the ``gc transformation'' step with the
+    ``stackless transformation'' step.  The overhead introduced by the
     stackless feature is theoretically balanced with the removal of the
     overhead of pushing and popping roots explicitly on an alternate
     stack: indeed, in this variant it is possible to ask the functions
@@ -1041,7 +1041,7 @@ than type inference alone.  This is the case for the LLTyper step,
 although it has a linear complexity on the size of its input (most
 transformations do).
 
-Other transformations like the "gc" and the "stackless" ones actually
+Other transformations like the ``gc'' and the ``stackless'' ones actually
 take more time, particuarly when used in combination with each other (we
 speculate it is because of the increase in size caused by the previous
 transformations).  A translation of pypy-c-stackless, without counting
@@ -1066,7 +1066,7 @@ back-ends for Smalltalk/Squeak and CLI/.NET are currently in progress.
 So far, the PyPy tool-chain can only translate the Python interpreter of
 PyPy into a program which is again an interpreter -- the same interpreter
 translated to C, essentially, although we have already shown that some
-aspects can be "weaved" in at translation time, like support for
+aspects can be ``weaved'' in at translation time, like support for
 coroutines.
 
 To achieve high performance for dynamic languages such as Python, the
@@ -1125,7 +1125,7 @@ conventions, which can be mostly directly translated to C.
 The VM, the object memory and the garbage collector support are
 explicitly written together in this style. Again simplicity and
 portability were the major goals, as opposed to sophisticated manipulation
-and analysis or "weaving" in of features as transformation aspects.
+and analysis or ``weaving'' in of features as transformation aspects.
 
 Jikes RVM \cite{jalapeno} is a
 Java VM and Just-In-Time compiler written in Java.
