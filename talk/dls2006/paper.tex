@@ -512,7 +512,8 @@ Object Space.  The Standard Object Space is a concrete domain, in which
 objects are the concrete Python objects of the various built-in types:
 lists, dictionaries, and so on.  By opposition, the Flow Object Space is
 really an abstract domain.  It handles objects that are placeholders.
-Its lattice order is shown in figure \ref{flowlattice}.
+Its lattice order (actually a join-semilattice only) is shown in
+figure \ref{flowlattice}.
 
 \begin{figure*}
 \centering
@@ -687,7 +688,7 @@ The set $A$ of RPython types is defined as the following formal terms:
 %
 Figures \ref{latticeoverall} and \ref{latticedetail} show how these
 types are ordered to form a lattice.  We mostly use its structure of
-[join-semilattice] only.
+join-semilattice only.
 
 \begin{figure*}
 \centering
@@ -808,28 +809,29 @@ precise enough information for our needs.  We must describe a detail of
 the abstract interpretation engine that is critical for precision: the
 propagation of conditional types.  Consider the following source code
 fragment:
-
+%
 \begin{verbatim}
     if isinstance(x, MyClass):
         f(x)
     else:
         g(x)
 \end{verbatim}
-
+%
 Although the type of \texttt{x} may be some parent class of
 \texttt{MyClass}, it can be deduced to be of the more precise type
 $Inst(MyClass)$ within the positive branch of the \texttt{if}.
-(Remember that our graphs are in SSI form, which means that the
+\footnote{Remember that our graphs are in SSI form, which means that the
 \texttt{x} inside each basic block is a different Variable with a
-possibly different type as annotation.) XXX flow sensivity and SSA
+possibly different type as annotation.  Given that our type inference
+is not flow-sensitive, SSI gives an advantage over SSA here.}
 
 This is implemented by introducing an extended family of types for
 boolean values:
-
+%
 $$
 Bool(v_1: (t_1, f_1), v_2: (t_2, f_2), ...)
 $$
-
+%
 where the $v_n$ are variables and $t_n$ and $f_n$ are types.  The
 result of a check, like \texttt{isintance()} above, is typically
 annotated with such an extended $Bool$.  The meaning of the type is as
@@ -844,18 +846,21 @@ trim the types it propagates into the next blocks (this is where the
 
 With the help of the above technique, we achieve a reasonable precision
 in small examples.  For larger examples, a different, non-local
-technique is required: the specialization of functions. XXX use 'polymorphism'
+technique is required: the specialization of type-polymorphic functions.
 
 As described in the introduction, the most important downside of our
 approach is that automatic specialization is a potential
-performance-killer.  We \textit{do} support specialization, however: we can
-generate several independently-annotated copies of the flow graphs of
-certain functions.  When annotating RPython programs, such
-specialization does not happen automatically: we rely on hints provided
-by the programmer in the source code, in the form of flags attached to
-function objects.  As we had this trade-off in mind when we wrote the
-Python interpreter of PyPy, we only had to add a dozen or so hints in
-the end.
+performance-killer.  So we decided that in the normal case, all calls to
+a given function contribute to a single annotation of that function.
+Inside the function graph, we propagate the \textit{join} of the types
+of the actual parameters of the call sites.  We \textit{do} support
+specialization, however: we can generate several independently-annotated
+copies of the flow graphs of certain functions.  When annotating RPython
+programs, such specialization does not happen automatically: we rely on
+hints provided by the programmer in the source code, in the form of
+flags attached to function objects.  As we had this trade-off in mind
+when we wrote the Python interpreter of PyPy, we only had to add a dozen
+or so hints in the end.
 
 This does not mean that automatic specialization policies are difficult
 to implement.  Indeed, the simpler lower-level type systems rely quite
