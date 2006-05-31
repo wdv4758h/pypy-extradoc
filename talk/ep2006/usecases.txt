@@ -19,11 +19,11 @@ Requested Timeslot
 Abstract
 --------
 
-This talk describes some of the novel features of the PyPy project (a next
-generation Python interpreter) which are made possible by PyPy's flexible
-architecture. The talk focuses mostly on the features and examples about how
-they can be used and less about their implementation. Specifically we will
-discuss and showcase the following:
+This talk describes novel features of the PyPy project (a next
+generation Python interpreter) which are made possible by
+its flexible architecture. The talk focuses mostly on example
+usages and less about their implementation.  Specifically we 
+will discuss and showcase the following:
 
  - lazy evaluation with the thunk object space
  - lightweight threadlets similar to what stackless python provides
