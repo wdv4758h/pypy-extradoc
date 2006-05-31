@@ -143,11 +143,7 @@ program in two phases, as follows [#]_:
        calls, and thus only gradually discovers (the reachable parts of)
        the input program.
 
-::
-
-  [figure 0: flow graph and annotator, e.g. part of doc/image/translation.*
-             then a stack of transformations
-  ]
+.. graphviz:: image/arch.dot
 
 1. We take as input RPython functions [#]_, and convert them to control flow
    graphs - a structure amenable to analysis.  These flow graphs contain

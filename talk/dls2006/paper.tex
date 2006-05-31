@@ -134,28 +134,22 @@ in \cite{A}.
 \label{translationprocess}
 
 The translation process starts from RPython source code and eventually
-produces low-level code suitable for the target environment.  It can be
-described as performing a series of step-wise transformations.  Each
-step is based on control flow graph transformations and rewriting, and
-on the ability to augment the program with further implementation code
-written in Python and analysed with the suitable type system.
+produces low-level code suitable for the target environment.  Its
+architecture is shown in figure \ref{fig_arch}.  It can be described as
+a front-end followed by a series of step-wise transformations.  Each
+transformation step is based on control flow graph transformations and
+rewriting, and on the ability to augment the program with further
+implementation code written in Python and analysed with the suitable
+type system.
 
 The front-end part of the translation process analyses the input
 RPython program in two phases, as follows:\footnote{Note that the two
 phases are intermingled in time, because type inference proceeds from
 an entry point function and follows all calls, and thus only gradually
 discovers (the reachable parts of) the input program.}
-
-\begin{verbatim}
-::
-
-  [figure 0: flow graph and annotator, e.g. part of doc/image/translation.*
-             then a stack of transformations
-  ]
-\end{verbatim}
 %
 \begin{enumerate}
-\item We take as input RPython functions,\footnote{The input to our
+\item We take as input RPython function objects,\footnote{The input to our
        translation chain are indeed loaded runtime function objects,
        not source code or ASTs.  This enables a form of staged
        programming in which we can use unrestricted
@@ -188,6 +182,14 @@ system and leaves them typed in a possibly different type system, as we
 will describe in the sequel.  Finally, a back-end turns the resulting
 graphs into code suitable for the target environment, e.g.\ C source code
 ready to be compiled.
+
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.667]{image/arch.pdf}
+\caption{Overview of the translation process.}
+\label{fig_arch}
+\end{figure}
 
 
 \subsection{Transformations}
