@@ -608,18 +608,19 @@ integer.  Most programming languages have this property.  However,
 Python -- like many languages not specifically designed with type
 inference in mind -- does not possess a type system that allows much
 useful information to be derived about variables based on how they are
-\textit{used}; only on how they were \textit{produced}.  For example, a number of very
-different built-in types can be involved in an addition; the meaning of
-the addition and the type of the result depends on the type of the input
-arguments.  Merely knowing that a variable will be used in an addition
-does not give much information per se.  For this reason, our annotator
-works by flowing types forward, operation after operation, i.e.\ by
-performing abstract interpretation of the flow graphs.  In a sense, it
-is a more naive approach than the one taken by type systems specifically
-designed to enable more advanced inference algorithms.  For example,
+\textit{used}; only on how they were \textit{produced}.  For example,
+a number of very different built-in types can be involved in an
+addition; the meaning of the addition and the type of the result
+depends on the type of the input arguments.  Merely knowing that a
+variable will be used in an addition does not give much information
+per se.  For this reason, our annotator works by flowing types
+forward, operation after operation, i.e.\ by performing abstract
+interpretation of the flow graphs.  In a sense, it is a more naive
+approach than the one taken by type systems specifically designed to
+enable more advanced inference algorithms.  For example,
 Hindley-Milner type inference works in an inside-out direction, by
 starting from individual operations and propagating type constraints
-outwards [H-M].
+outwards \cite{DaMi}\cite{Miln}.
 
 Naturally, simply propagating types forward requires the use of a fixed
 point algorithm in the presence of loops in the flow graphs or in the
@@ -909,8 +910,8 @@ assembler which is then natively compiled with LLVM tools.
 
 The tool-chain has been tested with and can sucessfully apply
 transformations enabling various combinations of features. The
-translated interpreters are benchmarked using pystone (a [Dhrystone] 2.0
-derivative traditionally used by the Python community, although it is
+translated interpreters are benchmarked using pystone (a Dhrystone 2.0
+\cite{dhry20} derivative traditionally used by the Python community, although it is
 a rather poor benchmark) and the classical [Richards] benchmark and
 compared against [CPython] 2.4.3 results and are summarized in table
 \ref{perfsumm}.
@@ -1089,8 +1090,8 @@ step is to transform the graphs -- following the binding-time annotations
 generating extension.  We can currently do this on trivial examples.
 
 The resulting generating extension will be essentially similar to
-[Psyco], which is the only (and hand-written) JIT available for Python so
-far, based on run-time specialization.
+Psyco \cite{psyco}, which is the only (and hand-written) JIT available for Python
+so far, based on run-time specialization.
 
 
 
@@ -1127,7 +1128,7 @@ explicitly written together in this style. Again simplicity and
 portability were the major goals, as opposed to sophisticated manipulation
 and analysis or "weaving" in of features as transformation aspects.
 
-Jikes RVM \cite{DBLP:journals/ibmsj/AlpernABBCCCFGHHLLMNRSSSSSSW00} is a
+Jikes RVM \cite{jalapeno} is a
 Java VM and Just-In-Time compiler written in Java.
 Bootstrapping happens by self-applying the compiler on a host VM, and
 dumping a snapshot from memory of the resulting native code.
