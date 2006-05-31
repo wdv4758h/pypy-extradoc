@@ -13,7 +13,7 @@
 The PyPy project seeks to prove both on a research and a
 practical level the feasibility of writing a virtual machine (VM)
 for a dynamic language in a dynamic language -- in this case, Python.
-The aim is to translate (i.e. compile) the VM to arbitrary target
+The aim is to translate (i.e.\ compile) the VM to arbitrary target
 environments, ranging in level from C/Posix to Smalltalk/Squeak via
 Java and CLI/.NET, while still being of reasonable efficiency within
 these environments.
@@ -161,7 +161,7 @@ discovers (the reachable parts of) the input program.}:
       subset of Python's built-in types, with some more precision to
       describe e.g.\ the items stored in container types.
       Occasionally, a single input function can produce several
-      specialized versions, i.e. several similar but differently typed
+      specialized versions, i.e.\ several similar but differently typed
       graphs.  This type inference process is described in more
       details in section \ref{typeinference}.
 \end{enumerate}
@@ -461,7 +461,7 @@ viewer, used for debugging; basic block placement is performed by
     [figure 3: insert a nice pygame screenshot]
 \end{verbatim}
     
-The actual transformation from function objects -- i.e. bytecode -- to
+The actual transformation from function objects -- i.e.\ bytecode -- to
 flow graph is performed by the Flow Object Space, a short but generic
 plug-in component for the Python interpreter of PyPy.  The architecture
 of our Python interpreter is shown in figure \ref{interpobjspace}.
@@ -477,7 +477,7 @@ of our Python interpreter is shown in figure \ref{interpobjspace}.
   \end{tabular}
 \end{figure}
 
-Note that the left column, i.e. the bytecode interpreter and the
+Note that the left column, i.e.\ the bytecode interpreter and the
 Standard Object Space, form the full Python interpreter of PyPy.  It is
 an RPython program, and the whole purpose of the translation process is
 to accept this as \textit{input}, and translate it to an efficient form.  Its
@@ -602,7 +602,7 @@ different built-in types can be involved in an addition; the meaning of
 the addition and the type of the result depends on the type of the input
 arguments.  Merely knowing that a variable will be used in an addition
 does not give much information per se.  For this reason, our annotator
-works by flowing types forward, operation after operation, i.e. by
+works by flowing types forward, operation after operation, i.e.\ by
 performing abstract interpretation of the flow graphs.  In a sense, it
 is a more naive approach than the one taken by type systems specifically
 designed to enable more advanced inference algorithms.  For example,
@@ -1038,7 +1038,7 @@ aspects can be "weaved" in at translation time, like support for
 coroutines.
 
 To achieve high performance for dynamic languages such as Python, the
-proven approach is to use dynamic compilation techniques, i.e. to write
+proven approach is to use dynamic compilation techniques, i.e.\ to write
 JITs.  With direct techniques, this is however a major endeavour, and
 increases the efforts to further evolve the language.
 
