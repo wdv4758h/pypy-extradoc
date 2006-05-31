@@ -37,8 +37,8 @@ efficient programs.  The implementation of virtual machines is one
 such area.  Building implementations of general programming languages,
 in particular highly dynamic ones, using a classic direct coding
 approach, is typically a long-winded effort and produces a result that
-is quite [XXX quite could be removed here?] tailored to a specific
-platform and where architectural decisions (e.g. about GC) are spread
+is tailored to a specific
+platform and where architectural decisions (e.g.\ about GC) are spread
 across the code in a pervasive and invasive way.
 
 For this and other reasons, standard platforms emerge; nowadays, a
@@ -159,7 +159,7 @@ discovers (the reachable parts of) the input program.}:
       stage, types inferred are part of the type system which is the
       very definition of the RPython sub-language: they are roughly a
       subset of Python's built-in types, with some more precision to
-      describe e.g. the items stored in container types.
+      describe e.g.\ the items stored in container types.
       Occasionally, a single input function can produce several
       specialized versions, i.e. several similar but differently typed
       graphs.  This type inference process is described in more
@@ -173,7 +173,7 @@ step modifies the graphs in-place, by altering their structure and/or
 the operations they contain.  Each step inputs graphs typed in one type
 system and leaves them typed in a possibly different type system, as we
 will describe in the sequel.  Finally, a back-end turns the resulting
-graphs into code suitable for the target environment, e.g. C source code
+graphs into code suitable for the target environment, e.g.\ C source code
 ready to be compiled.
 
 
@@ -206,15 +206,17 @@ and replaces all \texttt{malloc} operations with calls to a garbage
 collector's innards.  It can inspect all the graphs to discover the
 \texttt{struct} types in use by the program, and assign a unique type id to
 each of them.  These type ids are collected in internal tables that
-describe the layout of the structures, e.g. their sizes and the location
+describe the layout of the structures, e.g.\ their sizes and the location
 of the pointer fields.
 
-We have implemented other transformations as well, e.g. performing
-various optimizations, or turning the whole code into a
-continuation-passing style (CPS) [XXX I'm not sure our transformation
-can be classified as classical CPS, although there are known similar techniques but the terminology is quite confused] that allows us to use coroutines
-without giving up the ability to generate fully ANSI C code.  (This will
-be the subject of another paper.)  [XXX mention exception transformer too]
+We have implemented other transformations as well, e.g.\ performing
+various optimizations, or turning the whole code into a style that
+allows us to use coroutines (still in ANSI C: it is a variant of
+continuation-passing that will be the subject of another paper.)
+Another example is the exception transformer, which transforms graphs
+that still contain implicit exception handling into a form suitable for
+C (currently based on a global flag to signal the presence of an
+exception, set and checked around selected function calls).
 
 Finally, currently under development is a variant of the very first
 transformation step, for use when targeting higher-level,
@@ -311,7 +313,7 @@ that level.  As an aside, let us remark that the number of primitive
 operations at RPython level is, comparatively speaking, quite large:
 all list and dictionary operations, instance and class attribute
 accesses, many string processing methods, a good subset of all Python
-built-in functions...  Compared to other approaches [e.g. Squeak], we
+built-in functions...  Compared to other approaches [e.g.\ Squeak], we
 do not try to minimize the number of primitives -- at least not at the
 source level.  It is fine to have many primitives at any high enough
 level, because they can all be implemented at the next lower level in
@@ -344,7 +346,7 @@ The four levels that we considered so far are summarized in figure
 
 The RPython level is a subset of Python, so the types mostly follow
 Python types, and the instances of these types are instances in the
-normal Python sense; e.g. whereas Python has only got a single type
+normal Python sense; e.g.\ whereas Python has only got a single type
 \texttt{list}, RPython has a parametric type \texttt{list(T)} for every RPython
 type \texttt{T}, but instances of \texttt{list(T)} are just those Python lists
 whose items are all instances of \texttt{T}.
@@ -611,7 +613,7 @@ point algorithm in the presence of loops in the flow graphs or in the
 inter-procedural call graph.  Indeed, we flow types forward from the
 beginning of the entry point function into each basic block, operation
 after operation, and follow all calls recursively.  During this process,
-each variable along the way gets a type.  In various cases, e.g. when we
+each variable along the way gets a type.  In various cases, e.g.\ when we
 close a loop, the previously assigned types can be found to be too
 restrictive.  In this case, we generalise them to allow for a larger set
 of possible run-time values, and schedule the block where they appear
@@ -719,7 +721,7 @@ forward-propagation order typical of abstract interpretation.
 
 It is outside the scope of the present paper to describe the type
 inference engine and the rules more formally.  The difficult points
-involve mutable containers -- e.g. initially empty list that are filled
+involve mutable containers -- e.g.\ initially empty list that are filled
 somewhere else -- and the discovery of instance attributes -- in Python,
 classes do not declare upfront a fixed set of attributes for their
 instances, let alone their types.  Both these examples require
@@ -744,7 +746,7 @@ transformation step.
 
 The worst case behaviors that can appear in the model described above
 involve the lattice of Pbcs, involving variables that could contain
-e.g.  one function object among many.  An example of such behavior is
+e.g.\ one function object among many.  An example of such behavior is
 code manipulating a table of function objects: when an item is read
 out of the table, its type is a large Pbc set: $Pbc(\{f1, f2, f3,
 \ldots\})$.  But in this example, the whole set is available at once,
