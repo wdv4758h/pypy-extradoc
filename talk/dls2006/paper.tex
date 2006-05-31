@@ -707,7 +707,7 @@ classical finite set-of-subsets lattice.  In addition, we have left
 out a number of other annotations that are irrelevant for the basic
 description of the annotator and straightforward to handle:
 $Dictionary$, $Tuple$, $Float$, $UnicodePoint$, $Iterator$, etc.  The
-complete list is described in [T].
+complete list is described in document \cite{T}.
 
 The type system moreover comes with a family of rules, which for every
 operation and every sensible combination of input types describes the
@@ -751,14 +751,15 @@ forward-propagation order typical of abstract interpretation.
 
 It is outside the scope of the present paper to describe the type
 inference engine and the rules more formally.  The difficult points
-involve mutable containers -- e.g.\ initially empty list that are filled
-somewhere else -- and the discovery of instance attributes -- in Python,
-classes do not declare upfront a fixed set of attributes for their
-instances, let alone their types.  Both these examples require
-sophisticated reflowing techniques that invalidate existing types in
-already-annotated basic blocks, to account for the influence of more
-general types coming indirectly from a possibly distant part of the
-program.  The reader is referred to [D] for more information.
+involve mutable containers -- e.g.\ initially empty list that are
+filled somewhere else -- and the discovery of instance attributes --
+in Python, classes do not declare upfront a fixed set of attributes
+for their instances, let alone their types.  Both these examples
+require sophisticated reflowing techniques that invalidate existing
+types in already-annotated basic blocks, to account for the influence
+of more general types coming indirectly from a possibly distant part
+of the program.  The reader is referred to technical report \cite{D}
+for more information.
 
 
 \subsection{Termination and complexity}
@@ -792,7 +793,7 @@ this: annotating the whole PyPy interpreter (90,000 lines) takes on the
 order of 5 to 10 minutes, and basic blocks are typically only reflown a
 handful of times, providing a close-to-linear practical complexity.
 
-We give formal termination and correctness proofs in [D], as well as
+We give formal termination and correctness proofs in \cite{D}, as well as
 worst-case bounds and some experimental evidence of their practical
 irrelevance.
 
