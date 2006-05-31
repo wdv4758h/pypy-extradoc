@@ -499,15 +499,7 @@ lists, dictionaries, and so on.  By opposition, the Flow Object Space is
 really an abstract domain.  It handles objects that are placeholders.
 Its lattice order is shown in figure 5.
 
-::
-
-    [figure 5:                Variable
-
-                         /      |             \           \
-                        /       |              \           \
-                       /        |               \           \
-      Constant(1) ... Constant(n) ... Constant([1,2,3])  ... Constant(<instance of class A>) ...
-    ]
+.. graphviz:: image/flowlattice.dot
 
 This order is extremely simple, because most actual analysis is delayed
 to the next phase, the type inference engine.  The objects are either
