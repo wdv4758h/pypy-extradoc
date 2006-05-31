@@ -145,10 +145,10 @@ on the ability to augment the program with further implementation code
 written in Python and analysed with the suitable type system.
 
 The front-end part of the translation process analyses the input
-RPython program in two phases, as follows\footnote{Note that the two
+RPython program in two phases, as follows:\footnote{Note that the two
 phases are intermingled in time, because type inference proceeds from
 an entry point function and follows all calls, and thus only gradually
-discovers (the reachable parts of) the input program.}:
+discovers (the reachable parts of) the input program.}
 
 \begin{verbatim}
 ::
@@ -159,7 +159,7 @@ discovers (the reachable parts of) the input program.}:
 \end{verbatim}
 %
 \begin{enumerate}
-\item We take as input RPython functions\footnote{The input to our
+\item We take as input RPython functions,\footnote{The input to our
        translation chain are indeed loaded runtime function objects,
        not source code or ASTs.  This allows us to use unrestricted
        python for meta-programming purposes at load time, in a
@@ -167,7 +167,7 @@ discovers (the reachable parts of) the input program.}:
        the source program -- as Python program -- produces the RPython
        program input to the tool-chain as the object graph loaded in
        memory.  This includes both the relevant functions and prebuilt
-       data.}, and convert them to control flow graphs -- a structure
+       data.} and convert them to control flow graphs -- a structure
        amenable to analysis.  These flow graphs contain polymorphic
        operations only: in Python, almost all operations are
        dynamically overloaded by type.
@@ -286,12 +286,12 @@ that manipulates objects that behave like C structures and arrays.
 This function is inserted by the LLTyper, as a helper to implement the
 \texttt{list.append()} calls found in its RPython-level input graphs.
 By going through the front-end reconfigured to use C-level types, the
-above function becomes a graph with such C-level types\footnote{The
+above function becomes a graph with such C-level types,\footnote{The
 low-level type system specifies that the function should be
 specialized by the C-level type of its input arguments, so it actually
 turns into one graph per list type -- list of integers, list of
 pointers, etc.  This behavior gives the programmer a feeling
-comparable to C++ templates, without the declarations.}, which is then
+comparable to C++ templates, without the declarations.} which is then
 indistinguishable from the other graphs of the forest produced by the
 LLTyper.
 
@@ -339,11 +339,11 @@ level, because they can all be implemented at the next lower level in
 a way that makes sense to that level.  The key reason why this is not
 burdensome is that the lower level implementations are also written in
 Python -- with the only difference that they use (and have to be
-typeable in) the lower-level type system\footnote{This is not strictly
+typeable in) the lower-level type system.\footnote{This is not strictly
 true: the type systems are even allowed to co-exist in the same
 function.  The operations involving higher-level type systems are
 turned into lower-level operations by the previous transformations in
-the chain, which leave the already-low-level operations untouched.}.
+the chain, which leave the already-low-level operations untouched.}
 
 
 \subsection{Type systems}
@@ -530,13 +530,13 @@ widen them to Variable.
 
 In conjunction with the Flow Object Space, the bytecode interpreter of
 PyPy thus performs abstract interpretation of Python bytecodes from
-the application\footnote{Note that this process uses the
+the application.\footnote{Note that this process uses the
 \textit{unmodified} bytecode interpreter.  This means that it is
 independent of most language details.  Changes in syntax or in
 bytecode format or opcode semantics only need to be implemented once,
 in the bytecode interpreter.  In effect, the Flow Object Space enables
 an interpreter for \textit{any} language to work as a front-end for
-the rest of the tool-chain.}.  In this case, the bytecodes in
+the rest of the tool-chain.}  In this case, the bytecodes in
 question come from the RPython application that we would like to
 translate.
 
@@ -548,7 +548,7 @@ take Variables and Constants as argument, and produce new Variables as
 results.  The Constants serve two purposes: they are a way to
 introduce constant values into the flow graphs -- these values may be
 arbitrarily complex objects, not just primitives -- and they allow
-basic constant propagation\footnote{This is useful at this level for
+basic constant propagation.\footnote{This is useful at this level for
 some constructs of the bytecode interpreter, which can temporarily
 wrap internal values and push them onto the regular value stack among
 the other application-level objects.  We need to be able to unwrap
@@ -817,8 +817,9 @@ fragment:
 %
 Although the type of \texttt{x} may be some parent class of
 \texttt{MyClass}, it can be deduced to be of the more precise type
-$Inst(MyClass)$ within the positive branch of the \texttt{if}.
-\footnote{Remember that our graphs are in SSI form, which means that the
+$Inst(MyClass)$ within the positive branch of the
+\texttt{if}.\footnote{Remember that our graphs are in SSI form,
+which means that the
 \texttt{x} inside each basic block is a different Variable with a
 possibly different type as annotation.  Given that our type inference
 is not flow-sensitive, SSI gives an advantage over SSA here.}
