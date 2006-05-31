@@ -669,22 +669,25 @@ The set $A$ of RPython types is defined as the following formal terms:
       \texttt{None}; resp. an instance or \texttt{None}.
 \end{itemize}
 %
-Figures 6 and 7 shows how these types are ordered to form a lattice.  We
-mostly use its structure of [join-semilattice] only.
+Figures \ref{latticeoverall} and \ref{latticedetail} show how these
+types are ordered to form a lattice.  We mostly use its structure of
+[join-semilattice] only.
 
-\begin{verbatim}
-.. graphviz:: image/lattice1.dot
+\begin{figure*}
+\centering
+\includegraphics[scale=0.75]{image/lattice1.pdf}
+\caption{The overall lattice}
+\label{latticeoverall}
+\end{figure*}
 
-:Figure 6: the lattice of annotations.
-\end{verbatim}
-
-\begin{verbatim}
-.. graphviz:: image/lattice2.dot
-
-:Figure 7: The part about instances and nullable instances, assuming a
-           simple class hierarchy with only two direct subclasses of
-           \texttt{object}.
-\end{verbatim}
+\begin{figure*}
+\centering
+\includegraphics[scale=0.75]{image/lattice2.pdf}
+\caption{The part about instances and nullable instances, assuming a
+  simple class hierarchy with only two direct subclasses of
+  \texttt{object}.}
+\label{latticedetail}
+\end{figure*}
 
 
 All list terms for all variables are unordered.  The Pbcs form a
