@@ -27,7 +27,7 @@ discuss and showcase the following:
 
  - lazy evaluation with the thunk object space
  - lightweight threadlets similar to what stackless python provides
- - Oz-like dataflow variables with the logic object space (XXX do we really want that?)
+ - Oz-like dataflow variables with the logic object space
  - Writing compatible extension modules for PyPy and CPython with the PyPy
    extension compiler
- - The Javascript backend
+ - The Javascript backend and its uses
