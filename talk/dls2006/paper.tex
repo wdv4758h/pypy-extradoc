@@ -205,8 +205,8 @@ But RPython comes with automatic memory management, and this first
 transformation step produces flow graphs that also assume automatic
 memory management.  Generating C code directly from there produces a
 fully leaking program, unless we link it with an external garbage
-collector (GC) like the Boehm conservative GC \cite{Boehm}, which is a
-viable option.
+collector (GC) like the Boehm conservative GC \cite{Boehm}\cite{boehm-softw},
+which is a viable option.
 
 We have two alternatives, each implemented as a transformation step.
 The first one inserts naive reference counting throughout the whole
@@ -464,7 +464,7 @@ We found in-process debugging sufficient and did not implement dumping
 of any intermediate step to disk.  Figure 3 shows the control flow graph
 obtained for a simple function -- this is a screenshot from our graph
 viewer, used for debugging; basic block placement is performed by
-[Graphviz].
+Graphviz \cite{graphviz}.
 
 \begin{verbatim}
 ::
