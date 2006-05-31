@@ -93,7 +93,7 @@ We shortly describe the architecture of PyPy in section
 approach of varying the type systems at various levels of the
 translation.  Section \ref{typeinference} gives an overview of the
 type inference engine we developed (and can be read independently from
-section 3.)  We present experimental results in section
+section 3).  We present experimental results in section
 \ref{experimentalresults} and future work directions in section
 \ref{futurework}.  In section \ref{relatedwork} we compare with
 related work, and finally we conclude in section \ref{conclusion}.
@@ -108,20 +108,20 @@ There are two major components in PyPy:
 language, mostly complete and compliant with the current version of the
 language, Python 2.4.
 \item the \textit{Translation Process}: a translation tool-suite whose goal is to
-compile subsets of Python to various environment.
+compile subsets of Python to various environments.
 \end{enumerate}
 %
 In particular, we have defined a subset of the Python language called
 ``restricted Python'' or RPython.  This sublanguage is not restricted
 syntactically, but only in the way it manipulates objects of different
 types.  The restrictions are a compromise between the expressivity and
-the need to statically infer enough types to generate efficient code.
+the need to statically infer enough type information to generate efficient code.
 The foremost purpose of the translation tool-suite is to compile such
 RPython programs to a variety of different platforms.
 
 Our current efforts, and the present paper, focus on this tool-suite.
 We will not describe the Standard Interpreter component of PyPy in the
-sequel, other than mention that it is written in RPython and can thus be
+sequel, other than to mention that it is written in RPython and can thus be
 translated.  At close to 90,000 lines of code, it is the largest RPython
 program that we have translated so far.  More information can be found
 in \cite{A}.
@@ -216,7 +216,7 @@ bad choice in this particular case).
 The other, and better, alternative is an exact GC, coupled with a
 transformation, the \textit{GC transformer}.  It inputs C-level-typed graphs
 and replaces all \texttt{malloc} operations with calls to a garbage
-collector's innards.  It can inspect all the graphs to discover the
+collector's allocation routine.  It can inspect all the graphs to discover the
 \texttt{struct} types in use by the program, and assign a unique type id to
 each of them.  These type ids are collected in internal tables that
 describe the layout of the structures, e.g.\ their sizes and the location
@@ -312,7 +312,7 @@ is entirely written in plain Python, and it manipulates ``objects'' that
 are still at a lower level: pointer and address objects.  Even with
 the restriction of having to use pointer-like and address-like
 objects, Python remains more expressive than, say, C to write a GC
-(Jikes RVM's GC work \cite{JikesGC} was the inspiration to try to
+(the work on the Jikes RVM's GC \cite{JikesGC} was the inspiration to try to
 express GCs in Python, see section \ref{relatedwork}).
 
 In the sequel, we will call \textit{system code} functions written in
@@ -357,7 +357,7 @@ The four levels that we considered so far are summarized in figure
 
 The RPython level is a subset of Python, so the types mostly follow
 Python types, and the instances of these types are instances in the
-normal Python sense; e.g.\ whereas Python has only got a single type
+normal Python sense; for example where Python has only a single type
 \texttt{list}, RPython has a parametric type \texttt{list(T)} for every RPython
 type \texttt{T}, but instances of \texttt{list(T)} are just those Python lists
 whose items are all instances of \texttt{T}.
@@ -366,13 +366,13 @@ The other type systems, however, do not correspond to built-in Python
 types.  For each of them, we implemented:
 %
 \begin{enumerate}
-\item the types, which we use to tag the variables of the graphs at
-      the given level.  (Types are actually annotated, self-recursive
+\item The types, which we use to tag the variables of the graphs at
+      the given level (types are actually annotated, self-recursive
       formal terms, and would have been implemented simply as such if
-      Python supported them directly.)
+      Python supported them directly).
 
-\item the Python objects that emulate instances of these types.  (More
-      about them below.)
+\item The Python objects that emulate instances of these types (more
+      about them below).
 \end{enumerate}
 %
 We have defined well-typed operations between instances of these types,
@@ -386,15 +386,15 @@ analyses system code like the helpers of figure \ref{fig_llappend}.
 Now, clearly, the purpose of types like a ``C-like struct'' or a ``C-like
 array'' is to be translated to a real \texttt{struct} or array declaration by
 the C back-end.  What, then, is the purpose of emulating such things in
-Python?  The answer is three-fold.  Firstly, if we have objects that
+Python?  The answer is three-fold.  Firstly, having objects that
 live within the Python interpreter, but faithfully emulate the behavior
-of their C equivalent while performing additional safety checks, they
-are an invaluable help for testing and debugging.  For example, we can
+of their C equivalent while performing additional safety checks, is 
+an invaluable help for testing and debugging.  For example, we can
 check the correctness of our hash table implementation, written in
 Python in term of struct- and array-like objects, just by running it.
 The same holds for the GC.
 
-Secondly, and anecdotically, as the type inference process (section
+Secondly, and anecdotally, as the type inference process (section
 \ref{typeinference}) is based on abstract interpretation, we can use
 the following trick: the resulting type of most low-level operations
 is deduced simply by example.  Sample C-level objects are
@@ -422,7 +422,7 @@ like constraint-based type inference, we gain in freedom,
 controllability and simplicity.  This proved essential in our overall
 approach: as described in section \ref{systemprog}, we need to perform
 type inference with many different type systems, the details of which
-have evolved along the road.
+have evolved over time.
 
 We mitigate the potential efficiency problem by wise choices and
 compromises for the domain used; the foremost example of this is that
@@ -519,7 +519,7 @@ figure \ref{flowlattice}.
 
 This order is extremely simple, because most actual analysis is delayed
 to the next phase, the type inference engine.  The objects are either
-\textit{Variables}, which are pure placeholders for entierely unknown values,
+\textit{Variables}, which are pure placeholders for entirely unknown values,
 or \textit{Constants} with a concrete Python object as value.  The order places
 Variable as the top, and keeps all \textit{Constants} unordered.  Thus if two
 different constants merge during abstract interpretation, we immediately
@@ -566,15 +566,15 @@ In this way, abstract interpretation quickly terminates and the recorded
 operations form a graph, which is the control flow graph of the original
 bytecode.
 
-Note that we produce flow graphs in Static Single Information (SSI, \cite{SSI})
-form, an extension of Static Single Assignment (\cite{SSA}): each variable is
+Note that we produce flow graphs in Static Single Information or SSI\cite{SSI}
+form, an extension of Static Single Assignment\cite{SSA}: each variable is
 only used in exactly one basic block.  All variables that are not dead
 at the end of a basic block are explicitly carried over to the next
 block and renamed.
 
 While the Flow Object Space is quite a short piece of code -- its core
-functionality holds in 300 lines -- the detail of the interactions
-sketched above is not entierely straightforward; we refer the reader to
+functionality takes only 300 lines -- the detail of the interactions
+sketched above is not entirely straightforward; we refer the reader to
 \cite{D} for more information.
 
 
@@ -597,7 +597,7 @@ functions as built by the Flow Object Space (section \ref{flowobjspace}).
 Additionally, for a particular ``entry point'' function, the annotator
 is provided with user-specified types for the function's arguments.
 
-The goal of the annotator is to find the most precise type that can be
+The goal of the annotator is to find the most precise of our types that can be
 given to each variable of all control flow graphs while respecting the
 constraints imposed by the operations in which these variables are
 involved.
@@ -640,14 +640,14 @@ continues until a fixed point is reached.
 We can consider that all variables are initially assigned the ``bottom''
 type corresponding to the empty set of possible run-time values.  Types
 can only ever be generalised, and the model is simple enough to show
-that there is no infinite chain of generalisation, so that this process
+that there is no infinite chain of generalization, so that this process
 necessarily terminates.
 
 
 \subsection{RPython types}
 
 As seen in section \ref{systemprog}, we use the annotator with more than one type
-systems.  The more interesting and complex one is the RPython type
+systems.  The most interesting and complex one is the RPython type
 system, which describes how the input RPython program can be annotated.
 The other type systems contain lower-level, C-like types that are mostly
 unordered, thus forming more trivial lattices than the one formed by
@@ -708,7 +708,7 @@ classical finite set-of-subsets lattice.  In addition, we have left
 out a number of other annotations that are irrelevant for the basic
 description of the annotator and straightforward to handle:
 $Dictionary$, $Tuple$, $Float$, $UnicodePoint$, $Iterator$, etc.  The
-complete list is described in document \cite{T}.
+complete list is described in \cite{T}.
 
 The type system moreover comes with a family of rules, which for every
 operation and every sensible combination of input types describes the
@@ -780,7 +780,7 @@ The worst case behaviors that can appear in the model described above
 involve the lattice of Pbcs, involving variables that could contain
 e.g.\ one function object among many.  An example of such behavior is
 code manipulating a table of function objects: when an item is read
-out of the table, its type is a large Pbc set: $Pbc(\{f1, f2, f3,
+out of the table, its type is a large Pbc set: $Pbc(\{f_1, f_2, f_3,
 \ldots\})$.  But in this example, the whole set is available at once,
 and not built incrementally by successive discoveries.  This seems to
 be often the case in practice: it is not very common for programs to
@@ -903,12 +903,12 @@ efficient, stand-alone code in a large variety of environment.
 \subsection{Performance}
 
 Our tool-chain is capable of translating the Python interpreter of
-PyPy, written in RPython, producing right now either ANSI C code as
-described before, or LLVM\footnote{The LLVM project is the realisation
+PyPy, written in RPython, currently producing either ANSI C code as
+described before, or LLVM\footnote{The LLVM project is the realization
 of a portable assembler infrastructure, offering both a virtual
 machine with JIT capabilities and static compilation. Currently we are
-using the latter with its good high-level optimisations for PyPy.}
-assembler which is then natively compiled with LLVM tools.
+using the latter with its good high-level optimizations for PyPy.}
+assembler which is then compiled to native code with LLVM tools.
 
 The tool-chain has been tested with and can sucessfully apply
 transformations enabling various combinations of features. The
@@ -945,21 +945,21 @@ on an Intel(R) Pentium(R) 4 CPU at 3.20GHz with 2GB of RAM and 1MB of
 cache.  The rows correspond to variants of the translation process, as
 follows:
 
-{\bf pypy-c.}
-    The simplest variant: translated to C code with no explicit memory
+{\bf pypy-c:}
+    The simplest variant; translated to C code with no explicit memory
     management, and linked with the Boehm conservative GC.
 
-{\bf pypy-c-thread.}
-    The same, with OS thread support enabled.  (For measurement purposes,
-    thread support is kept separate because it has an impact on the GC
-    performance.)
+{\bf pypy-c-thread:}
+    The same, with OS thread support enabled (thread support is kept
+    separate for measurement purposes because it has an impact on the
+    GC performance).
 
-{\bf pypy-c-stackless.}
+{\bf pypy-c-stackless:}
     The same as pypy-c, plus the ``stackless transformation'' step which
-    modifies the flow graph of all functions in a way that allows them
+    modifies the flow graph of all functions to allow them
     to save and restore their local state, as a way to enable coroutines.
 
-{\bf pypy-c-gcframework.}
+{\bf pypy-c-gcframework:}
     In this variant, the ``gc transformation'' step inserts explicit
     memory management and a simple mark-and-sweep GC implementation.
     The resulting program is not linked with Boehm.  Note that it is not
@@ -967,7 +967,7 @@ follows:
     in this variant each function explicitly pushes and pops all roots
     to an alternate stack around each subcall.
 
-{\bf pypy-c-stackless-gcframework.}
+{\bf pypy-c-stackless-gcframework:}
     This variant combines the ``gc transformation'' step with the
     ``stackless transformation'' step.  The overhead introduced by the
     stackless feature is theoretically balanced with the removal of the
@@ -979,13 +979,13 @@ follows:
     by the extreme size of the executable in this case -- 21MB, compared to
     6MB for the basic pypy-c.  Making it smaller is work in progress.)
 
-{\bf pypy-llvm-c.}
+{\bf pypy-llvm-c:}
     The same as pypy-c, but using the LLVM back-end instead of the C
     back-end.  The LLVM assembler-compiler gives the best results when -
     as we do here -- it optimizes its input and generates again C code,
     which is fed to GCC.
 
-{\bf pypy-llvm-c-prof.}
+{\bf pypy-llvm-c-prof:}
     The same as pypy-llvm-c, but using GCC's profile-driven
     optimizations.
 
@@ -998,7 +998,7 @@ very high load on the GC and on the memory caches of the machine.  The
 Boehm GC is known to be less efficient than more customized approach;
 kernel-level profiling shows that pypy-c typically spends 30\% of its
 time in the Boehm library.  Our current, naively simple mark-and-sweep
-GC is even quite worse.  The interaction with processor caches is also
+GC is manages to be a bit worse.  The interaction with processor caches is also
 hard to predict and account for; in general, we tend to produce
 relatively large amounts of code and prebuilt data.
 
@@ -1075,10 +1075,10 @@ coroutines.
 To achieve high performance for dynamic languages such as Python, the
 proven approach is to use dynamic compilation techniques, i.e.\ to write
 JITs.  With direct techniques, this is however a major endeavour, and
-increases the efforts to further evolve the language.
+increases the effort involved in further evolution of the language.
 
 In the context of the PyPy project, we are now exploring -- as we planned
-from the start -- the possibility to produce a JIT as a graph
+from the start -- the possibility of producing a JIT as a graph
 transformation aspect from the Python interpreter.  This idea is based
 on the theoretical possibiliy to turn interpreters into compilers by
 partial evaluation\cite{Jones:1993:PartialEvaluation}.
@@ -1088,7 +1088,7 @@ well-suited input for this kind of techniques.  We can currently perform
 binding-time analysis on these graphs, again with abstract
 interpretation techniques reusing the type inference engine.  The next
 step is to transform the graphs -- following the binding-time annotations
-- into a compiler; more precisely, in partial evalution terminology, a
+-- into a compiler; more precisely, in partial evalution terminology, a
 generating extension.  We can currently do this on trivial examples.
 
 The resulting generating extension will be essentially similar to
@@ -1147,7 +1147,7 @@ inlining of helpers and barriers to recover performance.
 
 Jikes RVM's native JIT compilers \cite{Jikes-JIT}
 are not meant to be retargetted to run in other environments
-that hardware processors, for example in a CLR/.NET
+than hardware processors, for example in a CLR/.NET
 runtime. Also Jikes RVM pays the complexity of writing
 a JIT up-front, which also means that features and semantics of the
 language are encoded in the JIT compiler code.  Major changes of the
@@ -1177,7 +1177,7 @@ Targetting platforms that are very different from C/Posix is work in
 progress, but given that many of the initial components are shared with
 the existing stack of transformations leading to C, we are confident
 that this work will soon give results.  Moreover, we believe that these
-results will show a reasonable efficiency, because the back-ends for VMs
+results will show reasonable efficiency, because the back-ends for VMs
 like Squeak and .NET can take advantage of high-level input (as opposed
 to trying to translate, say, C-like code to Smalltalk).
 
