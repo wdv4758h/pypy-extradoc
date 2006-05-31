@@ -157,9 +157,9 @@ discovers (the reachable parts of) the input program.}
 \begin{enumerate}
 \item We take as input RPython functions,\footnote{The input to our
        translation chain are indeed loaded runtime function objects,
-       not source code or ASTs.  This allows us to use unrestricted
-       python for meta-programming purposes at load time, in a
-       seemingly staged programming approach, in which the whole of
+       not source code or ASTs.  This enables a form of staged
+       programming in which we can use unrestricted
+       Python for meta-programming purposes at load time: the whole of
        the source program -- as Python program -- produces the RPython
        program input to the tool-chain as the object graph loaded in
        memory.  This includes both the relevant functions and prebuilt
