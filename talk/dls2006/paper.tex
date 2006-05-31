@@ -88,7 +88,7 @@ related work, and finally we conclude in section \ref{conclusion}.
 \label{architecture}
 
 There are two major components in PyPy:
-
+%
 \begin{enumerate}
 \item the \textit{Standard Interpreter}: an implementation of the Python programming
 language, mostly complete and compliant with the current version of the
@@ -96,7 +96,7 @@ language, Python 2.4.
 \item the \textit{Translation Process}: a translation tool-suite whose goal is to
 compile subsets of Python to various environment.
 \end{enumerate}
-
+%
 In particular, we have defined a subset of the Python language called
 "restricted Python" or RPython.  This sublanguage is not restricted
 syntactically, but only in the way it manipulates objects of different
@@ -140,7 +140,7 @@ discovers (the reachable parts of) the input program.}:
              then a stack of transformations
   ]
 \end{verbatim}
-
+%
 \begin{enumerate}
 \item We take as input RPython functions\footnote{The input to our
        translation chain are indeed loaded runtime function objects,
@@ -165,7 +165,7 @@ discovers (the reachable parts of) the input program.}:
       graphs.  This type inference process is described in more
       details in section \ref{typeinference}.
 \end{enumerate}
-      
+ %     
 At the end of the front-end analysis, the input RPython program is
 represented as a forest of flow graphs with typed variables.  Following
 this analysis are a number of transformation steps.  Each transformation
@@ -261,7 +261,7 @@ plain Python code that manipulates objects that conform to the
 lower-level type system, and have these functions automatically
 transformed into appropriately typed graphs.
 
-For example, \texttt{ll\textunderscore{}append()} in figure \ref{llappend}
+For example, \texttt{ll\textunderscore{}append()} in figure \ref{fig_llappend}
 is a Python function
 that manipulates objects that behave like C structures and arrays.
 This function is inserted by the LLTyper, as a helper to implement the
@@ -286,7 +286,7 @@ def ll_append(lst, newitem):
   itemsarray[index] = item # behaves like a C array
 \end{verbatim}
 \caption{A helper to implement \texttt{list.append()}.}
-\label{llappend}
+\label{fig_llappend}
 \end{figure}
 
 In the example of the \texttt{malloc} operation, replaced by a call to GC
@@ -327,20 +327,20 @@ the chain, which leave the already-low-level operations untouched.}.
 
 \subsection{Type systems}
 
-The four levels that we considered so far are summarized in figure 2.
+The four levels that we considered so far are summarized in figure
+\ref{fig_typesystems}.
 
+\begin{figure}
 \begin{verbatim}
-::
-
-    [figure 2:    RPython
-                  /     \
-                 /       \
-       LLTypeSystem     OOTypeSystem
-               /
-              /
-      Raw addresses
-    ]
+                      RPython
+                      /     \
+           LLTypeSystem     OOTypeSystem
+                  /
+          Raw addresses
 \end{verbatim}
+\caption{Type systems, informally ordered by abstraction level}
+\label{fig_typesystems}
+\end{figure}
 
 The RPython level is a subset of Python, so the types mostly follow
 Python types, and the instances of these types are instances in the
@@ -351,7 +351,7 @@ whose items are all instances of \texttt{T}.
 
 The other type systems, however, do not correspond to built-in Python
 types.  For each of them, we implemented:
-
+%
 \begin{enumerate}
 \item the types, which we use to tag the variables of the graphs at
       the given level.  (Types are actually annotated, self-recursive
@@ -361,12 +361,12 @@ types.  For each of them, we implemented:
 \item the Python objects that emulate instances of these types.  (More
       about them below.)
 \end{enumerate}
-
+%
 We have defined well-typed operations between variables of these types,
 plugging on the standard Python operators.  These operations are the
 ones that the emulating instances implement.  As seen above, the types
 can also be used by type inference when analysing system code like the
-helpers of figure 1.
+helpers of figure \ref{fig_llappend}.
 
 Now, clearly, the purpose of types like a "C-like struct" or a "C-like
 array" is to be translated to a real \texttt{struct} or array declaration by
@@ -637,7 +637,7 @@ unordered, thus forming more trivial lattices than the one formed by
 RPython types.
 
 The set $A$ of RPython types is defined as the following formal terms:
-
+%
 \begin{itemize}
 \item $Bot$, $Top$ -- the minimum and maximum elements (corresponding
       to "impossible value" and "most general value");
@@ -664,7 +664,7 @@ The set $A$ of RPython types is defined as the following formal terms:
 \item $NullableStr$, $NullableInst(class)$ -- a string or
       \texttt{None}; resp. an instance or \texttt{None}.
 \end{itemize}
-      
+%
 Figures 6 and 7 shows how these types are ordered to form a lattice.  We
 mostly use its structure of [join-semilattice] only.
 
