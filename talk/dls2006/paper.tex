@@ -1082,10 +1082,11 @@ In the context of the PyPy project, we are now exploring -- as we planned
 from the start -- the possibility to produce a JIT as a graph
 transformation aspect from the Python interpreter.  This idea is based
 on the theoretical possibiliy to turn interpreters into compilers by
-partial evaluation [PE].  In our approach, this is done by analysing
+partial evaluation\cite{Jones:1993:PartialEvaluation}.
+In our approach, this is done by analysing
 the forest of flow graphs built from the Python interpreter, which is a
 well-suited input for this kind of techniques.  We can currently perform
-binding-time analysis [BTA] on these graphs, again with abstract
+binding-time analysis on these graphs, again with abstract
 interpretation techniques reusing the type inference engine.  The next
 step is to transform the graphs -- following the binding-time annotations
 - into a compiler; more precisely, in partial evalution terminology, a
