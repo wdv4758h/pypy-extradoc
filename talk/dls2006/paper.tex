@@ -113,7 +113,7 @@ program that we have translated so far.  More information can be found
 in [S].
 
 
-\section{System programming with Python}
+\section{System programming in Python}
 \label{systemprog}
 
 \hypertarget{the-translation-process}{}
@@ -254,29 +254,15 @@ This means that in addition to transforming the existing graphs, each
 transformation step also needs to insert new functions into the forest.
 A key feature of our approach is that we can write such "system-level"
 code -- relevant only to a particular transformation -- in plain Python
-as well:
+as well.  The idea is to feed these new Python functions into the
+front-end, using this time the transformation's target (lower-level)
+type system during the type inference.  In other words, we can write
+plain Python code that manipulates objects that conform to the
+lower-level type system, and have these functions automatically
+transformed into appropriately typed graphs.
 
-\begin{verbatim}
-.. topic:: Figure 1 - a helper to implement \texttt{list.append()}
-
-  ::
-
-    def ll_append(lst, newitem):
-        # Append an item to the end of the vector.
-        index = lst.length         # get the 'length' field
-        ll_resize(lst, index+1)    # call a helper not shown here
-        itemsarray = lst.items     # get the 'items' field
-        itemsarray[index] = item   # this behaves like a C array
-\end{verbatim}
-
-The idea is to feed these new Python functions into the front-end, using
-this time the transformation's target (lower-level) type system during
-the type inference.  In other words, we can write plain Python code that
-manipulates objects that conform to the lower-level type system, and
-have these functions automatically transformed into appropriately typed
-graphs.
-
-For example, \texttt{ll\textunderscore{}append()} in figure 1 is a Python function
+For example, \texttt{ll\textunderscore{}append()} in figure \ref{llappend}
+is a Python function
 that manipulates objects that behave like C structures and arrays.
 This function is inserted by the LLTyper, as a helper to implement the
 \texttt{list.append()} calls found in its RPython-level input graphs.
@@ -289,6 +275,19 @@ pointers, etc.  This behavior gives the programmer a feeling
 comparable to C++ templates, without the declarations.}, which is then
 indistinguishable from the other graphs of the forest produced by the
 LLTyper.
+
+\begin{figure}
+\begin{verbatim}
+def ll_append(lst, newitem):
+  # Append an item to the end of the vector.
+  index = lst.length       # get the 'length' field
+  ll_resize(lst, index+1)  # call another helper
+  itemsarray = lst.items   # get the 'items' field
+  itemsarray[index] = item # behaves like a C array
+\end{verbatim}
+\caption{A helper to implement \texttt{list.append()}.}
+\label{llappend}
+\end{figure}
 
 In the example of the \texttt{malloc} operation, replaced by a call to GC
 code, this GC code can invoke a complete collection of dead objects, and
@@ -939,7 +938,7 @@ follows:
     in the current C call chain to save their local state and return.
     This has the side-effect of moving all roots to the heap, where the
     GC can find them.  (We hypothesize that the large slowdown is caused
-    by the extreme size of the executable in this case - 21MB, compared to
+    by the extreme size of the executable in this case -- 21MB, compared to
     6MB for the basic pypy-c.  Making it smaller is work in progress.)
 
 {\bf pypy-llvm-c.}
@@ -1060,7 +1059,7 @@ far, based on run-time specialization.
 \label{relatedwork}
 
 
-Applying the expressiveness - or at least the syntax - of very
+Applying the expressiveness -- or at least the syntax -- of very
 high-level and dynamically typed languages to their implementation has
 been investigated many times.
 
@@ -1094,7 +1093,7 @@ Java VM and Just-In-Time compiler written in Java.
 Bootstrapping happens by self-applying the compiler on a host VM, and
 dumping a snapshot from memory of the resulting native code.
 This approach directly enables high performance, at the price of
-portability - as usual with pure native code emitting
+portability -- as usual with pure native code emitting
 approaches. Modularity of features, when possible, is achieved with
 normal software modularity. The indirection costs are taken care of by
 the compiler performing inlining (which is sometimes even explicitly
@@ -1149,7 +1148,7 @@ details.  This makes language evolution and experimentation easier.
 More generally, this property is important because many interpreters for
 very difference languages can be written: the simpler these interpreters
 can be kept, the more we win from our investment in writing the
-tool-chain itself - a one-time effort.
+tool-chain itself -- a one-time effort.
 
 Dynamic languages enable the definition of multiple custom type systems,
 similar to \textit{pluggable type systems} in [Bracha] but with simple
