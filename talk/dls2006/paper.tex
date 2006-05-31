@@ -815,13 +815,13 @@ fragment:
 \end{verbatim}
 %
 Although the type of \texttt{x} may be some parent class of
-\texttt{MyClass}, it can be deduced to be of the more precise type
-$Inst(MyClass)$ within the positive branch of the
-\texttt{if}.\footnote{Remember that our graphs are in SSI form,
-which means that the
-\texttt{x} inside each basic block is a different Variable with a
-possibly different type as annotation.  Given that our type inference
-is not flow-sensitive, SSI gives an advantage over SSA here.}
+\texttt{MyClass}, within the positive branch of the \texttt{if} it can
+be deduced to be of the more precise type $Inst(MyClass)$.\footnote{Remember
+ that our graphs are in SSI form, which means
+that the \texttt{x} inside each basic block is a different Variable
+with a possibly different type as annotation.  Given that our type
+inference is not flow-sensitive, SSI gives an advantage over SSA
+here.}
 
 This is implemented by introducing an extended family of types for
 boolean values:
@@ -1061,7 +1061,7 @@ As described in section \ref{experimentalresults}, the performance of
 the compiled Python interpreters is still not up to competing with the
 well-established CPython.  We are always working to improve matters,
 considering new optimizations and better GCs.  Also, the OOTyper and
-back-ends for Smalltalk/Squeak and CLI/.NET are currently in progress.
+back-ends for CLI/.NET and Smalltalk/Squeak are currently in progress.
 
 
 \subsection{JIT Specializer}
