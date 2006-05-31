@@ -413,9 +413,11 @@ have evolved along the road.
 
 We mitigate the potential efficiency problem by wise choices and
 compromises for the domain used; the foremost example of this is that
-our RPython type inference performs almost no automatic specialization
-of functions XXX class annotation vs concrete runtime class setsXXX.
-We achieved enough precision for our purpose, though.
+our RPython type inference performs almost no polymorphic specialization
+of functions.  Another example is that unlike some schemes which follow
+exact sets of concrete run-time classes, we only propagate a single
+superclass per variable: the most precise common parent class.  This
+gives enough precision for our code generation purposes.
 
 In the sequel, we give a more precise description of this process and
 justify our claim that good performance and enough precision can be
