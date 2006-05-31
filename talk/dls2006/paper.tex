@@ -771,12 +771,14 @@ Of course, this would be pointless if the annotation did not give
 precise enough information for our needs.  We must describe a detail of
 the abstract interpretation engine that is critical for precision: the
 propagation of conditional types.  Consider the following source code
-fragment::
+fragment:
 
+\begin{verbatim}
     if isinstance(x, MyClass):
         f(x)
     else:
         g(x)
+\end{verbatim}
 
 Although the type of \texttt{x} may be some parent class of
 \texttt{MyClass}, it can be deduced to be of the more precise type
