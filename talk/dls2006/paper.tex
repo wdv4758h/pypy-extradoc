@@ -460,19 +460,18 @@ viewer, used for debugging; basic block placement is performed by
 The actual transformation from function objects -- i.e. bytecode -- to
 flow graph is performed by the Flow Object Space, a short but generic
 plug-in component for the Python interpreter of PyPy.  The architecture
-of our Python interpreter is shown in figure 4.
+of our Python interpreter is shown in figure \ref{interpobjspace}.
 
-\begin{verbatim}
-.. topic:: Figure 4 - the interpreter and object spaces
-
-    +------------------------------------------------------+
-    |   forest of bytecode objects from the application    |
-    +------------------------------------------------------+
-    |               Python bytecode interpreter            |
-    +--------------------------------+---------------------+
-    |      Standard Object Space     |  Flow Object Space  |
-    +--------------------------------+---------------------+
-\end{verbatim}
+\begin{figure}
+  \centering
+  \caption{the interpreter and object spaces}
+  \label{interpobjspace}
+  \begin{tabular}{|c|c|} \hline
+\multicolumn{2}{|c|}{forest of bytecode objects from the application}    \\ \hline
+\multicolumn{2}{|c|}{Python bytecode interpreter}            \\ \hline
+    Standard Object Space     &  Flow Object Space  \\ \hline
+  \end{tabular}
+\end{figure}
 
 Note that the left column, i.e. the bytecode interpreter and the
 Standard Object Space, form the full Python interpreter of PyPy.  It is
@@ -873,32 +872,30 @@ assembler which is then natively compiled with LLVM tools.
 The tool-chain has been tested with and can sucessfully apply
 transformations enabling various combinations of features. The
 translated interpreters are benchmarked using pystone (a [Dhrystone]
-derivative traditionally used by the Python community, although it is a
-rather poor benchmark) and the classical [Richards] benchmark and
-compared against [CPython] 2.4.3 results:
+derivative traditionally used by the Python community, although it is
+a rather poor benchmark) and the classical [Richards] benchmark and
+compared against [CPython] 2.4.3 results and are summarized in table
+\ref{perfsumm}.
 
-\begin{verbatim}
-+------------------------------------+-------------------+-------------------+
-|  Interpreter                       | Richards,         | Pystone,          |
-|                                    | Time/iteration    | Iterations/second |
-+====================================+===================+===================+
-|  CPython 2.4.3                     |   789ms    (1.0x) |   40322    (1.0x) |
-+------------------------------------+-------------------+-------------------+
-|  pypy-c                            |  4269ms    (5.4x) |    7587    (5.3x) |
-+------------------------------------+-------------------+-------------------+
-|  pypy-c-thread                     |  4552ms    (5.8x) |    7122    (5.7x) |
-+------------------------------------+-------------------+-------------------+
-|  pypy-c-stackless                  |  5121ms    (6.5x) |    6060    (6.7x) |
-+------------------------------------+-------------------+-------------------+
-|  pypy-c-gcframework                |  6327ms    (8.0x) |    4960    (8.1x) |
-+------------------------------------+-------------------+-------------------+
-|  pypy-c-stackless-gcframework      |  8743ms   (11.0x) |    3755   (10.7x) |
-+------------------------------------+-------------------+-------------------+
-|  pypy-llvm-c                       |  3797ms    (4.8x) |    7763    (5.2x) |
-+------------------------------------+-------------------+-------------------+
-|  pypy-llvm-c-prof                  |  2772ms    (3.5x) |   10245    (3.9x) |
-+------------------------------------+-------------------+-------------------+
-\end{verbatim}
+\begin{table*}
+% the layout of this table isn't wonderful, but it's probably OK.
+\centering
+\caption{Summary of interpreter performance}
+\label{perfsumm}
+\begin{tabular}{|l|c|c|} \hline
+\textbf{Interpreter} & 
+\textbf{Richards, Time/iteration} &
+\textbf{Pystone, Iterations/second} \\ \hline
+CPython 2.4.3                &   789ms  (1.0x) & 40322  (1.0x) \\ \hline
+pypy-c                       &  4269ms  (5.4x) &  7587  (5.3x) \\ \hline
+pypy-c-thread                &  4552ms  (5.8x) &  7122  (5.7x) \\ \hline
+pypy-c-stackless             &  5121ms  (6.5x) &  6060  (6.7x) \\ \hline
+pypy-c-gcframework           &  6327ms  (8.0x) &  4960  (8.1x) \\ \hline
+pypy-c-stackless-gcframework &  8743ms (11.0x) &  3755 (10.7x) \\ \hline
+pypy-llvm-c                  &  3797ms  (4.8x) &  7763  (5.2x) \\ \hline
+pypy-llvm-c-prof             &  2772ms  (3.5x) & 10245  (3.9x) \\ \hline
+\end{tabular}
+\end{table*}
 
 The numbers in parenthesis are slow-down factors compared to CPython.
 These measures reflect PyPy revision 27815, compiled with GCC 3.4.4.
@@ -968,34 +965,37 @@ relatively large amounts of code and prebuilt data.
 \subsection{Translation times}
 
 A complete translation of the pypy-c variant takes about 39 minutes,
-divided as follows:
+divided as shown in table \ref{translationtimes}.
 
-\begin{verbatim}
-+-------------------------------------------+------------------------------+
-| Step                                      |   Time (minutes:seconds)     |
-+===========================================+==============================+
-| Front-end                                 |            9:01              |
-| (flow graphs and type inference)          |                              |
-+-------------------------------------------+------------------------------+
-| LLTyper                                   |           10:38              |
-| (from RPython-level to C-level graphs     |                              |
-| and data)                                 |                              |
-+-------------------------------------------+------------------------------+
-| Various low-level optimizations           |            6:51              |
-| (convert some heap allocations to local   |                              |
-| variables, inlining, ...)                 |                              |
-+-------------------------------------------+------------------------------+
-| Database building                         |            8:39              |
-| (this initial back-end step follows all   |                              |
-| graphs and prebuilt data structures       |                              |
-| recursively, assigns names, and orders    |                              |
-| them suitably for code generation)        |                              |
-+-------------------------------------------+------------------------------+
-| Generating C source                       |            2:25              |
-+-------------------------------------------+------------------------------+
-| Compiling (\texttt{gcc -O2})              |            3:23              |
-+-------------------------------------------+------------------------------+
-\end{verbatim}
+\begin{table*}
+\centering
+\caption{Dividing overall translation time by stage}
+\label{translationtimes}
+\begin{tabular}{|p{0.65\linewidth}|c|} \hline
+\textbf{Step} & \textbf{Time (minutes:seconds)} \\ \hline
+Front-end                                 
+(flow graphs and type inference)          
+& 9:01 \\ \hline
+LLTyper                                   
+(from RPython-level to C-level graphs     
+and data)                                 
+& 10:38 \\ \hline
+Various low-level optimizations           
+(convert some heap allocations to local   
+variables, inlining, ...)                 
+& 6:51 \\ \hline
+Database building                         
+(this initial back-end step follows all   
+graphs and prebuilt data structures       
+recursively, assigns names, and orders    
+them suitably for code generation)        
+& 8:39 \\ \hline
+Generating C source                       
+& 2:25 \\ \hline
+Compiling (\texttt{gcc -O2})              
+& 3:23 \\ \hline
+\end{tabular}
+\end{table*}
 
 An interesting feature of this table is that type inference is not the
 bottleneck.  Indeed, further transformation steps typically take longer
