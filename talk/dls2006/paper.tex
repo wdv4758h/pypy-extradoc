@@ -1,5 +1,4 @@
 \documentclass{acm_proc_article-sp}
-\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
 
 \begin{document}
 
@@ -133,7 +132,6 @@ in \cite{A}.
 \section{System programming in Python}
 \label{systemprog}
 
-\hypertarget{the-translation-process}{}
 \subsection{The translation process}
 \label{translationprocess}
 
@@ -442,13 +440,11 @@ flexible approach.
 
 \subsection{Building control flow graphs}
 \label{flowobjspace}
-\hypertarget{flowobjspace}{}
 
-As described in the overview of \href{\#the-translation-process}{the
-translation process}, the front-end of the translation tool-chain
-works in two phases: it first builds control flow graphs from Python
-functions, and then performs whole-program type inference on these
-graphs.
+As described in the overview of the translation process (section
+\ref{translationprocess}), the front-end of the translation tool-chain works in
+two phases: it first builds control flow graphs from Python functions, and then
+performs whole-program type inference on these graphs.
 
 Remember that building the control flow graphs is not done, as one might
 first expect, by following a function at the syntactic level.  Instead,
@@ -596,7 +592,7 @@ the set of all objects of a specific Python type.
 Here is a simplified, static model of how the annotator works.  It can
 be considered as taking as input a finite family of functions calling
 each other, and working on the control flow graphs of each of these
-functions as built by the \href{flowobjspace}{Flow Object Space}.
+functions as built by the Flow Object Space (section \ref{flowobjspace}).
 Additionally, for a particular "entry point" function, the annotator
 is provided with user-specified types for the function's arguments.
 
