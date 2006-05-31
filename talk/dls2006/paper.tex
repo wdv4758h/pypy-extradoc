@@ -375,11 +375,13 @@ types.  For each of them, we implemented:
       about them below.)
 \end{enumerate}
 %
-We have defined well-typed operations between variables of these types,
-plugging on the standard Python operators.  These operations are the
-ones that the emulating instances implement.  As seen above, the types
-can also be used by type inference when analysing system code like the
-helpers of figure \ref{fig_llappend}.
+We have defined well-typed operations between instances of these types,
+syntactically expressed with standard Python operators (e.g.\ if \texttt{x}
+is a C-level array, \texttt{x[n]} accesses its \texttt{n}th item).
+The emulating instances provide a concrete implementation of
+these operations that works in normal Python; the types involved in the
+operations are also known to the type inference engine when it
+analyses system code like the helpers of figure \ref{fig_llappend}.
 
 Now, clearly, the purpose of types like a ``C-like struct'' or a ``C-like
 array'' is to be translated to a real \texttt{struct} or array declaration by
