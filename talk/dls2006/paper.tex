@@ -494,19 +494,14 @@ Object Space.  The Standard Object Space is a concrete domain, in which
 objects are the concrete Python objects of the various built-in types:
 lists, dictionaries, and so on.  By opposition, the Flow Object Space is
 really an abstract domain.  It handles objects that are placeholders.
-Its lattice order is shown in figure 5.
+Its lattice order is shown in figure \ref{flowlattice}.
 
-\begin{verbatim}
-::
-
-    [figure 5:                Variable
-
-                         /      |             \           \
-                        /       |              \           \
-                       /        |               \           \
-      Constant(1) ... Constant(n) ... Constant([1,2,3])  ... Constant(<instance of class A>) ...
-    ]
-\end{verbatim}
+\begin{figure*}
+\centering
+\includegraphics[scale=0.75]{image/flowlattice.pdf}
+\caption{The lattice order of the flow object space}
+\label{flowlattice}
+\end{figure*}
 
 This order is extremely simple, because most actual analysis is delayed
 to the next phase, the type inference engine.  The objects are either
