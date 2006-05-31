@@ -23,6 +23,11 @@
 \date{31 May 2006}
 \maketitle
 
+\category{D.3.4}{Programming Languages}{Processors}[code generation,
+interpreters, run-time environments]
+\category{F.3.2}{Logics and Meanings of Programs}{Semantics of Programming
+Languages}[program analysis]
+
 \begin{abstract}
 The PyPy project seeks to prove both on a research and a
 practical level the feasibility of writing a virtual machine (VM)
@@ -298,10 +303,10 @@ LLTyper.
 \begin{verbatim}
 def ll_append(lst, newitem):
   # Append an item to the end of the vector.
-  index = lst.length       # get the 'length' field
-  ll_resize(lst, index+1)  # call another helper
-  itemsarray = lst.items   # get the 'items' field
-  itemsarray[index] = item # behaves like a C array
+  index = lst.length       #get the 'length' field
+  ll_resize(lst, index+1)  #call another helper
+  itemsarray = lst.items   #get the 'items' field
+  itemsarray[index] = item #behaves like a C array
 \end{verbatim}
 \caption{a helper to implement \texttt{list.append()}.}
 \label{fig_llappend}
