@@ -127,7 +127,7 @@ We will not describe the Standard Interpreter component of PyPy in the
 sequel, other than mention that it is written in RPython and can thus be
 translated.  At close to 90,000 lines of code, it is the largest RPython
 program that we have translated so far.  More information can be found
-in [S].
+in \cite{A}.
 
 
 \section{System programming in Python}
@@ -207,7 +207,7 @@ But RPython comes with automatic memory management, and this first
 transformation step produces flow graphs that also assume automatic
 memory management.  Generating C code directly from there produces a
 fully leaking program, unless we link it with an external garbage
-collector (GC) like the Boehm conservative GC [Boehm], which is a
+collector (GC) like the Boehm conservative GC \cite{Boehm}, which is a
 viable option.
 
 We have two alternatives, each implemented as a transformation step.
@@ -252,7 +252,7 @@ of the original RPython program.  The LLTyper and OOTyper still have
 much code in common, to convert the more Python-specific features like
 its complex calling conventions.
 
-More information about these transformations can be found in [T].
+More information about these transformations can be found in \cite{T}.
 
 
 \subsection{System code}
@@ -567,8 +567,8 @@ In this way, abstract interpretation quickly terminates and the recorded
 operations form a graph, which is the control flow graph of the original
 bytecode.
 
-Note that we produce flow graphs in Static Single Information (SSI)
-form, an extension of Static Single Assignment ([SSA]): each variable is
+Note that we produce flow graphs in Static Single Information (SSI, \cite{SSI})
+form, an extension of Static Single Assignment (\cite{SSA}): each variable is
 only used in exactly one basic block.  All variables that are not dead
 at the end of a basic block are explicitly carried over to the next
 block and renamed.
@@ -576,7 +576,7 @@ block and renamed.
 While the Flow Object Space is quite a short piece of code -- its core
 functionality holds in 300 lines -- the detail of the interactions
 sketched above is not entierely straightforward; we refer the reader to
-[D] for more information.
+\cite{D} for more information.
 
 
 \subsection{The Annotator}
@@ -1119,7 +1119,7 @@ Scheme48 was a Scheme implementation using a restricted Scheme, PreScheme
 viable for Scheme as base language.  Simplicity and portability across C
 platforms were its major goals.
 
-Squeak [Squeak] is a Smalltalk implementation in Smalltalk. It uses SLang, a
+Squeak \cite{Squeak} is a Smalltalk implementation in Smalltalk. It uses SLang, a
 very restricted subset of Smalltalk with few types and strict
 conventions, which can be mostly directly translated to C.
 The VM, the object memory and the garbage collector support are
@@ -1127,7 +1127,7 @@ explicitly written together in this style. Again simplicity and
 portability were the major goals, as opposed to sophisticated manipulation
 and analysis or "weaving" in of features as transformation aspects.
 
-Jikes RVM [DBLP:journals/ibmsj/AlpernABBCCCFGHHLLMNRSSSSSSW00] is a
+Jikes RVM \cite{DBLP:journals/ibmsj/AlpernABBCCCFGHHLLMNRSSSSSSW00} is a
 Java VM and Just-In-Time compiler written in Java.
 Bootstrapping happens by self-applying the compiler on a host VM, and
 dumping a snapshot from memory of the resulting native code.
@@ -1137,12 +1137,12 @@ approaches. Modularity of features, when possible, is achieved with
 normal software modularity. The indirection costs are taken care of by
 the compiler performing inlining (which is sometimes even explicitly
 requested).  In particular this modular approach is used
-for implementing a range of choices for GC support [Jikes-GC].  This was
+for implementing a range of choices for GC support \cite{JikesGC}.  This was
 the inspiration for PyPy's own GC framework, although much more tuning
 and work went into Jikes RVM.  PyPy's own GC framework also exploits
 inlining of helpers and barriers to recover performance.
 
-Jikes RVM's native JIT compilers [Jikes-JIT]
+Jikes RVM's native JIT compilers \cite{Jikes-JIT}
 are not meant to be retargetted to run in other environments
 that hardware processors, for example in a CLR/.NET
 runtime. Also Jikes RVM pays the complexity of writing
@@ -1190,7 +1190,7 @@ can be kept, the more we win from our investment in writing the
 tool-chain itself -- a one-time effort.
 
 Dynamic languages enable the definition of multiple custom type systems,
-similar to \textit{pluggable type systems} in [Bracha] but with simple
+similar to \textit{pluggable type systems} in \cite{PlugType} but with simple
 type inference instead of explicit annotations.  This proved a key
 feature in implementing our translation tool-chain, because it makes a
 many-levels approach convenient: each abstraction level can provide an
