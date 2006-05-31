@@ -339,18 +339,9 @@ in) the lower-level type system. [#]_
 Type systems
 ------------
 
-The four levels that we considered so far are summarized in figure 2.
+The four levels that we considered so far are summarized in figure 2:
 
-::
-
-    [figure 2:    RPython
-                  /     \
-                 /       \
-       LLTypeSystem     OOTypeSystem
-               /
-              /
-      Raw addresses
-    ]
+.. graphviz:: image/typesystems.dot
 
 The RPython level is a subset of Python, so the types mostly follow
 Python types, and the instances of these types are instances in the
@@ -499,7 +490,10 @@ lists, dictionaries, and so on.  By opposition, the Flow Object Space is
 really an abstract domain.  It handles objects that are placeholders.
 Its lattice order is shown in figure 5.
 
-.. graphviz:: image/flowlattice.dot
+::
+
+    graphviz:: image/flowlattice.dot
+    DISABLED because it needs manual adjusting of the bounding box
 
 This order is extremely simple, because most actual analysis is delayed
 to the next phase, the type inference engine.  The objects are either
