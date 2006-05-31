@@ -308,13 +308,15 @@ def ll_append(lst, newitem):
 \label{fig_llappend}
 \end{figure}
 
-In the example of the \texttt{malloc} operation, replaced by a call to GC
-code, this GC code can invoke a complete collection of dead objects, and
-can thus be arbitrarily complicated.  Still, our GC code is entirely
-written in plain Python, and it manipulates "objects" that are still at
-a lower level: pointer and address objects.  Even with the restriction
-of having to use pointer-like and address-like objects, Python remains
-more expressive than, say, C to write a GC.  [XXX see also Jikes]
+In the example of the \texttt{malloc} operation, replaced by a call to
+GC code, this GC code can invoke a complete collection of dead
+objects, and can thus be arbitrarily complicated.  Still, our GC code
+is entirely written in plain Python, and it manipulates "objects" that
+are still at a lower level: pointer and address objects.  Even with
+the restriction of having to use pointer-like and address-like
+objects, Python remains more expressive than, say, C to write a GC
+(Jikes RVM's GC work \cite{JikesGC} was the inspiration to try to
+express GCs in Python, see \ref{relatedwork}).
 
 In the sequel, we will call \textit{system code} functions written in
 Python that are meant to be analysed by the front-end.  For the
@@ -910,7 +912,7 @@ assembler which is then natively compiled with LLVM tools.
 
 The tool-chain has been tested with and can sucessfully apply
 transformations enabling various combinations of features. The
-translated interpreters are benchmarked using pystone (a [Dhrystone]
+translated interpreters are benchmarked using pystone (a [Dhrystone] 2.0
 derivative traditionally used by the Python community, although it is
 a rather poor benchmark) and the classical [Richards] benchmark and
 compared against [CPython] 2.4.3 results and are summarized in table
