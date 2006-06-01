@@ -156,11 +156,12 @@ discovers (the reachable parts of) the input program.}
 \begin{enumerate}
 \item We take as input RPython function objects,\footnote{The input to our
        translation chain are indeed loaded runtime function objects,
-       not source code or ASTs.  This enables a form of staged
+       not source code nor ASTs.  This enables a form of staged
        programming in which we can use unrestricted
        Python for meta-programming purposes at load time: the whole of
-       the source program -- as Python program -- produces the RPython
-       program input to the tool-chain as the object graph loaded in
+       the source program -- as a Python program -- produces the RPython
+       program which is sent to the tool-chain in the form of its object
+       graph loaded in
        memory.  This includes both the relevant functions and prebuilt
        data.} and convert them to control flow graphs -- a structure
        amenable to analysis.  These flow graphs contain polymorphic
@@ -215,7 +216,7 @@ which is a viable option.
 
 We have two alternatives, each implemented as a transformation step.
 The first one inserts naive reference counting throughout the whole
-program's graphs, which without further optimizations gives exceedingly
+program's graphs, which without further optimizations gives a somewhat
 bad performance (it should be noted that the CPython interpreter is also
 based on reference counting, and experience suggests that it was not a
 bad choice in this particular case).
@@ -223,9 +224,10 @@ bad choice in this particular case).
 The other, and better, alternative is an exact GC, coupled with a
 transformation, the \textit{GC transformer}.  It inputs C-level-typed graphs
 and replaces all \texttt{malloc} operations with calls to a garbage
-collector's allocation routine.  It can inspect all the graphs to discover the
-\texttt{struct} types in use by the program, and assign a unique type id to
-each of them.  These type ids are collected in internal tables that
+collector's allocation routine.
+The transformation inspects all the graphs to discover the
+\texttt{struct} types in use by the program, and assigns a unique type id to
+each of them.  These type ids are then collected in internal tables that
 describe the layout of the structures, e.g.\ their sizes and the location
 of the pointer fields.
 
@@ -236,7 +238,7 @@ continuation-passing that will be the subject of another paper.)
 Another example is the exception transformer, which transforms graphs
 that still contain implicit exception handling into a form suitable for
 C (currently based on a global flag to signal the presence of an
-exception, set and checked around selected function calls).
+exception, which is set and checked around selected function calls).
 
 Finally, currently under development is a variant of the very first
 transformation step, for use when targeting higher-level,
@@ -250,7 +252,7 @@ low-level typer: it produces
 C-level flow graphs, where the object-oriented features of RPython
 (classes and instances) become manipulations of C structs with
 explicit virtual table pointers.  By contrast, for OO environments the
-transformation step is called the \textit{OOTyper}: it targets a simple
+transformation step is called the \textit{OOTyper:} it targets a simple
 object-oriented type system, and preserves the classes and instances
 of the original RPython program.  The LLTyper and OOTyper still have
 much code in common, to convert the more Python-specific features like
@@ -281,8 +283,8 @@ as well.  The idea is to feed these new Python functions into the
 front-end, using this time the transformation's target (lower-level)
 type system during the type inference.  In other words, we can write
 plain Python code that manipulates objects that conform to the
-lower-level type system, and have these functions automatically
-transformed into appropriately typed graphs.
+lower-level type system, and turn these functions into graph that are
+directly typed in this lower-level type system.
 
 For example, \texttt{ll\textunderscore{}append()} in figure \ref{fig_llappend}
 is a Python function
@@ -320,7 +322,7 @@ are still at a lower level: pointer and address objects.  Even with
 the restriction of having to use pointer-like and address-like
 objects, Python remains more expressive than, say, C to write a GC
 (the work on the Jikes RVM's GC \cite{JikesGC} was the inspiration to try to
-express GCs in Python, see section \ref{relatedwork}).
+express GCs in Python; see section \ref{relatedwork}).
 
 In the sequel, we will call \textit{system code} functions written in
 Python that are meant to be analysed by the front-end.  For the
@@ -336,7 +338,7 @@ that level.  As an aside, let us remark that the number of primitive
 operations at RPython level is, comparatively speaking, quite large:
 all list and dictionary operations, instance and class attribute
 accesses, many string processing methods, a good subset of all Python
-built-in functions...  Compared to other approaches
+built-in functions...  Compared with other approaches
 (e.g.\ Squeak \cite{Squeak}), we
 do not try to minimize the number of primitives -- at least not at the
 source level.  It is fine to have many primitives at any high enough
@@ -375,7 +377,7 @@ types.  For each of them, we implemented:
 %
 \begin{enumerate}
 \item The types, which we use to tag the variables of the graphs at
-      the given level (types are actually annotated, self-recursive
+      the given level (types are actually annotated self-recursive
       formal terms, and would have been implemented simply as such if
       Python supported them directly).
 
@@ -389,7 +391,7 @@ is a C-level array, \texttt{x[n]} accesses its \texttt{n}th item).
 The emulating instances provide a concrete implementation of
 these operations that works in normal Python; the types involved in the
 operations are also known to the type inference engine when it
-analyses system code like the helpers of figure \ref{fig_llappend}.
+analyses system code like the helper of figure \ref{fig_llappend}.
 
 Now, clearly, the purpose of types like a ``C-like struct'' or a ``C-like
 array'' is to be translated to a real \texttt{struct} or array declaration by
@@ -412,10 +414,10 @@ variable in the graph.
 
 The third reason is fundamental: we use these emulating objects to
 \textit{represent} pre-built objects at that level.  For example, the GC
-transformer instantiates the objects emulating C arrays for the internal
-type id tables, and it fills them with the correct values.  These array
-objects are then either used directly when testing the GC, or translated
-by the C back-end into static pre-initialized arrays.
+transformer instantiates an object emulating a C array for the internal
+type id table, and fills it with the correct values.  This array
+object is then either used directly when testing the GC, or translated
+by the C back-end into a static pre-initialized array.
 
 
 
@@ -457,11 +459,11 @@ performs whole-program type inference on these graphs.
 
 Remember that building the control flow graphs is not done, as one might
 first expect, by following a function at the syntactic level.  Instead,
-the whole program is imported in a normal Python interpreter; the full
-Python language is used at this point as a kind of preprocessor with
+the whole program is imported in a normal Python interpreter -- the full
+Python language is used as a kind of preprocessor with
 meta-programming capabilities.  Once the program is imported, the object
 data in memory consists of Python function objects in bytecode format,
-and any other kind of objects created at import-time, like class
+as well as any other kind of objects created at import-time, like class
 objects, prebuilt instances of those, prebuilt tables, and so on.  Note
 that these objects have typically no text representation any more; for
 example, cyclic data structures may have been built at this point.  The
@@ -483,22 +485,21 @@ displayed by our tool-chain.}
 \label{fig_screenshot}
 \end{figure}
 
-The actual transformation from function objects -- i.e.\ bytecode -- to
-flow graph is performed by the Flow Object Space, a short but generic
-plug-in component for the Python interpreter of PyPy.  The architecture
-of our Python interpreter is shown in figure \ref{interpobjspace}.
-
 \begin{figure}
   \centering
-  \label{interpobjspace}
   \begin{tabular}{|c|c|} \hline
 \multicolumn{2}{|c|}{\vphantom{\Large X}forest of bytecode objects from the application}    \\ \hline
 \multicolumn{2}{|c|}{\vphantom{\Large X}Python bytecode interpreter}            \\ \hline
     \vphantom{\Large X} Standard Object Space     &  Flow Object Space  \\ \hline
   \end{tabular}
   \caption{the interpreter and object spaces.}
+  \label{fig_interpobjspace}
 \end{figure}
 
+The actual transformation from function objects -- i.e.\ bytecode -- to
+flow graph is performed by the Flow Object Space, a short but generic
+plug-in component for the Python interpreter of PyPy.  The architecture
+of our Python interpreter is shown in figure \ref{fig_interpobjspace}.
 Note that the left column, i.e.\ the bytecode interpreter and the
 Standard Object Space, form the full Python interpreter of PyPy.  It is
 an RPython program, and the whole purpose of the translation process is
@@ -522,7 +523,7 @@ figure \ref{flowlattice}.
 
 \begin{figure*}
 \centering
-\includegraphics[scale=0.75]{image/flowlattice.pdf}
+\includegraphics[scale=0.667]{image/flowlattice.pdf}
 \caption{the lattice order of the flow object space.}
 \label{flowlattice}
 \end{figure*}
@@ -580,7 +581,9 @@ Note that we produce flow graphs in Static Single Information or SSI\cite{SSI}
 form, an extension of Static Single Assignment\cite{SSA}: each variable is
 only used in exactly one basic block.  All variables that are not dead
 at the end of a basic block are explicitly carried over to the next
-block and renamed.
+block and renamed, as can be seen in figure \ref{fig_interpobjspace}:
+each link carries a list of variables matching the formal input
+arguments of its target block.
 
 While the Flow Object Space is quite a short piece of code -- its core
 functionality takes only 300 lines -- the detail of the interactions
@@ -649,8 +652,9 @@ each variable along the way gets a type.  In various cases, e.g.\ when we
 close a loop, the previously assigned types can be found to be too
 restrictive.  In this case, we generalise them to allow for a larger set
 of possible run-time values, and schedule the block where they appear
-for reflowing.  The more general type can generalise the types of the
-results of the variables in the block, which in turn can generalise the
+for reflowing.
+The newly generalised types can in turn generalise the types of other
+result variables in the block, which in turn can generalise the
 types that flow into the following blocks, and so on.  This process
 continues until a fixed point is reached.
 
@@ -698,10 +702,18 @@ The set $A$ of RPython types is defined as the following formal terms:
 \item $NullableStr$, $NullableInst(class)$ -- a string or
       \texttt{None}; resp. an instance or \texttt{None}.
 \end{itemize}
-%
+
 Figures \ref{latticeoverall} and \ref{latticedetail} show how these
-types are ordered to form a lattice.  We mostly use its structure of
-join-semilattice only.
+types are ordered to form a lattice -- we generally use its structure of
+join-semilattice only, but we will see in section \ref{precision}
+a use case for the \textit{meet}.
+Not shown on the figures are the list terms, which are simply
+unordered with each other, and the Pbcs, which form a
+classical finite set-of-subsets lattice.  In addition, we have left
+out a number of other annotations that are irrelevant for the basic
+description of the annotator and straightforward to handle:
+$Dictionary$, $Tuple$, $Float$, $UnicodePoint$, $Iterator$, etc.  The
+complete list is described in \cite{T}.
 
 \begin{figure}
 \centering
@@ -712,15 +724,8 @@ join-semilattice only.
 \label{latticedetail}
 \end{figure}
 
-All list terms for all variables are unordered.  The Pbcs form a
-classical finite set-of-subsets lattice.  In addition, we have left
-out a number of other annotations that are irrelevant for the basic
-description of the annotator and straightforward to handle:
-$Dictionary$, $Tuple$, $Float$, $UnicodePoint$, $Iterator$, etc.  The
-complete list is described in \cite{T}.
-
 The type system moreover comes with a family of rules, which for every
-operation and every sensible combination of input types describes the
+operation and every meaningful combination of input types describes the
 type of its result variable.  Let $V$ be the set of Variables that
 appear in the user program's flow graphs.  Let $b$ be a map from $V$
 to $A$; it is a ``binding'' that gives to each variable a type.  The
@@ -761,14 +766,17 @@ forward-propagation order typical of abstract interpretation.
 
 It is outside the scope of the present paper to describe the type
 inference engine and the rules more formally.  The difficult points
-involve mutable containers -- e.g.\ initially empty list that are
-filled somewhere else -- and the discovery of instance attributes --
+involve mutable containers, e.g.\ initially empty list that are
+filled somewhere else; the discovery of instance attributes --
 in Python, classes do not declare upfront a fixed set of attributes
-for their instances, let alone their types.  Both these examples
-require sophisticated reflowing techniques that invalidate existing
+for their instances, let alone their types; and the discovery of
+base class interfaces -- across a class hierarchy, some methods with
+the same name may be called polymorphically by the program, while
+others may be unrelated methods used internally by the subclasses.
+These examples require reflowing techniques that invalidate existing
 types in already-annotated basic blocks, to account for the influence
 of more general types coming indirectly from a possibly distant part
-of the program.  The reader is referred to technical report \cite{D}
+of the program.  The reader is referred to \cite{D}
 for more information.
 
 
@@ -804,11 +812,11 @@ order of 5 to 10 minutes, and basic blocks are typically only reflown a
 handful of times, providing a close-to-linear practical complexity.
 
 We give formal termination and correctness proofs in \cite{D}, as well as
-worst-case bounds and some experimental evidence of their practical
-irrelevance.
+worst-case bounds and common-case estimates.
 
 
 \subsection{Precision}
+\label{precision}
 
 Of course, this would be pointless if the annotation did not give
 precise enough information for our needs.  We must describe a detail of
@@ -862,12 +870,12 @@ a given function contribute to a single annotation of that function.
 Inside the function graph, we propagate the \textit{join} of the types
 of the actual parameters of the call sites.  We \textit{do} support
 specialization, however: we can generate several independently-annotated
-copies of the flow graphs of certain functions.  When annotating RPython
+copies of the flow graph of certain functions.  When annotating RPython
 programs, such specialization does not happen automatically: we rely on
 hints provided by the programmer in the source code, in the form of
 flags attached to function objects.  As we had this trade-off in mind
-when we wrote the Python interpreter of PyPy, we only had to add a dozen
-or so hints in the end.
+when we wrote the Python interpreter of PyPy, we only had to add about
+a dozen hints in the end.
 
 This does not mean that automatic specialization policies are difficult
 to implement.  Indeed, the simpler lower-level type systems rely quite
@@ -876,20 +884,21 @@ generic and can receive arguments of various C-level types.  In this
 case, because the types at this level are limited and mostly unordered,
 specializing all functions on their input argument's types works well.
 
-At the level of RPython, on the other hand, the range of specializations
-that make sense is much wider.  We have used anything between
-specialization by the type of an argument, to specialization by an
-expected-to-be-constant argument value, to memoized functions that the
+At the level of RPython, the range of specializations
+that make sense is actually much wider.  Although we only specialize a
+very small subset of the functions, we use criteria as diverse as
+specialization by the type of an argument, specialization by an
+expected-to-be-constant argument value, memoized functions that the
 type inference engine will actually call during annotation and replace
-by look-up tables, to complete overriding of the annotator's behavior in
+by look-up tables, and even complete overriding of the annotator's behavior in
 extreme cases.  In this sense, the need for manual specialization turned
 into an advantage, in term of simplicity and flexibility of implementing
 and using new specialization schemes.
 
-This conclusion can be generalized.  We experimented with a simple
+This conclusion can be generalised.  We experimented with a simple
 approach to type inference that works well in practice, and that can
-very flexibly accomodate changes in the type system and even completely
-different type systems.  We think that the reasons for this success are
+very flexibly accomodate small and big changes in the type system.
+We think that the reasons for this success are
 to be found on the one hand in the (reasonable) restrictions we put on
 ourselves when designing the RPython language and writing the Python
 interpreter of PyPy in RPython, and on the other hand in an ad-hoc type
