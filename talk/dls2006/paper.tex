@@ -922,7 +922,8 @@ efficient, stand-alone code in a large variety of environment.
 
 Our tool-chain is capable of translating the Python interpreter of
 PyPy, written in RPython, currently producing either ANSI C code as
-described before, or LLVM\footnote{The LLVM project is the realization
+described before, or LLVM\footnote{
+The LLVM \cite{LLVM:CGO04} project is the realization
 of a portable assembler infrastructure, offering both a virtual
 machine with JIT capabilities and static compilation. Currently we are
 using the latter with its good high-level optimizations for PyPy.}
@@ -933,8 +934,8 @@ transformations enabling various combinations of features. The
 translated interpreters are benchmarked using pystone (a Dhrystone 2.0
 \cite{dhry20} derivative traditionally used by the Python community,
 although it is a rather poor benchmark) and the classical Richards
-benchmark (ported to Python) and compared against CPython 2.4.3 \cite{cpy243}
-results and are summarized in table \ref{perfsumm}.
+benchmark (ported to Python) and compared against CPython 2.4.3 \cite{cpy243}.
+Results are summarized in table \ref{perfsumm}.
 
 \begin{table*}
 % the layout of this table isn't wonderful, but it's probably OK.
@@ -964,21 +965,21 @@ cache.  The rows correspond to variants of the translation process, as
 follows:
 
 {\bf pypy-c:}
-    The simplest variant; translated to C code with no explicit memory
+    the simplest variant; translated to C code with no explicit memory
     management, and linked with the Boehm conservative GC.
 
 {\bf pypy-c-thread:}
-    The same, with OS thread support enabled (thread support is kept
+    the same, with OS thread support enabled (thread support is kept
     separate for measurement purposes because it has an impact on the
     GC performance).
 
 {\bf pypy-c-stackless:}
-    The same as pypy-c, plus the ``stackless transformation'' step which
+    the same as pypy-c, plus the ``stackless transformation'' step which
     modifies the flow graph of all functions to allow them
     to save and restore their local state, as a way to enable coroutines.
 
 {\bf pypy-c-gcframework:}
-    In this variant, the ``gc transformation'' step inserts explicit
+    in this variant, the ``gc transformation'' step inserts explicit
     memory management and a simple mark-and-sweep GC implementation.
     The resulting program is not linked with Boehm.  Note that it is not
     possible to find all roots from the C stack in portable C; instead,
@@ -986,7 +987,7 @@ follows:
     to an alternate stack around each subcall.
 
 {\bf pypy-c-stackless-gcframework:}
-    This variant combines the ``gc transformation'' step with the
+    this variant combines the ``gc transformation'' step with the
     ``stackless transformation'' step.  The overhead introduced by the
     stackless feature is theoretically balanced with the removal of the
     overhead of pushing and popping roots explicitly on an alternate
@@ -998,13 +999,13 @@ follows:
     6MB for the basic pypy-c.  Making it smaller is work in progress.)
 
 {\bf pypy-llvm-c:}
-    The same as pypy-c, but using the LLVM back-end instead of the C
+    the same as pypy-c, but using the LLVM back-end instead of the C
     back-end.  The LLVM assembler-compiler gives the best results when -
     as we do here -- it optimizes its input and generates again C code,
     which is fed to GCC.
 
 {\bf pypy-llvm-c-prof:}
-    The same as pypy-llvm-c, but using GCC's profile-driven
+    the same as pypy-llvm-c, but using GCC's profile-driven
     optimizations.
 
 The speed difference with CPython 2.4.3 can be explained at two levels.
@@ -1013,12 +1014,15 @@ optimized for a decade now, whereas the Python interpreter of PyPy first
 seeks flexibility and high abstraction levels.  The other, probably
 dominant, factor is that various indices show that our approach places a
 very high load on the GC and on the memory caches of the machine.  The
-Boehm GC is known to be less efficient than more customized approach;
+Boehm GC is known to be less efficient than a more customized approach;
 kernel-level profiling shows that pypy-c typically spends 30\% of its
 time in the Boehm library.  Our current, naively simple mark-and-sweep
-GC is manages to be a bit worse.  The interaction with processor caches is also
-hard to predict and account for; in general, we tend to produce
-relatively large amounts of code and prebuilt data.
+GC manages to be a bit worse.  The interaction with processor caches is
+also hard to predict and account for; in general, we tend to produce
+quite large amounts of code and prebuilt data.  The overall performance
+is still reasonable: some variants are within the same order of
+magnitude as CPython, while others trade a slow-down for functionalities
+not available in CPython.
 
 
 \subsection{Translation times}
@@ -1076,10 +1080,12 @@ takes 129 minutes.
 
 
 As described in section \ref{experimentalresults}, the performance of
-the compiled Python interpreters is still not up to competing with the
+the compiled Python interpreters is not yet up to competing with the
 well-established CPython.  We are always working to improve matters,
-considering new optimizations and better GCs.  Also, the OOTyper and
-back-ends for CLI/.NET and Smalltalk/Squeak are currently in progress.
+considering new optimizations and better GCs.
+
+Current work also includes the OOTyper and back-ends for CLI/.NET and
+Smalltalk/Squeak, all in-progress.
 
 
 \subsection{JIT Specializer}
@@ -1092,7 +1098,7 @@ coroutines.
 
 To achieve high performance for dynamic languages such as Python, the
 proven approach is to use dynamic compilation techniques, i.e.\ to write
-JITs.  With direct techniques, this is however a major endeavour, and
+JITs.  With direct techniques, this is a major endeavour, and
 increases the effort involved in further evolution of the language.
 
 In the context of the PyPy project, we are now exploring -- as we planned
@@ -1195,8 +1201,8 @@ Targetting platforms that are very different from C/Posix is work in
 progress, but given that many of the initial components are shared with
 the existing stack of transformations leading to C, we are confident
 that this work will soon give results.  Moreover, we believe that these
-results will show reasonable efficiency, because the back-ends for VMs
-like Squeak and .NET can take advantage of high-level input (as opposed
+results will show reasonable efficiency, because our back-ends for VMs
+like Squeak and .NET can take advantage of a high-level input (as opposed
 to trying to translate, say, C-like code to Smalltalk).
 
 A desirable property of our approach is to allow a given language and VM
