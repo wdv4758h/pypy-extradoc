@@ -165,4 +165,5 @@ Wish:
 
 * 6	Allow users to specify 'allwaysnosy'
 
-  This is a codespeak issue, mainly.
+  postponed to 1.0, probably involves updating the tracker schema
+  on a larger scale. 
