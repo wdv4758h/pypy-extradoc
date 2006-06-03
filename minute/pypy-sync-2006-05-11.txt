@@ -46,8 +46,6 @@ attendants: michael, anto, samuele, christian, richard,
 IRC logs 
 -------------
 
-**** BEGIN LOGGING AT Thu May 11 17:00:48 2006
-
 May 11 17:00:48 -->	You are now talking on #pypy-sync
 May 11 17:00:48 ---	Topic for #pypy-sync is PyPy - the flexible snake. This channel is used for pair programming and sync meetings.
 May 11 17:00:48 ---	Topic for #pypy-sync set by xorAxAx at Sun Apr 16 21:44:23

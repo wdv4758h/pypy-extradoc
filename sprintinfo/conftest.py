@@ -29,3 +29,10 @@ class PyPyReSTChecker(ReSTChecker):
     
 class Directory(Directory): 
     ReSTChecker = PyPyReSTChecker 
+    def run(self):
+        l = []
+        for x in super(Directory, self).run():
+            if x.endswith("planning.txt"):
+                continue
+            l.append(x)
+        return l
