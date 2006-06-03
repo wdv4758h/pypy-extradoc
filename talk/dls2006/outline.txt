@@ -52,6 +52,6 @@ Conclusion
 ==========
 
 Works, effectively increases flexibility and expressiveness,
- reasonably efficient, quite confusing at times;
+reasonably efficient, quite confusing at times;
 work in progress, some things are rough and could use more
 streamlined implementations and uniform approaches
