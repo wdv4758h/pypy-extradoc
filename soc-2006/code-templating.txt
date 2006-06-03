@@ -11,7 +11,7 @@ as to be able to provide the choice/or operator (and others) without
 touching the grammar file (it means in short : making available the new
 operator at runtime by way of importing some module).
 
-Examples of choice usage :
+Examples of choice usage::
 
  def soft_color():
      choice: 
@@ -62,7 +62,7 @@ Some explanation for choice/or, ?, :=: and fail() :
 
    choice: <s1> or: <s2> or: ... or: <sN>
 
-  which has to be rewritten as :
+  which has to be rewritten as ::
 
    choice = choose(N)
    if choice == 1:
@@ -83,7 +83,7 @@ Some explanation for choice/or, ?, :=: and fail() :
   creation-time (not even None) and can be bound only once. Currently,
   the newvar() builtin is used instead of it in PyPy
 
-* :=: is a short-cut notation we might want instead of merely calling
+* `:=:` is a short-cut notation we might want instead of merely calling
   unify, as in : unify(Term1, Term2)
 
 * fail() makes the current computation space fail: it means that the
@@ -140,28 +140,29 @@ suitable for a language like Python.
 Annex
 -----
 
+ 
   A Common Lisp programmer would have a 'choice' operator like this :
 
   (choice <s1> <s2>)
 
-  ... for instance :
+  for instance ::
 
-  (defun contrast (C1 C2)
-    (choice         
-       ((unify C1 (soft-color))
-        (unify C2 (hard-color)))
-       ((unify C1 (hard-color))
-        (unify C2 (soft-color)))))
+      (defun contrast (C1 C2)
+        (choice         
+           ((unify C1 (soft-color))
+            (unify C2 (hard-color)))
+           ((unify C1 (hard-color))
+            (unify C2 (soft-color)))))
 
-  He would define choice as a macro, as follows :
+  He would define choice as a macro, as follows ::
 
-  (defmacro choice (&body choice-points)
-    (let ((choices (length choice-points))
-          (choice (gensym "choice")))
-      `(let ((,choice (choose ,choices)))
-        (cond
-          ,(loop for alternative in choice-points
-                 for i from 1 upto choices
-                 collect `((= ,i ,choice) 
-                           (progn ,alternative)))))))
+      (defmacro choice (&body choice-points)
+        (let ((choices (length choice-points))
+              (choice (gensym "choice")))
+          `(let ((,choice (choose ,choices)))
+            (cond
+              ,(loop for alternative in choice-points
+                     for i from 1 upto choices
+                     collect `((= ,i ,choice) 
+                               (progn ,alternative)))))))
 
