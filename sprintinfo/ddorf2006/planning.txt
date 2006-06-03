@@ -1,37 +1,49 @@
-Planning for the first morning
+Sprint Planning DDorf  
 =========================================
 
-Christian is doing paperwork, Armin isn't here yet.
+Armin isn't here yet.
 
-Today's assignments are in **bold**.
-
+Before the sprint, there were two somewhat-similar, somewhat-conflicting
+goals: finish off wp7 functionality (stackless stuff, and more...) and
+getting the 0.9 release out of the door.  We decided that the priority of this sprint, or at least the next two days should be on wp7 and particularly
+stackless relates features. 
 Some things that don't really have issues yet:
 
  * the ext compiler
+   * Document using ext-compiler getting-started
 
  * documentation
 
  * running the compliance tests and getting results on the web again
 
-   **Holger and Anders**
+   (DONE) compliance is at 86% **Holger and Anders**
 
  * ootypesystem stuff
 
-   **Nik and Antonio seem to be on this already :)** (lucky non-EU constrained
-   people :)
+   **Nik and Antonio are working on ootype completion ** 
+   ** Maciek will join  later **
 
 Looking at the 0.9 issues, critical first:
 
 * 194	Advance rctypes approach to become usable
 
-  Basically done (ask Armin)
+  Basically done (ask Armin). 
+  open sub-issue: what about releasing the GIL? 
 
 * 197	implement __del__ support for framework gcs
 
   Needs more testing (particularly with the stacklessgc), but we think this
   works.
 
-  **This we can do now (mwh + cfbolz in parallel with something else)**
+  **Arre, cfbolz to do more testing**
+
+* ???   expose coroutine cloning to app level.
+  
+  * settle on APIs on RPython level 
+  * experiment a bit with exposing it to applevel
+  * document for 0.9 release 
+  
+  Shouldn't be too hard, needs to be done though.
 
 * 198	implement tasklet pickling
 
@@ -55,11 +67,19 @@ Looking at the 0.9 issues, critical first:
 
   **cfbolz + arre**
 
+* 199	finish app-level stackless support
+
+  This should be rated 'critical'!  Not sure what the status is.
+
+  Greenlets could be done quickly.
+
 Now the bugs:
 
 * 137	Control-C runtime support
 
   No progress here.  Hopefully not that hard.
+
+  (holger, later) 
 
 * 181	time module is incomplete
 
@@ -110,10 +130,6 @@ Features:
 * 145	implement -m command line option
 
   Probably not critical for 0.9.
-
-* 199	finish app-level stackless support
-
-  This should be rated 'critical'!  Not sure what the status is.
 
 * 200	moving gcs
 
