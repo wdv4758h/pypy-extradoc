@@ -49,15 +49,13 @@ Looking at the 0.9 issues, critical first:
 
   No problem at all! hahahaha
 
-  - finish needed object type pickling/unpickling
-  - finish and integrate explict resume points support
+  - (in-progress) finish needed object type pickling/unpickling
+  - (DONE) finish and integrate explict resume points support
   - use the latter to implement restarting after unpickling
     (likely hack! hack! hack! until it works)
 
   Tasklet cloning has become completely different, that kind of works now
   (needs more testing).
-
-  **Samuele and mwh: finish and integrate explict resume points support**
 
 * 81	weakrefs
 
