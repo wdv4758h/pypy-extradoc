@@ -16,7 +16,7 @@ Some things that don't really have issues yet:
 
  * running the compliance tests and getting results on the web again
 
-   (DONE) compliance is at 86% **Holger and Anders**
+   (DONE) compliance is at 89% **Holger and Anders**
 
  * ootypesystem stuff
 
@@ -99,7 +99,7 @@ Now the bugs:
 
 * 195	Make website doc generation more reliable
 
-  Holger!
+  (done, could be better) Holger
 
 * 21	_file.py needs more tests
 
