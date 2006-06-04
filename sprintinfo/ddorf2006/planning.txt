@@ -65,7 +65,7 @@ Looking at the 0.9 issues, critical first:
   Many of the CPython tests are hopeless, we need
   modified-2.4.1/test/test_weakref.py.  Exposing gc.collect() would help.
 
-  **cfbolz + arre**
+  **cfbolz + arre** DONE
 
 * 199	finish app-level stackless support
 
@@ -79,7 +79,7 @@ Now the bugs:
 
   No progress here.  Hopefully not that hard.
 
-  (holger, later) 
+  (arre, cfbolz) 
 
 * 181	time module is incomplete
 
