@@ -1,16 +1,23 @@
 Sprint Planning DDorf  
 =========================================
 
-Armin isn't here yet.
-
 Before the sprint, there were two somewhat-similar, somewhat-conflicting
 goals: finish off wp7 functionality (stackless stuff, and more...) and
-getting the 0.9 release out of the door.  We decided that the priority of this sprint, or at least the next two days should be on wp7 and particularly
-stackless relates features. 
+getting the 0.9 release out of the door.  We decided that the priority
+of this sprint, or at least the next two days should be on wp7 and
+particularly stackless related features. 
+
+time plan: monday afternoon: breakday 
+           tuesday afternoon: EU technical project planning 
+
+
 Some things that don't really have issues yet:
 
  * the ext compiler
+   (armin, carl, michael, arre, holger) 
+   * design user level usage + implement it   
    * Document using ext-compiler getting-started
+   * readline support for translated PyPy 
 
  * documentation
 
@@ -20,6 +27,7 @@ Some things that don't really have issues yet:
 
  * ootypesystem stuff
 
+   ootype is mostly complete (r_dict missing)
    **Nik and Antonio are working on ootype completion ** 
    ** Maciek will join  later **
 
@@ -38,7 +46,8 @@ Looking at the 0.9 issues, critical first:
   **Arre, cfbolz to do more testing**
 
 * ???   expose coroutine cloning to app level.
-  
+ 
+  (Armin) 
   * settle on APIs on RPython level 
   * experiment a bit with exposing it to applevel
   * document for 0.9 release 
@@ -47,26 +56,21 @@ Looking at the 0.9 issues, critical first:
 
 * 198	implement tasklet pickling
 
-  No problem at all! hahahaha
+  (christian) 
 
   - (in-progress) finish needed object type pickling/unpickling
   - (DONE) finish and integrate explict resume points support
-  - use the latter to implement restarting after unpickling
+  - (christian, samuele) use the latter to implement restarting after unpickling
     (likely hack! hack! hack! until it works)
 
   Tasklet cloning has become completely different, that kind of works now
   (needs more testing).
 
-* 81	weakrefs
+  (armin) write up documentation on how to use tasklet cloning 
 
-  This is about 90% done, only the other 90% to go :)
-  Many of the CPython tests are hopeless, we need
-  modified-2.4.1/test/test_weakref.py.  Exposing gc.collect() would help.
-
-  **cfbolz + arre** DONE
 
 * 199	finish app-level stackless support
-
+  (stephan is working on it) 
   This should be rated 'critical'!  Not sure what the status is.
 
   Greenlets could be done quickly.
@@ -75,7 +79,7 @@ Now the bugs:
 
 * 137	Control-C runtime support
 
-  No progress here.  Hopefully not that hard.
+  it is quite hard. 
 
   (arre, cfbolz) 
 
