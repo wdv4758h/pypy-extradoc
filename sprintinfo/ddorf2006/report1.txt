@@ -118,7 +118,7 @@ into a small army of confusing levels of abstraction, which shift
 around as soon as you aren't staring at them.  We're sure they're no
 match for Armin's planet-sized [#]_ brain though :)
 
-.. _[#]: http://mail.python.org/pipermail/python-dev/2003-January/032600.html
+.. [#] http://mail.python.org/pipermail/python-dev/2003-January/032600.html
 
 While some of the above work involved much discussion and occasional
 voluminous cursing, two or three people have been sitting in the
