@@ -14,8 +14,8 @@ Carl Friedrich Bolz  6-9th          CERN hostel
 Guido Wesdorp        6-9th          CERN hostel 
 Holger Krekel        6-?            CERN hostel 
 Maciej Fijalkowski   ?              ? 
-Anders Chrigstroem   ?              ? 
-Samuele Pedroni      ?              ? 
+Anders Chrigstroem   2/7 - 10/7     NH Geneva Airport
+Samuele Pedroni      2/7 - 10/7     NH Geneva Airport
 Christian Tismer     ?              ? 
 Antonio Cuni         ?              ? 
 Anders Lehmann       ?              ? 
