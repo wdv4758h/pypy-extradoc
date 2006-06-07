@@ -1,0 +1,59 @@
+Geneva/CERN Post-EuroPython PyPy sprint 6-9th July 
+====================================================
+
+The next PyPy sprint will be held at CERN/Geneva right after 
+the EuroPython conference.  We specifically invite newcomers
+and people interested to get to know and get into PyPy development. 
+We are going to work on a variety of topics and will give 
+introductions to various aspects of PyPy (on the 6th morning). 
+
+Some foreseen focus will be on the following topics: 
+
+* The extension module compiler.  Using it for implementing 
+  extension modules both for PyPy and CPython from the same
+  source code. (for example if you have a Need for Speed :) 
+
+* work and experiment with our to-be-relased 0.9 stackless features 
+
+* work on high level backends: .NET, Javascript etc. 
+
+* optimization of core Python data types, making full 
+  use of PyPy's flexible architecture and python-implemented 
+  (and then translated) type system. 
+
+* You may even dare to dive into ongoing work on the JIT compiler
+
+* experimenting with novel security systems for Python,
+  enabled by PyPy 
+
+* and so on :) 
+
+Registration 
+----------------------
+
+If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
+and drop a note about your interests and post any questions.  More 
+organisational information will be send to that list.  We'll keep
+a list of `people`_ which we'll update (which you can do so yourself
+if you have codespeak commit rights). 
+
+Special note to Students!
+----------------------------
+
+We have already four people working on a "Summer of Code" proposal, 
+three of which we could get through the Google/PSF process. 
+
+However, we are working to enable 4-6 more students to get
+travel + accomodation funding and provide mentoring from our side. 
+This we call "Summer of PyPy".  The idea is that you can suggest
+a PyPy related proposal to us ("pypy-tb@codespeak.net") and we will 
+then get back to you.  If we agree to it, then you can get expenses 
+funding.  
+
+As we still need to figure out budget/money issues, for now we 
+can only promise for now that we can fund this Post-EP2006 sprint
+for such students.  But don't hesitate to come to our irc channel,
+ask around and produce such proposals!
+
+.. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
+.. _`people`: people.html 
