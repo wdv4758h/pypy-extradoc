@@ -40,20 +40,22 @@ if you have codespeak commit rights).
 Special note to Students!
 ----------------------------
 
-We have already four people working on a "Summer of Code" proposal, 
-three of which we could get through the Google/PSF process. 
+As you might know, there are three students in Google's Summer of Code
+program who are working on projects related to PyPy.
 
-However, we are working to enable 4-6 more students to get
-travel + accomodation funding and provide mentoring from our side. 
-This we call "Summer of PyPy".  The idea is that you can suggest
-a PyPy related proposal to us ("pypy-tb@codespeak.net") and we will 
-then get back to you.  If we agree to it, then you can get expenses 
-funding.  
+In addition we are planning our own "Summer of PyPy": we can cover the
+expenses of attending some of our sprints and provide mentorship.
 
-As we still need to figure out budget/money issues, for now we 
-can only promise for now that we can fund this Post-EP2006 sprint
-for such students.  But don't hesitate to come to our irc channel,
-ask around and produce such proposals!
+In this vein, if you have an interesting idea for a project relating
+to PyPy you should send us ("pypy-tb@codespeak.net") a proposal.  We
+will consider it get back to you on whether we can fund your travel
+and accomodation.  We expect to able to fund between 4 and 6 students
+in this way.
+
+As we still need to figure out budget/money issues, for now we can
+only promise for now that we can fund this Post-EP2006 sprint for such
+students.  But don't hesitate to come to our irc channel, ask around
+and produce proposals!
 
 .. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 .. _`people`: people.html 
