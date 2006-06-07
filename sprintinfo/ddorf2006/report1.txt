@@ -11,7 +11,7 @@ and hacking.
 An early task was finishing off the mostly complete weakref support.
 After drawing an extremely confusing diagram:
 
-    http://XXX
+    http://codespeak.net/~mwh/blackboard.jpg
 
 Carl and Arre realized that there were a few strange cases that our
 model cannot support (in the case of a object and a
