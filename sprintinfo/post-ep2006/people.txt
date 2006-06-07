@@ -16,8 +16,8 @@ Holger Krekel        6-?            CERN hostel
 Maciej Fijalkowski   ?              ? 
 Anders Chrigstroem   2/7 - 10/7     NH Geneva Airport
 Samuele Pedroni      2/7 - 10/7     NH Geneva Airport
-Christian Tismer     ?              ? 
-Antonio Cuni         ?              ? 
+Christian Tismer     6-9th          ? 
+Antonio Cuni         6-9th          CERN Hostel 
 Anders Lehmann       ?              ? 
 Eric van Riet Paap   ?              ?
 ==================== ============== =====================
