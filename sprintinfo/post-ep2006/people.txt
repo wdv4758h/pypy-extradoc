@@ -19,6 +19,7 @@ Samuele Pedroni      2/7 - 10/7     NH Geneva Airport
 Christian Tismer     ?              ? 
 Antonio Cuni         ?              ? 
 Anders Lehmann       ?              ? 
+Eric van Riet Paap   ?              ?
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
