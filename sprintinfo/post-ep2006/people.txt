@@ -20,6 +20,7 @@ Christian Tismer     6-9th          ?
 Antonio Cuni         6-9th          CERN Hostel 
 Anders Lehmann       ?              ? 
 Eric van Riet Paap   ?              ?
+Lawrence Oluyede     6-9th          CERN Hostel
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
