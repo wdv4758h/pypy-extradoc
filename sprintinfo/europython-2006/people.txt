@@ -8,6 +8,8 @@ available yet from them.
 ==================== ============== =====================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
+Anders Chrigstroem   2/7 - 10/7     NH Geneva Airport
+Samuele Pedroni      2/7 - 10/7     NH Geneva Airport
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -21,8 +23,6 @@ Holger Krekel        ?              ?
 Carl Friedrich Bolz  ?              ?
 Eric van Riet Paap   ?              ?
 Maciej Fijalkowski   ?              ?
-Anders Chrigstroem   ?              ?
-Samuele Pedroni      ?              ?
 Christian Tismer     ?              ?
 Antonio Cuni         ?              ?
 Anders Lehmann       ?              ?
