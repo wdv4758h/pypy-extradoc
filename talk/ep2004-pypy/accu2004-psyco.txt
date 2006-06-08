@@ -50,6 +50,8 @@ The user guide has much more, but ideally it should not.
 Under the hood: example
 -----------------------
 
+:: 
+
    def acceptable(i):
        return i % 3 == 0
 
@@ -64,7 +66,7 @@ Under the hood: example
 
    sum(lines, initial='')
 
------------------------
+   -----------------------
 
    def sum(lst):
        total = 0
@@ -85,7 +87,7 @@ Under the hood: example
         # i is an integer, total is an integer
         > loop closed
 
------------------------
+   -----------------------
 
         # i is an integer, total is an integer
         # item=lst[i] is an object
@@ -98,7 +100,7 @@ Under the hood: example
         # i is an integer, total is a float
         > loop closed
 
------------------------
+   -----------------------
 
         # total = total + item
         ! overflows!
@@ -110,7 +112,7 @@ Under the hood: example
         # i is an integer, total is a long
         > loop closed
 
------------------------
+   -----------------------
 
         # i is an integer, total is an integer
         # item=lst[i] is an object
@@ -129,7 +131,7 @@ Under the hood: example
         total = total + x;
      loop back to label1;
 
------------------------
+   -----------------------
 
    def sum(lst):
        total = 0
@@ -141,6 +143,8 @@ Under the hood: example
 
 Reminder: the for loop reads the iterator by calling Iter.next()
 until it is exhausted.
+
+:: 
 
         # lst is an object
         ! lst is a list
@@ -167,7 +171,7 @@ until it is exhausted.
         ...body of the loop...
      goto label1;
 
------------------------
+   -----------------------
 
    def sum(lst):
        total = 0
@@ -182,7 +186,7 @@ until it is exhausted.
         PyObject *total_as_obj = PyInt_FromInt(total);
         return total_as_obj;
 
------------------------
+   -----------------------
 
    def sum(lst):
        total = 0
@@ -191,6 +195,8 @@ until it is exhausted.
        return total
 
 Summary:
+
+:: 
 
         // we know that total=0, we don't need a variable for that
         check(lst->ob_type == &PyList_Type);
@@ -219,7 +225,7 @@ Summary:
         // capture and ignore the IndexError
         return PyInt_FromLong(total);
 
------------------------
+   -----------------------
 
    def sum(lst):
        total = ''
@@ -238,12 +244,12 @@ Summary:
         # total = x is a growable string
         > loop closed
 
------------------------
+   -----------------------
 
    def addstuff(lst):
        lst.append(5)
 
------------------------
+   -----------------------
 
    def addstuff(lst):
        Meth = lst.append
@@ -260,6 +266,8 @@ Summary:
 Plus error checking and DECREF'ing.
 
 -----------------------
+
+:: 
 
    def acceptable(i):
        return i % 3 == 0
@@ -278,11 +286,13 @@ We read acceptable from the globals, assuming it doesn't change often:
 
 -----------------------
 
+:: 
+
    def acceptable(i):
        return i % 3 == 0
 
 In our case we provide the argument i as an integer, not as an
-integer object:
+integer object::
 
      PyObject *acceptable_with_int_arg(int i)
      {
@@ -301,6 +311,8 @@ might be other code paths inside of the same function that return
 something else :-(
 
 -----------------------
+
+:: 
 
    def acceptable(i):
        return i % 3 == 0
@@ -322,6 +334,8 @@ something else :-(
 -----------------------
 
 Small functions can be inlined!
+
+:: 
 
    def acceptable(i):
        return i % 3 == 0
@@ -452,7 +466,7 @@ local variables, useful on hardware with plenty of registers.
 
 ------------------
 
-It can also combine several instructions into one:
+It can also combine several instructions into one::
 
    mode_combine([s_push(1:255), add]).
 
