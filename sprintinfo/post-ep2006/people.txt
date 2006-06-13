@@ -21,6 +21,7 @@ Antonio Cuni         6-9th          CERN Hostel
 Anders Lehmann       6-9th          ? 
 Eric van Riet Paap   2-9th          ?
 Lawrence Oluyede     6-9th          CERN Hostel
+Alexander Schremmer  6-9th          CERN Hostel
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
