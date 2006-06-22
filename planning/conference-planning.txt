@@ -160,3 +160,30 @@ ACM/IFIP/USENIX 7th International Middleware Conference
  "Novel development paradigms, APIs, and languages"/PyPy?
  
  Suggestion by Holger. Submission/attendance?
+
+Vancouver Python Worshop
+-------------------------
+Time  & Location: August 4 - August 5, Vancouver
+
+we have been invited there.
+
+Samuele is organizing to give a talk there
+
+PEPM 2007 - Workshop on Partial Evaluation and Program Manipulation 
+---------------------------------------------------------------------
+abstracts due Oct. 18
+
+Time & Location: January 15-16, 2007 Nice, France 
+
+ECOOP 2007 - European Conference on Object Oriented Programming
+-----------------------------------------------------------------
+estimated papers due date: November 1, 2006
+
+PLDI 2007 - Programming Language Design and Implementation
+------------------------------------------------------------
+http://ties.ucsd.edu/PLDI/papers.shtml
+
+Abstract deadline: Tuesday November 7, 2006, 1 PM CST
+Submission deadline: Tuesday November 14, 2006, 1 PM CST (no extensions) 
+
+Time & Location: June 10-13, 2006, San Diego CA
