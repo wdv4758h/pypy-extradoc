@@ -22,6 +22,10 @@ Anders Lehmann       6-9th          ?
 Eric van Riet Paap   2-9th          CERN Hostel
 Lawrence Oluyede     6-9th          CERN Hostel
 Alexander Schremmer  6-9th          CERN Hostel
+Aurelien Campeas     6-8th          ?
+Alexandre Fayolle    6-8th          ?
+Ludovic   Aubry      6-8th          ?
+David Douard         6-8th          ?
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -31,8 +35,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
 Christian Tismer     ?              ?
 Jacob Hallen         ?              ?
-Aurelien Campeas     ?              ?
-Alexandre Fayolle    ?              ?
 Lene Wagner          ?              ?
 Amaury Forgeot d'Arc ?              ?
 Valentino Volonghi   ?              ?
