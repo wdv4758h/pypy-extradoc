@@ -4,7 +4,19 @@ What can PyPy do for you?
 Peek under the hood
 -------------------
 
- - sys.pypy_repr() with small ints
+ - sys.pypy_repr() with small ints::
+
+    >>>> import sys
+    >>>> sys.pypy_repr(1)
+    '<unboxed 1>'
+    >>>> sys.pypy_repr(42)
+    '<unboxed 42>'
+    >>>> sys.pypy_repr(sys.maxint)
+    '<W_IntObject object>'
+    >>>> sys.pypy_repr(sys.maxint / 2)
+    '<unboxed 1073741823>'
+    >>>> sys.pypy_repr(sys.maxint / 2 + 1)
+    '<W_IntObject object>'
 
 Stackless stuff
 ---------------
