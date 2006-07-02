@@ -1,30 +1,35 @@
-from pypy.module._stackless import interp_coroutine
-from pypy.module._stackless.interp_clonable import ClonableCoroutine, fork
+from pypy.module._stackless.interp_coroutine import AbstractThunk
+from pypy.module._stackless.interp_clonable import ClonableCoroutine
 import os
 
 class ChoicePointHolder(object):
     def __init__(self):
         self.choicepoints = []
+        self.clone_me = False
+        self.answer = 0
 
     def next_choice(self):
         return self.choicepoints.pop()
 
-    def choice(self):
-        os.write(1, "choice\n")
-        child = fork()
-        if child is not None:
-            self.choicepoints.append(child)
-            return 0
-        else:
-            return 1
-    
-    def add(self, choice):
-        self.choicepoints.append(choice)
+    def add(self, choice, answer=0):
+        self.choicepoints.append((choice, answer))
 
     def more_choices(self):
         return bool(self.choicepoints)
 
+    def choice(self):
+        os.write(1, "choice\n")
+        self.clone_me = True
+        g_main.switch()
+        return self.answer
+
 choicepoints = ChoicePointHolder()
+g_main = ClonableCoroutine.getmain()
+
+class Fail(Exception):
+    pass
+
+# ____________________________________________________________
 
 invalid_branches = [
     [0, 0, 0],
@@ -37,29 +42,17 @@ invalid_branches = [
     [1, 1, 0, 0],
     ]
 
-class SearchTask(interp_coroutine.AbstractThunk):
+class SearchTask(AbstractThunk):
     def call(self):
-        try:
-            path = []
-            for i in range(10):
-                path = path[:]
-                path = path + [choicepoints.choice()]
-                for invalid_branch in invalid_branches:
-                    if len(path) < len(invalid_branches):
-                        continue
-                    for i in range(len(invalid_branch)):
-                        if path[i] != invalid_branch[i]:
-                            break
-                    else:
-                        return
-            os.write(1, "found a solution!: ")
-            os.write(1, "[" + ", ".join([str(i) for i in path]) + "]\n")
-        except Exception, e:
-            os.write(1, "exception raised :-(")
-
-# ^ ^ ^ that's quite cool code I think :-)
-# yes, I agree :-)
-# much easier than doing it by hand
+        path = []
+        for i in range(10):
+            path.append(choicepoints.choice())
+            os.write(1, "trying: %s" % path)
+            if path in invalid_branches:
+                os.write(1, " NO\n")
+                raise Fail
+            os.write(1, " yes\n")
+        os.write(1, "found a solution: %s\n" % path)
 
 
 def search_all(argv):
@@ -69,8 +62,18 @@ def search_all(argv):
 
     os.write(1, "starting\n")
     while choicepoints.more_choices():
-        searcher = choicepoints.next_choice()
-        searcher.switch()
+        searcher, nextvalue = choicepoints.next_choice()
+        choicepoints.clone_me = False
+        choicepoints.answer = nextvalue
+        try:
+            searcher.switch()
+        except Fail:
+            assert not choicepoints.clone_me
+        else:
+            if choicepoints.clone_me:
+                searcher2 = searcher.clone()
+                choicepoints.add(searcher, 1)
+                choicepoints.add(searcher2, 0)
     return 0
 
 def target(*args):
