@@ -101,3 +101,121 @@ RCTypes
  * makes wrapping of libaries easy and testable
 
  * again useable with PyPy and CPython
+
+
+The Javascript backend
+======================
+
+Creates Javascript programs with Python semantics
+ 
+
+Why would you want that?
+========================
+
+ * ...
+
+
+Why would you want that?
+========================
+
+ * Because Python is way more fun than Javascript
+
+ * ...
+
+
+Why would you want that?
+========================
+
+ * Because Python is way more fun than Javascript
+
+ * Because it will allow you to test your code on top of a Python interpreter
+
+ * ...
+
+
+Why would you want that?
+========================
+
+ * Because Python is way more fun than Javascript
+
+ * Because it will allow you to test your code on top of a Python interpreter
+
+ * "Mochikit makes JavaScript suck less"
+
+ * PyPy makes living with JavaScript fun
+
+
+Why would you want that?
+========================
+
+ * Because Python is way more fun than Javascript
+
+ * Because it will allow you to test your code on top of a Python interpreter
+
+ * "Mochikit makes JavaScript suck less"
+ 
+ * PyPy makes living with JavaScript fun
+   (by not using it)
+
+
+Who?
+====
+
+ * It relies heavily on PyPy so mostly made possible by the enormous effort of the PyPy developers
+
+ * ...
+
+
+Who?
+====
+
+ * It relies heavily on PyPy so mostly made possible by the enormous effort of the PyPy developers
+
+ * Started about 6 months ago
+
+ * Restarted as a high-level backend by Maciej Fijalkowski for Google SoC 2006
+
+
+Current features
+================
+
+ * Using native Javascript for things like inheritance
+
+ * Semi transparent server-side call
+
+ * Limited support for DOM/CSS and whatnot
+
+
+What to do next
+===============
+
+ * Make the webcode testable on Python interpreters
+ 
+ * Finish DOM interface
+ 
+ * Streamline more with Turbogears
+ 
+ * Coroutines/stackless features
+
+
+Examples
+========
+
+ * Bub-n-Bros client
+
+ * ...
+
+
+Examples
+========
+
+ * Bub-n-Bros client
+
+ * check pypy svn for a Console sample
+
+
+Questions
+=========
+
+Anyone?
+
