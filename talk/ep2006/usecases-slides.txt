@@ -4,16 +4,15 @@ What can PyPy do for you?
 
 :Authors: Armin Rigo (HHU), Carl Friedrich Bolz (merlinux), Eric van Riet Paap
 :Date: 4th July 2006
+:Location: Europython 2006, Geneva, CERN
 
 
 Peek under the hood
 ====================
  
- * PyPy feature: ``sys.pypy_repr`` function
+ * ``sys.pypy_repr(obj)``
 
- * allows you to get the interpreter-level representation of an object
-
- * in the compiled PyPy version you get the name of the RPython class
+ * returns the interpreter-level representation of an object
 
  * ... demo
 
@@ -40,13 +39,20 @@ Stackless Features (2/2)
 
  * made possible by our mark-n-sweep GC
 
+ * ... demo
+
 
 Lazy Computations
 =================
 
- * two object spaces with lazy features
+.. raw:: html
+  
+   <br>
 
- * thunk object space: lazy computed objects
+two object spaces with lazy features:
+-------------------------------------
+
+ * thunk object space: lazily computed objects
 
  * logic object space: logic variables, unification, microthreads
 
@@ -54,28 +60,24 @@ Lazy Computations
 The Thunk Object Space
 ======================
 
- * new builtin: ``thunk``
-
- * takes a function and arguments
+ * ``thunk(f, *args, **kwargs)``
 
  * returns something that behaves like the result of the call
 
- * the call is made as late as possible
+ * the call is made as late as possible, only when the value is actually needed
 
- * only when the value is actually needed
+ * ... demo
 
 The Logic Object Space
 ======================
 
- * ``newvar``: makes a new unbound logic variable (prolog and Oz-like)
+ * variables can be used to synchronize microthreads
 
- * ``unify``: unifies two expressions
+ * quite safe because variables can be bound once only
 
- * trying to access an unbound var blocks the current thread
+ * general unification, pattern matching (prolog-like, Oz-like)
 
- * ``wait_needed(X)`` waits until somebody needs the var ``X``
-
- * ``uthread(callable, *args)`` starts a new thread
+ * in progress: constraint programming
 
 
 The Extension-Compiler
@@ -85,8 +87,6 @@ The Extension-Compiler
 
  * extensions translated to efficient low level code
  
- * the extension compiler makes these useable with CPython
-
  * write fast extensions for PyPy `and` CPython
 
 RCTypes
@@ -101,7 +101,7 @@ RCTypes
  * makes wrapping of libaries easy and testable
 
  * again useable with PyPy and CPython
-
+ 
 
 The Javascript backend
 ======================
@@ -219,3 +219,6 @@ Questions
 
 Anyone?
 
+
+.. |bullet| unicode:: U+02022
+.. footer:: Armin Rigo, Carl Friedrich Bolz, Eric van Riet Paap |bullet| Europython |bullet| 4th July 2006
