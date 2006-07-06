@@ -23,9 +23,13 @@ Lawrence Oluyede     6-9th          CERN Hostel
 Fabrizio Milo        6-9th          Geneva City Hostel
 Alexander Schremmer  6-9th          CERN Hostel
 Aurelien Campeas     6-8th          ?
-Alexandre Fayolle    6-8th          ?
+Alexandre Fayolle    6-7th          ?
 Ludovic   Aubry      6-8th          ?
 David Douard         6-8th          ?
+Michele Frettoli     6-7th          ?
+Simon Burton         6-10th         ?
+Aaron Bingham        6-7th          ?
+Pieter Zieschang     6-8th          ?
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
