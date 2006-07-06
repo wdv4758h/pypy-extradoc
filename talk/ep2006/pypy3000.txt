@@ -1,18 +1,20 @@
-pypy 3000
+---- pypy 3000 ----
 
 +++ single language specification written in (R)Python 
 
 ++ equally runs on/translates to C, .NET and Java platforms
 
-+ and squeak, common lisp :) 
++ and squeak/smalltalk
 
-+ provides JIT compiler for C 
+- and common lisp :)
 
-- and in Internet Explorer 
++ includes JIT compiler for C ...
 
-+ currently pypy gets faster 4 times each year 
+- ... and for javascript/Internet Explorer 
 
-- that means: will be 200 times faster than CPython 3000!
++ currently pypy gets faster 4 times each year ...
+
+- clearly means: will be 200 times faster than CPython 3000!
 
 + write and test AJAX apps in python, translate to Javascript 
 
@@ -38,7 +40,9 @@ pypy 3000
 
 + runtime modifiable syntax (or better not? :)
 
--- FPGA backends (python programs translated to hardware)
+-- FPGA backend (python programs translated to hardware)
 
 + secret goal: run Bub'n'Bros on every possible platform 
+
+++ summer of pypy: if you are a student and want it to happen: contact us! 
 
