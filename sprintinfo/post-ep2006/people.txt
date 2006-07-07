@@ -29,7 +29,8 @@ David Douard         6-8th          ?
 Michele Frettoli     6-7th          ?
 Simon Burton         6-10th         ?
 Aaron Bingham        6-7th          ?
-Pieter Zieschang     6-8th          ?
+Pieter Zieschang     6-9th          ?
+Sad Rejeb            7-9th          ?
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
