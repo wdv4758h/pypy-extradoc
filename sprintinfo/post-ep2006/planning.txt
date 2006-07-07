@@ -6,25 +6,30 @@ Samuele: General wizardry
 
 * The extension module compiler.  Using it for implementing 
   extension modules both for PyPy and CPython from the same
-  source code. (lawrence, arre)
+  source code. (lawrence, arre, brian, sad)
 
-* work and experiment with our to-be-relased 0.9 stackless features 
+  IN-PROGRESS: the time module, a cache implementation
 
-* work on high level backends: .NET (anto, etc) 
 
-* fix ootype system bugs (anto, michele, arigo around)
+* work and experiment with our relased 0.9 stackless features 
 
-* polishing the Javascript backend, docs, ... (maciek, aaron, eric around)
+* work on high level backends: .NET: IN-PROGRESS
+  - fix ootype system bugs (anto, michele, arigo around)
+
+* polishing the Javascript backend, docs, ... 
+
+* improving error messages: maciek, samuele: IN-PROGRESS
 
 * optimization of core Python data types, making full 
   use of PyPy's flexible architecture and python-implemented 
   (and then translated) type system. 
 
-  - having a string implementation for concatenation, slicing (cfbolz, pieter)
+  - having a string implementation for concatenation, slicing, 
+    DONE
 
-  - an implementation of long using C's long long
+  - an implementation of long using C's long long: annoying
 
-  - specialized dictionary implementations
+  - specialized dictionary implementations: SOME THINKING
 
 * optimizations of aspects of the interpreter
 
@@ -33,12 +38,17 @@ Samuele: General wizardry
 * experimenting with novel security systems for Python,
   enabled by PyPy 
 
-* packaging and configuration (alexandre, guido, david, samuele around)
+* packaging and configuration (alexandre, guido, david, hpk, cfbolz)
+  SOME DISUSSIONS
 
-* logic object space, stackless (aurelien, ludovi)
+* fixing translation on 64 bit platforms , SOME PROGRESS
+
+* logic object space, stackless (aurelien, ludovic, anders)
   - possible but annoying: find out why clone does not work
+    (one bug found), SLOW PROGRESS
 
 * make stackless code smaller by introducing helper functions
+  (mwh, fabrizio) SLOW PROGRESS
 
 * try to attach weights to blocks that order blocks in the C code or even give
   hints to GCC stack the resume code is rarely executed
@@ -46,4 +56,7 @@ Samuele: General wizardry
 * profile based optimization should be integrated with translate.py and maybe
   even with GCC
 
-* experiment with the LLVM JIT code generator (simon, eric)
+* experiment with the LLVM JIT code generator
+  SOME PROGRESS HERE
+
+* preliminary doctest support: DONE (guido, hpk)
