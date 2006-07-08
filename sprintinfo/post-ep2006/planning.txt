@@ -8,17 +8,18 @@ Samuele: General wizardry
   extension modules both for PyPy and CPython from the same
   source code. (lawrence, arre, brian, sad)
 
-  IN-PROGRESS: the time module, a cache implementation
-
+  IN-PROGRESS: a cache implementation, a bug was found in the extcompiler
+  MOSTLY FINISHED: the time module
 
 * work and experiment with our relased 0.9 stackless features 
 
-* work on high level backends: .NET: IN-PROGRESS
-  - fix ootype system bugs (anto, michele, arigo around)
+* work on high level backends: .NET: MORE PROGRESS 19% ootyping :-)
+  - fix ootype system bugs (anto, arigo around)
 
 * polishing the Javascript backend, docs, ... 
+  (eric)
 
-* improving error messages: maciek, samuele: IN-PROGRESS
+* improving error messages: maciek, samuele: DONE
 
 * optimization of core Python data types, making full 
   use of PyPy's flexible architecture and python-implemented 
@@ -29,7 +30,8 @@ Samuele: General wizardry
 
   - an implementation of long using C's long long: annoying
 
-  - specialized dictionary implementations: SOME THINKING
+  - specialized dictionary implementations: IN-PROGRESS, a branch was made
+    (maciek, xoraxax)
 
 * optimizations of aspects of the interpreter
 
@@ -38,17 +40,19 @@ Samuele: General wizardry
 * experimenting with novel security systems for Python,
   enabled by PyPy 
 
-* packaging and configuration (alexandre, guido, david, hpk, cfbolz)
-  SOME DISUSSIONS
+* packaging and configuration (guido, cfbolz)
+  IN-PROGRESS
 
-* fixing translation on 64 bit platforms , SOME PROGRESS
+* fixing translation on 64 bit platforms , PROBABLY WORKS
 
-* logic object space, stackless (aurelien, ludovic, anders)
+* logic object space, stackless
   - possible but annoying: find out why clone does not work
     (one bug found), SLOW PROGRESS
 
 * make stackless code smaller by introducing helper functions
-  (mwh, fabrizio) SLOW PROGRESS
+  MAYBE DONE
+
+* AST modifications support and peephole optimizer (mwh, fabrizio)
 
 * try to attach weights to blocks that order blocks in the C code or even give
   hints to GCC stack the resume code is rarely executed
@@ -59,4 +63,10 @@ Samuele: General wizardry
 * experiment with the LLVM JIT code generator
   SOME PROGRESS HERE
 
-* preliminary doctest support: DONE (guido, hpk)
+* preliminary doctest support: DONE
+
+* making pypy compilable with a c++ compiler: MOSTLY DONE
+
+* exposing an ll array type (simon, arre around)
+
+* working on some not finished module (pieter)
