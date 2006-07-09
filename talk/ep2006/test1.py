@@ -7,6 +7,7 @@ class ChoicePointHolder(object):
         self.choicepoints = []
         self.clone_me = False
         self.answer = 0
+        self.solutions_count = 0
 
     def next_choice(self):
         return self.choicepoints.pop()
@@ -46,16 +47,15 @@ invalid_branches = [
 class SearchTask(AbstractThunk):
     def call(self):
         path = []
-        res = choicepoints.choice()
-        path.append(res)
-        os.write(1, "A. {%x} trying: %s\n" % (id(path), path))
-        res = choicepoints.choice()
-        path.append(res)
-        os.write(1, "B. {%x} trying: %s\n" % (id(path), path))
-        res = choicepoints.choice()
-        assert len(path) == 2
-        path.append(res)
-        os.write(1, "C. {%x} found a solution: %s\n" % (id(path), path))
+        for i in range(10):
+            res = choicepoints.choice()
+            assert len(path) == i
+            path.append(res)
+            os.write(1, "{%x} trying: %s\n" % (id(path), path))
+            if i == 3:
+                import gc; gc.collect()
+        os.write(1, "{%x} found a solution: %s\n" % (id(path), path))
+        choicepoints.solutions_count += 1
 
 # ____________________________________________________________
 
@@ -80,6 +80,7 @@ class SearchAllTask(AbstractThunk):
                     id(searcher), id(searcher2)))
                 choicepoints.add(searcher, 5)
                 choicepoints.add(searcher2, 4)
+        assert choicepoints.solutions_count == 2 ** 10
 
 def entry_point(argv):
     choicepoints.g_main = ClonableCoroutine()
