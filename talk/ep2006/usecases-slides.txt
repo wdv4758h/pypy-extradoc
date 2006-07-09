@@ -203,7 +203,7 @@ Examples
 
  * Bub-n-Bros client
 
- * ...
+http://snake.cs.uni-duesseldorf.de/tgtest/
 
 
 Examples
