@@ -6,18 +6,17 @@ Samuele: General wizardry
 
 * The extension module compiler.  Using it for implementing 
   extension modules both for PyPy and CPython from the same
-  source code. (lawrence, arre, brian, sad)
+  source code.
 
-  IN-PROGRESS: a cache implementation, a bug was found in the extcompiler
-  MOSTLY FINISHED: the time module
+  FINISHED: a cache implementation, a bug was found in the extcompiler
+  FINISHED modulo bugs and getting it to translate: the time module
 
 * work and experiment with our relased 0.9 stackless features 
 
-* work on high level backends: .NET: MORE PROGRESS 19% ootyping :-)
-  - fix ootype system bugs (anto, arigo around)
+* work on high level backends: .NET: ootyping works, lots of stuff left in gencli
+  - fix ootype system bugs  (FINISHED)
 
 * polishing the Javascript backend, docs, ... 
-  (eric)
 
 * improving error messages: maciek, samuele: DONE
 
@@ -30,8 +29,8 @@ Samuele: General wizardry
 
   - an implementation of long using C's long long: annoying
 
-  - specialized dictionary implementations: IN-PROGRESS, a branch was made
-    (maciek, xoraxax)
+  - specialized dictionary implementations: DONE, modulo translation
+    a branch was made (maciek, xoraxax)
 
 * optimizations of aspects of the interpreter
 
@@ -40,8 +39,8 @@ Samuele: General wizardry
 * experimenting with novel security systems for Python,
   enabled by PyPy 
 
-* packaging and configuration (guido, cfbolz)
-  IN-PROGRESS
+* packaging and configuration (guido, cfbolz around)
+  MORE PROGRESS
 
 * fixing translation on 64 bit platforms , PROBABLY WORKS
 
@@ -52,7 +51,8 @@ Samuele: General wizardry
 * make stackless code smaller by introducing helper functions
   MAYBE DONE
 
-* AST modifications support and peephole optimizer (mwh, fabrizio)
+* AST modifications support (PRETTY MUCH DONE)
+  and peephole optimizer (simple constant folder DONE, off by default)
 
 * try to attach weights to blocks that order blocks in the C code or even give
   hints to GCC stack the resume code is rarely executed
@@ -67,6 +67,6 @@ Samuele: General wizardry
 
 * making pypy compilable with a c++ compiler: MOSTLY DONE
 
-* exposing an ll array type (simon, arre around)
+* exposing an ll array type (simon, arre around) PROGRESS
 
-* working on some not finished module (pieter)
+* working on wrapping the random module (pieter, misto) MOSTLY DONE
