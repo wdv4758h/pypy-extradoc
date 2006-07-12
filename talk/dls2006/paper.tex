@@ -124,7 +124,7 @@ the need to statically infer enough type information to generate
 efficient code.  RPython still supports inheritance but limited to
 single inheritance with some mix-in support, dynamic dispatch, to some
 extent keywords arguments and varargs, first-class function and class
-values, limited use of bound methods, runtime 'isinstance' and type
+values, limited use of bound methods, runtime \texttt{isinstance} and type
 queries, but no runtime reflection, further bindings in class and
 global namespaces are assumed constant. RPython code can be run on a
 Python interpreter without severe semantics mismatches, figure
@@ -457,6 +457,33 @@ type id table, and fills it with the correct values.  This array
 object is then either used directly when testing the GC, or translated
 by the C back-end into a static pre-initialized array.
 
+Because our helpers can be both run on top of CPython and translated
+we can reuse them both as runtime implementations and to render constant
+objects at translation time. This is both natural and useful (especially for complex
+data structures). Figure \ref{fig_insertclean} shows a function
+implementing insertion in a built-in dictionary for keys known to be
+absent, this is used at runtime after resizing and to fill the constant
+dictionaries at translation.
+
+\begin{figure}
+\begin{verbatim}
+def ll_dict_insertclean(d, key, value, hash):
+  entry = ll_dict_lookup_clean(d, hash)
+  ENTRY = lltype.typeOf(entry).TO
+  entry.value = value
+  entry.key = key
+  if hasattr(ENTRY, 'f_hash'): 
+    entry.f_hash = hash
+  if hasattr(ENTRY, 'f_valid'):    
+    entry.f_valid = True
+  if hasattr(ENTRY, 'f_everused'): 
+    entry.f_everused = True
+  d.num_items += 1
+  d.num_pristine_entries -= 1
+\end{verbatim}
+\label{fig_insertclean}
+\caption{built-in dict insertion helper.}
+\end{figure}
 
 
 \section{Type inference}
@@ -479,7 +506,18 @@ of functions in the presence of polymorphic arguments.  Another
 example is that unlike some schemes which follow exact sets of
 concrete run-time classes, we only propagate a single superclass per
 variable: the most precise common parent class.  This gives enough
-precision for our code generation purposes.
+precision for our code generation purposes.  
+
+It is also simple, in the context of abstract interpretation, to
+perform translation-time constant propagation, computations and
+implement conditional code in a natural way. For example, the code in
+figure \ref{fig_insertclean}, which is then specialized for the
+possible types of dictionary \texttt{d}, shows this kind of
+compile-time computation and introspection on low-level types,
+\texttt{ENTRY} is a C-like structure type and the
+\texttt{hasattr}-ibute checks introspect it at translation time. This
+kind of expressiveness increased our ability of reuse code even in
+low-level helpers.
 
 In the sequel, we give a more precise description of this process and
 justify our claim that good performance and enough precision can be
