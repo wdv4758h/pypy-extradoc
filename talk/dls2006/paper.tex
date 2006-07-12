@@ -958,11 +958,13 @@ pypy-llvm-c-prof             &  2772ms  (3.5x) & 10245  (3.9x) \\ \hline
 \end{table*}
 
 The numbers in parenthesis are slow-down factors compared to CPython.
-These measures reflect PyPy revision 27815, compiled with GCC 3.4.4.
-LLVM is version 1.8cvs (May 11, 2006).  The machine runs GNU/Linux SMP
-on an Intel(R) Pentium(R) 4 CPU at 3.20GHz with 2GB of RAM and 1MB of
-cache.  The rows correspond to variants of the translation process, as
-follows:
+These measures reflect PyPy revision 27815\footnote{PyPy is an open-source project
+under the MIT license, PyPy source repository using subversion lives at 
+http://codespeak.net/svn/pypy/dist/.}, 
+compiled with GCC 3.4.4.  LLVM is version 1.8cvs (May 11, 2006).  The
+machine runs GNU/Linux SMP on an Intel(R) Pentium(R) 4 CPU at 3.20GHz
+with 2GB of RAM and 1MB of cache.  The rows correspond to variants of
+the translation process, as follows:
 
 {\bf pypy-c:}
     the simplest variant; translated to C code with no explicit memory
