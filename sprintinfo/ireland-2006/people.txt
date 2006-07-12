@@ -8,7 +8,6 @@ available yet from them.
 ==================== ============== =====================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
-
 Anders Chrigstroem   ?              ? 
 Samuele Pedroni      ?              ?
 Michael Hudson       ?              ? 
