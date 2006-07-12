@@ -121,14 +121,17 @@ In particular, we have defined a subset of the Python language called
 syntactically, but only in the way it manipulates objects of different
 types.  The restrictions are a compromise between the expressivity and
 the need to statically infer enough type information to generate efficient code.
-The foremost purpose of the translation tool-suite is to compile such
+The purpose of the translation tool-suite is to compile such
 RPython programs to a variety of different platforms.
 
 Our current efforts, and the present paper, focus on this tool-suite.
 We will not describe the Standard Interpreter component of PyPy in the
 sequel, other than to mention that it is written in RPython and can thus be
-translated.  At close to 90,000 lines of code, it is the largest RPython
-program that we have translated so far.  More information can be found
+translated.  At close to 90,000 lines of code\footnote{The core interpreter
+is more like 30,000 lines of code, the rest includes built-in modules and 30,000 lines
+of auto-generated unicode character database data.}, it is the largest RPython
+program that we have translated so far and is the main target driving
+the development of the tool-chain.  More information can be found
 in \cite{A}.
 
 
