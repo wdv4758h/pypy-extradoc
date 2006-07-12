@@ -205,7 +205,7 @@ the transformation steps takes the RPython-typed flow graphs, still
 containing polymorphic operations only, and produces flow graphs with
 monomorphic C-like operations and C-like types.  In the simplest case,
 this is the only transformation step: these graphs are directly fed to
-the C back-end, which turns them into ANSI C source code.
+the C emitting back-end, which turns them into ANSI C source code.
 
 But RPython comes with automatic memory management, and this first
 transformation step produces flow graphs that also assume automatic
@@ -803,7 +803,7 @@ and not built incrementally by successive discoveries.  This seems to
 be often the case in practice: it is not very common for programs to
 manipulate objects that belong to a large but finite family -- and when
 they do, the whole family tends to be available early on, requiring
-few reflowing.
+few reflowings.
 
 This means that \textit{in practice} the complete process requires a time that
 is far lower than the worst case.  We have experimentally confirmed
