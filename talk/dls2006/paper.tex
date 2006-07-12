@@ -124,17 +124,17 @@ In particular, we have defined a subset of the Python language called
 syntactically, but only in the way it manipulates objects of different
 types.  The restrictions are a compromise between the expressivity and
 the need to statically infer enough type information to generate
-efficient code.  RPython still supports inheritance but limited to
-single inheritance with some mix-in support, dynamic dispatch, to some
-extent keywords arguments and varargs, first-class function and class
-values, limited use of bound methods, runtime \texttt{isinstance} and type
-queries, but no runtime reflection, further bindings in class and
-global namespaces are assumed constant. RPython code can be run on a
-Python interpreter without severe semantics mismatches, figure
-\ref{fig_create_frame} shows some RPython code from the
-\textit{Standard Interpreter}, it is still quite idiomatic Python code
-using the built-in dictionary type and first-class class values
-instantiation.
+efficient code.  RPython still supports exceptions, inheritance but
+limited to single inheritance with some mix-in support, dynamic
+dispatch, to some extent keywords arguments and varargs, first-class
+function and class values, limited use of bound methods, runtime
+\texttt{isinstance} and type queries, but no runtime
+reflection. Bindings in class and global namespaces are assumed
+constant. RPython code can be run on a Python interpreter without
+severe semantics mismatches, figure \ref{fig_create_frame} shows some
+RPython code from the \textit{Standard Interpreter}, it is still quite
+idiomatic Python code using the built-in dictionary type and
+first-class class values instantiation.
 
 \begin{figure}
 \begin{verbatim}
