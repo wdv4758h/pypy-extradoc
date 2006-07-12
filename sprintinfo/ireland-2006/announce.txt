@@ -18,6 +18,7 @@ consider to participate in Summer of PyPy (XXX insert
 reference) in order get funding for your travels 
 and accomodation. 
 
+XXX clarify details regarding the first day for the next para 
 On the first day (21st of August) there will be introduction
 talks and a workshop with external participants from the 
 University and the `Calibre`_ project.  The workshop
