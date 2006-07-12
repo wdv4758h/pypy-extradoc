@@ -29,16 +29,16 @@ interpreters, run-time environments]
 Languages}[program analysis]
 
 \begin{abstract}
-The PyPy project seeks to prove both on a research and a
-practical level the feasibility of writing a virtual machine (VM)
-for a dynamic language in a dynamic language -- in this case, Python.
-The aim is to translate (i.e.\ compile) the VM to arbitrary target
+The PyPy project seeks to prove both on a research and a practical
+level the feasibility of constructing a virtual machine (VM) for a
+dynamic language in a dynamic language -- in this case, Python.  The
+aim is to translate (i.e.\ compile) the VM to arbitrary target
 environments, ranging in level from C/Posix to Smalltalk/Squeak via
 Java and CLI/.NET, while still being of reasonable efficiency within
 these environments.
 
 A key tool to achieve this goal is the systematic reuse of the
-(unmodified, dynamically typed) Python language as a system
+Python language as a system
 programming language at various levels of our architecture and
 translation process.  For each level, we design a corresponding type
 system and apply a generic type inference engine -- for example, the
@@ -56,9 +56,9 @@ efficient programs.  The implementation of virtual machines is one
 such area.  Building implementations of general programming languages,
 in particular highly dynamic ones, using a classic direct coding
 approach, is typically a long-winded effort and produces a result that
-is tailored to a specific
-platform and where architectural decisions (e.g.\ about GC) are spread
-across the code in a pervasive and invasive way.
+is tailored to a specific platform and where architectural decisions
+(e.g.\ about GC) are spread across the code in a pervasive and
+invasive way.
 
 For this and other reasons, standard platforms emerge; nowadays, a
 language implementer could cover most general platforms in use by
@@ -70,24 +70,27 @@ which follow the evolution of the ``official'' C version (CPython).
 
 However, we believe that platform standardization does not have to be
 a necessary component of this equation.  We are basically using the
-standard ``meta-programming'' argument: if one could write the VM in a
-very high level language, then the VM itself could be automatically
-\textit{translated} to any lower-level platform.  Moreover by writing
-the VM in such a language we would gain in flexibility in
-architectural choices and expressiveness.
+standard ``meta-programming'' argument: if one could write the VM at a
+sufficiently high level of abstraction in a language supporting such
+level, then the VM itself could be automatically \textit{translated}
+to any lower-level platform.  Moreover by writing the VM in such a way
+we would gain in flexibility in architectural choices and
+expressiveness.
 
 PyPy achieves this goal without giving up on the efficiency of the
-compiled VMs.  
+compiled VMs, or keeping it within reach of further reasonable
+optimization work.
 
 The key factors enabling this result are not to be found in recent
-advances in any particular research area -- we are not for example using
-constraint-based type inference.  Instead, we are following a novel
-overall architecture: it is split into many levels of stepwise
+advances in any particular research area -- we are not for example
+using constraint-based type inference.  Instead, we are following a
+novel overall architecture: it is split into many levels of stepwise
 translation from the high-level source of the VM to the final target
-platform.  Similar platforms can reuse many of these steps, while for
-very different platforms we have the option to perform very different
-translation steps.  Each step reuses a common type inference component
-with a different, ad-hoc type system.
+platform, each step adding support for features that were assumed
+primitive by the previous ones.  Similar platforms can reuse many of
+these steps, while for very different platforms we have the option to
+perform very different translation steps.  Each step reuses a common
+type inference component with a different, ad-hoc type system.
 
 Experiments also suggest a more mundane reason why such an approach is
 only practical today: a typical translation takes about half an hour
