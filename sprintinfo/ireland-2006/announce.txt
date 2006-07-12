@@ -1,0 +1,51 @@
+Ireland PyPy sprint 21th-27th August 2006
+====================================================
+
+XXX
+XXX this is a draft versions, things may still change XXX
+XXX
+
+The next PyPy sprint will happen in the nice city of 
+Limmerick in Ireland from 21st till 27th August.  
+
+The main focus of the sprint will be on JIT compiler works, 
+various optimization works, porting extension modules, 
+infrastructure works like a build tool for PyPy, or 
+extended (distributed) testing. 
+
+It's also open to new topics.  If you are a student
+consider to participate in Summer of PyPy (XXX insert 
+reference) in order get funding for your travels 
+and accomodation. 
+
+On the first day (21st of August) there will be introduction
+talks and a workshop with external participants from the 
+University and the `Calibre`_ project.  The workshop
+will cover both technical and methodology aspects. 
+You may also just attend that first day. 
+
+If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
+and drop a note about your interests and post any questions.  More 
+organisational information will be send to that list.  We'll keep
+a list of `people`_ which we'll update (which you can do so yourself
+if you have codespeak commit rights). 
+
+.. _`Calibre`: http://www.calibre.ie 
+
+Exact Location 
+-------------------
+
+XXX find out
+
+Next Airports
+------------------
+
+XXX find out
+
+Accomodation
+-----------------
+
+XXX find out
+
+.. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
+.. _`people`: people.html 
