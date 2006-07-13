@@ -96,7 +96,19 @@ Experiments also suggest a more mundane reason why such an approach is
 only practical today: a typical translation takes about half an hour
 on a modern PC and consumes between 512MB and 1GB of RAM.
 
-We shortly describe the architecture of PyPy in section
+Recent projects developing meta-circular interpreters
+\cite{KleinVM}\cite{Jikes-JIT}\cite{jalapeno} incorporate a native
+compiler directly in their virtual machine design and high-level
+implementations. We believe that this is a less evolvable and
+maintainable encoding of the semantics of a language than a bytecode
+intepreter, especially with languages such as Python for which
+internal design simplicity was not a goal from the start or in its
+current evolution. Our on-going efforts (beyond the scope of this
+paper) aim instead at generating native compilers as a (non-trivial)
+step of our translation process (see sections \ref{relatedwork} and
+\ref{futurework}). This belief and goal inform our architecture.
+
+In the paper we shortly describe the architecture of PyPy in section
 \ref{architecture}.  In section \ref{systemprog} we describe our
 approach of varying the type systems at various levels of the
 translation.  Section \ref{typeinference} gives an overview of the
