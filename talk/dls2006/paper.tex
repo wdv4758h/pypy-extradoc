@@ -1012,7 +1012,6 @@ Results are summarized in table \ref{perfsumm}.
 \begin{table*}
 % the layout of this table isn't wonderful, but it's probably OK.
 \centering
-\label{perfsumm}
 \begin{tabular}{|l|c|c|} \hline
 \textbf{Interpreter} & 
 \textbf{Richards, Time/iteration} &
@@ -1027,6 +1026,7 @@ pypy-llvm-c                  &  3797ms  (4.8x) &  7763  (5.2x) \\ \hline
 pypy-llvm-c-prof             &  2772ms  (3.5x) & 10245  (3.9x) \\ \hline
 \end{tabular}
 \caption{summary of interpreter performance.}
+\label{perfsumm}
 \end{table*}
 
 The numbers in parenthesis are slow-down factors compared to CPython.
@@ -1106,7 +1106,6 @@ divided as shown in table \ref{translationtimes}.
 
 \begin{table*}
 \centering
-\label{translationtimes}
 \begin{tabular}{|p{0.65\linewidth}|c|} \hline
 \textbf{Step} & \textbf{Time (minutes:seconds)} \\ \hline
 Front-end                                 
@@ -1132,6 +1131,7 @@ Compiling (\texttt{gcc -O2})
 & 3:23 \\ \hline
 \end{tabular}
 \caption{dividing overall translation time by stage.}
+\label{translationtimes}
 \end{table*}
 
 An interesting feature of this table is that type inference is not the
