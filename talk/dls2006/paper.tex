@@ -241,21 +241,44 @@ ready to be compiled.
 
 \subsection{Transformations}
 
-When the translation target is C or C-like environments, the first of
-the transformation steps takes the RPython-typed flow graphs, still
-containing polymorphic operations only, and produces flow graphs with
-monomorphic C-like operations and C-like types.  In the simplest case,
-this is the only transformation step: these graphs are directly fed to
-the C emitting back-end, which turns them into ANSI C source code.
+The first of the transformation steps takes the RPython-typed flow
+graphs, still containing polymorphic operations only, and produces
+flow graphs with operations more familiar to the target environment.
+When the target is C or a C-like environment, this means monomorphic
+C-like operations and C-like types.  In the simplest case, this is the
+only transformation step: these graphs are directly fed to the C
+emitting back-end, which turns them into ANSI C source code.
 
-But RPython comes with automatic memory management, and this first
-transformation step produces flow graphs that also assume automatic
-memory management.  Generating C code directly from there produces a
-fully leaking program, unless we link it with an external garbage
-collector (GC) like the Boehm conservative GC \cite{Boehm}\cite{boehm-softw},
-which is a viable option.
+Not all targets of interest are C-like, though, and we have recently
+developed a variant of this step for use when targeting higher-level,
+object-oriented (OO) environments.  Its design was motivated by work
+on back-ends for Smalltalk/Squeak\footnote{Our simple OO type system
+  is designed for \textit{statically-typed} OO environments, including
+  Java; the presence of Smalltalk as a back-end might be misleading in
+  that respect.} and CLI/.NET.  When targeting a C-like environment,
+the first transformation step is called the \textit{LLTyper} or
+low-level typer: it produces C-level flow graphs, where the
+object-oriented features of RPython (classes and instances) become
+manipulations of C structs with explicit virtual table pointers.  By
+contrast, for OO environments this step is called the
+\textit{OOTyper:} it targets a simple object-oriented type system, and
+preserves the classes and instances of the original RPython program.
+The LLTyper and OOTyper still have much code in common, to convert the
+more Python-specific features like the more complex calling
+conventions.  In the sequel, we assume the use of the LLTyper, as
+there are as yet no back-ends for the OOTyper which are complete
+enough to translate the Standard Interpreter -- although the CLI
+backend should be able to within a few months.
 
-We have two alternatives, each implemented as a transformation step.
+For an example of a transformation that is applied after this first
+step, consider that RPython has automatic memory management. Even with
+the LLTyper, the first transformation step produces flow graphs that
+also assume automatic memory management.  Generating C code directly
+from there produces a fully leaking program, unless we link it with an
+external garbage collector (GC) like the Boehm conservative GC
+\cite{Boehm}\cite{boehm-softw}, which is a viable option.
+
+We have two other alternatives, each implemented as a transformation step.
 The first one inserts naive reference counting throughout the whole
 program's graphs, which without further optimizations gives a somewhat
 bad performance (it should be noted that the CPython interpreter is also
@@ -263,14 +286,14 @@ based on reference counting, and experience suggests that it was not a
 bad choice in this particular case).
 
 The other, and better, alternative is an exact GC, coupled with a
-transformation, the \textit{GC transformer}.  It inputs C-level-typed graphs
-and replaces all \texttt{malloc} operations with calls to a garbage
-collector's allocation routine.
-The transformation inspects all the graphs to discover the
-\texttt{struct} types in use by the program, and assigns a unique type id to
-each of them.  These type ids are then collected in internal tables that
-describe the layout of the structures, e.g.\ their sizes and the location
-of the pointer fields.
+transformation, the \textit{GC transformer}.  It takes as input
+C-level-typed graphs and replaces all \texttt{malloc} operations with
+calls to a garbage collector's allocation routine.  The transformation
+inspects all the graphs to discover the structure types in use
+by the program, and assigns a unique type id to each of them.  These
+type ids are then collected in internal tables that describe the
+layout of the structures, e.g.\ their sizes and the location of the
+pointer fields.
 
 We have implemented other transformations as well, e.g.\ performing
 various optimizations, or turning the whole code into a style that
@@ -280,28 +303,6 @@ Another example is the exception transformer, which transforms graphs
 that still contain implicit exception handling into a form suitable for
 C (currently based on a global flag to signal the presence of an
 exception, which is set and checked around selected function calls).
-
-%%% XXX can we be more optimistic about the OOTyper?  It's pretty
-%%% likely that pypy.net will work in some form by OOPSLA -- hi
-%%% Antonio :)
-
-Finally, currently under development is a variant of the very first
-transformation step, for use when targeting higher-level,
-object-oriented (OO) environments.  It is currently being designed
-together with back-ends for Smalltalk/Squeak\footnote{Our simple OO
-type system is designed for \textit{statically-typed} OO environments,
-including Java; the presence of Smalltalk as a back-end might be
-misleading in that respect.} and CLI/.NET.  This first transformation
-step, for C-like environments, is called the \textit{LLTyper} or
-low-level typer: it produces
-C-level flow graphs, where the object-oriented features of RPython
-(classes and instances) become manipulations of C structs with
-explicit virtual table pointers.  By contrast, for OO environments the
-transformation step is called the \textit{OOTyper:} it targets a simple
-object-oriented type system, and preserves the classes and instances
-of the original RPython program.  The LLTyper and OOTyper still have
-much code in common, to convert the more Python-specific features like
-its complex calling conventions.
 
 More information about these transformations can be found in \cite{T}.
 
@@ -1148,8 +1149,9 @@ the compiled Python interpreters is not yet up to competing with the
 well-established CPython.  We are always working to improve matters,
 considering new optimizations and better GCs.
 
-Current work also includes the OOTyper and back-ends for CLI/.NET and
-Smalltalk/Squeak, all in-progress.
+Current work also includes refininments of the OOTyper and work on
+back-ends that use it, including those targeting CLI/.NET and
+Smalltalk/Squeak.
 
 
 \subsection{JIT Specializer}
