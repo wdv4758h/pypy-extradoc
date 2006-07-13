@@ -131,10 +131,10 @@ function and class values, limited use of bound methods, runtime
 \texttt{isinstance} and type queries, but no runtime
 reflection. Bindings in class and global namespaces are assumed
 constant. RPython code can be run on a Python interpreter without
-severe semantics mismatches, figure \ref{fig_create_frame} shows some
-RPython code from the \textit{Standard Interpreter}, it is still quite
-idiomatic Python code using the built-in dictionary type and
-first-class class values instantiation.
+severe semantics mismatches. Figure \ref{fig_create_frame} shows some
+RPython code from the \textit{Standard Interpreter} and it can be seen
+that it is still quite idiomatic Python code using the built-in
+dictionary type and first-class class values instantiation.
 
 \begin{figure}
 \begin{verbatim}
@@ -280,6 +280,10 @@ Another example is the exception transformer, which transforms graphs
 that still contain implicit exception handling into a form suitable for
 C (currently based on a global flag to signal the presence of an
 exception, which is set and checked around selected function calls).
+
+%%% XXX can we be more optimistic about the OOTyper?  It's pretty
+%%% likely that pypy.net will work in some form by OOPSLA -- hi
+%%% Antonio :)
 
 Finally, currently under development is a variant of the very first
 transformation step, for use when targeting higher-level,
@@ -445,6 +449,9 @@ check the correctness of our hash table implementation, written in
 Python in term of struct- and array-like objects, just by running it.
 The same holds for the GC.
 
+%%% XXX if we're looking to save space, i think this reason can go,
+%%% the others seem more important (to me, at least)
+
 Secondly, and anecdotally, as the type inference process (section
 \ref{typeinference}) is based on abstract interpretation, we can use
 the following trick: the resulting type of most low-level operations
@@ -516,7 +523,7 @@ perform translation-time constant propagation, computations and
 implement conditional code in a natural way. For example, the code in
 figure \ref{fig_insertclean}, which is then specialized for the
 possible types of dictionary \texttt{d}, shows this kind of
-compile-time computation and introspection on low-level types,
+compile-time computation and introspection on low-level types --
 \texttt{ENTRY} is a C-like structure type and the
 \texttt{hasattr}-ibute checks introspect it at translation time. This
 kind of expressiveness increased our ability to reuse code even in
@@ -549,6 +556,8 @@ example, cyclic data structures may have been built at this point.  The
 translation tool-chain first turns these function objects into in-memory
 control flow graphs which contain direct references to the prebuilt data
 objects, and then handles and transforms these graphs.
+
+%%% XXX the first sentence seems to come a bit out of the blue.
 
 We found in-process debugging sufficient and did not implement dumping
 of any intermediate step to disk.  Figure \ref{fig_screenshot}
