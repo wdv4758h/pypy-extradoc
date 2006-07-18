@@ -18,11 +18,10 @@ consider to participate in Summer of PyPy (XXX insert
 reference) in order get funding for your travels 
 and accomodation. 
 
-XXX clarify details regarding the first day for the next para 
-On the first day (21st of August) there will be introduction
-talks and a workshop with external participants from the 
+During the first day (21st of August) there will be introduction
+talks and a workshop/seminar with external participants from the 
 University and the `Calibre`_ project.  The workshop
-will cover both technical and methodology aspects. 
+will likely cover both technical and methodology aspects. 
 You may also just attend that first day. 
 
 If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
@@ -36,12 +35,18 @@ if you have codespeak commit rights).
 Exact Location 
 -------------------
 
-XXX find out
+Computer Science Building, room CSG-025, University of Limmerick
+(no 7 on http://www.ul.ie/main/places/campus.shtml). 
+
+Bus 308 from Limerick city will take you to no 30 (approx.).
+See http://www.ul.ie/main/places/travel.shtml for more on how to get to UL.
 
 Next Airports
 ------------------
 
-XXX find out
+Shannon Airport (SNN) is the nearest airport (Ryanair flies there). 
+There are busses from there to downtown Limerick, and busses from Limerick
+to the UL campus. Taxis are about 35 EUR.
 
 Accomodation
 -----------------
