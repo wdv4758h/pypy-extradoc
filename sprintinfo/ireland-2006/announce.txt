@@ -6,7 +6,7 @@ XXX this is a draft versions, things may still change XXX
 XXX
 
 The next PyPy sprint will happen in the nice city of 
-Limmerick in Ireland from 21st till 27th August.  
+Limerick in Ireland from 21st till 27th August.  
 
 The main focus of the sprint will be on JIT compiler works, 
 various optimization works, porting extension modules, 
@@ -18,11 +18,20 @@ consider to participate in Summer of PyPy (XXX insert
 reference) in order get funding for your travels 
 and accomodation. 
 
-During the first day (21st of August) there will be introduction
-talks and a workshop/seminar with external participants from the 
-University and the `Calibre`_ project.  The workshop
-will likely cover both technical and methodology aspects. 
-You may also just attend that first day. 
+During the first day (21st of August) there will be talks on various subjects 
+related to PyPy:
+* A tutorial and technical introduction to the PyPy codebase  
+(suited for people interested in getting an overview of PyPy´s architecture 
+and/or contributing to PyPy)
+* a workshop covering more in-depth technical aspects of PyPy and what PyPy
+can do for you. The workshop will also cover methodology, aiming at explaining
+the pros and cons of sprint-driven development.
+(suited for sprint attendants, students, staff and other 
+interested parties from/around the University and the local area)
+
+The tutorial will be part of the sprint introduction - the workshop will take place if 
+there is enough interest raised before the 21st of August from people planning to 
+attend. You are of course welcome to attend just for this first day of the sprint.
 
 If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
 and drop a note about your interests and post any questions.  More 
@@ -32,19 +41,37 @@ if you have codespeak commit rights).
 
 .. _`Calibre`: http://www.calibre.ie 
 
+A small disclaimer:
+There might be people visiting the sprint in order to do research on 
+how open source communities work, organize and communicate. This 
+research might be done via filming, observing or interviewing. 
+
+
 Exact Location 
 -------------------
+The sprint is being hosted by University of Limerick (http://www.ul.ie/) - and
+is being arranged in co-operation with people from our sister project Calibre 
+(www.calibre.ie). Our contact at the University is Pär Ågerfalk and
+Eoin Oconchuir. 
 
-Computer Science Building, room CSG-025, University of Limmerick
-(no 7 on http://www.ul.ie/main/places/campus.shtml). 
+The sprint will be held in the Computer Science Building, room CSG-025, 
+University of Limerick (no 7 on http://www.ul.ie/main/places/campus.shtml). 
 
 Bus 308 from Limerick city will take you to no 30 (approx.).
 See http://www.ul.ie/main/places/travel.shtml for more on how to get to UL.
 
+We will have access to the sprint facilities from 09:00-19:00 every day (it might
+be even later than 19:00). Monday-Wednesday, Friday-Sunday are sprint days,
+Thursday is a break day.
+
+XXX electricity - same as UK?
+XXX campus food places?
+
 Next Airports
 ------------------
 
-Shannon Airport (SNN) is the nearest airport (Ryanair flies there). 
+Shannon Airport (SNN) is the nearest airport (Ryanair flies there) - please check out
+more information about flights to/from the airport at http://www.shannonairport.com/index.html.
 There are busses from there to downtown Limerick, and busses from Limerick
 to the UL campus. Taxis are about 35 EUR.
 
