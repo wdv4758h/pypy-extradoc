@@ -13,7 +13,7 @@ Samuele Pedroni      ?              ?
 Michael Hudson       ?              ? 
 Armin Rigo           ?              ?
 Guido Wesdorp        ?              ?
-Holger Krekel        ?              ? 
+Holger Krekel        20th-XXXX      ? 
 Maciej Fijalkowski   ?              ?
 Lawrence Oluyede     ?              ?
 Fabrizio Milo        ?              ?
