@@ -15,7 +15,7 @@ See the full call for details:
 
 and here is a list of concrete inspirations for possible work: 
 
-    http://codespeak.net/pypy/dist/pypy/doc/independent-project-ideas.html
+    http://codespeak.net/pypy/dist/pypy/doc/project-ideas.html
 
 There are certainly many more possibilities now that PyPy starts to
 get faster, Stackless and custom GCs are integrated, PyPy.NET, Logic
