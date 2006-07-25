@@ -616,15 +616,23 @@ Object Space.  The Standard Object Space is a concrete domain, in which
 objects are the concrete Python objects of the various built-in types:
 lists, dictionaries, and so on.  By opposition, the Flow Object Space is
 really an abstract domain.  It handles objects that are placeholders.
+Its lattice order (actually a join-semilattice only) is shown in
+figure \ref{flowlattice}.
 
-Its lattice order (actually a join-semilattice only) is extremely
-simple, because most actual analysis is delayed to the next phase, the
-type inference engine.  The objects are either \textit{Variables},
-which are pure placeholders for entirely unknown values, or
-\textit{Constants} with a concrete Python object as value.  The order
-places Variable as the top, and keeps all \textit{Constants}
-unordered.  Thus if two different constants merge during abstract
-interpretation, we immediately widen them to Variable.
+\begin{figure*}
+\centering
+\includegraphics[scale=0.667]{image/flowlattice.pdf}
+\caption{the lattice order of the flow object space.}
+\label{flowlattice}
+\end{figure*}
+
+This order is extremely simple, because most actual analysis is delayed
+to the next phase, the type inference engine.  The objects are either
+\textit{Variables}, which are pure placeholders for entirely unknown values,
+or \textit{Constants} with a concrete Python object as value.  The order places
+Variable as the top, and keeps all \textit{Constants} unordered.  Thus if two
+different constants merge during abstract interpretation, we immediately
+widen them to Variable.
 
 In conjunction with the Flow Object Space, the bytecode interpreter of
 PyPy thus performs abstract interpretation of Python bytecodes from
@@ -682,6 +690,13 @@ sketched above is not entirely straightforward; we refer the reader to
 
 
 \subsection{The Annotator}
+
+\begin{figure*}
+\centering
+\includegraphics[scale=0.667]{image/lattice1.pdf}
+\caption{the overall lattice.}
+\label{latticeoverall}
+\end{figure*}
 
 The type inference engine, which we call the \textit{annotator}, is the central
 component of the front-end part of the translation process.  Given a
@@ -786,15 +801,26 @@ The set $A$ of RPython types is defined as the following formal terms:
       \texttt{None}; resp. an instance or \texttt{None}.
 \end{itemize}
 
-These types are ordered to form a lattice -- we generally use its
-structure of join-semilattice only, but we will see in section
-\ref{precision} a use case for the \textit{meet}. Pbcs form a
-classical finite set-of-subsets lattice, class annotations are ordered
-by inheritance.  We have left out a number of other annotations that
-are irrelevant for the basic description of the annotator and
-straightforward to handle: $Dictionary$, $Tuple$, $Float$,
-$UnicodePoint$, $Iterator$, etc.  The complete list and order is
-described in \cite{T}.
+Figures \ref{latticeoverall} and \ref{latticedetail} show how these
+types are ordered to form a lattice -- we generally use its structure of
+join-semilattice only, but we will see in section \ref{precision}
+a use case for the \textit{meet}.
+Not shown on the figures are the list terms, which are simply
+unordered with each other, and the Pbcs, which form a
+classical finite set-of-subsets lattice.  In addition, we have left
+out a number of other annotations that are irrelevant for the basic
+description of the annotator and straightforward to handle:
+$Dictionary$, $Tuple$, $Float$, $UnicodePoint$, $Iterator$, etc.  The
+complete list is described in \cite{T}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.667]{image/lattice2.pdf}
+\caption{the part about instances and nullable instances, assuming a
+  simple class hierarchy with only two direct subclasses of
+  \texttt{object}.}
+\label{latticedetail}
+\end{figure}
 
 The type system moreover comes with a family of rules, which for every
 operation and every meaningful combination of input types describes the
@@ -1300,6 +1326,8 @@ implementation for some of the features that the higher levels
 considered primitive.  It offsets the need to define a minimal kernel of
 primitives and build everything on top of it; instead, we have been able
 to implement, so to speak, the right feature at the right level.
+
+\bigskip
 
 \bibliographystyle{abbrv}
 \bibliography{paper}
