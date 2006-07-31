@@ -14,8 +14,6 @@ Michael Hudson       ?              ?
 Armin Rigo           ?              ?
 Holger Krekel        18-28 v/dublin on-campus (faxed form)
 Maciej Fijalkowski   ?              ?
-Lawrence Oluyede     ?              ?
-Fabrizio Milo        ?              ?
 ==================== ============== ========================
 
 People on the following list were present at previous sprints: 
@@ -45,4 +43,6 @@ Simon Burton         ?              ?
 Aaron Bingham        ?              ?
 Pieter Zieschang     ?              ?
 Sad Rejeb            ?              ?
+Lawrence Oluyede     ?              ?
+Fabrizio Milo        ?              ?
 ==================== ============== =====================
