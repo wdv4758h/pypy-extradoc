@@ -10,7 +10,7 @@ available yet from them.
 ==================== ============== ========================
 Anders Chrigstroem   20-28/8        ? 
 Samuele Pedroni      20-28/8        ?
-Michael Hudson       ?              ? 
+Michael Hudson       20-27          no idea
 Armin Rigo           ?              ?
 Holger Krekel        18-28 v/dublin on-campus (faxed form)
 Maciej Fijalkowski   21-?/8         no idea
