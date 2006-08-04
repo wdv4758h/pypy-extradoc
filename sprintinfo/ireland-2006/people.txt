@@ -14,6 +14,7 @@ Michael Hudson       20-27          no idea
 Armin Rigo           ?              ?
 Holger Krekel        18-28 v/dublin on-campus (faxed form)
 Maciej Fijalkowski   21-?/8         no idea
+Bea During            20-25/8       ?
 ==================== ============== ========================
 
 People on the following list were present at previous sprints: 
