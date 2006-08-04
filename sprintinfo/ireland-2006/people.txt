@@ -10,11 +10,11 @@ available yet from them.
 ==================== ============== ========================
 Anders Chrigstroem   20-28/8        ? 
 Samuele Pedroni      20-28/8        ?
-Michael Hudson       20-27          no idea
+Michael Hudson       20-27          Brookfield Hall, Castletroy
 Armin Rigo           ?              ?
 Holger Krekel        18-28 v/dublin on-campus (faxed form)
-Maciej Fijalkowski   21-?/8         no idea
-Bea During            20-25/8       ?
+Maciej Fijalkowski   21-28?/8       Brookfield Hall, Castletroy
+Bea During           20-25/8        ?
 ==================== ============== ========================
 
 People on the following list were present at previous sprints: 

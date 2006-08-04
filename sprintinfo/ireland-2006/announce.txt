@@ -108,5 +108,10 @@ Castletroy Lodge and Castletroy Inn (Bed and Breakfast)
 Dublin Road (15 to 20 mins walk to UL)
 Tel: +353 61 338385 / +353 61 331167
 
+- In Castletroy Lodge they've got no rooms for 23,24,25 [just called, fijal]
+
+Brookfield Hall, about 10 minutes walk from UNI.
+Could be booked at travellerspoint.com
+
 .. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 .. _`people`: people.html 
