@@ -8,8 +8,8 @@ available yet from them.
 ==================== ============== ========================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== ========================
-Anders Chrigstroem   20-28/8        ? 
-Samuele Pedroni      20-28/8        ?
+Anders Chrigstroem   20-28/8        on-campus
+Samuele Pedroni      20-28/8        on-campus
 Michael Hudson       20-27          Brookfield Hall, Castletroy
 Armin Rigo           ?              ?
 Holger Krekel        18-28 v/dublin on-campus (faxed form)
