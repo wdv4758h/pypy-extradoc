@@ -22,25 +22,31 @@ Oconchuir.
 
 .. _`Summer of PyPy`: http://codespeak.net/pypy/dist/pypy/doc/summer-of-pypy
 
-First day: introduction and workshop (possible to attend only this day)
+Workshop parallell to the first day of the sprint, 21st of August
 ------------------------------------------------------------------------
 
-During the first day (21st of August) there will be talks on various subjects
-related to PyPy:
+During the first day (21st of August) there will be in parallell to the sprint:
 
-* A tutorial and technical introduction to the PyPy codebase  
-  (suited for people interested in getting an overview of PyPy´s architecture
-  and/or contributing to PyPy)
-
-* a workshop covering more in-depth technical aspects of PyPy and what PyPy
-  can do for you. The workshop will also cover methodology, aiming at explaining
-  the pros and cons of sprint-driven development.
+* a workshop covering more in-depth methodology aspects of PyPy 
+  aiming at explaining the pros and cons of sprint-driven development.
   (suited for sprint attendants, students, staff and other 
   interested parties from/around the University and the local area)
 
-The tutorial will be part of the sprint introduction - the workshop will take place if 
-there is enough interest raised before the 21st of August from people planning to 
-attend. You are of course welcome to attend just for this first day of the sprint.
+The workshop participants (mostly University of Limerick researchers) will 
+observe the sprint during parts of the first day, film an take pictures as well.
+
+
+Tutorial, PyPy introduction and dinner on friday, 25th of August
+---------------------------------------------------------------------------
+
+During friday we will arrange a tutorial and technical 
+introduction to the PyPy codebase, followed by a Q&A session. This session was originally
+planned for the first day but we moved it to friday afternoon in order to 
+make it easier for people from the irish python group to participate. 
+This tutorial session starts at 5pm. At 8pm we go for a nice dinner together.
+
+This friday afternoon tutorial session and dinner is open for anyone interested,
+you do not have to be a sprint participant to join us for this event.
 
 
 If you want to come ...
