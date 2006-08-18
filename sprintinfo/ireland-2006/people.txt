@@ -12,9 +12,9 @@ Anders Chrigstroem   20-28/8        on-campus
 Samuele Pedroni      20-28/8        on-campus
 Michael Hudson       20-27          Brookfield Hall, Castletroy
 Armin Rigo           21-28          Brookfield Hall, Castletroy
-Holger Krekel        20-25/8        aiming for brookfield 
+Holger Krekel        20-25/8        Old Quarter Lodge (city) 
 Maciej Fijalkowski   21-28?/8       Brookfield Hall, Castletroy
-Bea During           20-25/8        aiming for brookfield 
+Bea During           20-25/8        Old quarter Lodge (city)
 ==================== ============== ========================
 
 People on the following list were present at previous sprints: 
