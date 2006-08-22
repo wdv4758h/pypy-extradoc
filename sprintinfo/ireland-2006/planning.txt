@@ -1,0 +1,36 @@
+Ireland sprint planning
+--------------------------
+
+timings: 
+    monday, tuesday, wednesday full days
+    thursday half 
+    friday 2pm- 
+           5pm tutorial  + Q & A session 
+    bea arranges a dinner table friday evening 
+    
+* source optimizations
+  (mwh, arre)
+  - builtin lookups 
+  - caching method lookups 
+  - profiling
+
+* ext compiler
+  maybe a topic for the weekend 
+
+* JIT
+  - so far generating a jit for simple interpreters kind of
+    works
+  (armin, samuele)
+  - produce machine code in-memory from running the generated CFGs 
+  - maybe think about refining the interface to generating
+    I386 machine code (also considering a PPC asm backend) 
+
+  
+* distributed testing
+  (maciej, hpk)
+  - use "/usr/bin/rsync" to sync to remote 
+  - master does collection of items 
+  - "leaf" items are asynchronously send to "Executors" (running on nodes)
+  - super-simple reporting 
+  
+
