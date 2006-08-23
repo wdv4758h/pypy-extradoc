@@ -8,19 +8,20 @@ timings:
            5pm tutorial  + Q & A session 
     bea arranges a dinner table friday evening 
     
-* source optimizations
+* core optimizations
   (mwh, arre)
-  - builtin lookups 
-  - caching method lookups 
-  - profiling
+  - (done) did a lot of profiling, main finding: GC 
+  - (next) optimising GC 
+  - experiment with optimising builtin lookups 
+    e.g caching method lookups or callback-dict 
 
 * ext compiler
   maybe a topic for the weekend 
 
 * JIT
-  - so far generating a jit for simple interpreters kind of
-    works
   (armin, samuele)
+  - (done) first machine code generation tests are passing 
+    (next) more of the same 
   - produce machine code in-memory from running the generated CFGs 
   - maybe think about refining the interface to generating
     I386 machine code (also considering a PPC asm backend) 
@@ -28,9 +29,12 @@ timings:
   
 * distributed testing
   (maciej, hpk)
-  - use "/usr/bin/rsync" to sync to remote 
-  - master does collection of items 
-  - "leaf" items are asynchronously send to "Executors" (running on nodes)
-  - super-simple reporting 
+  more or less done, but many things : 
+      - use "/usr/bin/rsync" to sync to remote 
+      - master does collection of items 
+      - "leaf" items are asynchronously send to "Executors" (running on nodes)
+      - super-simple reporting 
+
   
+  (arigo) wrote a generic interface that works via greenlets or threads interchangeable
 
