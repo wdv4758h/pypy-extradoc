@@ -134,3 +134,18 @@ a talk for that conference we hear is happening quite soon.
 
 Cheers,
 mwh
+
+Apart from the presprint, which is already reported, there was an open 
+post-Europython sprint. At the open sprint there were 24 people on the first 
+day and activities happened on may fronts. A large group of people focused on 
+porting PyPy to support Python2.4. This work was 3/4 finished by the end of 
+the sprint. Christian and Jacob worked on support for floats and Jacob did a 
+bunch of work on binascii and related modules. I think there was also a bunch 
+of work going into annotation, translation and the C and llvm backends. Nick 
+worked on his sre Summer of Code project. There was also work being done on 
+the AST compiler.
+
+People I remember being there: All the regulars plus Anders Qvist and Marius 
+Gedminas.
+
+Jacob
