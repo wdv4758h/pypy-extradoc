@@ -1,5 +1,6 @@
 Vilnius (Nov 2004)
-===============
+========================
+
 I don't really remember what others did at this sprint, but this is where 
 Laura and I wrote the file I/O handling.
 

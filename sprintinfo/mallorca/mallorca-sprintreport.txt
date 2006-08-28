@@ -34,7 +34,7 @@ progress was achieved.
 Christian, Eric and later Jacob started exposing PyPy's stackless 
 features to application level. While doing this they found a few 
 problems in the interp-level code and refactored it a bit. On the second 
-  and third day Christian and Jacob continued with this. They managed to 
+and third day Christian and Jacob continued with this. They managed to 
 expose simple coroutines on Wednesday and are now continuing to create 
 nicer interfaces following the stackless module of stackless Python. One 
 of the problems there turned out to be testing turnaround time, since 
