@@ -1,5 +1,6 @@
 Leysin (April 2006)
-===============
+=============================0
+
 Armin, Arre and Samuele started with 2 days working on the JIT. When others 
 joined the sprint focus changed and there was a bunch of work on fixing 
 translation to work with stackless features and other stuff. There was also 

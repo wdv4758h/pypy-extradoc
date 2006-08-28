@@ -1,5 +1,6 @@
 Gothenburg (May 2003)
-===================
+=========================
+
 The major focus of the sprint was to make the interpreter chain complete. A 
 first goal was to make "Hello world" run and this was accomplished about half 
 way into the sprint. We then proceded to making a more complex program that 
