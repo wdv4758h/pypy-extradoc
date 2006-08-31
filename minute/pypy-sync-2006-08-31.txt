@@ -4,7 +4,7 @@
 attendants: Anders Lehman, Antonio Cuni, Armin Rigo, 
             Aurelien Campeas, Maciej Fijalkowski, 
             Guido Wesdorp (partly), Holger Krekel (mods + minutes), 
-            Samuele Pedroni, Alexander Schremm,
+            Samuele Pedroni, Alexander Schremmer,
             Carl Friedrich Bolz, Eric van Riet Paap
 
 time: 4-4:30pm UTC+2
