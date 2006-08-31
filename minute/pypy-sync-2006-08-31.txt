@@ -1,7 +1,7 @@
 #pypy-sync 31st August 2006 
 =====================================================
 
-attendants: Anders Lehman, Antonio Cuni, Armin Rigo, 
+attendants: Anders Lehmann, Antonio Cuni, Armin Rigo, 
             Aurelien Campeas, Maciej Fijalkowski, 
             Guido Wesdorp (partly), Holger Krekel (mods + minutes), 
             Samuele Pedroni, Alexander Schremmer,
