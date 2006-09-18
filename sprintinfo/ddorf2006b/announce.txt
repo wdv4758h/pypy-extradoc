@@ -31,6 +31,18 @@ both category :-)  Here are some examples:
   - persistence (save an "image" of a running program, or a part of it)
   - security (in many possible senses of the word)
 
+* Working on py.test testing tool: 
+
+  - py.test recently grew some distribution features which are still rough
+    around the edges and could use improvement
+
+  - there are some more ideas for features of py.test around, like adding
+    profiling capabilities (and more)
+
+* Work on the PyPy build tool: There are some plans to provide a tool that
+  allows one to flexibly configure PyPy and to also request builds from a set
+  of build servers. If there is interest there could be work in this area.
+
 * and as always, there is the topic of implementing or completing core
   extension modules (e.g. socket...).  This is hacking with a mix of
   ctypes and RPython.
