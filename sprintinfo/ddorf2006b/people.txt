@@ -10,6 +10,7 @@ available yet from them.
 ==================== ============== =====================
 Carl Friedrich Bolz  always there   private
 Armin Rigo           27th / -       private
+Michael Hudson       29th / -       private
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
