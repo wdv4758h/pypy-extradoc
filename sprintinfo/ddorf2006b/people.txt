@@ -11,6 +11,7 @@ available yet from them.
 Carl Friedrich Bolz  always there   private
 Armin Rigo           27th / -       private
 Michael Hudson       29th / -       private
+Antonio Cuni         always there   private
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -38,7 +39,6 @@ Maciej Fijalkowski   ?              ?
 Anders Chrigstroem   ?              ?
 Samuele Pedroni      ?              ?
 Christian Tismer     ?              ?
-Antonio Cuni         ?              ?
 Anders Lehmann       ?              ? 
 Niklaus Haldimann    ?              ?
 Christian Tismer     ?              ?
