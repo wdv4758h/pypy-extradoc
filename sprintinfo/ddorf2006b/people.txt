@@ -9,9 +9,11 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Carl Friedrich Bolz  always there   private
-Armin Rigo           27th / -       private
+Armin Rigo           28th / -       private
 Michael Hudson       29th / -       private
 Antonio Cuni         always there   private
+Samuele Pedroni      28th-6th       Hotel an der Uni
+Anders Chrigstroem   29th-6th       Hotel an der Uni
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
