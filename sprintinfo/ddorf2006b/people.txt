@@ -11,7 +11,7 @@ available yet from them.
 Carl Friedrich Bolz  always there   private
 Armin Rigo           28th / -       private
 Michael Hudson       29th / -       private
-Antonio Cuni         always there   private
+Antonio Cuni            - /5th      private
 Samuele Pedroni      28th-6th       Hotel an der Uni
 Anders Chrigstroem   29th-6th       Hotel an der Uni
 ==================== ============== =====================
