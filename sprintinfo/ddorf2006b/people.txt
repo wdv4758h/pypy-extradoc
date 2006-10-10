@@ -14,6 +14,7 @@ Michael Hudson       29th / -       private
 Antonio Cuni            - /5th      private
 Samuele Pedroni      28th-6th       Hotel an der Uni
 Anders Chrigstroem   29th-6th       Hotel an der Uni
+Stephan Diehl        29th-5th       private (?)
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
