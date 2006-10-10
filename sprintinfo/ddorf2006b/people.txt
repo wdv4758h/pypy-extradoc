@@ -14,6 +14,7 @@ Michael Hudson       29th / -       private
 Antonio Cuni            - /5th      private
 Samuele Pedroni      28th-6th       Hotel an der Uni
 Anders Chrigstroem   29th-6th       Hotel an der Uni
+Maciej Fijalkowski   29th-5/6th     ?Hotel an der Uni
 Stephan Diehl        29th-5th       private (?)
 Eric van Riet paap   ? / ?          Hotel Regina?
 ==================== ============== =====================
@@ -38,7 +39,6 @@ Richard Emslie       ?              ?
 Johan Hahn           ?              ?
 Michael Hudson       ?              ?
 Holger Krekel        ?              ?
-Maciej Fijalkowski   ?              ?
 Anders Chrigstroem   ?              ?
 Samuele Pedroni      ?              ?
 Christian Tismer     ?              ?
