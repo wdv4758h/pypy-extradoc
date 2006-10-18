@@ -1,0 +1,170 @@
+.. include:: <s5defs.txt>
+
+=================================================
+PyPy's VM Approach
+=================================================
+
+:Authors: Armin Rigo, Samuele Pedroni
+:Date: 23 October 2006
+:Location:  ?
+
+
+PyPy
+========================
+
+- Python VM implementation
+  in Python (a well-chosen subset)
+- A translation tool-chain
+- Open source project (MIT license)
+
+VMs are still hard
+========================
+
+It is hard to achieve:
+
+- flexibility
+- maintainability
+- performance (needs
+  dynamic compilation techniques)
+
+Especially with limited resources.
+
+
+Python Case
+===================================
+
+- CPython is a straightforward,
+  portable VM. No dynamic compilation.
+  Performance is limited.
+
+- Some decisions are pervasive:
+  reference counting ...
+
+
+- Extensions:
+
+  * Stackless (heap-bound recursion,
+    coroutines, serialisable continuations)
+
+Python Case (ii)
+===================================
+
+- Extensions ...:
+
+  * Pysco: run-time specialiser,
+    interesting results
+
+  need to keep track and are hard to maintain.
+  Hard to port Psyco to other architectures.
+
+- The community likes Python to run everywhere:
+  Jython, IronPython. Lot of effort and duplication.
+
+
+Self-hosted JITs
+===========================
+
+- they work: Jikes VM
+- the language semantics need to
+  be captured as a good compiler
+- good means the resulting VM
+  should be fast enough
+- target hardware CPUs
+- lot of effort still, hard
+  to reuse for another language
+
+Target platform VMs (JVM, CLR)
+==============================
+
+- semantics mismatch (e.g.
+  lookup) can result in speed penalty
+  or unnatural code
+
+- obliviously layering (dynamic)
+  compilation on top of a JIT
+  effectively is an open problem
+
+- urge to tweak the underlying VM
+
+- coding in Java, C#: not expressive
+  enough, same risks of inflexibility,
+  hard to revert pervasive decisions
+
+Open Virtual Machines
+==========================
+
+...
+
+PyPy's approach
+================
+
+* Refine a subset
+  expressive enough and amenable
+  to analysis of your favourite
+  language (Python) to write
+  interpreters in it.
+
+* Write a translation tool-chain
+  to multiple targets for this subset.
+
+* The translation tool-chain should
+  implement and be configurable to 
+  be a good mapping from the interpreter
+  to efficient implementations for 
+  the various targets.
+
+PyPy's approach (ii)
+=======================
+
+* Favour simplicity and flexibility
+  over tight algorithms.
+
+* Make it possible to leave low-level
+  details out, to be inserted as late
+  as possible.
+
+
+.. Overview ?
+
+Type Inference
+=================
+
+...
+
+
+Targets as Type Systems
+========================
+
+...
+
+
+Translation Aspects
+=====================
+...
+
+
+GC Pressure
+==================
+
+...
+
+
+Run-time Specialisation
+========================
+
+...
+
+
+Website etc.
+=============
+
+* http://codespeak.net/pypy
+* IST EU co-funded project in FP6
+  (7 partners)
+* Thanks
+
+
+
+.. |bullet| unicode:: U+02022
+.. footer:: PyPy 
+
