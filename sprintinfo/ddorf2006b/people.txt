@@ -17,6 +17,7 @@ Anders Chrigstroem   29th-6th       Hotel an der Uni
 Maciej Fijalkowski   29th-5/6th     ?Hotel an der Uni
 Stephan Diehl        29th-5th       private (?)
 Eric van Riet paap   30th-1st       Hotel Regina
+Niko Matsakis        30th-4th       Auszeit Hotel
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
