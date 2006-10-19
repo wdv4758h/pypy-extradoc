@@ -13,5 +13,5 @@ He has been a long time maintainer of Jython (Python implementation
 for the JVM). He has also contributed to aspects of the current design
 of Python. He is a Python Software Foundation member.
 
-Samuele Pedroni received a Computer Science flavoured diploma
+Samuele Pedroni received a Computer Science flavoured Mathematics Diploma
 from ETH Zurich.
