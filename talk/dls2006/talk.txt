@@ -210,7 +210,26 @@ Translation Aspects (ii)
   and partial evaluation, extended to use the techniques of
   Psyco)
 
+Translation Summary
+===========================
 
+The translation tool-chain
+has proved effective:
+
+- low-level details and
+  pervasive decision can be
+  left out of the interpreter
+
+- it can targets at the same time:
+  C, LLVM, the CLR
+  and is open for further backends (JVM in progress)
+
+- it can and has been used
+  in the context of other research
+  projects and spin-off ideas
+  (e.g. a JavaScript backend,
+  compilation of other RPython programs...)
+  
 Website etc.
 =============
 
@@ -219,10 +238,39 @@ Website etc.
   (7 partners)
 * Thanks
 
-Run-time Specialisation
+Run-time Specialization
 ========================
 
-...
+Previous experience: Psyco
+
+- a "just-in-time specializer" which can transparently
+  accelerate user code
+
+- a C hand-written "generating extension", in the terminology
+  of partial evaluation
+
+- similar to conventional JITs with the additional ability
+  to suspend compilation at any point, and wait for actual
+  run-time information (e.g. type of an object):
+  **promotion**.
+
+A Specializer as an Aspect
+==========================================
+
+General idea (the devil is in the details):
+
+- Transform the flowgraphs of the interpreter
+  into a compiler, using the type inference
+  framework to do binding-time analysis (runtime/
+  compile-time) based on a few hints.
+
+- Special hints to insert and control promotion.
+
+- We think that promotion is the key to making
+  it practical for large interpreters and complex
+  semantics.
+
+This is what we are working on right now.
 
 JIT Generation Diagram
 ========================
