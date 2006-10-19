@@ -18,7 +18,19 @@ Maciej Fijalkowski   29th-5/6th     ?Hotel an der Uni
 Stephan Diehl        29th-5th       private (?)
 Eric van Riet paap   30th-1st       Hotel Regina
 Niko Matsakis        30th-4th       Auszeit Hotel
+Leonardo Santagada   29th-7th?      ?
 ==================== ============== =====================
+
+People in the following list have said at one point that they would come:
+
+==================== ============== =====================
+    Name              Arrive/Depart     Accomodation 
+==================== ============== =====================
+Richard Emslie       ?              ?
+Christian Tismer     ?              ?
+Andrew Thompson      ?              ?
+==================== ============== =====================
+
 
 People on the following list were present at previous sprints: 
 
@@ -32,18 +44,13 @@ Lene Wagner          ?              ?
 Amaury Forgeot d'Arc ?              ?
 Valentino Volonghi   ?              ?
 Boris Feigin	     ?              ?
-Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
 Laura Creighton      ?              ?
 Beatrice Duering     ?              ?
-Richard Emslie       ?              ?
 Johan Hahn           ?              ?
-Michael Hudson       ?              ?
 Holger Krekel        ?              ?
 Anders Chrigstroem   ?              ?
 Samuele Pedroni      ?              ?
-Christian Tismer     ?              ?
 Anders Lehmann       ?              ? 
 Niklaus Haldimann    ?              ?
-Christian Tismer     ?              ?
 ==================== ============== =====================
