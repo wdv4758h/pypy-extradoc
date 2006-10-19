@@ -5,9 +5,9 @@ PyPy's VM Approach
 =================================================
 
 :Authors: Armin Rigo, Samuele Pedroni
-:Date: 23 October 2006
-:Location:  ?
 
+.. :Date: 2 October 2006
+.. :Location: ?
 
 PyPy
 ========================
@@ -224,6 +224,22 @@ Run-time Specialisation
 
 ...
 
+JIT Generation Diagram
+========================
+
+.. image:: image/arch-jit-gen.png
+   :align: center
+   :width: 500
+   :height: 500
+
+Translation Diagram
+=========================
+
+.. image:: image/arch-translation.png
+   :align: center
+   :width: 500
+   :height: 500
+
 Self-hosted JITs
 ===========================
 
@@ -256,11 +272,29 @@ Target platform VMs (JVM, CLR)
 Open Virtual Machines
 ==========================
 
-...
+Reconfigurable at run time to run 
+specific languages.
+
+- Open research area.
+
+- Large design space.
+
+- What are the best primitives?
+
+- Likely same trade-offs in
+  more acute form: need sharp tools.
 
 GC Pressure
 ======================
-...
+
+RPython is still a garbage collected language.
+
+Large allocation rate from interpreter objects
+(boxes, frames) but easily temporary objects
+too.
+
+Good allocation removal optimisations
+and memory management very much needed.
 
 .. |bullet| unicode:: U+02022
 .. footer:: PyPy 
