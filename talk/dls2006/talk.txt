@@ -5,9 +5,8 @@ PyPy's VM Approach
 =================================================
 
 :Authors: Armin Rigo, Samuele Pedroni
-
-.. :Date: 2 October 2006
-.. :Location: ?
+:Date: 23 October 2006
+:Location: DLS'06
 
 PyPy
 ========================
@@ -33,28 +32,29 @@ Especially with limited resources.
 Python Case
 ===================================
 
-- CPython is a straightforward,
-  portable VM. No dynamic compilation.
-  Performance is limited.
+CPython is a straightforward,
+portable VM.
 
-- Some decisions are pervasive:
+- Pervasive decisions:
   reference counting, single global lock ...
+
+- No dynamic compilation
 
 
 - Extensions:
 
-  * Stackless (heap-bound recursion,
+  * *Stackless* (unlimited recursion,
     coroutines, serializable continuations)
+
+  * *Psyco* (run-time specializer)
+
 
 Python Case (ii)
 ===================================
 
-- Extensions ...:
+- Extensions...
 
-  * Psyco: run-time specializer,
-    interesting results
-
-  ... need to keep track and are hard to maintain.
+  ... need to keep track, hard to maintain.
   Hard to port Psyco to other architectures.
 
 - The community wants Python to run everywhere:
@@ -64,49 +64,58 @@ Python Case (ii)
 PyPy's approach
 =================================
 
-Goal: generate VMs from a single
+*Goal: generate VMs from a single
 high-level description of the language,
-in a retargettable way.
+in a retargettable way.*
 
-- Write an interpreter for a dynamic language (Python)
+- Write an  interpreter for a dynamic language (Python)
   in a high-level language (Python)
 
-- Leave out low-level details, favour simplicity
-  and flexibility
+- Leave out low-level details
 
-- Define a mapping to low-level targets, generating
-  VMs from the interpreter
+  - Favour simplicity and flexibility
+
+- Define a mapping to low-level targets
+
+  - Generate VMs from the interpreter
 
 Mapping to low-level targets
 ===============================
 
 - Mechanically translate the interpreter to multiple
-  lower-level targets (C-like, Java, .NET...)
+  lower-level targets
+
+  - C-like, Java, .NET...
 
 - Insert low-level aspects into the code as required by
-  the target (object layout, memory management...)
+  the target
+
+  - Object layout, memory management...
 
 - Optionally insert new pervasive features not expressed
-  in the source (continuations, specialization abilities...)
+  in the source
+
+  - Continuations, specialization abilities...
 
 Status of the project
 ==========================
 
-Fully compliant interpreter, translatable to C,
-LLVM and the CLR.
+*Fully compliant interpreter, translatable to C,
+LLVM and the CLR.*
 
-Maintainability: following the (fast-paced)
-language evolution is very easy.
+- Maintainability: following Python evolution is very easy
 
-Flexibility: we were able to reimplement
-Stackless features without extensive
-changes to the baseline interpreter ...
+- Flexibility: reimplemented Stackless features
 
-Performance: work in-progress,
-2.3 times slower than CPython
-without dynamic compilation (current goal)
+  - Only minor changes to baseline interpreter
 
-... and many experiments at various levels
+- Performance: work in progress
+
+  - 2.3 times slower than CPython
+
+  - Dynamic compilation is our next goal
+
+- ... and many experiments at various levels
 
 Translation approach
 ==========================
@@ -118,7 +127,7 @@ Translation approach
 
 * Write a translation tool-chain
   from this subset ("RPython")
-  to multiple targets (C-like, .NET, etc.)
+  to multiple targets
 
 * The translation tool-chain should
   implement (and be configurable to 
@@ -129,7 +138,12 @@ Translation approach
 Translation overview
 ==========================
 
+.. raw:: html
+
+    <br>
+
 .. image:: image/arch2.png
+   :align: center
 
 
 Type Inference
@@ -153,15 +167,16 @@ Targets as Type Systems
 
 ::
 
-    STR = GcStruct('rpy_string', ('hash', Signed),
-                                 ('chars', Array(Char)))
+    STR = GcStruct('rpy_string',
+                      ('hash', Signed),
+                      ('chars', Array(Char)))
 
 Targets as Type Systems (ii)
 ================================
   
 - implement a simulation
   of the types in normal Python,
-  allowing code like to run::
+  allowing code like this to run::
 
     def ll_char_mul(char, length):
         newstr = malloc(STR, length)
@@ -175,25 +190,25 @@ Targets as Type Systems (iii)
 ===============================
 
 - extend the type inferencer
-  to understand usages of these types
+  to understand the usage of these types
 
 - use the type system
   to express how regular, high-level RPython types
   should be represented 
   at the level of the target
 
-- write implementation "helper" code (e.g. ll_char_mul)
+- write implementation "helper" code (e.g. ``ll_char_mul``)
   which is again RPython and can be type inferenced
   and translated
 
 Translation Aspects
 =====================
 
-Features not present in the source can be
-added during translation:
+*Features not present in the source can be
+added during translation:*
 
 - memory management (Boehm, or reference counting
-  by transforming all control flow graphs, or our own
+  by inserting incref/decref, or our own
   GCs - themselves written within the same framework as the
   RPython "helper" code)
 
@@ -213,8 +228,8 @@ Translation Aspects (ii)
 Translation Summary
 ===========================
 
-The translation tool-chain
-has proved effective:
+*The translation tool-chain
+has proved effective:*
 
 - low-level details and
   pervasive decision can be
@@ -277,16 +292,12 @@ JIT Generation Diagram
 
 .. image:: image/arch-jit-gen.png
    :align: center
-   :width: 500
-   :height: 500
 
 Translation Diagram
 =========================
 
 .. image:: image/arch-translation.png
    :align: center
-   :width: 500
-   :height: 500
 
 Self-hosted JITs
 ===========================
@@ -341,9 +352,9 @@ Large allocation rate from interpreter objects
 (boxes, frames) but easily temporary objects
 too.
 
-Good allocation removal optimisations
+Good allocation removal optimizations
 and memory management very much needed.
 
 .. |bullet| unicode:: U+02022
-.. footer:: PyPy 
+.. footer:: DLS'06
 
