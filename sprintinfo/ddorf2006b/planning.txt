@@ -1,0 +1,36 @@
+Duesseldorf sprint planning
+===========================
+
+times: 10am - ...
+       Thursday breakday
+
+Attendees: 
+Carl Friedrich, Armin, Michael, Antonio, Samuele, Anders, Maciej, Stephan,
+Eric, Niko, Leonardo, Richard, Christian, Guido
+
+
+Tasks
+=====
+
+ - javascript interpreter (leonardo, maciek, armin around)
+
+ - jvm backend (niko, anto)
+
+ - transparent proxies
+
+ - apigen tool
+
+ - build tool (guido, carl friedrich)
+
+ - .net integration
+
+ - jit code generation (armin, michael)
+
+ - jit front end (samuele, arre)
+ 
+ - running tests on the translated pypy-cs (related to py.test refactoring?)
+
+ - pypy interpreter object optimizations
+   
+   - lists of integers
+
