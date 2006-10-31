@@ -2,6 +2,7 @@ Duesseldorf sprint planning
 ===========================
 
 times: 10am - ...
+       Wednesday morning: various presentations
        Thursday breakday
 
 Attendees: 
@@ -12,21 +13,28 @@ Eric, Niko, Leonardo, Richard, Christian, Guido
 Tasks
 =====
 
- - javascript interpreter (leonardo, maciek, armin around)
+ - javascript interpreter (leonardo, maciek and armin around)
+   addition of numbers, strings (with proper, twisted semantics) works
+   integration of the narcissus parser
 
  - jvm backend (niko, anto)
+   sharing code between gencli and genjvm
 
  - transparent proxies
 
- - apigen tool
+ - apigen tool (guido, maciek around)
 
- - build tool (guido, carl friedrich)
+ - build tool
+   it's now actually building pypy, sending the usession directory back
 
  - .net integration
 
- - jit code generation (armin, michael)
+ - jit code generation (eric, michael)
+   lots of documentation about the jit-backend interface, fighting with
+   ppc code generation
 
  - jit front end (samuele, arre)
+   IN-PROGRESS
  
  - running tests on the translated pypy-cs (related to py.test refactoring?)
 
@@ -34,3 +42,7 @@ Tasks
    
    - lists of integers
 
+ - adding the microbenchmark results to the benchmark page (eric)
+   MAYBE DONE
+
+ - trying the jit efforts on a regex engine (richard, armin around)
