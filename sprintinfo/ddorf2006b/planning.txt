@@ -13,17 +13,23 @@ Eric, Niko, Leonardo, Richard, Christian, Guido
 Tasks
 =====
 
- - javascript interpreter (leonardo, stephan)
+ - javascript interpreter (leonardo, stephan, maciek around)
    addition of numbers, strings (with proper, twisted semantics) works
    integration of the narcissus parser
    nested scopes, variable declarations, functions without parameters
+   function arguments working, windows support, in-progress: argument attribute
 
- - jvm backend (niko, )
+ - jvm backend
    sharing code between gencli and genjvm
    first tests running!
    number manipulations, field access
+   more tests running! added support for classes, in-progress: constants
 
  - transparent proxies (maciek, guido, samuele around)
+   lists are working somehow, refactoring in progress
+   dictionaries seem to work somewhat
+   provide a way to implement an object that is of type list, but the behaviour
+   is defined at app-level
 
  - apigen tool
    changes to instance variables after calls to functions
@@ -31,18 +37,25 @@ Tasks
  - build tool
    it's now actually building pypy, sending the usession directory back
 
- - .net integration, fixing pypy.net (anto, carl friedrich)
-   quick hack, but pypy.net is broken :-(
+ - .net integration, fixing pypy.net
+   quick hack, but pypy.net is no longer broken
 
- - jit code generation (eric, michael)
+ - making streams RPython (anto, carl friedrich)
+   in progress
+
+ - jit code generation
    lots of documentation about the jit-backend interface, fighting with
    ppc code generation
    some refactorings
    looking at whether it's possible to use the llvm code generation
+   hackish way: produce strings in memory and have llvm parse them
 
- - jit front end (samuele, arre)
+ - jit ppc code generation (mwh, niko)
+
+ - jit front end (armin, arre, richard)
    IN-PROGRESS
    fixed the last known bug, experimentation needed
+   porting portal tests to run with the backends
  
  - running tests on the translated pypy-cs (related to py.test refactoring?)
 
@@ -54,6 +67,8 @@ Tasks
    DONE
 
  - trying the jit efforts on a regex engine (richard, armin around)
-   kind of worked
+   kind of worked, some progress
 
 - fixing pypy on windows, adding some more os functions (christian)
+
+- general wizardry (samuele)
