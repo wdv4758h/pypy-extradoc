@@ -4,6 +4,7 @@ Duesseldorf sprint planning
 times: 10am - ...
        Wednesday morning: various presentations
        Thursday breakday
+       Saturday: py-lib release thinking
 
 Attendees: 
 Carl Friedrich, Armin, Michael, Antonio, Samuele, Anders, Maciej, Stephan,
@@ -13,11 +14,12 @@ Eric, Niko, Leonardo, Richard, Christian, Guido
 Tasks
 =====
 
- - javascript interpreter (leonardo, stephan, maciek around)
+ - javascript interpreter (leonardo, stephan, guido around)
    addition of numbers, strings (with proper, twisted semantics) works
    integration of the narcissus parser
    nested scopes, variable declarations, functions without parameters
-   function arguments working, windows support, in-progress: argument attribute
+   function arguments working, windows support, argument attribute
+   implemented grouping, the comma-operator, mac-os support, exceptions
 
  - jvm backend
    sharing code between gencli and genjvm
@@ -25,23 +27,27 @@ Tasks
    number manipulations, field access
    more tests running! added support for classes, in-progress: constants
 
- - transparent proxies (maciek, guido, samuele around)
+ - transparent proxies (maciek, samuele, antonio around)
    lists are working somehow, refactoring in progress
    dictionaries seem to work somewhat
    provide a way to implement an object that is of type list, but the behaviour
    is defined at app-level
+   implemented objects, lists and dictionaries, function calls in an sucky way
 
  - apigen tool
    changes to instance variables after calls to functions
 
- - build tool
+ - build tool + discussions (carl friedrich, guido)
    it's now actually building pypy, sending the usession directory back
 
  - .net integration, fixing pypy.net
    quick hack, but pypy.net is no longer broken
+   planning session has happened! experiments to come
 
- - making streams RPython (anto, carl friedrich)
-   in progress
+ - making streams RPython
+   done
+
+- using the RPython streams for pypy files (guido, carl friedrich)
 
  - jit code generation
    lots of documentation about the jit-backend interface, fighting with
@@ -51,11 +57,15 @@ Tasks
    hackish way: produce strings in memory and have llvm parse them
 
  - jit ppc code generation (mwh, niko)
+   wrote a simple greedy register allocator, spills work
+   implement links between basic blocks, placing the arguments in the right way
+
 
  - jit front end (armin, arre, richard)
    IN-PROGRESS
    fixed the last known bug, experimentation needed
    porting portal tests to run with the backends
+   deepfreezing implemented! hint that a structure is not going to change
  
  - running tests on the translated pypy-cs (related to py.test refactoring?)
 
@@ -70,5 +80,6 @@ Tasks
    kind of worked, some progress
 
 - fixing pypy on windows, adding some more os functions (christian)
+  unknown amount of progress
 
 - general wizardry (samuele)
