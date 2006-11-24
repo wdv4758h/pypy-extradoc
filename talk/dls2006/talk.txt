@@ -5,8 +5,8 @@ PyPy's VM Approach
 =================================================
 
 :Authors: Armin Rigo, Samuele Pedroni
-:Date: 23 October 2006
-:Location: DLS'06
+:Date: 23 October 2006 / 24 Octorber 2006
+:Location: DLS'06 OOPSLA Portland OR / Intel Hillsboro OR
 
 PyPy
 ========================
@@ -356,5 +356,4 @@ Good allocation removal optimizations
 and memory management very much needed.
 
 .. |bullet| unicode:: U+02022
-.. footer:: DLS'06
-
+.. footer:: DLS'06 / Intel
