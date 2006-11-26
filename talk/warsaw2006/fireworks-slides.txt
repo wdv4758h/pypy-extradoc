@@ -1,0 +1,40 @@
+==============
+PyPy fireworks
+==============
+
+:Authors: Maciej Fijalkowski
+:Location: Warsaw Univeristy
+:Date: 1.XII.2006
+
+What is PyPy?
+=============
+
+* An implementation of Python written in Python
+
+* A very flexible compiler toolchain
+
+* An open source project (MIT License)
+
+* A STREP ("Specific Targeted REsearch Project"), partially funded by the EU
+
+* A lot of fun!
+
+Deterministic concurrency:
+==========================
+
+* So called "stackless" features
+
+* Basically provides way of copying stack to heap and backwards
+
+* (demo) (in-browser)
+
+* pickling coroutines
+
+* cloning coroutines
+
+Composability problem:
+======================
+
+* (demo)
+
+* possible solution
