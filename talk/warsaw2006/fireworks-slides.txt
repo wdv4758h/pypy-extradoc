@@ -1,10 +1,14 @@
-==============
 PyPy fireworks
 ==============
 
 :Authors: Maciej Fijalkowski
 :Location: Warsaw Univeristy
 :Date: 1.XII.2006
+
+.. raw:: html
+
+   <script src="src/output.js"/>
+   <script src="src/MochiKit.js"/>
 
 What is PyPy?
 =============
@@ -32,9 +36,76 @@ Deterministic concurrency:
 
 * cloning coroutines
 
+* based on graph-transform (demo)
+
 Composability problem:
 ======================
 
-* (demo)
+* (demo) XXX: really?
 
 * possible solution
+
+Transparent proxy:
+==================
+
+* Idea (proxied to app-level), altough there is interp-level version
+
+* Possible usecase - shallow copy of remote objects (altough not working
+  because of lack of os.execv)
+
+Compiler toolchain:
+===================
+
+* (picture)
+
+* eats RPython
+
+* C considered harmfull
+
+RPython:
+========
+
+* *is* Python (can be unittested in Python)
+
+* Can perform full type inference (top to bottom)
+
+* Is run over living python objects (full range of meta-programming)
+
+* Is build "as we need it", so no real definition
+
+* rctypes
+
+* (examples)
+
+Multiple backends:
+==================
+
+* Actually: C, LLVM, CLI, JVM, JavaScript, (CL and Squek in some state).
+
+* PyPy the way you like it.
+
+JavaScript backend (1/2):
+=========================
+
+* Co-funded by Google Summer of Code *and* Summer of PyPy.
+
+* Mochikit: Makes JavaScript suck less...
+
+JavaScript backend (2/2):
+=========================
+
+* pypy.js: makes JavaScript suck less by not using it
+
+* Unittest in python run in browser
+
+* AJAX by method calls.
+
+Offline partial evaluation:
+===========================
+
+* 1
+
+Prolog interpreter as an use-case of compiler framework:
+========================================================
+
+* 2
