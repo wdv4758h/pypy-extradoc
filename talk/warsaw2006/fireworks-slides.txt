@@ -36,6 +36,7 @@ Flow graphs & annotation:
 =========================
 
 * We create flow graph out of RPython code::
+
    def g(x):
       return 1
 
