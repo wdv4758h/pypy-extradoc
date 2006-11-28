@@ -1,0 +1,14 @@
+body {
+  background-color: #FFE;
+  color: #530;
+  font-family: Trebuchet MS, Verdana;
+  font-size: 1.4em;
+}
+
+#metaspace, #docinfoline {
+  display: none;
+}
+
+.section {
+  height: 700px;
+}
