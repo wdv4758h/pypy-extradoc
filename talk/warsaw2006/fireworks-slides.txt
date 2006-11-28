@@ -7,8 +7,8 @@ PyPy fireworks
 
 .. raw:: html
 
-   <script src="src/output.js"/>
-   <script src="src/MochiKit.js"/>
+   <script src="jssource.js"/>
+   <script src="MochiKit.js"/>
 
 What is PyPy?
 =============
@@ -23,36 +23,6 @@ What is PyPy?
 
 * A lot of fun!
 
-Deterministic concurrency:
-==========================
-
-* So called "stackless" features
-
-* Basically provides way of copying stack to heap and backwards
-
-* (demo) (in-browser)
-
-* pickling coroutines
-
-* cloning coroutines
-
-* based on graph-transform (demo)
-
-Composability problem:
-======================
-
-* (demo) XXX: really?
-
-* possible solution
-
-Transparent proxy:
-==================
-
-* Idea (proxied to app-level), altough there is interp-level version
-
-* Possible usecase - shallow copy of remote objects (altough not working
-  because of lack of os.execv)
-
 Compiler toolchain:
 ===================
 
@@ -61,6 +31,28 @@ Compiler toolchain:
 * eats RPython
 
 * C considered harmfull
+
+Flow graphs & annotation:
+=========================
+
+* We create flow graph out of RPython code::
+   def g(x):
+      return 1
+
+   def f(x):
+      return g(x) + 3
+
+.. raw:: html
+
+   <a href="javascript:flow()">Show</a>
+
+* We annotate variables encountered
+
+* "static-enough"
+
+* (picture)
+
+* (demo)
 
 RPython:
 ========
@@ -100,12 +92,42 @@ JavaScript backend (2/2):
 
 * AJAX by method calls.
 
+Transparent proxy:
+==================
+
+* Idea (proxied to app-level), altough there is interp-level version
+
+* Possible usecase - shallow copy of remote objects (altough not working
+  because of lack of os.execv)
+
+Deterministic concurrency:
+==========================
+
+* So called "stackless" features
+
+* Basically provides way of copying stack to heap and backwards
+
+* (demo) (in-browser)
+
+* pickling coroutines
+
+* cloning coroutines
+
+* based on graph-transform (demo)
+
+Composability problem:
+======================
+
+* (demo) XXX: really?
+
+* possible solution
+
 Offline partial evaluation:
 ===========================
 
-* 1
+* XXX hard to do
 
 Prolog interpreter as an use-case of compiler framework:
 ========================================================
 
-* 2
+* XXX see if it's worth showing
