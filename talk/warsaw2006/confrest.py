@@ -11,6 +11,10 @@ class Project(Project):
     stylesheet = 'style.css'
     encoding = 'latin1' 
     prefix_title = "PyPy "
-    logo = ''
+    logo = html.div(
+        html.a(
+            html.img(alt="PyPy", id="pyimg", 
+                     src="http://codespeak.net/pypy/img/py-web1.png", 
+                     height=110, width=149)))
     Page = PyPyFireworksPage
 
