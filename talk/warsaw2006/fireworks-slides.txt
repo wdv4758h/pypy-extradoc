@@ -154,6 +154,30 @@ Composability:
 
 * Each 'part' has it's own "parent coroutine"
 
+Things that I didn't talk about:
+================================
+
+* Offline partial evaluation
+
+* Prolog interpreter written in RPython
+
+* Security approaches
+
+* Garbage collectors (Boehm, mark&sweep, refcounting)
+
+* GIL
+
+* pylib (support library for pypy)
+
+Developement process:
+=====================
+
+* Test driven (few thousand tests)
+
+* Distributed team
+
+* Sprint driven (every 2 months)
+
 Summer of PyPy:
 ===============
 
