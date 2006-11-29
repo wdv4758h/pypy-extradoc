@@ -23,6 +23,9 @@ class Page:
         content = dom.get_document().getElementById("contentspace")
         for child in content.childNodes[:]:
             content.removeChild(child)
+        content.style.position = "absolute"
+        content.style.top = "0px"
+        content.style.left = "170px"
 
     def show(self, num):
         content = dom.get_document().getElementById("contentspace")
@@ -48,10 +51,16 @@ def show():
     page.delete_nodes()
     page.show(0)
     dom.get_document().onkeypress = keydown
-    createLoggingPane(True)
+    #createLoggingPane(True)
 
 def comeback(msg):
     pass
 
 def flow():
     exported_methods.flow_basic(comeback)
+
+def annotate():
+    exported_methods.annotate_basic(comeback)
+
+def rtype():
+    exported_methods.rtype_basic(comeback)

@@ -26,16 +26,16 @@ What is PyPy?
 Compiler toolchain:
 ===================
 
-* (picture)
-
 * eats RPython
 
 * C considered harmfull
 
+* is kind-of-stable right now
+
 Flow graphs & annotation:
 =========================
 
-* We create flow graph out of RPython code::
+* We create flow graph out of RPython code `flow`_::
 
    def g(x):
       return 1
@@ -43,17 +43,17 @@ Flow graphs & annotation:
    def f(x):
       return g(x) + 3
 
-.. raw:: html
+* We `annotate`_ variables encountered
 
-   <a href="javascript:flow()">Show</a>
+* It must be "static-enough" to perform such operation
 
-* We annotate variables encountered
+* We `RType`_ (creating low-level types)
 
-* "static-enough"
+* Source generation
 
-* (picture)
-
-* (demo)
+.. _`flow`: javascript:flow()
+.. _`annotate`: javascript:annotate()
+.. _`RType`: javascript:rtype()
 
 RPython:
 ========
@@ -66,32 +66,54 @@ RPython:
 
 * Is build "as we need it", so no real definition
 
-* rctypes
+* rctypes (like ctypes, but will change to C calls)
 
-* (examples)
+Backends & more flow graphs:
+============================
 
-Multiple backends:
-==================
+* LLtype-based: C, LLVM, 
 
-* Actually: C, LLVM, CLI, JVM, JavaScript, (CL and Squek in some state).
+* OOtype-based: CLI, JVM, JavaScript, (CL and Squek in some state).
 
-* PyPy the way you like it.
+* All optimisations are done on flow graphs
 
-JavaScript backend (1/2):
-=========================
+* XXX: constant-folding demo
+
+* Wide range of possible things to do with it
+
+JavaScript backend:
+===================
 
 * Co-funded by Google Summer of Code *and* Summer of PyPy.
 
 * Mochikit: Makes JavaScript suck less...
 
-JavaScript backend (2/2):
-=========================
+JavaScript backend:
+===================
 
-* pypy.js: makes JavaScript suck less by not using it
+* pypy.js: makes JavaScript suck less by not using it::
 
-* Unittest in python run in browser
+   def f(x):
+      return dom.get_document().getElementById(x)
 
-* AJAX by method calls.
+* Unittest in python run in browser::
+
+   def test_f():
+      assert isinstance(f("id"), dom.Element)
+
+* Python semantics (not only syntax)::
+
+   try:
+       {'a':3}['b']
+   except KeyError:
+       # will arrive here
+
+JavaScript example one (console):
+=================================
+
+JavaScript example two (Bub'n'Bros):
+====================================
+
 
 Transparent proxy:
 ==================
