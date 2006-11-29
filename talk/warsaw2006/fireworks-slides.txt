@@ -28,7 +28,7 @@ Compiler toolchain:
 
 * eats RPython
 
-* C considered harmfull
+* C considered harmful
 
 * is kind-of-stable right now
 
