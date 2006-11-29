@@ -114,14 +114,25 @@ JavaScript example one (console):
 JavaScript example two (Bub'n'Bros):
 ====================================
 
-
 Transparent proxy:
 ==================
 
 * Idea (proxied to app-level), altough there is interp-level version
 
 * Possible usecase - shallow copy of remote objects (altough not working
-  because of lack of os.execv)
+  because of lack of os.execv)::
+  
+    elem = get_remote("obj") # accessed as a name in globals
+                             # remote type is faked here
+    getattr(elem, '__str__')() # will access remote object *and* remote type
+                               # afterwards
+  
+* Working simulation on top of greenlets::
+
+    def f(x):
+        return x
+    
+    get_remote(obj).method(f) # will work
 
 Deterministic concurrency:
 ==========================
@@ -130,27 +141,26 @@ Deterministic concurrency:
 
 * Basically provides way of copying stack to heap and backwards
 
-* (demo) (in-browser)
-
 * pickling coroutines
 
 * cloning coroutines
 
-* based on graph-transform (demo)
+* based on graph-transform
 
-Composability problem:
-======================
+Composability:
+==============
 
-* (demo) XXX: really?
+* So called 'cosets'
 
-* possible solution
+* Each 'part' has it's own "parent coroutine"
 
-Offline partial evaluation:
-===========================
+Summer of PyPy:
+===============
 
-* XXX hard to do
+* Open for students
 
-Prolog interpreter as an use-case of compiler framework:
-========================================================
+* Proposal based
 
-* XXX see if it's worth showing
+* We can fund sprint-trip as well as staying costs
+
+* Last call (last two EU-funded sprints)
