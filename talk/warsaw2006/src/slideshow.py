@@ -64,3 +64,10 @@ def annotate():
 
 def rtype():
     exported_methods.rtype_basic(comeback)
+
+def example():
+    exported_methods.example(comeback)
+
+def const_fold():
+    exported_methods.const_fold(comeback)
+

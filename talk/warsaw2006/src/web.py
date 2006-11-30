@@ -15,7 +15,7 @@ from pypy.translator.interactive import Translation
 
 commproxy.USE_MOCHIKIT = True
 
-FUNCTION_LIST = ['show', 'flow', 'annotate', 'rtype']
+FUNCTION_LIST = ['show', 'flow', 'annotate', 'rtype', 'const_fold', 'example']
 
 class ExportedMethods(BasicExternal):
     _render_xmlhttp = True
@@ -30,6 +30,17 @@ class ExportedMethods(BasicExternal):
             return f(x) + 3
 
         self.t = Translation(g)
+
+    def _create_t2(self):
+        if hasattr(self, 't2'):
+            return
+        def g():
+            return 3
+        
+        def f():
+            return g() + 1 * 2
+
+        self.t2 = Translation(f)
 
     @described(retval=None)
     def flow_basic(self):
@@ -48,6 +59,19 @@ class ExportedMethods(BasicExternal):
         self.t.annotate([int])
         self.t.rtype()
         self.t.view()
+
+    @described(retval=None)
+    def example(self):
+        self._create_t2()
+        self.t2.annotate()
+        self.t2.rtype()
+        self.t2.view()
+
+    @described(retval=None)
+    def const_fold(self):
+        self._create_t2()
+        self.t2.backendopt()
+        self.t2.view()
 
 exported_methods = ExportedMethods()
 main_path = py.path.local(__file__).dirpath()
@@ -75,4 +99,4 @@ class Handler(server.TestHandler):
     style_css.exposed = True
 
 if __name__ == '__main__':
-    server.start_server(handler=Handler, start_new=False)
+    server.start_server(server_address=('localhost', 7070), handler=Handler, start_new=False)
