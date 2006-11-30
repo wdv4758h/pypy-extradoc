@@ -71,7 +71,7 @@ Backends & more flow graphs:
 
 * LLtype-based: C, LLVM, 
 
-* OOtype-based: CLI, JVM, JavaScript, (CL and Squek in some state).
+* OOtype-based: CLI, JVM, JavaScript, (CL and Squeak in some state).
 
 * All optimisations are done on flow graphs
 
