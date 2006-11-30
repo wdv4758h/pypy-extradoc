@@ -66,8 +66,6 @@ RPython:
 
 * Is build "as we need it", so no real definition
 
-* rctypes (like ctypes, but will change to C calls)
-
 Backends & more flow graphs:
 ============================
 
@@ -77,9 +75,18 @@ Backends & more flow graphs:
 
 * All optimisations are done on flow graphs
 
-* XXX: constant-folding demo
+* `example`_, and a `constant-folded one`_::
+
+    def g():
+       return 3
+        
+    def f():
+       return g() + 1 * 2
 
 * Wide range of possible things to do with it
+
+.. _`example`: javascript:example()
+.. _`constant-folded one`: javascript:const_fold()
 
 JavaScript backend:
 ===================
@@ -117,10 +124,9 @@ JavaScript example two (Bub'n'Bros):
 Transparent proxy:
 ==================
 
-* Idea (proxied to app-level), altough there is interp-level version
+* Idea - proxied to app-level
 
-* Possible usecase - shallow copy of remote objects (altough not working
-  because of lack of os.execv)::
+* Possible usecase - shallow copy of remote objects::
   
     elem = get_remote("obj") # accessed as a name in globals
                              # remote type is faked here
@@ -139,13 +145,37 @@ Deterministic concurrency:
 
 * So called "stackless" features
 
-* Basically provides way of copying stack to heap and backwards
+* Available primitives: coroutines, greenlets, tasklets::
 
-* pickling coroutines
+   c = channel()
 
-* cloning coroutines
+   def f():
+      c.send(3)
 
-* based on graph-transform
+   def g():
+      return c.receive()
+
+   tasklet(f)()
+   assert g() == 3
+
+* It provides way of copying stack to heap and backwards
+
+Stackless goodies:
+==================
+
+* Very deep recursion
+
+* No deadlock
+
+* No race conditions (in a classic sense)
+
+* Explicit scheduling
+
+* Pickling coroutines
+
+* Cloning coroutines
+
+* All based on graph-transform
 
 Composability:
 ==============
