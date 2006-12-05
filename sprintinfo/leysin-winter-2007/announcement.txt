@@ -68,6 +68,10 @@ or on the pypy-sprint mailing list if you do not yet have check-in rights:
 
   http://codespeak.net/mailman/listinfo/pypy-sprint
 
+You need a Swiss-to-(insert country there) power adapter.  There will be
+some Swiss-to-EU adapters around - bring a EU-format power strip if you
+have one.
+
 -----------
 Exact times
 -----------
