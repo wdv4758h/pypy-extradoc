@@ -1,5 +1,5 @@
 =====================================================================
-             Leysin Winter Sprint (8-14th January 2007)
+         PyPy Leysin Winter Sports Sprint (8-14th January 2007)
 =====================================================================
 ..                             image:: http://www.ermina.ch/002.JPG
 
@@ -9,7 +9,9 @@ period, and a kick-off for the final work on the upcoming PyPy 1.0
 release (scheduled for mid-February).
 
 The sprint is the last chance for students looking for a "summer" job
-with PyPy this winter!
+with PyPy this winter! If you have a proposal and would like to 
+work with us in the mountains please send it in before 15th December 
+to "pypy-tb at codespeak.net" and cross-read this page: 
 
    http://codespeak.net/pypy/dist/pypy/doc/summer-of-pypy.html
 
