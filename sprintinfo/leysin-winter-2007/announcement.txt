@@ -14,13 +14,13 @@ with PyPy this winter!
    http://codespeak.net/pypy/dist/pypy/doc/summer-of-pypy.txt
 
 ------------------------------
-Goals and topics of the sprint 
+Goals and topics of the sprint
 ------------------------------
 
 * Like previous winter, the main side goal is to have fun in winter
-  sports :-) We can take a couple of days off for ski; at this period of
-  the year, ski days end before 4pm, which still leaves plenty of time
-  for recovering (er, I mean hacking).
+  sports :-) We can take a couple of days off for ski; at this time of
+  year, ski days end before 4pm, which still leaves plenty of time
+  to recover (er, I mean hack).
 
 * Progress on the JIT compiler, which we are just starting to scale to
   the whole of PyPy. `[1]`_
@@ -48,10 +48,10 @@ memory: both the sprint venue and the lodging will be in a very spacious
 pair of chalets built specifically for bed & breakfast:
 http://www.ermina.ch/.  The place has a baseline ADSL Internet connexion
 (600Kb) with wireless installed.  You can of course arrange your own
-lodging anywhere (you cannot be more than a 15 minutes walk away from
-the sprint venue), but I definitely recommend to lodge there too -- you
-won't find better sights anywhere else (though you probably won't get
-much worse ones easily, either :-)
+lodging anywhere (so long as you are in Leysin, you cannot be more than a
+15 minute walk away from the sprint venue), but I definitely recommend
+lodging there too -- you won't find a better view anywhere else (though you
+probably won't get much worse ones easily, either :-)
 
 I made pre-reservations in the Chalet, so please *confirm* quickly that
 you are coming so that we can adjust the reservations as appropriate.
@@ -63,6 +63,10 @@ really want to.
 Please register by svn:
 
   http://codespeak.net/svn/pypy/extradoc/sprintinfo/leysin-winter-2007/people.txt
+
+or on the pypy-sprint mailing list if you do not yet have check-in rights:
+
+  http://codespeak.net/mailman/listinfo/pypy-sprint
 
 -----------
 Exact times
