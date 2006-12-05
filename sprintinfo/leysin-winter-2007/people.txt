@@ -1,0 +1,52 @@
+
+People coming to the Leysin sprint Winter 2007
+==================================================
+
+People who have a ``?`` in their arrive/depart or accomodation
+column are known to be coming but there are no details 
+available yet from them.
+
+Use ``Accomodation = Ermina`` for the group booking at the Chalets.
+Recommended arrival day is the 7th (there might not be enough rooms
+available if everybody shows up on the 6th!)
+
+==================== ============== =====================
+    Name              Arrive/Depart     Accomodation 
+==================== ============== =====================
+Armin Rigo           --             private
+Anders Chrigstroem   6th-15th       Ermina
+Samuele Pedroni      6th-15th       Ermina
+==================== ============== =====================
+
+People on the following list were present at previous sprints: 
+
+==================== ============== =====================
+       Name          Arrive/Depart  Accomodation 
+==================== ============== =====================
+Holger Krekel        ?              ?
+Christian Tismer     ?              ?
+Michael Hudson       ?              ?
+Anders Lehmann       ?              ?
+Jacob Hallen         ?              ?
+Niklaus Haldimann    ?              ?
+Aurelien Campeas     ?              ?
+Alexandre Fayolle    ?              ?
+Lene Wagner          ?              ?
+Amaury Forgeot d'Arc ?              ?
+Valentino Volonghi   ?              ?
+Boris Feigin	     ?              ?
+Andrew Thompson      ?              ?
+Bert Freudenberg     ?              ?
+Laura Creighton      ?              ?
+Beatrice Duering     ?              ?
+Eric van Riet Paap   ?              ?
+Carl Friedrich Bolz  ?              ?
+Richard Emslie       ?              ?
+Johan Hahn           ?              ?
+Antonio Cuni         ?              ?
+Maciej Fijalkowski   ?              ?
+Stephan Diehl        ?              ?
+Niko Matsakis        ?              ?
+Leonardo Santagada   ?              ?
+Alexander Schremmer  ?              ?
+==================== ============== =====================
