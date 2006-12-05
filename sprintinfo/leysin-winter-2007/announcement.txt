@@ -11,7 +11,7 @@ release (scheduled for mid-February).
 The sprint is the last chance for students looking for a "summer" job
 with PyPy this winter!
 
-   http://codespeak.net/pypy/dist/pypy/doc/summer-of-pypy.txt
+   http://codespeak.net/pypy/dist/pypy/doc/summer-of-pypy.html
 
 ------------------------------
 Goals and topics of the sprint
