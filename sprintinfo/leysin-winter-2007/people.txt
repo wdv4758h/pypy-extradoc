@@ -16,6 +16,7 @@ available if everybody shows up on the 6th!)
 Armin Rigo           --             private
 Anders Chrigstroem   6th-15th       Ermina
 Samuele Pedroni      6th-15th       Ermina
+Michael Hudson       7th-15th       Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
