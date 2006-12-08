@@ -4,11 +4,11 @@
 ..                             image:: http://www.ermina.ch/002.JPG
 
 The next PyPy sprint will be in Leysin, Switzerland, for the fourth
-time.  This sprint will be the final public sprint of our EU-funded
-period, and a kick-off for the final work on the upcoming PyPy 1.0
-release (scheduled for mid-February).
+time.  This sprint is a fully public sprint and will also be a kick-off 
+for the final work on the upcoming PyPy 1.0 release (scheduled for 
+mid-February).
 
-The sprint is the last chance for students looking for a "summer" job
+The sprint is the last best chance for students looking for a "summer" job
 with PyPy this winter! If you have a proposal and would like to 
 work with us in the mountains please send it in before 15th December 
 to "pypy-tb at codespeak.net" and cross-read this page: 
