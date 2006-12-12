@@ -17,6 +17,7 @@ Armin Rigo           --             private
 Anders Chrigstroem   6th-15th       Ermina
 Samuele Pedroni      6th-15th       Ermina
 Michael Hudson       7th-15th       Ermina
+Niko Matsakis        9th-14th       Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
