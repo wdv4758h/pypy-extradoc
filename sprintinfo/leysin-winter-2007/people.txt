@@ -18,6 +18,7 @@ Anders Chrigstroem   6th-15th       Ermina
 Samuele Pedroni      6th-15th       Ermina
 Michael Hudson       7th-15th       Ermina
 Niko Matsakis        9th-14th       Ermina
+Antonio Cuni         7th-15th       Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -45,7 +46,6 @@ Eric van Riet Paap   ?              ?
 Carl Friedrich Bolz  ?              ?
 Richard Emslie       ?              ?
 Johan Hahn           ?              ?
-Antonio Cuni         ?              ?
 Maciej Fijalkowski   ?              ?
 Stephan Diehl        ?              ?
 Niko Matsakis        ?              ?
