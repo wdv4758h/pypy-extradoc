@@ -19,6 +19,7 @@ Samuele Pedroni      6th-15th       Ermina
 Michael Hudson       7th-15th       Ermina
 Niko Matsakis        9th-14th       Ermina
 Antonio Cuni         7th-15th       Ermina
+Maciej Fijalkowski   5th?-17th?     Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -46,7 +47,6 @@ Eric van Riet Paap   ?              ?
 Carl Friedrich Bolz  ?              ?
 Richard Emslie       ?              ?
 Johan Hahn           ?              ?
-Maciej Fijalkowski   ?              ?
 Stephan Diehl        ?              ?
 Niko Matsakis        ?              ?
 Leonardo Santagada   ?              ?
