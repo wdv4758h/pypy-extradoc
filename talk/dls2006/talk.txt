@@ -5,7 +5,7 @@ PyPy's VM Approach
 =================================================
 
 :Authors: Armin Rigo, Samuele Pedroni
-:Date: 23 October 2006 / 24 Octorber 2006
+:Date: 23 October 2006 / 24 October 2006
 :Location: DLS'06 OOPSLA Portland OR / Intel Hillsboro OR
 
 PyPy
