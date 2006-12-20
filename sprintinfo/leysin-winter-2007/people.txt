@@ -19,8 +19,10 @@ Samuele Pedroni      6th-15th       Ermina
 Michael Hudson       7th-15th       Ermina
 Niko Matsakis        9th-14th       Ermina
 Antonio Cuni         7th-15th       Ermina
-Maciej Fijalkowski   5th?-17th?     Ermina
+Maciej Fijalkowski   6th-17th?      Ermina
 Eric van Riet Paap   10th?-14th?    Ermina
+Jacob Hallen         5th-15th       Ermina
+Laura Creighton      5th-15th       Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -32,7 +34,6 @@ Holger Krekel        ?              ?
 Christian Tismer     ?              ?
 Michael Hudson       ?              ?
 Anders Lehmann       ?              ?
-Jacob Hallen         ?              ?
 Niklaus Haldimann    ?              ?
 Aurelien Campeas     ?              ?
 Alexandre Fayolle    ?              ?
@@ -42,7 +43,6 @@ Valentino Volonghi   ?              ?
 Boris Feigin	     ?              ?
 Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
-Laura Creighton      ?              ?
 Beatrice Duering     ?              ?
 Carl Friedrich Bolz  ?              ?
 Richard Emslie       ?              ?
