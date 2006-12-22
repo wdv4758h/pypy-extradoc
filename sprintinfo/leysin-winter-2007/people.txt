@@ -20,7 +20,7 @@ Michael Hudson       7th-15th       Ermina
 Niko Matsakis        9th-14th       Ermina
 Antonio Cuni         7th-15th       Ermina
 Maciej Fijalkowski   6th-17th?      Ermina
-Eric van Riet Paap   10th?-14th?    Ermina
+Eric van Riet Paap   10th-14th      Ermina
 Jacob Hallen         5th-15th       Ermina
 Laura Creighton      5th-15th       Ermina
 ==================== ============== =====================
