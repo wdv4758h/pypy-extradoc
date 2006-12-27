@@ -23,6 +23,10 @@ Maciej Fijalkowski   6th-17th?      Ermina
 Eric van Riet Paap   10th-14th      Ermina
 Jacob Hallen         5th-15th       Ermina
 Laura Creighton      5th-15th       Ermina
+Holger Krekel        5th-14th       Ermina
+Carl Friedrich Bolz  5th-14th       Ermina
+Guido Wesdorp        6th-14th       Ermina
+Leonardo Santagada   6th-14th       Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -30,7 +34,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
-Holger Krekel        ?              ?
 Christian Tismer     ?              ?
 Michael Hudson       ?              ?
 Anders Lehmann       ?              ?
@@ -44,11 +47,9 @@ Boris Feigin	     ?              ?
 Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
 Beatrice Duering     ?              ?
-Carl Friedrich Bolz  ?              ?
 Richard Emslie       ?              ?
 Johan Hahn           ?              ?
 Stephan Diehl        ?              ?
 Niko Matsakis        ?              ?
-Leonardo Santagada   ?              ?
 Alexander Schremmer  ?              ?
 ==================== ============== =====================
