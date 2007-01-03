@@ -27,6 +27,8 @@ Holger Krekel        5th-14th       Ermina
 Carl Friedrich Bolz  5th-14th       Ermina
 Guido Wesdorp        6th-14th       Ermina
 Leonardo Santagada   6th-14th       Ermina
+Alexandre Fayolle    8th-12th       Ermina
+Sylvain Thénault     8th-12th       Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -38,8 +40,6 @@ Christian Tismer     ?              ?
 Michael Hudson       ?              ?
 Anders Lehmann       ?              ?
 Niklaus Haldimann    ?              ?
-Aurelien Campeas     ?              ?
-Alexandre Fayolle    ?              ?
 Lene Wagner          ?              ?
 Amaury Forgeot d'Arc ?              ?
 Valentino Volonghi   ?              ?
