@@ -9,19 +9,20 @@ Security Implementation Prospects
 
 :Authors: Samuele Pedroni, Armin Rigo
 :Date: 5th January 2007
-:Location: IBM, Zuerich
+:Location: IBM, Zürich
 
 Outline
 ==============
 
-Part 1
-------
-PyPy introduction and architecture overview
+*Part 1*
 
-Part 2
-------
-Architecture flexibility and hooks relevant
-to security
+  PyPy introduction and architecture overview
+
+*Part 2*
+
+  Architecture flexibility and hooks relevant
+  to security
+
 
 Part 1 - Architecture overview
 ================================
@@ -44,7 +45,7 @@ Python implementations
 Goals (i)
 ======================
 
-An Architecture for flexibility
+An architecture for flexibility
 
 - some decisions are invasive
   and fixed in CPython (e.g.
@@ -63,11 +64,8 @@ An architecture for speed
 
 - generate a psyco-like JIT
 
-(right now without a JIT
-we can be 2.3x-6x slower than
-CPython, depending on features
-etc, we can still improve on
-this too)
+currently: without a JIT, 2.3x-6x slower than
+CPython (depends on features); room for improvement
 
 Goals (iii)
 =======================
@@ -76,17 +74,20 @@ Multiple targets
 
 - POSIX/C (like CPython)
 - .NET (like IronPython)
+- JVM (like Jython)
 - ...
 
 How
 =====================
 
-- Python interpreter written
+We have:
+
+- a Python interpreter written
   in Python, low-level details
   left out (30000 LOC)
-- a subset static enough
+- a language subset static enough
   to allow analysis (RPython)
-- translated to low-level targets
+- translated to low-level targets,
   filling in the details (C, .NET,
   ...)
 
@@ -128,7 +129,7 @@ Object Spaces
 - library of all python types and operations on them 
 - encapsulates all knowledge about app-level objects 
 - is not concerned with control flow or bytecode 
-- e.g. enough control to implement lazy evaluation 
+- e.g. enough control to implement lazy evaluation (more later)
 
 Builtin and Fundamental Modules
 ===============================
@@ -144,8 +145,6 @@ PyPy/Translation overview
 
 .. image:: arch-translation.png
    :align: center
-   :width: 500
-   :height: 500
 
 Translation Aspects
 ====================
@@ -159,6 +158,11 @@ Translation Aspects
 Part 2
 ===============
 
+.. empty, just to mark the transition
+
+Part 2
+===============
+
 Architecture flexibility and hooks relevant
 to security:
 
@@ -168,25 +172,31 @@ to security:
 Proxy Spaces
 =================
 
-- *Object spaces* implement all semantic operations
+- An object space implements all semantic operations
   of the language
 
 - Interface: one method per operation, e.g. ``add(x, y)``
 
-- It is possible to uniformly control all
-  operations by wrapping the *standard object
-  space* in a proxy space
+- we can uniformly control all
+  operations by wrapping the "standard object
+  space" in a proxy space
 
 Thunk Space
 =================
 
-- Provides lazy evaluation::
+- Provides lazy evaluation:
 
-    x = thunk(f, 42)
-    ...
-    print x+1    # f(42) only called here
+    +--------------------------------------------------+
+    |                                                  |
+    |    ``x = thunk(f, 42)``                          |
+    |                                                  |
+    |    ...                                           |
+    |                                                  |
+    |    ``print x + 1``  *# calls f(42)*              |
+    |                                                  |
+    +--------------------------------------------------+
 
-- The proxy *thunk space* generically implements the policy
+- The proxy **thunk space** generically implements the policy
   of forcing lazy objects before they are operated on
 
 Thunk Space (2)
@@ -205,16 +215,23 @@ Thunk Space (2)
 Taint Space
 =================
 
-- Provides tainted objects::
+- Provides tainted objects:
 
-    y = taint(x)
-    ...
-    z = y + 1
-    print untaint(z, expected_type)
+    +--------------------------------------------------+
+    |                                                  |
+    | ``y = taint(x)``                                 |
+    |                                                  |
+    | ...                                              |
+    |                                                  |
+    | ``z = y + 1``                                    |
+    |                                                  |
+    | ``print untaint(z, expected_type)``              |
+    |                                                  |
+    +--------------------------------------------------+
 
-- tainted objects are boxes around regular objects
+- tainted objects: boxes around regular objects
 
-- operations propagate taintedness (z above is tainted too)
+- operations propagate taintedness (``z`` above is tainted too)
 
 Taint Space (2)
 ==================
@@ -262,5 +279,6 @@ Summary
   for which we have no special framework support so far; also,
   Python is not suited to compile more than one module at a time)
 
+
 .. |bullet| unicode:: U+02022
-.. footer:: Samuele Pedroni, Armin Rigo, PyPy Team |bullet| IBM Zuerich |bullet| 5th January 2007
+.. footer:: Samuele Pedroni, Armin Rigo, PyPy Team |bullet| IBM Zürich |bullet| 5th January 2007 |bullet| ``http://codespeak.net/pypy``
