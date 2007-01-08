@@ -1,0 +1,108 @@
+People
+======
+
+ * Antonio
+ * Leonardo
+ * Holger
+ * Guido
+ * Maciek
+ * Armin
+ * Michael
+ * Arre
+ * Samuele
+ * Carl Friedrich
+
+later
+-----
+
+ * Laura
+ * Jacob
+ * Alexandre
+ * Sylvain
+ * Niko
+ * Eric
+
+Tasks
+=====
+
+
+
+JIT
+---
+
+* "virtual frames"
+
+  - write a small interpreter that shows the performance problems without having
+    to use the full pypy
+
+  - actually implement support for this in the rtyper and the jit...
+
+* have register allocation
+
+(Michael, Armin, Arre, Samuele)
+
+
+py.test and the py-lib
+----------------------
+
+* polish the code and documentation of the py lib, and eventually
+  release it (Holger and Maciek to investigate)
+
+* integrate api-doc and source-viewer on the py-lib web-page
+
+* use source-viewer on more code? pypy?
+
+* provide code search facility
+
+
+
+interpreter prototypes
+----------------------
+
+* discuss the status of the various prototypes (coordinated by arre?)
+
+* think especially hard about persistence
+
+* discuss fallback possibilities if py.execnet cannot run on pypy-c
+
+* (maybe try the taint object space on a cgi example + write some docs?)
+
+
+Integration and Configuration
+-----------------------------
+
+* actually use the build tool during the sprint (Guido, Carl Friedrich)
+
+* think about py-lib and pypy debian packaging
+
+* document in some detail the configuration
+
+* integrate wp9, wp10 work?
+
+* web frontend on the build tool
+
+Other
+-----
+
+* progress on the JavaScript interpreter (Leonardo, Antonio)
+
+* Java backend
+
+* discuss refinement interface for external functions
+
+* (make py-lib run on pypy-c)
+
+
+Discussions during the sprint
+=============================
+
+* status of wp6 and wp12
+
+* wp9 + wp10 + wp11 discussion
+
+* eu-report meeting
+
+* pycon talk discussion
+
+* release plannings
+
