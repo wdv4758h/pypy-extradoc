@@ -1,0 +1,16 @@
+Armin Rigo          -10 
+Anders Chrigstroem  -10
+Samuele Pedroni     -10
+Michael Hudson      -10
+Niko Matsakis       
+Antonio Cuni        -10 
+Maciej Fijalkowski  -10
+Eric van Riet Paap  
+Jacob Hallen        -10
+Laura Creighton     -10
+Holger Krekel       -10
+Carl Friedrich Bolz -10
+Guido Wesdorp       -10 +134
+Leonardo Santagada  -10
+Alexandre Fayolle   -10
+Sylvain Thénault    -10
