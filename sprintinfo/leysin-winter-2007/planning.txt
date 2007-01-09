@@ -38,9 +38,9 @@ JIT
 
   - actually implement support for this in the rtyper and the jit...
 
-* have register allocation (Michael, Armin): IN-PROGRESS: redesigned the backend
-  interface a bit, adapted the llgraph and i386 backends to the changes. now:
-  fixing llvm and ppc backends
+* have register allocation (Michael, half Armin): IN-PROGRESS: redesigned the
+  backend interface a bit, adapted the llgraph and i386 backends to the
+  changes. now: fixing llvm and ppc backends
 
 
 py.test and the py-lib
@@ -50,6 +50,7 @@ py.test and the py-lib
   release it IN-PROGRESS (Holger, Maciek)
 
 * integrate api-doc and source-viewer on the py-lib web-page IN-PROGRESS
+  (Guido, Maciek around)
 
 * use source-viewer on more code? pypy? IN-PROGRESS
 
@@ -87,8 +88,8 @@ Integration and Configuration
 Other
 -----
 
-* progress on the JavaScript interpreter (Leonardo, Antonio): IN-PROGRESS, the
-  JS intepreter translates
+* progress on the JavaScript interpreter (Leonardo, half Armin): IN-PROGRESS,
+  the JS intepreter translates
 
 * Java backend
 
@@ -100,13 +101,13 @@ Other
 Discussions during the sprint
 =============================
 
-* status of wp6 and wp12
-
-* wp9 + wp10 + wp11 discussion
-
-* eu-report meeting
+* eu meeting: thursday 5pm
+  - status and plans for wp6 and wp12
+  - wp9 + wp10 + wp11 discussion
+  - eu-report meeting
 
 * pycon talk discussion
 
-* release plannings
+* release plannings: saturday 5pm
 
+* pypy and py-lib debian packaging discussion: thursday morning 10am
