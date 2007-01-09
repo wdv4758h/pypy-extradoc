@@ -11,49 +11,51 @@ People
  * Arre
  * Samuele
  * Carl Friedrich
-
-later
------
-
  * Laura
  * Jacob
  * Alexandre
  * Sylvain
  * Niko
+
+later
+-----
+
  * Eric
+
 
 Tasks
 =====
 
-
-
 JIT
 ---
 
-* "virtual frames"
+* "virtual frames" (Samuele, Arre): funfunfun. basic test is working,
+  manually written virtualizable structs can be change within the jit-generated
+  code and the changes are seen from outside. IN-PROGRESS
 
   - write a small interpreter that shows the performance problems without having
     to use the full pypy
 
   - actually implement support for this in the rtyper and the jit...
 
-* have register allocation
-
-(Michael, Armin, Arre, Samuele)
+* have register allocation (Michael, Armin): IN-PROGRESS: redesigned the backend
+  interface a bit, adapted the llgraph and i386 backends to the changes. now:
+  fixing llvm and ppc backends
 
 
 py.test and the py-lib
 ----------------------
 
 * polish the code and documentation of the py lib, and eventually
-  release it (Holger and Maciek to investigate)
+  release it IN-PROGRESS (Holger, Maciek)
 
-* integrate api-doc and source-viewer on the py-lib web-page
+* integrate api-doc and source-viewer on the py-lib web-page IN-PROGRESS
 
-* use source-viewer on more code? pypy?
+* use source-viewer on more code? pypy? IN-PROGRESS
 
-* provide code search facility
+* debian packaging for the py-lib: HUGE PROGRESS (Alexandre, Sylvain)
 
+* (provide code search facility)
 
 
 interpreter prototypes
@@ -71,7 +73,8 @@ interpreter prototypes
 Integration and Configuration
 -----------------------------
 
-* actually use the build tool during the sprint (Guido, Carl Friedrich)
+* actually use the build tool during the sprint (Guido, Carl Friedrich): DONE
+  WITH BUGS
 
 * think about py-lib and pypy debian packaging
 
@@ -84,13 +87,14 @@ Integration and Configuration
 Other
 -----
 
-* progress on the JavaScript interpreter (Leonardo, Antonio)
+* progress on the JavaScript interpreter (Leonardo, Antonio): IN-PROGRESS, the
+  JS intepreter translates
 
 * Java backend
 
 * discuss refinement interface for external functions
 
-* (make py-lib run on pypy-c)
+* (make py-lib run on pypy-c) PROGRESS: the compiler problems are fixed
 
 
 Discussions during the sprint
