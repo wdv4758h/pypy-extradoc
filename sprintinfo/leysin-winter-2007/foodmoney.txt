@@ -3,7 +3,7 @@ Anders Chrigstroem  -10 -8
 Samuele Pedroni     -10 -8
 Michael Hudson      -10 -8
 Niko Matsakis       
-Antonio Cuni        -10 -8
+Antonio Cuni        -10 -8 +8
 Maciej Fijalkowski  -10 -8 +110
 Eric van Riet Paap  
 Jacob Hallen        -10 -8
