@@ -16,11 +16,11 @@ People
  * Alexandre
  * Sylvain
  * Niko
+ * Eric
 
 later
 -----
 
- * Eric
 
 
 Tasks
@@ -31,32 +31,37 @@ JIT
 
 * "virtual frames" (Samuele, Arre): funfunfun. basic test is working,
   manually written virtualizable structs can be change within the jit-generated
-  code and the changes are seen from outside. IN-PROGRESS
+  code and the changes are seen from outside. 
+  started a new test, refactoring necessary. IN-PROGRESS
 
   - write a small interpreter that shows the performance problems without having
     to use the full pypy
 
   - actually implement support for this in the rtyper and the jit...
 
-* have register allocation (Michael, half Armin): IN-PROGRESS: redesigned the
-  backend interface a bit, adapted the llgraph and i386 backends to the
-  changes. now: fixing llvm and ppc backends
+* have register allocation: IN-PROGRESS: redesigned the
+  backend interface a bit, adapted all the backends to the changes. Michael
+  started completing the PPC backend, but is getting annoyed
+  Armin started working on register allocation on i386
+
 
 
 py.test and the py-lib
 ----------------------
 
 * polish the code and documentation of the py lib, and eventually
-  release it IN-PROGRESS (Holger, Maciek)
+  release it MORE PROGRESS
 
 * integrate api-doc and source-viewer on the py-lib web-page IN-PROGRESS
-  (Guido, Maciek around)
+  (Guido, Holger)
 
 * use source-viewer on more code? pypy? IN-PROGRESS
 
 * debian packaging for the py-lib: HUGE PROGRESS (Alexandre, Sylvain)
 
 * (provide code search facility)
+
+* detailed (and growing) TODO list in py/documentation/TODO.txt
 
 
 interpreter prototypes
@@ -74,7 +79,7 @@ interpreter prototypes
 Integration and Configuration
 -----------------------------
 
-* actually use the build tool during the sprint (Guido, Carl Friedrich): DONE
+* actually use the build tool during the sprint (Michael, Carl Friedrich): DONE
   WITH BUGS
 
 * think about py-lib and pypy debian packaging
@@ -88,14 +93,22 @@ Integration and Configuration
 Other
 -----
 
-* progress on the JavaScript interpreter (Leonardo, half Armin): IN-PROGRESS,
-  the JS intepreter translates
+* progress on the JavaScript interpreter (Leonardo, Maciek): IN-PROGRESS,
+  the JS intepreter translates. There is now an interactive interpreter.
 
-* Java backend
+* Java backend (Niko, Antonio): lot of random problems fixed, test_class runs
+  completely. test_pbc is next!
+
+* investigate why the annotator fails when doing --faassen with gencli?!
+  (Anto, general wizards around)
 
 * discuss refinement interface for external functions
 
 * (make py-lib run on pypy-c) PROGRESS: the compiler problems are fixed
+
+* "shadow tracking" (Carl Friedrich, Samuele), DONE
+
+* progress on the LLVM JIT code generator (Eric, Armin)
 
 
 Discussions during the sprint
@@ -110,4 +123,5 @@ Discussions during the sprint
 
 * release plannings: saturday 5pm
 
-* pypy and py-lib debian packaging discussion: thursday morning 10am
+* pypy and py-lib debian packaging discussion: thursday morning 11am
+  (Michael, Alexandre, Carl Friedrich, Sylvain)
