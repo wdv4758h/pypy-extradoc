@@ -3,7 +3,6 @@ People
 
  * Antonio
  * Leonardo
- * Holger
  * Guido
  * Maciek
  * Armin
@@ -21,6 +20,7 @@ People
 later
 -----
 
+ * Holger
 
 
 Tasks
@@ -32,7 +32,8 @@ JIT
 * "virtual frames" (Samuele, Arre): funfunfun. basic test is working,
   manually written virtualizable structs can be change within the jit-generated
   code and the changes are seen from outside. 
-  started a new test, refactoring necessary. IN-PROGRESS
+  some more tests pass. easy part of the hard part is about to start.
+  IN-PROGRESS
 
   - write a small interpreter that shows the performance problems without having
     to use the full pypy
@@ -42,7 +43,7 @@ JIT
 * have register allocation: IN-PROGRESS: redesigned the
   backend interface a bit, adapted all the backends to the changes. Michael
   started completing the PPC backend, but is getting annoyed
-  Armin started working on register allocation on i386
+  Armin did more work on register allocation on i386
 
 
 
@@ -52,16 +53,17 @@ py.test and the py-lib
 * polish the code and documentation of the py lib, and eventually
   release it MORE PROGRESS
 
-* integrate api-doc and source-viewer on the py-lib web-page IN-PROGRESS
-  (Guido, Holger)
+* integrate api-doc and source-viewer on the py-lib web-page
+  SLOW PROGRESS on rewrite the page generation to produce HTML directly
+  (Guido, Maciek)
 
 * use source-viewer on more code? pypy? IN-PROGRESS
 
-* debian packaging for the py-lib: HUGE PROGRESS (Alexandre, Sylvain)
+* debian packaging for the py-lib: DONE (need to port changes)
 
 * (provide code search facility)
 
-* detailed (and growing) TODO list in py/documentation/TODO.txt
+* detailed (and shrinking) TODO list in py/documentation/TODO.txt
 
 
 interpreter prototypes
@@ -79,8 +81,7 @@ interpreter prototypes
 Integration and Configuration
 -----------------------------
 
-* actually use the build tool during the sprint (Michael, Carl Friedrich): DONE
-  WITH BUGS
+* actually use the build tool during the sprint: FIXED SOME SMALL THINGS
 
 * think about py-lib and pypy debian packaging
 
@@ -95,20 +96,38 @@ Other
 
 * progress on the JavaScript interpreter (Leonardo, Maciek): IN-PROGRESS,
   the JS intepreter translates. There is now an interactive interpreter.
+  for loops, enough parsing machinery for EcmaTest
 
-* Java backend (Niko, Antonio): lot of random problems fixed, test_class runs
-  completely. test_pbc is next!
+* Java backend: lot of random problems fixed, test_class, test_pbc, test_list,
+  test_dict run completely. external functions, test_rdict are next!
 
 * investigate why the annotator fails when doing --faassen with gencli?!
-  (Anto, general wizards around)
+  (Anto, general wizards around) (same bug than in the build tool)
 
-* discuss refinement interface for external functions
+* discuss refinement interface for external functions SOME PROGRESS: annotation
+  part is mostly done (Maciek,  Michael)
 
 * (make py-lib run on pypy-c) PROGRESS: the compiler problems are fixed
 
 * "shadow tracking" (Carl Friedrich, Samuele), DONE
 
-* progress on the LLVM JIT code generator (Eric, Armin)
+* progress on the LLVM JIT code generator. PROGRESS: fixing operations of the
+  LLVM codegen (Eric, Armin)
+
+* progress on the translation of the parser branch (Adrien remotely, Sylvain,
+  Michael around)
+
+* add an option to translate.py to give a name to the executable (Alexandre,
+  Carl Friedrich)
+
+
+Report outline writing
+----------------------
+
+ * Guido, Carl Friedrich, Alexandre: WP13
+ * Guido, Carl Friedrich, Maciek: WP2
+ * Arre, Maciek, Armin, Anto: WP12
+ * Michael, Samuele, Carl Friedrich?: WP6
 
 
 Discussions during the sprint
@@ -125,3 +144,5 @@ Discussions during the sprint
 
 * pypy and py-lib debian packaging discussion: thursday morning 11am
   (Michael, Alexandre, Carl Friedrich, Sylvain)
+
+* there is the idea of doing a game evening friday
