@@ -1,16 +1,16 @@
-Armin Rigo          -10 -8 -8
-Anders Chrigstroem  -10 -8 -8
-Samuele Pedroni     -10 -8 -8
-Michael Hudson      -10 -8 -8
-Niko Matsakis       
-Antonio Cuni        -10 -8 +8 -8
-Maciej Fijalkowski  -10 -8 +110 -8
-Eric van Riet Paap   -8
-Jacob Hallen        -10 -8 -8
-Laura Creighton     -10 -8 -8
+Armin Rigo          -10 -8 -8 -8
+Anders Chrigstroem  -10 -8 -8 -8
+Samuele Pedroni     -10 -8 -8 -8
+Michael Hudson      -10 -8 -8 -8
+Niko Matsakis       -8
+Antonio Cuni        -10 -8 +8 -8 -8
+Maciej Fijalkowski  -10 -8 +110 -8 -8
+Eric van Riet Paap   -8 -8
+Jacob Hallen        -10 -8 -8 -8
+Laura Creighton     -10 -8 -8 -8
 Holger Krekel       -10 -8 -8
-Carl Friedrich Bolz -10 -8 -8
-Guido Wesdorp       -10 +134 -8 -8
-Leonardo Santagada  -10 -8 -8
-Alexandre Fayolle   -10 -8 +124 -8
-Sylvain Thénault    -10 -8 -
+Carl Friedrich Bolz -10 -8 -8 -8
+Guido Wesdorp       -10 +134 -8 -8 +125
+Leonardo Santagada  -10 -8 -8 -8
+Alexandre Fayolle   -10 -8 +124 -8 -8
+Sylvain Thénault    -10 -8 -8 -8
