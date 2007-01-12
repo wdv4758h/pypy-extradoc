@@ -124,10 +124,10 @@ Other
 Report outline writing
 ----------------------
 
- * Guido, Carl Friedrich, Alexandre: WP13
+ * Guido, Carl Friedrich, Alexandre: WP13 DONE
  * Guido, Carl Friedrich, Maciek: WP2
  * Arre, Maciek, Armin, Anto: WP12
- * Michael, Samuele, Carl Friedrich?: WP6
+ * Michael, Samuele, Carl Friedrich?: WP6 DONE
 
 
 Discussions during the sprint
