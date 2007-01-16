@@ -1,0 +1,66 @@
+=====================================================================
+PyPy Trillke "EU and beyond" srint (26th February - 4th March 2007)
+=====================================================================
+..                             image:: http://www.trillke.net/images/HausPanorama0304_113kb.jpg
+
+Some two years and thousands of commits later, the EU project
+period of the PyPy project is about to close ...  and a new
+period to begin: we are going for a sprint of three days of
+focusing on EU reports and administratative issues, and three
+days of happy hacking on the numerous interesting open ends of
+PyPy, the source code.  
+
+We also intend to discuss and state our view on the time after
+the EU period (March 2007 is the last EU funded month),
+because clearly the project will not stop after our successful
+(knock knock!) completion of the EU project.  It's already
+clear that some of us seriously plan for a relaxation time, 
+i.e. one without having many obligations.  But that should
+not keep us from thinking and envisioning the development 
+from April on.  
+
+So to the Sprint: we have two parts of the sprint, first the EU 
+and second the public all-invited part:: 
+
+    26th Feb - 28th Feb     EU reports and admin 
+    1st March               break day
+    2nd March - 4th March   public coding "beyond EU" sprint 
+
+All days are meant as full days, please arrive 25th Feb / 1st March 
+and leave 5th March to help our pairing and logistical planning. 
+
+---------------------------------------------
+Possible Topics for the coding sprint 
+---------------------------------------------
+
+* working on .NET, Java and other backends 
+
+* working on the Javascript Prolog frontends 
+
+* Tuning the JIT, refining approaches 
+
+* Fixing PyPy-1.0 problems / improving it (PyPy-1.0 is
+  scheduled for Mid February, btw) 
+
+* improving the py lib/py.test, build environments, preparing 
+  for server administration efforts from April on 
+
+* Work on/with prototypes that use the new features that PyPy enables:
+  distribution `[2]`_ (based on transparent proxying `[3]`_),
+  security `[4]`_, persistence `[5]`_, etc. `[6]`_.
+
+* discussion about the time after March, and how to
+  organize/co-orindate ourselves 
+
+* all topics that are of interest otherwise (including
+  maybe working on some particular EU related topics still!) 
+
+-----------------------
+Location & Accomodation
+-----------------------
+
+The sprint takes place at the Trillke Gut in Hildesheim,
+and we can possibly arrange for some private accomodation ... 
+
+XXX insert specific location and register information. 
+
