@@ -35,12 +35,12 @@ Possible Topics for the coding sprint
 
 * working on .NET, Java and other backends 
 
-* working on the Javascript Prolog frontends 
+* working on the Javascript, Prolog or a new frontend
 
-* Tuning the JIT, refining approaches 
+* Tuning the JIT, refining approaches
 
 * Fixing PyPy-1.0 problems / improving it (PyPy-1.0 is
-  scheduled for Mid February, btw) 
+  scheduled for Mid February, btw)
 
 * improving the py lib/py.test, build environments, preparing 
   for server administration efforts from April on 
