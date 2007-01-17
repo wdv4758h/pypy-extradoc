@@ -10,6 +10,7 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Holger Krekel        25th-5th       private
+Armin Rigo           ?              ?
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
