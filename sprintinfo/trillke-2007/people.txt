@@ -6,10 +6,6 @@ People who have a ``?`` in their arrive/depart or accomodation
 column are known to be coming but there are no details 
 available yet from them.
 
-Use ``Accomodation = Ermina`` for the group booking at the Chalets.
-Recommended arrival day is the 7th (there might not be enough rooms
-available if everybody shows up on the 6th!)
-
 ==================== ============== =====================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
@@ -31,7 +27,7 @@ Valentino Volonghi   ?              ?
 Boris Feigin	     ?              ?
 Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
-Beatrice Duering     ?              ?
+Beatrice Duering     25th         3rd		not solved yet
 Richard Emslie       ?              ?
 Johan Hahn           ?              ?
 Stephan Diehl        ?              ?
