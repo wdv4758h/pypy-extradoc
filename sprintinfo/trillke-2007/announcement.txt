@@ -37,7 +37,7 @@ Possible Topics for the coding sprint
 
 * working on the Javascript, Prolog or a new frontend
 
-* Tuning the JIT, refining approaches
+* Tuning the JIT, refining approaches `[1]`_
 
 * Fixing PyPy-1.0 problems / improving it (PyPy-1.0 is
   scheduled for Mid February, btw)
@@ -54,6 +54,13 @@ Possible Topics for the coding sprint
 
 * all topics that are of interest otherwise (including
   maybe working on some particular EU related topics still!) 
+
+.. _[1]: http://codespeak.net/pypy/dist/pypy/doc/jit.html
+.. _[2]: http://codespeak.net/svn/pypy/dist/pypy/lib/distributed/
+.. _[3]: http://codespeak.net/pypy/dist/pypy/doc/proxy.html
+.. _[4]: http://codespeak.net/pypy/dist/pypy/doc/project-ideas.html#security
+.. _[5]: http://codespeak.net/pypy/dist/pypy/doc/project-ideas.html#persistence
+.. _[6]: http://codespeak.net/pypy/dist/pypy/doc/project-ideas.html
 
 -----------------------
 Location & Accomodation
