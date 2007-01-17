@@ -11,6 +11,7 @@ available yet from them.
 ==================== ============== =====================
 Holger Krekel        25th-5th       private
 Armin Rigo           ?              ?
+Beatrice Duering     25th-3rd       not solved yet
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -28,7 +29,6 @@ Valentino Volonghi   ?              ?
 Boris Feigin	     ?              ?
 Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
-Beatrice Duering     25th         3rd		not solved yet
 Richard Emslie       ?              ?
 Johan Hahn           ?              ?
 Stephan Diehl        ?              ?
