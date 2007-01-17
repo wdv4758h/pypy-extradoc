@@ -1,12 +1,12 @@
 =====================================================================
-PyPy Trillke "EU and beyond" srint (26th February - 4th March 2007)
+PyPy Trillke "EU and beyond" sprint (26th February - 4th March 2007)
 =====================================================================
 ..                             image:: http://www.trillke.net/images/HausPanorama0304_113kb.jpg
 
 Some two years and thousands of commits later, the EU project
 period of the PyPy project is about to close ...  and a new
 period to begin: we are going for a sprint of three days of
-focusing on EU reports and administratative issues, and three
+focusing on EU reports and administrative issues, and three
 days of happy hacking on the numerous interesting open ends of
 PyPy, the source code.  
 
@@ -50,7 +50,7 @@ Possible Topics for the coding sprint
   security `[4]`_, persistence `[5]`_, etc. `[6]`_.
 
 * discussion about the time after March, and how to
-  organize/co-orindate ourselves 
+  organize/co-ordinate ourselves 
 
 * all topics that are of interest otherwise (including
   maybe working on some particular EU related topics still!) 
