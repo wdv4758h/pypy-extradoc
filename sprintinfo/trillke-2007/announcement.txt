@@ -1,14 +1,14 @@
 =====================================================================
-PyPy Trillke "EU and beyond" sprint (26th February - 4th March 2007)
+PyPy Trillke "EU and beyond!" sprint (26th February - 4th March 2007)
 =====================================================================
-..                             image:: http://www.trillke.net/images/HausPanorama0304_113kb.jpg
+..                   image:: http://www.trillke.net/images/HausPanorama0304_113kb.jpg
 
-Some two years and thousands of commits later, the EU project
-period of the PyPy project is about to close ...  and a new
-period to begin: we are going for a sprint of three days of
-focusing on EU reports and administrative issues, and three
-days of happy hacking on the numerous interesting open ends of
-PyPy, the source code.  
+Some two years and some thousands of commits later, the EU
+project period of the PyPy (http://codespeak.net/pypy) project
+is about to close ...  and a new period to begin: we are going
+for a sprint of three days of focusing on EU reports and
+administrative issues, and three days of happy hacking on the
+numerous interesting open ends of PyPy, the source code.    
 
 We also intend to discuss and state our view on the time after
 the EU period (March 2007 is the last EU funded month),
@@ -22,7 +22,7 @@ from April on.
 So to the Sprint: we have two parts of the sprint, first the EU 
 and second the public all-invited part:: 
 
-    26th Feb - 28th Feb     EU reports and admin 
+    26th Feb - 28th Feb     EU reports and adminstration
     1st March               break day
     2nd March - 4th March   public coding "beyond EU" sprint 
 
@@ -63,11 +63,58 @@ Possible Topics for the coding sprint
 .. _[6]: http://codespeak.net/pypy/dist/pypy/doc/project-ideas.html
 
 -----------------------
-Location & Accomodation
+Location 
 -----------------------
 
-The sprint takes place at the Trillke Gut in Hildesheim,
-and we can possibly arrange for some private accomodation ... 
+The sprint takes place at the 
 
-XXX insert specific location and register information. 
+    Trillke Gut 
+    Steinbestr. 42
+    Hildesheim, Germany 
+
+If you come to Hildesheim main station, take the 
+
+    bus Number 3 (Hildesheimer Wald)
+
+and get out at "Waldquelle".  Going back a 100 meters gets you
+to a small street leading to a big white building, the
+Trillke Gut. 
+
+We'll have at least one larger room for sprinting,
+and a kitchen for our use.  
+
+-----------------------
+Accomodation 
+-----------------------
+
+We can probably arrange for some cheap or no-cost private 
+accomodation, in private rooms located up in the house 
+(and being part of "living groups" of 5-10 people).  
+
+There also is a nice Guest house that has been used
+during recent events: 
+
+    http://www.gaestehaus-klocke.de/
+
+and a four-star hotel 500 meters away from the Trillke:
+
+    http://www.berghoelzchen.de/
+
+-----------------------
+Registration
+-----------------------
+
+please subscribe to the pypy-sprint mailing list 
+
+  http://codespeak.net/mailman/listinfo/pypy-sprint
+
+and register by subversion: 
+
+  http://codespeak.net/svn/pypy/extradoc/sprintinfo/trillke-2007/people.txt
+
+or - if you have no checkin-rights - post to the pypy-sprint list
+above. 
+
+
+
 
