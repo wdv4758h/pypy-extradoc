@@ -1,5 +1,5 @@
 =====================================================================
-PyPy Trillke "EU and beyond!" sprint (26th February - 4th March 2007)
+PyPy Trillke "EU and beyond!" sprint (1st- 5th March 2007)
 =====================================================================
 ..                   image:: http://www.trillke.net/images/HausPanorama0304_113kb.jpg
 
@@ -23,7 +23,7 @@ So to the Sprint: we have two parts of the sprint, first the EU
 and second the public all-invited part:: 
 
     26th Feb - 28th Feb     EU reports and adminstration
-    1st March               break day
+    1st March               break day / arrival for coding sprint
     2nd March - 4th March   public coding "beyond EU" sprint 
 
 All days are meant as full days, please arrive 25th Feb / 1st March 
