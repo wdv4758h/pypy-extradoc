@@ -1,6 +1,6 @@
 import py
 print py.__file__
-from py.__.documentation.conftest import Directory, DoctestText, ReSTChecker
+from py.__.doc.conftest import Directory, DoctestText, ReSTChecker
 
 class PyPyDoctestText(DoctestText): 
 
