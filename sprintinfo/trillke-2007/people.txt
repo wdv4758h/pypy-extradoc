@@ -13,6 +13,7 @@ Holger Krekel        25th-5th       private
 Armin Rigo           ?              ?
 Beatrice Duering     25th-3rd       not solved yet
 Carl Friedrich Bolz  25th-5th       ?
+Lene Wagner          25th-5th       private
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
