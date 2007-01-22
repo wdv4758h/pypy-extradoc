@@ -14,6 +14,7 @@ Armin Rigo           ?              ?
 Beatrice Duering     25th-3rd       not solved yet
 Carl Friedrich Bolz  25th-5th       ?
 Lene Wagner          25th-5th       private
+Michael Hudson       26th-5th       no idea
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -22,7 +23,6 @@ People on the following list were present at previous sprints:
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
 Christian Tismer     ?              ?
-Michael Hudson       ?              ?
 Anders Lehmann       ?              ?
 Niklaus Haldimann    ?              ?
 Lene Wagner          ?              ?
