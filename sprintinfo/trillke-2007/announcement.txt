@@ -1,14 +1,15 @@
-=====================================================================
-PyPy Trillke "EU and beyond!" sprint ((25th-) 1st- 5th March 2007)
-=====================================================================
+=========================================================================
+PyPy Trillke "EU and beyond!" sprints (25th-28th and 1st-5th March 2007)
+=========================================================================
 ..                   image:: http://www.trillke.net/images/HausPanorama0304_113kb.jpg
 
 Some two years and some thousands of commits later, the EU
 project period of the PyPy (http://codespeak.net/pypy) project
 is about to close ...  and a new period to begin: we are going
 for a sprint of three days of focusing on EU reports and
-administrative issues, and three days of happy hacking on the
-numerous interesting open ends of PyPy, the source code.    
+administrative issues, and another three day sprint of happy 
+hacking on the numerous interesting open ends of PyPy, 
+the source code.    
 
 We also intend to discuss and state our view on the time after
 the EU period (March 2007 is the last EU funded month),
@@ -22,12 +23,13 @@ from April on.
 So to the Sprint: we have two parts of the sprint, first the EU 
 and second the public all-invited part:: 
 
-    26th Feb - 28th Feb     EU reports and adminstration
+    26th Feb - 28th Feb     EU reports and adminstrative sprint
     1st March               break day / arrival for coding sprint
-    2nd March - 4th March   public coding "beyond EU" sprint 
+    2nd March - 4th March   public coding "beyond EU" sprint days
 
-All days are meant as full days, please arrive 25th Feb / 1st March 
-and leave 5th March to help our pairing and logistical planning. 
+All days are meant as full days, so please arrive 25th Feb / 1st March 
+and leave 5th March if you can (this help us with pairing, introductions 
+and logistical planning). 
 
 ---------------------------------------------
 Possible Topics for the coding sprint 
