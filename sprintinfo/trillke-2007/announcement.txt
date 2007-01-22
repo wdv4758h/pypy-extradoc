@@ -1,5 +1,5 @@
 =====================================================================
-PyPy Trillke "EU and beyond!" sprint (1st- 5th March 2007)
+PyPy Trillke "EU and beyond!" sprint ((25th-) 1st- 5th March 2007)
 =====================================================================
 ..                   image:: http://www.trillke.net/images/HausPanorama0304_113kb.jpg
 
