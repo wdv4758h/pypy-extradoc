@@ -1,7 +1,7 @@
 =========================================================================
-PyPy Trillke "EU and beyond!" sprints (25th-28th and 1st-5th March 2007)
+PyPy Trillke "EU and beyond!" sprints (25-28th Feb, 1-5th March 2006)
 =========================================================================
-..                   image:: http://www.trillke.net/images/HausPanorama0304_113kb.jpg
+..    image:: http://www.trillke.net/images/HausPanorama0304_113kb.jpg
 
 Some two years and some thousands of commits later, the EU
 project period of the PyPy (http://codespeak.net/pypy) project
@@ -73,7 +73,6 @@ The sprint takes place at the
     Trillke Gut 
     Steinbergstr. 42
     Hildesheim, Germany 
-
     http://www.trillke.net
 
 If you come to Hildesheim main station, take the 
@@ -118,7 +117,3 @@ and register by subversion:
 
 or - if you have no checkin-rights - post to the pypy-sprint list
 above. 
-
-
-
-
