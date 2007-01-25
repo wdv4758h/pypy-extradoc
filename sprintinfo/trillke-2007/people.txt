@@ -16,6 +16,7 @@ Carl Friedrich Bolz  25th-5th       ?
 Lene Wagner          25th-5th       private
 Michael Hudson       26th-5th       no idea
 Maciej Fijalkowski   ?-5th          no idea
+Stephan Diehl        2nd-4th        no idea
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
