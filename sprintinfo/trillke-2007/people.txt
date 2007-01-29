@@ -14,7 +14,7 @@ Armin Rigo           ?              ?
 Beatrice Duering     25th-3rd       not solved yet
 Carl Friedrich Bolz  25th-5th       ?
 Lene Wagner          25th-5th       private
-Michael Hudson       26th-5th       no idea
+Michael Hudson       27th-5th       no idea
 Maciej Fijalkowski   ?-5th          no idea
 Stephan Diehl        2nd-4th        no idea
 Antonio Cuni         25th-5th       no idea
