@@ -18,6 +18,8 @@ Michael Hudson       27th-5th       no idea
 Maciej Fijalkowski   ?-5th          no idea
 Stephan Diehl        2nd-4th        no idea
 Antonio Cuni         25th-5th       no idea
+Samuele Pedroni      25th-5th       TBD
+Anders Chrigström    25th-5th       TBD
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
