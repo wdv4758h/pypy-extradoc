@@ -39,7 +39,7 @@ sure that the security prototype is not misunderstood to be some sort of
 sandboxing. According to Armin it is a major effort to clean up all these areas and
 get a good level of documentation.
 
-At this point the meeting side-tracked into discussing the state of the JIT and
+At this point the meeting we started discussing the state of the JIT and
 the next steps in this area and the general question how to approach development
 during the rest of the EU funding. According to Armin it is expected that the
 JIT starts producing non-horrible code "any day or week now". Since the
@@ -58,14 +58,15 @@ a 1.0 release. Holger and Carl Friedrich noted that there are a lot of
 interesting features in PyPy even without the JIT working. Then the discussion
 moved to the expectations of the EU reviewers. The reviewers we had at the last
 review meeting were not too interested in the JIT but more in things like
-aspects, constraint and logic programming. The state of PyPy in these areas is
-unclear.
+aspects, constraint and logic programming.  However, the current state 
+of PyPy in these areas is not completely obvious to the people 
+attending the meeting. 
 
-After a lengthy discussion about what is needed to pass the EU review, we got
-back to time planning. Armin proposed to check the state of the JIT again on
-Monday to see how far it improved over the weekend. It was also decided that we
-would meet again on Wednesday, February 7th at 11.00 to discuss the release work
-distribution in detail.
+It then was agreed to check the state of the JIT again on
+Monday to see how far it improved over the weekend. It was
+also decided that we would meet again on Wednesday, February
+7th at 11.00 to discuss the release work distribution in
+detail.
 
 Task Planning
 =============
