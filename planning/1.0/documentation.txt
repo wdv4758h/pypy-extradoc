@@ -21,6 +21,8 @@ objspace-proxies.txt:
 
    * security prototype
 
+   * thunk space (move from objspace.txt)
+
 
 jit.txt: copy introduction from pypy-dev e-mail, add examples of nice colors
 
