@@ -41,49 +41,53 @@ jit.txt: copy introduction from pypy-dev e-mail, add examples of nice colors
          (arigo)
 
 
-improve getting-started
+improve getting-started (cfbolz, partially)
 
 short how to compile on windows (based on docstring of goal/win32/gc_patch_windows.py) (antocuni)
 
 release announcement
 
+architecture.txt: should maybe grow a bit or at least have an updated "status"
+section.
+
+contributor.txt: needs to be updated
 
 review - check (or decide to ignore) the following .txt files. Pay
 particular attention to update the release number showed in the output
 of some examples:
 
-   * architecture.txt
    * coding-guide.txt
-   * configuration.txt
+   * configuration.txt (cfbolz)
    * constraints-and-logic.txt
    * contact.txt
-   * contributor.txt
    * dev_method.txt
-   * dynamic-language-translation.txt
+   * dynamic-language-translation.txt (old report, leave as it is? or remove and
+                                       point to the report?)
+
+
    * eventhistory.txt
    * extcompiler.txt
    * extradoc.txt
-   * faq.txt
-   * garbage_collection.txt
-   * geninterp.txt
-   * getting-started.txt
-   * glossary.txt
+   * faq.txt (add questions and answers)
+   * garbage_collection.txt (out of date)
+   * geninterp.txt (incomplete)
+   * glossary.txt (add terms)
    * how-to-release.txt
    * howto-logicobjspace-0.9.txt
-   * index-report.txt
-   * index.txt
+   * index-report.txt (shouldn't be changed, I guess)
    * interpreter.txt
-   * low-level-encapsulation.txt
+   * low-level-encapsulation.txt (old report, leave as it is? or remove and
+                                  point to the report?)
    * objspace.txt
-   * parser.txt
+   * parser.txt (horribly incomplete)
    * project-ideas.txt
    * pyontology.txt
    * rctypes.txt
-   * rlib.txt
+   * rlib.txt (cfbolz)
    * rtyper.txt
-   * sprint-reports.txt
+   * sprint-reports.txt (shouldn't be changed, I guess)
    * stackless.txt
-   * standalone-howto.txt
+   * standalone-howto.txt (remove/or update)
    * svn-help.txt
    * theory.txt
    * translation-aspects.txt
