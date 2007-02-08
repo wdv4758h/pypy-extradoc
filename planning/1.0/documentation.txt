@@ -19,7 +19,7 @@ config pages, for all the options.
 Link to the other pages as much as possible.
 
 
-pypy.net      - also update translation.txt
+pypy.net      - also update translation.txt (antocuni)
 
 
 js backend    - is there something to update in translation.txt?
@@ -43,6 +43,7 @@ jit.txt: copy introduction from pypy-dev e-mail, add examples of nice colors
 
 improve getting-started
 
+short how to compile on windows (based on docstring of goal/win32/gc_patch_windows.py) (antocuni)
 
 release announcement
 
