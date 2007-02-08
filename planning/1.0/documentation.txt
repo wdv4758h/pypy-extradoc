@@ -48,7 +48,9 @@ short how to compile on windows (based on docstring of goal/win32/gc_patch_windo
 release announcement
 
 
-review - check (or decide to ignore) the following .txt files:
+review - check (or decide to ignore) the following .txt files. Pay
+particular attention to update the release number showed in the output
+of some examples:
 
    * architecture.txt
    * coding-guide.txt
