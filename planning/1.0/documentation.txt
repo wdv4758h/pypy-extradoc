@@ -23,7 +23,7 @@ pypy.net      - also update translation.txt
 
 
 js backend    - is there something to update in translation.txt?
-
+                 BasicExternal approach, external functions? (fijal)
 
 object-optimizations.txt.  I guess we take text from the EU report.
 
