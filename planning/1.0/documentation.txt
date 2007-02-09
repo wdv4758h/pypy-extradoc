@@ -26,13 +26,14 @@ faq.txt: write answers (arigo, fijal, cfbolz)
 
 
 improve getting-started (cfbolz, partially)
+ XXX put the windows things into their own file?
+ XXX add optional tools needed
 
 short how to compile on windows (based on docstring of goal/win32/gc_patch_windows.py) (antocuni)
 
 release announcement
 
-architecture.txt: should maybe grow a bit or at least have an updated "status"
-section.
+architecture.txt: should grow a bit and have an updated "status" section.
 
 contributor.txt: needs to be updated
 
@@ -42,7 +43,7 @@ review - check (or decide to ignore) the following .txt files. Pay
 particular attention to update the release number showed in the output
 of some examples:
 
-   * coding-guide.txt
+   * coding-guide.txt (reviewed by cfbolz)
    * configuration.txt (cfbolz)
    * constraints-and-logic.txt
    * contact.txt
