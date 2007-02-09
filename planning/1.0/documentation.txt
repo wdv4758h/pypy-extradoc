@@ -2,17 +2,7 @@ Documentation for release 1.0
 ================================
 
 
-index.txt: reorder the categories:
-
-   * Meta-Documentation (about PyPy, coding, talks, etc.)
-
-   * User Documentation (for the PyPy user): getting started,
-     how to translate, and new Python features
-
-   * Status
-
-   * Source Code Documentation,
-     ending with directory cross-reference
+index.txt: review the directory cross-reference (arigo)
 
 
 config pages, for all the options.
@@ -25,16 +15,7 @@ pypy.net      - also update translation.txt (antocuni)
 js backend    - is there something to update in translation.txt?
                  BasicExternal approach, external functions? (fijal)
 
-object-optimizations.txt.  I guess we take text from the EU report.
-
-
-objspace-proxies.txt:  (arigo)
-
-   * transparent proxies
-
-   * security prototype
-
-   * thunk space (move from objspace.txt)
+object-optimizations.txt.  (arigo)
 
 
 jit.txt: copy introduction from pypy-dev e-mail, add examples of nice colors
