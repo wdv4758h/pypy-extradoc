@@ -36,6 +36,8 @@ section.
 
 contributor.txt: needs to be updated
 
+theory.txt: add specialization
+
 review - check (or decide to ignore) the following .txt files. Pay
 particular attention to update the release number showed in the output
 of some examples:
@@ -72,6 +74,5 @@ of some examples:
    * stackless.txt
    * standalone-howto.txt (remove/or update)
    * svn-help.txt
-   * theory.txt
    * translation-aspects.txt
    * translation.txt
