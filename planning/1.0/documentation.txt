@@ -22,6 +22,9 @@ jit.txt: copy introduction from pypy-dev e-mail, add examples of nice colors
          (arigo)
 
 
+faq.txt: write answers (arigo, fijal, cfbolz)
+
+
 improve getting-started (cfbolz, partially)
 
 short how to compile on windows (based on docstring of goal/win32/gc_patch_windows.py) (antocuni)
@@ -49,7 +52,6 @@ of some examples:
    * eventhistory.txt
    * extcompiler.txt
    * extradoc.txt
-   * faq.txt (add questions and answers)
    * garbage_collection.txt (out of date)
    * geninterp.txt (incomplete)
    * glossary.txt (add terms)
