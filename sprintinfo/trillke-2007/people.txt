@@ -20,6 +20,7 @@ Stephan Diehl        2nd-4th        no idea
 Antonio Cuni         25th-5th       no idea
 Samuele Pedroni      25th-5th       TBD
 Anders Chrigström    25th-5th       TBD
+Christian Tismer     28th-5th       Klocke
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
