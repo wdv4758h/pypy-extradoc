@@ -9,7 +9,7 @@ config pages, for all the options.
 Link to the other pages as much as possible.
 
 
-pypy.net      - also update translation.txt (antocuni)
+pypy.net      - also update translation.txt (antocuni, done)
 
 
 js backend    - is there something to update in translation.txt?
@@ -29,7 +29,8 @@ improve getting-started (cfbolz, partially)
  XXX put the windows things into their own file?
  XXX add optional tools needed
 
-short how to compile on windows (based on docstring of goal/win32/gc_patch_windows.py) (antocuni)
+short how to compile on windows (based on docstring of
+goal/win32/gc_patch_windows.py) (antocuni, done)
 
 release announcement
 
