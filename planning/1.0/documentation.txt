@@ -76,4 +76,5 @@ of some examples:
    * standalone-howto.txt (remove/or update)
    * svn-help.txt
    * translation-aspects.txt
-   * translation.txt
+   * translation.txt (contains long standing XXXd sections, kill them
+                      or put something in them)
