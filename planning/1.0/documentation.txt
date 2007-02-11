@@ -15,11 +15,8 @@ pypy.net      - also update translation.txt (antocuni, done)
 js backend    - is there something to update in translation.txt?
                  BasicExternal approach, external functions? (fijal)
 
-object-optimizations.txt.  (arigo)
 
-
-jit.txt: copy introduction from pypy-dev e-mail, add examples of nice colors
-         (arigo)
+jit.txt: add examples of nice colors - postponed
 
 
 faq.txt: write answers (arigo, fijal, cfbolz)
@@ -53,7 +50,6 @@ of some examples:
                                        point to the report?)
 
 
-   * eventhistory.txt
    * extcompiler.txt
    * extradoc.txt
    * garbage_collection.txt (out of date)
