@@ -1,9 +1,9 @@
 Testing and testing infrastructure for release 1.0
 ====================================================
 
-compliance tests for pypy-c's: (pedronis) testing it
+compliance tests for pypy-c's: (pedronis) done
 
-pypy-c py.test -A tests: in-progress, fixing to be tested
+pypy-c py.test -A tests: they run nightly => triggered fixes
 
 windows testing: antocuni, http://scottdial.com/pypytest/summary.html (?)
 
