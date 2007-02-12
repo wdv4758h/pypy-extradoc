@@ -118,8 +118,16 @@ JavaScript backend:
 JavaScript example one (console):
 =================================
 
+.. raw:: html
+
+   <a href="http://localhost:8001">Here</a>
+
 JavaScript example two (Bub'n'Bros):
 ====================================
+
+.. raw:: html
+
+   <a href="http://localhost:8080">Here</a>
 
 Transparent proxy:
 ==================

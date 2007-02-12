@@ -4,12 +4,13 @@ necessary stuff for viewing pypy's presentation
 """
 
 import py
-from pypy.translator.js.examples import server
+from pypy.translator.js.lib import server
 
 from pypy.rpython.ootypesystem.bltregistry import MethodDesc, BasicExternal,\
      described
 from pypy.translator.js import commproxy
 from pypy.translator.js.main import rpython2javascript
+from pypy.translator.js.lib.support import callback
 
 from pypy.translator.interactive import Translation
 
@@ -42,32 +43,32 @@ class ExportedMethods(BasicExternal):
 
         self.t2 = Translation(f)
 
-    @described(retval=None)
+    @callback(retval=None)
     def flow_basic(self):
         self._create_t()
         self.t.view()
 
-    @described(retval=None)
+    @callback(retval=None)
     def annotate_basic(self):
         self._create_t()
         self.t.annotate([int])
         self.t.view()
 
-    @described(retval=None)
+    @callback(retval=None)
     def rtype_basic(self):
         self._create_t()
         self.t.annotate([int])
         self.t.rtype()
         self.t.view()
 
-    @described(retval=None)
+    @callback(retval=None)
     def example(self):
         self._create_t2()
         self.t2.annotate()
         self.t2.rtype()
         self.t2.view()
 
-    @described(retval=None)
+    @callback(retval=None)
     def const_fold(self):
         self._create_t2()
         self.t2.backendopt()
@@ -99,4 +100,4 @@ class Handler(server.TestHandler):
     style_css.exposed = True
 
 if __name__ == '__main__':
-    server.start_server(server_address=('localhost', 7070), handler=Handler, start_new=False)
+    server.create_server(server_address=('localhost', 7071), handler=Handler).serve_forever()
