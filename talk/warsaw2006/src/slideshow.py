@@ -20,7 +20,7 @@ class Page:
             self.show(self.counter)
 
     def delete_nodes(self):
-        content = dom.get_document().getElementById("contentspace")
+        content = dom.document.getElementById("contentspace")
         for child in content.childNodes[:]:
             content.removeChild(child)
         content.style.position = "absolute"
@@ -28,7 +28,7 @@ class Page:
         content.style.left = "170px"
 
     def show(self, num):
-        content = dom.get_document().getElementById("contentspace")
+        content = dom.document.getElementById("contentspace")
         if len(content.childNodes) > 0:
             content.removeChild(content.childNodes[0])
         content.appendChild(self.pages[num])
@@ -44,13 +44,13 @@ def keydown(key):
         page.left()
 
 def show():
-    elements = [i for i in dom.get_document().getElementsByTagName('div')\
+    elements = [i for i in dom.document.getElementsByTagName('div')\
                 if i.getAttribute('class')=='section']
 
     page.set_pages(elements)
     page.delete_nodes()
     page.show(0)
-    dom.get_document().onkeypress = keydown
+    dom.document.onkeypress = keydown
     #createLoggingPane(True)
 
 def comeback(msg):
