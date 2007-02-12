@@ -21,6 +21,7 @@ Antonio Cuni         25th-5th       no idea
 Samuele Pedroni      25th-5th       TBD
 Anders Chrigström    25th-5th       TBD
 Christian Tismer     28th-5th       Klocke
+Alix Einfeldt        25th-5th       private
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
