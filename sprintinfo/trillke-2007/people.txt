@@ -23,6 +23,7 @@ Anders Chrigström    25th-5th       TBD
 Christian Tismer     28th-5th       Klocke
 Alix Einfeldt        25th-5th       private
 Alexander Schremmer  1st-5th        no idea
+Guido Wesdorp        26th-5th       ?
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
