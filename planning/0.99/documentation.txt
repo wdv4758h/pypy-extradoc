@@ -10,19 +10,10 @@ improve getting-started (cfbolz, partially)
 important cross-check that things still works, update links...
 
 contributor.txt: needs to be updated
-
-config pages, for all the options.
-Link to the other pages as much as possible.
+README and LICENSE too
 
 consult, improve *how-to-release.txt*
 
-Leave as is?
-
-   * dynamic-language-translation.txt (old report, leave as it is? or remove and
-                                       point to the report?)
-
-   * low-level-encapsulation.txt (old report, leave as it is? or remove and
-                                  point to the report?)
 
 Done, postponed
 =====================
