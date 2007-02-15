@@ -16,9 +16,6 @@ faq.txt: write answers (arigo, fijal, cfbolz) complete!
 config pages, for all the options.
 Link to the other pages as much as possible.
 
-js backend    - is there something to update in translation.txt?
-                 BasicExternal approach, external functions? (fijal)
-
 consult, improve *how-to-release.txt*
 
 Leave as is?
