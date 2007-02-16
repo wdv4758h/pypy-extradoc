@@ -9,17 +9,16 @@ improve getting-started (cfbolz, partially)
 
 important cross-check that things still works, update links...
 
-contributor.txt: needs to be updated
-README and LICENSE too
-
 consult, improve *how-to-release.txt*
 
 
 Done, postponed
 =====================
 
-faq.txt: done for now.
+contributor.txt: needs to be updated
+EADME and LICENSE too: done
 
+faq.txt: done for now.
 
 index.txt: review the directory cross-reference (done)
 
