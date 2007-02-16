@@ -15,8 +15,7 @@ consult, improve *how-to-release.txt*
 Done, postponed
 =====================
 
-contributor.txt: needs to be updated
-EADME and LICENSE too: done
+contributor.txt, README and LICENSE: done
 
 faq.txt: done for now.
 
