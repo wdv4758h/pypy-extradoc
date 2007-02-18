@@ -27,6 +27,7 @@ Jens-Uwe Mager       1-4th??        private
 Holger Krekel        25th-8th       private
 Alix Einfeldt        25th-8th       private
 Lene Wagner          25th-8th       private
+Richard Emslie       ?-5th          ?
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -42,7 +43,6 @@ Valentino Volonghi   ?              ?
 Boris Feigin	     ?              ?
 Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
-Richard Emslie       ?              ?
 Johan Hahn           ?              ?
 Niko Matsakis        ?              ?
 ==================== ============== =====================
