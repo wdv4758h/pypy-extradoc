@@ -10,8 +10,8 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Beatrice Duering     25th-3rd       Klocke
-Samuele Pedroni      25th-5th       Klocke
-Anders Chrigström    25th-5th       Klocke
+Samuele Pedroni      25th-5th       Parkhotel Berghölzchen
+Anders Chrigström    25th-5th       Parkhotel Berghölzchen
 Christian Tismer     28th-5th       Klocke
 Anders Sigfridsson   2-4th          klocke
 Michael Hudson       27th-5th       klocke
