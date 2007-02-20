@@ -27,7 +27,8 @@ Jens-Uwe Mager       1-4th??        private
 Holger Krekel        25th-8th       private
 Alix Einfeldt        25th-8th       private
 Lene Wagner          25th-8th       private
-Richard Emslie       ?-5th          ?
+Richard Emslie       ?-5th          (klocke)
+Stefan Busemann      26th-28th      klocke
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -35,7 +36,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
-Christian Tismer     ?              ?
 Anders Lehmann       ?              ?
 Niklaus Haldimann    ?              ?
 Amaury Forgeot d'Arc ?              ?
