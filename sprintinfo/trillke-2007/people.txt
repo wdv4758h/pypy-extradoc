@@ -13,22 +13,22 @@ Beatrice Duering     25th-3rd       Klocke
 Samuele Pedroni      25th-5th       Parkhotel Berghölzchen
 Anders Chrigström    25th-5th       Parkhotel Berghölzchen
 Christian Tismer     28th-5th       Klocke
-Anders Sigfridsson   2-4th          klocke
+Anders Sigfridsson   1st-5thth      klocke
 Michael Hudson       27th-5th       klocke
 Antonio Cuni         25th-5th       klocke
-TAV?                 1-4th?         undetermined
+Richard Emslie       27thh          klocke
+Stefan Busemann      26th-28th      klocke
+TAV?                 1st-4th?       undetermined
 Stephan Diehl        2nd-4th        private/shared alex
 Alexander Schremmer  1st-5th        private/shared stephan
 Maciej Fijalkowski   28-6th+X       private
 Guido Wesdorp        26th-5th       private 
 Carl Friedrich Bolz  25th-6th       private 
 Armin Rigo           26th-6+X       private
-Jens-Uwe Mager       1-4th??        private
+Jens-Uwe Mager       1st-4th??      private
 Holger Krekel        25th-8th       private
 Alix Einfeldt        25th-8th       private
 Lene Wagner          25th-8th       private
-Richard Emslie       ?-5th          (klocke)
-Stefan Busemann      26th-28th      klocke
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
