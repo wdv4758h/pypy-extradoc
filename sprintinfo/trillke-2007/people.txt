@@ -18,7 +18,6 @@ Michael Hudson       27th-5th       klocke
 Antonio Cuni         25th-5th       klocke
 Richard Emslie       27thh          klocke
 Stefan Busemann      26th-28th      klocke
-TAV?                 1st-4th?       undetermined
 Stephan Diehl        2nd-4th        private/shared alex
 Alexander Schremmer  1st-5th        private/shared stephan
 Maciej Fijalkowski   28-6th+X       private
