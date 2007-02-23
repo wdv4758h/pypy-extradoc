@@ -1,7 +1,21 @@
+import os
+if not hasattr(os, 'utime'):
+    os.utime = lambda f:0
+try:
+    import stackless, types
+    stackless.function = types.FunctionType
+    stackless.instancemethod = types.MethodType
+except ImportError:
+    pass
+
 from nevow import inevow, tags, loaders, rend, appserver
 from twisted.application import internet, service
+from twisted.internet import reactor
 from zope.interface import implements
 import random
+
+import sys
+sys.modules['syslog'] = internet
 
 class GetItem(object):
     implements(inevow.IResource)
@@ -41,7 +55,7 @@ class Root(rend.Page):
    Get Item: <input name="item" />
   </form>
   <form action="setitem" method="POST">
-   Set Item: <input name="item" /> <input name="value" />
+   Set Item: <input name="item" /> <input name="value" /> <input value="Submit" type="submit"/>
   </form>
  </body>
 </html>
@@ -52,7 +66,7 @@ class Root(rend.Page):
 theList = range(10)
 random.shuffle(theList)
 
-application = service.Application("pydoctor demo")
+application = service.Application("silly list server")
 
 root = Root(theList)
 root.putChild('getitem', GetItem(theList))
@@ -64,3 +78,5 @@ internet.TCPServer(
         root
     )
 ).setServiceParent(application)
+
+
