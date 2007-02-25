@@ -20,6 +20,7 @@ Richard Emslie       27thh          klocke
 Stefan Busemann      26th-28th      klocke
 Stephan Diehl        2nd-4th        private/shared alex
 Alexander Schremmer  1st-5th        private/shared stephan
+Georg Brandl         1st-5th        private
 Maciej Fijalkowski   28-6th+X       private
 Guido Wesdorp        26th-5th       private 
 Carl Friedrich Bolz  25th-6th       private 
