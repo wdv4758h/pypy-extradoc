@@ -1,4 +1,5 @@
 from py.__.doc.confrest import *
+import py
 
 class PyPyPage(Page): 
     def fill(self):
@@ -14,6 +15,10 @@ class PyPyPage(Page):
                    class_="menu"), 
             " ", id="menubar")
 
+    def get_doclink(self, target):
+        return relpath(self.targetpath.strpath,
+                       self.project.get_docpath().join(target).strpath)
+
 class Project(Project): 
     title = "PyPy" 
     stylesheet = 'http://codespeak.net/pypy/dist/pypy/doc/style.css'
@@ -25,5 +30,8 @@ class Project(Project):
                      src="http://codespeak.net/pypy/img/py-web1.png", 
                      height=110, width=149)))
     Page = PyPyPage 
+    mydir = py.magic.autopath().dirpath()
+    def get_docpath(self):
+        return self.mydir
 
 
