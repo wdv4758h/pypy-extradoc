@@ -1,0 +1,6 @@
+Title: PyPy, the implementation of Python in Python
+Abstract: We'd like to present the PyPy project, which is both
+very very flexible compiler toolchain, which translates restricted subset
+of python to variety of languages (C, LLVM, CLI, JVM, JavaScript...) and
+implementation of a Python interpreter, with many novel features, including
+Psyco-style specializing JIT, stackless-like coroutines and many others.
