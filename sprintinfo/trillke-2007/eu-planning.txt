@@ -1,0 +1,23 @@
+=======================================
+EU admin/report writing sprint planning
+=======================================
+
+people present: Holger, Lene, Anto, Samuele, Arre, Bea, Carl Friedrich, Guido
+
+
+ * D2.1 (Holger at the beginning, Guido)
+ * D14.2 (Lene at the beginning)
+ * Management report, periodic activity report, D01.X (Lene, Bea)
+ * final activity report, brainstorming (Lene, Bea, Holger)
+ * D12.1 discussion (Anto, Arre, Samuele, Holger)
+ * D13.1 (Guido, Carl Friedrich)
+ * finalize D7.1 (Carl Friedrich)
+
+Todo:
+=====
+
+ * discuss external reviewers
+ * discuss D10.1 and D11.1
+ * statistic session
+ * strategy discussion about D14.4
+ * the "avoid and abolish redundancy"-discussion
