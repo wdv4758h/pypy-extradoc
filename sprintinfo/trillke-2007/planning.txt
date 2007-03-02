@@ -1,0 +1,50 @@
+============================
+Trillke Sprint 2007 Planning
+============================
+
+People present: Michael, Arre, Stephan, Anto, Guido, Armin, Maciek, Bea, 
+                Samuele, Georg, Alexander, Holger, Carl Friedrich, Anders
+
+Tutorial: Georg, Anders
+
+ * think a bit about what needs to be done for 1.0
+
+ * move some of the external functions to the new interface (kill
+   suggested_primitive!!!)
+
+ * Fix the rdict bug (Michael, Richard)
+ 
+ * run application on top of PyPy and turn them into benchmarks: Guido,
+   Christian
+
+ * object optimizations: ropes, list optimizations, cuckoo hashing,
+   tree-based dicts: after the tutorial, Holger, Armin, Carl Friedrich, Georg
+
+ * improve the error messages of the rtyper
+
+ * improve setups of temporary test directories
+
+ * benchmarking: make nice graphs out of benchmark results
+
+ * hunt the strange speed bottleneck of gencli/genjava: Anto, Samuele
+
+ * fix application-level stackless code: Arre, Stephan
+
+ * improve greensocks
+
+ * have a minimal readline support for history and line editing: Armin, Holger
+
+ * fix the javascript backend work in internet explorer: Guido, Maciek
+
+ * make the usage of the js backend nicer
+
+ * discuss code sharing between the js backend and gencli: Anto, Maciek
+
+ * make genllvm less of a FrankenBackend
+
+ * have a pypy with a gil and threading that works
+
+ * object-level locking for a gil-less pypy
+
+ * use no locking, multiple interpreters and shared memory instead of
+   object-level locks
