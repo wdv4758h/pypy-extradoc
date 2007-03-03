@@ -5,42 +5,56 @@ Trillke Sprint 2007 Planning
 People present: Michael, Arre, Stephan, Anto, Guido, Armin, Maciek, Bea, 
                 Samuele, Georg, Alexander, Holger, Carl Friedrich, Anders
 
-Tutorial: Georg, Anders
+Tutorial: Georg, Anders DONE
 
  * think a bit about what needs to be done for 1.0
 
- * move some of the external functions to the new interface (kill
-   suggested_primitive!!!)
+ * move some of the external functions to the new interface (Samuele, Anto)
 
- * Fix the rdict bug (Michael, Richard)
+ * Fix the rdict bug DONE
  
  * run application on top of PyPy and turn them into benchmarks: Guido,
    Christian
+   - templess is now a pypy benchmark (5-6x)
+   - docutils is now a pypy benchmark (5-6x)
+   - gadfly is working with old-style classes
 
  * object optimizations: ropes, list optimizations, cuckoo hashing,
    tree-based dicts: after the tutorial, Holger, Armin, Carl Friedrich, Georg
+   - ropes DONE (but slow)
+   - chunked list DONE 
+   - multilist broken?! (Alexander, Carl Friedrich)
+   - O(sqrt(n)) DONE but is slow and uses too much memory
+   - move string interpolation to rpython (Holger, Stephan)
+   - chained hash table (Armin), NEARLY DONE
+   - discuss global dict lookup ideas (Armin, Georg)
 
  * improve the error messages of the rtyper
 
  * improve setups of temporary test directories
 
- * benchmarking: make nice graphs out of benchmark results
+ * benchmarking: make nice graphs out of benchmark results IN-PROGRESS
+   (Michael, Holger)
 
- * hunt the strange speed bottleneck of gencli/genjava: Anto, Samuele
+ * hunt the strange speed bottleneck of gencli: DONE
 
- * fix application-level stackless code: Arre, Stephan
+ * fix application-level stackless code: DONE
 
  * improve greensocks
 
- * have a minimal readline support for history and line editing: Armin, Holger
+ * have a minimal readline support for history and line editing: DONE
+   - get completion working
 
- * fix the javascript backend work in internet explorer: Guido, Maciek
+ * fix the javascript backend work in internet explorer: IN-PROGRESS
+   (Guido, Maciek)
 
- * make the usage of the js backend nicer
+ * make the usage of the js backend nicer (Guido, Maciek)
 
- * discuss code sharing between the js backend and gencli: Anto, Maciek
+ * discuss code sharing between the js backend and gencli: MOSTLY DONE
 
- * make genllvm less of a FrankenBackend
+ * make genllvm less of a FrankenBackend (Richard, half of Michael), IN-PROGRESS
+
+ * use "const" for immutable structures
 
  * have a pypy with a gil and threading that works
 
