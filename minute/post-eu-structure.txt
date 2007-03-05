@@ -1,13 +1,18 @@
-===========
-DISCLAIMER:
-===========
-
-These are ideas that were discussed and agreed by the people present on the
-sprint, nothing final.
-
-
-post-EU PyPy organisation suggestion
+post-EU PyPy organisation discussion
 ----------------------------------------
+
+Attendants: 
+
+Samuele Pedroni, Anders Chrigström, Christian Tismer, Anders
+Sigfridsson, Michael Hudson, Antonio Cuni, Richard Emslie, 
+Stephan Diel, Alexander Schremmer, Georg Brandl, 
+Maciej Fijalkowski, Guido Wesdorp, Carl Friedrich Bolz, 
+Armin Rigo, Holger Krekel, Lene Wagner 
+
+*disclaimer*: Below are keypoint results of the sprint discussion 
+about the organisation of the open-source PyPy project after
+the EU funding period.  
+
 
 - PyPy's future as an open-source project should be shaped
   by the community and the people contributing and involved with it
@@ -70,8 +75,7 @@ Background notes
 ----------------------
 
 - full-time codespeak.net maintenance is going to end 1st April, 
-  Martin (merlinux) may care a bit after that but he will
-  also be looking for other work opportunities. 
+  Martin (merlinux) may care a bit after that. 
   There will be some (shared?) physical hosting costs and hopefully multiple
   volunteers helping out with sys maintenance/care.  Martin would
   probably also be happy to continue somewhat professionally 
@@ -81,5 +85,6 @@ Background notes
   but nevertheless considers future project opportunities. 
 
 - major focus of march-may will still be EU related goals and deadlines 
+
 - next sprint likely not before EuroPython
 
