@@ -1,0 +1,113 @@
+Hello pypy-dev!
+
+25th sprint, 18th and final EU funded
+
+tutorial
+
+As has become ususal, the sprint began with a tutorial for those
+participants who are less familiar with PyPy code base.  This time
+Carl Friedrich was talking to Georg Brandl, an interested CPython
+developer, and Anders (only the third Anders to be involved in the
+project!) Sigfridsson, a PhD student at the Interaction Design Centre
+at the University of Limerick.  Anders originally became involved in
+the project as an observer of the sprint process for his group's
+research when we sprinted at the University of Limerick, and that was
+partly why he was here this time, but it seems he found PyPy
+interesting enough to learn Python in the mean time and participate on
+the coding less at this sprint (or maybe he thought the view from the
+sprint trenches would be more revealing!).
+
+This sprint has seen many, many small tasks completed.  On the first
+morning, Holger and Armin improved the readline module to the point of
+being useful -- supporting line editing and history, but not
+completion -- and hooked it into the interpreter sufficiently that the
+interactive interpreter and pdb both use it when available.  At the
+same time Richard and Michael were hunting a bug Richard had
+discovered translating his own code, which was generally referred to
+as "the rdict bug" but turned out to be a bug in the garbage
+collector.
+
+Carl Friedrich and his band of helpers (mostly Anders, Georg,
+Alexander) worked on experimental reimplementations of Python lists,
+one using a theoretically optimal overallocation strategy and another
+using chunked storage to reduce the cost of list resizing.  Sadly both
+resulted in a measurable slow down.  This can be seen as yet more
+evidence that theory is different from practice...
+
+CF's other target for reimplementation at this sprint was strings.
+With help and moral support from Armin, he reimplemented strings
+according to the design from the "ropes paper" of Boehm, Atkinson &
+Plass:
+
+http://www.cs.ubc.ca/local/reading/proceedings/spe91-95/spe/vol25/issue12/spe986.pdf
+
+The predictable effect was that "typical Python code", written in the
+knowledge of how strings are implemented in Python today, takes a
+small (at most 10%) performance hit, but an arguably more natural and
+naive style of string handling becomes efficient.  And some completely
+crazy code (like hash('a'*sys.maxint)) becomes very fast too...
+
+Continuing the theme of making things slower by object
+reimplementation, Armin supplied an implementation of general
+dictionaries as a hash table whose collision resolution is via chained
+lists instead of open addressing.  Next!
+
+As opposed to the above, Armin and CF implemented caching of app-level
+character (i.e. strings of length 1) objects, which was a clear win,
+improving the pystone benchmark by around 10%.
+
+There have been many discussions recently about optimizing the lookup
+of global variables, and during one that took place here about various
+corner cases, Armin and Carl Friedrich and Samuele removed from PyPy
+some of the strange things CPython does to determine what the
+__builtins__ are for the executiong of a given frame -- of course,
+depending on the value of PyPy's five millionth configuration option.
+
+Holger and Antonio came up with yet another optimization idea along
+these lines, which can be found in doc/discussion/chained_getattr.txt.
+
+Georg and Alexander implemented some of Python 2.5's features in the
+interpeter, in particular support for __index__ and some extensions to
+string and dict methods.
+
+Anders and Anders worked very productively on fixing some of the bugs
+in PyPy's issue tracker, implementing the -m command line option in
+pypy-c, much improved handling of EINTR results from syscalls (which
+makes most difference when pressing ^C on the command line), allowing
+buffer objects to be passed to socket.send and preventing modifications
+to builtin types.
+
+Holger and Stephan worked in the direction of moving the currently
+app-level and extremely slow string interpolation code into RPython by
+separating out the code that analyzes the format string from the code
+that access the values to be interpolated.
+
+Maciej and Guido worked a little on the javascript backend, both
+generally tidying and improving compatibility with Internet Explorer.
+Guido should not be allowed to forget saying "I am happy to work with
+Internet Explorer" during one of the daily status meetings :-)
+
+Stephan and Arre worked on fixing the last remaining bugs in the
+rewrite of the application-level stackless code that Stephan had been
+working on for some time.
+
+Later Stephan joined Armin and Christian in a discussion about the
+best API to provide for the new "composable coroutine" concept.  They
+feel that the concept is powerful to encompass threads, greenlets, coroutines XXX
+
+view/pivot/world/composable discussion (/user/stephan)
+
+benchmarking & graphing
+lib/distributed demo
+pypy-cli speed/rpython microbenches
+genllvm butchery
+external functions/translation breaking session
+small cli improvements
+taint translation
+gil-less hacking
+os x specific genc hacks
+post-funding
+
+
+Cordiali Saluti,
+mwh & Carl Friedrich
