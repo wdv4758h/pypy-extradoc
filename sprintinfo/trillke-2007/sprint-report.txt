@@ -2,8 +2,6 @@ Hello pypy-dev!
 
 25th sprint, 18th and final EU funded
 
-tutorial
-
 As has become ususal, the sprint began with a tutorial for those
 participants who are less familiar with PyPy code base.  This time
 Carl Friedrich was talking to Georg Brandl, an interested CPython
@@ -66,6 +64,29 @@ depending on the value of PyPy's five millionth configuration option.
 Holger and Antonio came up with yet another optimization idea along
 these lines, which can be found in doc/discussion/chained_getattr.txt.
 
+Going back to the first day, Anto and Samuele worked on analyzing why
+pypy-cli was being reported as 50+ times slower than CPython on the
+benchmark page:
+
+    http://tuatara.cs.uni-duesseldorf.de/benchmark.html
+
+To do this they wrote some small benchmarks in RPython and stared at
+some code, but the main problem seems to be that Mono on PowerPC just
+isn't that good: running pypy-cli using Microsoft's runtime shows
+performance just 5 time slower than CPython.
+
+After this, they worked on streamlining PyPy's much complained about
+external function interface (and also broke translation a few times in
+the process).  The last sprint saw the introduction of a more general
+registry-based interface for external functions, and Samuele and Anto
+began by moving the math module over to using this interface.  This
+was harder than what had gone before because these functions depend on
+header files, so some modifications to the C and LLVM backends were
+necessary.
+
+On the last day, Anto made some small improvements to pypy-cli's
+performance and Samuele made the taint object space translatable.
+
 Georg and Alexander implemented some of Python 2.5's features in the
 interpeter, in particular support for __index__ and some extensions to
 string and dict methods.
@@ -93,21 +114,54 @@ working on for some time.
 
 Later Stephan joined Armin and Christian in a discussion about the
 best API to provide for the new "composable coroutine" concept.  They
-feel that the concept is powerful to encompass threads, greenlets, coroutines XXX
+feel that the concept is powerful to encompass threads, greenlets,
+coroutines, threads, syslets and the best way to barbecue ribs.  You
+can read about the basic idea in the "Composability" section of PyPy's
+stackless documentation:
 
-view/pivot/world/composable discussion (/user/stephan)
+    http://codespeak.net/pypy/dist/pypy/doc/stackless.html
 
-benchmarking & graphing
-lib/distributed demo
-pypy-cli speed/rpython microbenches
-genllvm butchery
-external functions/translation breaking session
-small cli improvements
-taint translation
+and further insight is unlikely to be provided by this diagram:
+
+    http://python.net/crew/mwh/stackless.jpg
+
+The basic conclusion was that this is a very nice and natural model
+for a lot of things, at least once you've whacked your head into the
+right shape.
+
+A task that occupied various people at various times of the sprint was
+that of benchmarking, the goal being to determine how much effect the
+object and other optimizations have.  Michael had over the previous
+month or so some written some scaffolding code to allow various
+benchmarks to be run and the results recorded.  At the sprint he added
+a benchmark using docutils to process 'translation.txt' from pypy's
+own documentation and Guido added another using his own 'templess'
+templating system.
+
+Holger worked on getting some code written for bzr that makes nice
+graphs out of benchmark to parse the benchmark data produced by PyPy's
+benchmark runs.
+
+Maciej worked on the lib/distributed code that demonstrates the PyPy's
+transparent proxies.  After a bit of effort, he was able to write a
+demo that implemented a remote version of pdb by simply by creating a
+traceback object that proxied all operations to a remote process.
+
+Michael and Richard spent a day or so on the LLVM backend, which of
+late hasn't been so much "maintained" as "held together by
+increasingly large amounts of sticky tape".  After some refactoring of
+the way the backend handled options, they removed a layer of hacks
+around the issue of FixedSizedArrays and implemented them properly,
+and also added support for the direct_* pointer operations produced by
+rctypes.
+
 gil-less hacking
-os x specific genc hacks
-post-funding
 
+Michael spent some time using Shark, an OS X profiling application,
+and found some OS specific flags and tweaks that improved the
+performance of pypy-c on OS X/PPC by around 20%.
+
+post-funding
 
 Cordiali Saluti,
 mwh & Carl Friedrich
