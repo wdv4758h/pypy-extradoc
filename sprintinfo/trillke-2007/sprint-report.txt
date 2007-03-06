@@ -73,7 +73,7 @@ benchmark page:
 To do this they wrote some small benchmarks in RPython and stared at
 some code, but the main problem seems to be that Mono on PowerPC just
 isn't that good: running pypy-cli using Microsoft's runtime shows
-performance just 5 time slower than CPython.
+performance just 3-4 time slower than pypy-c.
 
 After this, they worked on streamlining PyPy's much complained about
 external function interface (and also broke translation a few times in
