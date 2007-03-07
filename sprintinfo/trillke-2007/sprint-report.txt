@@ -174,7 +174,7 @@ performance of pypy-c on OS X/PPC by around 20%.
 
 As readers of pypy-dev will know by now, there were discussions about
 how PyPy is going to continue after the end of the EU funding period.
-However, I don't have to summarize them here because I can just link
+However, we don't have to summarize them here because we can just link
 to Armin's mail:
 
     http://codespeak.net/pipermail/pypy-dev/2007q1/003577.html
