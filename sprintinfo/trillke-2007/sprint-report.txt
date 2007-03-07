@@ -1,19 +1,21 @@
 Hello pypy-dev!
 
-25th sprint, 18th and final EU funded
+This is the report for the second, coding, half of PyPy's **25th**
+sprint, and the 18th and final sprint of the EU funded period.
 
-As has become usual, the sprint began with a tutorial for those
-participants who are less familiar with PyPy code base.  This time
-Carl Friedrich was talking to Georg Brandl, an interested CPython
-developer, and Anders (only the third Anders to be involved in the
-project!) Sigfridsson, a PhD student at the Interaction Design Centre
-at the University of Limerick.  Anders originally became involved in
-the project as an observer of the sprint process for his group's
-research when we sprinted at the University of Limerick, and that was
-partly why he was here this time, but it seems he found PyPy
-interesting enough to learn Python in the mean time and participate on
-the coding less at this sprint (or maybe he thought the view from the
-sprint trenches would be more revealing!).
+We are so completely tired that we don't have the energy to write a
+witty entry, so we'll skip that bit and start with the now usual
+tutorial for those participants who are less familiar with PyPy code
+base.  This time Carl Friedrich was talking to Georg Brandl, an
+interested CPython developer, and Anders (only the third Anders to be
+involved in the project!) Sigfridsson, a PhD student at the
+Interaction Design Centre at the University of Limerick.  Anders
+originally became involved in the project as an observer of the sprint
+process for his group's research when we sprinted at the University of
+Limerick, and that was partly why he was here this time, but it seems
+he found PyPy interesting enough to learn Python in the mean time and
+participate on the coding less at this sprint (or maybe he thought the
+view from the sprint trenches would be more revealing!).
 
 This sprint has seen many, many small tasks completed.  On the first
 morning, Holger and Armin improved the readline module to the point of
