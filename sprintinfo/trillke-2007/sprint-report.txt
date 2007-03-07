@@ -4,9 +4,9 @@ This is the report for the second, coding, half of PyPy's **25th**
 sprint, and the 18th and final sprint of the EU funded period.
 
 We are so completely tired that we don't have the energy to write a
-witty entry, so we'll skip that bit and start with the now usual
-tutorial for those participants who are less familiar with PyPy code
-base.  This time Carl Friedrich was talking to Georg Brandl, an
+witty entry, so we'll skip that bit and start with describing the now
+usual tutorial for those participants who are less familiar with PyPy
+code base.  This time Carl Friedrich was talking to Georg Brandl, an
 interested CPython developer, and Anders (only the third Anders to be
 involved in the project!) Sigfridsson, a PhD student at the
 Interaction Design Centre at the University of Limerick.  Anders
