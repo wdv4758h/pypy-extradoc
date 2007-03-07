@@ -87,9 +87,22 @@ necessary.
 On the last day, Anto made some small improvements to pypy-cli's
 performance and Samuele made the taint object space translatable.
 
-Georg and Alexander implemented some of Python 2.5's features in the
-interpreter, in particular support for __index__ and some extensions to
-string and dict methods.
+On the first day Georg and Alexander tried to see how fast a PyPy
+could get if there was no Global Interpreter Lock (GIL). By disabling
+the GIL and making the exception state thread-local on the genc-level,
+they could easily get a binary that at least didn't crash if multiple
+threads were not modifying internal stuff concurrently.  Running 4
+Pystone instances (from 4 different modules) on this pypy-c let the
+process use 381% of cpu time, but the resulting figures were
+disappointing: running the 4 Pystone instances in parallel was less
+than 25% faster than running them in series, as opposed to being 300%
+faster in the best case. Both concluded that the garbage collector
+used (Boehm) is not very well suited for the heavy-duty memory
+allocation pattern of PyPy in case of multiple threads.
+
+After this, they implemented some of Python 2.5's features in the
+interpreter, in particular support for __index__ and some extensions
+to string and dict methods.
 
 Anders and Anders worked very productively on fixing some of the bugs
 in PyPy's issue tracker, implementing the -m command line option in
@@ -155,13 +168,16 @@ around the issue of FixedSizedArrays and implemented them properly,
 and also added support for the direct_* pointer operations produced by
 rctypes.
 
-gil-less hacking
-
 Michael spent some time using Shark, an OS X profiling application,
 and found some OS specific flags and tweaks that improved the
 performance of pypy-c on OS X/PPC by around 20%.
 
-post-funding
+As readers of pypy-dev will know by now, there were discussions about
+how PyPy is going to continue after then end of the EU funding period.
+However, I don't have to summarize them here because I can just link
+to Armin's mail:
+
+    http://codespeak.net/pipermail/pypy-dev/2007q1/003577.html
 
 Cordiali Saluti,
 mwh & Carl Friedrich
