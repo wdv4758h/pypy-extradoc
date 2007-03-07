@@ -173,7 +173,7 @@ and found some OS specific flags and tweaks that improved the
 performance of pypy-c on OS X/PPC by around 20%.
 
 As readers of pypy-dev will know by now, there were discussions about
-how PyPy is going to continue after then end of the EU funding period.
+how PyPy is going to continue after the end of the EU funding period.
 However, I don't have to summarize them here because I can just link
 to Armin's mail:
 
