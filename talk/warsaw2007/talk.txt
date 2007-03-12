@@ -3,7 +3,7 @@ Massive parallelism
 ===================
 
 :Authors: Maciej Fijalkowski
-:Location: Warsaw Univeristy
+:Location: Warsaw University
 :Date: 13.III.2007
 
 Writing concurrent programs
@@ -51,6 +51,15 @@ Implementation overview
 
 * can employ many policies of scheduling
 
+Debugging
+==========
+
+* two consecutive runs has the same behaviour
+
+* attaching a debugger in the middle stops whole execution
+
+* deadlock is explicitly stated by exception
+
 Goodies built on top (1)
 ========================
 
@@ -60,7 +69,7 @@ Goodies built on top (1)
 
 * (example)
 
-Goodies built on top (2)
+Greensock
 ========================
 
 * cooperative I/O
