@@ -13,7 +13,7 @@ Writing concurrent programs
 
 * events
 
-* everyone has it's own problems
+* everything has it's own problems
 
 Threads problems
 ================
@@ -36,7 +36,7 @@ Alternative approach
 
 * concept of greenlet (microthread)
 
-* way more functionall
+* way more functional
 
 * scales better
 
@@ -96,7 +96,7 @@ Implementation - flowgraphs
 
 * flowing of live python objects
 
-* allows of a wide range of metaprogramming
+* allows a wide range of metaprogramming
 
 * creates flow graph
 
