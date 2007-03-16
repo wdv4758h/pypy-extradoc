@@ -1,0 +1,79 @@
+
+XXX this is a suggestion for rest-of-march planning 
+
+17 (weekend)
+18 (weekend)
+19 dist/trunk separation, build tool with servers 
+20 pypy-sync: release preps/tasks
+21 wp10 documentation and features integrated          (2.1, 3.1)
+22 WP08 documentation and working examples integrated  (12.1, 14.2, 10.1) 
+23 pypy-sync: release status / remaining tasks         (14.5, 11.1)
+24 (weekend) release candidates testing
+25 (weekend) release candidates testing
+26 RELEASE                                             (9.1, 2.3)
+27 (workshop prep)                                     (1.2-4, 13.1)
+28 (workshop prep)
+29 Sweden Workshop
+30
+31 (weekend)
+
+release management: 
+   michael?, holger?, from 23rd: +samuele, +arigo 
+   
+release content: 
+  - ensure working Interpreter translation combinations: 
+    - pypy-c-stackless/tp/taint/jit/GC-framework/thunk
+    - pypy-cli-tp/taint/thunk
+    - make a matrix of possible combinations (wp13-report)
+
+  - integrate and test: 
+    wp10 docs, examples and code   
+    wp08 docs, examples and code 
+    (wp09 docs, examples and code - maybe what we have is good enough?)
+
+  - revisit entry level docs (architecture, mission, getting-started)
+    - terminology clarifications:
+      - use "translating PYPY interpreters" or "translating
+        standard interpreter" instead of talking about
+        e.g. "translating the whole of pypy"
+      - VM translation framework 
+      - so we have: 
+        - pypy standard interpreter (easy to understand/modify)
+        - pypy VM translation framework (neccessarily more complex)
+
+  - describe particularly Javascript-related demos, refine them. 
+    (revisit play1.codespeak.net) 
+
+  - make transparent proxies more prominent 
+    (because they are a rather powerful feature)
+    - write a nice support module 
+    - write/review documentation 
+    - fix bugs if any
+    - probably don't go for "transparent_proxy(type, ...)" :) 
+
+  - update wp6 docs (object-optimizations.txt) and link
+    to them from getting-started 
+
+  - document build tool usages (getting-started?), connect servers with it
+
+  - refactor and _document_ pypy special info/features to be in 
+    sys.pypy.version_info *
+    sys.pypy.translation_options *
+
+    consider where/how to put special builtins ("pypymagic"
+    might not be a good name), suggestions: 
+    - names: pypybuiltin or maybe sys.pypy.* 
+    - document pypybuiltin module
+    - functions should only be there if the according option
+      is enabled (e.g. method cache) 
+    - options only relating to py.py should not appear in
+      translated version (unless they work :) 
+
+release naming: 
+    1.0 or 0.999 or so - could possibly be decided shortly before the release 
+
+open-ish questions?: 
+
+- JIT integration in March release 
+- maybe telling PO that we go for JIT integration in april? 
+
