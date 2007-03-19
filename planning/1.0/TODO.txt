@@ -4,12 +4,14 @@ TODO for 1.0
 current general timeline 
 -----------------------------
 
+Note: meetings in #pypy-sync every weekday at 5pm
+
 18 (weekend)
 19 build tool with servers 
-20 pypy-sync: release preps/tasks
+20 release preps/tasks
 21 wp10 documentation and features integrated          (2.1, 3.1)
 22 WP08 documentation and working examples integrated  (12.1, 14.2, 10.1) 
-23 pypy-sync: release status / remaining tasks         (14.5, 11.1)
+23 release status / remaining tasks                     (14.5, 11.1)
    dist-trunk separation 
 24 (weekend) release candidates testing
 25 (weekend) release candidates testing
