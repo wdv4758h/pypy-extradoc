@@ -4,7 +4,7 @@ TODO for 1.0
 current general timeline 
 -----------------------------
 
-Note: meetings in #pypy-sync every weekday at 5pm
+Note: meetings in #pypy-sync every weekday at 4pm
 
 18 (weekend)
 19 build tool with servers 
