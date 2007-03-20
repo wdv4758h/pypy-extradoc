@@ -6,8 +6,6 @@ current general timeline
 
 Note: meetings in #pypy-sync every weekday at 4pm (GMT+1) 
 
-19 build tool with servers 
-20 release preps/tasks
 21 wp10 documentation and features integrated          (2.1, 3.1)
 22 WP08 documentation and working examples integrated  (12.1, 14.2, 10.1) 
 23 release status / remaining tasks                     (14.5, 11.1)
@@ -25,20 +23,23 @@ Note: meetings in #pypy-sync every weekday at 4pm (GMT+1)
 pending issues 
 -----------------------------
 
-XXX the below are yet-undiscussed suggestions from cfbolz/hpk: 
-
   - ensure working Interpreter translation combinations: 
     - pypy-c-stackless/tp/taint/jit/GC-framework/thunk
     - pypy-cli-tp/taint/thunk
+
     - make a matrix of possible combinations (wp13-report)
-    (cfbolz)
+      (cfbolz)
 
   - complete/debug jit on powerpc (mwh)
 
   - debug jit on intel (arigo/pedronis/arre)
+    in progress, fixing bugs and improving "is_true" jitting 
+ 
 
   - integrate and test: 
-    - wp10 docs, examples and code (hpk to chase) 
+    - wp10 
+      - docs, examples (done) 
+      - fixing "weaver" bugs (agurney)
     - wp08 docs, examples and code (arigo/pedronis/arre, after debugging)
     - wp09 docs, examples and code - maybe what we have is good enough?
       (christian looking into this currently)
@@ -55,7 +56,7 @@ XXX the below are yet-undiscussed suggestions from cfbolz/hpk:
     (hpk to start here)
 
   - describe particularly Javascript-related demos, refine them. 
-    (revisit play1.codespeak.net) 
+    (in-progress, adding more console variations currently, nicer entry page) 
     (fijal)
 
   - make transparent proxies more prominent 
@@ -64,7 +65,7 @@ XXX the below are yet-undiscussed suggestions from cfbolz/hpk:
     - write/review documentation 
     - fix bugs if any
     - probably don't go for "transparent_proxy(type, ...)" :) 
-    
+    (hpk)
 
   - update wp6 docs (object-optimizations.txt) and link
     to them from getting-started (mwh to coordinate)
@@ -72,16 +73,16 @@ XXX the below are yet-undiscussed suggestions from cfbolz/hpk:
   - document build tool usages (getting-started?), connect servers with it
     (guido_w)
 
-  - (maybe not) refactor and _document_ pypy special info/features to be in 
-    sys.pypy.version_info *
-    sys.pypy.translation_options *
-
   - consider where/how to put special builtins ("pypymagic"
     might not be a good name), suggestions: 
-    - names: pypybuiltin or maybe sys.pypy.* 
-    - document pypybuiltin module
+    - names: pypybuiltin? decide about name at pypy-sync wednesday 
+    - document pypybuiltin module (add docstrings)
     - functions should only be there if the according option
       is enabled (e.g. method cache) 
     - options only relating to py.py should not appear in
       translated version (unless they work :) 
     (cfbolz)
+
+  - include documentation/entry point for 
+    the JS interpreter (santagada, fijal) 
+
