@@ -56,8 +56,13 @@ pending issues
     (hpk to start here)
 
   - describe particularly Javascript-related demos, refine them. 
-    bring play1.codespeak.net online (in-progress) 
-    (in-progress, adding more console variations currently, nicer entry page) 
+    (in-progress, adding more console variations currently, nicer entry page)
+    It's all more or less done. What needs to be done (play1):
+    - more examples with autopaste feature
+    - source code of web page under the button?
+    - refined help
+    - make nice 404 and 500 pages, also for apache
+    - make pypy-cli work there
     (fijal)
 
   - make transparent proxies more prominent 
