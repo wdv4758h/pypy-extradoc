@@ -27,7 +27,7 @@ pending issues
     - pypy-c-stackless/tp/taint/jit/GC-framework/thunk
     - pypy-cli-tp/taint/thunk
     - make a matrix of possible combinations (wp13-report)
-      (cfbolz will check in soon)
+      (cfbolz) done
 
   - complete/debug jit on powerpc (mwh)
     somewhat working, debugging in progress
@@ -78,12 +78,12 @@ pending issues
 
   - consider where/how to put special builtins ("pypymagic"
     might not be a good name), suggestions: 
-    - names: pypybuiltin? decide about name at pypy-sync wednesday 
+    - names: not pypymagic, not pypybuiltin, holger and cf to propose
     - document pypybuiltin module (add docstrings) (done)
     - functions should only be there if the according option
-      is enabled (e.g. method cache) 
-    - options only relating to py.py should not appear in
-      translated version (unless they work :) 
+      is enabled (e.g. method cache) (done)
+    - functions only relating to py.py should not appear in
+      translated version (unless they work :) (done)
     (cfbolz)
 
   - include documentation/entry point for 
