@@ -56,13 +56,14 @@ pending issues
     (hpk to start here)
 
   - describe particularly Javascript-related demos, refine them. 
+    bring play1.codespeak.net online (in-progress) 
     (in-progress, adding more console variations currently, nicer entry page) 
     (fijal)
 
   - make transparent proxies more prominent 
     (because they are a rather powerful feature)
-    - write a nice support module 
-    - write/review documentation 
+    - write a nice support module (pypy/lib/tputil.py - in progress)
+    - write/review documentation (in-progress)
     - fix bugs if any
     - probably don't go for "transparent_proxy(type, ...)" :) 
     (hpk)
