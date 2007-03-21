@@ -26,23 +26,20 @@ pending issues
   - ensure working Interpreter translation combinations: 
     - pypy-c-stackless/tp/taint/jit/GC-framework/thunk
     - pypy-cli-tp/taint/thunk
-
     - make a matrix of possible combinations (wp13-report)
-      (cfbolz)
+      (cfbolz will check in soon)
 
   - complete/debug jit on powerpc (mwh)
+    somewhat working, debugging in progress
 
   - debug jit on intel (arigo/pedronis/arre)
-    in progress, fixing bugs and improving "is_true" jitting 
- 
+    in progress, --jit --faassen works now, "is_true" issue still open
 
   - integrate and test: 
-    - wp10 
-      - docs, examples (done) 
-      - fixing "weaver" bugs (agurney)
+    - wp10 - basically complete, pending issues brought up in review
     - wp08 docs, examples and code (arigo/pedronis/arre, after debugging)
     - wp09 docs, examples and code - maybe what we have is good enough?
-      (christian looking into this currently)
+      (christian looking into this currently) no real progress here
 
   - revisit entry level docs (architecture, mission, getting-started)
     - terminology clarifications:
@@ -53,7 +50,7 @@ pending issues
       - so we have: 
         - pypy standard interpreter (easy to understand/modify)
         - pypy VM translation framework (neccessarily more complex)
-    (hpk to start here)
+    (hpk to start here, have something done by friday)
 
   - describe particularly Javascript-related demos, refine them. 
     (in-progress, adding more console variations currently, nicer entry page)
@@ -70,7 +67,6 @@ pending issues
     - write a nice support module (pypy/lib/tputil.py - in progress)
     - write/review documentation (in-progress)
     - fix bugs if any
-    - probably don't go for "transparent_proxy(type, ...)" :) 
     (hpk)
 
   - update wp6 docs (object-optimizations.txt) and link
@@ -78,11 +74,12 @@ pending issues
 
   - document build tool usages (getting-started?), connect servers with it
     (guido_w)
+    targetpypystandalone changes caused some problems.
 
   - consider where/how to put special builtins ("pypymagic"
     might not be a good name), suggestions: 
     - names: pypybuiltin? decide about name at pypy-sync wednesday 
-    - document pypybuiltin module (add docstrings)
+    - document pypybuiltin module (add docstrings) (done)
     - functions should only be there if the according option
       is enabled (e.g. method cache) 
     - options only relating to py.py should not appear in
