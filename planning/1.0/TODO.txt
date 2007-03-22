@@ -6,11 +6,8 @@ current general timeline
 
 Note: meetings in #pypy-sync every weekday at 4pm (GMT+1) 
 
-published reports: 
-    3.1, 2.1, 10.1 
-    
+published final reports: 3.1, 2.1, 10.1, 12.1, 14.2
 
-22                                                     (12.1, 14.2) 
 23 WP08 documentation and working examples integrated  
    release status / remaining tasks                    (14.5, 11.1)
    dist-trunk separation (possibly restricting
