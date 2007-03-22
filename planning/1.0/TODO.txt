@@ -6,16 +6,21 @@ current general timeline
 
 Note: meetings in #pypy-sync every weekday at 4pm (GMT+1) 
 
-21 wp10 documentation and features integrated          (2.1, 3.1)
-22 WP08 documentation and working examples integrated  (12.1, 14.2, 10.1) 
-23 release status / remaining tasks                     (14.5, 11.1)
-   dist-trunk separation 
+published reports: 
+    3.1, 2.1, 10.1 
+    
+
+22                                                     (12.1, 14.2) 
+23 WP08 documentation and working examples integrated  
+   release status / remaining tasks                    (14.5, 11.1)
+   dist-trunk separation (possibly restricting
+   permissions for release candidates)
 24 (weekend) release candidates testing
 25 (weekend) release candidates testing
 26 RELEASE                                             (9.1, 2.3)
-27 (workshop prep)                                     (1.2-4, 13.1)
-28 (workshop prep)
-29 Sweden Workshop
+27                                                     (1.2-4, 13.1)
+28 
+29 
 30
 31 (weekend)
 
@@ -26,20 +31,22 @@ pending issues
   - ensure working Interpreter translation combinations: 
     - pypy-c-stackless/tp/taint/jit/GC-framework/thunk
     - pypy-cli-tp/taint/thunk
-    - make a matrix of possible combinations (wp13-report)
-      (cfbolz) done
+
+    - (done) make a matrix of possible combinations (wp13-report) (cfbolz) 
 
   - complete/debug jit on powerpc (mwh)
-    somewhat working, debugging in progress
+    (basically done) somewhat working, debugging in progress
 
-  - debug jit on intel (arigo/pedronis/arre)
-    in progress, --jit --faassen works now, "is_true" issue still open
+  - (mostly done) debug jit on intel (arigo/pedronis/arre)
+    in progress, --jit --faassen works now, "is_true" issue fixed 
 
   - integrate and test: 
-    - wp10 - basically complete, pending issues brought up in review
-    - wp08 docs, examples and code (arigo/pedronis/arre, after debugging)
+    - (done) wp10 - basically complete, pending issues brought up in review
+    - (almost done) wp08 code 
+    - (arigo,pedronis,arre): docs & examples, getting-started 
     - wp09 docs, examples and code - maybe what we have is good enough?
-      (christian looking into this currently) no real progress here
+      (christian looking into this currently) a bit of progress, 
+      but no feedback/interaction with DFKI/Danish yet. 
 
   - revisit entry level docs (architecture, mission, getting-started)
     - terminology clarifications:
@@ -53,31 +60,33 @@ pending issues
     (hpk to start here, have something done by friday)
 
   - describe particularly Javascript-related demos, refine them. 
-    (in-progress, adding more console variations currently, nicer entry page)
+    (mostly done, apart from 404/500 pages and possible JIT demo) 
     It's all more or less done. What needs to be done (play1):
     - more examples with autopaste feature
     - source code of web page under the button?
     - refined help
     - make nice 404 and 500 pages, also for apache
     - make pypy-cli work there
+    - discuss/do a JIT demo
     (fijal)
 
-  - make transparent proxies more prominent 
-    (because they are a rather powerful feature)
+  - (done, still a bit of doc's/demo refinements maybe) 
+     make transparent proxies more prominent 
+     because they are a rather powerful feature)
     - write a nice support module (pypy/lib/tputil.py - in progress)
     - write/review documentation (in-progress)
     - fix bugs if any
-    (hpk)
+    (hpk, still a bit of doc's/demo refinements)
 
   - update wp6 docs (object-optimizations.txt) and link
     to them from getting-started (mwh to coordinate)
     ropes docs added
 
-  - document build tool usages (getting-started?), connect servers with it
+  - (done) document build tool usages (getting-started?), connect servers with it
+  - stress-test/use buildtool for translation tests (multicompile) 
     (guido_w)
-    targetpypystandalone changes caused some problems.
 
-  - consider where/how to put special builtins ("pypymagic"
+  - (DONE) consider where/how to put special builtins ("pypymagic"
     might not be a good name), suggestions: 
     - names: not pypymagic, not pypybuiltin, holger and cf to propose
       (done, result is __pypy__)
@@ -88,7 +97,7 @@ pending issues
       translated version (unless they work :) (done)
     (cfbolz)
 
-  - include documentation/entry point for 
+  - (no news ) include documentation/entry point for 
     the JS interpreter (santagada, fijal) 
 
   - include documentation/entry point for 
