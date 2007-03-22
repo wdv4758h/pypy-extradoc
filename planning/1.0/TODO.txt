@@ -71,6 +71,7 @@ pending issues
 
   - update wp6 docs (object-optimizations.txt) and link
     to them from getting-started (mwh to coordinate)
+    ropes docs added
 
   - document build tool usages (getting-started?), connect servers with it
     (guido_w)
@@ -79,6 +80,7 @@ pending issues
   - consider where/how to put special builtins ("pypymagic"
     might not be a good name), suggestions: 
     - names: not pypymagic, not pypybuiltin, holger and cf to propose
+      (done, result is __pypy__)
     - document pypybuiltin module (add docstrings) (done)
     - functions should only be there if the according option
       is enabled (e.g. method cache) (done)
@@ -89,3 +91,5 @@ pending issues
   - include documentation/entry point for 
     the JS interpreter (santagada, fijal) 
 
+  - include documentation/entry point for 
+    the prolog interpreter (cfbolz, maybe) 
