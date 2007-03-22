@@ -54,7 +54,9 @@ pending issues
       - so we have: 
         - pypy standard interpreter (easy to understand/modify)
         - pypy VM translation framework (neccessarily more complex)
-    (hpk to start here, have something done by friday)
+      (hpk to start here, have something done by friday)
+
+    - review entry points from the play1 demos. 
 
   - describe particularly Javascript-related demos, refine them. 
     (mostly done, apart from 404/500 pages and possible JIT demo) 
