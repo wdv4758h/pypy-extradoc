@@ -67,7 +67,7 @@ Goodies built on top (1)
 
 * communication over channels
 
-* (example)
+* (demo)
 
 Greensock
 ========================
@@ -81,6 +81,8 @@ Greensock
 * doesn't work on win32
 
 * scales well (application built on top)
+
+* (demo)
 
 Composable greenlets
 =====================
@@ -150,11 +152,6 @@ Use case - python console
 * dispatching of http/console
 
 * very easy
-
-Use case - distribution
-=================================
-
-* (demo)
 
 Multimethods
 =============
