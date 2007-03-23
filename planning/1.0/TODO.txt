@@ -46,16 +46,6 @@ pending issues
       but no feedback/interaction with DFKI/Danish yet. 
 
   - revisit entry level docs (architecture, mission, getting-started)
-    - terminology clarifications:
-      - use "translating PYPY interpreters" or "translating
-        standard interpreter" instead of talking about
-        e.g. "translating the whole of pypy"
-      - VM translation framework 
-      - so we have: 
-        - pypy standard interpreter (easy to understand/modify)
-        - pypy VM translation framework (neccessarily more complex)
-      (hpk to start here, have something done by friday)
-
     - review entry points from the play1 demos. 
 
     - review/refactor architecture.txt:
@@ -71,6 +61,8 @@ pending issues
            to analyse RPython programs (abstract interpretation ...)
       - make the descriptions more "future" proof, i.e. 
         not reflecting the current state, possibly shortening
+      - check other entry level docs (also FAQ) for keeping to this
+        updated view 
 
       rationale for looking in more depth at architecture.txt: 
       this document and getting-started.txt document are
