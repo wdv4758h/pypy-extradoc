@@ -4,7 +4,8 @@ TODO for 1.0
 current general timeline 
 -----------------------------
 
-Note: meetings in #pypy-sync every weekday at 4pm (GMT+1) 
+Note: meetings in #pypy-sync every day at 4pm (GMT+1) 
+(weekend attendance optional :-)
 
 published final reports: 3.1, 2.1, 10.1, 12.1, 14.2
 
@@ -14,8 +15,8 @@ published final reports: 3.1, 2.1, 10.1, 12.1, 14.2
    permissions for release candidates)
 24 (weekend) release candidates testing
 25 (weekend) release candidates testing
-26 RELEASE                                             (9.1, 2.3)
-27                                                     (1.2-4, 13.1)
+26 testing testing testing                     (9.1, 2.3)
+27  RELEASE                                    (1.2-4, 13.1)
 28 
 29 
 30
@@ -26,50 +27,19 @@ pending issues
 -----------------------------
 
   - ensure working Interpreter translation combinations: 
-    - pypy-c-stackless/tp/taint/jit/GC-framework/thunk
-    - pypy-cli-tp/taint/thunk
-
-    - (done) make a matrix of possible combinations (wp13-report) (cfbolz) 
-
-  - complete/debug jit on powerpc (mwh)
-    (basically done) somewhat working, debugging in progress
-
-  - (mostly done) debug jit on intel (arigo/pedronis/arre)
-    in progress, --jit --faassen works now, "is_true" issue fixed 
+    - test various config option configurations -- use build tool? (guido)
+    - test windows situation (antocuni, fijal) -- seems generally good
 
   - integrate and test: 
-    - (done) wp10 - basically complete, pending issues brought up in review
-    - (almost done) wp08 code 
-    - (arigo,pedronis,arre): docs & examples, getting-started 
+    - (arigo,pedronis,arre): wp08 docs & examples, getting-started 
     - wp09 docs, examples and code - maybe what we have is good enough?
       (christian looking into this currently) a bit of progress, 
       but no feedback/interaction with DFKI/Danish yet. 
 
   - revisit entry level docs (architecture, mission, getting-started)
-    - review entry points from the play1 demos. 
-
-    - review/refactor architecture.txt:
-      - mission statement should emphasize VM
-        framework/translation and not mention project results 
-      - always clearly separate the talk about the VM translation 
-        framework and the Python implementation (and its features) 
-        for example "PyPy - implementation of python in python" 
-        as the first title is misleading.  maybe something like: 
-        a) PyPy is a VM/VHLL translation framework (or whatever we settle on)
-        b) already contains a full Python implementation
-           part of which is re-used from the translation framework 
-           to analyse RPython programs (abstract interpretation ...)
-      - make the descriptions more "future" proof, i.e. 
-        not reflecting the current state, possibly shortening
-      - check other entry level docs (also FAQ) for keeping to this
-        updated view 
-
-      rationale for looking in more depth at architecture.txt: 
-      this document and getting-started.txt document are
-      the most viewed (arch: 1500 times in march, getting-started: 
-      around 2200 times) ones and people expect archictecture.txt
-      to reflect our view on the project. 
-
+    - (guido,hpk) review entry points from the play1 demos. 
+    - (hpk, ...) review/refactor architecture.txt -- see docs-refactoring.txt
+    
   - describe particularly Javascript-related demos, refine them. 
     (mostly done, apart from 404/500 pages and possible JIT demo) 
   - fix play1 issues: 
@@ -80,21 +50,24 @@ pending issues
     - discuss/do a JIT demo
     (fijal)
 
-  - (done, still a bit of doc's/demo refinements maybe) 
-     make transparent proxies more prominent 
-     because they are a rather powerful feature)
-    - write a nice support module (pypy/lib/tputil.py - in progress)
-    - write/review documentation (in-progress)
-    - fix bugs if any
-    (hpk) 
-
   - update wp6 docs (object-optimizations.txt) and link
     to them from getting-started (mwh to coordinate)
     ropes docs added
 
-  - (done) document build tool usages (getting-started?), connect servers with it
+  - (guido) connect more servers to buildtool if possible 
   - stress-test/use buildtool for translation tests (multicompile) 
     (guido_w)
+
+  - (no news ) include documentation/entry point for 
+    the JS interpreter (santagada, fijal) 
+
+  - include documentation/entry point for 
+    the prolog interpreter (cfbolz, maybe) 
+
+
+
+NOTES AND DONE TASKS 
+-----------------------------
 
   - (DONE) consider where/how to put special builtins ("pypymagic"
     might not be a good name), suggestions: 
@@ -107,8 +80,23 @@ pending issues
       translated version (unless they work :) (done)
     (cfbolz)
 
-  - (no news ) include documentation/entry point for 
-    the JS interpreter (santagada, fijal) 
+  - (done, still a bit of doc's/demo refinements maybe) 
+     make transparent proxies more prominent 
+     because they are a rather powerful feature)
+    - write a nice support module (pypy/lib/tputil.py - in progress)
+    - write/review documentation (in-progress)
+    - fix bugs if any
+    (hpk) 
 
-  - include documentation/entry point for 
-    the prolog interpreter (cfbolz, maybe) 
+    - (done) wp10 - basically complete, pending issues brought up in review
+    - (done) wp08 code 
+
+  - (done) make a matrix of possible combinations (wp13-report) (cfbolz) 
+
+  - complete/debug jit on powerpc 
+    (basically done) somewhat working
+
+  - (done for release) debug jit on intel (arigo/pedronis/arre)
+    appears to work well, gives nice speedups on suitably contrived examples
+
+  - (done) document build tool usages (getting-started?)
