@@ -72,12 +72,11 @@ pending issues
 
   - describe particularly Javascript-related demos, refine them. 
     (mostly done, apart from 404/500 pages and possible JIT demo) 
-    It's all more or less done. What needs to be done (play1):
-    - more examples with autopaste feature
+  - fix play1 issues: 
     - source code of web page under the button?
-    - refined help
+    - review/refine help (add examples where necessary)
     - make nice 404 and 500 pages, also for apache
-    - make pypy-cli work there
+    - fix linking (it gets easily confused if you click around) 
     - discuss/do a JIT demo
     (fijal)
 
@@ -87,7 +86,7 @@ pending issues
     - write a nice support module (pypy/lib/tputil.py - in progress)
     - write/review documentation (in-progress)
     - fix bugs if any
-    (hpk, still a bit of doc's/demo refinements)
+    (hpk) 
 
   - update wp6 docs (object-optimizations.txt) and link
     to them from getting-started (mwh to coordinate)
