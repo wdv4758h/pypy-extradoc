@@ -19,3 +19,11 @@
       around 2200 times) ones and people expect archictecture.txt
       to reflect our view on the project. 
 
+
+* current play1 entry points docs: 
+  taint: objspace-proxies.html#the-taint-object-space
+  thunk: objspace-proxies.html#the-thunk-object-space
+  stackless: stackless.html 
+  TProxies: objspspace-proxies.html#tproxy 
+  XXX
+
