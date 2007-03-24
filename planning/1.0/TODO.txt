@@ -9,9 +9,8 @@ Note: meetings in #pypy-sync every day at 4pm (GMT+1)
 
 published final reports: 2.1, 2.3, 3.1, 10.1, 12.1, 14.2
 
-24 (weekend) WP08 documentation and working examples integrated  
+25 (weekend) WP08 documentation and working examples integrated  
    release candidates testing
-25 (weekend) release candidates testing
 26 testing testing testing                     (14.5, 11.1)
 27  RELEASE                                    (1.2-4, 13.1)
 28 
@@ -29,15 +28,16 @@ pending issues
 
   - integrate and test: 
     - (arigo,pedronis,arre): wp08 docs & examples, getting-started 
+    - (cfbolz) test wp09 getting-started examples: 
     - wp09 docs, examples and code - maybe what we have is good enough?
       (christian looking into this currently) a bit of progress, 
       but no feedback/interaction with DFKI/Danish yet. 
 
-  - revisit entry level docs (architecture/mission, getting-started)
+  - (hpk) revisit entry level docs (architecture/mission, getting-started)
     - (hpk, mostly done) review entry points from the play1 demos. 
-    - (hpk, DRAFT available) review/refactor architecture.txt -- see docs-refactoring.txt
+    - (arigo,cfbolz,pedronis) review/refactor new-architecture.txt 
     
-  - fix bad terminal behaviour of translated PyPy's 
+  - (possibly arigo) fix bad terminal behaviour of translated PyPy's 
     (contributing to play1 quirks) 
 
   - (fijal, NNN) play1 issues: 
@@ -61,10 +61,13 @@ pending issues
   - include documentation/entry point for 
     the prolog interpreter (cfbolz, maybe) 
 
-  - tarball packaging and testing 
+  - (hpk) fix test failures of translated PyPys 
+    relating to app_test 
 
-  - write release announcement 
+  - (pedronis) tarball packaging and testing 
 
+  - (hpk, review from cfbolz and NN)
+    write release announcement 
 
 
 NOTES AND DONE TASKS 
