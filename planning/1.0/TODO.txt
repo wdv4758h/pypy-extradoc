@@ -7,15 +7,12 @@ current general timeline
 Note: meetings in #pypy-sync every day at 4pm (GMT+1) 
 (weekend attendance optional :-)
 
-published final reports: 3.1, 2.1, 10.1, 12.1, 14.2
+published final reports: 2.1, 2.3, 3.1, 10.1, 12.1, 14.2
 
-23 WP08 documentation and working examples integrated  
-   release status / remaining tasks                    (14.5, 11.1)
-   dist-trunk separation (possibly restricting
-   permissions for release candidates)
-24 (weekend) release candidates testing
+24 (weekend) WP08 documentation and working examples integrated  
+   release candidates testing
 25 (weekend) release candidates testing
-26 testing testing testing                     (9.1, 2.3)
+26 testing testing testing                     (14.5, 11.1)
 27  RELEASE                                    (1.2-4, 13.1)
 28 
 29 
@@ -36,25 +33,25 @@ pending issues
       (christian looking into this currently) a bit of progress, 
       but no feedback/interaction with DFKI/Danish yet. 
 
-  - revisit entry level docs (architecture, mission, getting-started)
-    - (guido,hpk) review entry points from the play1 demos. 
-    - (hpk, ...) review/refactor architecture.txt -- see docs-refactoring.txt
+  - revisit entry level docs (architecture/mission, getting-started)
+    - (hpk, mostly done) review entry points from the play1 demos. 
+    - (hpk, DRAFT available) review/refactor architecture.txt -- see docs-refactoring.txt
     
-  - describe particularly Javascript-related demos, refine them. 
-    (mostly done, apart from 404/500 pages and possible JIT demo) 
-  - fix play1 issues: 
-    - source code of web page under the button?
+  - fix bad terminal behaviour of translated PyPy's 
+    (contributing to play1 quirks) 
+
+  - (fijal, NNN) play1 issues: 
     - review/refine help (add examples where necessary)
-    - make nice 404 and 500 pages, also for apache
-    - fix linking (it gets easily confused if you click around) 
+    - make examples execute more cleanly
+    - fix linking (it gets easily confused if you click around), 
+      make correct 404 and 500 pages
     - discuss/do a JIT demo
-    (fijal)
 
   - update wp6 docs (object-optimizations.txt) and link
     to them from getting-started (mwh to coordinate)
     ropes docs added
 
-  - (guido) connect more servers to buildtool if possible 
+  - (guido) possibly connect more servers to buildtool 
   - stress-test/use buildtool for translation tests (multicompile) 
     (guido_w)
 
@@ -63,6 +60,10 @@ pending issues
 
   - include documentation/entry point for 
     the prolog interpreter (cfbolz, maybe) 
+
+  - tarball packaging and testing 
+
+  - write release announcement 
 
 
 
