@@ -27,7 +27,7 @@ pending issues
     - test windows situation (antocuni, fijal) -- seems generally good
 
   - integrate and test: 
-    - (arigo,pedronis,arre): wp08 docs & examples, getting-started 
+    - (arigo,pedronis,arre, IN-PROGRESS): wp08 docs & examples, getting-started 
     - (cfbolz) test wp09 getting-started examples: 
     - wp09 docs, examples and code - maybe what we have is good enough?
       (christian looking into this currently) a bit of progress, 
@@ -37,10 +37,9 @@ pending issues
     - (hpk, mostly done) review entry points from the play1 demos. 
     - (arigo,cfbolz,pedronis) review/refactor new-architecture.txt 
     
-  - (possibly arigo) fix bad terminal behaviour of translated PyPy's 
-    (contributing to play1 quirks) 
-
   - (fijal, NNN) play1 issues: 
+    - rebuild pypy's to use the new readline stub (fixing 
+      ugly stdout/stdin interactions) 
     - review/refine help (add examples where necessary)
     - make examples execute more cleanly
     - fix linking (it gets easily confused if you click around), 
@@ -61,10 +60,11 @@ pending issues
   - include documentation/entry point for 
     the prolog interpreter (cfbolz, maybe) 
 
-  - (hpk) fix test failures of translated PyPys 
-    relating to app_test 
+  - (DONE), arigo,pedronis,hpk) fix test failures of translated PyPys 
+    related to aop.py module modifying global compiler state and
+    subsequent tests randomly breaking 
 
-  - (pedronis) tarball packaging and testing 
+  - (pedronis, in-progress) tarball packaging and testing 
 
   - (hpk, review from cfbolz and NN)
     write release announcement 
@@ -104,3 +104,8 @@ NOTES AND DONE TASKS
     appears to work well, gives nice speedups on suitably contrived examples
 
   - (done) document build tool usages (getting-started?)
+
+  - (DONE, arigo) fix bad terminal behaviour of translated PyPy's 
+
+    (contributing to play1 quirks) 
+
