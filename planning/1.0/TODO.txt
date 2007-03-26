@@ -54,15 +54,6 @@ pending issues
     refactor docs to point to the tools correctly
     (build/bin/* probably) 
 
-  - (fijal, NNN) play1 issues: 
-    - rebuild pypy's to use the new readline stub (fixing 
-      ugly stdout/stdin interactions) 
-    - review/refine help (add examples where necessary)
-    - make examples execute more cleanly
-    - fix linking (it gets easily confused if you click around), 
-      make correct 404 and 500 pages
-    - discuss/do a JIT demo
-
   - (pedronis, in-progress) tarball packaging and testing 
     - what is missing (code-wise) for a release candidate? 
 
@@ -76,6 +67,15 @@ pending issues
 
 NOTES AND DONE TASKS 
 -----------------------------
+
+  - (done by NNN: fijal, NNN) play1 issues: 
+    - rebuild pypy's to use the new readline stub (fixing 
+      ugly stdout/stdin interactions) 
+    - review/refine help (add examples where necessary)
+    - make examples execute more cleanly
+    - fix linking (it gets easily confused if you click around), 
+      make correct 404 and 500 pages
+    - discuss/do a JIT demo
 
   - (DROPPED for 1.0) include documentation/entry point for 
     the JS interpreter (santagada, fijal) 
