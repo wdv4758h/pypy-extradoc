@@ -54,6 +54,12 @@ pending issues
     refactor docs to point to the tools correctly
     (build/bin/* probably) 
 
+  - play1 additional features (fijal)
+    - add cli examples
+    - review
+    - (maybe) add a distribution demo
+    - (probably not) add a prolog function-pasting stuff
+
   - (pedronis, in-progress) tarball packaging and testing 
     - what is missing (code-wise) for a release candidate? 
 
