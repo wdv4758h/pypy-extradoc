@@ -46,7 +46,7 @@ pending issues
       make correct 404 and 500 pages
     - discuss/do a JIT demo
 
-  - update wp6 docs (object-optimizations.txt) and link
+  - update wp6 docs (interpreter-optimizations.txt) and link
     to them from getting-started (mwh to coordinate)
     ropes docs added
 
