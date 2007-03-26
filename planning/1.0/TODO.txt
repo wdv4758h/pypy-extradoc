@@ -60,6 +60,10 @@ pending issues
     - (maybe) add a distribution demo
     - (probably not) add a prolog function-pasting stuff
 
+  - getting-started links and version numbers
+
+  - update README, also link and version numbers!
+
   - (pedronis, in-progress) tarball packaging and testing 
     - what is missing (code-wise) for a release candidate? 
 
