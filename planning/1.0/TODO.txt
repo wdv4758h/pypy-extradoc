@@ -64,6 +64,8 @@ pending issues
 
   - update README, also link and version numbers!
 
+  - briefly review FAQ
+
   - (pedronis, in-progress) tarball packaging and testing 
     - what is missing (code-wise) for a release candidate? 
 
