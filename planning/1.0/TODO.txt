@@ -9,10 +9,8 @@ Note: meetings in #pypy-sync every day at 4pm (GMT+1)
 
 published final reports: 2.1, 2.3, 3.1, 10.1, 12.1, 14.2
 
-25 (weekend) WP08 documentation and working examples integrated  
-   release candidates testing
-26 testing testing testing                     (14.5, 11.1)
-27  RELEASE                                    (1.2-4, 13.1)
+26 release candidates testing
+27 RELEASE                                    (1.2-4, 13.1)
 28 
 29 
 30
@@ -34,7 +32,7 @@ pending issues
       but no feedback/interaction with DFKI/Danish yet. 
 
   - (hpk) revisit entry level docs (architecture/mission, getting-started)
-    - (hpk, mostly done) review entry points from the play1 demos. 
+    - (hpk, guido, mostly done) review entry points from the play1 demos. 
     - (arigo,cfbolz,pedronis) review/refactor new-architecture.txt 
     
   - (fijal, NNN) play1 issues: 
@@ -54,24 +52,39 @@ pending issues
   - stress-test/use buildtool for translation tests (multicompile) 
     (guido_w)
 
-  - (no news ) include documentation/entry point for 
-    the JS interpreter (santagada, fijal) 
-
   - include documentation/entry point for 
     the prolog interpreter (cfbolz, maybe) 
 
-  - (DONE), arigo,pedronis,hpk) fix test failures of translated PyPys 
-    related to aop.py module modifying global compiler state and
-    subsequent tests randomly breaking 
+  - (no news ) include documentation/entry point for 
+    the JS interpreter (santagada, fijal) 
+
+  - move pedronis/pypy-c-testing, pedronis/tarball-testing 
+    and pypy/tool/build all into 
+        
+        http://codespeak.net/svn/pypy/build
+
+    directory and arigo's htmlconftest as a snapshot or external. 
+    refactor docs to point to the tools correctly
+    (build/bin/* probably) 
 
   - (pedronis, in-progress) tarball packaging and testing 
+    - what is missing (code-wise) for a release candidate? 
 
-  - (hpk, review from cfbolz and NN)
+    - when to do the release candidate? 
+    - skip some weakref tests related to missing GC refactorings 
+      for 1.0? 
+
+  - (pedronis,hpk, review from cfbolz and NN)
     write release announcement 
 
 
 NOTES AND DONE TASKS 
 -----------------------------
+
+  - (DONE), arigo,pedronis,hpk) fix test failures of translated PyPys 
+    related to aop.py module modifying global compiler state and
+    subsequent tests randomly breaking 
+
 
   - (DONE) consider where/how to put special builtins ("pypymagic"
     might not be a good name), suggestions: 
