@@ -9,7 +9,7 @@ Note: meetings in #pypy-sync every day at 4pm (GMT+1)
 
 published final reports: 2.1, 2.3, 3.1, 10.1, 12.1, 14.2
 
-26 release candidates testing
+26 release candidates / testing / docs
 27 RELEASE                                    (1.2-4, 13.1)
 28 
 29 
@@ -27,24 +27,14 @@ pending issues
   - integrate and test: 
     - (arigo,pedronis,arre, IN-PROGRESS): wp08 docs & examples, getting-started 
     - (cfbolz) test wp09 getting-started examples: 
+      - after some fixing things seem to work
     - wp09 docs, examples and code - maybe what we have is good enough?
       (christian looking into this currently) a bit of progress, 
       but no feedback/interaction with DFKI/Danish yet. 
 
-  - (hpk) revisit entry level docs (architecture/mission, getting-started)
-    - (hpk, guido, mostly done) review entry points from the play1 demos. 
-    - (arigo,cfbolz,pedronis) review/refactor new-architecture.txt 
+  - (arigo,cfbolz,pedronis) review/refactor new-architecture.txt 
     
-  - (fijal, NNN) play1 issues: 
-    - rebuild pypy's to use the new readline stub (fixing 
-      ugly stdout/stdin interactions) 
-    - review/refine help (add examples where necessary)
-    - make examples execute more cleanly
-    - fix linking (it gets easily confused if you click around), 
-      make correct 404 and 500 pages
-    - discuss/do a JIT demo
-
-  - update wp6 docs (interpreter-optimizations.txt) and link
+  - (done) update wp6 docs (interpreter-optimizations.txt) and link
     to them from getting-started (mwh to coordinate)
     ropes docs added
 
@@ -52,11 +42,8 @@ pending issues
   - stress-test/use buildtool for translation tests (multicompile) 
     (guido_w)
 
-  - include documentation/entry point for 
-    the prolog interpreter (cfbolz, maybe) 
-
-  - (no news ) include documentation/entry point for 
-    the JS interpreter (santagada, fijal) 
+  - (cfbolz, in-progress) include documentation/entry point for 
+    the prolog interpreter 
 
   - move pedronis/pypy-c-testing, pedronis/tarball-testing 
     and pypy/tool/build all into 
@@ -66,6 +53,15 @@ pending issues
     directory and arigo's htmlconftest as a snapshot or external. 
     refactor docs to point to the tools correctly
     (build/bin/* probably) 
+
+  - (fijal, NNN) play1 issues: 
+    - rebuild pypy's to use the new readline stub (fixing 
+      ugly stdout/stdin interactions) 
+    - review/refine help (add examples where necessary)
+    - make examples execute more cleanly
+    - fix linking (it gets easily confused if you click around), 
+      make correct 404 and 500 pages
+    - discuss/do a JIT demo
 
   - (pedronis, in-progress) tarball packaging and testing 
     - what is missing (code-wise) for a release candidate? 
@@ -80,6 +76,12 @@ pending issues
 
 NOTES AND DONE TASKS 
 -----------------------------
+
+  - (DROPPED for 1.0) include documentation/entry point for 
+    the JS interpreter (santagada, fijal) 
+
+
+  - (hpk, guido, DONE) review entry points from the play1 demos. 
 
   - (DONE), arigo,pedronis,hpk) fix test failures of translated PyPys 
     related to aop.py module modifying global compiler state and
