@@ -9,7 +9,6 @@ Note: meetings in #pypy-sync every day at 4pm (GMT+1)
 
 published final reports: 2.1, 2.3, 3.1, 10.1, 12.1, 14.2
 
-26 release candidates / testing / docs
 27 RELEASE                                    (1.2-4, 13.1)
 28 
 29 
@@ -24,6 +23,28 @@ pending issues
     - test various config option configurations -- use build tool? (guido)
     - test windows situation (antocuni, fijal) -- seems generally good
 
+  - (arigo,cfbolz,pedronis) review/refactor new-architecture.txt 
+    
+  - play1 additional features 
+    - pending updates of docs
+    - snapshotting current state 
+
+  - getting-started links and version numbers
+
+  - (pedronis, need review) update README, also link and version numbers!
+
+  - briefly review FAQ
+
+  - (pedronis, in-progress) tarball packaging and testing 
+    - when to do the release candidate? 
+
+  - (pedronis,hpk, review from cfbolz and NN)
+    write release announcement 
+
+
+NOTES AND DONE TASKS 
+-----------------------------
+
   - integrate and test: 
     - (arigo,pedronis,arre, IN-PROGRESS): wp08 docs & examples, getting-started 
     - (cfbolz) test wp09 getting-started examples: 
@@ -32,18 +53,6 @@ pending issues
       (christian looking into this currently) a bit of progress, 
       but no feedback/interaction with DFKI/Danish yet. 
 
-  - (arigo,cfbolz,pedronis) review/refactor new-architecture.txt 
-    
-  - (done) update wp6 docs (interpreter-optimizations.txt) and link
-    to them from getting-started (mwh to coordinate)
-    ropes docs added
-
-  - (guido) possibly connect more servers to buildtool 
-  - stress-test/use buildtool for translation tests (multicompile) 
-    (guido_w)
-
-  - (cfbolz, in-progress) include documentation/entry point for 
-    the prolog interpreter 
 
   - move pedronis/pypy-c-testing, pedronis/tarball-testing 
     and pypy/tool/build all into 
@@ -54,31 +63,6 @@ pending issues
     refactor docs to point to the tools correctly
     (build/bin/* probably) 
 
-  - play1 additional features (fijal)
-    - add cli examples
-    - review
-    - (maybe) add a distribution demo
-    - (probably not) add a prolog function-pasting stuff
-
-  - getting-started links and version numbers
-
-  - (pedronis, need review) update README, also link and version numbers!
-
-  - briefly review FAQ
-
-  - (pedronis, in-progress) tarball packaging and testing 
-    - what is missing (code-wise) for a release candidate? 
-
-    - when to do the release candidate? 
-    - skip some weakref tests related to missing GC refactorings 
-      for 1.0? 
-
-  - (pedronis,hpk, review from cfbolz and NN)
-    write release announcement 
-
-
-NOTES AND DONE TASKS 
------------------------------
 
   - (done by NNN: fijal, NNN) play1 issues: 
     - rebuild pypy's to use the new readline stub (fixing 
