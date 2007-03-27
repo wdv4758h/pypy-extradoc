@@ -19,31 +19,44 @@ published final reports: 2.1, 2.3, 3.1, 10.1, 12.1, 14.2
 pending issues 
 -----------------------------
 
-  - ensure working Interpreter translation combinations: 
-    - test various config option configurations -- use build tool? (guido)
-    - test windows situation (antocuni, fijal) -- seems generally good
-
   - (arigo,cfbolz,pedronis) review/refactor new-architecture.txt 
     
-  - play1 additional features 
+  - (fijal intends to drop around 7-8pm) 
+    play1 additional features 
     - pending updates of docs
     - snapshotting current state 
 
-  - getting-started links and version numbers
-
-  - (pedronis, need review) update README, also link and version numbers!
-
-  - briefly review FAQ
+  - (cfbolz, done?) getting-started links and version numbers
+    (antocuni) link precompiled windows binaries 
 
   - (pedronis, in-progress) tarball packaging and testing 
-    - when to do the release candidate? 
+    - tarball can be prepared now, only doc-changes pending 
 
-  - (pedronis,hpk, review from cfbolz and NN)
-    write release announcement 
+  - (mwh,pedronis,hpk,ALL)
+    finalise release announcement 
 
+  - (cfbolz) write news entry
+
+  - send out of announcements to lists: 
+    - pypy-dev
+    - pypy-funding
+    - c.l.py
+    - c.l.py.announce
+    - llvm list?
+    - python-dev
+    - XXX ? 
 
 NOTES AND DONE TASKS 
 -----------------------------
+
+  - (done) update README, also link and version numbers!
+
+  - (should be ok) briefly review FAQ
+
+
+  - ensure working Interpreter translation combinations: 
+    - test various config option configurations -- use build tool? (guido)
+    - test windows situation (antocuni, fijal) -- seems generally good
 
   - integrate and test: 
     - (arigo,pedronis,arre, IN-PROGRESS): wp08 docs & examples, getting-started 
