@@ -62,7 +62,7 @@ pending issues
 
   - getting-started links and version numbers
 
-  - update README, also link and version numbers!
+  - (pedronis, need review) update README, also link and version numbers!
 
   - briefly review FAQ
 
