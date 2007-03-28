@@ -1,6 +1,8 @@
 TODO for 1.0 
 ============================
 
+DONE. 
+
 current general timeline 
 -----------------------------
 
@@ -15,8 +17,7 @@ published final reports: 2.1, 2.3, 3.1, 10.1, 12.1, 14.2
 30
 31 (weekend)
 
-
-pending issues 
+NOTES AND DONE TASKS 
 -----------------------------
 
   - (arigo,cfbolz,pedronis) review/refactor new-architecture.txt 
@@ -38,16 +39,11 @@ pending issues
   - (cfbolz) write news entry
 
   - send out of announcements to lists: 
-    - pypy-dev
-    - pypy-funding
-    - c.l.py
-    - c.l.py.announce
-    - llvm list?
-    - python-dev
-    - XXX ? 
+    - (pedronis) pypy-dev pypy-funding
+    - (cf) c.l.py, c.l.py.announce
+    - (arigo) llvm list, python-dev
+    - (holger) Charles 
 
-NOTES AND DONE TASKS 
------------------------------
 
   - (done) update README, also link and version numbers!
 
