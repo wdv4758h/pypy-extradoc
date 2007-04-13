@@ -90,7 +90,7 @@ Just-In-Time compiler generator
 * generates just in time compiler given
   the interpreter source + few hints
 * applicable to any possible interpreter
-  (writen in RPython)
+  (written in RPython)
 
 Multiple object implementations
 ================================
@@ -252,4 +252,12 @@ What future holds
 * We need some rest after EU funding period
 * More work on the JIT
 * Threads
-* Extenstion modules
+* Extension modules
+
+XXX should probably also mention the following
+which is interesting at RuPy:
+
+* Implementations of other dynamic languages
+  such as JavaScript, Prolog (already started),
+  Ruby (?), Perl (??) (which will all get a JIT
+  essentially for free)
