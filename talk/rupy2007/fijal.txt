@@ -1,16 +1,26 @@
-XXX stealing from mwh
+============================
+PyPy
+============================
 
-What you' re in for in the next 45 mins
+:Authors: Maciej Fijalkowski
+:Location: Adam Mickiewicz University
+:Date: 15.IV.2007
+
+Next 45 minutes
 =======================================
 
 * Quick intro and motivation
+
 * Introduction to features unique to PyPy,
   including the JIT, with the odd demo
-* Quick overview of architecture and current statues
+
+* Quick overview of architecture and current status
+
 * A little talk about what the future holds
 
 What is PyPy?
 ==============
+
 * PyPy is:
 * An implementation of Python, and a very
   flexible compiler framework (with some
@@ -24,23 +34,25 @@ What is PyPy?
 30 second status
 ================
 
-* We can produce a binary that looks more and
-  more like CPython to the user
+* We can produce a binary that looks almost
+  like CPython to the user
 * 1.5-3x slower, depending on details
-* Some modules supported -- socket, mmap, ...
+* Some modules supported - socket, mmap, ...
 * Can now produce binary for CLR (i.e. .NET)
 * Can also produce more capable binaries --
   with stackless-style coroutines, with logic
-  variables, ...
+  variables
+* No C inside
 
 Motivation
 ===========
+
 * PyPy grew out of a desire to modify/extend
   the implementation of Python, for example to:
 * increase performance (psyco-style JIT
   compilation, better garbage collectors)
 * add expressiveness (stackless-style
-  coroutines, logic programming)
+  coroutines, logic programming, distribution)
 * ease porting (to new platforms like the
   JVM or CLI or to low memory situations)
 
@@ -58,7 +70,7 @@ Lofty goals, but first...
 Enter the PyPy platform
 ========================
 
-XXX Copy picture
+XXX
 
 Things that make PyPy unique
 ===============================
@@ -68,32 +80,47 @@ Things that make PyPy unique
 * Transparent Proxies
 * Runtime modifiable Grammar
 * Thunk object space
-* JavaScript (demos: b-n-b and rxconsole)
+* JavaScript backend
 * Logic programming
+* whatever you imagine ...
 
-Just-In-Time compiler
-========================
+Just-In-Time compiler generator
+=================================
 
-* rather Just in time compiler generator
+* generates just in time compiler given
+  the interpreter source + few hints
 * applicable to any possible interpreter
   (writen in RPython)
-* scales to whole Python
-* XXX
 
 Multiple object implementations
 ================================
 
-* XXX
+* Every python-level object can have multiple
+  implementations
+* Examples are: String-key specialized dicts,
+  ropes, tree-based dicts
+
+XXX improve
 
 Transparent proxies
 ====================
 
-* XXX
+* Built on top of multiple object implementations
+
+* Provides new implementation for each object
+
+* can access everything in transparent manner,
+  including such things like interpreter frames
+
+XXX demo
 
 Distribution
 ================
 
-* XXX
+* Built on top of transparent proxies
+* Can hide network layer
+* Copies only small chunks of data,
+  avoiding too much traffic
 
 Stackless
 ============
@@ -129,7 +156,7 @@ Translation Aspects
   process
 
 1,000 meters view
-===============
+=================
 
 XXX We're on the continent
 XXX copy picture
@@ -222,7 +249,7 @@ XXX Write few words about future
 What future holds
 ==================
 
-* A bit of a rest
+* We need some rest after EU funding period
 * More work on the JIT
 * Threads
 * Extenstion modules
