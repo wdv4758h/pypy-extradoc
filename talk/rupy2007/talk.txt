@@ -17,7 +17,7 @@ What you' re in for in the next 45 mins
 =======================================
 
 * Quick intro and motivation
-* Quick overview of architecture and current statues
+* Quick overview of architecture and current status
 * Introduction to features unique to PyPy,
   including the JIT, with the odd demo
 * A little talk about what the future holds
@@ -199,7 +199,7 @@ Status
 Status
 =======
 
-* The C backend support ''stackless'' features
+* The C backend supports ''stackless'' features
   -- coroutines, tasklets, recursion only limited
   by RAM
 * Can use OS threads with a simple ''GIL-
@@ -269,10 +269,10 @@ Future Dreams
 ==============
 
 * High performance compacting, generational,
-  etc GC (steal ideas from Jikes?)
+  etc GC (steal ideas or code from Jikes?)
 * Implementations of other dynamic languages
   such as JavaScript, Prolog (already started),
-  Ruby (?), Perl (??) (which will get a JIT
+  Ruby (?), Perl (??) (which will all get a JIT
   essentially for free)
 * The ability to have dynamically loaded
   extension modules
