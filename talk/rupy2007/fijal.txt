@@ -1,25 +1,12 @@
-Fijal's remarks -
-
-A bit too much about implementation, a bit too little
-about new amazing cool features (stackless, distribution,
-tproxy and such)
-
-I would like to have
-- a slide about JS backend + demos (play1?)
-- a slide about distribution
-- a slide about stackless, including cloning demo
-- a slide + demo about modifiable grammar
-- logic objspace??? (unsure if it even works)
-- a slide about different implementations of objects,
-  including ropes and a demo which ''hangs'' on CPython
+XXX stealing from mwh
 
 What you' re in for in the next 45 mins
 =======================================
 
 * Quick intro and motivation
-* Quick overview of architecture and current statues
 * Introduction to features unique to PyPy,
   including the JIT, with the odd demo
+* Quick overview of architecture and current statues
 * A little talk about what the future holds
 
 What is PyPy?
@@ -39,8 +26,8 @@ What is PyPy?
 
 * We can produce a binary that looks more and
   more like CPython to the user
-* 2-4x slower, depending on details
-* More modules supported -- socket, mmap, ...
+* 1.5-3x slower, depending on details
+* Some modules supported -- socket, mmap, ...
 * Can now produce binary for CLR (i.e. .NET)
 * Can also produce more capable binaries --
   with stackless-style coroutines, with logic
@@ -73,6 +60,51 @@ Enter the PyPy platform
 
 XXX Copy picture
 
+Things that make PyPy unique
+===============================
+
+* The Just-In-Time compiler (and the way it
+  has been made)
+* Transparent Proxies
+* Runtime modifiable Grammar
+* Thunk object space
+* JavaScript (demos: b-n-b and rxconsole)
+* Logic programming
+
+Just-In-Time compiler
+========================
+
+* rather Just in time compiler generator
+* applicable to any possible interpreter
+  (writen in RPython)
+* scales to whole Python
+* XXX
+
+Multiple object implementations
+================================
+
+* XXX
+
+Transparent proxies
+====================
+
+* XXX
+
+Distribution
+================
+
+* XXX
+
+Stackless
+============
+
+* XXX
+
+Runtime modifiable grammar
+===========================
+
+* XXX
+
 How do you specify the Python language?
 ========================================
 
@@ -96,9 +128,10 @@ Translation Aspects
   'translation aspects' during the compilation
   process
 
-1,000 ft view
+1,000 meters view
 ===============
 
+XXX We're on the continent
 XXX copy picture
 
 The Annotator
@@ -184,111 +217,12 @@ The Backend(s)
   computing names for everything
 * Spit out the code
 
-Status
-=======
+XXX Write few words about future
 
-* The Standard Interpreter almost completely
-  compatible with Python 2.4.4
-* The compiler framework:
-* Produces standalone binaries
-* C, LLVM and CLI backends well
-  supported, JVM very nearly complete
-* JavaScript backend works, but not for all of
-  PyPy (not really intended to, either)
+What future holds
+==================
 
-Status
-=======
-
-* The C backend support ''stackless'' features
-  -- coroutines, tasklets, recursion only limited
-  by RAM
-* Can use OS threads with a simple ''GIL-
-  thread'' model XXX borken
-* Our Python specification/implementation
-  has remained free of all these
-  implementation decisions!
-
-What we're working on now
-==========================
-
-* The JIT
-* i386, PowerPC and LLVM backends
-* Object optimizations
-* Dict variants, method caching, ...
-* Integration with .NET
-* Security and distribution prototypes
-* Not trying to revive rexec for now though...
-
-Things that make PyPy unique
-===============================
-
-* The Just-In-Time compiler (and the way it
-  has been made)
-* Transparent Proxies
-* Runtime modifiable Grammar
-* Thunk object space
-* JavaScript (demos: b-n-b and rxconsole)
-* Logic programming
-
-About the project
-====================
-
-* Open source, of course (MIT license)
-* Distributed -- the 12 paid developers live in
-  6 countries, contributers from many more
-* Sprint driven development -- focussed week
-  long coding sessions, every ~6 weeks during
-  funding period
-* Extreme Programming practices: pair
-  programming, test-driven development
-
-Future Facts
-===============
-
-* Funding period ends March 31st
-* Some funding related admin remains --
-    reports, reviews
-* So PyPy development will end? Of course
-  not!
-* PyPy was a hobbyist open source project
-   before funding, will return to that state
-* ... for a while, at least
-
-Future Hopes
-=============
-
-* At least in my opinion, the work so far on
-  PyPy has mostly been preparatory -- the real
-  fun is yet to come.
-* Likely future work includes:
+* A bit of a rest
 * More work on the JIT
-* Reducing code duplication
-* Improved C gluing, better GIL handling
-
-Future Dreams
-==============
-
-* High performance compacting, generational,
-  etc GC (steal ideas from Jikes?)
-* Implementations of other dynamic languages
-  such as JavaScript, Prolog (already started),
-  Ruby (?), Perl (??) (which will get a JIT
-  essentially for free)
-* The ability to have dynamically loaded
-  extension modules
-
-Join the fun!
-==============
-
-* Project relies more than ever on getting the
-  community involved
-* Read documentation:
-     http://codespeak.net/pypy/
-* Come hang out in #pypy on freenode, post
-  to pypy-dev
-* Probably will be easier to keep up now...
-
-Thanks for listening!
-======================
-
-Any Questions?
+* Threads
+* Extenstion modules
