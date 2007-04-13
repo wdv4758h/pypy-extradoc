@@ -1,0 +1,294 @@
+Fijal's remarks -
+
+A bit too much about implementation, a bit too little
+about new amazing cool features (stackless, distribution,
+tproxy and such)
+
+I would like to have
+- a slide about JS backend + demos (play1?)
+- a slide about distribution
+- a slide about stackless, including cloning demo
+- a slide + demo about modifiable grammar
+- logic objspace??? (unsure if it even works)
+- a slide about different implementations of objects,
+  including ropes and a demo which ''hangs'' on CPython
+
+What you' re in for in the next 45 mins
+=======================================
+
+* Quick intro and motivation
+* Quick overview of architecture and current statues
+* Introduction to features unique to PyPy,
+  including the JIT, with the odd demo
+* A little talk about what the future holds
+
+What is PyPy?
+==============
+* PyPy is:
+* An implementation of Python, and a very
+  flexible compiler framework (with some
+  features that are especially useful for
+  implementing interpreters)
+*  An open source project (MIT license)
+*  A STREP (''Specific Targeted REsearch
+   Project''), partially funded by the EU
+*  A lot of fun!
+
+30 second status
+================
+
+* We can produce a binary that looks more and
+  more like CPython to the user
+* 2-4x slower, depending on details
+* More modules supported -- socket, mmap, ...
+* Can now produce binary for CLR (i.e. .NET)
+* Can also produce more capable binaries --
+  with stackless-style coroutines, with logic
+  variables, ...
+
+Motivation
+===========
+* PyPy grew out of a desire to modify/extend
+  the implementation of Python, for example to:
+* increase performance (psyco-style JIT
+   compilation, better garbage collectors)
+* add expressiveness (stackless-style
+   coroutines, logic programming)
+* ease porting (to new platforms like the
+   JVM or CLI or to low memory situations)
+
+Lofty goals, but first...
+===========================
+* CPython is a fine implementation of Python
+  but:
+* it's written in C, which makes porting to,
+  for example, the CLI hard
+* while psyco and stackless exist, they are
+  very hard to maintain as Python evolves
+* some implementation decisions are very
+  hard to change (e.g. refcounting)
+
+Enter the PyPy platform
+========================
+
+XXX Copy picture
+
+How do you specify the Python language?
+========================================
+
+* The way we did it was to write an
+  interpreter for Python in RPython -- a subset
+  of Python that is amenable to analysis
+* This allowed us to write unit tests for our
+  specification/implementation that run on top
+  of CPython
+* Can also test entire specification/
+  implementation in same way
+
+Translation Aspects
+====================
+* Our Python implementation/specification is
+  very high level
+* One of our Big Goals is to produce our
+  customized Python implementations without
+  compromising on this point
+* We do this by weaving in so-called
+  'translation aspects' during the compilation
+  process
+
+1,000 ft view
+===============
+
+XXX copy picture
+
+The Annotator
+=============
+
+* Works on control flow graphs of the source
+  program
+* Type annotation associates variables with
+  information about which values they can
+  take at run time
+* An unusual feature of PyPy's approach is that
+  the annotator works on live objects which
+  means it never sees initialization code, so
+  that can use exec and other dynamic tricks
+
+The Annotator
+==============
+
+* Annotation starts at a given entry point and
+  discovers as it proceeds which functions may
+  be called by the input program
+* Does not modify the graphs; end result is
+  essentially a big dictionary
+* Read ''Compiling dynamic language
+  implementations'' on the web site for more
+  than is on these slides
+
+The RTyper
+============
+
+* The RTyper takes as input an annotated
+  RPython program (e.g. our Python
+  implementation)
+* It reduces the abstraction level of the graphs
+  towards that of the target platform
+* This is where the magic of PyPy really starts
+  to get going :-)
+
+The RTyper
+===========
+
+* Can target a C-ish, pointer-using language or
+  an object-oriented language like Java or
+  Smalltalk with classes and instances
+* Resulting graphs are not completely low-
+  level: still assume automatic memory
+  management for example
+
+Reducing Abstraction
+======================
+
+* Many high level operations apply to different
+  types -- the most extreme example probably
+  being calling an object
+* For example, calling a function is RTyped to a
+  ''direct_call'' operation
+* But calling a class becomes a sequence of
+  operations including allocating memory for
+  the instance and calling any __init__
+  function
+
+Further Transforms
+===================
+
+* RTyping is followed by a sequence of further
+  transforms, depending on target platform and
+  options supplied:
+*  GC transformer -- inserts explicit memory
+   management operations
+*  Stackless transform -- inserts bookkeeping
+   and extra operations to allow use of
+   coroutines, tasklets etc
+*  Various optimizations -- malloc removal,
+   inlining, ...
+
+The Backend(s)
+===============
+
+* Maintained backends: C, LLVM, CLI/.NET,
+  JVM and JavaScript
+* All proceed in two phases:
+* Traverse the forest of rtyped graphs,
+  computing names for everything
+* Spit out the code
+
+Status
+=======
+
+* The Standard Interpreter almost completely
+  compatible with Python 2.4.4
+* The compiler framework:
+* Produces standalone binaries
+* C, LLVM and CLI backends well
+  supported, JVM very nearly complete
+* JavaScript backend works, but not for all of
+  PyPy (not really intended to, either)
+
+Status
+=======
+
+* The C backend support ''stackless'' features
+  -- coroutines, tasklets, recursion only limited
+  by RAM
+* Can use OS threads with a simple ''GIL-
+  thread'' model XXX borken
+* Our Python specification/implementation
+  has remained free of all these
+  implementation decisions!
+
+What we're working on now
+==========================
+
+* The JIT
+* i386, PowerPC and LLVM backends
+* Object optimizations
+* Dict variants, method caching, ...
+* Integration with .NET
+* Security and distribution prototypes
+* Not trying to revive rexec for now though...
+
+Things that make PyPy unique
+===============================
+
+* The Just-In-Time compiler (and the way it
+  has been made)
+* Transparent Proxies
+* Runtime modifiable Grammar
+* Thunk object space
+* JavaScript (demos: b-n-b and rxconsole)
+* Logic programming
+
+About the project
+====================
+
+* Open source, of course (MIT license)
+* Distributed -- the 12 paid developers live in
+  6 countries, contributers from many more
+* Sprint driven development -- focussed week
+  long coding sessions, every ~6 weeks during
+  funding period
+* Extreme Programming practices: pair
+  programming, test-driven development
+
+Future Facts
+===============
+
+* Funding period ends March 31st
+* Some funding related admin remains --
+    reports, reviews
+* So PyPy development will end? Of course
+  not!
+* PyPy was a hobbyist open source project
+   before funding, will return to that state
+* ... for a while, at least
+
+Future Hopes
+=============
+
+* At least in my opinion, the work so far on
+  PyPy has mostly been preparatory -- the real
+  fun is yet to come.
+* Likely future work includes:
+* More work on the JIT
+* Reducing code duplication
+* Improved C gluing, better GIL handling
+
+Future Dreams
+==============
+
+* High performance compacting, generational,
+  etc GC (steal ideas from Jikes?)
+* Implementations of other dynamic languages
+  such as JavaScript, Prolog (already started),
+  Ruby (?), Perl (??) (which will get a JIT
+  essentially for free)
+* The ability to have dynamically loaded
+  extension modules
+
+Join the fun!
+==============
+
+* Project relies more than ever on getting the
+  community involved
+* Read documentation:
+     http://codespeak.net/pypy/
+* Come hang out in #pypy on freenode, post
+  to pypy-dev
+* Probably will be easier to keep up now...
+
+Thanks for listening!
+======================
+
+Any Questions?
