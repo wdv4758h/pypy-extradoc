@@ -42,31 +42,6 @@ About the project
 * Extreme Programming practices: pair
   programming, test-driven development
 
-Test tools
-===========
-
-* We use py.test, developed together with PyPy
-* distributed testing
-* easy to extend (testing docs, JavaScript snippets etc.)
-
-Compiler toolchain
-===================
-
-* Translates so called RPython
-  (restricted Python) to lower level language
-* Targets C, LLVM, CLI, JVM, JavaScript...
-* Can translate any program, but
-  is aimed at implementing interpreters
-
-RPython
-=========
-
-* Starts from living python objects, so
-  all dynamic tricks are allowed for initialization
-* Full implicit type inference
-* Type system like Java's, but with function pointers
-  and more
-
 Motivation
 ===========
 
@@ -90,6 +65,24 @@ Lofty goals, but first...
 * some implementation decisions are very
   hard to change (e.g. refcounting)
 
+Compiler toolchain
+===================
+
+* Translates so called RPython
+  (restricted Python) to lower level language
+* Targets C, LLVM, CLI, JVM, JavaScript...
+* Can translate any program, but
+  is aimed at implementing interpreters
+
+RPython
+=========
+
+* Starts from living python objects, so
+  all dynamic tricks are allowed for initialization
+* Full implicit type inference
+* Type system like Java's, but with function pointers
+  and more
+
 Things that make PyPy unique
 ===============================
 
@@ -98,7 +91,7 @@ Things that make PyPy unique
 * Transparent Proxies
 * Runtime modifiable Grammar
 * Thunk object space
-* JavaScript backend
+* Multiple backends
 * Logic programming
 * whatever you imagine ...
 
@@ -183,6 +176,13 @@ Translation toolchain status
 * prolog interpreter
 * JavaScript interpreter coming soon
 * Ruby? Perl?? (with JIT almost for free)
+
+Test tools
+===========
+
+* We use py.test, developed together with PyPy
+* distributed testing
+* easy to extend (testing docs, JavaScript snippets etc.)
 
 What future holds
 ====================
