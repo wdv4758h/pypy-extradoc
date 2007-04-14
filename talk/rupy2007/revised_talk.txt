@@ -47,7 +47,7 @@ Test tools
 
 * We use py.test, developed together with PyPy
 * distributed testing
-* easy to extend (testing docs, js snippets etc.)
+* easy to extend (testing docs, JavaScript snippets etc.)
 
 Compiler toolchain
 ===================
@@ -64,8 +64,8 @@ RPython
 * Starts from living python objects, so
   all dynamic tricks are allowed for initialization
 * Full implicit type inference
-* Like Java, but has at least
-  function pointers
+* Like Java, but with function pointers, specialization,
+  and more
 
 Motivation
 ===========
@@ -169,7 +169,7 @@ Interpreter status
   we use PyPy when CPython is
   incapable
 
-* It's very friendly platform
+* It's a very friendly platform
   for experiments
 
 * Threads and extension modules
