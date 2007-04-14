@@ -64,7 +64,7 @@ RPython
 * Starts from living python objects, so
   all dynamic tricks are allowed for initialization
 * Full implicit type inference
-* Like Java, but with function pointers, specialization,
+* Type system like Java's, but with function pointers
   and more
 
 Motivation
