@@ -121,16 +121,17 @@ Distribution
 * Can hide network layer
 * Copies only small chunks of data,
   avoiding too much traffic
+* Still very experimental!
+                                   
+Using translation toolchain
+============================
 
-Stackless
-============
+* Working prolog interpreter
 
-* XXX
+* Started Javascript interpreter
 
-Runtime modifiable grammar
-===========================
-
-* XXX
+* Ruby? Perl?? Whatever interpreter
+  (having JIT almost for free)
 
 How do you specify the Python language?
 ========================================
