@@ -190,3 +190,11 @@ What future holds
 * More JIT! (faster than C)
 * Extension modules
 * Holiday! (funding period ended in March)
+
+Further points of interest
+==============================
+
+* http://codespeak.net/pypy
+* http://play1.codespeak.net/
+* #pypy on freenode
+* pypy-dev@codespeak.net
