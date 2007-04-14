@@ -82,6 +82,7 @@ RPython
 * Full implicit type inference
 * Type system like Java's, but with function pointers
   and more
+* 20-60x faster than CPython
 
 Things that make PyPy unique
 ===============================
@@ -175,7 +176,7 @@ Interpreter status
 * Threads and extension modules
   are not working
 
-Translation toolchain status
+Interpreters in RPython
 =============================
 
 * Usefull
