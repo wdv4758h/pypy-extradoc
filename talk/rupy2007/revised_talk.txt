@@ -103,8 +103,6 @@ Just-In-Time compiler generator
 * applicable to any possible interpreter
   (written in RPython)
 
-XXX (demo)
-
 Multiple object implementations
 ================================
 
@@ -112,8 +110,6 @@ Multiple object implementations
   implementations
 * Examples are: String-key specialized dicts,
   ropes, tree-based dicts
-
-XXX (rope nasty example)
 
 Transparent proxies
 ====================
@@ -125,8 +121,6 @@ Transparent proxies
 * can access everything in transparent manner,
   including such things like interpreter frames
 
-XXX www demo
-
 Distribution
 ================
 
@@ -136,7 +130,23 @@ Distribution
   avoiding too much traffic
 * Still very experimental!
 
-XXX not sure about demo
+Thunk object space
+==================
+
+* Build as different object space
+  (object operation basis)
+
+* Can do lazy computation of objects
+
+Taint object space
+===================
+
+* Also build as different object space
+
+* Few lines hack
+
+* Can track values as taint, which cannot
+  cross I/O borders implicitely
 
 JavaScript backend
 ===================
@@ -149,9 +159,6 @@ JavaScript backend
 
 * can be tested on top of CPython
   (common case in PyPy)
-
-XXX play1
-XXX demo
 
 Interpreter status
 ==========================
