@@ -111,9 +111,12 @@
   \item
     Pyrolog is a Prolog interpreter written in RPython
   \item
-    RPython is a subset of Python translatable to other languages
+    RPython (``Restricted Python'') is a subset of Python translatable to other
+    languages
   \item
-    translation part done with the help of the PyPy project
+    RPython is designed to be significantly faster than regular Python
+  \item
+    translation tool-chain part of the PyPy project
   \end{itemize}
 \end{frame}
 
@@ -123,14 +126,15 @@
   \frametitle{What is PyPy?}
   \begin{itemize}
   \item
-    started as a Python VM implementation
-    in RPython (a well-chosen subset of Python)
+    started as a Python VM implementation in Python
   \item
-    includes a translation tool-chain
+    Python itself is too dynamic to be translatable to other languages, need a subset
+  \item
+    includes a translation tool-chain for RPython
   \item
     is becoming a general environment for writing interpreters (JavaScript, Prolog started)
   \item
-    Open source project (MIT license)
+    Open Source project (MIT license)
   \item
     received EU funding for 2.5 years
   \end{itemize}
@@ -140,7 +144,7 @@
 \subsection{Motivation}
 \begin{frame}
   \frametitle{VMs are still hard}
-  It is hard to achieve:
+  Hard to reconcile:
 
   \begin{itemize}
   \item
@@ -160,12 +164,13 @@
 
   \begin{itemize}
   \item
-    Pervasive decisions: reference counting, single global lock ...
+    Pervasive decisions: reference counting, global lock \dots
   \item
     No dynamic compilation
 %  \pause
-  \item
-    Extensions:
+  \end{itemize}
+  \begin{block}{
+    Extensions:}
     \begin{itemize}
     \item
       \alert{Stackless} (unlimited recursion, coroutines, serializable continuations)
@@ -174,23 +179,20 @@
     \item
       \alert{Jython}, \alert{IronPython}
     \end{itemize}
-  \end{itemize}
+  \end{block}
 \end{frame}
 
 
 \begin{frame}
   \frametitle{The Python case (ii)}
-  \begin{itemize}
-  \item
-    Extensions have problems
+  \begin{block}{Problems of Extensions:}
     \begin{itemize}
-    \item
-      need to keep track of CPython
-    \item
-      are hard to maintain
-    \item
-      Psyco very hard to port to other hardware architectures
+    \item hard to maintain: need to keep track of CPython
+    \item Psyco very hard to port to other hardware architectures
+    \item tedious to write them, Python semantics need to be re-implemented
     \end{itemize}
+  \end{block}
+  \begin{itemize}
   \item
     The community wants Python to run everywhere:
     Jython (Java), IronPython (.NET).
@@ -205,26 +207,36 @@
 
 
 \begin{frame}
-  \frametitle{The Prolog case}
+  \frametitle{The Prolog case (i)}
   \begin{itemize}
   \item
     problem mitigated by the fact that Prolog the language does not change
   \item
+    the core of Prolog is very simple (at least compared to Python)
+  \item
     a lot of implementations out there
   \item
-    well-tuned mature C implementations (Sictsus, XSB, SWI, GNU-Prolog)
+    well-tuned mature C implementations (Sicstus, XSB, SWI, GNU-Prolog)
+  \item
+    on CLR (P\#) and JVM (Prolog Café, tuProlog)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Prolog case (ii)}
+  \begin{block}{mature C implementations}
     \begin{itemize}
-    \item
-      have sometimes incompatible extensions to core Prolog
     \item
       interfacing with libraries is tedious
     \item
       changing the language to experiment is hard
     \item
+      often extensions to core Prolog, incompatible between each other
+    \item
       fixed implementation decisions (GC, how to generate code, etc.)
     \end{itemize}
-  \item
-    on CLR (P\#) and JVM (Prolog Café, tuProlog)
+  \end{block}
+  \begin{block}{implementations on CLR and JVM}
     \begin{itemize}
     \item
       interfacing with libraries of the platform mostly easy
@@ -233,8 +245,9 @@
     \item
       slow, compared to good C implementations
     \end{itemize}
-  \end{itemize}
+  \end{block}
 \end{frame}
+
 
 
 \subsection{Approach}
@@ -279,72 +292,42 @@
     Optionally insert new pervasive features not expressed
     in the source
     \begin{itemize}
-    \item continuations
+    \item continuations, ``micro-threads''
     \item dynamic compilation
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 
-\begin{frame}
-  \frametitle{Translation Steps}
-  \begin{columns}[c]
-  \begin{column}{5cm}
-    \includegraphics[width=5cm]{image/arch.pdf}
-  \end{column}
-  \begin{column}{7cm}
-  \begin{itemize}
-    \item
-      Generate flow graphs from the RPython program
-    \item
-      Peform global type inference on the flow graphs
-    \item
-      Transform flow graphs through several steps until they match the level of
-      the target environment
-    \item
-      Weave in translation aspects in the process
-  \end{itemize}
-  \end{column}
-  \end{columns}
-
-\end{frame}
-
 
 \begin{frame}
   \frametitle{Translation Aspects (i)}
-  Features not present in the source can be
-  added during translation.
-
-  Example: memory management:
+  Features not present in the source can be added during translation.
   \begin{itemize}
   \item
-  Boehm garbage collector
+    \alert{memory management}: use different GC strategies (Boehm collector, custom mark-n-sweep)
   \item
-  mark-n-sweep written in RPython, with additional features
-  \item
-  reference counting
+    \alert{Stackless transformation}: allows program to control its stack (continuations, \dots)
   \end{itemize}
 \end{frame}
 
 
 \begin{frame}
   \frametitle{Translation Aspects (ii)}
+  A \alert{JIT compiler} as a translation aspect
   \begin{itemize}
   \item
-    \alert{Stackless transformation}: continuation capture, implemented by
-    saving the low-level frames' local variables into the heap and back
-    \begin{itemize}
-      \item allows arbitrarily deep stack usage
-      \item uses the C stack as long as possible
-      \item has the consequence of making RPython do tail call elimination
-    \end{itemize}
+    Transform the interpreter into a JIT compiler, using partial evaluation and
+    specialization techniques
   \item
-    work in progress: turning an interpreter into a just-in-time compiler
-    is a translation aspect too
+    Some hints in the interpreter source needed
+  \item
+    Current prototype applied to Python interpreter gives impressive speedups
   \end{itemize}
 \end{frame}
 
 \section{The Prolog interpreter}
+\subsection{Interpreter}
 \begin{frame}
   \frametitle{Prolog Interpreter Implementation}
   \begin{itemize}
@@ -355,12 +338,9 @@
     \item interprets Prolog terms directly, no bytecode
     \end{itemize}
   \item
-    uses continuation passing style similar to BinProlog
+    uses continuation passing style inspired by BinProlog
   \item
     Prolog calls mapped to RPython calls
-    \begin{itemize}
-    \item possible because stackless allows arbitrary deep recursion
-    \end{itemize}
   \item
     implements large parts of the ISO standard (some builtins missing)
   \end{itemize}
@@ -399,12 +379,12 @@
     after translation to C: 14000 line of C code
   \item
     part of the PyPy distribution at:
-    http://codespeak.net/pypy
+    \texttt{http://codespeak.net/pypy}
   \end{itemize}
 \end{frame}
 
 
-
+\subsection{Performance}
 \begin{frame}
   \frametitle{Performance (i)}
   \includegraphics[scale=0.4]{image/bench.png}
@@ -421,14 +401,7 @@
   \item
     surprising, since those are often based on the WAM
   \item
-    maybe it's hard to simulate the WAM on such a VM
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Title}
-  \begin{itemize}
-  \item
+    maybe the WAM model does not match these VMs very well?
   \end{itemize}
 \end{frame}
 
@@ -436,23 +409,61 @@
 \section*{Summary}
 \subsection*{Summary}
 \begin{frame}
-  \frametitle<presentation>{Summary}
+  \frametitle{Summary}
 
   % Keep the summary *very short*.
   \begin{itemize}
   \item
-    The construction of virtual machines gets easier when using high-level
-    languages
+    Very simple Prolog interpreter in RPython can compete with interpreters on the JVM, CLR
   \item
-    XXX
+    Interpreter implementation eased by use of a high-level language
   \item
-    XXX
+    Low-level details abstracted away but re-inserted later
   \end{itemize}
 \end{frame}
+
 \subsection*{Outlook}
 \begin{frame}
-  \frametitle<presentation>{Outlook}
-  % The following outlook is optional.
+  \frametitle{Outlook}
+  \begin{itemize}
+  \item
+    complete the set of builtins
+  \item
+    tight language integration between Prolog and Python
+  \item
+    apply the dynamic compiler generator to the Prolog interpreter
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Backup slides}
+  \dots
+\end{frame}
+
+\begin{frame}
+  \frametitle{Translation Steps}
+  \begin{columns}[c]
+  \begin{column}{5cm}
+    \includegraphics[width=5cm]{image/arch.pdf}
+  \end{column}
+  \begin{column}{7cm}
+  \begin{itemize}
+    \item
+      Generate flow graphs from the RPython program
+    \item
+      Peform global type inference on the flow graphs
+    \item
+      Transform flow graphs through several steps until they match the level of
+      the target environment
+    \item
+      Weave in translation aspects in the process
+  \end{itemize}
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Title}
   \begin{itemize}
   \item
   \end{itemize}
