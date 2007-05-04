@@ -11,7 +11,7 @@
   \usetheme{Warsaw}
   % or ...
 
-  \setbeamercovered{transparent}
+  %\setbeamercovered{transparent}
   % or whatever (possibly just delete it)
 }
 
@@ -78,11 +78,11 @@
   \titlepage
 \end{frame}
 
-\begin{frame}
-  \frametitle{Outline}
-  \tableofcontents
+%\begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents
   % You might wish to add the option [pausesections]
-\end{frame}
+%\end{frame}
 
 
 % Structuring a talk is a difficult task and the following structure
@@ -109,14 +109,18 @@
 
   \begin{itemize}
   \item
-    Pyrolog is a Prolog interpreter written in RPython
+    Pyrolog is a Prolog interpreter written in Python
+  \item
+    want to compile it to get interesting performance
+  \item
+    translation tool-chain part of the PyPy project
+  \item
+    Python itself is too dynamic to be translatable to other languages, need a subset
   \item
     RPython (``Restricted Python'') is a subset of Python translatable to other
     languages
   \item
     RPython is designed to be significantly faster than regular Python
-  \item
-    translation tool-chain part of the PyPy project
   \end{itemize}
 \end{frame}
 
@@ -128,9 +132,7 @@
   \item
     started as a Python VM implementation in Python
   \item
-    Python itself is too dynamic to be translatable to other languages, need a subset
-  \item
-    includes a translation tool-chain for RPython
+    most important part: translation tool-chain for RPython
   \item
     is becoming a general environment for writing interpreters (JavaScript, Prolog started)
   \item
@@ -159,7 +161,7 @@
 
 
 \begin{frame}
-  \frametitle{The Python case (i)}
+  \frametitle{The Python case}
   CPython (the reference implementation) is a straightforward, portable VM.
 
   \begin{itemize}
@@ -167,43 +169,21 @@
     Pervasive decisions: reference counting, global lock \dots
   \item
     No dynamic compilation
-%  \pause
   \end{itemize}
+  \pause
   \begin{block}{
     Extensions:}
     \begin{itemize}
     \item
-      \alert{Stackless} (unlimited recursion, coroutines, serializable continuations)
+      \alert{Stackless} (unlimited recursion, coroutines, green threads)
     \item
-      \alert{Psyco} (run-time specializer)
+      \alert{Psyco} (run-time specializing compiler)
     \item
       \alert{Jython}, \alert{IronPython}
     \end{itemize}
   \end{block}
 \end{frame}
 
-
-\begin{frame}
-  \frametitle{The Python case (ii)}
-  \begin{block}{Problems of Extensions:}
-    \begin{itemize}
-    \item hard to maintain: need to keep track of CPython
-    \item Psyco very hard to port to other hardware architectures
-    \item tedious to write them, Python semantics need to be re-implemented
-    \end{itemize}
-  \end{block}
-  \begin{itemize}
-  \item
-    The community wants Python to run everywhere:
-    Jython (Java), IronPython (.NET).
-    Lots of effort and duplication.
-
-  \item
-    At various points various incompatibilities between
-    the implementations
-
-  \end{itemize}
-\end{frame}
 
 
 \begin{frame}
@@ -232,16 +212,15 @@
       changing the language to experiment is hard
     \item
       often extensions to core Prolog, incompatible between each other
-    \item
-      fixed implementation decisions (GC, how to generate code, etc.)
     \end{itemize}
   \end{block}
+  \pause
   \begin{block}{implementations on CLR and JVM}
     \begin{itemize}
     \item
       interfacing with libraries of the platform mostly easy
     \item
-      no extensions to core Prolog (like tabling, coroutines)
+      no extensions to core Prolog (like tabling, coroutines, constraints)
     \item
       slow, compared to good C implementations
     \end{itemize}
@@ -279,16 +258,19 @@
     lower-level targets
     \begin{itemize}
     \item C-like
-    \item Java
     \item .NET
+    \item Java
     \end{itemize}
+  \pause
   \item
     Insert low-level aspects into the code as required by
     the target
     \begin{itemize}
     \item object layout
     \item memory management
-    \end{itemize}  \item
+    \end{itemize}
+  \pause
+  \item
     Optionally insert new pervasive features not expressed
     in the source
     \begin{itemize}
@@ -302,7 +284,7 @@
 
 \begin{frame}
   \frametitle{Translation Aspects (i)}
-  Features not present in the source can be added during translation.
+  Features not present in the source can be added during translation:
   \begin{itemize}
   \item
     \alert{memory management}: use different GC strategies (Boehm collector, custom mark-n-sweep)
@@ -340,13 +322,9 @@
   \item
     uses continuation passing style inspired by BinProlog
   \item
-    Prolog calls mapped to RPython calls
-  \item
     implements large parts of the ISO standard (some builtins missing)
   \end{itemize}
 \end{frame}
-
-
 
 
 \begin{frame}
@@ -411,7 +389,6 @@
 \begin{frame}
   \frametitle{Summary}
 
-  % Keep the summary *very short*.
   \begin{itemize}
   \item
     Very simple Prolog interpreter in RPython can compete with interpreters on the JVM, CLR
@@ -434,6 +411,16 @@
     apply the dynamic compiler generator to the Prolog interpreter
   \end{itemize}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Questions?}
+  \begin{center}
+  \includegraphics[scale=0.5]{image/py-web.png}
+  
+  \texttt{http://codespeak.net/pypy}
+  \end{center}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Backup slides}
