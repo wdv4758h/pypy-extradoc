@@ -1,0 +1,112 @@
+~~~~~
+Draft
+~~~~~
+
+
+Introduction
+============
+
+- Some kind of intro about dynamic language implementations
+
+- In the context of academic or Open Source communities:
+  limited resources
+
+- What is the best way to implement dynamic languages?
+  Current situation:
+  * interpreters only
+  * for C (Posix, Windows), as custom VMs
+  * for Java (common in academia)
+  * for .NET (recent)
+  Trend:
+  * more support from OO VMs, better integration
+  * standardizing on one OO VM to increase interoperability
+    and reduce redundancy and out-of-sync implementations of the dyn language
+
+- Our view on the issue:
+  * high-level VMs come with limitations
+  * a single OO VM for everybody is not a good idea
+  * this is really a metaprogramming issue, not a standardization issue
+  * implementations should be generated - don't write VMs by hand any more
+
+
+The OO VM Arguments
+===================
+
+- Writing dynamic language implementations in an OO VM gives advantages
+  over writing custom VMs in C.  Supposedly we get:
+  * more interoperability than the C level
+  * better tools
+  * better implementation of low-level issues like GC
+  * better performance
+  * ease of implementation
+  * a single base, which makes alternate implementations
+    unnecessary
+  (expand each topic with concrete supporting data...)
+
+- Some of these are only partially true:
+  * there is no single best base VM and unclear if there will ever be:
+    so far, all major dynamic languages have multiple implementations
+    (Perl has only a C/Posix impl) and it's probably a good thing
+  * "better performance": so far it's the other way around, and the
+    VM's JIT compilers don't help much the very dynamic languages (expand...)
+  * "better GCs" is unclear - obvious in theory, but OO VMs tend to
+    have quite large memory overheads to start with (ref...)
+  * "ease of implementation" disputable: it's really a trade-off:
+    it gives a higher-level language but also an imposed model in
+    which concepts must be mapped, which may be anywhere from easy
+    to mostly impossible depending on the language we want to implement
+    (ref... e.g. bad functional languages support for .NET?)
+
+- Not all arguments are bogus: we get better tools and GCs in theory,
+  and interoperability with the rest of the VM
+
+
+Metaprogramming Is Good
+=======================
+
+- Introduction to the generation of VMs from high-level interpreters
+  * PyPy proof of concept: can target many environments
+  * single source => multiple VMs
+
+- (Describe some of the PyPy architecture, ref...)
+
+- Makes interpreters easy to write, update, and generally experiment with
+  * expand...
+  * the requirement "write an interpreter for your language" is much
+    less strong than "fit it into the OO VM's model" [e.g. Pyrolog on .NET]
+  * transformations [Stackless]
+
+- We can get similarly good GCs and tools
+  * no easier or harder than what needs to be put in an OO VM
+  * existing GCs can also be reused
+  * a metaprogramming translation toolchain requires a lot of work,
+    but it is highly reusable
+
+- We can get better performance
+  * good baseline speed (e.g. pypy-c quite faster than Jython)
+  * JIT generation framework
+  * expand...
+
+- No need for VM standardization
+  * we reduce the need for alternative implementations by making
+    one source code enough for many environments
+  * even the translation framework need not be standardized, as
+    we could cross-translate high-level source code written for one
+    with another [e.g. steal the Jikes GC]
+  * might open the door to better solutions for interoperability
+    (high-level bridges instead of low-level ones, cross-translation...)
+
+
+Conclusion
+==========
+
+- Don't write dynamic language implementations "by hand"
+  * writing them more abstractly at a high level has mostly only advantages
+
+- Don't write VMs by hand any more
+  * certainly not language-specific VMs
+  * but even general-purpose OO VMs have trade-offs
+
+- Let's write more metaprogramming translation toolchains
+  * diversity is good
+  * ultimately a better investment of efforts than writing general-purpose VMs
