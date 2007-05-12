@@ -23,7 +23,7 @@ Introduction
     and reduce redundancy and out-of-sync implementations of the dyn language
 
 - Our view on the issue:
-  * high-level VMs come with limitations
+  * high-level VMs come with limitations 
   * a single OO VM for everybody is not a good idea
   * this is really a metaprogramming issue, not a standardization issue
   * implementations should be generated - don't write VMs by hand any more
@@ -68,11 +68,17 @@ Metaprogramming Is Good
   * PyPy proof of concept: can target many environments
   * single source => multiple VMs
 
-- (Describe some of the PyPy architecture, ref...)
+- PyPy architecture in metaprogramming terms: 
+  * very expressive object language (RPython) for language VMs and semantics 
+  * very expressive metalanguage (Python) for analysis and susccessive transformation 
+  * SSI for representing VM spec on meta level 
+  * transformations add aspects and specialize to fit 
+    virtual or hardware runtime environment 
 
 - Makes interpreters easy to write, update, and generally experiment with
-  * expand...
-  * the requirement "write an interpreter for your language" is much
+  * more expressiveness helps on all levels (use d12's
+    security references and texts)
+  * the requirement "specify an interpreter for your language" is much
     less strong than "fit it into the OO VM's model" [e.g. Pyrolog on .NET]
   * transformations [Stackless]
 
@@ -108,5 +114,15 @@ Conclusion
   * but even general-purpose OO VMs have trade-offs
 
 - Let's write more metaprogramming translation toolchains
-  * diversity is good
+  * diversity is good (high level SSI good as starting base) 
   * ultimately a better investment of efforts than writing general-purpose VMs
+
+
+References 
+-------------
+
+DLS paper 
+
+expressiveness: couldn't find a classification scheme for computer languages, but see: 
+    http://en.wikipedia.org/wiki/Comparison_of_programming_languages#Expressiveness
+
