@@ -1,0 +1,17 @@
+Why use PyPy interpreter?
+=====================================
+
+XXX Better title?
+
+Speakers: Holger Krekel & Maciek Fijalkowski
+
+Abstract
+---------
+
+We would like to present features showcasing PyPy's flexible architecture,
+in other words, what makes the pypy interpreter unique. Showcases will
+include PyPy's approach to distribution, security (ruby-like tainting),
+lazy computations and others. Talk will be need-based, showing various
+usecases of our flexible interpreter in use.
+
+XXX finish
