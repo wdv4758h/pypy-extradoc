@@ -1,0 +1,13 @@
+PyPy 1.0 and Beyond
+--------------------
+
+Speakers: Armin Rigo, Samuele Pedroni
+ 
+Abstract
+----------
+
+- PyPy intro and motivation
+- Recapitulation of architecture
+- The JIT and the ideas that made it possible (overview with smallish examples)
+- Current status and the future
+
