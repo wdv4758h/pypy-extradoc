@@ -2,7 +2,7 @@ I'm listing here some ideas gathered around on IRC:
 
 1. "A usual pypy talk" - architecture, motivation etc. (samuele,armin)
 2. An RPython talk: .NET, JVM, JS, extcompiler, possible uses, caveats,
-   probably some architecture (anot,fijal)
+   probably some architecture (anto,fijal)
 3. Interpreters talk: taint, thunk, persistance, distribution, probably
    some stackless (?), interpreter for .NET (hpk, fijal)
 4. recommendations on "how to" OSS/EU-funding/research project (hpk,lene)
