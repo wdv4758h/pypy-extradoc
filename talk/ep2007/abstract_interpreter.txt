@@ -1,23 +1,23 @@
-Why use PyPy interpreter?
+PyPy Python Interpreter(s) Features 
 =====================================
-
-XXX Better title?
 
 Speakers: Holger Krekel & Maciek Fijalkowski
 
-Abstract
----------
+We quickly recap the basic architecture of PyPy Python interpreter(s)
+and then demo and discuss the following unique features: 
 
-We would like to present features showcasing PyPy's flexible architecture,
-in other words, what makes the pypy interpreter unique. Showcases will
-include, but not limited to:
+* transparent proxy: a way to customize behaviour of builtin
+  objects, enabling new models of persistence and distribution 
+* distribution prototype: have objects from remote places
+  appear as local ones, including frames (PDB!), file objects etc.
+* object tainting: automatically track and control propagation of 
+  sensitive data through an application
+* lazy computations: defer computation until result is needed 
+* generating from a single python interpreter source
+  code to C, LLVM, .NET, JVM, ... (IOW: implement features once, 
+  have it available everywhere)
+* ... and more, as talk topics/features might appear just-in-time :) 
 
-* multiple implementations of interpreter objects, allows more flexibility
-  regarding object usage, without user intervention (or even knowledge)
-* transparent proxy, a way to have special objects of interpreter
-  types with completely controlled behaviour from application level.
-* distribution, strange implementation of RMI which allows of remote
-  access to everything including frames, file objects etc.
-* object tainting, security feature similiar to ruby's tainting.
-* lazy computations
-* ... and many more, as talk topics might appear just-in-time
+We'll also see to discuss future efforts and remaining obstacles 
+to reach wider adoption. 
+
