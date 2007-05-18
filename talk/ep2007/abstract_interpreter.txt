@@ -13,10 +13,10 @@ and then demo and discuss the following unique features:
 * object tainting: automatically track and control propagation of 
   sensitive data through an application
 * lazy computations: defer computation until result is needed 
-* generating from a single python interpreter source
-  code to C, LLVM, .NET, JVM, ... (IOW: implement features once, 
-  have it available everywhere)
 * ... and more, as talk topics/features might appear just-in-time :) 
+
+All above features might be translated to any supported backend,
+which is by now C, LLVM and CLI, soon JVM.
 
 We'll also see to discuss future efforts and remaining obstacles 
 to reach wider adoption. 
