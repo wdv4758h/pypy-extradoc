@@ -1,0 +1,77 @@
+===============================================================================
+            How to Not write Virtual Machines for Dynamic Languages
+===============================================================================
+
+
+Abstract
+========
+
+Dynamic languages are traditionally implemented by writing a virtual
+machine for them, centered around an interpreter and/or a built-in
+compiler and providing the object model and memory management.  A
+relatively recent alternative to this approach is to run the dynamic
+language on top of an existing, well-tuned object-oriented virtual
+machine like Java's.  In this paper, we outline the reasons for this
+trend and explore its limitations.  We contrast it with a different,
+complementary alternative: flexibly generating virtual machines instead
+of writing them by hand.  This approach has been validated by the PyPy
+project, with which we can automatically insert many features into the
+generated virtual machines - including good just-in-time compilers tuned
+to the dynamic language at hand.
+
+
+Introduction
+============
+
+Dynamic languages are traditionally implemented by writing a virtual
+machine for them in a low-level language like C, or in a language that
+can relatively easily be turned into C.  The machine implements an
+object model supporting the high level dynamic language's objects.  It
+typically provides features like automatic garbage collection.  Recent
+languages like Python, Ruby and Perl have complicated semantics which
+are most easily mapped to a simple interpreter operating on syntax trees
+or bytecode; simpler languages like Lisp and Self typically have more
+efficient implementations based on just-in-time code generation.
+
+The efforts required to build a new virtual machine are relatively
+important.  This is particularly true for languages which are complex
+and in constant evolution.  This is a major reason for keeping the
+corresponding virtual machines simple.  The C implementation of Python,
+for example, is a simple bytecode interpreter and provides no more
+advanced memory management techniques than reference counting coupled
+with a reference cycle detector.  This implementation is manageable for
+an Open Source community with a limited amount of resources.  The same
+constraint can be found in many academic projects.
+
+However, there is a recent trend that enters in conflict with the goal
+of having to maintain essentially a single, simple enough implementation
+for a given programming language.  This trend is to build an
+implementation of the language on top of another virtual machine, like
+the Java VM or the .NET one.
+
+As in the case of Python and Ruby, this results in multiple
+implementations of the language, with an oldest custom VM written in C
+which is the "official" version in the sense that its evolution defines
+the evolution of the language itself.  The other implementations -
+Jython and JRuby on the JVM, IronPython and IronRuby on .NET -
+ultimately need to be tediously kept up-to-date.
+
+Java (and increasingly .NET) provides well-tuned object-oriented virtual
+machines which offer many features that are of interest to all
+programmers including language implementors (a higher level of
+expression, automatic memory management, richer libraries...).  They
+also provide a higher level "base object model", which enables better
+cross-language integration: a Jython program can directly import Java
+classes and vice-versa.
+
+What is the best way to implement dynamic languages?
+----------------------------------------------------
+
+The question is thus how the increased benefits of reusing
+object-oriented virtual machines (OO VM) can be balanced against the
+fact that this introduces new implementations which may split the total
+effort of the community in pieces, and get increasingly
+resource-consuming to keep in sync with each other.
+
+Standardizing on one OO VM would further increase interoperability
+and avoid the division-of-efforts issue. (to be continued)
