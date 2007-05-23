@@ -28,10 +28,11 @@ machine for them in a low-level language like C, or in a language that
 can relatively easily be turned into C.  The machine implements an
 object model supporting the high level dynamic language's objects.  It
 typically provides features like automatic garbage collection.  Recent
-languages like Python, Ruby and Perl have complicated semantics which
-are most easily mapped to a simple interpreter operating on syntax trees
-or bytecode; simpler languages like Lisp and Self typically have more
-efficient implementations based on just-in-time code generation.
+languages like Python, Ruby, Perl and JavaScript have complicated
+semantics which are most easily mapped to a simple interpreter operating
+on syntax trees or bytecode; simpler languages like Lisp and Self
+typically have more efficient implementations based on just-in-time code
+generation.
 
 The efforts required to build a new virtual machine are relatively
 important.  This is particularly true for languages which are complex
@@ -43,26 +44,32 @@ with a reference cycle detector.  This implementation is manageable for
 an Open Source community with a limited amount of resources.  The same
 constraint can be found in many academic projects.
 
-However, there is a recent trend that enters in conflict with the goal
-of having to maintain essentially a single, simple enough implementation
-for a given programming language.  This trend is to build an
-implementation of the language on top of another virtual machine, like
-the Java VM or the .NET one.
+Limitations of C implementations are XXX (limited GC, limited speed,
+C-only platforms, lack of flexibility).
 
-As in the case of Python and Ruby, this results in multiple
+To address some of these issues, a recent trend is to build an
+implementation of the language on top of another virtual machine.  Java
+(and increasingly .NET) provides well-tuned object-oriented virtual
+machines which offer many features that are of interest to all
+programmers including language implementors (a higher level of
+expression, automatic memory management, good just-in-time compilers,
+richer libraries...).  They also provide a higher level "base object
+model", which enables better cross-language integration: a Jython
+program, for example, can directly import Java classes and vice-versa.
+
+This trend enters in conflict with the goal of having to maintain
+essentially a single, simple enough implementation for a given
+programming language: as the language becomes popular, there will be a
+demand for having it run on various platforms - high-level VMs as well
+as C-level environments.
+
+In the case of Python and Ruby, this resulted in multiple
 implementations of the language, with an oldest custom VM written in C
 which is the "official" version in the sense that its evolution defines
 the evolution of the language itself.  The other implementations -
 Jython and JRuby on the JVM, IronPython and IronRuby on .NET -
 ultimately need to be tediously kept up-to-date.
 
-Java (and increasingly .NET) provides well-tuned object-oriented virtual
-machines which offer many features that are of interest to all
-programmers including language implementors (a higher level of
-expression, automatic memory management, richer libraries...).  They
-also provide a higher level "base object model", which enables better
-cross-language integration: a Jython program can directly import Java
-classes and vice-versa.
 
 What is the best way to implement dynamic languages?
 ----------------------------------------------------
