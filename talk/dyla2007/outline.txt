@@ -3,6 +3,21 @@ Draft
 ~~~~~
 
 
+
+If we write VMs by hand:
+
+* let's say we pick C, then (typical limitations: GC, perf, ...)
+
+* let's say we pick one OO VM, then advantages (GC, tools, interop)
+  but some of them disputable (perf, object model may mismatch)
+
+* above all that, implementation proliferation problem
+
+
+=> Metaprogramming is good
+
+
+
 Introduction
 ============
 
@@ -29,12 +44,13 @@ Introduction
   * implementations should be generated - don't write VMs by hand any more
 
 
-The OO VM Arguments
+Writing VMs by hand
 ===================
 
 - Writing dynamic language implementations in an OO VM gives advantages
   over writing custom VMs in C.  Supposedly we get:
   * more interoperability than the C level
+  * cross-platform portability
   * better tools
   * better implementation of low-level issues like GC
   * better performance
@@ -55,7 +71,8 @@ The OO VM Arguments
     it gives a higher-level language but also an imposed model in
     which concepts must be mapped, which may be anywhere from easy
     to mostly impossible depending on the language we want to implement
-    (ref... e.g. bad functional languages support for .NET?)
+    (ref... e.g. bad Prolog on .NET and JVM)
+  * "cross-platform portability": XXX
 
 - Not all arguments are bogus: we get better tools and GCs in theory,
   and interoperability with the rest of the VM
@@ -108,13 +125,17 @@ Conclusion
 
 - Don't write dynamic language implementations "by hand"
   * writing them more abstractly at a high level has mostly only advantages
+  * we can still reuse existing good OO VMs
 
 - Don't write VMs by hand any more
   * certainly not language-specific VMs
-  * but even general-purpose OO VMs have trade-offs
+  * but even general-purpose OO VMs have trade-offs and are too much work
+    unless you have the necessary resources
 
 - Let's write more metaprogramming translation toolchains
-  * diversity is good (high level SSI good as starting base) 
+  * diversity is good
+  * very large, mostly unexplored design space (some of PyPy's choices will
+    probably turn out to not be optimal)
   * ultimately a better investment of efforts than writing general-purpose VMs
 
 
