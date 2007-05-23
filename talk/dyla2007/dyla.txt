@@ -93,8 +93,8 @@ metaprogramming techniques can be used to successfully replace a
 foreseeable one-VM-fits-all standardization attempt.
 
 The argument boils down to: VMs for dynamic languages should not be
-written by hand!  The justification is based on the successful
-completion of the PyPy project, which proves that the approach is
+written by hand!  The justification is based on the
+PyPy project, which proves that the approach is
 feasible in practice.  Just as importantly, it also brings new insights
 and concrete benefits in term of flexibility and performance that go
 beyond the state of the art.
