@@ -134,7 +134,7 @@ Distribution
 Thunk object space
 ==================
 
-* Build as different object space
+* Built as different object space
   (object operation basis)
 
 * Can do lazy computation of objects
@@ -142,7 +142,7 @@ Thunk object space
 Taint object space
 ===================
 
-* Also build as different object space
+* Also built as different object space
 
 * Few lines hack
 
@@ -179,8 +179,8 @@ Interpreter status
 Interpreters in RPython
 =============================
 
-* Usefull
-* There is working python interpreter
+* Useful
+* There is a working python interpreter
 * prolog interpreter
 * JavaScript interpreter coming soon
 * Ruby? Perl?? (with JIT almost for free)
