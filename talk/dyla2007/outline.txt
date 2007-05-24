@@ -3,52 +3,51 @@ Draft
 ~~~~~
 
 
-
-If we write VMs by hand:
-
-* let's say we pick C, then (typical limitations: GC, perf, ...)
-
-* let's say we pick one OO VM, then advantages (GC, tools, interop)
-  but some of them disputable (perf, object model may mismatch)
-
-* above all that, implementation proliferation problem
-
-
-=> Metaprogramming is good
-
-
-
 Introduction
 ============
 
 - Some kind of intro about dynamic language implementations
 
 - In the context of academic or Open Source communities:
-  limited resources
+  limited resources (applies also to DSLs)
+
+.. (keep the rest of the intro very short!) ..
 
 - What is the best way to implement dynamic languages?
-  Current situation:
-  * interpreters only
-  * for C (Posix, Windows), as custom VMs
-  * for Java (common in academia)
-  * for .NET (recent)
-  Trend:
-  * more support from OO VMs, better integration
-  * standardizing on one OO VM to increase interoperability
+  Current situation (e.g. Python): for C (Posix, Windows) as
+  custom VMs, several ones; for Java; for .NET; other incomplete
+  ones.  Problem in our context: redundant and out-of-sync
+  implementations of the dyn language, divides the available resources.
+
+- Trend:
+  * OO VMs give more support and people want integration with OO VMs anyway
+  * so, some propose to standardize on one OO VM to increase interoperability
     and reduce redundancy and out-of-sync implementations of the dyn language
 
 - Our view on the issue:
-  * high-level VMs come with limitations 
-  * a single OO VM for everybody is not a good idea
+  * we're opposed to that conclusion
   * this is really a metaprogramming issue, not a standardization issue
   * implementations should be generated - don't write VMs by hand any more
 
 
-Writing VMs by hand
-===================
+Advantages of OO VMs
+====================
 
-- Writing dynamic language implementations in an OO VM gives advantages
-  over writing custom VMs in C.  Supposedly we get:
+- C-level implementations of dyn language VMs have issues and trade-offs
+  (GC, perf, flexibility).  This alone leads to multiple implementations
+  (Stackless, Psyco).
+
+- People eventually ask for better integration with successful OO VMs,
+  mere bridges are temporary hacks => more implementations
+
+- Proliferation of implementations, division of the effort, troublesome
+  if resources are limited.  Implementations written for a specific OO VM
+  have advantages over custom VMs in C, so people propose as a solution
+  to standardize on one OO VM and just have this one implementation of
+  the dyn language.
+
+- Let's first explore the alledged advantages of writing dynamic language
+  implementations in an OO VM over writing custom VMs in C:
   * more interoperability than the C level
   * cross-platform portability
   * better tools
@@ -60,22 +59,25 @@ Writing VMs by hand
   (expand each topic with concrete supporting data...)
 
 - Some of these are only partially true:
-  * there is no single best base VM and unclear if there will ever be:
-    so far, all major dynamic languages have multiple implementations
-    (Perl has only a C/Posix impl) and it's probably a good thing
   * "better performance": so far it's the other way around, and the
     VM's JIT compilers don't help much the very dynamic languages (expand...)
   * "better GCs" is unclear - obvious in theory, but OO VMs tend to
     have quite large memory overheads to start with (ref...)
+  * "cross-platform portability": yes to some extend, but e.g. C/Posix is
+    relatively portable too
   * "ease of implementation" disputable: it's really a trade-off:
     it gives a higher-level language but also an imposed model in
     which concepts must be mapped, which may be anywhere from easy
     to mostly impossible depending on the language we want to implement
     (ref... e.g. bad Prolog on .NET and JVM)
-  * "cross-platform portability": XXX
 
-- Not all arguments are bogus: we get better tools and GCs in theory,
-  and interoperability with the rest of the VM
+- Not all arguments are bogus: we get better tools and in theory GCs and
+  other low-level aspects, and of course interoperability with the rest
+  of the VM
+
+- A single best base OO VM for everyone would help reducing the
+  proliferation of implementations; but that's unlikely to occur,
+  and it would come with trade-offs too
 
 
 Metaprogramming Is Good
