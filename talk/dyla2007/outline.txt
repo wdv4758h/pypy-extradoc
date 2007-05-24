@@ -90,18 +90,18 @@ Metaprogramming Is Good
 - PyPy architecture in metaprogramming terms: 
   * very expressive object language (RPython) for language VMs and semantics 
   * very expressive metalanguage (Python) for analysis and susccessive transformation 
-  * SSI for representing VM spec on meta level 
   * transformations add aspects and specialize to fit 
     virtual or hardware runtime environment 
 
 - Makes interpreters easy to write, update, and generally experiment with
   * more expressiveness helps on all levels (use d12's
-    security references and texts)
+    security references and texts, mention the thunk space)
   * the requirement "specify an interpreter for your language" is much
     less strong than "fit it into the OO VM's model" [e.g. Pyrolog on .NET]
   * transformations [Stackless]
 
 - We can get similarly good GCs and tools
+  * (if we really want - still less work than writing a complete good OO VM)
   * no easier or harder than what needs to be put in an OO VM
   * existing GCs can also be reused
   * a metaprogramming translation toolchain requires a lot of work,
