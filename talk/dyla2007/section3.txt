@@ -1,6 +1,6 @@
 
-Metaprogramming Is Good
-=======================
+Meta-Programming Is Good
+========================
 
 The present paper proposes to approach the implementation of dynamic
 languages from a meta-level: virtual machines for such languages should
@@ -31,7 +31,7 @@ time-consuming to maintain.  Our implementation is by construction
 easier to maintain, and extremely portable (including to C/Posix, to the
 JVM and to .NET).
 
-In metaprogramming terms, the PyPy architecture is as follows:
+In meta-programming terms, the PyPy architecture is as follows:
 
 * we use a very expressive *object language* (RPython - an analyzable
   subset of Python) as the language in which the complete Python
@@ -47,14 +47,14 @@ In metaprogramming terms, the PyPy architecture is as follows:
   construction, type inference, etc.) and its successive
   transformations.
 
-* this metaprogramming component of PyPy is called the *translation
+* this meta-programming component of PyPy is called the *translation
   framework,* as it translates RPython source code (i.e. the full Python
   interpreter) into lower-level code.  Its purpose is to add aspects to
   and specialize the interpreter to fit a selectable virtual or hardware
   runtime environment.  This either turns the interpreter into a
   standalone virtual machine, or integrates it into an existing OO VM.
   The necessary support code - e.g. the garbage collector when
-  targetting C - is itself written in RPython in much the same spirit
+  targeting C - is itself written in RPython in much the same spirit
   that the Jikes RVM's GCs are written in Java [JIKES]; as needed, it is
   translated together with the interpreter to form the final custom VM.
 
@@ -73,12 +73,12 @@ Our approach - a single "meta-written" implementation - naturally leads
 to language implementations that have various advantages over the
 "hand-written" implementations.  First of all, it is a single-source
 approach - we explicitly seek to solve the problem of proliferation of
-implementation.  In the sequel we will show more precise evidence that
+implementations.  In the sequel we will show more precise evidence that
 this can be done in a practical way with no major drawback.  By itself
 this would already be a valid argument against the need for
 standardization on a single OO VM.  But there are also other advantages
-in generating language implementations - which are in our opinion very
-significant, to the extent that it hints that metaprogramming, though
+in generating language implementations. In our opinion these are very
+significant, to the extent that it hints that meta-programming, though
 not widely used in general-purpose programming, is an essential tool in
 a language implementer's toolbox.
 
@@ -98,7 +98,7 @@ CPython.  Further examples can be found in our technical reports; we
 should notably mention an extension adding a state-of-the-art security
 model for Python based on data flow tacking [XXX], and general
 performance improvements found by extensive experimentation [XXX], some
-of which were backported to CPython.
+of which were back-ported to CPython.
 
 If we compare with hand-writing an implementation for a specific OO VM,
 then the latter requires not only good knowledge of the OO VM in
