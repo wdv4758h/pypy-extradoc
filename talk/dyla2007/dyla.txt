@@ -39,56 +39,28 @@ generation.
 
 The efforts required to build a new virtual machine are relatively
 important.  This is particularly true for languages which are complex
-and in constant evolution.  This is a major reason for keeping the
-corresponding virtual machines simple.  The C implementation of Python,
-for example, is a simple bytecode interpreter and provides no more
-advanced memory management techniques than reference counting coupled
-with a reference cycle detector.  This implementation is manageable for
-an Open Source community with a limited amount of resources.  The same
-constraint can be found in many academic projects.
+and in constant evolution. Language implementation communities from an
+open-source or academic context have only limited resources. Therefore they
+cannot afford to have a highly complex implementation and often chose simpler
+techniques even if that entails lower execution speed. Similarly fragmentation
+(for example because of other implementations of the same language) is a
+problem because it divides available resources. All these points also apply to
+the implementation of domain-specific-languages where it is important to keep
+implementation effort small.
 
-Limitations of C implementations are XXX (limited GC, limited speed,
-C-only platforms, lack of flexibility).
-
-To address some of these issues, a recent trend is to build an
-implementation of the language on top of another virtual machine.  Java
-(and increasingly .NET) provides well-tuned object-oriented virtual
-machines which offer many features that are of interest to all
-programmers including language implementors (a higher level of
-expression, automatic memory management, good just-in-time compilers,
-richer libraries...).  They also provide a higher level "base object
-model", which enables better cross-language integration: a Jython
-program, for example, can directly import Java classes and vice-versa.
-
-This trend enters in conflict with the goal of having to maintain
-essentially a single, simple enough implementation for a given
-programming language: as the language becomes popular, there will be a
-demand for having it run on various platforms - high-level VMs as well
-as C-level environments.
-
-In the case of Python and Ruby, this resulted in multiple
-implementations of the language, with an oldest custom VM written in C
-which is the "official" version in the sense that its evolution defines
-the evolution of the language itself.  The other implementations -
-Jython and JRuby on the JVM, IronPython and IronRuby on .NET -
-ultimately need to be tediously kept up-to-date.
-
-
-What is the best way to implement dynamic languages?
-----------------------------------------------------
-
-The question is thus how the increased benefits of reusing
-object-oriented virtual machines (OO VMs) can be balanced against the
-fact that this introduces new implementations which may split the total
-effort of the community in pieces that get increasingly
-resource-consuming to keep in sync with each other.
-
-Standardizing on one OO VM would further increase interoperability and
-avoid the division-of-efforts issue.  In our opinion, though, a single
-OO VM for everybody is not a practical idea; we consider the loss of
-diversity to be more a problem than a solution, and any single OO VM
-comes with limitations and trade-offs that may not be optimal for every
-use case.
+For these reasons writing a virtual machine in C has many problems because it
+forces the language implementer to deal with many low-level details. Limitations
+of the C implementation lead to alternative implementations which draw
+work-power from the reference implementation. An alternative to writing
+implementations in C is to build them on top of one of the newer object oriented
+virtual machines ("OO VM") such as the JVM or the CLR. This is often wanted by
+the community anyway, since it leads to better re-usability of libraries of
+these platforms. However, if a C implementation existed before the
+implementation of such a VM is started, this enters in conflict with the goal of
+having to maintain essentially a single, simple enough implementation for a
+given programming language: as the language becomes popular, there will be a
+demand for having it run on various platforms - high-level VMs as well as
+C-level environments.
 
 The argument we will make in the present paper is that it is possible to
 benefit from and integrate with OO VMs while keeping the dynamic
@@ -99,7 +71,7 @@ of a specification for the dynamic language.  With a good enough
 translation toolchain we can then generate whole virtual machines from
 this specification - either full custom VMs for C-level operating
 systems, or layers on top of various OO VMs.  In other words,
-metaprogramming techniques can be used to successfully replace a
+meta-programming techniques can be used to successfully replace a
 foreseeable one-VM-fits-all standardization attempt.
 
 The argument boils down to: VMs for dynamic languages should not be
@@ -108,3 +80,8 @@ PyPy project, which proves that the approach is
 feasible in practice.  Just as importantly, it also brings new insights
 and concrete benefits in term of flexibility and performance that go
 beyond the state of the art.
+
+In section XXX we will explore the way VMs are typically implemented in C and
+some of the problems of this approach. In section XXX we will describe our
+proposed meta-programming approach. XXX
+
