@@ -116,7 +116,7 @@ offer the language implementer a much higher level of abstraction. XXX expand
 At a closer look, some of these advantages are only partially true in practice. 
 
 *Better performance:* So far it seems like performance of highly dynamic
-languages is not actually significantly improved on OO VMs. Psyco is around 5
+languages is not actually significantly improved on OO VMs. Jython is around 5
 times slower than CPython, for IronPython the figures vary but it is mostly
 within the same order of magnitude as CPython. The most important reason for
 this that the VM's JIT compilers are not prepared to deal with the highly
