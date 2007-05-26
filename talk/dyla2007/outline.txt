@@ -40,12 +40,6 @@ Advantages of OO VMs
 - People eventually ask for better integration with successful OO VMs,
   mere bridges are temporary hacks => more implementations
 
-- Proliferation of implementations, division of the effort, troublesome
-  if resources are limited.  Implementations written for a specific OO VM
-  have advantages over custom VMs in C, so people propose as a solution
-  to standardize on one OO VM and just have this one implementation of
-  the dyn language.
-
 - Let's first explore the alledged advantages of writing dynamic language
   implementations in an OO VM over writing custom VMs in C:
   * more interoperability than the C level
@@ -74,6 +68,13 @@ Advantages of OO VMs
 - Not all arguments are bogus: we get better tools and in theory GCs and
   other low-level aspects, and of course interoperability with the rest
   of the VM
+
+
+- Proliferation of implementations, division of the effort, troublesome
+  if resources are limited.  Implementations written for a specific OO VM
+  have advantages over custom VMs in C, so people propose as a solution
+  to standardize on one OO VM and just have this one implementation of
+  the dyn language.
 
 - A single best base OO VM for everyone would help reducing the
   proliferation of implementations; but that's unlikely to occur,
