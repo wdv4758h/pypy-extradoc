@@ -36,60 +36,60 @@ of many existing libraries.
 On the other hand the use of C comes with a set of problems. Since C has no ways
 to do automatic memory management and since the implemented languages are
 garbage collected, the VM needs to contain a garbage collector. Implementing a
-high-performance GC is not a simple task and so many implementations resort to
+high-performance GC is a tedious task and so many implementations resort to
 relatively simple algorithms like mark-and-sweep or reference counting. Also the
 choice of garbage collector is fixed relatively early in the life of the project
 and then manifests itself throughout the complete VM source code. Thus it
 becomes extremely tedious to change it later.
 
-A similar problem is the threading model the VM uses. XXX expand a bit
+A similar problem is the threading model the VM uses
   - simpler threading models
     - don't make single-threaded apps slower due to locks
     - global locks
     - green threading
 
- - C-level implementations of dyn language VMs have issues and trade-offs:
-     - reduced flexibility
-     - pressure to keep the implementation simple
-
  - wrapping with C libraries simple but tedious
 
-These listed limitations of a C-based implementation often lead to more
+These limitations of a C-based implementation often lead to more
 implementations of the language. For example in addition to the main C
-implementation of Python ("CPython") there is a number of additional
-implementations that want to fix some of the limitations of CPython. One of them
-is "Stackless Python" which is a fork of CPython that adds micro-threading
-capabilities to Python. One of the reasons for not incorporating back into
+implementation of Python ("CPython") there are a number of additional
+implementations that want to fix some of the limitations of CPython. One of
+them is "Stackless Python" which is a fork of CPython that adds micro-threading
+capabilities to Python. One of the reasons for not incorporating it back into
 CPython was that it was felt that they would make the implementation too
 complex. Another implementation of the Python language is the Psyco project
-which adds a JIT-compiler to CPython. As all other reimplementations, Psyco
+which adds a JIT-compiler to CPython. As all other re-implementations, Psyco
 contains the Python semantics and needs to be kept synchronized with CPython
 manually.
 
  - free threading attempts for Python
 
 As a language becomes more popular, yet another reason for different
-implementations emerge: People want to use it together with Java and C#
+implementations emerges: People want to use it together with Java and C#
 libraries and tools. Although it is in principle possible to do that by
 bridging the C-VM with the respective VMs of these languages (XXX examples)
-this is an incomplete solution since it prevents many useful use-cases.
+this is an incomplete solution since it prevents many use-cases.
 Therefore in the end implementations of the dynamic language on top of the
 object-oriented VMs are created to properly integrate with the complete
-environment.
+environment. Implementing a language on top of an OO VM is in many ways easier
+than implementing it in C.
 
 
 Assessing the Advantages of Implementing a Language on Top of OO VMs
 --------------------------------------------------------------------
 
-Let's now take a look at the advantages that are usually cited for basing a
-language implementation of a dynamic language on a standard object oriented virtual
-machine, for example the JVM or the CLR:
+Let's take a look at the advantages that are usually cited for basing a
+language implementation of a dynamic language on a standard object oriented
+virtual machine, for example the JVM or the CLR. The central theme of the
+benefits  of OO VMs is the ability to implement certain hard things only once
+and share the benefits between all language implementations on top of the OO VM.
 
 *Better interoperability than the C level:* Since the VM offers a standard
 object model and all the languages implemented on top of it are using it, it
-is easier to integrate the languages on top of the VM. This allows reuse of
-libraries between all the implemented languages. This is typically the most
-important reason for wanting an implementation on the VM in the first place.
+is easier to integrate the languages that are running on top of the VM. This
+allows reuse of libraries between all the implemented languages. This is
+typically the most important reason for wanting an implementation on the VM in
+the first place.
 
 *Cross-platform portability:* Only the underlying VM has to be ported to
 various hardware architectures and operating systems. The languages
@@ -98,19 +98,27 @@ implemented on top can then be run without change in various environments.
 *Better tools:* XXX
 
 *Better implementation of low-level issues like garbage collection, threading:*
-XXX
+Since an OO VM is expected to be widely used and usually backed by a company, it
+becomes worthwhile and possible to spend a lot of effort tuning its garbage
+collector, threading model, exception support and other low-level implementation
+details.
 
-*Better performance:* Object-oriented VMs usually come with a highly tuned
-just-in-time compiler to make them perform well without requiring ahead-of-time
-compilation to machine language. This in addition with the previous point leads
-to much better performance of the languages running on top of the VM.
+*Better performance:* Similarly, object-oriented VMs usually come with a highly
+tuned just-in-time compiler to make them perform well without requiring
+ahead-of-time compilation to machine language. This in addition with the
+previous point leads to much better performance of the languages running on top
+of the VM.
 
 *Ease of implementation:* The implementation of a language on top of an OO VM is
 easier because it starts of at a higher level than C. Usually a high-level
 language like Java or C# is used for the language implementation, which both
-offer the language implementer a much higher level of abstraction. XXX expand
+offer the language implementer a much higher level of abstraction than when
+implementing in C. 
 
-*A single unified implementation base:* XXX
+*A single unified implementation base:* The higher level of abstraction
+mentioned in the last point also helps to reduce the number of implementations
+of the language. Since the implementation on top of an OO VM is more abstract it
+is also easier to modify and to extend. XXX somewhat vague point
 
 
 At a closer look, some of these advantages are only partially true in practice. 
@@ -123,7 +131,8 @@ this that the VM's JIT compilers are not prepared to deal with the highly
 dynamic behaviour and the complex dispatch semantics of dynamic languages. (XXX
 expand)
 
-*Better GCs:* XXX large memory overhead of OO VMs
+*Better GCs:* While this is obvious in theory, OO VMs tend to have a much higher
+memory overhead to start with (XXX ref)
 
 *Cross-platform portability:* While this is true to some extend, the situation
 with regard to portability is not significantly improved compared to e.g.
@@ -133,8 +142,9 @@ hardware architecture it is not clear that the JIT is tuned for this
 architecture too or working at all, which leads to significantly less
 performance.
 
-*Ease of implementation:* This point is disputable. While it is true that OO VMs
-typically allow the language implementor to start at a higher level, they also
+*Ease of implementation:* This point is disputable. On the one hand, OO VMs
+typically allow the language implementor to start at a higher level. On the
+other hand they also
 enforce a specific object and execution model. This means that the concepts of
 the implemented language need to be mapped to the execution model of the
 underlying VM, which may be easy or not, depending very much on the language in
@@ -145,7 +155,8 @@ exist several implementations of Prolog on top of the JVM and also one on .NET,
 they are not particular efficient, especially when compared to good Prolog VMs
 in written in C. This is mostly because the Prolog execution model, which
 involves backtracking and deep recursion does not fit the JVM and .NET very
-well. XXX some more
+well. Therefore the Prolog implementations on top of OO VMs resort to models
+that is quite unnatural both for the OO VM and for Prolog.
 
 
 On the other hand some of the benefits are real and very useful, the most
