@@ -8,12 +8,15 @@ Abstract
 
 Dynamic languages are traditionally implemented by writing a virtual
 machine for them, centered around an interpreter and/or a built-in
-compiler and providing the object model and memory management.  A
-relatively recent alternative to this approach is to run the dynamic
-language on top of an existing, well-tuned object-oriented virtual
-machine like Java's.  In this paper, we outline the reasons for this
-trend and explore its limitations.  We contrast it with a different,
-complementary alternative: flexibly generating virtual machines instead
+compiler and providing the object model and memory management. When
+a language becomes more successful, the limitations of such an implementation
+lead to the emergence of alternative implementations that try to solve some
+of the problems. Another reason for new implementations is the desire to have
+the language integrate well with existing, well-tuned object-oriented virtual
+machine like Java's. In this paper, we describe the mechanisms that lead to an
+abundance of implementations, and explore some of the limitations of standard
+VMs.  We propose a different complementary alternative: flexibly generating
+virtual machines instead
 of writing them by hand.  This approach has been validated by the PyPy
 project, with which we can automatically insert many features into the
 generated virtual machines - including good just-in-time compilers tuned
