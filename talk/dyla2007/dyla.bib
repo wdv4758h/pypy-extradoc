@@ -40,42 +40,6 @@
     note = "http://codespeak.net/pypy"
 }
 
-@techreport{ dynamiclang,
-	title = "Compiling Dynamic Language Implementations",
-	author = "Armin Rigo and Michael Hudson and Samuele Pedroni",
-	year = "2005",
-	institution = "PyPy Consortium",
-	url = "http://codespeak.net/svn/pypy/extradoc/eu-report/D05.1_Publish_on_translating_a_very-high-level_description.pdf",
-	note = "http://codespeak.net/svn/pypy/extradoc/eu-report/"
-}
-
-@techreport{ completepythonimpl,
-	title = "Complete Python Implementation running on top of CPython",
-	author = "{PyPy Team}",
-	year = "2005",
-	institution = "PyPy Consortium",
-	url = "http://codespeak.net/svn/pypy/extradoc/eu-report/D04.2_Complete_Python_Implementation_on_top_of_CPython.pdf",
-	note = "http://codespeak.net/pypy/dist/pypy/doc/index-report.html"
-}
-
-@techreport{ translationaspects,
-	title = "Memory management and threading models as translation aspects -- solutions and challenges",
-	author = "Carl Friedrich Bolz and Armin Rigo",
-	year = "2005",
-	institution = "PyPy Consortium",
-	url = "http://codespeak.net/svn/pypy/extradoc/eu-report/D05.3_Publish_on_implementation_with_translation_aspects.pdf",
-	note = "http://codespeak.net/pypy/dist/pypy/doc/index-report.html"
-}
-
-# XXX fix links and title
-@techreport{ optimizations,
-    title = "DRAFT: Support for Massive Parallelism, Optimisation results, Practical Usages and Approaches for Translation Aspects",
-    author = "Carl Friedrich Bolz and Armin Rigo",
-    year = "2006",
-    institution = "PyPy Consortium",
-    url = "http://codespeak.net/svn/pypy/extradoc/eu-report/D07.1_Massive_Parallelism_and_Translation_Aspects-interim-2006-07-25.pdf",
-    note = "Interim version at: http://codespeak.net/pypy/dist/pypy/doc/index-report.html"
-}
 
 @misc{ translationdoc,
 	title = "{PyPy - Translation}",
@@ -110,7 +74,7 @@
 	year = 2006
 }
 
-@InProceedings{ LLVM:CGO04,
+@InProceedings{LLVM,
 	author = "Chris Lattner and Vikram Adve",
 	title = "{LLVM: A Compilation Framework for Lifelong Program Analysis \& Transformation}",
 	booktitle = "{Proceedings of the 2004 International Symposium on Code Generation and Optimization (CGO'04)}",
@@ -119,7 +83,13 @@
 	year = "2004"
 }
 
-
+@InProceedings{JikesGC,
+        author = "Stephen M Blackburn and Perry Cheng and Kathryn S McKinley",
+        title = "Oil and Water? High Performance Garbage Collection in Java with  MMTk",
+        booktitle = "ICSE 2004, 26th International Conference on Software Engineering",
+        year = 2004
+}
+\newblock In {\em ICSE}, pages 137--146, 2004.
 @inproceedings{DBLP:conf/jelia/Calejo04,
   author    = {Miguel Calejo},
   title     = {Inter{P}rolog: Towards a Declarative Embedding of Logic Programming
@@ -152,6 +122,14 @@ title = "A garbage collector for {C} and {C++}",
 url = "http://www.hpl.hp.com/personal/Hans_Boehm/gc/",
 note = "http://www.hpl.hp.com/personal/Hans\_Boehm/gc/"
 }
+
+@misc{stackless,
+    author = "Christian Tismer",
+    title = "Stackless Python",
+    url = "http://www.stackless.com/",
+    note = "http://www.stackless.com/"
+}
+
 
 @misc{CLI,
     author="ECMA",
@@ -240,6 +218,79 @@ note = "http://www.hpl.hp.com/personal/Hans\_Boehm/gc/"
  institution = {IBM Research},
  number = 23429,
  month = "November",
+}
+
+
+@techreport{security,
+    author = "Michael Franz",
+    title = "Moving Trust Out of Application Programs: A Software Architecture Based on Multi-Level Security Virtual Machines",
+    year = 2006,
+    month = August,
+    number = "06-10",
+    institution = "Donald Bren School of Information and Computer Science, University of California, Irvine"
+}
+
+
+
+% PyPy eu reports
+
+
+@techreport{ D05.1,
+	title = "Compiling Dynamic Language Implementations",
+	author = "Armin Rigo and Michael Hudson and Samuele Pedroni",
+	year = "2005",
+	institution = "PyPy Consortium",
+        number = "D05.1",
+	url = "http://codespeak.net/svn/pypy/extradoc/eu-report/D05.1_Publish_on_translating_a_very-high-level_description.pdf",
+	note = "http://codespeak.net/svn/pypy/extradoc/eu-report/"
+}
+
+@techreport{ D04.2,
+	title = "Complete Python Implementation running on top of CPython",
+	author = "{PyPy Team}",
+	year = "2005",
+	institution = "PyPy Consortium",
+        number = "D04.2",
+	url = "http://codespeak.net/svn/pypy/extradoc/eu-report/D04.2_Complete_Python_Implementation_on_top_of_CPython.pdf",
+	note = "http://codespeak.net/pypy/dist/pypy/doc/index-report.html"
+}
+
+@techreport{ D05.3,
+	title = "Memory management and threading models as translation aspects -- solutions and challenges",
+	author = "Carl Friedrich Bolz and Armin Rigo",
+	year = "2005",
+	institution = "PyPy Consortium",
+        number = "D05.3",
+	url = "http://codespeak.net/svn/pypy/extradoc/eu-report/D05.3_Publish_on_implementation_with_translation_aspects.pdf",
+	note = "http://codespeak.net/pypy/dist/pypy/doc/index-report.html"
+}
+
+@techreport{ D07.1,
+    title = "Support for Massive Parallelism, Optimisation results, Practical Usages and Approaches for Translation Aspects",
+    author = "Carl Friedrich Bolz and Armin Rigo",
+    year = "2007",
+    institution = "PyPy Consortium",
+    number = "D07.1",
+    note = "http://codespeak.net/pypy/dist/pypy/doc/index-report.html"
+}
+
+@techreport{ D06.1,
+    title = "Core Object Optimization Results",
+    author = "Michael Hudson and Armin Rigo and Carl Friedrich Bolz",
+    year = "2007",
+    institution = "PyPy Consortium",
+    number = "D06.1",
+    note = "http://codespeak.net/pypy/dist/pypy/doc/index-report.html"
+}
+
+@techreport{ D12.1,
+    title = "High-Level Backends and Interpreter Feature Prototypes",
+    author = "Antonio Cuni and Samuele Pedroni and Anders Chrigström and
+Holger Krekel and Guido Wesdorp and Carl Friedrich Bolz",
+    year = "2007",
+    institution = "PyPy Consortium",
+    number = "D12.1",
+    note = "http://codespeak.net/pypy/dist/pypy/doc/index-report.html"
 }
 
 

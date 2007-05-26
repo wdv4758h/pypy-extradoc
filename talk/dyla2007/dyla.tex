@@ -333,21 +333,21 @@ transformations.
 
 \item
 this meta-programming component of PyPy is called the \emph{translation
-framework,} as it translates RPython source code (i.e. the full Python
+framework}, as it translates RPython source code (i.e. the full Python
 interpreter) into lower-level code.  Its purpose is to add aspects to
 and specialize the interpreter to fit a selectable virtual or hardware
 runtime environment.  This either turns the interpreter into a
 standalone virtual machine, or integrates it into an existing OO VM.
 The necessary support code - e.g. the garbage collector when
 targeting C - is itself written in RPython in much the same spirit
-that the Jikes RVM's GCs are written in Java [JIKES]; as needed, it is
+that the Jikes RVM's GCs are written in Java \cite{JikesGC}; as needed, it is
 translated together with the interpreter to form the final custom VM.
 \end{itemize}
 
 A detailed description of this translation process is beyond the scope of the
 present paper; it can be found in \cite{pypyvmconstruction}.  The actual Python
 interpreter of PyPy and the results we achieved by translating it to C, LLVM
-\ref{LLVM:CGO04} and .NET are described in [XXX].  These results show that the
+\cite{LLVM} and .NET are described in [XXX].  These results show that the
 approach is practical and gives results whose performance is within the same
 order of magnitude (within a factor of 2 and improving) of the hand-written,
 well-tuned CPython, the C reference implementation.
@@ -380,8 +380,8 @@ PyPy's Python interpreter can optionally provide lazily computed objects
 - a 150-lines extension in PyPy that would require global changes in
 CPython.  Further examples can be found in our technical reports; we
 should notably mention an extension adding a state-of-the-art security
-model for Python based on data flow tacking [XXX], and general
-performance improvements found by extensive experimentation [XXX], some
+model for Python based on data flow tacking \cite{D12.1}, and general
+performance improvements found by extensive experimentation \cite{D06.1}, some
 of which were back-ported to CPython.
 
 If we compare with hand-writing an implementation for a specific OO VM,
@@ -423,7 +423,7 @@ By contrast, supporting more than one GC in CPython is close to
 impossible without forking the whole source code base.
 
 In fact, there is a well-known example of a CPython fork: Stackless
-Python [XXX], which adds support for coroutines.  This is very hard to
+Python \cite{stackless}, which adds support for coroutines.  This is very hard to
 do in CPython because the interpreter is written in a highly recursive
 style.  Stackless Python required large-scale changes; it is not merged
 back into CPython due to the pervasive increase in complexity that it
@@ -432,7 +432,7 @@ able to turn the Python interpreter - also written in a simple highly
 recursive style - into an efficient variant of continuation-passing
 style (CPS), enabling the usage of coroutines in the translated
 interpreter.  For more details and other examples of translation-level
-transformations, see [XXX].
+transformations, see \cite{D07.1}.
 
 \subsection{Getting good GCs and tools is possible}
 
