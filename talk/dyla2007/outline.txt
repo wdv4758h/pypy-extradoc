@@ -122,6 +122,8 @@ Metaprogramming Is Good
   * might open the door to better solutions for interoperability
     (high-level bridges instead of low-level ones, cross-translation...)
 
+in an appropriate place above:
+ - writing a translation toolchain is easier and simpler than writing an OO VM
 
 Conclusion
 ==========
