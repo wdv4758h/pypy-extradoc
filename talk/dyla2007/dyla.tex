@@ -108,13 +108,15 @@ beyond the state of the art.
 
 In section \ref{sect:approaches} we will explore the way VMs are typically
 implemented in C and on top of OO VMs and some of the problems of these
-approaches. In \ref{section sect:metaprogramming} we will describe our proposed
+approaches, using various Python implementations as the main example. In
+\ref{section sect:metaprogramming} we will describe our proposed
 meta-programming approach.
 
 
 \section{Approaches to Dynamic Language Implementation}
 \label{sect:appraches}
 
+XXX the next paragraph is also the start of the introduction right now!
 
 Dynamic languages are traditionally implemented by writing a virtual
 machine for them in a low-level language like C, or in a language that
@@ -149,24 +151,25 @@ becomes extremely tedious to change it later.
 
 % - wrapping with C libraries simple but tedious
 
-These limitations of a C-based implementation often lead to more
-implementations of the language. For example in addition to the main C
-implementation of Python (``CPython'') there are a number of additional
-implementations that want to fix some of the limitations of CPython. One of
-them is ``Stackless Python'' which is a fork of CPython that adds micro-threading
+These limitations of a C-based implementation often lead to more implementations
+of the language. For example in addition to the main C implementation of Python
+(``CPython'' \cite{cpy251}) there are a number of additional implementations
+that want to fix some of the limitations of CPython. One of them is ``Stackless
+Python'' \cite{stackless} which is a fork of CPython that adds micro-threading
 capabilities to Python. One of the reasons for not incorporating it back into
 CPython was that it was felt that they would make the implementation too
-complex. Another implementation of the Python language is the Psyco project
-which adds a JIT-compiler to CPython. As all other re-implementations, Psyco
-contains the Python semantics and needs to be kept synchronized with CPython
-manually.
+complex. Another implementation of the Python language is the Psyco \cite{Psyco}
+project which adds a JIT-compiler to CPython. As all other re-implementations,
+Psyco contains the Python semantics and needs to be kept synchronized with
+CPython manually.
 
 % - free threading attempts for Python
 
 As a language becomes more popular, yet another reason for different
 implementations emerges: People want to use it together with Java and C\#
 libraries and tools. Although it is in principle possible to do that by
-bridging the C-VM with the respective VMs of these languages (XXX examples)
+bridging the C-VM with the respective VMs of these languages (for example the
+``PythonNet'' project \cite{pythonnet} that brigdes CPython with a .NET VM)
 this is an incomplete solution since it prevents many use-cases.
 Therefore in the end implementations of the dynamic language on top of the
 object-oriented VMs are created to properly integrate with the complete
@@ -435,7 +438,7 @@ our translation toolchain specifically for our needs, i.e. a language
 implementer's needs, instead of for general-purpose usage.  Of course,
 the translation toolchain, once written, can also be reused to implement
 other languages, and possibly tailored on a case-by-case basis to fit
-each implementer's need.  The process is incremental: we can add more
+the specific need of a language.  The process is incremental: we can add more
 features as needed instead of starting from a maximal up-front design,
 and gradually improve the quality of the tools, the garbage collectors,
 the various optimizations, etc.
