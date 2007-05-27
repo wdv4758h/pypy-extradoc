@@ -101,7 +101,7 @@ to write an interpreter for that language in another sufficiently
 high-level but less dynamic language.  This interpreter plays the role
 of a specification for the dynamic language.  With a sufficiently capable
 translation toolchain we can then generate whole virtual machines from
-this specification -- either wholely custom VMs for C-level operating
+this specification -- either wholly custom VMs for C-level operating
 systems or VMs layered on top of various OO VMs.  In other words,
 meta-programming techniques can be used to successfully replace a
 foreseeable one-VM-fits-all standardization attempt.
@@ -301,7 +301,7 @@ environments or interpreters running on top of OO VMs.  This makes it
 practical to experiment with large changes to the language and with
 entirely new languages, such as domain-specific languages, while at any
 time being able to run the implemented language in a variety of
-environments, from C/Posix to the JVM to .NET.
+environments, from C/POSIX to the JVM to .NET.
 
 \subsection{PyPy architecture}
 
@@ -311,7 +311,7 @@ because of its size and rather intricate semantics, is a good target for
 our approach in the following sense: its previous reimplementations
 (Jython for the JVM and IronPython for .NET) have each proved to be very
 time-consuming to maintain.  Our implementation is, by construction,
-easier to maintain and extremely portable (including to C/Posix, to the
+easier to maintain and extremely portable (including to C/POSIX, to the
 JVM and to .NET).
 
 In meta-programming terms, the PyPy architecture is as follows:
@@ -350,7 +350,7 @@ translated together with the interpreter to form the final custom VM.
 A detailed description of this translation process is beyond the scope of the
 present paper; it can be found in \cite{pypyvmconstruction}.  The actual Python
 interpreter of PyPy and the results we achieved by translating it to C, LLVM
-\cite{LLVM} and .NET are described in \cite{architecture} \cite{translationdoc}
+\cite{LLVM} and .NET are described in \cite{architecture} \cite{translationdoc}.
 These results show that the
 approach is practical and gives results whose performance is within the same
 order of magnitude (within a factor of 2 and improving) of the hand-written,
@@ -518,7 +518,7 @@ Writing them more abstractly, at a higher level, has primarily only
 advantages, among them the avoidance of a proliferation of implementations
 growing out of sync.  Writing interpreters both flexibly and efficiently
 is difficult and meta-programming is a good way to achieve it.
-Moreover, this is not incompatible with targetting and benefiting from
+Moreover, this is not incompatible with targeting and benefiting from
 existing high-quality object-oriented virtual machines like those of the Java and .NET.
 
 
@@ -548,7 +548,7 @@ The approach we outlined is actually just one in a very large, mostly
 unexplored design space; it is likely that some of the choices made in
 PyPy will turn out to be suboptimal.  We are hoping that other
 toolchains will emerge over time, exploring other aspects and proposing
-other solutions.  By their ``meta'' nature, these multiple approachs
+other solutions.  By their ``meta'' nature, these multiple approaches
 should be easier to bridge together than, say, multiple OO VMs with
 different object and runtime models.  We believe that further research
 in this area might open the door to better solutions for
