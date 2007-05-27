@@ -364,7 +364,9 @@ interpreter of PyPy and the results we achieved by translating it to C, LLVM
 \cite{LLVM} and .NET are described in [XXX].  These results show that the
 approach is practical and gives results whose performance is within the same
 order of magnitude (within a factor of 2 and improving) of the hand-written,
-well-tuned CPython, the C reference implementation.
+well-tuned CPython, the C reference implementation.  These figures do not
+include the spectacular speed-ups obtained in some cases by the JIT compiler
+described in section \ref{subsect:dynamic_compilers}.
 
 \subsection{A single source}
 
@@ -411,18 +413,18 @@ source is written in a simple highly recursive style.  For more details
 and other examples of translation-level transformations, see
 \cite{D07.1}.
 
-A more subtle example of separation of concerns is the way our generated
-implementations can be integrated with a host OO VM.  As mentioned
-above, an implementer deciding to directly target a specific OO VM needs
-not only good knowledge of the OO VM in question and its object model --
-he must fit the language into the imposed models.  Instead, in our
-approach this task is done at two levels: in a first step, a stand-alone
-interpreter is written -- which, if translated to a given OO VM, would
-simply give an interpreter for the dynamic language which is unable to
-communicate with the host VM.  Integration comes as a second step, and
-occurs at a different level, by introducing mappings between the
-relevant classes of the interpreter and the corresponding classes of the
-OO VM.
+%A more subtle example of separation of concerns is the way our generated
+%implementations can be integrated with a host OO VM.  As mentioned
+%above, an implementer deciding to directly target a specific OO VM needs
+%not only good knowledge of the OO VM in question and its object model --
+%he must fit the language into the imposed models.  Instead, in our
+%approach this task is done at two levels: in a first step, a stand-alone
+%interpreter is written -- which, if translated to a given OO VM, would
+%simply give an interpreter for the dynamic language which is unable to
+%communicate with the host VM.  Integration comes as a second step, and
+%occurs at a different level, by introducing mappings between the
+%relevant classes of the interpreter and the corresponding classes of the
+%OO VM.
 
 \subsection{The effort of writing a translation toolchain}
 
@@ -433,43 +435,87 @@ lower-level output in various languages?
 Although it is able to generate, among other things, a complete custom
 VM for C-like environments, we found that the required effort that must
 be put into the translation toolchain was still much lower than that of
-writing a good-quality OO VM.  A reason seems to be that we could design
-our translation toolchain specifically for our needs, i.e. a language
-implementer's needs, instead of for general-purpose usage.  Of course,
-the translation toolchain, once written, can also be reused to implement
-other languages, and possibly tailored on a case-by-case basis to fit
-the specific need of a language.  The process is incremental: we can add more
-features as needed instead of starting from a maximal up-front design,
-and gradually improve the quality of the tools, the garbage collectors,
-the various optimizations, etc.
+writing a good-quality OO VM.  A reason is that a translation toolchain
+operates in a more static way, which allows it to leverage good C
+compilers.  It is self-supporting: pieces of the implementation can be
+written in RPython as well and translated along with the rest of the
+RPython source, and they can all be compiled and optimized by the C
+compiler.  In order to write an OO VM in this style you need to start by
+assuming an efficient dynamic compiler.
 
-Let us expand on the topic of the garbage collector, which for C-like
-envrionments is inserted into the generated VM by a transformation step.
-We started by ignoring the issue and just using the conservative Boehm
-\cite{Boehm} collector for C.  Later, we experimented with a range of
-simple custom collectors - reference counting, mark-and-sweep, etc.
-Ultimately, though, more advanced GCs will be needed to get the best
-performance.  It seems that RPython, enhanced with support for direct
-address manipulations, is a good language for writing GCs, so it would
-be possible for a GC expert to write one for our translation framework.
-However, this is not the only way to obtain good GCs: we will soon
-investigate a more practical course of action, which is to reuse
-existing GCs.  A good candidate is the GCs written in the Jikes RVM
-\cite{JikesGC}.  As they are in Java, it should be relatively
-straightforward to add a translation step that turns one of them into
-RPython (or directly our RPython-level intermediate representation) and
-integrate it with the rest of the program being translated.
+Of course, the translation toolchain, once written, can also be reused
+to implement other languages, and possibly tailored on a case-by-case
+basis to fit the specific needs of a language.  The process is
+incremental: we can add more features as needed instead of starting from
+a maximal up-front design, and gradually improve the quality of the
+tools, the garbage collectors, the various optimizations, etc.
+
+Writing a good garbage collector remains hard, though.  At least, it is
+easy to experiment with various kind of GCs, so we started by just using
+the conservative Boehm \cite{Boehm} collector for C and moved up to a
+range of simple custom collectors -- reference counting, mark-and-sweep,
+etc.  Ultimately, though, more advanced GCs will be needed to get the
+best performance.  It seems that RPython, enhanced with support for
+direct address manipulations, is a good language for writing GCs, so it
+would be possible for a GC expert to write one for our translation
+framework.  However, this is not the only way to obtain good GCs:
+existing GCs can also be reused.  Good candidates are the GCs written in
+the Jikes RVM \cite{JikesGC}.  As they are in Java, it should be
+relatively straightforward to add a translation step that turns one of
+them into RPython (or directly into our RPython-level intermediate
+representation) and integrate it with the rest of the program being
+translated.
 
 In summary, developing a meta-programming translation toolchain requires
-some work, but it can be done incrementally, it can reuse existing code,
-and it gives a toolchain that is itself highly reusable and flexible in
+work, but it can be done incrementally, it can reuse existing code, and
+it gives a toolchain that is itself highly reusable and flexible in
 nature.
+
+\subsection{Dynamic compilers}
+\label{subsect:dynamic_compilers}
+
+As mentioned above, the performance of the VMs generated by our
+translation framework are quite acceptable -- e.g. the Python VM
+generated via C code is much faster than Jython running on the best
+JVMs.  Of course, the JIT compilers in these JVMs are essential to
+achieve even this performance, which further proves the point that
+writing good OO VMs -- especially ones meant to support dynamic
+languages -- is a lot of work.
+
+The deeper problem with the otherwise highly-tuned JIT compilers of the
+OO VMs is that they are not a very good match for running dynamic
+languages.  It might be possible to tune a general-purpose JIT compiler
+enough, and write the dynamic language implementation accordingly, so
+that most of the bookkeeping work involved in running the dynamic
+language can be removed -- dispatching, boxing, unboxing...  However
+this has not been demonstrated yet.
+
+By far the fastest Python implementation, Psyco \cite{Psyco} contains a
+hand-written language-specific dynamic compiler.  PyPy's translation
+tool-chain is able to extend the generated VMs with an automatically
+generated dynamic compiler similar to Psyco, derived from the
+interpreter.  This is achieved by a pragmatic application of partial
+evaluation techniques guided by a few hints added to the source of the
+interpreter.  In other words, it is possible to produce a reasonably
+good language-specific JIT compiler and insert it into a VM, alongside
+with the necessary support code and the rest of the regular interpreter.
+
+This result was one of the major goals and motivations for the whole
+approach.  By construction, any code written in the dynamic language
+runs correctly under the JIT.  Some very simple Python examples run more
+than 100 times faster.  At the time of this writing this is still rather
+experimental, and the techniques involved are well beyond the scope of
+the present paper.  The reader is referred to \cite{D08.2} for more
+information.
+
+
+
 
 
 
 
 \section{Related Work}
-XXX 
+XXX
 
 \section{Conclusion}
 XXX 
