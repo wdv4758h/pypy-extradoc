@@ -113,15 +113,6 @@ Metaprogramming Is Good
   * JIT generation framework
   * expand...
 
-- No need for VM standardization
-  * we reduce the need for alternative implementations by making
-    one source code enough for many environments
-  * even the translation framework need not be standardized, as
-    we could cross-translate high-level source code written for one
-    with another [e.g. steal the Jikes GC]
-  * might open the door to better solutions for interoperability
-    (high-level bridges instead of low-level ones, cross-translation...)
-
 in an appropriate place above:
  - writing a translation toolchain is easier and simpler than writing an OO VM
 
@@ -139,8 +130,11 @@ Conclusion
 
 - Let's write more metaprogramming translation toolchains
   * diversity is good
+  * no need for VM standardization
   * very large, mostly unexplored design space (some of PyPy's choices will
     probably turn out to not be optimal)
+  * might open the door to better solutions for interoperability
+    (high-level bridges instead of low-level ones, cross-translation...)
   * ultimately a better investment of efforts than writing general-purpose VMs
 
 
