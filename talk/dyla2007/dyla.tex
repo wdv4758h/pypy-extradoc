@@ -31,18 +31,18 @@ Institut f\"{u}r Informatik, Universit\"at D\"usseldorf, Germany\\
 We argue in this paper that one should not write interpreters for dynamic
 languages manually but rather use meta-programming techniques and raise the
 overall level at which they are are implemented. We believe this to be
-ultimately a better investment of efforts than the development of more advanced
+ultimately a better investment of efforts than the development of more and more advanced
 general-purpose object oriented VMs.
 
 \medskip
 
 Dynamic languages are traditionally implemented by writing a virtual machine for
 them, centered around an interpreter and/or a built-in compiler and providing
-the object model and memory management. When a language becomes more successful,
+the object model and memory management. When a language becomes more popular,
 the limitations of such an implementation lead to the emergence of alternative
 implementations that try to solve some of the problems. Another reason for new
 implementations is the desire to have the language integrate well with existing,
-well-tuned object-oriented virtual machine like Java's. In this paper, we
+well-tuned object-oriented virtual machine like the Java Virtual Machine. In this paper, we
 describe the mechanisms that lead to an abundance of implementations, and
 explore some of the limitations of standard VMs.  We propose a different
 complementary alternative to writing VMs by hand and dealing with low-level
@@ -68,8 +68,8 @@ on syntax trees or bytecode; simpler languages like Lisp and Self
 typically have more efficient implementations based on just-in-time code
 generation.
 
-The efforts required to build a new virtual machine are relatively
-important.  This is particularly true for languages which are complex
+The effort required to build a new virtual machine are relatively
+large.  This is particularly true for languages which are complex
 and in constant evolution. Language implementation communities from an
 open-source or academic context have only limited resources. Therefore they
 cannot afford to have a highly complex implementation and often chose simpler
@@ -86,9 +86,9 @@ of the C implementation lead to alternative implementations which draw
 work-power from the reference implementation. An alternative to writing
 implementations in C is to build them on top of one of the newer object oriented
 virtual machines (``OO VM'') such as the JVM or the CLR. This is often wanted by
-the community anyway, since it leads to better re-usability of libraries of
+the community anyway, since it leads to the ability to re-use the libraries of
 these platforms. However, if a C implementation existed before the
-implementation of such a VM is started, this enters in conflict with the goal of
+implementation of such a VM is started, this enters into conflict with the goal of
 having to maintain essentially a single, simple enough implementation for a
 given programming language: as the language becomes popular, there will be a
 demand for having it run on various platforms -- high-level VMs as well as
@@ -141,9 +141,9 @@ evolution of the language.
 
 With the emergence of .NET and the JVM as interesting language
 implementation platforms, an argument that is sometimes made is that
-communities should only develop an implementation of their language for
-one of these platforms.\footnote{Preferably the argument author's favourite
-one.}
+communities should only develop an implementation of their language
+for one of these platforms (preferably the argument author's favourite
+one).
 
 \subsection{Assessing the Advantages of Implementing a Language on Top of OO
 VMs}
@@ -152,9 +152,7 @@ Implementing a language on top of an existing OO VM is in many ways easier than
 implementing it in C. Let's take a look at the advantages that are usually
 cited for basing a
 language implementation of a dynamic language on a standard object oriented
-virtual machine, for example the JVM or the CLR. The central theme of the
-benefits  of OO VMs is the ability to implement certain hard things only once
-and share the benefits between all language implementations on top of the OO VM.
+virtual machine, for example the JVM or the CLR.
 
 \begin{itemize}
 \item
@@ -191,7 +189,7 @@ of the VM.
 \emph{Ease of implementation:} The implementation of a language on top of an OO
 VM is easier because it starts at a higher level than C. Usually a
 high-level language like Java or C\# is used for the language implementation,
-which both offer the language implementer a much higher level of abstraction
+both of which offer the language implementer a much higher level of abstraction
 than when implementing in C. 
 
 \item
@@ -203,7 +201,10 @@ be required.
 
 
 \noindent
-At a closer look, some of these advantages are only partially true in practice:
+The central theme of the benefits of OO VMs is the ability to
+implement certain hard things only once and share the benefits between
+all language implementations on top of the OO VM.  At a closer look,
+some of these advantages are only partially true in practice:
 
 \begin{itemize}
 \item
@@ -266,7 +267,7 @@ The described proliferation of language implementations is a big problem for
 language communities. Although most individual implementations exist for good
 reasons, the sum of all of them and the need to keep them synchronized with the
 reference implementations lead to a lot of duplicated work and division of
-efforts. This is especially true for open source languages which tend to evolve
+effort. This is especially true for open source languages which tend to evolve
 quickly. At any one point in time some of the implementations will lag behind
 which makes writing code which can work on all of the implementations harder.
 
@@ -277,7 +278,7 @@ alleviate the problem it is unlikely to happen. On the one hand many political
 issues are involved in such a decision. On the other hand deciding on one single
 object and execution model would not be an equally good fit for all languages.
 
-In the next section we are exploring a different approach for implementing
+In the next section we explore a different approach for implementing
 dynamic languages that we hope is able to solve many of the problems of
 implementing a language, in particular the problem of an explosion of the number
 of implementations.
