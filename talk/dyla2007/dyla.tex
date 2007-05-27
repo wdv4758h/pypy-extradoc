@@ -7,7 +7,7 @@
 
 \pagestyle{headings}
 
-\title{How to Not write Virtual Machines for Dynamic Languages}
+\title{PyPy: raising the level for Dynamic Language implementations}
 
 %\titlerunning{XXX}     % abbreviated title (for running head)
 %                                     also used for the TOC unless
@@ -28,21 +28,30 @@ Institut f\"{u}r Informatik, Universit\"at D\"usseldorf, Germany\\
 
 \begin{abstract}
 
-Dynamic languages are traditionally implemented by writing a virtual
-machine for them, centered around an interpreter and/or a built-in
-compiler and providing the object model and memory management. When
-a language becomes more successful, the limitations of such an implementation
-lead to the emergence of alternative implementations that try to solve some
-of the problems. Another reason for new implementations is the desire to have
-the language integrate well with existing, well-tuned object-oriented virtual
-machine like Java's. In this paper, we describe the mechanisms that lead to an
-abundance of implementations, and explore some of the limitations of standard
-VMs.  We propose a different complementary alternative: flexibly generating
-virtual machines instead
-of writing them by hand.  This approach has been validated by the PyPy
-project, with which we can automatically insert many features into the
-generated virtual machines -- including good just-in-time compilers tuned
-to the dynamic language at hand.
+Dynamic languages are usually implemented in lower level environments, 
+traditionally in C/Posix.  Recently .NET and the JVM are emerging as 
+new higher-level environments, offering more built-in support for 
+memory management, threading models, dynamic optimization techniques
+and also offering an abundance of libraries for application development.   
+However, manually implementing languages for a standardized runtime environment
+may not be the last word on bringing dynamic language implementations to a higher level. 
+The PyPy project successfully experimented with an approach that 
+uses extensive meta-programming techniques to analyse and transform the 
+single source of an language "specification" and automatically adds
+lower level and runtime-dependent aspects, successfully producing 
+efficent virtual machines for an runtime environment of choice. 
+The meta-programming facilities are largely re-useable for implementing 
+different computer languages. We thus argue in this paper that 
+one should not write interpreters manually and dependent on lower 
+level and runtime details - but rather explore and exploit 
+meta-programming facilities which themselves can be written 
+and tested in a very high language, overall raising the level 
+of implementing dynamic languages.  While there is considerable 
+complexity liying in such a meta-programming tool chain, it is 
+re-usable for different language implementations and generally
+helps to avoid having to implement language semantics and 
+optimizations redundantly.  
+
 \footnote{This research is partially supported by the EU funded %research
  project:
 IST 004779 PyPy (PyPy: Implementing Python in Python).} \\
