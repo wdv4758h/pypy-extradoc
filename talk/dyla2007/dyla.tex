@@ -158,7 +158,8 @@ that want to fix some of the limitations of CPython. One of them is ``Stackless
 Python'' \cite{stackless} which is a fork of CPython that adds micro-threading
 capabilities to Python. One of the reasons for not incorporating it back into
 CPython was that it was felt that they would make the implementation too
-complex. Another implementation of the Python language is the Psyco \cite{Psyco}
+complex. Another implementation of the Python language is the Psyco
+\cite{psyco-software}
 project which adds a JIT-compiler to CPython. As all other re-implementations,
 Psyco contains the Python semantics and needs to be kept synchronized with
 CPython manually.
@@ -274,7 +275,7 @@ much on the language in question. XXX give example where it works well.
 
 An example where this mapping does not work too well is Prolog. While there
 exist several implementations of Prolog on top of the JVM \cite{prologcafe}
-\cite{DBLP:conf/jelia/Calejo04} and also one on .NET \cite{psharp},
+\cite{InterProlog} and also one on .NET \cite{psharp},
 they are not particular efficient, especially when compared to good Prolog VMs
 in written in C. This is mostly because the Prolog execution model, which
 involves backtracking and deep recursion does not fit the JVM and .NET very
@@ -507,10 +508,11 @@ that most of the bookkeeping work involved in running the dynamic
 language can be removed -- dispatching, boxing, unboxing...  However
 this has not been demonstrated yet.
 
-By far the fastest Python implementation, Psyco \cite{Psyco} contains a
+By far the fastest Python implementation, Psyco \cite{psyco-software} contains a
 hand-written language-specific dynamic compiler.  PyPy's translation
 tool-chain is able to extend the generated VMs with an automatically
-generated dynamic compiler similar to Psyco, derived from the
+generated dynamic compiler that uses techniques similar to those of Psyco
+\cite{Psyco-paper}, derived from the
 interpreter.  This is achieved by a pragmatic application of partial
 evaluation techniques guided by a few hints added to the source of the
 interpreter.  In other words, it is possible to produce a reasonably
@@ -527,13 +529,6 @@ the present paper.  The reader is referred to \cite{D08.2} for more
 information.
 
 
-
-
-
-
-
-\section{Related Work}
-XXX
 
 \section{Conclusion}
 XXX 
