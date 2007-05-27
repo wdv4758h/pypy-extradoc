@@ -102,7 +102,7 @@ high-level but less dynamic language.  This interpreter plays the role
 of a specification for the dynamic language.  With a sufficiently capable
 translation toolchain we can then generate whole virtual machines from
 this specification -- either wholly custom VMs for C-level operating
-systems or VMs layered on top of various OO VMs.  In other words,
+systems or as a layer on top of various OO VMs.  In other words,
 meta-programming techniques can be used to successfully replace a
 foreseeable one-VM-fits-all standardization attempt.
 
@@ -358,7 +358,7 @@ well-tuned CPython, the C reference implementation.  These figures do not
 include the spectacular speed-ups obtained in some cases by the JIT compiler
 described in section \ref{subsect:dynamic_compilers}.
 
-In the sequel (??? - what is the sequel), we will focus on the relative advantages and
+In the sequel, we will focus on the relative advantages and
 inconveniences of the PyPy approach compared to the approach of
 hand-writing a language implementation on top of an OO VM.
 
@@ -369,7 +369,7 @@ Our approach -- a single ``meta-written'' implementation -- naturally
 leads to language implementations that have various advantages over the
 ``hand-written'' implementations.  Firstly, it is a single-source
 approach -- we explicitly seek to solve the problem of proliferation of
-implementations.  In the sequel (???), we will show that this goal can be
+implementations.  In the sequel, we will show that this goal can be
 achieved without giving up the advantages of hand-written
 implementations for OO VMs.  Moreover, there are additional advantages which,
 in our opinion, are significant enough to hint that meta-programming,
