@@ -106,12 +106,15 @@ feasible in practice.  Just as importantly, it also brings new insights
 and concrete benefits in term of flexibility and performance that go
 beyond the state of the art.
 
-In section XXX we will explore the way VMs are typically implemented
-in C and some of the problems of this approach. In section XXX we will describe
-our proposed meta-programming approach. XXX
+In section \ref{sect:approaches} we will explore the way VMs are typically
+implemented in C and on top of OO VMs and some of the problems of these
+approaches. In \ref{section sect:metaprogramming} we will describe our proposed
+meta-programming approach.
 
 
-\section{XXX XXX}
+\section{Approaches to Dynamic Language Implementation}
+\label{sect:appraches}
+
 
 Dynamic languages are traditionally implemented by writing a virtual
 machine for them in a low-level language like C, or in a language that
@@ -167,14 +170,17 @@ bridging the C-VM with the respective VMs of these languages (XXX examples)
 this is an incomplete solution since it prevents many use-cases.
 Therefore in the end implementations of the dynamic language on top of the
 object-oriented VMs are created to properly integrate with the complete
-environment. Implementing a language on top of an OO VM is in many ways easier
-than implementing it in C.
+environment.
 
 
 \subsection{Assessing the Advantages of Implementing a Language on Top of OO
 VMs}
 
-Let's take a look at the advantages that are usually cited for basing a
+XXX mention that OO languages don't have good metaprogramming support
+
+Implementing a language on top of an OO VM is in many ways easier than
+implementing it in C. Let's take a look at the advantages that are usually
+cited for basing a
 language implementation of a dynamic language on a standard object oriented
 virtual machine, for example the JVM or the CLR. The central theme of the
 benefits  of OO VMs is the ability to implement certain hard things only once
@@ -191,7 +197,7 @@ the first place.
 various hardware architectures and operating systems. The languages implemented
 on top can then be run without change in various environments.
 
-\emph{Better tools:} XXX
+\emph{Better tools:} Better IDEs, debuggers and profilers.
 
 \emph{Better implementation of low-level issues like garbage collection,
 threading:} Since an OO VM is expected to be widely used and usually backed by
@@ -226,9 +232,10 @@ times slower than CPython, for IronPython\footnote{Python on .NET, which
 gives up on some features to improve performance}
 the figures vary but it is mostly
 within the same order of magnitude as CPython. The most important reason for
-this is that the VM's JIT compilers are not prepared to deal with the highly
-dynamic behaviour and the complex dispatch semantics of dynamic languages. (XXX
-expand)
+this is that the VM's JIT compilers are optimized for specific usage patterns
+that are common in the main language of the OO VM. To get good speeds the
+language implementers would have to carefully produce code that matches these
+usage patterns, which is not a simple task.
 
 \emph{Better GCs:} While this is obvious in theory, OO VMs tend to have a much
 higher memory overhead to start with (XXX ref)
@@ -285,6 +292,7 @@ implementing a language, in particular the problem of an explosion of the number
 of implementations.
 
 \section{Meta-Programming Is Good}
+\label{sect:metaprogramming}
 
 The present paper proposes to approach the implementation of dynamic
 languages from a meta-level: virtual machines for such languages should
