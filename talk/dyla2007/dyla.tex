@@ -386,6 +386,11 @@ well-tuned CPython, the C reference implementation.  These figures do not
 include the spectacular speed-ups obtained in some cases by the JIT compiler
 described in section \ref{subsect:dynamic_compilers}.
 
+In the sequel, we will focus on the relative advantages and
+inconvenients of the PyPy approach compared to the approach of
+hand-writing a language implementation on top of an OO VM.
+
+
 \subsection{A single source}
 
 Our approach -- a single ``meta-written'' implementation -- naturally
@@ -529,9 +534,57 @@ the present paper.  The reader is referred to \cite{D08.2} for more
 information.
 
 
-
 \section{Conclusion}
-XXX 
+
+Here are the two central points that we have asserted in the present
+paper:
+
+\begin{itemize}
+\item \emph{Do not write dynamic language implementations ``by hand''.}
+Writing them more abstractly, at a higher level, has mostly only
+advantages, among them avoiding a proliferation of implementations
+growing out of sync.  Writing interpreters both flexibly and efficiently
+is difficult, and meta-programming is a good way to achieve it.
+Moreover, this is not incompatible with targetting and benefiting from
+existing good object-oriented virtual machines like the Java and .NET
+ones.
+
+\item \emph{Do not write VMs ``by hand''.}
+Writing language-specific virtual machines is a time-consuming task for
+medium to large languages.  Unless large amounts of resources can be
+invested, the resulting VMs are bound to have limitations which lead to
+the emergence of many implementations, a fact that is taxing precisely
+for a community with limited resources.  (This is of course even more
+true for general-purpose VMs.)
+\end{itemize}
+
+As a better alternative, we advocate a more general usage of
+meta-programming:
+
+\begin{itemize}
+\item \emph{Let's write more meta-programming translation toolchains.}
+Aside from the advantages described in section
+\ref{sect:metaprogramming}, a translation toolchain need not be
+standardized for inter-operability, but can be tailored to the needs of
+each project.  Diversity is good; there is no need to attempt to
+standardize on a single OO VM.
+\end{itemize}
+
+The approach we outlined is actually just one in a very large, mostly
+unexplored design space; it is likely that some of the choices made in
+PyPy will turn out to be suboptimal.  We are hoping that other
+toolchains will emerge over time, exploring other aspects and proposing
+other solutions.  By their ``meta'' nature, these multiple approachs
+should be easier to bridge together than, say, multiple OO VMs with
+different object and runtime models.  We believe that further research
+in this area might open the door to better solutions for
+interoperability in general -- e.g. high-level bridges instead of
+(virtual-)machine-level ones, enabled by cross-translation.
+
+We believe this to be ultimately a better investment of efforts than the
+development of more advanced general-purpose OO VMs.
+
+
 % ---- Bibliography ----
 %\begin{small}
 \bibliographystyle{abbrv}
