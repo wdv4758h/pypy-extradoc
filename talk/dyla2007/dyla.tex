@@ -28,6 +28,12 @@ Institut f\"{u}r Informatik, Universit\"at D\"usseldorf, Germany\\
 
 \begin{abstract}
 
+We argue in this paper that one should not write interpreters manually but
+rather use meta-programming techniques and raise the overall level at which
+dynamic languages are implemented. We believe this to be ultimately a better
+investment of efforts than the development of more advanced general-purpose OO
+VMs.
+
 Dynamic languages are traditionally implemented by writing a virtual machine for
 them, centered around an interpreter and/or a built-in compiler and providing
 the object model and memory management. When a language becomes more successful,
@@ -38,18 +44,11 @@ well-tuned object-oriented virtual machine like Java's. In this paper, we
 describe the mechanisms that lead to an abundance of implementations, and
 explore some of the limitations of standard VMs.  We propose a different
 complementary alternative to writing VMs by hand and dealing with low-level
-details: flexibly generating virtual machines from a single abstract language
-``specification''.
-
-This approach has been validated by the PyPy project that tries to explore
-meta-programming facilities with which we can automatically insert many features
-and low-level details into an automatically generated virtual machines --
-including good just-in-time compilers tuned to the dynamic language at hand.
-We thus argue in this paper that one should not write interpreters manually but
-rather use meta-programming techniques and raise the overall level at which
-dynamic languages are implemented. We believe this to be ultimately a better
-investment of efforts than the development of more advanced general-purpose OO
-VMs. \footnote{This research is partially supported by the EU funded
+details, validated by the PyPy project: flexibly generating virtual machines
+from a single abstract language ``specification'', inserting features and
+low-level details automatically -- including good just-in-time compilers tuned
+to the dynamic language at hand.
+\footnote{This research is partially supported by the EU funded
  project: IST 004779 PyPy (PyPy: Implementing Python in Python).} \\
 
 \end{abstract}
