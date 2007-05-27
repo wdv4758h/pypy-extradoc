@@ -206,7 +206,7 @@ previous point leads to much better performance of the languages running on top
 of the VM.
 
 \emph{Ease of implementation:} The implementation of a language on top of an OO
-VM is easier because it starts of at a higher level than C. Usually a
+VM is easier because it starts at a higher level than C. Usually a
 high-level language like Java or C\# is used for the language implementation,
 which both offer the language implementer a much higher level of abstraction
 than when implementing in C. 
@@ -219,11 +219,14 @@ it is also easier to modify and to extend. XXX somewhat vague point
 
 At a closer look, some of these advantages are only partially true in practice. 
 
-\emph{Better performance:} So far it seems like performance of highly dynamic
-languages is not actually significantly improved on OO VMs. Jython is around 5
-times slower than CPython, for IronPython the figures vary but it is mostly
+\emph{Better performance:} So far it seems that performance of highly dynamic
+languages is not actually significantly improved on OO VMs. Jython
+\footnote{Python on the Java VM} is around 5
+times slower than CPython, for IronPython\footnote{Python on .NET, which
+gives up on some features to improve performance}
+the figures vary but it is mostly
 within the same order of magnitude as CPython. The most important reason for
-this that the VM's JIT compilers are not prepared to deal with the highly
+this is that the VM's JIT compilers are not prepared to deal with the highly
 dynamic behaviour and the complex dispatch semantics of dynamic languages. (XXX
 expand)
 
@@ -289,7 +292,7 @@ not be written by hand, but generated automatically ``around'' a
 description of the language in the form of an interpreter for it.  We
 argue that this approach gives many of the benefits usually expected by
 an implementer when he decides to target an existing object-oriented
-virtual machine.  It also gives other benefits that we will describe –
+virtual machine.  It also gives other benefits that we will describe --
 mostly in term of flexibility.  But most importantly, it lets a
 community write a single source implementation of the language, avoiding
 the time-consuming task of keeping multiple ones in sync.  The single
@@ -316,13 +319,13 @@ In meta-programming terms, the PyPy architecture is as follows:
 \begin{itemize}
 
 \item
-we use a very expressive \emph{object language} (RPython – an analyzable
+we use a very expressive \emph{object language} (RPython -- an analyzable
 subset of Python) as the language in which the complete Python
 interpreter is written, together with the implementation of its
 built-in types.  The language is still close to Python, e.g.  it is
 object-oriented, provides rich built-in types and has automatic memory
 management.  In other words, the source code of our complete Python
-interpreter is mostly free of low-level details – no explicit memory
+interpreter is mostly free of low-level details -- no explicit memory
 management, no pieces of C or C-level code.
 
 \item
@@ -338,8 +341,8 @@ interpreter) into lower-level code.  Its purpose is to add aspects to
 and specialize the interpreter to fit a selectable virtual or hardware
 runtime environment.  This either turns the interpreter into a
 standalone virtual machine, or integrates it into an existing OO VM.
-The necessary support code – e.g. the garbage collector when
-targeting C – is itself written in RPython in much the same spirit
+The necessary support code -- e.g. the garbage collector when
+targeting C -- is itself written in RPython in much the same spirit
 that the Jikes RVM's GCs are written in Java \cite{JikesGC}; as needed, it is
 translated together with the interpreter to form the final custom VM.
 \end{itemize}
@@ -354,18 +357,17 @@ well-tuned CPython, the C reference implementation.
 
 \subsection{A single source}
 
-Our approach – a single ``meta-written'' implementation – naturally leads
+Our approach -- a single ``meta-written'' implementation -- naturally leads
 to language implementations that have various advantages over the
 ``hand-written'' implementations.  First of all, it is a single-source
-approach – we explicitly seek to solve the problem of proliferation of
-implementations.  In the sequel we will show more precise evidence that
-this can be done in a practical way with no major drawback.  By itself
-this would already be a valid argument against the need for
-standardization on a single OO VM.  But there are also other advantages
-in generating language implementations. In our opinion these are very
-significant, to the extent that it hints that meta-programming, though
-not widely used in general-purpose programming, is an essential tool in
-a language implementer's toolbox.
+approach -- we explicitly seek to solve the problem of proliferation of
+implementations.
+
+Separating the implementation of a language in a high-level
+``description'' and a custom translation framework has also many
+advantages -- in our opinion significant enough to hint that
+meta-programming, though not widely used in general-purpose programming,
+is an essential tool in a language implementer's toolbox.
 
 \subsection{Writing the interpreter is easier}
 
@@ -377,36 +379,27 @@ using its high level and flexibility to quickly experiment with features
 or implementation techniques in ways that would, in a traditional
 approach, require pervasive changes to the source code.  For example,
 PyPy's Python interpreter can optionally provide lazily computed objects
-– a 150-lines extension in PyPy that would require global changes in
+-- a 150-lines extension in PyPy that would require global changes in
 CPython.  Further examples can be found in our technical reports; we
 should notably mention an extension adding a state-of-the-art security
 model for Python based on data flow tacking \cite{D12.1}, and general
 performance improvements found by extensive experimentation \cite{D06.1}, some
 of which were back-ported to CPython.
 
-If we compare with hand-writing an implementation for a specific OO VM,
-then the latter requires not only good knowledge of the OO VM in
-question and its object model – it requires the language implementer to
-fit the language into the imposed models.  For example, it is natural to
-map classes and instances of a dynamic object-oriented language to the
-OO VM's notion of classes and instances, but this might not be a simple
-task at all if the models are substantially different and/or if the OO
-VM is essentially less dynamic than the language to implement.  In our
-approach, this efforts is done at two levels: in a first step, while
-writing the interpreter, the implementer does not need to worry about
-integration with an OO VM's object model.  Of course, the integration
-effort does not simply vanish – indeed, a simple translation of such an
-interpreter to a given OO VM would give an interpreter for the dynamic
-language which is unable to communicate with the host VM (which might
-already be interesting in specific cases, but not in general).
-Integration comes as a second step, and occurs at a different level, by
-introducing mappings between the relevant classes of the interpreter and
-the corresponding classes of the OO VM.  As of yet we have no evidence
-that this makes the total integration effort much lower or higher; the
-point is that it has proven possible to take the single, OO
-VM-independent source code of PyPy's Python interpreter, and produce
-from it a version that runs in and integrates with the rest of the .NET
-environment – by writing \emph{orthogonal} code.
+\subsection{The effort of writing a translation toolchain}
+
+Of course, the price to pay is the need for a translation toolchain
+capable of analyzing and transforming the high-level source code and
+generating lower-level output in various languages.  Of course, the
+translation toolchain, once written, can be reused to implement other
+languages as well.  Even so, we found that the required effort that must
+be put into the translation toolchain in the first place is still much
+lower than that of writing a complete, commercial-quality OO VM.  A
+reason appears to be that we could design our translation toolchain
+specifically for our needs, i.e. a language implementer's needs, instead
+of for general-purpose usage.
+
+...
 
 At the level of the translation framework, the ability to change or
 insert new whole-program transformations makes some aspects of the
@@ -416,7 +409,7 @@ meta-program.  The most obvious example in our context is the garbage
 collector for the target environments that lack it.  The hand-written C
 source of CPython is littered with macro calls that increment and
 decrement reference counters.  Our translation framework can insert such
-macro calls automatically – in fact, we have a choice of GCs, and
+macro calls automatically -- in fact, we have a choice of GCs, and
 reference counting is only one of them (not a particularly efficient
 one, either).  Some GCs require different transformations of the code.
 By contrast, supporting more than one GC in CPython is close to
@@ -428,11 +421,40 @@ do in CPython because the interpreter is written in a highly recursive
 style.  Stackless Python required large-scale changes; it is not merged
 back into CPython due to the pervasive increase in complexity that it
 requires.  In PyPy, though, an optional ``stackless'' transformation is
-able to turn the Python interpreter – also written in a simple highly
-recursive style – into an efficient variant of continuation-passing
+able to turn the Python interpreter -- also written in a simple highly
+recursive style -- into an efficient variant of continuation-passing
 style (CPS), enabling the usage of coroutines in the translated
 interpreter.  For more details and other examples of translation-level
 transformations, see \cite{D07.1}.
+
+
+\subsection{Integration with a host OO VM}
+
+A good example of this is to compare it against the task of hand-writing
+an implementation for a specific, choosen OO VM.  The latter requires
+not only good knowledge of the OO VM in question and its object model --
+it requires the language implementer to fit the language into the
+imposed models.  For example, it is natural to map classes and instances
+of a dynamic object-oriented language to the OO VM's notion of classes
+and instances, but this might not be a simple task at all if the models
+are substantially different and/or if the OO VM is essentially less
+dynamic than the language to implement.  In our approach, this task
+is done at two levels: in a first step, while writing the interpreter,
+the implementer does not need to worry about integration with an OO VM's
+object model.  Of course, the integration effort does not simply vanish
+-- indeed, a simple translation of such an interpreter to a given OO VM
+would give an interpreter for the dynamic language which is unable to
+communicate with the host VM (which might already be interesting in
+specific cases, but not in general).  Integration comes as a second
+step, and occurs at a different level, by introducing mappings between
+the relevant classes of the interpreter and the corresponding classes of
+the OO VM.  As of yet we have no evidence that this makes the total
+integration effort much lower or higher; the point is that it has proven
+possible to take the single, OO VM-independent source code of PyPy's
+Python interpreter, and produce from it a version that runs in and
+integrates with the rest of the .NET environment -- by writing
+\emph{orthogonal} code.
+
 
 \subsection{Getting good GCs and tools is possible}
 XXX 
