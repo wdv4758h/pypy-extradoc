@@ -180,8 +180,6 @@ environment.
 \subsection{Assessing the Advantages of Implementing a Language on Top of OO
 VMs}
 
-XXX mention that OO languages don't have good metaprogramming support
-
 Implementing a language on top of an OO VM is in many ways easier than
 implementing it in C. Let's take a look at the advantages that are usually
 cited for basing a
@@ -281,6 +279,10 @@ in written in C. This is mostly because the Prolog execution model, which
 involves backtracking and deep recursion does not fit the JVM and .NET very
 well. Therefore the Prolog implementations on top of OO VMs resort to models
 that is quite unnatural both for the OO VM and for Prolog.
+
+Another important point that make implementations of languages on top of OO VMs
+harder is that typically they don't support meta-programming very well, or only
+at the bytecode level.
 \end{itemize}
 
 On the other hand some of the benefits are real and very useful, the most
@@ -539,6 +541,7 @@ information.
 Here are the two central points that we have asserted in the present
 paper:
 
+%XXX doesn't look entirely nice
 \begin{itemize}
 \item \emph{Do not write dynamic language implementations ``by hand''.}
 Writing them more abstractly, at a higher level, has mostly only
