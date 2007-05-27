@@ -296,8 +296,8 @@ of implementations.
 
 The present paper proposes to approach the implementation of dynamic
 languages from a meta-level: virtual machines for such languages should
-not be written by hand, but generated automatically ``around'' a
-description of the language in the form of an interpreter for it.  We
+not be written by hand, but generated automatically ``around'' an
+interpreter playing the role of a high-level description of the language.  We
 argue that this approach gives many of the benefits usually expected by
 an implementer when he decides to target an existing object-oriented
 virtual machine.  It also gives other benefits that we will describe --
@@ -365,17 +365,16 @@ well-tuned CPython, the C reference implementation.
 
 \subsection{A single source}
 
-Our approach -- a single ``meta-written'' implementation -- naturally leads
-to language implementations that have various advantages over the
+Our approach -- a single ``meta-written'' implementation -- naturally
+leads to language implementations that have various advantages over the
 ``hand-written'' implementations.  First of all, it is a single-source
 approach -- we explicitly seek to solve the problem of proliferation of
-implementations.
-
-Separating the implementation of a language in a high-level
-``description'' and a custom translation framework has also many
-advantages -- in our opinion significant enough to hint that
-meta-programming, though not widely used in general-purpose programming,
-is an essential tool in a language implementer's toolbox.
+implementations.  In the sequel, we will show that this goal can be
+achieved without giving up on the advantages of hand-written
+implementations for OO VMs.  Moreover, there are additional advantages
+-- in our opinion significant enough to hint that meta-programming,
+though not widely used in general-purpose programming, is an essential
+tool in a language implementer's toolbox.
 
 \subsection{Writing the interpreter is easier}
 
@@ -394,78 +393,77 @@ model for Python based on data flow tacking \cite{D12.1}, and general
 performance improvements found by extensive experimentation \cite{D06.1}, some
 of which were back-ported to CPython.
 
-\subsection{The effort of writing a translation toolchain}
-
-Of course, the price to pay is the need for a translation toolchain
-capable of analyzing and transforming the high-level source code and
-generating lower-level output in various languages.  Of course, the
-translation toolchain, once written, can be reused to implement other
-languages as well.  Even so, we found that the required effort that must
-be put into the translation toolchain in the first place is still much
-lower than that of writing a complete, commercial-quality OO VM.  A
-reason appears to be that we could design our translation toolchain
-specifically for our needs, i.e. a language implementer's needs, instead
-of for general-purpose usage.
-
-...
+\subsection{Separation of concerns}
 
 At the level of the translation framework, the ability to change or
 insert new whole-program transformations makes some aspects of the
 interpreter easier to deal with.  By ``aspect'' we mean, in the original
 AOP sense, a feature that is added to an object program by a
-meta-program.  The most obvious example in our context is the garbage
-collector for the target environments that lack it.  The hand-written C
-source of CPython is littered with macro calls that increment and
-decrement reference counters.  Our translation framework can insert such
-macro calls automatically -- in fact, we have a choice of GCs, and
-reference counting is only one of them (not a particularly efficient
-one, either).  Some GCs require different transformations of the code.
-By contrast, supporting more than one GC in CPython is close to
-impossible without forking the whole source code base.
+meta-program.  The most obvious example in our context is the insertion
+of a garbage collector (chosen among several available ones) for the
+target environments that lack it.  Another example is the translation of
+the interpreter into a form of continuation-passing style (CPS), which
+allows the translated interpreter to provide coroutines even though its
+source is written in a simple highly recursive style.  For more details
+and other examples of translation-level transformations, see
+\cite{D07.1}.
 
-In fact, there is a well-known example of a CPython fork: Stackless
-Python \cite{stackless}, which adds support for coroutines.  This is very hard to
-do in CPython because the interpreter is written in a highly recursive
-style.  Stackless Python required large-scale changes; it is not merged
-back into CPython due to the pervasive increase in complexity that it
-requires.  In PyPy, though, an optional ``stackless'' transformation is
-able to turn the Python interpreter -- also written in a simple highly
-recursive style -- into an efficient variant of continuation-passing
-style (CPS), enabling the usage of coroutines in the translated
-interpreter.  For more details and other examples of translation-level
-transformations, see \cite{D07.1}.
-
-
-\subsection{Integration with a host OO VM}
-
-A good example of this is to compare it against the task of hand-writing
-an implementation for a specific, choosen OO VM.  The latter requires
+A more subtle example of separation of concerns is the way our generated
+implementations can be integrated with a host OO VM.  As mentioned
+above, an implementer deciding to directly target a specific OO VM needs
 not only good knowledge of the OO VM in question and its object model --
-it requires the language implementer to fit the language into the
-imposed models.  For example, it is natural to map classes and instances
-of a dynamic object-oriented language to the OO VM's notion of classes
-and instances, but this might not be a simple task at all if the models
-are substantially different and/or if the OO VM is essentially less
-dynamic than the language to implement.  In our approach, this task
-is done at two levels: in a first step, while writing the interpreter,
-the implementer does not need to worry about integration with an OO VM's
-object model.  Of course, the integration effort does not simply vanish
--- indeed, a simple translation of such an interpreter to a given OO VM
-would give an interpreter for the dynamic language which is unable to
-communicate with the host VM (which might already be interesting in
-specific cases, but not in general).  Integration comes as a second
-step, and occurs at a different level, by introducing mappings between
-the relevant classes of the interpreter and the corresponding classes of
-the OO VM.  As of yet we have no evidence that this makes the total
-integration effort much lower or higher; the point is that it has proven
-possible to take the single, OO VM-independent source code of PyPy's
-Python interpreter, and produce from it a version that runs in and
-integrates with the rest of the .NET environment -- by writing
-\emph{orthogonal} code.
+he must fit the language into the imposed models.  Instead, in our
+approach this task is done at two levels: in a first step, a stand-alone
+interpreter is written -- which, if translated to a given OO VM, would
+simply give an interpreter for the dynamic language which is unable to
+communicate with the host VM.  Integration comes as a second step, and
+occurs at a different level, by introducing mappings between the
+relevant classes of the interpreter and the corresponding classes of the
+OO VM.
+
+\subsection{The effort of writing a translation toolchain}
+
+What are the efforts required to develop a translation toolchain capable
+of analyzing and transforming the high-level source code and generating
+lower-level output in various languages?
+
+Although it is able to generate, among other things, a complete custom
+VM for C-like environments, we found that the required effort that must
+be put into the translation toolchain was still much lower than that of
+writing a good-quality OO VM.  A reason seems to be that we could design
+our translation toolchain specifically for our needs, i.e. a language
+implementer's needs, instead of for general-purpose usage.  Of course,
+the translation toolchain, once written, can also be reused to implement
+other languages, and possibly tailored on a case-by-case basis to fit
+each implementer's need.  The process is incremental: we can add more
+features as needed instead of starting from a maximal up-front design,
+and gradually improve the quality of the tools, the garbage collectors,
+the various optimizations, etc.
+
+Let us expand on the topic of the garbage collector, which for C-like
+envrionments is inserted into the generated VM by a transformation step.
+We started by ignoring the issue and just using the conservative Boehm
+\cite{Boehm} collector for C.  Later, we experimented with a range of
+simple custom collectors - reference counting, mark-and-sweep, etc.
+Ultimately, though, more advanced GCs will be needed to get the best
+performance.  It seems that RPython, enhanced with support for direct
+address manipulations, is a good language for writing GCs, so it would
+be possible for a GC expert to write one for our translation framework.
+However, this is not the only way to obtain good GCs: we will soon
+investigate a more practical course of action, which is to reuse
+existing GCs.  A good candidate is the GCs written in the Jikes RVM
+\cite{JikesGC}.  As they are in Java, it should be relatively
+straightforward to add a translation step that turns one of them into
+RPython (or directly our RPython-level intermediate representation) and
+integrate it with the rest of the program being translated.
+
+In summary, developing a meta-programming translation toolchain requires
+some work, but it can be done incrementally, it can reuse existing code,
+and it gives a toolchain that is itself highly reusable and flexible in
+nature.
 
 
-\subsection{Getting good GCs and tools is possible}
-XXX 
+
 
 \section{Related Work}
 XXX 
