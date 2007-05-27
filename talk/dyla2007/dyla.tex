@@ -34,6 +34,8 @@ overall level at which they are are implemented. We believe this to be
 ultimately a better investment of efforts than the development of more advanced
 general-purpose object oriented VMs.
 
+\smallskip
+
 Dynamic languages are traditionally implemented by writing a virtual machine for
 them, centered around an interpreter and/or a built-in compiler and providing
 the object model and memory management. When a language becomes more successful,
@@ -79,7 +81,7 @@ the implementation effort small.
 
 For these reasons writing a virtual machine in C is problematic because it
 forces the language implementer to deal with many low-level details (like
-garbage collection and threading-issues). Limitations
+garbage collection and threading issues). Limitations
 of the C implementation lead to alternative implementations which draw
 work-power from the reference implementation. An alternative to writing
 implementations in C is to build them on top of one of the newer object oriented
