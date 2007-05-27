@@ -189,6 +189,8 @@ virtual machine, for example the JVM or the CLR. The central theme of the
 benefits  of OO VMs is the ability to implement certain hard things only once
 and share the benefits between all language implementations on top of the OO VM.
 
+\begin{itemize}
+\item
 \emph{Better interoperability than the C level:} Since the VM offers a standard
 object model and all the languages implemented on top of it are using it, it is
 easier to integrate the languages that are running on top of the VM. This
@@ -196,41 +198,50 @@ allows reuse of libraries between all the implemented languages. This is
 typically the most important reason for wanting an implementation on the VM in
 the first place.
 
+\item
 \emph{Cross-platform portability:} Only the underlying VM has to be ported to
 various hardware architectures and operating systems. The languages implemented
 on top can then be run without change in various environments.
 
+\item
 \emph{Better tools:} Better IDEs, debuggers and profilers.
 
+\item
 \emph{Better implementation of low-level issues like garbage collection,
 threading:} Since an OO VM is expected to be widely used and usually backed by
 a company, it becomes worthwhile and possible to spend a lot of effort tuning
 its garbage collector, threading model, exception support and other low-level
 implementation details.
 
+\item
 \emph{Better performance:} Similarly, object-oriented VMs usually come with a
 highly tuned just-in-time compiler to make them perform well without requiring
 ahead-of-time compilation to machine language. This in addition with the
 previous point leads to much better performance of the languages running on top
 of the VM.
 
+\item
 \emph{Ease of implementation:} The implementation of a language on top of an OO
 VM is easier because it starts at a higher level than C. Usually a
 high-level language like Java or C\# is used for the language implementation,
 which both offer the language implementer a much higher level of abstraction
 than when implementing in C. 
 
+\item
 \emph{A single unified implementation base:} The higher level of abstraction
 mentioned in the last point also helps to reduce the number of implementations
 of the language. Since the implementation on top of an OO VM is more abstract
 it is also easier to modify and to extend. XXX somewhat vague point
+\end{itemize}
 
 
-At a closer look, some of these advantages are only partially true in practice. 
+At a closer look, some of these advantages are only partially true in practice:
 
+\begin{itemize}
+\item
 \emph{Better performance:} So far it seems that performance of highly dynamic
-languages is not actually significantly improved on OO VMs. Jython
-\footnote{Python on the Java VM} is around 5
+languages is not actually significantly improved on OO VMs. 
+Jython\footnote{Python on the Java VM} is around 5
 times slower than CPython, for IronPython\footnote{Python on .NET, which
 gives up on some features to improve performance}
 the figures vary but it is mostly
@@ -240,17 +251,20 @@ that are common in the main language of the OO VM. To get good speeds the
 language implementers would have to carefully produce code that matches these
 usage patterns, which is not a simple task.
 
+\item
 \emph{Better GCs:} While this is obvious in theory, OO VMs tend to have a much
 higher memory overhead to start with (XXX ref)
 
+\item
 \emph{Cross-platform portability:} While this is true to some extend, the
 situation with regard to portability is not significantly improved compared to
 e.g.  C/Posix, which is relatively portable too. Also portability sometimes
 comes at the price of performance, because even if the OO VM is running on a
 particular hardware architecture it is not clear that the JIT is tuned for this
 architecture too or working at all, which leads to significantly less
-performance.
+speed.
 
+\item
 \emph{Ease of implementation:} This point is disputable. On the one hand, OO
 VMs typically allow the language implementor to start at a higher level. On the
 other hand they also enforce a specific object and execution model. This means
@@ -259,17 +273,19 @@ execution model of the underlying VM, which may be easy or not, depending very
 much on the language in question. XXX give example where it works well.
 
 An example where this mapping does not work too well is Prolog. While there
-exist several implementations of Prolog on top of the JVM and also one on .NET,
+exist several implementations of Prolog on top of the JVM \cite{prologcafe}
+\cite{DBLP:conf/jelia/Calejo04} and also one on .NET \cite{psharp},
 they are not particular efficient, especially when compared to good Prolog VMs
 in written in C. This is mostly because the Prolog execution model, which
 involves backtracking and deep recursion does not fit the JVM and .NET very
 well. Therefore the Prolog implementations on top of OO VMs resort to models
 that is quite unnatural both for the OO VM and for Prolog.
-
+\end{itemize}
 
 On the other hand some of the benefits are real and very useful, the most
 prominent being the easy interaction with the rest of the VM. Furthermore there
-is better tool support and better GCs. XXX expand
+is better tool support and better GCs. Also for languages where the execution
+model fits the OO VM well, many of the disadvantages disappear.
 
 
 \subsection{The Cost of Implementation-Proliferation}
@@ -316,10 +332,10 @@ environments, from C/Posix to the JVM to .NET.
 
 \subsection{PyPy architecture}
 
-We implemented this idea in the PyPy project.  The dynamic language for
-which we wrote an interpreter is Python.  It is a language which,
+We implemented this idea in the PyPy project \cite{pypy}.  The dynamic language
+for which we wrote an interpreter is Python.  It is a language which,
 because of its size and rather intricate semantics, is a good target for
-our approach, in the following sense: its previous reimplementation
+our approach, in the following sense: its previous reimplementations
 (Jython for the JVM and IronPython for .NET) have each proved to be very
 time-consuming to maintain.  Our implementation is by construction
 easier to maintain, and extremely portable (including to C/Posix, to the
@@ -361,7 +377,8 @@ translated together with the interpreter to form the final custom VM.
 A detailed description of this translation process is beyond the scope of the
 present paper; it can be found in \cite{pypyvmconstruction}.  The actual Python
 interpreter of PyPy and the results we achieved by translating it to C, LLVM
-\cite{LLVM} and .NET are described in [XXX].  These results show that the
+\cite{LLVM} and .NET are described in \cite{architecture} \cite{translationdoc}
+These results show that the
 approach is practical and gives results whose performance is within the same
 order of magnitude (within a factor of 2 and improving) of the hand-written,
 well-tuned CPython, the C reference implementation.  These figures do not
