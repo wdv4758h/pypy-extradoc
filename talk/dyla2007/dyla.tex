@@ -41,7 +41,7 @@ VMs.  We propose a different complementary alternative: flexibly generating
 virtual machines instead
 of writing them by hand.  This approach has been validated by the PyPy
 project, with which we can automatically insert many features into the
-generated virtual machines – including good just-in-time compilers tuned
+generated virtual machines -- including good just-in-time compilers tuned
 to the dynamic language at hand.
 \footnote{This research is partially supported by the EU funded %research
  project:
@@ -73,7 +73,7 @@ problem because it divides available resources. All these points also apply to
 the implementation of domain-specific-languages where it is important to keep
 implementation effort small.
 
-For these reasons writing a virtual machine in C has many problems because it
+For these reasons writing a virtual machine in C is problematic because it
 forces the language implementer to deal with many low-level details. Limitations
 of the C implementation lead to alternative implementations which draw
 work-power from the reference implementation. An alternative to writing
@@ -84,7 +84,7 @@ these platforms. However, if a C implementation existed before the
 implementation of such a VM is started, this enters in conflict with the goal of
 having to maintain essentially a single, simple enough implementation for a
 given programming language: as the language becomes popular, there will be a
-demand for having it run on various platforms – high-level VMs as well as
+demand for having it run on various platforms -- high-level VMs as well as
 C-level environments.
 
 The argument we will make in the present paper is that it is possible to
@@ -94,7 +94,7 @@ to write an interpreter for that language in another sufficiently
 high-level but less dynamic language.  This interpreter plays the role
 of a specification for the dynamic language.  With a good enough
 translation toolchain we can then generate whole virtual machines from
-this specification – either full custom VMs for C-level operating
+this specification -- either full custom VMs for C-level operating
 systems, or layers on top of various OO VMs.  In other words,
 meta-programming techniques can be used to successfully replace a
 foreseeable one-VM-fits-all standardization attempt.
