@@ -28,11 +28,11 @@ Institut f\"{u}r Informatik, Universit\"at D\"usseldorf, Germany\\
 
 \begin{abstract}
 
-We argue in this paper that one should not write interpreters manually but
-rather use meta-programming techniques and raise the overall level at which
-dynamic languages are implemented. We believe this to be ultimately a better
-investment of efforts than the development of more advanced general-purpose OO
-VMs.
+We argue in this paper that one should not write interpreters for dynamic
+languages manually but rather use meta-programming techniques and raise the
+overall level at which they are are implemented. We believe this to be
+ultimately a better investment of efforts than the development of more advanced
+general-purpose object oriented VMs.
 
 Dynamic languages are traditionally implemented by writing a virtual machine for
 them, centered around an interpreter and/or a built-in compiler and providing
@@ -78,7 +78,8 @@ the implementation of domain-specific languages where it is important to keep
 the implementation effort small.
 
 For these reasons writing a virtual machine in C is problematic because it
-forces the language implementer to deal with many low-level details. Limitations
+forces the language implementer to deal with many low-level details (like
+garbage collection and threading-issues). Limitations
 of the C implementation lead to alternative implementations which draw
 work-power from the reference implementation. An alternative to writing
 implementations in C is to build them on top of one of the newer object oriented
