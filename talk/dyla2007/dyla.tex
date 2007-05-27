@@ -518,9 +518,10 @@ good language-specific JIT compiler and insert it into a VM, alongside
 with the necessary support code and the rest of the regular interpreter.
 
 This result was one of the major goals and motivations for the whole
-approach.  By construction, any code written in the dynamic language
-runs correctly under the JIT.  Some very simple Python examples run more
-than 100 times faster.  At the time of this writing this is still rather
+approach.  By construction, the JIT does not get out of sync when the
+language evolves, and any code written in the dynamic language runs
+correctly under the JIT.  Some very simple Python examples run more than
+100 times faster.  At the time of this writing this is still rather
 experimental, and the techniques involved are well beyond the scope of
 the present paper.  The reader is referred to \cite{D08.2} for more
 information.
