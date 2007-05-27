@@ -136,7 +136,7 @@ implementation too complex. Another implementation of the Python
 language is \implname{Psyco} \cite{psyco-software}, which adds a
 JIT-compiler to CPython.  Finally, \implname{Jython} is a
 re-implementation for the Java VM and \implname{IronPython} for
-the CLR.  All of these need to be kept in sync with the relatively fast
+the CLR.  All of these need to be kept synchronized with the relatively fast
 evolution of the language.
 
 With the emergence of the CLR and the JVM as interesting language
@@ -295,7 +295,7 @@ an implementer when he decides to target an existing object-oriented
 virtual machine.  It also gives other benefits that we will describe --
 mostly in term of flexibility.  Most importantly, it lets a
 community write a single source implementation of the language, avoiding
-the time-consuming task of keeping several of them in sync.  The single
+the time-consuming task of keeping several of them synchronized.  The single
 source can be used to generate either custom VMs for C-like
 environments or interpreters running on top of OO VMs.  This makes it
 practical to experiment with large changes to the language and with
@@ -497,8 +497,9 @@ good language-specific JIT compiler and insert it into a VM, alongside
 with the necessary support code and the rest of the regular interpreter.
 
 This result was one of the major goals and motivations for the whole
-approach.  By construction, the JIT does not get out of sync when the
-language evolves, and any code written in the dynamic language runs
+approach.  By construction, the JIT stays synchronized with its VM
+and with the language when it evolves,
+and any code written in the dynamic language runs
 correctly under the JIT.  Some very simple Python examples run more than
 100 times faster.  At the time of this writing this is still rather
 experimental, and the techniques involved are well beyond the scope of
@@ -515,8 +516,8 @@ paper:
 \begin{itemize}
 \item \emph{Do not write dynamic language implementations ``by hand''.}
 Writing them more abstractly, at a higher level, has primarily only
-advantages, among them the avoidance of a proliferation of implementations
-growing out of sync.  Writing interpreters both flexibly and efficiently
+advantages, among them the avoidance of a proliferation of diverging
+implementations.  Writing interpreters both flexibly and efficiently
 is difficult and meta-programming is a good way to achieve it.
 Moreover, this is not incompatible with targeting and benefiting from
 existing high-quality object-oriented virtual machines like those of the Java and .NET.
