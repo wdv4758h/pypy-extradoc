@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\title{Generating Just-In-Time Specializing Compilers}
+\title{Get Your Own Just-In-Time Specializing Compiler For Free}
 
 \numberofauthors{2}
 \author{
@@ -40,6 +40,8 @@ our approach, a novel powerful primitive called "promotion" that "promotes"
 run-time values to compile-time is used to that effect.  In this report,
 we describe it along with other novel techniques that allow the approach
 to scale to something as large as PyPy's Python interpreter.
+\footnote{This research was partially supported by the EU funded
+ project: IST 004779 PyPy (PyPy: Implementing Python in Python).}
 \end{abstract}
 
 \section{Introduction}
@@ -929,17 +931,6 @@ within the duration of the EU project.  We should also mention that on
 an Intel-based Mac OS/X machine we have measured this ratio to be as low
 as 1.15x.
 
-.. comment
-
-    python 2.4:                     0.82
-    pypy-c-42412-allworking-tproxy: 1.90392203331
-    pypy-c-41802-faassen:           1.60267777443
-    pypy-c-41992-jit, turned off:   1.76742062569
-    pypy-c-41992-jit:               0.00912307977676   <===
-    psyco 1.5.2:                    0.00621596813202
-    gcc -O0:                        0.0061992
-    gcc -O2:                        0.0021689
-
 
 \section{Conclusion}
 
@@ -1011,5 +1002,10 @@ main goals of the research program within the PyPy project.
 %           Samuele Pedroni, in OOPSLA '06: Companion to the 21st ACM SIGPLAN
 %           conference on Object-oriented programming languages, systems, and
 %           applications, pp. 944-953, ACM Press, 2006
+
+\bigskip
+
+\bibliographystyle{abbrv}
+\bibliography{paper}
 
 \end{document}
