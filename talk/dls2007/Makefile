@@ -1,7 +1,7 @@
 
-paper.pdf: paper.tex #paper.bib image/*.pdf
-	#pdflatex paper
-	#bibtex paper
+paper.pdf: paper.tex paper.bib
+	pdflatex paper
+	bibtex paper
 	pdflatex paper
 	pdflatex paper
 
