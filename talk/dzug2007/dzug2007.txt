@@ -1,7 +1,7 @@
 .. include:: <s5defs.txt>
 
 ===========================================
-How PyPy can be useful for Zope 
+How PyPy could be useful for Zope 
 ===========================================
 
 :Authors: Holger Krekel (merlinux GmbH) et al. 
@@ -16,6 +16,8 @@ What is PyPy?
 * An open source project (MIT License)
 
 * A (former) EU research project 
+
+* -> PyPy-1.0 is a research result  
 
 Paradigm
 -------------
@@ -41,10 +43,12 @@ PyPy Overview
 Backends / Runtime integration 
 -----------------------------------
 
-- Main target: C/Posix 
-- Main new target: .NET/CLI/CLR
-- Work in progress: JVM
-- Special target: Javascript for Web applications
+- single source program translates to: 
+
+  - Main target: C/Posix 
+  - Main new target: .NET/CLI/CLR
+  - Work in progress: JVM
+  - Special target: Javascript for Web applications
 
 
 CLR/CLI Backend
@@ -90,7 +94,7 @@ Taint Space
 
 - control of information data flow:
    
-  * label sensitive data
+  * label sensitive data 
   * avoid sensitive information leaks
   * explicit primitive to declassify
 
@@ -198,7 +202,7 @@ Special RPython programs
 
 - webservers, web applications, algorithms 
 
-- can be translated to various targets 
+- can be translated to many targets 
 
 - can run up to 100 times faster compared 
   to being interpreted through CPython 
@@ -259,6 +263,7 @@ Possible Zope applications
   - AJAX/Javascript web applications? 
   - speedy extension modules? 
 - use for web hosting (fast startup times)? 
+- synchronous instead of callback/event programming? 
 
 Future 
 ---------------
