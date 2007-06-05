@@ -188,7 +188,7 @@ Python Interpreter Status (1.0)
 
 - compliant, 340 KLOC / 85 test KLOC
 - single source for all platforms
-- flexibel, fast, well-tested (11975 tests)
+- flexibel, fast, well-tested (11805 tests)
 - new middleware features 
 - need more extension modules! 
 - better GCs and more JITting will even improve speed!
