@@ -25,7 +25,7 @@ we list some possible task areas:
   on those, for example:
 
     - rctypes and the extension compiler need some rethinking
-    - support for LLVM 2.0 for th llvm backend
+    - support for LLVM 2.0 for the llvm backend
     - ...
 
 * some JIT improvement work
