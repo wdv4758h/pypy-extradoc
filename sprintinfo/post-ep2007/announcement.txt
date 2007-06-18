@@ -1,0 +1,66 @@
+Vilnius/Post EuroPython PyPy Sprint 12-14th of July
+========================================================
+
+The PyPy team is sprinting at EuroPython again and we invite
+you to participate in our 3 day long sprint at the conference hotel
+- Reval Hotel Lietuva.
+
+If you plan to attend the sprint we recommend you to listen to the PyPy
+technical talks (`ep schedule`_) during the
+conference since it will give you a good overview of the status of development.
+
+.. _`ep schedule`: http://indico.cern.ch/conferenceTimeTable.py?confId=13919&showDate=all&showSession=all&detailLevel=contribution&viewMode=room
+
+On the morning if the first sprint day (12th) we will also have a
+tutorial session for those new to PyPy development.
+
+There are many possible and interesting sprint topics to work on - here
+we list some possible task areas:
+
+* completing the missing python 2.5 features and support
+* identify slow areas of PyPy through benchmarking and work on improvements,
+  possibly moving  app-level parts of the Python interpreter to interp-level
+  if useful.
+* there are some parts of PyPy in need of refactoring, we may spend some time
+  on those, for example:
+
+    - rctypes and the extension compiler need some rethinking
+    - support for LLVM 2.0 for th llvm backend
+    - ...
+
+* some JIT improvement work
+* port the stackless transform to ootypesystem
+* other interesting stuff that you would like to work on ...;-)
+
+Registration
+----------------------
+
+If you´d like to come, please subscribe to the `pypy-sprint mailing list`_
+and drop a note about your interests and post any questions.  More
+organisational information will be sent to that list.  We´ll keep
+a list of `people`_ which we´ll update (which you can do so yourself
+if you have codespeak commit rights, let us now if you need it).
+
+Preparation (if you feel it is needed):
+---------------------------------------
+
+* read the `getting-started`_ pages on http://codespeak.net/pypy
+
+* for inspiration, overview and technical status you are welcome to
+  read `the technical reports available and other relevant documentation`_
+
+* please direct any technical and/or development oriented questions to
+  pypy-dev at codespeak.net and any sprint organizing/logistical
+  questions to pypy-sprint at codespeak.net
+
+* if you need information about the conference, potential hotels,
+  directions etc we recommend to look at www.europython.org.
+
+We'll meet at the Vilnius Post EuroPython PyPy sprint!
+
+The PyPy team 
+
+.. _getting-started: http://codespeak.net/pypy/dist/pypy/doc/getting-started.html
+.. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
+.. _`people`: people.html 
+.. _`the technical reports available and other relevant documentation`: http://codespeak.net/pypy/dist/pypy/doc/index.html
