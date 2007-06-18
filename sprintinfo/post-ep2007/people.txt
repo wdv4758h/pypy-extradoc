@@ -1,0 +1,43 @@
+
+People coming to the Post EuroPython Sprint (Vilnius) 2007
+=============================================================
+
+People who have a ``?`` in their arrive/depart or accomodation
+column are known to be coming but there are no details 
+available yet from them.
+
+==================== ============== =====================
+    Name              Arrive/Depart     Accomodation 
+==================== ============== =====================
+
+==================== ============== =====================
+
+People on the following list were present at previous sprints: 
+
+==================== ============== =====================
+       Name          Arrive/Depart  Accomodation 
+==================== ============== =====================
+Beatrice Duering     ?              ?
+Samuele Pedroni      ?              ?
+Anders Chrigström    ?              ?
+Christian Tismer     ?              ?
+Michael Hudson       ?              ?
+Antonio Cuni         ?              ?
+Richard Emslie       ?              ?
+Alexander Schremmer  ?              ?
+Georg Brandl         ?              ?
+Maciej Fijalkowski   ?              ?
+Guido Wesdorp        ?              ?
+Carl Friedrich Bolz  ?              ?
+Armin Rigo           ?              ?
+Holger Krekel        ?              ?
+Anders Lehmann       ?              ?
+Niklaus Haldimann    ?              ?
+Amaury Forgeot d'Arc ?              ?
+Valentino Volonghi   ?              ?
+Boris Feigin	     ?              ?
+Andrew Thompson      ?              ?
+Bert Freudenberg     ?              ?
+Johan Hahn           ?              ?
+Niko Matsakis        ?              ?
+==================== ============== =====================
