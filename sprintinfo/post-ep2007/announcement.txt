@@ -38,9 +38,9 @@ Registration
 
 If you´d like to come, please subscribe to the `pypy-sprint mailing list`_
 and drop a note about your interests and post any questions.  More
-organisational information will be sent to that list.  We´ll keep
-a list of `people`_ which we´ll update (which you can do so yourself
-if you have codespeak commit rights; let us now if you need it).
+organisational information will be sent to that list.  We'll keep
+a list of `people`_ which we'll update (which you can do so yourself
+if you have codespeak commit rights; let us know if you need it).
 
 Preparation (if you feel it is needed):
 ---------------------------------------
