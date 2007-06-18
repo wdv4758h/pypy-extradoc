@@ -1,3 +1,4 @@
+========================================================
 Vilnius/Post EuroPython PyPy Sprint 12-14th of July
 ========================================================
 
@@ -13,6 +14,10 @@ conference since it will give you a good overview of the status of development.
 
 On the morning of the first sprint day (12th) we will also have a
 tutorial session for those new to PyPy development.
+
+------------------------------
+Goals and topics of the sprint
+------------------------------
 
 There are many possible and interesting sprint topics to work on - here
 we list some possible task areas:
@@ -33,8 +38,9 @@ we list some possible task areas:
 * port the stackless transform to ootypesystem
 * other interesting stuff that you would like to work on ...;-)
 
+------------
 Registration
-----------------------
+------------
 
 If you´d like to come, please subscribe to the `pypy-sprint mailing list`_
 and drop a note about your interests and post any questions.  More
@@ -42,6 +48,7 @@ organisational information will be sent to that list.  We'll keep
 a list of `people`_ which we'll update (which you can do so yourself
 if you have codespeak commit rights; let us know if you need it).
 
+---------------------------------------
 Preparation (if you feel it is needed):
 ---------------------------------------
 
@@ -57,9 +64,12 @@ Preparation (if you feel it is needed):
 * if you need information about the conference, potential hotels,
   directions etc we recommend to look at www.europython.org.
 
-We'll meet at the Vilnius Post EuroPython PyPy sprint!
+
+We are looking forward to meet you at the Vilnius Post EuroPython
+PyPy sprint!
 
 The PyPy team 
+
 
 .. _getting-started: http://codespeak.net/pypy/dist/pypy/doc/getting-started.html
 .. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
