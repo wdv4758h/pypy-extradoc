@@ -1,19 +1,68 @@
-* disclaimer (not ready for production use, etc)
+=================================
+PyPy's interpreter features
+=================================
 
-* those features doesn't change syntax nor semantics of a language
+:Authors: Maciej Fijalkowski & Holger Krekel (merlinux GmbH)
+:Place: Europython 2007
+:Date: XXX
 
-* multiple object implementations (ropes, xxx)
+What features?
+--------------
 
-* tproxy
+* We don't change python syntax nor semantics
+
+* avoiding religious war...
+
+* they give new dimensions to how you can use pypy
+
+* peak the feature set of your choice...
+
+XXX crap
+
+Multiple object implementations
+-------------------------------
+
+XXX rant about python exposing impl details to use? (sets vs dicts)
+
+* same types - different implementations
+
+* example - ropes
+
+* example - multidicts
+
+Transparent proxy
+-----------------
+
+* proxy: intercept any operation on an builtin object
+
+* transparent: don't change object interface 
+
+* useful for implementing application level functionality 
+  orthogonally to usage of objects 
+
+* is the mechanism for distribution and persistence prototypes
+
+* see also .NET TransparentProxy
+
+
+
+
+
+
+
 
 * distribution
 
 * stackless
 
-* security
+* security (taint space)
 
-* taint space
+* thunk space
 
-* JIT (unsure, will be on a previous talk)
+* persistance
+
+* JIT (unsure, will be on the previous talk)
 
 * pickling computations?
+
+* disclaimer (not ready for production use, etc)
