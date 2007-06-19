@@ -12,11 +12,11 @@ Why invent new language?
 
 * Grown as side effect of the pypy project
 
-* Python is too slow
+* Python is too slow for some purposes
 
 * Pyrex/C are ugly
 
-* We want to play with Python as much as possible
+* We want to play as it were Python as much as possible
 
 What is RPython?
 ----------------
@@ -26,7 +26,7 @@ What is RPython?
 
 * Restricted subset
 
-* Constructed from living objects - initialization
+* Constructed from live objects - initialization
   is fully done in Python
 
 * XXX more?
@@ -34,12 +34,15 @@ What is RPython?
 Restricted, what do you mean?
 -----------------------------
 
-* No dynamic stuff (from __ methods only
-  __init__ and __del__ works)
+* Full type inference - you cannot mix incompatible types
+
+* No dynamic stuff: switch class, add/remove methods, etc.
+
+* Java-like object model
+
+* No support for special methods (only __init__ and __del__ works)
 
 * No frames and such stuff
-
-* Full type inference - you cannot mix types
 
 XXX crappy examples expand or delete (probably would be
 XXX better to just say few words
@@ -55,9 +58,9 @@ XXX write down some simple example for that one
 
 * Write code
 
-* test it
+* test/debug on top of CPython
 
-* compile it
+* compile
 
 * graph viewer
 
