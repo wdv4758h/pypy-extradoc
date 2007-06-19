@@ -1,0 +1,19 @@
+* disclaimer (not ready for production use, etc)
+
+* those features doesn't change syntax nor semantics of a language
+
+* multiple object implementations (ropes, xxx)
+
+* tproxy
+
+* distribution
+
+* stackless
+
+* security
+
+* taint space
+
+* JIT (unsure, will be on a previous talk)
+
+* pickling computations?
