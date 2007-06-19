@@ -64,18 +64,54 @@ XXX write down some simple example for that one
 
 * graph viewer
 
+Type inference
+--------------
 
-....
+XXXX should we really mention that?
 
-* Few words about type annotation
+RPython - why you wouldn't like to use it
+-----------------------------------------
 
-* Big disclaimer: use at your own risk
+* RPython is quite new
 
-* C backend - extension modules
+* Wasn't meant to be a general purpose language from scratch
 
-* C backend - standalone programs
+* Type inference usually gives bogus erros
 
-* CLI/JVM backend
+* Compilation errors are far from perfect in general
+
+RPython - on the other hand...
+------------------------------
+
+* it's about 60x faster than CPython
+
+* no more pros...
+
+Writing standalone C programs
+-----------------------------
+
+XXX explain
+
+Writing CPython extensions
+---------------------------
+
+XXX disclaimer
+XXX using extcompiler
+
+The CLI backend
+---------------
+
+XXX anto, feel free to fill
+
+The JVM backend
+---------------
+
+XXX anto, feel free to fill
+
+The JS backend
+--------------
+
+XXX fijal, feel free to fill in
 
 * creating .NET libraries for C#/IronPython (in the future also for Java/Jython)
 
