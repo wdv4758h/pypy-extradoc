@@ -1,13 +1,72 @@
 
-* RPython - why it was created?
+==========================================
+RPython aka C and C# considered harmful
+==========================================
 
-* Big disclaimer: use at your own risk
+:Authors: Antonio Cuni (xxx), Maciej Fijalkowski (merlinux GmbH)
+:Place: Europython 2007
+:Date: XXX
 
-* RPython - translation toolchain architecture overview
+Why invent new language?
+------------------------
 
-* Example of metaprogramming, graph viewer etc.
+* Grown as side effect of the pypy project
+
+* Python is too slow
+
+* Pyrex/C are ugly
+
+* We want to play with Python as much as possible
+
+What is RPython?
+----------------
+
+* Python (every RPython program has the same meaning
+  when run on top of CPython)
+
+* Restricted subset
+
+* Constructed from living objects - initialization
+  is fully done in Python
+
+* XXX more?
+
+Restricted, what do you mean?
+-----------------------------
+
+* No dynamic stuff (from __ methods only
+  __init__ and __del__ works)
+
+* No frames and such stuff
+
+* Full type inference - you cannot mix types
+
+XXX crappy examples expand or delete (probably would be
+XXX better to just say few words
+
+* [1, 2, 3, 4] is ok, ['sss', 2] not
+
+* (1, 'xx') is ok, but cannot be mixed with ('xx', 1)
+
+Example of use case
+-------------------
+
+XXX write down some simple example for that one
+
+* Write code
+
+* test it
+
+* compile it
+
+* graph viewer
+
+
+....
 
 * Few words about type annotation
+
+* Big disclaimer: use at your own risk
 
 * C backend - extension modules
 
@@ -22,3 +81,4 @@
 * (optional) common problems with RPython
 
 * ...
+
