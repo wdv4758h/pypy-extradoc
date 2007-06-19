@@ -1,20 +1,24 @@
 
 * RPython - why it was created?
 
+* Big disclaimer: use at your own risk
+
 * RPython - translation toolchain architecture overview
 
 * Example of metaprogramming, graph viewer etc.
 
 * Few words about type annotation
 
-* CLI/JVM backend
-
-* IronPython/Jython extension modules (silverpython?)
-
-* JS backend - few examples, bnb etc, play1
+* C backend - extension modules
 
 * C backend - standalone programs
 
-* C backend - extension modules
+* CLI/JVM backend
+
+* creating .NET libraries for C#/IronPython (in the future also for Java/Jython)
+
+* JS backend - few examples, bnb etc, play1
+
+* (optional) common problems with RPython
 
 * ...
