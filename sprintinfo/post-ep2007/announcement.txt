@@ -42,7 +42,7 @@ we list some possible task areas:
 Registration
 ------------
 
-If you´d like to come, please subscribe to the `pypy-sprint mailing list`_
+If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
 and drop a note about your interests and post any questions.  More
 organisational information will be sent to that list.
 
