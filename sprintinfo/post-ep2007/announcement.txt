@@ -7,10 +7,10 @@ you to participate in our 3 day long sprint at the conference hotel
 - Reval Hotel Lietuva.
 
 If you plan to attend the sprint we recommend you to listen to the PyPy
-technical talks (`ep schedule`_) during the
+technical talks (`EuroPython schedule`_) during the
 conference since it will give you a good overview of the status of development.
 
-.. _`ep schedule`: http://indico.cern.ch/conferenceTimeTable.py?confId=13919&showDate=all&showSession=all&detailLevel=contribution&viewMode=room
+.. _`EuroPython schedule`: http://indico.cern.ch/conferenceTimeTable.py?confId=13919&showDate=all&showSession=all&detailLevel=contribution&viewMode=room
 
 On the morning of the first sprint day (12th) we will also have a
 tutorial session for those new to PyPy development.
