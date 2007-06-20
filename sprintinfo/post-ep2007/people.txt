@@ -2,6 +2,8 @@
 People coming to the Post EuroPython Sprint (Vilnius) 12-14 July 2007
 ======================================================================
 
+The 14th is also a full sprint day.
+
 People who have a ``?`` in their arrive/depart or accomodation
 column are known to be coming but there are no details 
 available yet from them.
