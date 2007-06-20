@@ -11,7 +11,9 @@ technical talks (`EuroPython schedule`_) during the
 conference since it will give you a good overview of the status of development.
 
 On the morning of the first sprint day (12th) we will also have a
-tutorial session for those new to PyPy development.
+tutorial session for those new to PyPy development.  As 3 days is relatively
+short for a PyPy sprint we suggest to travel back home on the 15th if
+possible (but it is ok to attend less than 3 days too).
 
 ------------------------------
 Goals and topics of the sprint
