@@ -44,9 +44,15 @@ Registration
 
 If you´d like to come, please subscribe to the `pypy-sprint mailing list`_
 and drop a note about your interests and post any questions.  More
-organisational information will be sent to that list.  We'll keep
-a list of `people`_ which we'll update (which you can do so yourself
-if you have codespeak commit rights; let us know if you need it).
+organisational information will be sent to that list.
+
+Please register by adding yourself on the following list (via svn):
+
+  http://codespeak.net/svn/pypy/extradoc/sprintinfo/post-ep2007/people.txt
+
+or on the pypy-sprint mailing list if you do not yet have check-in rights:
+
+  http://codespeak.net/mailman/listinfo/pypy-sprint
 
 ---------------------------------------
 Preparation (if you feel it is needed):
@@ -62,7 +68,7 @@ Preparation (if you feel it is needed):
   questions to pypy-sprint at codespeak.net
 
 * if you need information about the conference, potential hotels,
-  directions etc we recommend to look at www.europython.org.
+  directions etc we recommend to look at http://www.europython.org.
 
 
 We are looking forward to meet you at the Vilnius Post EuroPython
@@ -73,5 +79,4 @@ The PyPy team
 
 .. _getting-started: http://codespeak.net/pypy/dist/pypy/doc/getting-started.html
 .. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
-.. _`people`: people.html 
 .. _`the technical reports available and other relevant documentation`: http://codespeak.net/pypy/dist/pypy/doc/index.html
