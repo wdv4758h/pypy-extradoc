@@ -82,4 +82,4 @@ The PyPy team
 .. _getting-started: http://codespeak.net/pypy/dist/pypy/doc/getting-started.html
 .. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 .. _`the technical reports available and other relevant documentation`: http://codespeak.net/pypy/dist/pypy/doc/index.html
-.. _`EuroPython schedule`: http://indico.cern.ch/conferenceTimeTable.py?confId=13919&showDate=all&showSession=all&detailLevel=contribution&viewMode=room
+.. _`EuroPython schedule`: http://europython.org/timetable
