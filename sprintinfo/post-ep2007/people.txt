@@ -17,6 +17,7 @@ Samuele Pedroni      7/14th         Ratonda Centrum Hotels
 Laura Creighton	     7/14th	    Ratonda Centrum Hotels
 Jacob Hallen	     7/14th	    Ratonda Centrum Hotels
 Jakub Gustak         8/15th         Hospitality Club :)
+Christian Tismer     8/16th         Ratonda Centrum Hotels
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
