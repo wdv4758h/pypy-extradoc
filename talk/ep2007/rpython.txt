@@ -1,7 +1,7 @@
 
-==========================================
-RPython aka C and C# considered harmful
-==========================================
+=======================================================
+RPython: need for speed aka C and C# considered harmful
+=======================================================
 
 :Authors: Antonio Cuni (xxx), Maciej Fijalkowski (merlinux GmbH)
 :Place: Europython 2007
@@ -10,7 +10,7 @@ RPython aka C and C# considered harmful
 Why invent new language?
 ------------------------
 
-* Grown as side effect of the pypy project
+* Grown as a side effect of the pypy project
 
 * Python is too slow for some purposes
 
@@ -27,7 +27,7 @@ What is RPython?
 * Restricted subset
 
 * Constructed from live objects - initialization
-  is fully done in Python
+  is done in Python
 
 * XXX more?
 
@@ -35,6 +35,8 @@ Restricted, what do you mean?
 -----------------------------
 
 * Full type inference - you cannot mix incompatible types
+
+* Polymorphic collections (ie list of ints)
 
 * No dynamic stuff: switch class, add/remove methods, etc.
 
@@ -44,17 +46,8 @@ Restricted, what do you mean?
 
 * No frames and such stuff
 
-XXX crappy examples expand or delete (probably would be
-XXX better to just say few words
-
-* [1, 2, 3, 4] is ok, ['sss', 2] not
-
-* (1, 'xx') is ok, but cannot be mixed with ('xx', 1)
-
 Example of use case
 -------------------
-
-XXX write down some simple example for that one
 
 * Write code
 
@@ -68,6 +61,20 @@ Type inference
 --------------
 
 XXXX should we really mention that?
+
+Modules restrictions
+--------------------
+
+* few modules work
+
+* they have different, more static API (ie open())
+
+* all modules might be used when initializing
+
+Few more words about file API
+-----------------------------
+
+XXX really?
 
 RPython - why you wouldn't like to use it
 -----------------------------------------
@@ -90,7 +97,7 @@ RPython - on the other hand...
 Writing standalone C programs
 -----------------------------
 
-XXX explain
+XXX explain writing targets
 
 Writing CPython extensions
 ---------------------------
@@ -112,12 +119,4 @@ The JS backend
 --------------
 
 XXX fijal, feel free to fill in
-
-* creating .NET libraries for C#/IronPython (in the future also for Java/Jython)
-
-* JS backend - few examples, bnb etc, play1
-
-* (optional) common problems with RPython
-
-* ...
 
