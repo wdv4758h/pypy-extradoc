@@ -20,6 +20,7 @@ Jakub Gustak         8/15th         Hospitality Club :)
 Christian Tismer     8/16th         Ratonda Centrum Hotels
 Simon Burton         8/15th
 Armin Rigo           8/16th         Comfort Vilnius
+Bea Düring           8/13th         Comfort Vilnius
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
