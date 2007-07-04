@@ -3,7 +3,7 @@
 RPython: need for speed aka C and C# considered harmful
 =======================================================
 
-:Authors: Antonio Cuni (xxx), Maciej Fijalkowski (merlinux GmbH)
+:Authors: Antonio Cuni (DISI), Maciej Fijalkowski (merlinux GmbH)
 :Place: Europython 2007
 :Date: XXX
 
@@ -108,12 +108,40 @@ XXX using extcompiler
 The CLI backend
 ---------------
 
-XXX anto, feel free to fill
+* Produces assemblies for .NET (both Mono and CLR)
+
+* (Experimental) access to .NET libraries
+
+* As fast as C#
+
+* From 4 to 100 times faster than IronPython
+
+CarbonPython
+------------
+
+* **Highly** experimental
+
+* RPython --> .NET DLL
+
+* DLLs can be imported by C#, IronPython, ...
+
+* CarbonPython + IronPython = SteelPython :-)
+
+* Explicit definition of multiple entrypoints
+
+* Live demo
+
 
 The JVM backend
 ---------------
 
-XXX anto, feel free to fill
+* Produces classes for the JVM
+
+* Shares a lot of code with the CLI backend
+
+* Not as mature as gencli
+
+
 
 The JS backend
 --------------
