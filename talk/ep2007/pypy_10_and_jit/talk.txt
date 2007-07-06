@@ -67,9 +67,180 @@ Translation framework
 .. image:: arch-framework.png
    :align: center
 
-.. JIT stuff
+Flexibility vs. Performance
+=============================
 
-.. Conclusion???
+* interpreters are easy to write and evolve
+
+* for high performance dynamic compilation is required
+
+Traditional dynamic compilers
+===============================
+
+* huge resource investment
+* the richer the semantics, the harder to write
+* poor encoding of language semantics
+* hard to evolve
+
+Need for novel approaches!
+
+PyPy Approach: Goal
+=============================
+
+.. raw:: html
+
+   <br>
+
+.. image:: overview2.png
+   :scale: 55
+
+
+PyPy Approach (2)
+=======================
+
+* use partial evaluation techniques to generate a dynamic compiler
+  from an interpreter 
+* inspiration: Psyco 
+* our translation tool-chain was designed for trying this
+
+Futamura
+=====================
+
+* *Partial evalution of computation process -
+  an approach to a compiler-compiler*, '71
+
+*  Generating compilers from interpreters,
+   automatic specialization
+
+* Relatively little practical impact so far
+
+Challenges
+======================
+
+* Effective dynamic compilation requires feedback of runtime
+  information into compile-time
+
+* A shortcoming of PE is that in many cases not much can be really
+  assumed constant at compile-time: poor results
+
+* For a dynamic language: types are a primary example
+
+Solution: Promotion
+====================
+
+* enhance PE with the ability
+  to "promote" run-time values
+  to compile-time
+
+* leverage the dynamic setting
+
+
+Overall ingredients
+=====================
+
+The pieces to enable effective dynamic compiler generation
+in PyPy:
+
+- implementer-supplied hint based approach to fixing
+  what should be assumed compile-time constant
+- *promotion*
+- direct support for lazy
+  allocation only on escape
+  ("virtuals")
+- use stack and registers for language-level frame contents
+
+..  ("virtualizables")
+
+Language-agnostic
+====================
+
+* The dynamic generation process and primitives are language-agnostic.
+
+* The language implementations should be able to evolve up to
+  maintaining the hints.
+
+* By construction all interpreter/language features are supported
+
+pypy-c-jit
+======================
+
+PyPy 1.0 contains both the dynamic compiler generator and the start of
+its application to PyPy's Python intepreter.
+
+* included are backends for IA32 and PPC
+* integer aritmethic operations are optimized
+* for things for which hints were provided
+  we are in the speed range of gcc -O0 
+* demo (63x faster than CPython)
+
+.. demo f1
+
+The transformation: Timeshifting
+==================================
+
+The generation process is implemented as a *binding-time ("color")*
+directed transformation of the low-level graphs.
+
+Coloring
+=================
+
+* green: compile-time value
+* red: runtime value
+
+we reuse the type inference
+framework to propagate colors
+respecting the constraints from
+the hints
+
+Timeshifting Basics
+====================
+
+* green operations: unchanged, executed at compile-time
+
+* red operations: converted into corresponding code emitting code
+
+Timeshifting Control Flow
+===========================
+
+- red split points: schedule multiple compilation states 
+- merge points: merge logic to reuse code for equivalent states
+
+Promotion
+=================
+
+Promotion is implemented generating a switch that grows to cover the
+seen runtime values
+
+* First compilation stops at a promotion point and the switch with
+  only a default case is generated.  The default will call back into
+  the compiler with runtime values.
+  
+* On callback the compiler add one more case to the switch and
+  generate more code assuming the received value.
+
+.. need to save state in a compact form: paths
+
+Virtuals + Promotion
+=====================
+
+* example
+
+.. tlc example results
+
+Conclusion
+=============
+
+xxx we need some more general status/conclusion slides
+
+Effective dynamic compiler generation make flexibility and ease of
+evolution mostly **orthogonal to the performance question**.
+
+Implementers are free to implement languages as **understandable interpreters**.
+
+PyPy proves this a viable approach worth of further exploration.
+
+
+
 
 Compatibility Matrix 
 =========================
