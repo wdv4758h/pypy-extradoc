@@ -86,28 +86,33 @@ Status
 Performance
 =============
 
-Current interpreter performance is not bad, but lower than CPython:
+Current interpreter performance (2007-06-14) is not bad, but lower than
+CPython:
 
 +----------+-------------------+---------------+
 |          |   CPython 2.4.4   |   pypy-llvm   |
 +==========+===================+===============+
-| richards |      1.00         |     1.17      |
+| richards |      1.00         |     1.44      |
 +----------+-------------------+---------------+
-| pystone  |      1.00         |     1.55      |
+| pystone  |      1.00         |     1.28      |
 +----------+-------------------+---------------+
-| templess |      1.00         |     5.41      |
+| templess |      1.00         |     3.81      |
 +----------+-------------------+---------------+
-| gadfly2  |      1.00         |     6.38      |
+| gadfly2  |      1.00         |     6.22      |
 +----------+-------------------+---------------+
-| mako     |      1.00         |     4.46      |
+| mako     |      1.00         |     3.11      |
 +----------+-------------------+---------------+
 
 JIT compiler generator
 ======================
 
-* our trump card to run plain Python programs fast
+* a lot of time is spent in the Garbage Collector,
+  so we have room for improvement there
 
-* still work in progress!
+* but our real trump card to run plain Python programs fast
+  is the JIT compiler generator
+
+* works - but still work in progress before it's really useful!
 
 Flexibility vs. Performance
 =============================
