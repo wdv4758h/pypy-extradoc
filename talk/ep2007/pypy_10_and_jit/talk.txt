@@ -79,13 +79,35 @@ Compatibility Matrix
 Status
 =========
 
-xxx a status slide could fit here
+* still rough edges that need polishing
+* still missing a few important extension modules
+* right now, useful parts: special languag features; RPython for high-perf
 
+Performance
+=============
+
+Current interpreter performance is not bad, but lower than CPython:
+
++----------+-------------------+---------------+
+|          |   CPython 2.4.4   |   pypy-llvm   |
++==========+===================+===============+
+| richards |      1.00         |     1.17      |
++----------+-------------------+---------------+
+| pystone  |      1.00         |     1.55      |
++----------+-------------------+---------------+
+| templess |      1.00         |     5.41      |
++----------+-------------------+---------------+
+| gadfly2  |      1.00         |     6.38      |
++----------+-------------------+---------------+
+| mako     |      1.00         |     4.46      |
++----------+-------------------+---------------+
 
 JIT compiler generator
 ======================
 
-.. (empty transition slide to say "in this talk we're mainly focusing on...")
+* our trump card to run plain Python programs fast
+
+* still work in progress!
 
 Flexibility vs. Performance
 =============================
