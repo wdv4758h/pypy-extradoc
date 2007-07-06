@@ -1,0 +1,53 @@
+.. include:: <s5defs.txt>
+
+==========================================================
+PyPy 1.0 xxxx
+==========================================================
+
+:Authors: Armin Rigo,Samuele Pedroni
+
+What is PyPy?
+==============
+
+PyPy 1.0
+================
+
+
+Paradigm
+====================
+
+.. raw:: html
+
+    <br>
+
+.. image:: arch-overview.png
+   :align: center
+
+
+Translation framework
+================================
+
+.. raw:: html
+
+    <br><br>
+
+.. image:: arch-framework.png
+   :align: center
+
+
+Compatibility Matrix 
+=========================
+
+...
+
+... starts of JIT stuff
+
+
+.. xxx extra slide arch-translation diagram
+
+
+.. |bullet| unicode:: U+02022
+.. footer:: Samuele Pedroni, Armin Rigo
+
+
+
