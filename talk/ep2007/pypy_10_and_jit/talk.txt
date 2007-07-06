@@ -81,7 +81,7 @@ Status
 
 * still rough edges that need polishing
 * still missing a few important extension modules
-* right now, useful parts: special languag features; RPython for high-perf
+* right now, useful parts: special language features; RPython for high-perf
 
 Performance
 =============
