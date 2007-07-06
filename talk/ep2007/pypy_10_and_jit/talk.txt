@@ -9,9 +9,16 @@ PyPy 1.0 xxxx
 What is PyPy?
 ==============
 
-PyPy 1.0
-================
+PyPy is:
 
+* A fun and challenging  open source project with many contributions
+
+* An open source implementation of Python  (written in Python)
+
+* A tool-chain with a *new paradigm* for building interpreters
+
+From Dec 2004 to March 2006 PyPy was a research project,
+funded by the EU and a consortium of companies.
 
 Paradigm
 ====================
@@ -23,6 +30,32 @@ Paradigm
 .. image:: arch-overview.png
    :align: center
 
+Motivation
+=============
+
+Conventional approaches to interpreters face hard trade-offs:
+speed, maintainability, flexibility.
+
+A lot of decisions are hard-coded pervasively, improvements
+and evolution are hampered (e.g. psyco, stackless require quite some efforts
+and cannot bring their full potential).
+
+Lots of duplication of effort to cover many platforms.
+
+*It should be possible to do better.*
+
+PyPy 1.0
+================
+
+released: 27th March 2007
+
+- *JIT compiler generator working on the Python interpreter*
+- more optimizations
+- CLI backend produces a PyPy.NET which can interact with CLR libraries
+- taint object space and transparent proxies
+
+*Not completely mature yet but our original vision is fully
+materialized*
 
 Translation framework
 ================================
@@ -34,17 +67,20 @@ Translation framework
 .. image:: arch-framework.png
    :align: center
 
+.. JIT stuff
 
 Compatibility Matrix 
 =========================
 
-...
+.. image:: compat-matrix.png
+   :align: center
 
-... starts of JIT stuff
+Translation Diagram
+=====================
 
-
-.. xxx extra slide arch-translation diagram
-
+.. image:: arch-translation.png
+   :align: center
+   :scale: 90
 
 .. |bullet| unicode:: U+02022
 .. footer:: Samuele Pedroni, Armin Rigo
