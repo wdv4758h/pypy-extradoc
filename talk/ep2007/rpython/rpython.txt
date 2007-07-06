@@ -5,7 +5,7 @@ RPython: need for speed aka C and C# considered harmful
 
 :Authors: Antonio Cuni (DISI), Maciej Fijalkowski (merlinux GmbH)
 :Place: Europython 2007
-:Date: XXX
+:Date: 10 July 2007
 
 Why invent new language?
 ------------------------
