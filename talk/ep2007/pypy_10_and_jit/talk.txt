@@ -293,8 +293,17 @@ PyPy proves this a viable approach worth of further exploration.
 Conclusion
 ==========
 
-xxx we need some more general status/conclusion slides
+We have achieved a malleable interpreter and interpreter-making
+process which can only further improve over time, proving our vision
+sound.
 
+This is a solid base looking forward:
+
+- the rough edges are what we need to tackle next
+
+- development is going to continue in open source fashion
+
+- there will be further sprints: one is organized after the conference!
 
 
 .. the end
