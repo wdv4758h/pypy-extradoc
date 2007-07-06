@@ -20,16 +20,6 @@ PyPy is:
 From Dec 2004 to March 2006 PyPy was a research project,
 funded by the EU and a consortium of companies.
 
-Paradigm
-====================
-
-.. raw:: html
-
-    <br>
-
-.. image:: arch-overview.png
-   :align: center
-
 Motivation
 =============
 
@@ -40,14 +30,37 @@ A lot of decisions are hard-coded pervasively, improvements
 and evolution are hampered (e.g. psyco, stackless require quite some efforts
 and cannot bring their full potential).
 
-Lots of duplication of effort to cover many platforms.
+Lots of duplication of effort to cover many platforms (C, Java, .NET).
 
 *It should be possible to do better.*
+
+Paradigm
+====================
+
+.. raw:: html
+
+    <br>
+
+.. image:: arch-overview.png
+   :align: center
 
 PyPy 1.0
 ================
 
-released: 27th March 2007
+Released: 27th March 2007
+
+Contains, as before:
+
+- a full compliant Python interpreter
+- a translation tool-chain that produces reasonably efficient interpreters:
+  PyPy-C, PyPy-LLVM, PyPy.NET
+
+PyPy 1.0
+================
+
+Released: 27th March 2007
+
+What's new:
 
 - *JIT compiler generator working on the Python interpreter*
 - more optimizations
@@ -57,15 +70,22 @@ released: 27th March 2007
 *Not completely mature yet but our original vision is fully
 materialized*
 
-Translation framework
-================================
+Compatibility Matrix 
+=========================
 
-.. raw:: html
-
-    <br><br>
-
-.. image:: arch-framework.png
+.. image:: compat-matrix.png
    :align: center
+
+Status
+=========
+
+xxx a status slide could fit here
+
+
+JIT compiler generator
+======================
+
+.. (empty transition slide to say "in this talk we're mainly focusing on...")
 
 Flexibility vs. Performance
 =============================
@@ -107,7 +127,7 @@ Futamura
 =====================
 
 * *Partial evalution of computation process -
-  an approach to a compiler-compiler*, '71
+  an approach to a compiler-compiler*, 1971
 
 *  Generating compilers from interpreters,
    automatic specialization
@@ -199,11 +219,15 @@ Timeshifting Basics
 
 * red operations: converted into corresponding code emitting code
 
+.. demo?
+
 Timeshifting Control Flow
 ===========================
 
 - red split points: schedule multiple compilation states 
 - merge points: merge logic to reuse code for equivalent states
+
+.. demo?
 
 Promotion
 =================
@@ -220,6 +244,8 @@ seen runtime values
 
 .. need to save state in a compact form: paths
 
+.. demo?
+
 Virtuals + Promotion
 =====================
 
@@ -227,10 +253,8 @@ Virtuals + Promotion
 
 .. tlc example results
 
-Conclusion
-=============
-
-xxx we need some more general status/conclusion slides
+Conclusion (JIT)
+================
 
 Effective dynamic compiler generation make flexibility and ease of
 evolution mostly **orthogonal to the performance question**.
@@ -239,13 +263,23 @@ Implementers are free to implement languages as **understandable interpreters**.
 
 PyPy proves this a viable approach worth of further exploration.
 
+Conclusion
+==========
+
+xxx we need some more general status/conclusion slides
 
 
 
-Compatibility Matrix 
-=========================
+.. the end
 
-.. image:: compat-matrix.png
+Translation framework
+================================
+
+.. raw:: html
+
+    <br><br>
+
+.. image:: arch-framework.png
    :align: center
 
 Translation Diagram
