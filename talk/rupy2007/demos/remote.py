@@ -3,7 +3,7 @@ from distributed import RemoteProtocol, remote_loop
 from distributed.socklayer import Finished, socket_listener, socket_connecter
 import sys
 
-PORT = 12121
+PORT = 12122
 
 class X:
     def __init__(self):
@@ -14,6 +14,9 @@ class X:
         return f() + self.xxx
 
 x = X()
+
+def f(name):
+    return open(name)
 
 if __name__ == '__main__':
     send, receive = socket_listener(address=('', PORT))
