@@ -17,18 +17,17 @@ PyPy is:
 
 * A tool-chain with a *new paradigm* for building interpreters
 
-From Dec 2004 to March 2006 PyPy was a research project,
-funded by the EU and a consortium of companies.
+* Dec 2004 - March 2006: a research project funded by the EU
+  and companies.
 
 Motivation
 =============
 
-Conventional approaches to interpreters face hard trade-offs:
-speed, maintainability, flexibility.
+Conventional interpreters face hard trade-offs:
+*speed - maintainability - flexibility*
 
 A lot of decisions are hard-coded pervasively, improvements
-and evolution are hampered (e.g. psyco, stackless require quite some efforts
-and cannot bring their full potential).
+and evolution are hampered (e.g. psyco, stackless)
 
 Lots of duplication of effort to cover many platforms (C, Java, .NET).
 
@@ -53,12 +52,15 @@ Contains, as before:
 
 - a full compliant Python interpreter
 - a translation tool-chain that produces reasonably efficient interpreters:
-  PyPy-C, PyPy-LLVM, PyPy.NET
+
+    *PyPy-C*
+    
+    *PyPy-LLVM*
+    
+    *PyPy.NET*
 
 PyPy 1.0
 ================
-
-Released: 27th March 2007
 
 What's new:
 
@@ -67,8 +69,13 @@ What's new:
 - CLI backend produces a PyPy.NET which can interact with CLR libraries
 - taint object space and transparent proxies
 
-*Not completely mature yet but our original vision is fully
-materialized*
+PyPy 1.0
+================
+
+Status:
+
+    *Not completely mature yet but our original vision is fully
+    materialized*
 
 Compatibility Matrix 
 =========================
@@ -81,13 +88,18 @@ Status
 
 * still rough edges that need polishing
 * still missing a few important extension modules
-* right now, useful parts: special language features; RPython for high-perf
+
+Right now, some parts are directly useful:
+
+-  *special language features*
+    
+-  *RPython for high-perf*
 
 Performance
 =============
 
-Current interpreter performance (2007-06-14) is not bad, but lower than
-CPython:
+Current interpreter performance (2007-06-14) 
+not bad, but lower than CPython:
 
 +----------+-------------------+---------------+
 |          |   CPython 2.4.4   |   pypy-llvm   |
@@ -103,8 +115,8 @@ CPython:
 | mako     |      1.00         |     3.11      |
 +----------+-------------------+---------------+
 
-JIT compiler generator
-======================
+How to improve
+==========================
 
 * a lot of time is spent in the Garbage Collector,
   so we have room for improvement there
@@ -121,7 +133,7 @@ Flexibility vs. Performance
 
 * for high performance dynamic compilation is required
 
-Traditional dynamic compilers
+Traditional JIT compilers
 ===============================
 
 * huge resource investment
@@ -139,10 +151,10 @@ PyPy Approach: Goal
    <br>
 
 .. image:: overview2.png
-   :scale: 55
+   :align: center
 
 
-PyPy Approach (2)
+Basics
 =======================
 
 * use partial evaluation techniques to generate a dynamic compiler
@@ -156,10 +168,19 @@ Futamura
 * *Partial evalution of computation process -
   an approach to a compiler-compiler*, 1971
 
-*  Generating compilers from interpreters,
-   automatic specialization
+* Generating compilers from interpreters
+  with automatic specialization
 
 * Relatively little practical impact so far
+
+General idea
+================
+
+Partial evaluation (PE):
+
+* Assume the Python bytecode to be constant, and
+  constant-propagate it into the Python
+  interpreter.
 
 Challenges
 ======================
@@ -188,13 +209,12 @@ Overall ingredients
 The pieces to enable effective dynamic compiler generation
 in PyPy:
 
-- implementer-supplied hint based approach to fixing
-  what should be assumed compile-time constant
+- a few hints in the Python interpreter to guide the JIT
+  generator
 - *promotion*
-- direct support for lazy
-  allocation only on escape
+- lazy allocation of objects - only when they escape
   ("virtuals")
-- use stack and registers for language-level frame contents
+- use CPU stack and registers for the contents of the Python frame
 
 ..  ("virtualizables")
 
@@ -215,18 +235,22 @@ PyPy 1.0 contains both the dynamic compiler generator and the start of
 its application to PyPy's Python intepreter.
 
 * included are backends for IA32 and PPC
-* integer aritmethic operations are optimized
-* for things for which hints were provided
-  we are in the speed range of gcc -O0 
+* integer arithmetic operations are optimized
+* for these, we are in the speed range of ``gcc -O0``
 * demo (63x faster than CPython)
 
 .. demo f1
 
-The transformation: Timeshifting
+The transformation
 ==================================
 
-The generation process is implemented as a *binding-time ("color")*
-directed transformation of the low-level graphs.
+* The generation process is implemented as a
+  transformation of the low-level control flow graphs
+  of the interpreter
+
+* guided by a binding time analysis ("color" of the graphs)
+
+*"timeshifting"*
 
 Coloring
 =================
@@ -234,10 +258,11 @@ Coloring
 * green: compile-time value
 * red: runtime value
 
+* the hints give constraints from which the colors
+  of all values are derived
+
 we reuse the type inference
 framework to propagate colors
-respecting the constraints from
-the hints
 
 Timeshifting Basics
 ====================
@@ -246,7 +271,12 @@ Timeshifting Basics
 
 * red operations: converted into corresponding code emitting code
 
-.. demo?
++-----------------------------------------------+-----------------------------------------+----------------------------------------------+
+| | ``def f(`` :green:`x`, :red:`y` ``):``      | | *(case x=3)*                          | | *(case x=10)*                              |
+| |   :green:`x2` = :green:`x` ``*`` :green:`x` | | ``def f_3(y):``                       | | ``def f_10(y):``                           |
+| |   :red:`y2`   = :red:`y`   ``*`` :red:`y`   | |   ``y2 = y * y``                      | |   ``y2 = y * y``                           |
+| |   ``return`` :green:`x2` ``+`` :red:`y2`    | |   ``return 9 + y2``                   | |   ``return 100 + y2``                      |
++-----------------------------------------------+-----------------------------------------+----------------------------------------------+
 
 Timeshifting Control Flow
 ===========================
@@ -254,7 +284,12 @@ Timeshifting Control Flow
 - red split points: schedule multiple compilation states 
 - merge points: merge logic to reuse code for equivalent states
 
-.. demo?
++-----------------------------+----------------------------+
+| | ``if`` :red:`x`:          | | :green:`(case y != 0)`   |
+| |   ``print "x is true"``   | | ``if x:``                |
+| | ``if`` :green:`y`:        | |   ``print "x is true"``  |
+| |   ``print "y is true"``   | | ``print "y is true"``    |
++-----------------------------+----------------------------+
 
 Promotion
 =================
@@ -262,21 +297,58 @@ Promotion
 Promotion is implemented generating a switch that grows to cover the
 seen runtime values
 
-* First compilation stops at a promotion point and the switch with
-  only a default case is generated.  The default will call back into
+* First compilation stops at a promotion point and generates a switch
+  with only a default case.  The default will call back into
   the compiler with runtime values.
   
-* On callback the compiler add one more case to the switch and
+* On callback the compiler adds one more case to the switch and
   generate more code assuming the received value.
 
 .. need to save state in a compact form: paths
 
 .. demo?
 
+Promotion (example)
+========================
+
++----------------------------------------------------------------------------+---------------------------------------------------------------+
+| | ``def f(`` :red:`x`, :red:`y` ``):``                                     |                                                               |
+| |   :green:`x1` = ``hint(``:red:`x`, ``promote=True)``                     | | ``def f_(x, y):``                                           |
+| |   ``return`` :green:`x1` ``*`` :green:`x1` ``+`` :red:`y` ``*`` :red:`y` | |   ``switch x:``                                             |
+|                                                                            | |     ``pass``                                                |
+|                                                                            | |   ``default:``                                              |
+|                                                                            | |     ``compile_more(value=x)``                               |
+|                                                                            | |                                                             |
+|                                                                            +---------------------------------------------------------------+
+|                                                                            | | ``def f_(x, y):``                                           |
+|                                                                            | |   ``switch x:``                                             |
+|                                                                            | |     *case 3:*                                               |
+|                                                                            | |       *return 9 + y*                                        |
+|                                                                            | |   ``default:``                                              |
+|                                                                            | |     ``compile_more(value=x)``                               |
+|                                                                            | |                                                             |
++----------------------------------------------------------------------------+---------------------------------------------------------------+
+
+Virtuals + Promotion
+=====================
+ 
+* example from PyPy (simplified!):
+
++----------------------------------------------------------------------------------------+
+| | ``def add_python_objects(``:red:`obj1`, :red:`obj2` ``):``                           |
+| |     :green:`obj1cls` = ``hint(``:red:`obj1`. ``__class__, promote=True)``            |
+| |     :green:`obj2cls` = ``hint(``:red:`obj2`. ``__class__, promote=True)``            |
+| |     ``if`` :green:`obj1cls` ``is IntObject and`` :green:`obj2cls` ``is IntObject:``  |
+| |         :red:`x` = :red:`obj1`. ``intval``                                           |
+| |         :red:`y` = :red:`obj2`. ``intval``                                           |
+| |         :red:`z` = :red:`x` ``+`` :red:`y`                                           |
+| |         ``return IntObject(intval=``:red:`z` ``)``                                   |
++----------------------------------------------------------------------------------------+
+
 Virtuals + Promotion
 =====================
 
-* example
+* example from the Toy Language interpreter
 
 .. tlc example results
 
@@ -294,16 +366,17 @@ Conclusion
 ==========
 
 We have achieved a malleable interpreter and interpreter-making
-process which can only further improve over time, proving our vision
+process which can only further improve over time - proving our vision
 sound.
 
-This is a solid base looking forward:
+.. This is a solid base looking forward:
 
-- the rough edges are what we need to tackle next
+- rough edges are what we'll tackle next
 
-- development is going to continue in open source fashion
+- development goes on open source fashion at
+  http://codespeak.net/pypy/
 
-- there will be further sprints: one is organized after the conference!
+- next PyPy sprint after the conference!
 
 
 .. the end
