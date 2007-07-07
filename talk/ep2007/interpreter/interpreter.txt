@@ -10,10 +10,12 @@ What features?
 --------------
 
 * New Interpreter features through implementation 
+
 * We don't aim at changing python syntax nor semantics
-* avoiding religious war...
+
+* Keeping implementation/language design separate
+
 * they give new dimensions to how one can use python
-* pick the feature set of your choice...
 
 PyPy Overview
 --------------
@@ -26,6 +28,9 @@ PyPy Overview
 
 Backends / Runtime integration 
 -----------------------------------
+
+XXX fijal: we're talking about pypy interpreter
+XXX        features, those slides belong to rpython
 
 - single source program translates to: 
 
@@ -47,17 +52,6 @@ CLR/CLI Backend
 
 - more on tomorrow's talk
 
-Multiple object implementations
--------------------------------
-
-* same types - different implementations
-
-* example - ropes
-
-* example - multidicts
-
-XXX multidict demo
-
 Python Interpreter Prototypes 
 -------------------------------------
 
@@ -70,6 +64,16 @@ Python Interpreter Prototypes
   - Transparent Distribution 
   - Orthogonal Persistence 
 
+Multiple object implementations
+-------------------------------
+
+* same types - different implementations
+
+* example - ropes
+
+* example - multidicts
+
+XXX multidict demo
 
 Transparent proxy
 -----------------
