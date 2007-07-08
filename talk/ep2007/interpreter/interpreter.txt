@@ -35,12 +35,8 @@ Backends integration
   - Main new target: .NET/CLI/CLR
   - Work in progress: JVM
 
-XXX external libraries bindings are not single-source
-
 CLR/CLI Backend
 ----------------
-
-XXX fijal: kill this one?
 
 - full python interpreter generated for .NET 
 
@@ -117,17 +113,6 @@ Orthogonal Persistence
 
 * implement your own custom persistence scheme (e.g. using ZODB)
 
-Threading in PyPy 
------------------------
-
-* principal choice of os-threading models (GIL, no, ...) 
-* stackless *transform* / micro-threads: 
-
-  * suspending/resuming computations 
-  * pickling/migration of computations 
-  * unlimited recursion 
-  * *composable* greenlets, tasklets, co-routines
-
 Taint Space 
 --------------------
 
@@ -158,6 +143,17 @@ Thunk object space
 * lazy computations
 
 * easy hack (200 loc, including demo)
+
+Threading in PyPy 
+-----------------------
+
+* principal choice of os-threading models (GIL, no, ...) 
+* stackless *transform* / micro-threads: 
+
+  * suspending/resuming computations 
+  * pickling/migration of computations 
+  * unlimited recursion 
+  * *composable* greenlets, tasklets, co-routines
 
 Relative speeds to CPython
 ------------------------------
