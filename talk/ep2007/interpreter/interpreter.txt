@@ -26,22 +26,21 @@ PyPy Overview
 
 .. image:: dynlang.png
 
-Backends / Runtime integration 
+Backends integration 
 -----------------------------------
 
-XXX fijal: we're talking about pypy interpreter
-XXX        features, those slides belong to rpython
-
-- single source program translates to: 
+- single source interpreter translates to: 
 
   - Main target: C/Posix 
   - Main new target: .NET/CLI/CLR
   - Work in progress: JVM
-  - Special target: Javascript for Web applications
 
+XXX external libraries bindings are not single-source
 
 CLR/CLI Backend
 ----------------
+
+XXX fijal: kill this one?
 
 - full python interpreter generated for .NET 
 
@@ -52,7 +51,7 @@ CLR/CLI Backend
 
 - more on tomorrow's talk
 
-Python Interpreter Prototypes 
+Interpreter Prototypes 
 -------------------------------------
 
 - features are independent of backend
@@ -73,7 +72,16 @@ Multiple object implementations
 
 * example - multidicts
 
-XXX multidict demo
+* rope demo
+
+Object space
+------------
+
+* Class that implements all objects operations
+
+* Single place to change object behaviour
+
+* Allows easy interpreter prototype implementation
 
 Transparent proxy
 -----------------
@@ -93,8 +101,11 @@ Lazy ad-hoc distribution
 ------------------------
 
 - transparent lazy access to remote objects
+
 - internally uses RPC-like protocol
+
 - remote objects are presented through transparent proxies
+
 - access to remote tracebacks, frames, etc. work as if local!
 
 Orthogonal Persistence
@@ -106,12 +117,8 @@ Orthogonal Persistence
 
 * implement your own custom persistence scheme (e.g. using ZODB)
 
-XXX some demo
-
 Threading in PyPy 
 -----------------------
-
-XXX will be in the stackless talk, shall we mention it?
 
 * principal choice of os-threading models (GIL, no, ...) 
 * stackless *transform* / micro-threads: 
@@ -171,7 +178,7 @@ Relative speeds to CPython
 | mako     |      1.00         |     3.11      |
 +----------+-------------------+---------------+
 
-Python Interpreter Status (1.0)
+Python Interpreter Status
 ---------------------------------
 
 - compliant, 340 KLOC / 85 test KLOC
