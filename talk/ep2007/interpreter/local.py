@@ -14,5 +14,6 @@ def f():
 if __name__ == '__main__':
     send, receive = socket_connecter(('localhost', PORT))
     r = RemoteProtocol(send, receive)
-
-
+    x = r.get_remote('x')
+    F = r.get_remote('f')
+    
