@@ -132,8 +132,11 @@ Writing standalone C/.NET/JVM programs
 Writing CPython extensions
 ---------------------------
 
-XXX disclaimer
-XXX using extcompiler
+* create a mixed module (there is _demo)
+
+* compile it as CPython extension
+
+* quite incomplete
 
 The CLI backend
 ---------------
