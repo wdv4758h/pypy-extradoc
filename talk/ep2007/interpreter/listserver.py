@@ -27,5 +27,9 @@ if __name__ == '__main__':
     addr = ('', 8010)
     httpd = server.create_server(server_address=addr, handler=Handler,
                                  server=GreenHTTPServer)
-    httpd.serve_forever()
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        pass
+
     
