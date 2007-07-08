@@ -10,19 +10,6 @@ aka: C and C# considered harmful
 :Place: Europython 2007
 :Date: 10 July 2007
 
-Why invent new language?
-------------------------
-
-XXX antocuni: I think this slide makes more sense after the next
-
-* Grown as a side effect of the PyPy project
-
-* Python is too slow for some purposes
-
-* Pyrex/C are ugly
-
-* We want to play as it were Python as much as possible
-
 What is RPython?
 ----------------
 
@@ -35,6 +22,16 @@ What is RPython?
 
 * Python is the meta-programming language for RPython
 
+Why invent new language?
+------------------------
+
+* Grown as a side effect of the PyPy project
+
+* Python is too slow for some purposes
+
+* Pyrex/C are ugly
+
+* We want to play as it were Python as much as possible
 
 Restricted, what do you mean?
 -----------------------------
@@ -182,8 +179,11 @@ The JVM backend
 The JS backend
 --------------
 
-XXX fijal, feel free to fill in
+* Can produce complex, standalone executables
 
+* Can bind to ie. mochikit
+
+* Demos are online at http://play1.codespeak.net
 
 Conclusions
 -----------
