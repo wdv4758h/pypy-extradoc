@@ -11,11 +11,15 @@ What features?
 
 * New Interpreter features through implementation 
 
+* Python Interpreter implemented at high level
+
 * We don't aim at changing python syntax nor semantics
 
 * Keeping implementation and language design separate
 
 * They give new dimensions to how one can use python
+
+
 
 PyPy Overview
 --------------
