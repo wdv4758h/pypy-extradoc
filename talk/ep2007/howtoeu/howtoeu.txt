@@ -17,7 +17,7 @@ Intro
 - have participated and contributed to the PyPy EU project 
 - experiences 
 - discuss *open source* research projects 
-  (cut out IPR issues more or less completely) 
+  (skip IPR issues more or less completely) 
 
 EU Framework Research Programme 
 ====================================
@@ -33,7 +33,7 @@ Getting started
 =====================
 
 - vision / idea? 
-- read Work programmes / CALL topics 
+- reading Work programmes / CALL topics 
 - finding people to collaborate 
 - finding a set of organisations 
 - drafting a proposal ... 
@@ -66,7 +66,7 @@ Work Packages
 - Lead Partner 
 - Deliverables (Reports, Releases, Papers) 
 
-consortium 
+Consortium 
 ============================
 
 - looking for interested parties 
@@ -76,11 +76,14 @@ consortium
 - receives and distributes money
 
 
-applying to the EU 
+Applying to the EU 
 =========================
 
 - answer to CALLS within stated deadline 
 - co-ordinator registers project and proposal 
+
+XXX (lene) co-ordinator or EU-officer?
+
 - proposals gets reviewed by *independent* experts 
 - proposals receive points (PyPy had 26 out of 30) 
 - Invitation to "negotiation" 
@@ -96,16 +99,14 @@ Negotiation
 Funding Schemes
 =====================
 
-XXX (lene) no more cost models, will check furthermore
-- Universities receive (basically) 100% funding 
+- Universities receive (basically) 75% funding 
 - Small/Medium Companies (SME) receive 75% funding of costs 
-- FCF = 20% Flat administrative overhead added to costs 
-- FC = actual indirect costs 
+- actual or 20% flat administrative overheads accountable
 
 
 Signing the contract? 
 ========================
-
+XXX (lene) i do not understand this slide
 
 Infrastructure 
 ==================
@@ -118,15 +119,10 @@ Infrastructure
 Management structures  
 ============================
 
-- administrative team (preparing consortium decisions) 
+- Administrative team (preparing Consortium decisions) 
 - Technical Board (discussing problems, deciding roadmap) 
 - developer body (everybody can participate) 
-- Consortium 
-
-XXX insert the graph from the EU talks that shows
-the overlap - seems important to me in the open
-source context to recommend close and overlapping
-structures 
+- Consortium and Co-ordinator
 
 
 Meetings and Sprints 
@@ -154,9 +150,10 @@ Planning for changes
 Reporting / Deliverables 
 ============================
 
-- interim reviews each 18 months 
-- contractual and technical deliverable 
-- contractual deliverables 
+- interim reviews each 12-18 months 
+- Deliverables: Reports, Releases etc. 
+- Deadlines 
+- official submission of Reports/Documentation to EU
 
 Recommendations 
 ====================
@@ -168,6 +165,8 @@ Recommendations
   it fits the objectives better;
 - implement a transparent and flat communication and decision
   culture, be ready to adjust roles and not stick to formal issues too much. 
+- dual-use Deliverables for for Community/Industry and EU contract purposes
+
 
 Roles and Responsbilities 
 ============================
@@ -181,13 +180,21 @@ Roles and Responsbilities
 
 Changes from FP6 to FP7 
 =============================
+XXX (lene) not sure if this slide is necessary, most 
+changes are only interesting for those who 
+participated in FP6, and that are not many of the 
+audience. keeping the statements vague, as i only looked up 
+a summary page: 
 
-- less collective financial responsibility? 
+http://www.finance-helpdesk.org/front/ShowCategory.aspx?ItemID=883
+
+- apparently FP7 improves some regulations that PyPy found burdonsome
+- less collective financial responsibility 
 - 75% funding for (small/medium) companies 
-- XXX
+- subcontracting relaxed (important for international companies)
 
 
-What remains? 
+What Remains? 
 ================================
 
 - build the project on a shared vision and shared interest
