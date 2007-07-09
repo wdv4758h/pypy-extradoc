@@ -21,12 +21,7 @@ Intro
 recap features 
 ======================
 
-- assertion via "assert", nice tracebacks 
-- automatic customizable collection of tests 
-- test state management (module,class,function) 
-- capture stdout/stderr per-test 
-- select tests by keyword 
-- generative tests, doctests, ReST-tests, ... 
+XXX from website 
 
 ad-hoc distribution of tests 
 ===================================
@@ -72,7 +67,7 @@ todo:
 - make introspection/pdb work 
 - use ``screen`` for access to failed tests 
 - accellerate py.execnet setup 
-- more unification with other testing modes
+- more unification among testing modes
 
 collect info about functions (apigen) 
 =============================================
@@ -89,19 +84,23 @@ doctests
 - uses 2.5's doctest module 
 - needs more fine-grained integration 
 
+html Test Reporting 
+=========================
+
+XXX htmlconftest (daily runs) 
+
 Unifying Test Reporting 
 =================================
 
 - py.test contains two approaches for processing test results: 
 
-  - "old style": reporting methods invoked on session object 
-  - "new style": generate reporting events -> Reporter object(s)
+  - "old style": methods invoked on session object 
+  - "new style": reporting events are sent to Reporter object 
 
 next: 
 
-  - settle on reporting event architecture 
-  - refactor and document reporting events
-  - use Reporter object(s)
+    - use reporting event architecture pervasively 
+    - refactor existing reporting extensions 
 
 py.test extensions (conftest)
 =================================
@@ -119,7 +118,7 @@ py.test extensions (conftest)
 Platform support 
 ======================
 
-- py lib works on linux, freebsd, windows and OSX 
+- py lib works on linux, freebsd, windows and OSX, ...
 - works on python 2.3, 2.4, 2.5 
 - py lib provides doctest/optparse/... unified compat modules
 - todo: improve and automate packaging/installation 
@@ -139,7 +138,8 @@ difference to "buildbot" ...
 
 - py.test generally works from developers WC 
 - no need to first commit and wait for later (nightly) test run 
-- interactive developer driven choice of test setting 
+- developer's choice of test setting 
+- more interactivity 
 
 summary development topics 
 =============================
