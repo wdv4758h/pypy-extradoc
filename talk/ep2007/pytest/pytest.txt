@@ -18,10 +18,14 @@ Intro
 - developed partly for purposes of PyPy 
 - this talk will assess status and discuss future 
 
-recap features 
+recap: main features 
 ======================
 
-XXX from website 
+- assertions by assert statement, nice debugging 
+- unittests, generative tests, doctests, rest-tests
+- automatic customaize collection of tests 
+- select tests by keyword 
+- capture stdout/stderr per-test 
 
 ad-hoc distribution of tests 
 ===================================
@@ -84,23 +88,18 @@ doctests
 - uses 2.5's doctest module 
 - needs more fine-grained integration 
 
-html Test Reporting 
-=========================
-
-XXX htmlconftest (daily runs) 
-
 Unifying Test Reporting 
 =================================
 
-- py.test contains two approaches for processing test results: 
+py.test contains two approaches for processing test results: 
 
   - "old style": methods invoked on session object 
   - "new style": reporting events are sent to Reporter object 
 
 next: 
 
-    - use reporting event architecture pervasively 
-    - refactor existing reporting extensions 
+  - use reporting event architecture pervasively 
+  - refactor existing reporting extensions 
 
 py.test extensions (conftest)
 =================================
