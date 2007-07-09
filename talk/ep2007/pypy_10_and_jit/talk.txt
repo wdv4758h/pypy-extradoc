@@ -86,8 +86,8 @@ Compatibility Matrix
 Status
 =========
 
-* still rough edges that need polishing
-* still missing a few important extension modules
+* Still rough edges that need polishing
+* Still missing a few important extension modules
 
 Right now, some parts are directly useful:
 
@@ -118,28 +118,28 @@ not bad, but lower than CPython:
 How to improve
 ==========================
 
-* a lot of time is spent in the Garbage Collector,
+* A lot of time is spent in the Garbage Collector,
   so we have room for improvement there
 
-* but our real trump card to run plain Python programs fast
+* But our real trump card to run plain Python programs fast
   is the JIT compiler generator
 
-* works - but still work in progress before it's really useful!
+* Works - but still work in progress before it's really useful!
 
 Flexibility vs. Performance
 =============================
 
-* interpreters are easy to write and evolve
+* Interpreters are easy to write and evolve
 
-* for high performance dynamic compilation is required
+* For high performance dynamic compilation is required
 
 Traditional JIT compilers
 ===============================
 
-* huge resource investment
-* the richer the semantics, the harder to write
-* poor encoding of language semantics
-* hard to evolve
+* Huge resource investment
+* The richer the semantics, the harder to write
+* Poor encoding of language semantics
+* Hard to evolve
 
 Need for novel approaches!
 
@@ -157,10 +157,10 @@ PyPy Approach: Goal
 Basics
 =======================
 
-* use partial evaluation techniques to generate a dynamic compiler
+* Use partial evaluation techniques to generate a dynamic compiler
   from an interpreter 
-* inspiration: Psyco 
-* our translation tool-chain was designed for trying this
+* Inspiration: Psyco 
+* Our translation tool-chain was designed for trying this
 
 Futamura
 =====================
@@ -196,11 +196,11 @@ Challenges
 Solution: Promotion
 ====================
 
-* enhance PE with the ability
+* Enhance PE with the ability
   to "promote" run-time values
   to compile-time
 
-* leverage the dynamic setting
+* Leverage the dynamic setting
 
 
 Overall ingredients
@@ -248,28 +248,28 @@ The transformation
   transformation of the low-level control flow graphs
   of the interpreter
 
-* guided by a binding time analysis ("color" of the graphs)
+* Guided by a binding time analysis ("color" of the graphs)
 
 *"timeshifting"*
 
 Coloring
 =================
 
-* green: compile-time value
-* red: runtime value
+* Green: compile-time value
+* Red: runtime value
 
-* the hints give constraints from which the colors
+* The hints give constraints from which the colors
   of all values are derived
 
-we reuse the type inference
+We reuse the type inference
 framework to propagate colors
 
 Timeshifting Basics
 ====================
 
-* green operations: unchanged, executed at compile-time
+* Green operations: unchanged, executed at compile-time
 
-* red operations: converted into corresponding code emitting code
+* Red operations: converted into corresponding code emitting code
 
 +-----------------------------------------------+-----------------------------------------+----------------------------------------------+
 | | ``def f(`` :green:`x`, :red:`y` ``):``      | | *(case x=3)*                          | | *(case x=10)*                              |
@@ -332,7 +332,7 @@ Promotion (example)
 Virtuals + Promotion
 =====================
  
-* example from PyPy (simplified!):
+* Example from PyPy (simplified!):
 
 +----------------------------------------------------------------------------------------+
 | | ``def add_python_objects(``:red:`obj1`, :red:`obj2` ``):``                           |
@@ -348,7 +348,7 @@ Virtuals + Promotion
 Virtuals + Promotion
 =====================
 
-* example from the Toy Language interpreter
+* Example from the Toy Language interpreter
 
 .. tlc example results
 
