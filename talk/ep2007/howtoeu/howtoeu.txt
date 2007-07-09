@@ -1,0 +1,195 @@
+
+.. include:: <s5defs.txt>
+
+
+==================================================
+How to do an open source EU research project
+==================================================
+
+
+:authors: Lene Wagner, Holger Krekel (merlinux GmbH) 
+:event: 10.7.2007, EuroPython 2007, Vilnius 
+
+
+Intro 
+=================== 
+
+- have participated and contributed to the PyPy EU project 
+- experiences 
+- discuss *open source* research projects 
+  (cut out IPR issues more or less completely) 
+
+EU Framework Research Programme 
+====================================
+
+- IST = Information Society and Technology 
+- PyPy was a STREP 
+- FP7 spends some 20.000.000.000 Euro in 7 years 
+- regularly publishes Work Programmes and Topics 
+- puts out CALLS for Proposals 
+- we mainly try to discuss FP7 (a few changes from FP6) 
+
+Getting started 
+=====================
+
+- vision / idea? 
+- read Work programmes / CALL topics 
+- finding people to collaborate 
+- finding a set of organisations 
+- drafting a proposal ... 
+
+(Research) Objectives? 
+==============================
+
+- core research objective(s)
+  (state of the art & how the project aims beyond) 
+- core technical objectives? 
+- core other objectives? (methodological/social) 
+
+can you summarize it on one page? 
+
+The Proposal 
+===============
+
+- High level Objectives 
+- Impact on industry and society 
+- management structures
+- work plan in long form
+- detailed description of work packages 
+- budget
+
+Work Packages 
+=================== 
+
+- each has a specific objective 
+- Person Months allocated from Partners 
+- Lead Partner 
+- Deliverables (Reports, Releases, Papers) 
+
+consortium 
+============================
+
+- looking for interested parties 
+- consortium consists of organisations 
+- is collective entity towards EU 
+- requires co-ordinator/contact person for EU 
+- receives and distributes money
+
+
+applying to the EU 
+=========================
+
+- answer to CALLS within stated deadline 
+- co-ordinator registers project and proposal 
+- proposals gets reviewed by *independent* experts 
+- proposals receive points (PyPy had 26 out of 30) 
+- Invitation to "negotiation" 
+- Project duration?
+
+Negotiation 
+==============
+
+- discuss criticism of reviewers, change proposal 
+- Prepare paperwork (CPF = Contract Preparation Forms) 
+- sign CONTRACT with the European Union 
+
+Funding Schemes
+=====================
+
+XXX (lene) no more cost models, will check furthermore
+- Universities receive (basically) 100% funding 
+- Small/Medium Companies (SME) receive 75% funding of costs 
+- FCF = 20% Flat administrative overhead added to costs 
+- FC = actual indirect costs 
+
+
+Signing the contract? 
+========================
+
+
+Infrastructure 
+==================
+- ensure close collaboration of non co-located developers
+- ensure openness for external contributors
+- ensure consistency of codebase/project
+- PyPy: IRC, svn, mailing lists
+
+
+Management structures  
+============================
+
+- administrative team (preparing consortium decisions) 
+- Technical Board (discussing problems, deciding roadmap) 
+- developer body (everybody can participate) 
+- Consortium 
+
+XXX insert the graph from the EU talks that shows
+the overlap - seems important to me in the open
+source context to recommend close and overlapping
+structures 
+
+
+Meetings and Sprints 
+============================
+
+- sprints are the rhythm of the project 
+- plan for core and for newcomer-friendly sprints 
+- integrate a model for funding contributors! 
+
+
+Contractual and actual developments 
+=====================================
+- Contract implies a 'plan' for the development
+- Project may evolve into other directions
+- checkpoints for assessing the work package status 
+
+Planning for changes 
+===========================
+
+- be able to shift work among partners
+- if necessary: amend work plan, change the contract with the EU
+- but: don't touch the objectives!
+
+
+Reporting / Deliverables 
+============================
+
+- interim reviews each 18 months 
+- contractual and technical deliverable 
+- contractual deliverables 
+
+Recommendations 
+====================
+
+- sprint-driven model of development;
+- share some funding with upcoming contributors;
+- balance contractual with community interests 
+- consider changes to the contractual work plan if 
+  it fits the objectives better;
+- implement a transparent and flat communication and decision
+  culture, be ready to adjust roles and not stick to formal issues too much. 
+
+Roles and Responsbilities 
+============================
+
+- assign responsibilities to people 
+
+  - per aspect (administration, technical, research) 
+  - per work package
+
+- plan for changing responsibilities 
+
+Changes from FP6 to FP7 
+=============================
+
+- less collective financial responsibility? 
+- 75% funding for (small/medium) companies 
+- XXX
+
+
+What remains? 
+================================
+
+- build the project on a shared vision and shared interest
+- don't build it on money (too much) 
+
