@@ -59,6 +59,8 @@ Interpreter Prototypes
   - Transparent Distribution 
   - Orthogonal Persistence 
 
+.. now Maciej 
+
 Multiple object implementations
 -------------------------------
 
@@ -143,6 +145,8 @@ Thunk object space
 * Lazy computations
 
 * Easy hack (200 loc, including demo)
+
+.. holger 
 
 Threading in PyPy 
 -----------------------
