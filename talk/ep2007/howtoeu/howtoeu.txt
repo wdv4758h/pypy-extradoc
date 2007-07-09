@@ -163,9 +163,12 @@ Recommendations
 - balance contractual with community interests 
 - consider changes to the contractual work plan if 
   it fits the objectives better;
-- implement a transparent and flat communication and decision
-  culture, be ready to adjust roles and not stick to formal issues too much. 
-- dual-use Deliverables for for Community/Industry and EU contract purposes
+
+More Recommendations
+========================
+- transparent and flat communication and decision culture
+- be ready to adjust roles and not stick to formal issues too much. 
+- dual-use Deliverables for Community/Industry and EU contract purposes
 
 
 Roles and Responsbilities 
