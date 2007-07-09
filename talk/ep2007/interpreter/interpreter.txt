@@ -153,6 +153,8 @@ Threading in PyPy
   * unlimited recursion 
   * *composable* greenlets, tasklets, co-routines
 
+* see also Christian's talk Tuesday, 10am 
+
 Relative speeds to CPython
 ------------------------------
 
