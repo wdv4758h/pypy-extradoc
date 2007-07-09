@@ -43,11 +43,12 @@ ad-hoc distribution of tests (2)
 =====================================
 
 - synchronise source code "1 -> N" simultanously 
+
 - uses py.execnet: 
 
-   - can connect e.g. via SSH
-   - expects plain Python executable on remote side 
-   - no need to pre-install other software remotely 
+  - can connect e.g. via SSH
+  - expects plain Python executable on remote side 
+  - no need to pre-install other software remotely 
 
 - generated AJAX application async displays test results 
 
@@ -93,13 +94,13 @@ Unifying Test Reporting
 
 py.test contains two approaches for processing test results: 
 
-  - "old style": methods invoked on session object 
-  - "new style": reporting events are sent to Reporter object 
+- "old style": methods invoked on session object 
+- "new style": reporting events are sent to Reporter object 
 
 next: 
 
-  - use reporting event architecture pervasively 
-  - refactor existing reporting extensions 
+- use reporting event architecture pervasively 
+- refactor existing reporting extensions 
 
 py.test extensions (conftest)
 =================================
