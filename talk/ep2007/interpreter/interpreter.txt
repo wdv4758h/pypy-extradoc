@@ -15,7 +15,7 @@ What features?
 
 * Keeping implementation/language design separate
 
-* they give new dimensions to how one can use python
+* They give new dimensions to how one can use python
 
 PyPy Overview
 --------------
@@ -29,7 +29,7 @@ PyPy Overview
 Backends integration 
 -----------------------------------
 
-- single source interpreter translates to: 
+- Single source interpreter translates to: 
 
   - Main target: C/Posix 
   - Main new target: .NET/CLI/CLR
@@ -38,19 +38,19 @@ Backends integration
 CLR/CLI Backend
 ----------------
 
-- full python interpreter generated for .NET 
+- Full python interpreter generated for .NET 
 
-- support for CLR integration:
+- Support for CLR integration:
 
   - static RPython-level bindings 
   - on top dynamic bindings using reflection (clr module)
 
-- more on tomorrow's talk
+- More on tomorrow's talk
 
 Interpreter Prototypes 
 -------------------------------------
 
-- features are independent of backend
+- Features are independent of backend
 
 - Security / Taint Space 
 
@@ -62,13 +62,13 @@ Interpreter Prototypes
 Multiple object implementations
 -------------------------------
 
-* same types - different implementations
+* Same types - different implementations
 
-* example - ropes
+* Example - ropes
 
-* example - multidicts
+* Example - multidicts
 
-* rope demo
+* Rope demo
 
 Object space
 ------------
@@ -82,47 +82,47 @@ Object space
 Transparent proxy
 -----------------
 
-* proxy: intercept any operation on an builtin object
+* Proxy: intercept any operation on an builtin object
 
-* transparent: don't change object interface 
+* Transparent: don't change object interface 
 
-* useful for implementing application level functionality 
+* Useful for implementing application level functionality 
   orthogonally to usage of objects 
 
-* is the mechanism for distribution and persistence prototypes
+* Is the mechanism for distribution and persistence prototypes
 
-* see also .NET TransparentProxy
+* See also .NET TransparentProxy
 
 Lazy ad-hoc distribution
 ------------------------
 
-- transparent lazy access to remote objects
+- Transparent lazy access to remote objects
 
-- internally uses RPC-like protocol
+- Internally uses RPC-like protocol
 
-- remote objects are presented through transparent proxies
+- Remote objects are presented through transparent proxies
 
-- access to remote tracebacks, frames, etc. work as if local!
+- Access to remote tracebacks, frames, etc. work as if local!
 
 Orthogonal Persistence
 --------------------------
 
-* persist Python objects "invisibly"
+* Persist Python objects "invisibly"
 
-* interpose interception of changes to objects
+* Interpose interception of changes to objects
 
-* implement your own custom persistence scheme (e.g. using ZODB)
+* Implement your own custom persistence scheme (e.g. using ZODB)
 
 Taint Space 
 --------------------
 
-* control of information data flow:
+* Control of information data flow:
    
   - label sensitive data 
   - avoid sensitive information leaks
   - explicit primitive to declassify
 
-* easily implemented as an object space around
+* Easily implemented as an object space around
   the standard one securing all operations
   on objects
 
@@ -135,20 +135,20 @@ Taint Space diagram
 
 .. image:: interpreterarch.png
 
-* interactive prompt demo
+* Interactive prompt demo
 
 Thunk object space
 ------------------
 
-* lazy computations
+* Lazy computations
 
-* easy hack (200 loc, including demo)
+* Easy hack (200 loc, including demo)
 
 Threading in PyPy 
 -----------------------
 
-* principal choice of os-threading models (GIL, no, ...) 
-* stackless *transform* / micro-threads: 
+* Principal choice of os-threading models (GIL, no, ...) 
+* Stackless *transform* / micro-threads: 
 
   * suspending/resuming computations 
   * pickling/migration of computations 
@@ -177,20 +177,20 @@ Relative speeds to CPython
 Python Interpreter Status
 ---------------------------------
 
-- compliant, 340 KLOC / 85 test KLOC
-- single source for all platforms
-- flexible, fast, well-tested (11805 tests)
-- new middleware features 
-- need more extension modules! 
-- better GCs and more JITting will even improve speed!
+- Compliant, 340 KLOC / 85 test KLOC
+- Single source for all platforms
+- Flexible, fast, well-tested (11805 tests)
+- New middleware features 
+- Need more extension modules! 
+- Better GCs and more JITting will even improve speed!
 
 Disclaimer
 ----------
 
-* pypy features are not ready for production use
+* PyPy features are not ready for production use
 
-* although not because they're buggy
+* Although not because they're buggy
 
-* lack of extension modules
+* Lack of extension modules
 
-* os-level threads not working very well
+* OS-level threads not working very well
