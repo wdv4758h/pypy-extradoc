@@ -13,7 +13,7 @@ What features?
 
 * We don't aim at changing python syntax nor semantics
 
-* Keeping implementation/language design separate
+* Keeping implementation and language design separate
 
 * They give new dimensions to how one can use python
 
@@ -45,7 +45,7 @@ CLR/CLI Backend
   - static RPython-level bindings 
   - on top dynamic bindings using reflection (clr module)
 
-- More on tomorrow's talk
+- More on tomorrow's talk (Tuesday, 9am) 
 
 Interpreter Prototypes 
 -------------------------------------
@@ -139,12 +139,6 @@ Taint Space diagram
 
 * Interactive prompt demo
 
-Thunk object space
-------------------
-
-* Lazy computations
-
-* Easy hack (200 loc, including demo)
 
 .. holger 
 
