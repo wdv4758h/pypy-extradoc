@@ -177,9 +177,13 @@ The JS backend
 
 * Can produce complex, standalone executables
 
+* AJAX by method calls
+
 * Can bind to ie. mochikit
 
 * Demos are online at http://play1.codespeak.net
+
+* Can be used with any possible web framework
 
 Conclusions
 -----------
