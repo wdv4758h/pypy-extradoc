@@ -212,7 +212,7 @@ Further information
 - Information and Communication Technology department:
   http://cordis.europa.eu/fp7/ict/
 
-- http://pypy.org
+- PyPy project http://pypy.org
 
 
 

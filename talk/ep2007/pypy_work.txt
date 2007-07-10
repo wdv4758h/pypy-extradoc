@@ -1,5 +1,5 @@
 =======================================
-PyPy: Why and how dit it (not) work?
+PyPy: Why and how did it (not) work?
 =======================================
 
 :Authors: Bea Düring (Change Maker) & Holger Krekel (merlinux GmbH)
