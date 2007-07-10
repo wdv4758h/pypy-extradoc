@@ -3,7 +3,7 @@ PyPy: Why and how dit it (not) work?
 =======================================
 
 :Authors: Bea Düring (Change Maker) & Holger Krekel (merlinux GmbH)
-:Place: Europython 2007, Vilnius 
+:Place: EuroPython 2007, Vilnius 
 :Date: 10th July 2007 
 
 
@@ -13,7 +13,7 @@ Introduction: Bea´s 2cents
 - Mostly my personal views - so who am I? 
 - Old school gamer (non-profit work), high school 
   teacher, education and software development 
-  project management,instructor, newbie agilista  
+  project management, instructor, newbie agilista  
 
 The PyPy Long Island Ice Tea
 --------------------------------
@@ -30,13 +30,14 @@ Recommendations:
 - Unique for PyPy was the blend of OSS/agile practices
   within a EU contractual environment
 
-Automated Test-Driven Development
+Automated Test-Driven Devel.
 -----------------------------------------
 - py.test --> supports rapid prototyping
   in a single code base
 - Combined with efficient version control (svn)
 - Version control and test on both code and documentation
-- Automated commot mailinglists for both
+- Automated commit mailinglists for both
+
 ---> supports open and transparent workstyle
 
 Mobile Sprints
@@ -46,6 +47,7 @@ Mobile Sprints
 - "Open and closed" sprints
 - In the EU-funded project: 19 sprints
 - Combined with Summer of Code/PyPy
+
 ---> supports open and transparent workstyle
 
 Communication
@@ -53,6 +55,7 @@ Communication
 - IRC: #pypy on freenode.org (+others)
 - Mailinglists: manage, technical board, dev, sprints
 - Automated mailinglists (code and documentation)
+
 ---> supports open and transparent workstyle
 
 Information/documentation
@@ -61,7 +64,8 @@ Information/documentation
 - EU-reports written with a dual use purpose 
   (EU, industry, community)
 - Video documentation (tutorials, talks, interviews, sprints)  
-- All consortium involved persons could access _all_ data
+- All consortium involved persons could access *all* data
+
 ---> supports open and transparent workstyle
 
 Synchronization
@@ -70,15 +74,17 @@ Synchronization
 - Fixed agenda: last, next, blockers
 - Not more than 30 minutes
 - Inspired by Canonical
+
 ---> supports open and transparent workstyle
 
 Conceptual integrity
 -----------------------------------------
 - How to maintain the core developers OSS mandate 
-   within EU-contract?
+  within EU-contract?
 - Technical board driving the technical development
 - GUI between EU-level and OSS community level
 - Also driving management ;-) 
+
 ---> supports open and transparent workstyle
 
 Learning by burnings:
@@ -90,29 +96,35 @@ Open and transparent is costly
 ------------------------------------------
 - Formal roles existed but PyPy is a "beyond the call of duty" project
 - Cost in time, energy and resources to keep everyone involved
--->Main cost though was making this fit into the EU-structure
--->It was worth it ("excellent technical results"), but the price was high
+
+--> Main cost though was making this fit into the EU-structure
+
+--> It was worth it ("excellent technical results"), but the price was high
 
 Increased contribution is costly
 ------------------------------------------
 - Open sprints, IRC-mentoring and Summer of Code/PyPy 
   meant new core developers
 - Cost in time, energy and resources to mentor and support
--->Main cost though was making this fit into the EU-structure
--->It was worth it ("excellent technical results") and new friends!
+
+--> Main cost though was making this fit into the EU-structure
+
+--> It was worth it ("excellent technical results") and new friends!
 
 Overlapping realities is costly
 ------------------------------------------
 - PyPy - a practical EU OSS research project
 - Is that an oxymoron?
 - Goals too high and too wide (novel approaches)?
--->Main cost though was making this fit into the EU-structure
-     while evolving the community
--->It was worth it ("excellent technical results")  - really cool stuff ;-)
+
+--> Main cost though was making this fit into the EU-structure
+while evolving the community
+
+--> It was worth it ("excellent technical results")  - really cool stuff ;-)
 
 What now?
 ------------------------------------------
 - We continue as an OSS project: http://codespeak.net/pypy
 - We sprint: welcome to the EP2007 sprint on Thursday!
 - We have an Open Space session inviting PyPy users and would-be
-  users to to discuss their needs on Wednesday - join us! 
+  users to to discuss their needs on Wednesday - join us!
