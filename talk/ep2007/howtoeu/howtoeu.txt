@@ -17,7 +17,7 @@ Intro
 - have participated and contributed to the PyPy EU project 
 - experiences 
 - discuss *open source* research projects 
-  (skip IPR issues more or less completely) 
+- skip "Intellectucal Property" issues
 
 EU Framework Research Programme 
 ====================================
@@ -27,12 +27,12 @@ EU Framework Research Programme
 - FP7 spends some 20.000.000.000 Euro in 7 years 
 - regularly publishes Work Programmes and Topics 
 - puts out CALLS for Proposals 
-- we mainly try to discuss FP7 (a few changes from FP6) 
+- we mainly discuss FP7 (only few changes from FP6) 
 
 Getting started 
 =====================
 
-- vision / idea? 
+- visions / ideas? 
 - reading Work programmes / CALL topics 
 - finding people to collaborate 
 - finding a set of organisations 
@@ -41,9 +41,9 @@ Getting started
 (Research) Objectives? 
 ==============================
 
-- core research objective(s)
+- formulate core research objective(s)
   (state of the art & how the project aims beyond) 
-- core technical objectives? 
+- formulate core technical objectives? 
 - core other objectives? (methodological/social) 
 
 can you summarize it on one page? 
@@ -56,7 +56,7 @@ The Proposal
 - management structures
 - work plan in long form
 - detailed description of work packages 
-- budget
+- Project duration, budget? 
 
 Work Packages 
 =================== 
@@ -81,13 +81,9 @@ Applying to the EU
 
 - answer to CALLS within stated deadline 
 - co-ordinator registers project and proposal 
-
-XXX (lene) co-ordinator or EU-officer?
-
 - proposals gets reviewed by *independent* experts 
 - proposals receive points (PyPy had 26 out of 30) 
 - Invitation to "negotiation" 
-- Project duration?
 
 Negotiation 
 ==============
@@ -103,10 +99,14 @@ Funding Schemes
 - Small/Medium Companies (SME) receive 75% funding of costs 
 - actual or 20% flat administrative overheads accountable
 
-
 Signing the contract? 
 ========================
-XXX (lene) i do not understand this slide
+
+signature of the (negotiated) contract: 
+
+- is legally binding for all contractors and the EU 
+- afterwards the EU does pre-payments (40-80%) 
+- the consortium can ask for amendments later 
 
 Infrastructure 
 ==================
@@ -128,16 +128,16 @@ Management structures
 Meetings and Sprints 
 ============================
 
-- sprints are the rhythm of the project 
-- plan for core and for newcomer-friendly sprints 
-- integrate a model for funding contributors! 
+- sprints provide the rhythm of the project 
+- plan for core for newcomer-friendly sprints 
+- integrate a model for funding new contributors! 
 
 
 Contractual and actual developments 
 =====================================
 - Contract implies a 'plan' for the development
 - Project may evolve into other directions
-- checkpoints for assessing the work package status 
+- do checkpoints for assessing the work package status 
 
 Planning for changes 
 ===========================
@@ -151,7 +151,7 @@ Reporting / Deliverables
 ============================
 
 - interim reviews each 12-18 months 
-- Deliverables: Reports, Releases etc. 
+- Deliverables are: Reports, Releases etc. 
 - Deadlines 
 - official submission of Reports/Documentation to EU
 
@@ -183,13 +183,6 @@ Roles and Responsbilities
 
 Changes from FP6 to FP7 
 =============================
-XXX (lene) not sure if this slide is necessary, most 
-changes are only interesting for those who 
-participated in FP6, and that are not many of the 
-audience. keeping the statements vague, as i only looked up 
-a summary page: 
-
-http://www.finance-helpdesk.org/front/ShowCategory.aspx?ItemID=883
 
 - apparently FP7 improves some regulations that PyPy found burdonsome
 - less collective financial responsibility 
@@ -202,4 +195,8 @@ What Remains?
 
 - build the project on a shared vision and shared interest
 - don't build it on money (too much) 
+- get into contact with national support offices! 
+- use the national and EU help infrastructure! 
+
+
 
