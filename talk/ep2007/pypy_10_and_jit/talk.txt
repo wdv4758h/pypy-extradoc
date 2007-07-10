@@ -17,7 +17,7 @@ PyPy is:
 
 * A tool-chain with a *new paradigm* for building interpreters
 
-* Dec 2004 - March 2006: a research project funded by the EU
+* Dec 2004 - March 2007: a research project funded by the EU
   and companies.
 
 Motivation
