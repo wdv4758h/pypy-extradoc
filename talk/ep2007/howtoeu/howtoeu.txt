@@ -200,4 +200,20 @@ What Remains?
 - use the national and EU help infrastructure! 
 
 
+Further information
+==========================
+
+- official EU FP7 website: 
+  http://cordis.europa.eu/fp7/home_en.html
+
+- information leaflet on FP7:
+  http://ec.europa.eu/research/fp7/pdf/fp7-inbrief_en.pdf
+
+- Information and Communication Technology department:
+  http://cordis.europa.eu/fp7/ict/
+
+- http://pypy.org
+
+
+
 
