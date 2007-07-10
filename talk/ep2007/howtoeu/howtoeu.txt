@@ -14,9 +14,10 @@ How to do an open source EU research project
 Intro 
 =================== 
 
-- have participated and contributed to the PyPy EU project 
-- experiences 
-- discuss *open source* research projects 
+- we have participated in the PyPy project 
+- both on technical and management levels 
+- founded merlinux GmbH in 2004, doing various projects 
+- we discuss *open source* research projects 
 - skip "Intellectucal Property" issues
 
 EU Framework Research Programme 
