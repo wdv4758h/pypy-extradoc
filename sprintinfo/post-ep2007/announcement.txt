@@ -36,6 +36,8 @@ we list some possible task areas:
 
 * some JIT improvement work
 * port the stackless transform to ootypesystem
+* make the JIT generate fast code for float operations (??)
+* experimenting in the perfect_dict direction (?????)
 * other interesting stuff that you would like to work on ...;-)
 
 ------------
