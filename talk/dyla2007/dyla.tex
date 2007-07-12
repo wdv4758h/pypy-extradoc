@@ -121,7 +121,10 @@ VMs for dynamic languages should be written in their own host language
 (as many projects like Squeak \cite{Squeak} and others have done) but
 instead that VMs should not be \emph{written} in the first place -- they
 should be generated from simple interpreters written in any suitable
-high-level language.
+high-level\footnote{``High-level'' is taken by opposition to languages
+like PreScheme \cite{kelsey-prescheme} which use the syntax and
+metaprogramming facilities of a high-level language but encode
+low-level details like memory management.} language.
 
 In section \ref{sect:approaches} we will explore the way VMs are typically
 implemented in C and on top of OO VMs and some of the problems of these
