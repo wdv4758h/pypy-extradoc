@@ -107,11 +107,21 @@ meta-programming techniques can be used to successfully replace a
 foreseeable one-VM-fits-all standardization attempt.
 
 The crux of the argument is that VMs for dynamic languages should not be
-written by hand!  The PyPy project is the justification,
+written by hand!  The PyPy project \cite{pypy} is the justification,
 proving that the approach is
 feasible in practice.  Just as importantly, it also brings new insights
 and concrete benefits in term of flexibility and performance that go
 beyond the state of the art.
+
+PyPy contains a Python interpreter implemented in Python, from which
+Python VMs can be generated.  The reader is referred to
+\cite{pypyvmconstruction} for a technical presentation.  Let us emphasis
+again that the argument we make in the present paper is \emph{not} that
+VMs for dynamic languages should be written in their own host language
+(as many projects like Squeak \cite{Squeak} and others have done) but
+instead that VMs should not be \emph{written} in the first place -- they
+should be generated from simple interpreters written in any suitable
+high-level language.
 
 In section \ref{sect:approaches} we will explore the way VMs are typically
 implemented in C and on top of OO VMs and some of the problems of these
@@ -211,7 +221,7 @@ some of these advantages are only partially true in practice:
 \emph{Better performance:} So far it seems that performance of highly dynamic
 languages is not actually significantly improved on OO VMs. 
 Jython is around 5
-times slower than CPython, for IronPython (which
+times slower than CPython; for IronPython (which
 gives up on at least one feature -- frame objects -- to improve performance)
 the figures vary but it is mostly
 within the same order of magnitude as CPython. The most important reason for
@@ -221,8 +231,11 @@ language implementers would have to carefully produce code that matches these
 usage patterns, which is not a simple task.
 
 \item
-\emph{Better GCs:} While this is obvious in theory, OO VMs tend to have a much
-higher memory overhead to start with (XXX ref)
+\emph{Better GCs:} While this is obvious in theory, OO VMs tend to have a
+higher memory overhead to start with.  For example, an instance of Sun's
+Java VM which just loaded Jython consumes XXX MB of non-shared memory
+(XXX for the JVM and an additional XXX after loading Jython), while a
+CPython process fits in XXX MB.
 
 \item
 \emph{Cross-platform portability:} While this is true to some extent, the
