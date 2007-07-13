@@ -30,12 +30,12 @@ Questions/interests:
 
 Answers/comments:
 - CPython API support in PyPy is slow
-- RPython not complete yet (ex. ref counting)
+- Not much attention went into improving refcounting.
 - The state of RCtypes (support it, refactor and change
   direction, future at all) is unclear - needs discussions
   (how - to use ctypes at (PyPy) application level?) 
 - we need strategic discussions regarding how to interface
-  with external clibraries, to be discussed during sprint
+  with external c libraries, to be discussed during sprint
 - general need for refactoring - timespan will be roughly
   a year to have a PyPy that usable (while still not covering
   all extension modules)
