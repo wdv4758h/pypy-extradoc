@@ -59,10 +59,10 @@ Questions:
 - emulate pygame on flash player
 
 Answers/comments:
-- a parser is doable but you will encounter bugs, report them
+- a parser is doable but you could encounter bugs, report them
   and they will be fixed - there is a matching interest here
   in the PyPy dev-team
-- there is also a document on http://codespeak.net/pypyXXX
+- there is also a document on http://codespeak.net/pypy/dist/pypy/doc/rlib.html#parsing
   regarding parser creation
 - regarding emulating PyGame on a flahs player - this is doable
   but work needed, some rough estimates discussed were between
