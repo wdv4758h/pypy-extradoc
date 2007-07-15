@@ -242,8 +242,9 @@ usage patterns, which is not a simple task.
 \item
 \emph{Better GCs:} While this is obvious in theory, OO VMs tend to have a
 higher memory overhead to start with.  For example, an instance of Sun's
-Java VM which just loaded Jython consumes 34-42 MB of memory, while a
-CPython process fits in 3-4 MB.
+JVM which just loaded Jython consumes between 34 and 42 MB of memory
+(Linux/IA32), while on the same machine a CPython process fits in 3 to 4
+MB.
 
 \item
 \emph{Cross-platform portability:} While this is true to some extent, the
@@ -268,7 +269,7 @@ implementation.
 An example where this mapping does not work very well is Prolog. While there
 exist several implementations of Prolog on top of the JVM \cite{prologcafe}
 \cite{InterProlog} and one on .NET \cite{psharp},
-they are not particular efficient, especially when compared to good Prolog VMs
+they are not particularly efficient, especially when compared to good Prolog VMs
 written in C. This is mostly because the Prolog execution model, which
 involves backtracking and deep recursion, does not fit the JVM and .NET very
 well. Therefore the Prolog implementations on top of OO VMs resort to models
@@ -290,21 +291,23 @@ model fits the OO VM well, many of the disadvantages disappear.
 The described proliferation of language implementations is a large problem for
 language communities. Although most individual implementations exist for good
 reasons, the sum of all of them and the need to keep them synchronized with the
-reference implementations leads to a significant amount of duplicated work and division of
-effort; this is especially true for open source languages which tend to evolve
-quickly. At any one point in time some of the implementations will lag behind
-which makes writing code which can work on all of the implementations harder.
+reference implementation leads to a significant amount of duplicated work and division of
+effort; this is especially true for open source languages, which tend to evolve
+quickly. At any one point in time some of the implementations will lag behind;
+for developers, this makes writing code which can work on all of the
+implementations harder.
 
 Implementing a language on top of a OO VM has many advantages, so some
-people propose the solution of standardizing on one particular OO VM to not have
-to maintain implementations for several of them. While this would, in theory,
+people propose the solution of standardizing on one particular OO VM in order
+to not have
+to maintain implementations for several of them. While this would in theory
 alleviate the problem it is unlikely to happen. On the one hand, many political
 issues are involved in such a decision. On the other hand, deciding on a single
 object and execution model would not be an equally good fit for all languages.
 
 In the next section, we explore a different approach for implementing
-dynamic languages that we hope is able to solve many of the problems of
-implementing a language, in particular the problem of an explosion of the number
+dynamic languages that we believe is able to solve many of the problems that
+implementers face, including the issue of the explosion of the number
 of implementations.
 
 \section{Meta-Programming Is Good}
@@ -313,7 +316,15 @@ of implementations.
 The present paper proposes to approach the implementation of dynamic
 languages from a meta-level: virtual machines for such languages should
 not be written by hand, but generated automatically ``around'' an
-interpreter playing the role of a high-level description of the language.  We
+interpreter\footnote
+{
+We do not explore the possibility of starting from even
+higher-level descriptions like declarative semantics; while interesting in
+theory, there are many open issues that make it impractical so far, from
+the question of whether it is feasible at all for large dynamic languages
+to the issue of how to compile such a description to efficient code.
+}
+playing the role of a high-level description of the language.  We
 argue that this approach gives many of the benefits usually expected by
 an implementer when he decides to target an existing object-oriented
 virtual machine.  It also gives other benefits that we will describe --
@@ -338,7 +349,7 @@ time-consuming to maintain.  Our implementation is, by construction,
 easier to maintain and extremely portable (including to C/POSIX, to the
 JVM and to .NET).
 
-In meta-programming terms, the PyPy architecture is as follows:
+In the terminology of meta-programming, the PyPy architecture is as follows:
 
 \begin{itemize}
 
@@ -350,7 +361,9 @@ built-in types.  The language is still close to Python, e.g.  it is
 object-oriented, provides rich built-in types and has automatic memory
 management.  In other words, the source code of our complete Python
 interpreter is mostly free of low-level details -- no explicit memory
-management, no pieces of C or C-level code.
+management, no pieces of C or C-level code.  Any RPython code is also
+valid Python code, so for testing and bootstrapping it can be run
+directly on top of another Python implementation like CPython.
 
 \item
 We use a very expressive metalanguage (namely regular Python) to
@@ -367,7 +380,8 @@ runtime environment.  This either turns the interpreter into a
 standalone virtual machine or integrates it into an existing OO VM.
 The necessary support code -- e.g. the garbage collector when
 targeting C -- is itself written in RPython in much the same spirit
-that the Jikes RVM's GCs are written in Java \cite{JikesGC}; if needed, it is
+that the Jikes RVM's GCs are written in Java \cite{JikesGC}; this
+support code is
 translated together with the interpreter to form the final custom VM.
 \end{itemize}
 
@@ -379,7 +393,8 @@ These results show that the
 approach is practical and gives results whose performance is within the same
 order of magnitude (within a factor of 2 and improving) of the hand-written,
 well-tuned CPython, the C reference implementation.  These figures do not
-include the spectacular speed-ups obtained in some cases by the JIT compiler
+include the spectacular speed-ups that PyPy obtains in some cases using the
+JIT compiler generator
 described in section \ref{subsect:dynamic_compilers}.
 
 In the sequel, we will focus on the relative advantages and
