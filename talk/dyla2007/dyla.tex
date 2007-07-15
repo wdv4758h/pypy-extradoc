@@ -126,13 +126,13 @@ should be generated from simple interpreters written in any suitable
 high-level\footnote{``High-level'' is taken by opposition to languages
 like Scheme48's PreScheme \cite{kelsey-prescheme} or Squeak's \cite{Squeak}
 SLang, which use the syntax and
-metaprogramming facilities of a high-level language but encode
+meta-programming facilities of a high-level language but encode
 low-level details like object layout and memory management.} language.
 
 In section \ref{sect:approaches} we will explore the way VMs are typically
 implemented in C and on top of OO VMs and some of the problems of these
 approaches, using various Python implementations as the main example. In
-section \ref{sect:metaprogramming} we will describe our proposed
+section \ref{sect:meta-programming} we will describe our proposed
 meta-programming approach and compare the two solutions.  We summarize
 our position and conclude in section \ref{sect:conclusion}.
 
@@ -243,7 +243,7 @@ usage patterns, which is not a simple task.
 \emph{Better GCs:} While this is obvious in theory, OO VMs tend to have a
 higher memory overhead to start with.  For example, an instance of Sun's
 JVM which just loaded Jython consumes between 34 and 42 MB of memory
-(Linux/IA32), while on the same machine a CPython process fits in 3 to 4
+(Linux/IA32), while on the same machine a CPython process fits into 3 to 4
 MB.
 
 \item
@@ -311,7 +311,7 @@ implementers face, including the issue of the explosion of the number
 of implementations.
 
 \section{Meta-Programming Is Good}
-\label{sect:metaprogramming}
+\label{sect:meta-programming}
 
 The present paper proposes to approach the implementation of dynamic
 languages from a meta-level: virtual machines for such languages should
@@ -338,12 +338,12 @@ entirely new languages, such as domain-specific languages, while at any
 time being able to run the implemented language in a variety of
 environments, from C/POSIX to the JVM to .NET.
 
-\subsection{PyPy architecture}
+\subsection{PyPy's architecture}
 
 We implemented this idea in the PyPy project \cite{pypy}.  The dynamic language
 for which we wrote an interpreter is Python.  It is a language which,
 because of its size and rather intricate semantics, is a good target for
-our approach in the following sense: its previous reimplementations
+our approach in the following sense: its previous re-implementations
 (Jython for the JVM and IronPython for .NET) have each proved to be very
 time-consuming to maintain.  Our implementation is, by construction,
 easier to maintain and extremely portable (including to C/POSIX, to the
@@ -493,7 +493,7 @@ best performance.  It seems that RPython, enhanced with support for
 direct address manipulations, is a good language for writing GCs, so it
 would be possible for a GC expert to write one for our translation
 framework.  However, this is not the only way to obtain good GCs:
-existing GCs can also be reused.  Good candidates are the GCs written in
+existing GCs could also be reused.  Good candidates are the GCs written in
 the Jikes RVM \cite{JikesGC}.  As they are written in Java, it should be
 relatively straightforward to design a translation step that turns them
 into RPython (or directly into our RPython-level intermediate
@@ -589,7 +589,7 @@ meta-programming:
 \begin{itemize}
 \item \emph{Let's write more meta-programming translation toolchains.}
 Aside from the advantages described in section
-\ref{sect:metaprogramming}, a translation toolchain need not be
+\ref{sect:meta-programming}, a translation toolchain need not be
 standardized for inter-operability but can be tailored to the needs of
 each project.
 \item \emph{Diversity is good.}  Meta-programming translation
