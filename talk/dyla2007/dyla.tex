@@ -2,6 +2,7 @@
 
 \usepackage{makeidx}
 \usepackage{graphicx}
+\sloppy
 
 \begin{document}
 
@@ -63,10 +64,18 @@ can relatively easily be turned into C.  The machine implements an
 object model supporting the high level dynamic language's objects.  It
 typically provides features like automatic garbage collection.  Recent
 languages like Python, Ruby, Perl and JavaScript have complicated
-semantics which are most easily mapped to a simple interpreter operating
-on syntax trees or bytecode; simpler languages like Lisp and Self
-typically have more efficient implementations based on code
-generation.
+semantics which are most easily mapped to a naive interpreter operating
+on syntax trees or bytecode; simpler languages\footnote
+{
+In the sense of the primitive semantics.  ``Simple'' here is
+as opposed to ``complicated'', not as opposed to ``complex'': Common
+Lisp for example is not a small language, but it can at least in theory
+be expressed from a smaller core of primitives.  In Python, all
+primitive operations have complicated semantics.  The argument developed
+in the present paper is more relevant to ``complicated'' dynamic languages.
+}
+like Lisp, Smalltalk and Self typically have more
+efficient implementations based on code generation.
 
 The effort required to build a new virtual machine is relatively
 large.  This is particularly true for languages which are complex
@@ -122,10 +131,10 @@ VMs for dynamic languages should be written in their own host language
 instead that VMs should not be \emph{written} in the first place -- they
 should be generated from simple interpreters written in any suitable
 high-level\footnote{``High-level'' is taken by opposition to languages
-like PreScheme \cite{kelsey-prescheme} or the subset of Smalltalk that the
-Squeak VM is written in \cite{Squeak} which use the syntax and
+like Scheme48's PreScheme \cite{kelsey-prescheme} or Squeak's \cite{Squeak}
+SLang which use the syntax and
 metaprogramming facilities of a high-level language but encode
-low-level details like memory management.} language.
+low-level details like object layout and memory management.} language.
 
 In section \ref{sect:approaches} we will explore the way VMs are typically
 implemented in C and on top of OO VMs and some of the problems of these
@@ -237,9 +246,8 @@ usage patterns, which is not a simple task.
 \item
 \emph{Better GCs:} While this is obvious in theory, OO VMs tend to have a
 higher memory overhead to start with.  For example, an instance of Sun's
-Java VM which just loaded Jython consumes XXX MB of non-shared memory
-(XXX for the JVM and an additional XXX after loading Jython), while a
-CPython process fits in XXX MB.
+Java VM which just loaded Jython consumes 34-42 MB of memory, while a
+CPython process fits in 3-4 MB.
 
 \item
 \emph{Cross-platform portability:} While this is true to some extent, the
@@ -268,8 +276,8 @@ well. Therefore the Prolog implementations on top of OO VMs resort to models
 that are quite unnatural both for the OO VM and for Prolog.
 
 Another important point that makes implementation of languages on top of OO VMs
-harder is that typically OO VMs don't support meta-programming very well, or do so only
-at the bytecode level.
+harder is that typically general-purpose OO VMs don't support meta-programming
+very well, or do so only at the bytecode level.
 \end{itemize}
 
 Nevertheless, some of the benefits are real and very useful, the most
@@ -500,14 +508,22 @@ languages.  It might be possible to tune a general-purpose JIT compiler
 enough and write the dynamic language implementation accordingly so
 that most of the bookkeeping work involved in running the dynamic
 language can be removed -- dispatching, boxing, unboxing...  However
-this has not been demonstrated yet.
+this has not been demonstrated yet.\footnote
+{Still in the draft stage, a proposed
+extension to the Java bytecode \cite{invokedynamic} might help achieve
+better integration between the Java JITs and dynamic language
+implementations running on top of JVMs.}
 
-By far the fastest Python implementation, Psyco \cite{psyco-software}, contains a
-hand-written language-specific dynamic compiler.  PyPy's translation
-tool-chain is able to extend the generated VMs with an automatically
-generated dynamic compiler that uses techniques similar to those of Psyco
-\cite{Psyco-paper}, derived from the
-interpreter.  This is achieved by a pragmatic application of partial
+By far the fastest Python implementation, Psyco \cite{psyco-software}
+contains a hand-written language-specific dynamic compiler.  It works by
+specializing (parts of) Python functions by feeding runtime information
+back into the compiler (typically, but not exclusively, object types).
+The reader is referred to \cite{Psyco-paper} for more details.
+
+PyPy abstracts on this approach: its translation tool-chain is able to
+extend the generated VMs with an \emph{automatically generated} dynamic
+compiler that uses techniques similar to those of Psyco, derived from
+the interpreter.  This is achieved by a pragmatic application of partial
 evaluation techniques guided by a few hints added to the source of the
 interpreter.  In other words, it is possible to produce a reasonably
 good language-specific JIT compiler and insert it into a VM, alongside
@@ -531,16 +547,17 @@ paper:
 
 %XXX doesn't look entirely nice
 \begin{itemize}
-\item \emph{Do not write dynamic language implementations ``by hand''.}
-Writing them more abstractly, at a higher level, has primarily only
-advantages, among them the avoidance of a proliferation of diverging
-implementations.  Writing interpreters both flexibly and efficiently
-is difficult and meta-programming is a good way to achieve it.
+\item \emph{High-level languages are suitable to implement dynamic languages.}
+They allow an interpreter to be written more abstractly, which has many
+advantages -- among them the avoidance of a proliferation of diverging
+implementations, and better ways to combine flexibility with efficiency.
 Moreover, this is not incompatible with targeting and benefiting from
-existing high-quality object-oriented virtual machines like those of the Java and .NET.
-
+existing high-quality object-oriented virtual machines like those of the
+Java and .NET.
 
 \item \emph{Do not write VMs ``by hand''.}
+In other words, write an \emph{interpreter} but not a
+\emph{virtual machine} for the language.
 Writing language-specific virtual machines is a time-consuming task for
 medium to large languages.  Unless large amounts of resources can be
 invested, the resulting VMs are bound to have limitations which lead to
@@ -558,8 +575,8 @@ meta-programming:
 Aside from the advantages described in section
 \ref{sect:metaprogramming}, a translation toolchain need not be
 standardized for inter-operability but can be tailored to the needs of
-each project.  Diversity is good; there is no need to attempt to
-standardize on a single OO VM.
+each project.  Diversity is good; translation toolchains offset the need
+to attempt to standardize on a single OO VM.
 \end{itemize}
 
 The approach we outlined is actually just one in a very large, mostly
