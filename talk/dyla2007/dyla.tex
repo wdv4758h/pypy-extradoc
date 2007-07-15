@@ -146,14 +146,14 @@ language leads to the emergence of additional implementations is clear
 in the case of Python.  The reference implementation, \implname{CPython}
 \cite{cpy251}, is a simple recursive interpreter.  \implname{Stackless
 Python} \cite{stackless} is a fork that adds micro-threading
-capabilities to Python. One of the reasons for not incorporating it back
+capabilities to CPython. One of the reasons for not incorporating it back
 into CPython was that it was felt that this would make the
 implementation too complex. Another implementation of the Python
-language is \implname{Psyco} \cite{psyco-software}, which adds a
-JIT-compiler to CPython.  Finally, \implname{Jython} is a
+language is \implname{Psyco} \cite{psyco-software}, an extension of
+CPython which adds a JIT-compiler.  Finally, \implname{Jython} is a
 re-implementation for the Java VM and \implname{IronPython} for
-the CLR.  All of these need to be kept synchronized with the relatively fast
-evolution of the language.
+the CLR.  All of these ultimately need to be kept synchronized with the
+relatively fast evolution of the language.
 
 With the emergence of the CLR and the JVM as interesting language
 implementation platforms, it is sometimes argued that
@@ -185,7 +185,7 @@ various hardware architectures and operating systems. The languages implemented
 on top of it can then be run without change in various environments.
 
 \item
-\emph{Better tools:} Better IDEs, debuggers and profilers.
+\emph{Better tools:} Better and cross-language IDEs, debuggers and profilers.
 
 \item
 \emph{Better implementation of low-level issues like garbage collection,
@@ -220,7 +220,7 @@ be required.
 The central theme of the benefits of OO VMs is the ability to
 implement certain hard things only once and share the benefits between
 all language implementations on top of the OO VM.  At a closer look,
-some of these advantages are only partially true in practice:
+some of these advantages are not quite true in practice:
 
 \begin{itemize}
 \item
@@ -257,7 +257,10 @@ VMs typically allow the language implementer to start at a higher level. On the
 other hand, they also enforce a specific object and execution model. This means
 that the concepts of the implemented language need to be mapped to the
 execution model of the underlying VM, which may or may not be easy, depending very
-much on the language in question.
+much on the language in question.  In many cases, the mismatch between
+the abstractions provided by the underlying VM and the semantics of the
+dynamic language is too deep to allow a natural and/or efficient
+implementation.
 
 An example where this mapping does not work very well is Prolog. While there
 exist several implementations of Prolog on top of the JVM \cite{prologcafe}
@@ -361,7 +364,7 @@ runtime environment.  This either turns the interpreter into a
 standalone virtual machine or integrates it into an existing OO VM.
 The necessary support code -- e.g. the garbage collector when
 targeting C -- is itself written in RPython in much the same spirit
-that the Jikes RVM's GCs are written in Java \cite{JikesGC}; as needed, it is
+that the Jikes RVM's GCs are written in Java \cite{JikesGC}; if needed, it is
 translated together with the interpreter to form the final custom VM.
 \end{itemize}
 
@@ -473,11 +476,11 @@ direct address manipulations, is a good language for writing GCs, so it
 would be possible for a GC expert to write one for our translation
 framework.  However, this is not the only way to obtain good GCs:
 existing GCs can also be reused.  Good candidates are the GCs written in
-the Jikes RVM \cite{JikesGC}.  As they are in Java, it should be
-relatively straightforward to add a translation step that turns one of
-them into RPython (or directly into our RPython-level intermediate
-representation) and integrates it with the rest of the program being
-translated.
+the Jikes RVM \cite{JikesGC}.  As they are written in Java, it should be
+relatively straightforward to design a translation step that turns them
+into RPython (or directly into our RPython-level intermediate
+representation).  Our translation toolchain could then integrate any one
+of these GCs into the VMs it generates.
 
 In summary, developing a meta-programming translation toolchain requires
 work, but it can be done incrementally, it can reuse existing code, and
