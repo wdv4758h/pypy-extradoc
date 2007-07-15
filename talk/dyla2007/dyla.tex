@@ -29,28 +29,20 @@ Institut f\"{u}r Informatik, Universit\"at D\"usseldorf, Germany\\
 
 \begin{abstract}
 
-We argue in this paper that one should not write interpreters for dynamic
-languages manually but rather use meta-programming techniques and raise the
-overall level at which they are implemented. We believe this to be
-ultimately a better investment of efforts than the development of more and more advanced
-general-purpose object oriented virtual machines (VMs).
-
-\medskip
-
-Dynamic languages are traditionally implemented by writing a virtual machine
-centered around an interpreter and/or a built-in compiler and providing
-the object model and memory management. When a language becomes more popular,
-the limitations of such an implementation lead to the emergence of alternative
-implementations that try to solve some of the problems. Another reason for new
-implementations is the desire to have the language integrate well with existing,
-well-tuned object-oriented virtual machine like the Java Virtual Machine. In this paper, we
-describe the mechanisms that lead to an abundance of implementations and
-explore some of the limitations of standard VMs.  We propose a
-complementary alternative to writing VMs by hand and dealing with low-level
-details, validated by the PyPy project: flexibly generating virtual machines
-from a single abstract language ``specification'', inserting features and
-low-level details automatically -- including good just-in-time compilers tuned
-to the dynamic language at hand.
+Typical modern dynamic languages have a growing number of
+implementations.  We explore the reasons for this situation, and the
+limitations it imposes on open source or academic communities that lack
+the resources to fine-tune and maintain them all.  It is sometimes
+proposed that implementing dynamic languages on top of a standardized
+general-purpose object-oriented virtual machine (like Java or .NET)
+would help reduce this burden.  We propose a complementary alternative
+to writing custom virtual machine (VMs) by hand, validated by the PyPy
+project: flexibly generating VMs from a high-level ``specification'',
+inserting features and low-level details automatically -- including good
+just-in-time compilers tuned to the dynamic language at hand.  We
+believe this to be ultimately a better investment of efforts than the
+development of more and more advanced general-purpose object oriented
+VMs.  In this paper we compare these two approaches in detail.
 \footnote{This research was partially supported by the EU funded
  project: IST 004779 PyPy (PyPy: Implementing Python in Python).} \\
 
@@ -94,7 +86,8 @@ garbage collection and threading issues). Limitations
 of the C implementation lead to alternative implementations which draw
 resources from the reference implementation. An alternative to writing
 implementations in C is to build them on top of one of the newer object oriented
-virtual machines (``OO VM'') such as the JVM or the CLR. This is often wanted by
+virtual machines (``OO VM'') such as the JVM (Java Virtual Machine) or the
+CLR (Common Language Runtime of the .NET framework). This is often wanted by
 the community anyway, since it leads to the ability to re-use the libraries of
 these platforms. However, if a C implementation existed before the
 implementation of such a VM is started, this enters into conflict with the goal of
