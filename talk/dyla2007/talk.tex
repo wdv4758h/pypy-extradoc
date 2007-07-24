@@ -61,53 +61,132 @@
   % You might wish to add the option [pausesections]
 %\end{frame}
 
-
-% examples from my last beamer talk, shows the most important features
 \begin{frame}
-  \frametitle{Pyrolog}
-
+  \frametitle{Introduction}
   \begin{itemize}
-  \item
-    Pyrolog is a Prolog interpreter written in Python –
-  \item
-    want to compile it to get interesting performance
-  \item
-    translation tool-chain part of the PyPy project
-  \item
-    Python itself is too dynamic to be translatable to other languages, need a subset
-  \item
-    RPython (``Restricted Python'') is a subset of Python translatable to other
-    languages
-  \item
-    RPython is designed to be significantly faster than regular Python
+  \item XXX intro, talk about scope
   \end{itemize}
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{The Python case}
-  CPython (the reference implementation) is a straightforward, portable VM.
-
-  \begin{itemize}
-  \item
-    Pervasive decisions: reference counting, global lock \dots
-  \item
-    No dynamic compilation
-  \end{itemize}
-  \pause
+  \frametitle{Common Approaches to VM construction}
   \begin{block}{
-    Extensions:}
+    Using C directly (or C disguised as another language)}
     \begin{itemize}
     \item
-      \alert{Stackless} (unlimited recursion, coroutines, green threads)
+      CPython
     \item
-      \alert{Psyco} (run-time specializing compiler)
+      Ruby
     \item
-      \alert{Jython}, \alert{IronPython}
+      Spidermonkey (Mozilla's JavaScript VM)
+    \item
+      but also: Squeak, Scheme48
+    \end{itemize}
+  \end{block}
+  \begin{block}{
+    Building on top of an existing OO VM}
+    \begin{itemize}
+    \item
+      Jython, IronPython
+    \item
+      JRuby, IronRuby
     \end{itemize}
   \end{block}
 \end{frame}
 
+\begin{frame}
+  \frametitle{The Problems of C}
+  When writing a VM in C it is hard to reconcile:
+  \begin{itemize}
+  \item
+    flexibility, maintainability
+  \item
+    simplicity of the VM
+  \item
+    performance (needs dynamic compilation techniques)
+  \end{itemize}
+  \pause
+  \begin{block}{
+    Python Case}
+    \begin{itemize}
+    \item
+      \alert{CPython} is a very simple bytecode VM, performance not great
+    \item
+      \alert{Psyco} is a just-in-time-specializer, very complex, hard to
+      maintain, but good performance
+    \item
+      \alert{Stackless} is a fork of CPython adding microthreads. It was never
+      incorporated into CPython for complexity reasons
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compilers are a bad encoding of Semantics}
+  \begin{itemize}
+  \item to reach good performance levels, dynamic compilation is often needed
+  \item a dynamic compiler needs to encoding language semantics
+  \item this encoding is often relatively obscure and hard to change
+  \end{itemize}
+  \pause
+  \begin{block}{
+    Python Case}
+    \begin{itemize}
+    \item
+      Psyco is a dynamic compiler for Python
+    \item
+      synchronizing with CPython's rapid development is a lot of effort
+    \item
+      many of CPython's new features not supported well
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Fixing of Early Design Decisions}
+  \begin{itemize}
+  \item when starting a VM in C, many decisions need to be made immediately
+  \item examples: memory management technique, threading model
+  \item the decision is manifested throughout the VM source
+  \item very hard to change later
+  \end{itemize}
+  \pause
+  \begin{block}{
+    Python Case}
+    \begin{itemize}
+    \item
+      CPython uses reference counting, increfs and decrefs everywhere
+    \item
+      CPython uses OS threads with one global lock, hard to change to
+      lightweight threads or finer locking
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Implementation Proliferation}
+  \begin{itemize}
+  \item
+    restrictions of the original implementation lead to re-implementations,
+    forks
+  \item
+    all implementations need to be syncronized with language evolution
+  \item
+    lots of duplicate effort
+  \end{itemize}
+  \pause
+  \begin{block}{
+    Python Case}
+    \begin{itemize}
+    \item
+      several serious implementations: CPython, Stackless, Psyco, Jython,
+      IronPython, PyPy
+    \item
+      the implementations have various grades of compliance
+    \end{itemize}
+  \end{block}
+\end{frame}
 
 \begin{frame}
   \frametitle{Title}
@@ -115,7 +194,6 @@
   \item
   \end{itemize}
 \end{frame}
-
 
 
 \end{document}
