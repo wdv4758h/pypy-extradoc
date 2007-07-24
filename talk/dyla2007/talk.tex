@@ -96,7 +96,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{The Problems of C}
+  \frametitle{Implementing VMs in C}
   When writing a VM in C it is hard to reconcile:
   \begin{itemize}
   \item
@@ -189,7 +189,109 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Title}
+  \frametitle{Implementing Languages on Top of OO VMs}
+  \begin{itemize}
+  \item
+    users wish to have easy interoperation with the OO VMs used by the industry
+    (JVM, CLR)
+  \item
+    bridges don't work that well (XXX maybe skip this)
+  \item
+    therefore re-implementations of the language on the OO VMs are started
+  \item
+    even more implementation proliferation
+  \item
+    implementing on top of an OO VM has its own set of problems
+  \end{itemize}
+  \pause
+  \begin{block}{
+    Python Case}
+    \begin{itemize}
+    \item
+      \alert{Jython} is a Python-to-Java-bytecode compiler
+    \item
+      \alert{IronPython} is a Python-to-CLR-bytecode compiler
+    \item
+      both are slightly incompatible with the newest CPython version (especially
+      Jython)
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Benefits of implementing on top of OO VMs}
+  \begin{itemize}
+  \item
+    higher level of implementation
+  \item
+    the VM supplies a GC and mostly a JIT
+  \item
+    better interoperability than what the C level provides
+  \item
+    some proponents believe that eventually one single VM should be enough
+  \end{itemize}
+  \pause
+  \begin{block}{
+    Python Case}
+    \begin{itemize}
+    \item
+      both Jython and IronPython allow easy access to the underlying VMs libraries
+    \item
+      XXX what else?
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The problems of OO VMs}
+  \begin{itemize}
+  \item
+    some of the benefits of OO VMs don't work out in practice
+  \item
+    most immediate problem: it be hard to map concepts of the dynamic lang to
+    the host OO VM
+  \item
+    performance is often not improved, and can be very bad, because of the
+    semantic mismatch between the dynamic language and the host VM
+  \item
+    poor interoperability with everything outside the OO VM
+  \item
+    in practice, one OO VM is not enough
+  \end{itemize}
+  \pause
+  \begin{block}{
+    Python Case}
+    \begin{itemize}
+    \item
+      Jython about 5 times slower than CPython
+    \item
+      IronPython is about as fast as CPython (but some introspection features
+      missing)
+    \item
+      XXX something about semantic mismatch?
+    \end{itemize}
+  \end{block}
+ 
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+  \begin{itemize}
+  \item
+  \end{itemize}
+  \pause
+  \begin{block}{
+    Python Case}
+    \begin{itemize}
+    \item
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{}
   \begin{itemize}
   \item
   \end{itemize}
