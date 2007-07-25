@@ -326,7 +326,7 @@
     many aspects of the final VM are orthogonal from the interpreter source:
     they are inserted during translation
   \item
-    ``monads'', with more ad-hoc control
+    translation aspect $\cong$ monads, with more ad-hoc control
   \end{itemize}
   \pause
   \begin{block}{
@@ -338,33 +338,84 @@
       Threading models (e.g.\ coroutines with CPS...)
     \item
       non-trivial translation aspect: auto-generating a dynamic compiler from
-      the interpreter % XXX maybe we really want to write more about this
+      the interpreter
     \end{itemize}
   \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{Good Points of the Approach}
+  {\bf Simplicity:}
+
   \begin{itemize}
   \item
     dynamic languages can be implemented in a high level language
   \item
-    doing this separates high-level from low-level concerns
+    separation of concerns from low-level details
   \item
-    generating various VMs from a single source interpreter, which is easy to
-    write
+    a potential single-source-fits-all interpreter --
+    less duplication of efforts
   \item
-    lots of flexibility at all levels:
+    runs everywhere with the same semantics --
+    no outdated implementations, no ties to any standard platform
+  \end{itemize}
+  \pause
+  \begin{block}{PyPy}
+     arguably the most readable Python implementation so far
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Good Points of the Approach}
+  {\bf Flexibility} at all levels:
+
+  \begin{itemize}
+  \item
+    when writing the interpreter (high-level languages rule!)
+  \item
+    when adapting the translation toolchain as necessary
+  \item
+    to break abstraction barriers when necessary
+  \end{itemize}
+  \pause
+  \begin{block}{
+    Example}
     \begin{itemize}
     \item
-      when writing the interpreter
+      boxed integer objects, represented as tagged pointers
     \item
-      also possible to adapt the translation toolchain if necessary
-    \item
-      this allows breaking of abstraction barriers, when necessary (e.g. tagged
-      integers)
+      manual system-level RPython code
     \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Good Points of the Approach}
+  {\bf Performance:}
+
+  \begin{itemize}
+  \item
+    ``reasonable'' performance
+  \item
+    can generate a dynamic compiler from the interpreter
+    (work in progress, 60x faster on very simple Python code)
   \end{itemize}
+  \pause
+  \begin{block}{
+    JIT compiler generator}
+    \begin{itemize}
+    \item
+      almost orthogonal from the interpreter source - applicable to many
+      languages, follows language evolution ``for free''
+    \item
+      based on Partial Evaluation
+    \item
+      benefits from a high-level interpreter and a tweakable translation
+      toolchain
+    \item
+      generating a dynamic compiler is easier than generating a static one!
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}
@@ -374,12 +425,13 @@
     writing the translation toolchain in the first place takes lots of effort
     (but it can be reused)
   \item
-    writing a good GC is still necessary. but: can we maybe reuse existing good
-    GCs (e.g. from the Jikes RVM)?
+    writing a good GC is still necessary. but: maybe we can reuse existing good
+    GCs (e.g.\ from the Jikes RVM)?
   \item
-    many abstraction layers
+    conceptually simple approach but many abstraction layers
   \item
-    dynamic compiler generation seems to work, but needs to be improved
+    dynamic compiler generation seems to work, but needs more efforts.
+    also: can we layer it on top of the JIT of a general purpose OO VM?
   \end{itemize}
 \end{frame}
 
@@ -391,13 +443,13 @@
   \item
     doing so has many benefits
   \item
-    VM's shouldn't be written by hand
+    VMs shouldn't be written by hand
   \item
     PyPy's concrete approach is not so important
   \item
     diversity is good
   \item
-    let's write more meta-programming tool-chains!
+    let's write more meta-programming toolchains!
   \end{itemize}
 \end{frame}
 
