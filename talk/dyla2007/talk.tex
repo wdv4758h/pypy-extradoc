@@ -15,7 +15,7 @@
 \usepackage{times}
 \usepackage[T1]{fontenc}
 
-\title{~~How to \underline{not} write Virtual Machines for ~Dynamic Languages}
+\title{How to \underline{not} write Virtual Machines for \mbox{Dynamic Languages}}
 
 \author{Carl Friedrich Bolz and Armin Rigo}
 
@@ -62,10 +62,28 @@
 %\end{frame}
 
 \begin{frame}
-  \frametitle{Introduction}
+  \frametitle{Scope}
+  This talk is about:
+
   \begin{itemize}
-  \item XXX intro, talk about scope
+  \item
+    implementing dynamic languages \par(with a focus on complicated ones)
+  \item
+    in a context of limited resources \par(academic, open source, or
+    domain-specific)
   \end{itemize}
+  \pause
+  \begin{block}{
+    Our point}
+    \begin{itemize}
+    \item
+      Do not write virtual machines ``by hand''
+    \item
+      Instead, write interpreters in high-level languages
+    \item
+      Meta-programming is your friend
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 
