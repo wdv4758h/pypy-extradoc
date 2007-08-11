@@ -60,9 +60,6 @@ Transformation approach
 
 - example - gc (modeled after Jikes MMtk)
 
-XXX side-by-side comparison of CPython and PyPy source code
-XXX string formatting sounds like a candidate
-
 Objspace concept
 ================
 
@@ -72,7 +69,9 @@ Objspace concept
 Taint objspace
 ==============
 
-XXX (picture probably is worth thousand words here)
+- intercepts all operations performed on objects
+
+.. image:: interpreterarch.png
 
 Multiple object implementation
 ==============================
@@ -101,7 +100,7 @@ Custom persistance scheme
 
 - using whatever storage mechanism
 
-- XXX
+- with desired granularity
 
 Sandboxing
 ==========
