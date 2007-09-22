@@ -1,0 +1,83 @@
+PyPy Göteborg Cleanup Sprint November 19 - November 25 2007
+===========================================================
+
+XXX
+
+Topics and goals
+----------------
+
+Meta-Tasks
+++++++++++
+
+ - Tracker-gardening
+ - Start slowly thinking about 1.1 plans
+
+Translation toolchain
++++++++++++++++++++++
+
+
+ - finish rctypes removal
+ - implement correct implicit GIL release
+
+ - move away from implicit keepalives
+ - raw_malloc should be split, rffi one should not use obmalloc (it's
+   not thread-safe)
+ - kill simulator, run the semi space tests on llinterp (may happen
+   before)
+ - have a moving gc correct version of the gc framework transformation
+ - delegate finding type stuff like vtables etc to GC, cleaner interface
+   for rtti, simplify translator/c/gc.py
+ - think about approaches to id, especially concerning boehm, where the
+   id will keep the object alive and concerning a moving GC
+
+ - clean up the tangle of including headers in the C backend
+
+ - review pdbplus, especially the graph commands, also in the light of
+   https://codespeak.net/issue/pypy-dev/issue303 and the fact that we
+   can have more than one translator/annotator around (with the
+   timeshifter)
+
+ - Kill half concrete wrapper
+ 
+ - Kill opaque hacks on the C backend
+  
+ - decide how to implement constants in rffi
+   
+ - think about/remove orphaned parts
+    
+ - finish ll2ctypes, especially rffi_platform
+
+Interpreter
++++++++++++
+
+ - there's a shadow tracking bug it seems
+
+ - fix taint space
+
+ - review the things implemented at applevel whether they are
+   performance-critical
+
+JIT
++++
+
+ - start writing real unit tests for the merging logic
+
+
+Location
+--------
+
+
+
+Registration
+------------
+
+If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
+and drop a note about your interests and post any questions.  More 
+organisational information will be send to that list.  We'll keep a list
+of `people`_ which we'll update (which you can do so yourself if you
+have codespeak commit rights).  If you have no clue where to stay in
+Bern ask around on the list, maybe we can help you find something or
+find some other solution.
+
+.. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
+.. _`people`: http://codespeak.net/pypy/extradoc/sprintinfo/gothenburg-2007/people.html
