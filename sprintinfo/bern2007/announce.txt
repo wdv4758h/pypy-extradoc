@@ -38,6 +38,8 @@ Topics of the sprint:
 - exploring ways to implement Squeaks bytecode-interpreter and the
   primitives in Python
 
+- or (maybe alternatively) implement a Squeak-backend for PyPy
+
 - think about how to load and store of images in PyPy
 
 
