@@ -10,6 +10,7 @@ available yet from them.
 ==================== ============== =====================
 Carl Friedrich Bolz  ?              ?
 Adrian Kuhn          -              private
+Niko Matsakis        22.10 / 26.10  private (Zurich)
 ==================== ============== =====================
 
 
@@ -27,7 +28,6 @@ Maciej Fijalkowski   ?              ?
 Andrew Thompson      ?              ?
 Stephan Diehl        ?              ?
 Eric van Riet paap   ?              ?
-Niko Matsakis        ?              ?
 Leonardo Santagada   ?              ?
 Richard Emslie       ?              ?
 Christian Tismer     ?              ?
