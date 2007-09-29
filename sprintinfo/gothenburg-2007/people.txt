@@ -9,6 +9,11 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Carl Friedrich Bolz  ?              ?
+Samuele Pedroni      lives in Göteborg     
+Anders Chrigstrom    lives in Göteborg
+Jacob Hallen         lives in Göteborg
+Laura Creighton      lives in Göteborg
+Christian Tismer			Laura and Jacob's House
 ==================== ============== =====================
 
 
@@ -20,7 +25,6 @@ People on the following list were present at previous sprints:
 Armin Rigo           ?              ?
 Michael Hudson       ?              ?
 Antonio Cuni         ?              ?
-Samuele Pedroni      ?              ?
 Anders Chrigstroem   ?              ?
 Maciej Fijalkowski   ?              ?
 Andrew Thompson      ?              ?
