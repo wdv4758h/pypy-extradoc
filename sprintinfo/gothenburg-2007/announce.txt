@@ -68,8 +68,21 @@ JIT
 Location
 --------
 
-The sprint will take place in the apartment of Laura Creighton and Jacob Hallén
-in Gothenburg.
+The sprint will be held in the apartment of Laura Creighton and Jacob Hallén
+which is at Götabergsgatan 22 in Gothenburg, Sweden.  Here is a map_.  This is
+in central Gothenburg.  It is between the tram_ stops of Vasaplatsen and Valand,
+where many lines call.
+
+.. _tram: http://www.vasttrafik.se
+
+.. _map: http://gulasidorna.eniro.se/query?stq=0&streetname=G%F6tabergsgatan+22%2C+G%F6teborg&what=map&asearch=1
+
+Probably cheapest and not too far away is to book accomodation at `SGS
+Veckobostader`_. There are also hotels to suit every price range and desire for
+luxury.  Just ask in the mailing list.
+
+.. _`SGS Veckobostader`: http://www.sgsveckobostader.com
+
 
 Registration
 ------------
