@@ -1,5 +1,5 @@
-PyPy GÃ¶teborg Cleanup Sprint November 19 - November 25 2007
-===========================================================
+PyPy Göteborg Cleanup Sprint November 19 - November 25 2007
+===============================================================
 
 The next post-EU-project PyPy sprint will be in Gothenburg, Sweden. It will
 focus on cleaning up the PyPy codebase and making it ready for the next round
@@ -68,8 +68,8 @@ JIT
 Location
 --------
 
-The sprint will be held in the apartment of Laura Creighton and Jacob HallÃ©n
-which is at GÃ¶tabergsgatan 22 in Gothenburg, Sweden.  Here is a map_.  This is
+The sprint will be held in the apartment of Laura Creighton and Jacob Hallén
+which is at Götabergsgatan 22 in Gothenburg, Sweden.  Here is a map_.  This is
 in central Gothenburg.  It is between the tram_ stops of Vasaplatsen and Valand,
 where many lines call.
 
