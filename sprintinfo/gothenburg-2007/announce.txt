@@ -1,7 +1,10 @@
 PyPy Göteborg Cleanup Sprint November 19 - November 25 2007
 ===========================================================
 
-XXX
+The first post-EU-project PyPy sprint will be in Gothenburg, Sweden. It will
+focus on cleaning up the PyPy codebase and making it ready for the next round
+of improvements. It is a "public" sprint but it will probably be more suitable
+for people already somewhat acquainted with PyPy.
 
 Topics and goals
 ----------------
