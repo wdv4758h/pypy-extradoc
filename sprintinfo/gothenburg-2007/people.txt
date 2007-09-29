@@ -9,11 +9,11 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Carl Friedrich Bolz  ?              ?
-Samuele Pedroni      lives in Göteborg     
-Anders Chrigstrom    lives in Göteborg
-Jacob Hallen         lives in Göteborg
-Laura Creighton      lives in Göteborg
-Christian Tismer			Laura and Jacob's House
+Samuele Pedroni      lives there     
+Anders Chrigstrom    lives there
+Jacob Hallen         lives there
+Laura Creighton      lives there
+Christian Tismer                    Laura and Jacob's
 ==================== ============== =====================
 
 
