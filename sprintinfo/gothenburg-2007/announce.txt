@@ -20,7 +20,6 @@ Translation toolchain
 
 
  - finish rctypes removal
- - implement correct implicit GIL release
 
  - move away from implicit keepalives
  - raw_malloc should be split, rffi one should not use obmalloc (it's
@@ -55,7 +54,7 @@ Interpreter
 
  - there's a shadow tracking bug it seems
 
- - fix taint space
+ - fix the taint space
 
  - review the things implemented at applevel whether they are
    performance-critical
@@ -69,7 +68,7 @@ JIT
 Location
 --------
 
-
+XXX
 
 Registration
 ------------
