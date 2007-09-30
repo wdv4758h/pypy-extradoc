@@ -14,6 +14,7 @@ Anders Chrigstrom    lives there
 Jacob Hallen         lives there
 Laura Creighton      lives there
 Christian Tismer                    Laura and Jacob's
+Maciej Fijalkowski   ?              ?
 ==================== ============== =====================
 
 
@@ -26,7 +27,6 @@ Armin Rigo           ?              ?
 Michael Hudson       ?              ?
 Antonio Cuni         ?              ?
 Anders Chrigstroem   ?              ?
-Maciej Fijalkowski   ?              ?
 Andrew Thompson      ?              ?
 Stephan Diehl        ?              ?
 Eric van Riet paap   ?              ?
