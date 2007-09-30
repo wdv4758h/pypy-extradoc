@@ -14,7 +14,7 @@ Anders Chrigstrom    lives there
 Jacob Hallen         lives there
 Laura Creighton      lives there
 Christian Tismer                    Laura and Jacob's
-Maciej Fijalkowski   ?              ?
+Maciej Fijalkowski   ?              Laura and Jacob's
 ==================== ============== =====================
 
 
