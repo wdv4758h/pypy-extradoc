@@ -1,0 +1,202 @@
+.. include:: <s5defs.txt>
+
+=======
+RPython
+=======
+
+A Step Towards Reconciling Dynamically and Statically Typed OO Languages
+------------------------------------------------------------------------
+
+:Author: Antonio Cuni - DISI, Università degli Studi di Genova
+:Date: 22 October 2007
+:Location: DLS'07 OOPSLA Montreal CA
+
+
+Dynamic languages for .NET and JVM
+==================================
+
+- .NET and JVM: widespread platforms
+
+- Designed for static languages
+
+- Great Python implementations: **IronPython**, **Jython**
+
+- Much slower than e.g. C# and Java
+
+
+Dynamic vs. static
+==================
+
+- Dynamic languages:
+
+  * Flexibility
+
+  * Rapid development cycle
+
+  * **Metaprogramming**
+
+- Static languages:
+
+  - Speed
+
+  - Nothing more :-)
+
+
+RPython Quick Facts
+===================
+
+- Restricted subset of Python
+
+- Statically typed (type inference)
+
+- Still allows metaprogramming
+
+- RPython programs still run under {C,J,Iron}Python
+
+- Three backends: C, .NET, JVM
+
+- Almost as fast as C, C#, Java
+
+
+Type inference
+==============
+
+- Top-down, starting from an entry point
+
+- Assign the most precise type to each variable
+
+- Fail if you try to mix incompatible types
+
+::
+
+  def main():                def not_RPython(flag):     
+      print add(40, 2)           if flag:               
+                                    return 42           
+  def add(a, b):                 else:                  
+      return a+b                    return 'hello world'
+                             
+
+Other restrictions
+==================
+
+- Globals are assumed to be constant
+
+- ``yield`` and generators not supported
+
+- No special __methods__
+
+- No run-time definition of new functions and classes
+
+- Cannot modify classes at run-time
+
+- Cannot change the __class__ of an object
+
+- Single inheritance, with limited support for mixins
+
+
+Still pythonic, though
+======================
+
+- No syntactic restriction
+
+- Functions and classes are first-order values
+
+- List and dictionaries works as in Python
+
+  * Although they must be homogeneous
+
+  * list of int, dict from string to floats, etc. are OK
+
+- Most of methods of ``list``, ``dict`` and ``str`` are supported
+
+- Exceptions work
+
+
+Init-time, translation-time, run-time
+=====================================
+
+.. image:: image/translation.png
+
+
+Metaprogramming
+===============
+
+- RPython restrictions only apply to live objects
+
+- No restrictions about how they are created
+
+  * Full Python is allowed at init-time
+
+- Python as a metaprogramming language for RPython
+
+- Code generation considered harmful
+
+
+Compute complex constants
+=========================
+
+::
+
+  def fibo(N):
+      sequence = []
+      a, b = 1, 1
+      for i in xrange(N):
+          sequence.append(a)
+          a, b = b, a+b
+      return sequence
+
+  fibo_numbers = fibo(100)  # computed at init-time
+
+
+Metaclasses run at init-time
+============================
+
+::
+
+  class MyClass(object):
+      def foo(self):  ...
+
+  class __extend__(MyClass):
+      def bar(self):  ...
+
+  def main():
+      obj = MyClass()
+      obj.bar()
+
+
+Dynamic classes/functions at init-time
+======================================
+
+::
+
+  def make_adder(N):
+      def add(x):
+          return x+N
+      return add
+
+  add10 = make_adder(10)
+  add20 = make_adder(20)
+  def main():
+      print add10(32)
+      print add20(22)
+
+
+The Translation Toolchain
+=========================
+
+- **CPython**: \*.py --> Python bytecode
+
+- **FlowObjSpace**: bytecode --> flow graphs
+
+- **Annotator**: type inference on flow graphs
+
+  * High level Python types (``List(Integer)``)
+
+- **RTyper**: high level types -> low level types
+
+  * lltype for C, ootype for CLI and JVM
+
+- **Backends**: code generation
+
+  * C, CLI (.NET), JVM
+
