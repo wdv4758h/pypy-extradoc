@@ -5,14 +5,14 @@ People who have a ``?`` in their arrive/depart or accomodation
 column are known to be coming but there are no details 
 available yet from them.
 
-==================== ============== =====================
+==================== ================= =====================
     Name              Arrive/Depart     Accomodation 
-==================== ============== =====================
-Carl Friedrich Bolz  ?              ?
-Adrian Kuhn          -              private
-Niko Matsakis        22.10 / 26.10  private (Zurich)
-Armin Rigo           ?              ?
-==================== ============== =====================
+==================== ================= =====================
+Carl Friedrich Bolz  ?                  ?
+Adrian Kuhn          -                  private
+Niko Matsakis        22.10 / 26.10      private (Zurich)
+Armin Rigo           22.10(9:26)/26.10  at the Uni
+==================== ================= =====================
 
 
 People on the following list were present at previous sprints: 
