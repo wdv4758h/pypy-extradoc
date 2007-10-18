@@ -83,7 +83,7 @@ Other restrictions
 
 - ``yield`` and generators not supported
 
-- No special __methods__
+- No special __methods__ (except __init__ and __del__)
 
 - No run-time definition of new functions and classes
 
@@ -236,7 +236,7 @@ Things to improve
 
 - Originally an implementation detail
 
-- Not designed to be user-friendly; crazy error messages
+- Not designed to be user-friendly; terse error messages
 
 - Lack of documentation/reference manual
 
