@@ -15,6 +15,7 @@ Jacob Hallen         lives there
 Laura Creighton      lives there
 Christian Tismer                    Laura and Jacob's
 Maciej Fijalkowski   19-26          Laura and Jacob's
+Armin Rigo           lives thereish
 ==================== ============== =====================
 
 
@@ -23,7 +24,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
-Armin Rigo           ?              ?
 Michael Hudson       ?              ?
 Antonio Cuni         ?              ?
 Anders Chrigstroem   ?              ?
