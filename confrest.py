@@ -9,7 +9,7 @@ class PyPyPage(Page):
             html.a("doc", href="/pypy/dist/pypy/doc/index.html", class_="menu"), " ",
             html.a("contact", href="/pypy/dist/pypy/doc/contact.html", class_="menu"), " ", 
             html.a("getting-started", 
-                   href="/pypy/dist/doc/getting-started.html", class_="menu"), " ",
+                   href="/pypy/dist/pypy/doc/getting-started.html", class_="menu"), " ",
             html.a("issue", 
                    href="https://codespeak.net/issue/pypy-dev/", 
                    class_="menu"), 
