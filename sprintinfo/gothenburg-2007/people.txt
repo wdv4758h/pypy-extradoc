@@ -26,29 +26,23 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
 Michael Hudson       ?              ?
 Antonio Cuni         ?              ?
-Anders Chrigstroem   ?              ?
 Andrew Thompson      ?              ?
 Stephan Diehl        ?              ?
 Eric van Riet paap   ?              ?
 Niko Matsakis        ?              ?
 Leonardo Santagada   ?              ?
 Richard Emslie       ?              ?
-Christian Tismer     ?              ?
 Alexander Schremmer  ?              ?
-Jacob Hallen         ?              ?
 Aurelien Campeas     ?              ?
 Alexandre Fayolle    ?              ?
 Lene Wagner          ?              ?
 Amaury Forgeot d'Arc ?              ?
 Valentino Volonghi   ?              ?
-Boris Feigin	     ?              ?
+Boris Feigin	       ?              ?
 Bert Freudenberg     ?              ?
-Laura Creighton      ?              ?
 Beatrice Duering     ?              ?
 Johan Hahn           ?              ?
 Holger Krekel        ?              ?
-Anders Chrigstroem   ?              ?
-Samuele Pedroni      ?              ?
 Anders Lehmann       ?              ? 
 Niklaus Haldimann    ?              ?
 ==================== ============== =====================
