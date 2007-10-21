@@ -331,7 +331,7 @@ def main():
 \begin{frame}
   \frametitle{About PyPy (1)}
 
-  \begin{alertblock}{Pyton in (R)Python}
+  \begin{alertblock}{Python in (R)Python}
     \begin{itemize}
     \item High level interpreter written in RPython
     \item Easy to understand
