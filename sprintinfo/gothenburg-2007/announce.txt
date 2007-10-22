@@ -48,6 +48,8 @@ Translation toolchain
  - think about/remove orphaned parts
     
  - finish ll2ctypes, especially rffi_platform
+ 
+ - remove orebuilt costate vars  (might happen before)
 
 Interpreter
 +++++++++++

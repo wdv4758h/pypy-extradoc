@@ -13,7 +13,7 @@ Samuele Pedroni      lives there
 Anders Chrigstrom    lives there
 Jacob Hallen         lives there
 Laura Creighton      lives there
-Christian Tismer                    Laura and Jacob's
+Christian Tismer     18-26          Laura and Jacob's
 Maciej Fijalkowski   19-26          Laura and Jacob's
 Armin Rigo           lives thereish
 ==================== ============== =====================
@@ -38,7 +38,7 @@ Alexandre Fayolle    ?              ?
 Lene Wagner          ?              ?
 Amaury Forgeot d'Arc ?              ?
 Valentino Volonghi   ?              ?
-Boris Feigin	       ?              ?
+Boris Feigin	     ?              ?
 Bert Freudenberg     ?              ?
 Beatrice Duering     ?              ?
 Johan Hahn           ?              ?
