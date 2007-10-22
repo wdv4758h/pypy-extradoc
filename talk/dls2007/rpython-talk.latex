@@ -16,17 +16,31 @@
 \usetheme{Boadilla}
 %\usetheme{Warsaw}
 \setbeamercovered{transparent}
+\setbeamertemplate{navigation symbols}{}
 
 \title[RPython, a dynamic static language]{RPython\\A Step Towards Reconciling Dynamically and Statically Typed OO Languages}
-\author[Antonio Cuni]{Antonio Cuni -- DISI, Università degli Studi di Genova}
+\author[Antonio Cuni]{Antonio Cuni -- DISI, Università degli Studi di Genova\\\small{joint work with D. Ancona, M. Ancona, N. D. Matsakis}}
 \institute[DSL'07 OOPSLA]{DLS'07 OOPSLA Montreal CA}
 \date{October 22, 2007}
+
+ % outline
+\AtBeginSection[]
+{
+ \begin{frame}
+  \frametitle{Outline}
+  \small
+  \tableofcontents[currentsection,hideothersubsections]
+  \normalsize
+ \end{frame}
+}
 
 \begin{document}
 
 \begin{frame}
   \titlepage
 \end{frame}
+
+\section{Introduction to RPython}
 
 \begin{frame}
   \frametitle{Dynamic languages for .NET and JVM}
@@ -63,12 +77,12 @@
   \frametitle{RPython Quick Facts}
 
   \begin{itemize}
-  \item Restricted subset of Python
-  \item Statically typed (type inference)
+  \item \textbf{Restricted subset} of Python
+  \item Statically typed (\textbf{type inference})
   \item Still allows metaprogramming
   \item RPython programs still run under {\{}C,J,Iron{\}}Python
   \item Three backends: C, .NET, JVM
-  \item Almost as fast as C, C{\#}, Java
+  \item \textbf{Almost as fast} as C, C{\#}, Java
   \end{itemize}
 \end{frame}
 
@@ -117,13 +131,13 @@ def fn(flag):
   \frametitle{Other restrictions}
 
   \begin{itemize}
-  \item Globals are assumed to be constant
+  \item Globals are assumed to be \textbf{constant}
   \item \texttt{yield} and generators not supported
   \item No special \_\_methods\_\_ (except \_\_init\_\_ and \_\_del\_\_) 
   \item No run-time definition of new functions and classes
   \item Cannot modify classes at run-time
   \item Cannot change the {\_}{\_}class{\_}{\_} of an object
-  \item Single inheritance, with limited support for mixins
+  \item \textbf{Single inheritance}, with limited support for mixins
   \end{itemize}
 \end{frame}
 
@@ -171,6 +185,7 @@ def fn(flag):
   \end{itemize}
 \end{frame}
 
+\section{RPython idioms}
 
 \begin{frame}[fragile]
   \frametitle{Compute complex constants}
@@ -231,6 +246,7 @@ def main():
   \end{exampleblock}
 \end{frame}
 
+\section{Implementation notes and benchmarks}
 
 \begin{frame}
   \frametitle{The Translation Toolchain}
@@ -241,7 +257,7 @@ def main():
     \begin{itemize}
     \item High level Python types (\texttt{List(Integer)})
     \end{itemize}
-  \item \textbf{RTyper}: high level types -{\textgreater} low level types
+  \item \textbf{RTyper}: high level types -{}-{\textgreater} low level types
     \begin{itemize}
     \item lltype for C, ootype for CLI and JVM
     \end{itemize}
@@ -301,6 +317,7 @@ def main():
   \end{itemize}
 \end{frame}
 
+\section{Conclusions}
 
 \begin{frame}
   \frametitle{What's good about RPython}
@@ -329,7 +346,7 @@ def main():
 
 
 \begin{frame}
-  \frametitle{About PyPy (1)}
+  \frametitle{About PyPy}
 
   \begin{alertblock}{Python in (R)Python}
     \begin{itemize}
@@ -349,28 +366,28 @@ def main():
   \end{alertblock}
 \end{frame}
 
-\begin{frame}
-  \frametitle{About PyPy (2)}
+%\begin{frame}
+%  \frametitle{About PyPy (2)}
 
-  \begin{alertblock}{Low-level aspects inserted by the TT}
-    \begin{itemize}
-    \item Garbage collector
-    \item Threading model/Stackless
-    \item Additional language features
-    \item JIT compiler (only for the C backend so far)
-    \end{itemize}
-  \end{alertblock}
+%  \begin{alertblock}{Low-level aspects inserted by the TT}
+%    \begin{itemize}
+%    \item Garbage collector
+%    \item Threading model/Stackless
+%    \item Additional language features
+%    \item JIT compiler (only for the C backend so far)
+%    \end{itemize}
+%  \end{alertblock}
 
-  \pause
-  \begin{alertblock}{PyPy you can get}
-    \begin{itemize}
-    \item pypy-c (about 2x slower than CPython)
-    \item pypy-c-jit (up to 60x \textbf{faster} than CPython)
-    \item pypy.NET (about 6x slower than IronPython)
-    \item pypy-jvm (about 30\% \textbf{faster} than Jython)
-  \end{itemize}
-  \end{alertblock}
-\end{frame}
+%  \pause
+%  \begin{alertblock}{PyPy you can get}
+%    \begin{itemize}
+%    \item pypy-c (about 2x slower than CPython)
+%    \item pypy-c-jit (up to 60x \textbf{faster} than CPython)
+%    \item pypy.NET (about 6x slower than IronPython)
+%    \item pypy-jvm (about 30\% \textbf{faster} than Jython)
+%  \end{itemize}
+%  \end{alertblock}
+%\end{frame}
 
 
 \begin{frame}
@@ -379,11 +396,11 @@ def main():
   \item The whole PyPy Team
     \begin{itemize}
     \item RPython is \textbf{not} mine :-)
+    \item Our contributions: CLI and JVM backends
     \end{itemize}
 
-  \item Davide Ancona
-  \item Massimo Ancona
-  \item Nicholas D. Matsakis
+  \item Thanks for the attention
+  \item Any question?
   \end{itemize}
 \end{frame}
 
