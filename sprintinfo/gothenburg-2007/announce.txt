@@ -46,9 +46,9 @@ Translation toolchain
  - decide how to implement constants in rffi
    
  - think about/remove orphaned parts
+
+ - implement callback mechanism for rffi/lltype/ll2ctypes
     
- - finish ll2ctypes, especially rffi_platform
- 
  - remove orebuilt costate vars  (might happen before)
 
 Interpreter
@@ -60,6 +60,8 @@ Interpreter
 
  - review the things implemented at applevel whether they are
    performance-critical
+
+ - app-level ctypes
 
 JIT
 +++
