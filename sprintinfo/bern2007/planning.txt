@@ -1,0 +1,34 @@
+People present
+--------------
+
+Carl Friedrich
+Armin
+Adrian K
+Tudor
+Lukas
+Oscar
+Adrian L
+Toon
+Niko
+
+Task ideas
+----------
+
+- Print the blue book (Adrian K)
+
+- Solve the svn problem (Armin)
+
+- Complete the simple model (a bit all)
+
+Afterwards:
+-----------
+
+- Think about loading the image (Adrian K, Carl Friedrich)
+
+- interpreter loop and bytecode dispatch (Armin, Adrian L,
+  Lukas, Toon)
+
+- think about implementing numbered primitives (arithmetic)
+  (Niko, Tudor, Oscar)
+
+
