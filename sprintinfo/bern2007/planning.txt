@@ -4,31 +4,43 @@ People present
 Carl Friedrich
 Armin
 Adrian K
-Tudor
-Lukas
-Oscar
-Adrian L
 Toon
-Niko
+Niko (virtually)
 
 Task ideas
 ----------
 
-- Print the blue book (Adrian K)
+- Print the blue book (Adrian K) DONE
 
-- Solve the svn problem (Armin)
+- Solve the svn problem (Armin) DONE
 
-- Complete the simple model (a bit all)
+- Complete the simple model (a bit all) DONE
 
 Afterwards:
 -----------
 
-- Think about loading the image (Adrian K, Carl Friedrich)
+- Implement loading the image (Adrian K, Carl Friedrich) IN PROGRESS
 
 - interpreter loop and bytecode dispatch (Armin, Adrian L,
-  Lukas, Toon)
+  Lukas, Toon) DONE
 
-- think about implementing numbered primitives (arithmetic)
-  (Niko, Tudor, Oscar)
+- implementing numbered primitives (arithmetic)
+  (Niko, Tudor, Oscar) IN PROGRESS
+  - begin implementing the base image, including class objects
+  - templates for the math operations more or less complete, except for
+    promoting from small to large integer
+  - plenty of primitives to go :) (guess that's about it)
+
+- implement all the bytecodes (Armin, Toon, Lukas, Adrian L) IN PROGRESS
+
+- define a common interface for real image and mock image (Niko, Carl
+  Friedrich, Adrian K)
+
+- try to generate the fib example and fight with RPython :)
+  (Armin, together to teach the smalltalkers)
+
+- write the report for yesterday (Carl Friedrich, Adrian K)
+
+okay, done.
 
 
