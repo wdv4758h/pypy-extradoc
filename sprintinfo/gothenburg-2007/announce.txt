@@ -39,17 +39,15 @@ Translation toolchain
    can have more than one translator/annotator around (with the
    timeshifter)
 
- - Kill half concrete wrapper
+ - kill half concrete wrapper
  
- - Kill opaque hacks on the C backend
+ - kill opaque hacks on the C backend
   
  - decide how to implement constants in rffi
    
  - think about/remove orphaned parts
 
  - implement callback mechanism for rffi/lltype/ll2ctypes
-    
- - remove orebuilt costate vars  (might happen before)
 
 Interpreter
 +++++++++++
@@ -62,6 +60,8 @@ Interpreter
    performance-critical
 
  - app-level ctypes
+    
+ - remove prebuilt costate vars  (might happen before)
 
 JIT
 +++
