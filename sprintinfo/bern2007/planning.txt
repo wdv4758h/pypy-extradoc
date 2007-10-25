@@ -4,42 +4,47 @@ People present
 Carl Friedrich
 Armin
 Adrian K
-Toon
-Niko (virtually)
+Toon (still sleeping for now)
+Niko
+Oscar
+Lukas
+Tudor
 
 Task ideas
 ----------
 
-- Print the blue book (Adrian K) DONE
+- give everybody an account (arigo)
 
-- Solve the svn problem (Armin) DONE
+- present coding conventions (cfbolz)
 
-- Complete the simple model (a bit all) DONE
+- present the "mirror" ("shadow"?) (cfbolz, arigo)
 
 Afterwards:
 -----------
 
-- Implement loading the image (Adrian K, Carl Friedrich) IN PROGRESS
+- Implement loading the image (Adrian K, Carl Friedrich)
+  MOSTLY DONE, the mapping between the loaded object and
+  the ones expected by the rest of the code is incomplete
+  (cfbolz, akuhn)
 
 - interpreter loop and bytecode dispatch (Armin, Adrian L,
   Lukas, Toon) DONE
 
-- implementing numbered primitives (arithmetic)
-  (Niko, Tudor, Oscar) IN PROGRESS
-  - begin implementing the base image, including class objects
-  - templates for the math operations more or less complete, except for
-    promoting from small to large integer
-  - plenty of primitives to go :) (guess that's about it)
+- implementing numbered primitives MORE PROGRESS (lukas,
+  cfbolz, niko)
+  - still more to go
 
-- implement all the bytecodes (Armin, Toon, Lukas, Adrian L) IN PROGRESS
+- implement all the bytecodes (Armin, Toon, Lukas, Adrian L)
+  MOSTLY DONE
 
 - define a common interface for real image and mock image (Niko, Carl
-  Friedrich, Adrian K)
+  Friedrich, Adrian K) DONE
 
 - try to generate the fib example and fight with RPython :)
   (Armin, together to teach the smalltalkers)
 
-- write the report for yesterday (Carl Friedrich, Adrian K)
+- write the report for yesterday (Carl Friedrich, Adrian K,
+  ...)
 
 okay, done.
 
