@@ -66,6 +66,7 @@ Interpreter
 JIT
 +++
 
+ - repair the JIT tests (if it doesn't happen before), the keep alive killing merge broke them
  - start writing real unit tests for the merging logic
 
 
