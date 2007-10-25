@@ -13,11 +13,11 @@ Tudor
 Task ideas
 ----------
 
-- give everybody an account (arigo)
+- give everybody an account (arigo) DONE
 
-- present coding conventions (cfbolz)
+- present coding conventions (cfbolz) DONE
 
-- present the "mirror" ("shadow"?) (cfbolz, arigo)
+- present the "shadow" (cfbolz, arigo) DONE
 
 Afterwards:
 -----------
