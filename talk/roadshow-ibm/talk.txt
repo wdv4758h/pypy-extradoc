@@ -1,5 +1,8 @@
 .. include:: <s5defs.txt>
 
+========================================================================
+PyPy - automatic generation of VMs for dynamic languages - JIT included
+========================================================================
 
 Translation aspects
 ========================
