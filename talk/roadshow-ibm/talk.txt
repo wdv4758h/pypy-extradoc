@@ -259,7 +259,7 @@ Promotion (example)
 |                                                                            | | ``def f_(x, y):``                                           |
 |                                                                            | |   ``switch x:``                                             |
 |                                                                            | |     *case 3:*                                               |
-|                                                                            | |       *return 9 + y*                                        |
+|                                                                            | |       *return 9 + y*y                                       |
 |                                                                            | |   ``default:``                                              |
 |                                                                            | |     ``compile_more(value=x)``                               |
 |                                                                            | |                                                             |
