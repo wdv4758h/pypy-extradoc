@@ -38,34 +38,20 @@ GC Framework
   roots is inserted by the GC framework
 
 - Inlining is used to eliminate call overhead for the fast paths of
-  allocation (XXX not only of allocation, of the write barrier and the root bookkeeping too. do you want to mention that?)
+  allocation and barriers
 
 .. MMTk reference
 
 Stackless transformation
 =========================
 
-- One translation aspect transformation inserts support code across
-  around calls such that the stack can be unwind and function asked to
+- One translation aspect transformation inserts support code
+  around calls such that the stack can be unwound and functions asked to
   store and reflect their current activation frame state to the heap
-
-XXX mention that this works regardless of the backend or something?
 
 - Chains of saved activation state can then be resumed
 
 - We have implemented coroutine switching using this
-
-Resume points
-===============
-
-
-- this transformation can also insert code that allows to construct
-  artificial chains of activation states corresponding to labeled points in the
-  program
-
-- we use this to construct resumable low-level activation
-  chains from information captured as serialized language level frame
-  chains. XXX a bit hard to understand
 
 Flexibility vs. Performance
 =============================
@@ -318,7 +304,9 @@ Implementers are free to implement languages as **understandable interpreters**.
 
 PyPy proves this a viable approach worth of further exploration.
 
-.. EXTRA MATERIAL:
+EXTRA MATERIAL
+==================
+
 .. backend material: not for the general talk
 .. virtualizables: not for general talk
 .. state of gc framework
@@ -347,3 +335,14 @@ Virtualizable Frames
   and stack
 - outside world access gets intercepted
   to be able to force lazy virtual data into the heap
+
+
+Resume points
+===============
+
+- this transformation can also insert code that allows to construct
+  artificial chains of activation states corresponding to labeled points in the
+  program
+
+- we use this to support resuming serialized language-level coroutines
+
