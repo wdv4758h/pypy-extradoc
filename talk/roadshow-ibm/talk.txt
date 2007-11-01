@@ -12,9 +12,9 @@ Translation aspects
   changes to the interpreters
 
 - The interpreters instead should use support offered and inserted by
-  the framework
+  the translation framework
 
-Examples: gc and memory management, stack inspection and manipulation
+Examples: GC and memory management, stack inspection and manipulation
 
 Implementation
 ==================
@@ -23,31 +23,33 @@ Implementation
   graphs
 
 - Calls to library/helper code written in RPython can be inserted
-   too which will also be analyzed and translated
+  too which will also be analyzed and translated
 
 GC Framework
 ===============
 
-- RPython has been extended with allocation and adress manipulation
+- RPython has been extended with allocation and address manipulation
   primitives that can be used to express GC in RPython directly
 
 - GCs are linked by substituting memory allocation operations with calls
   into them
 
-- Right now bookeeping code to keep track of reference counting or
+- Right now bookkeeping code to keep track of reference counting or
   roots is inserted by the GC framework
 
 - Inlining is used to eliminate call overhead for the fast paths of
-  allocation
+  allocation (XXX not only of allocation, of the write barrier and the root bookkeeping too. do you want to mention that?)
 
 .. MMTk reference
 
 Stackless transformation
 =========================
 
-- One translation aspect transformation insertes support code across
+- One translation aspect transformation inserts support code across
   around calls such that the stack can be unwind and function asked to
   store and reflect their current activation frame state to the heap
+
+XXX mention that this works regardless of the backend or something?
 
 - Chains of saved activation state can then be resumed
 
@@ -56,11 +58,14 @@ Stackless transformation
 Resume points
 ===============
 
-- Further this transformation can insert code tha allows to construct
-  chains of activation states corresponding to labeled points in the
-  program, we use this to construct resumable low-level activation
+
+- this transformation can also insert code that allows to construct
+  artificial chains of activation states corresponding to labeled points in the
+  program
+
+- we use this to construct resumable low-level activation
   chains from information captured as serialized language level frame
-  chains.
+  chains. XXX a bit hard to understand
 
 Flexibility vs. Performance
 =============================
