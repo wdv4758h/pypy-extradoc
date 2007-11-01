@@ -53,8 +53,10 @@ Stackless transformation
 
 - We have implemented coroutine switching using this
 
-Flexibility vs. Performance
-=============================
+A special aspect: JIT generation
+==================================
+
+Flexibility vs. Performance:
 
 * Interpreters are easy to write and evolve
 
