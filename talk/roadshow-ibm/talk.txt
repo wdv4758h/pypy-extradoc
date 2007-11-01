@@ -105,6 +105,8 @@ Language-agnostic
 pypy-c-jit
 ======================
 
+.. where to put this? 
+
 PyPy 1.0 contains both the dynamic compiler generator and the start of
 its application to PyPy's Python intepreter.
 
@@ -180,8 +182,6 @@ seen runtime values
 
 .. need to save state in a compact form: paths
 
-.. demo?
-
 Promotion (example)
 ========================
 
@@ -251,4 +251,32 @@ Implementers are free to implement languages as **understandable interpreters**.
 
 PyPy proves this a viable approach worth of further exploration.
 
+.. EXTRA MATERIAL:
+.. backend material: not for the general talk
+.. virtualizables: not for general talk
+.. state of gc framework
 
+Open Issues
+==============
+
+- inlining control
+
+- promotion switch explosion fallbacks
+
+- jit only the hot-spots
+
+- more hints needed in PyPy's Python
+
+Virtualizable Frames
+======================
+
+- frames need to live in the heap
+  (tracebacks ...) and be introspectable
+- jit code wants local variables to live in registers
+  and on the stack
+- => mark the frame class as "virtualizable"
+- jit code uses lazy allocation and stores
+  some contents (local variables...) in register
+  and stack
+- outside world access gets intercepted
+  to be able to force lazy virtual data into the heap
