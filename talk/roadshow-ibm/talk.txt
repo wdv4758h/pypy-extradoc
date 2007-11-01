@@ -5,7 +5,7 @@ Translation aspects
 ========================
 
 - The interpreters that we write should be free of low-level details
-  (this is also required to target platform as different as Posix/C
+  (this is also required to target platforms as different as Posix/C
   and the JVM/.NET)
 
 - Advanced features related to execution should not need wide-spread
@@ -60,7 +60,7 @@ Flexibility vs. Performance:
 
 * Interpreters are easy to write and evolve
 
-* For high performance dynamic compilation is required
+* For high performance, dynamic compilation is required
 
 Traditional JIT compilers
 ===============================
