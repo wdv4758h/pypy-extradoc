@@ -1,5 +1,67 @@
 .. include:: <s5defs.txt>
 
+
+Translation aspects
+========================
+
+- The interpreters that we write should be free of low-level details
+  (this is also required to target platform as different as Posix/C
+  and the JVM/.NET)
+
+- Advanced features related to execution should not need wide-spread
+  changes to the interpreters
+
+- The interpreters instead should use support offered and inserted by
+  the framework
+
+Examples: gc and memory management, stack inspection and manipulation
+
+Implementation
+==================
+
+- Translation aspects are implemented as transformation of low-level
+  graphs
+
+- Calls to library/helper code written in RPython can be inserted
+   too which will also be analyzed and translated
+
+GC Framework
+===============
+
+- RPython has been extended with allocation and adress manipulation
+  primitives that can be used to express GC in RPython directly
+
+- GCs are linked by substituting memory allocation operations with calls
+  into them
+
+- Right now bookeeping code to keep track of reference counting or
+  roots is inserted by the GC framework
+
+- Inlining is used to eliminate call overhead for the fast paths of
+  allocation
+
+.. MMTk reference
+
+Stackless transformation
+=========================
+
+- One translation aspect transformation insertes support code across
+  around calls such that the stack can be unwind and function asked to
+  store and reflect their current activation frame state to the heap
+
+- Chains of saved activation state can then be resumed
+
+- We have implemented coroutine switching using this
+
+Resume points
+===============
+
+- Further this transformation can insert code tha allows to construct
+  chains of activation states corresponding to labeled points in the
+  program, we use this to construct resumable low-level activation
+  chains from information captured as serialized language level frame
+  chains.
+
 Flexibility vs. Performance
 =============================
 
