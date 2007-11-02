@@ -4,6 +4,35 @@
 PyPy - automatic generation of VMs for dynamic languages - JIT included
 ========================================================================
 
+What is PyPy?
+==============
+
+PyPy is:
+
+* A fun and challenging  open source project with many contributors
+
+* An open source implementation of Python  (written in Python)
+
+* A tool-chain with a *new paradigm* for building interpreters
+
+* Dec 2004 - March 2007: a research project funded by the EU
+  and companies.
+
+Motivation
+=============
+
+Conventional interpreters face hard trade-offs:
+*speed - maintainability - flexibility*
+
+A lot of decisions are hard-coded pervasively, improvements
+and evolution are hampered (e.g. psyco, stackless)
+
+Lots of duplication of effort to cover many platforms (C, Java, .NET).
+
+*It should be possible to do better.*
+
+
+
 Translation aspects
 ========================
 
@@ -175,6 +204,9 @@ its application to PyPy's Python intepreter.
 
 .. demo f1
 
+EXTRA MATERIAL
+==================
+
 The transformation
 ==================================
 
@@ -309,8 +341,6 @@ Implementers are free to implement languages as **understandable interpreters**.
 
 PyPy proves this a viable approach worth of further exploration.
 
-EXTRA MATERIAL
-==================
 
 .. backend material: not for the general talk
 .. virtualizables: not for general talk
