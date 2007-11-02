@@ -10,6 +10,9 @@ What is PyPy?
 
 PyPy is a tool-chain with a *new paradigm* for building interpreters:
 
+It challenges the following commonly-held assumptions about the
+construction of interpreters for dynamic languages.
+
 * Speed
 
 * Maintainability
