@@ -4,19 +4,29 @@
 PyPy - automatic generation of VMs for dynamic languages - JIT included
 ========================================================================
 
+
 What is PyPy?
 ==============
 
-PyPy is:
+PyPy is a tool-chain with a *new paradigm* for building interpreters:
+
+* Speed
+
+* Maintainability
+
+* Flexibility
+
+* ...and ease of implementation
+
+What is PyPy?
+==============
 
 * A fun and challenging  open source project with many contributors
 
 * An open source implementation of Python  (written in Python)
 
-* A tool-chain with a *new paradigm* for building interpreters
-
-* Dec 2004 - March 2007: a research project funded by the EU
-  and companies.
+* Dec 2004 - March 2007: a research project funded by the European
+  Union and companies.
 
 Motivation
 =============
