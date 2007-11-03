@@ -56,6 +56,45 @@ Implications?
 
 * The translation framework can be reused by _any_ dynamic language!
 
+Translation details
+=======================
+
+- RPython translation starts from loaded and initialized RPython
+  code as python bytecode in a Python VM.
+
+- PyPy uses abstract interpretation extensively: to construct flow-graphs,
+  for type inference, to gather information for some optimisations
+
+- Obviously in the PE based generated Dynamic Compilers
+
+- Flow-graph transformation and rewriting is also used 
+
+Representation choice
+========================
+
+A complex part of RPython translation is choosing implementations
+and representations of its still rich built-in types that work for
+the target platforms (C/LLVM vs. OO VMs)
+
+We model the classes of targets through different type systems:
+
+- low-level: data and function pointers, structures, ...
+- object oriented: classes, instances, inheritance and dispatching
+
+Type systems and helpers
+===========================
+
+We have emulation of the type systems that can run on top of CPython,
+we use them for testing but also for:
+
+- constructing and representing the static data that our approach involves
+  (we start from live objects) at translation time
+
+- the implementation of built-in type for the targets require helper functions:
+  they are expressed using the emulations which our translation knows about
+  and can translate too
+
+
 Translation aspects
 ========================
 
