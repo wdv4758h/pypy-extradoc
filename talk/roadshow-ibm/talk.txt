@@ -10,41 +10,51 @@ What is PyPy?
 
 PyPy is a tool-chain with a *new paradigm* for building interpreters:
 
-It challenges the following commonly-held assumptions about the
+It challenges commonly held assumptions about the
 construction of interpreters for dynamic languages.
 
-* Speed
-
-* Maintainability
-
-* Flexibility
-
-* ...and ease of implementation
-
-What is PyPy?
+What we Reject
 ==============
+* Interpreters for Dynamic Languages must be slow
 
-* A fun and challenging  open source project with many contributors
+* Fast, Maintainable, Flexible -- pick one
 
-* An open source implementation of Python  (written in Python)
+* C is the most appropriate language for implementing interpreters.
 
-* Dec 2004 - March 2007: a research project funded by the European
-  Union and companies.
+* C++ is the most appropriate language for implementing interpreters.
 
-Motivation
+* Requiring type-hints everywhere, thus turning your dynamic language
+  into a static one, on the sly
+
+What we insist upon
+===================
+
+* real source code portability between different target implementations
+
+* support for an actual existing dynamic language, not an academic toy
+
+* support for the complete language, not a subset
+
+* The interpreter we write should be free of low-level details as possible
+
+* the ability to experiement with all aspects of the compiler, including
+  garbage collection strategies, threading models, security models
+
+* fun
+
+Implications?
 =============
 
-Conventional interpreters face hard trade-offs:
-*speed - maintainability - flexibility*
+* type analysis must be performed on live code objects, not dead source trees
 
-A lot of decisions are hard-coded pervasively, improvements
-and evolution are hampered (e.g. psyco, stackless)
+* parts of the interpreter must be written in a static manner.
 
-Lots of duplication of effort to cover many platforms (C, Java, .NET).
+* Generate compilers using partial evaluation techniques.  Don't write them
+  by hand!
 
-*It should be possible to do better.*
+* Build a toolchain with pluggable components, for e.g. garbage collection
 
-
+* The translation framework can be reused by _any_ dynamic language!
 
 Translation aspects
 ========================
