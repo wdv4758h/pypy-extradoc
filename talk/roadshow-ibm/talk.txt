@@ -16,7 +16,7 @@ such languages.
 
 What PyPy does is setup enough infrastructure such that speed is regained
 and features requiring low-level manipulations are (re-)added as aspects
-without cluttering the intepreter.
+without cluttering the interpreter.
 
 Targets as different as C and the industry OO VMs (JVM, CLR) are supported.
 
@@ -32,7 +32,7 @@ We want the tool-chain itself to be as simple as possible.
 
 Folk Wisdom about Interpreters for Dynamic Languages
 ====================================================
-* There are unavoidable tradeoffs between flexibilty, maintainability,
+* There are unavoidable tradeoffs between flexibility, maintainability,
   and speed
 
 * Fast, Maintainable, Flexible -- pick one
@@ -40,7 +40,7 @@ Folk Wisdom about Interpreters for Dynamic Languages
 What this means in Practice
 ===========================
 
-Current popular open source dynamic language implemtations:
+Current popular open source dynamic language implementations:
 
 * are relatively slow
 
@@ -59,7 +59,7 @@ What this means in Practice (2)
 * are harder to maintain than we would like them to be
 
 - because they are traditionally written in low-level languages
-- the language community, which generates experts in the dynamic langauge,
+- the language community, which generates experts in the dynamic language,
   can not use this expertise in its own maintenance.  Instead, expertise
   in C, or C++ is usually needed.
 - every time a new VM is needed, there is a fork in the language community.
@@ -82,7 +82,7 @@ Some of what we do is relatively straight-forward, some is challenging
 Translation: Going from interpreters to VMs
 ==============================================
 
-In PyPy interpreteres are written in RPython:
+In PyPy interpreters are written in RPython:
 a subset of Python amenable to static analysis.
 RPython itself still has garbage collection support
 and rich built-in types.
