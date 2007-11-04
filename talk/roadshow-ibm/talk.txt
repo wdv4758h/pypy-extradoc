@@ -13,48 +13,43 @@ PyPy is a tool-chain with a *new paradigm* for building interpreters:
 It challenges commonly held assumptions about the
 construction of interpreters for dynamic languages.
 
-What we Reject
-==============
-* Interpreters for Dynamic Languages must be slow
+Folk Wisdom about Interpreters for Dynamic Languages
+====================================================
+* There are unavoidable tradeoffs between flexibilty, maintainability,
+  and speed
+
+* Popular dynamic languages such as Python and Ruby are the best we
+  can do given these tradeoffs and constraints.
 
 * Fast, Maintainable, Flexible -- pick one
 
-* C is the most appropriate language for implementing interpreters.
+What this means in Practice
+===========================
 
-* C++ is the most appropriate language for implementing interpreters.
+Dynamic languages are not very flexible.
 
-* Requiring type-hints everywhere, thus turning your dynamic language
-  into a static one, on the sly
+- Low-level decisions permeate the entire code base.
+- One cannot simply plug-in a new garbage collector, or threading model
+  when one desires to experiment.  
+- Early decisions come back to haunt you.
 
-What we insist upon
-===================
+Dynamic languages are hard to maintain.
 
-* real source code portability between different target implementations
+- because they are traditionally written in low-level languages, they are
+  harder to write than they need be.
+- the language community, which generates experts in the dynamic langauge,
+  can not use this expertise in its own maintenance.  Instead, expertise
+  in C, or C++ is usually needed.
+- every time a new VM is needed, there is a fork in the language community.
+  The maintainers of Jython and IronPython, for instance, are lost to the
+  C Python community.  They have enough to do just to keep up with C Python.
 
-* support for an actual existing dynamic language, not an academic toy
+Dynamic Languages are Slow.
 
-* support for the complete language, not a subset
+Thus it looks like what we really have is:
+* Fast, Maintainable, Flexible -- you get NONE.
 
-* The interpreter we write should be free of low-level details as possible
-
-* the ability to experiement with all aspects of the compiler, including
-  garbage collection strategies, threading models, security models
-
-* fun
-
-Implications?
-=============
-
-* type analysis must be performed on live code objects, not dead source trees
-
-* parts of the interpreter must be written in a static manner.
-
-* Generate compilers using partial evaluation techniques.  Don't write them
-  by hand!
-
-* Build a toolchain with pluggable components, for e.g. garbage collection
-
-* The translation framework can be reused by _any_ dynamic language!
+There has got to be a better way.
 
 Translation details
 =======================
