@@ -20,7 +20,6 @@ without cluttering the intepreter.
 
 Targets as different as C and the industry OO VMs (JVM, CLR) are supported.
 
-
 What is PyPy
 ==============
 
@@ -29,6 +28,46 @@ duplicated efforts of how mainstream open-source languages (like
 Python) are implemented now.
 
 We want the tool-chain itself to be as simple as possible.
+
+
+Folk Wisdom about Interpreters for Dynamic Languages
+====================================================
+* There are unavoidable tradeoffs between flexibilty, maintainability,
+  and speed
+
+* Fast, Maintainable, Flexible -- pick one
+
+What this means in Practice
+===========================
+
+Current popular open source dynamic language implemtations:
+
+* are relatively slow
+
+* are not very flexible:
+
+- Low-level decisions permeate the entire code base.
+- One cannot simply plug-in a new garbage collector, or threading model
+  when one desires to experiment.  
+- Early decisions come back to haunt you.
+
+What this means in Practice (2)
+==================================
+
+.. XXX too big
+
+* are harder to maintain than we would like them to be
+
+- because they are traditionally written in low-level languages
+- the language community, which generates experts in the dynamic langauge,
+  can not use this expertise in its own maintenance.  Instead, expertise
+  in C, or C++ is usually needed.
+- every time a new VM is needed, there is a fork in the language community.
+  The maintainers of Jython and IronPython, for instance, are lost to the
+  C Python community.  They have enough to do just to keep up with C Python.
+
+PyPy as a project
+===================
 
 We operate both as an open source with production usage aspirations and
 research project.
@@ -39,53 +78,6 @@ Some of what we do is relatively straight-forward, some is challenging
 (generating dynamic compilers!).
 
 
-
-
-What is PyPy?
-==============
-
-PyPy is a tool-chain with a *new paradigm* for building interpreters:
-
-It challenges commonly held assumptions about the
-construction of interpreters for dynamic languages.
-
-Folk Wisdom about Interpreters for Dynamic Languages
-====================================================
-* There are unavoidable tradeoffs between flexibilty, maintainability,
-  and speed
-
-* Popular dynamic languages such as Python and Ruby are the best we
-  can do given these tradeoffs and constraints.
-
-* Fast, Maintainable, Flexible -- pick one
-
-What this means in Practice
-===========================
-
-Dynamic languages are not very flexible.
-
-- Low-level decisions permeate the entire code base.
-- One cannot simply plug-in a new garbage collector, or threading model
-  when one desires to experiment.  
-- Early decisions come back to haunt you.
-
-Dynamic languages are hard to maintain.
-
-- because they are traditionally written in low-level languages, they are
-  harder to write than they need be.
-- the language community, which generates experts in the dynamic langauge,
-  can not use this expertise in its own maintenance.  Instead, expertise
-  in C, or C++ is usually needed.
-- every time a new VM is needed, there is a fork in the language community.
-  The maintainers of Jython and IronPython, for instance, are lost to the
-  C Python community.  They have enough to do just to keep up with C Python.
-
-Dynamic Languages are Slow.
-
-Thus it looks like what we really have is:
-* Fast, Maintainable, Flexible -- you get NONE.
-
-There has got to be a better way.
 
 Translation: Going from interpreters to VMs
 ==============================================
