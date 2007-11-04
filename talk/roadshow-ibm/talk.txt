@@ -17,6 +17,7 @@ Automatic generation of VMs for dynamic languages - JIT included
    <tr><td>Armin Rigo</td><td></td>
        <td>Jacob Hallén</td></tr>
    </table>
+   <a href="http://codespeak.net/pypy/">http://codespeak.net/pypy/</a>
    </center>
 
 
