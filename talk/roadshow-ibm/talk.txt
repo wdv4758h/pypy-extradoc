@@ -1,8 +1,13 @@
 .. include:: <s5defs.txt>
 
 ========================================================================
-PyPy - automatic generation of VMs for dynamic languages - JIT included
+                                  PyPy
 ========================================================================
+
+Automatic generation of VMs for dynamic languages - JIT included
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:authors: Samuele Pedroni, Armin Rigo, Laura Creighton, Jacob Hallén
 
 
 What is PyPy
