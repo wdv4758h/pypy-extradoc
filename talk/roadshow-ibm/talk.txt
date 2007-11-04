@@ -5,6 +5,42 @@ PyPy - automatic generation of VMs for dynamic languages - JIT included
 ========================================================================
 
 
+What is PyPy
+==================
+
+PyPy is a tool-chain for constructing dynamic languages.
+
+Interpreters in a relatively high-level language, without low-level
+details are the easiest, most evolvable and portable way to implement
+such languages.
+
+What PyPy does is setup enough infrastructure such that speed is regained
+and features requiring low-level manipulations are (re-)added as aspects
+without cluttering the intepreter.
+
+Targets as different as C and the industry OO VMs (JVM, CLR) are supported.
+
+
+What is PyPy
+==============
+
+PyPy is a reaction to the frustrations, resource problems and
+duplicated efforts of how mainstream open-source languages (like
+Python) are implemented now.
+
+We want the tool-chain itself to be as simple as possible.
+
+We operate both as an open source with production usage aspirations and
+research project.
+
+We focus on the whole system.
+
+Some of what we do is relatively straight-forward, some is challenging
+(generating dynamic compilers!).
+
+
+
+
 What is PyPy?
 ==============
 
@@ -50,6 +86,20 @@ Thus it looks like what we really have is:
 * Fast, Maintainable, Flexible -- you get NONE.
 
 There has got to be a better way.
+
+Translation: Going from interpreters to VMs
+==============================================
+
+In PyPy interpreteres are written in RPython:
+a subset of Python amenable to static analysis.
+RPython itself still has garbage collection support
+and rich built-in types.
+
+The tool-chain implements good static compilation
+of RPython to multiple targets.
+
+It has pluggable backends, and implements so called
+translation aspects.
 
 Translation details
 =======================
