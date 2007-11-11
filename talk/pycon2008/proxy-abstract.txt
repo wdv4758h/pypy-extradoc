@@ -6,17 +6,18 @@ the PyPy python interpret and novel-implementation approaches
 which made it easy to implement those features. The talk would
 consist on:
 
-* Transparent proxy cocept, which allows programmer to create
+* Transparent proxy concept, which allows programmers to create
   transparent object of any type in python (including built-in
-  python types like frames), with various usage showcases icluding
-  our completely transparent remote access scheme.
+  python types like frames), with various usage showcases including
+  our completely transparent remote access scheme. (XXX: I know what
+  you mean, but "create transparent object" is a bit vague)
 
 * Sandboxing concept, which allows to run non-stripped version of
-  python interpreter in controlled environment with custom
+  python interpreter in a controlled environment with custom
   safety policy.
 
-* Taint objspace, which allows programmer to make sure that sensitive
-  information does not cross the I/O barrier.
+* Taint object space, which allows programmers to make sure that sensitive
+  informations do not cross the I/O barrier.
 
 * XXX anything else?
 
