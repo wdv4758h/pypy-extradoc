@@ -24,13 +24,8 @@ Translation toolchain
  - move away from implicit keepalives
  - raw_malloc should be split, rffi one should not use obmalloc (it's
    not thread-safe)
- - kill simulator, run the semi space tests on llinterp (may happen
-   before)
- - have a moving gc correct version of the gc framework transformation
  - delegate finding type stuff like vtables etc to GC, cleaner interface
    for rtti, simplify translator/c/gc.py
- - think about approaches to id, especially concerning boehm, where the
-   id will keep the object alive and concerning a moving GC
 
  - clean up the tangle of including headers in the C backend
 
