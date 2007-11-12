@@ -4,28 +4,27 @@ XXX The PyPy way and the tales of nice features and permissive(?) design
 (* for particularly nerdy dreams :-) )
 
 In this talk, we would like to present our paradigm-shifting architecture
-for dynamic langauges and some features which, due to our appraoch
-are exclusively available with PyPy.  
+for dynamic languages and some features which are exclusively available in
+PyPy, due to our novel approach.
 
-Topics would include:
+Topics include:
 
 * The transparent proxy, which allows programmers to create
-  transparent object of any type in python (including built-in
+  indistinguishable proxies for any type in Python (including built-in
   python types like frames), with various usage showcases including
-  our completely transparent remote access scheme. (XXX: I know what
-  you mean, but "create transparent object" is a bit vague)
+  our completely transparent remote access scheme.
 
-* the PyPy Sandbox, which allows to run non-stripped version of
-  python interpreter in a controlled environment with a custom
+* the PyPy Sandbox, which allows to run a non-stripped version of
+  our Python interpreter in a controlled environment with a custom
   safety policy.
 
 * The Taint Object Space, which allows programmers to make sure that sensitive
-  information does not cross the I/O barrier.
+  information does not cross I/O barriers.
 
-* XXX anything else?  lazy evaluation?
+* XXX anything else?  lazy evaluation? Is a bit too much, I think
 
-* Why our approach of doing pervasive changes to semantics, does not
-  require pervasive changes to the interpreter core all over the place.
-  Why our design allows us to describe broad class of such changes
+* Why our approach of doing pervasive changes to semantics does not
+  require pervasive changes to the interpreter core.
+  Why our design allows us to describe a broad class of such changes
   as a "proxying operation" and finally, why design matters when you want
-  to get butterfly out of the caterpillar rather than bigger caterpillar.
+  to get a butterfly out of the caterpillar instead of a bigger caterpillar.
