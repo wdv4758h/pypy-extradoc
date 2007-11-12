@@ -1,4 +1,5 @@
 XXX Understanding PyPy, and How It Let's You Do Things You Have Only Dreamed About. (*)
+XXX The PyPy way and the tales of nice features and permissive(?) design
 ================================================================================
 (* for particularly nerdy dreams :-) )
 
@@ -15,7 +16,7 @@ Topics would include:
   you mean, but "create transparent object" is a bit vague)
 
 * the PyPy Sandbox, which allows to run non-stripped version of
-  python interpreter in a controlled environment with custom
+  python interpreter in a controlled environment with a custom
   safety policy.
 
 * The Taint Object Space, which allows programmers to make sure that sensitive
@@ -23,23 +24,8 @@ Topics would include:
 
 * XXX anything else?  lazy evaluation?
 
-* Why our approach is "working by design", rather then "fix as long as
-  anyone complains", why it's only permitted by our design decisions and
-  abstraction levels. How our all of the mentioned above examples could
-  be reduce to simple "proxy operation" concept.
-
-  'working by design' means something else.  it means 'we designed it
-  to work, which, of course, is true of everything that didn't happen
-  by accident (and maybe that too, if some people's ideas of God are
-  are correct).
-
-* _why_ design matters.  _when_ design matters.  Some thoughts on when
-  incremental improvements are not the answer, and why successive
-  improvements in painting things red will not turn your children's
-  wagon into a firetruck, despite being the perfect approach to the
-  problem of 'making what I have red'.
-
-I am getting all these weird ideas of how a caterpillar becomes a
-larger caterpillar is not the same way a caterpillar becomes a
-butterfly.  Either this is a useful analogy, or I am nuts.
-
+* Why our approach of doing pervasive changes to semantics, does not
+  require pervasive changes to the interpreter core all over the place.
+  Why our design allows us to describe broad class of such changes
+  as a "proxying operation" and finally, why design matters when you want
+  to get butterfly out of the caterpillar rather than bigger caterpillar.
