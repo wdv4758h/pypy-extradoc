@@ -21,8 +21,6 @@ Topics include:
 * The Taint Object Space, which allows programmers to make sure that sensitive
   information does not cross I/O barriers.
 
-* XXX anything else?  lazy evaluation? Is a bit too much, I think
-
 * Why our approach of doing pervasive changes to semantics does not
   require pervasive changes to the interpreter core.
   Why our design allows us to describe a broad class of such changes
