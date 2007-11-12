@@ -1,0 +1,12 @@
+* Tutorial title.
+* Presenter name(s) & contact information (email, telephone).
+* Intended audience (difficulty level, experience required): non-programmers, beginning programmers, advanced users, CPython developers, etc.
+* Tutorial format description (lecture, interactive lecture, Q&A session [master class], hands-on, etc.). Be specific.
+* Recording: indicate if you are amenable to your tutorial being recorded. "I give permission to record and publish my PyCon tutorial for free distribution."
+* Requirements: A list of software and hardware requirements for the tutorial. (Laptop required or recommended? Python installed? Which version? 3rd-party packages required? Provide links & versions.)
+* Notes for reviewers.
+* Promotional summary (max. 100 words).
+* Detailed tutorial outline, for review (include timing).
+* Tutorial outline for website publication, if different from the above.
+* Presenter bio (one paragraph), written in the third person ("Presenter Name is..."). Include where you live, your job, your projects, books you've written, volunteer activities, family, etc.
+* Previous experience: references of presentation/teaching engagements (sessions taught at OSCON, EuroPython, local user groups, at work, etc.). Extra consideration will be given to presenters with prior experience.
