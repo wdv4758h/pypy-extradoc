@@ -1,5 +1,5 @@
 XXX Understanding PyPy, and How It Let's You Do Things You Have Only Dreamed About. (*)
-XXX The PyPy way and the tales of nice features and permissive(?) design
+XXX The PyPy way and the tales of nice features and pleasant design
 ================================================================================
 (* for particularly nerdy dreams :-) )
 
