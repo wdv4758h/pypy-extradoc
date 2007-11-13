@@ -30,9 +30,9 @@ Talk outline:
   python types like frames), with various usage showcases including
   our completely transparent remote access scheme.
 
-* the PyPy Sandbox, which allows one to run a non-stripped (XXX not clear what "non-stripped" means) version of
-  our Python interpreter in a controlled environment with a custom
-  safety policy.
+* the PyPy Sandbox, which allows one to run a full python
+  interpreter (including free imports) in a controlled environment with a
+  custom safety policy, restrained on calls to C level.
 
 * The Taint Object Space, which allows programmers to make sure that sensitive
   information does not cross I/O barriers.
