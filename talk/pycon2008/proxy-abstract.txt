@@ -3,11 +3,25 @@ XXX The PyPy way and the tales of nice features and permissive(?) design
 ================================================================================
 (* for particularly nerdy dreams :-) )
 
+Summary (max 100 words, for the website):
+
+In this talk we would like to outline pypy's unique features, namely
+sandboxing, transparent proxy, our distribution prototype and our security
+prototype, the taint objspace. We would also like to summarize our design
+decision which make it possible for such features to be non-pervasive to the
+core interpreter codebase. Those features also works out of the box on
+different pypy target platforms (C/POSIX, .NET, JVM) from the single source
+interpreter.
+
+Description and outline:
+
 In this talk, we would like to present our paradigm-shifting architecture
 for dynamic languages and some features which are exclusively available in
 PyPy, due to our novel approach.
 
-Topics include:
+Talk outline:
+
+* Quick recap of our motivation for creating pypy.
 
 * The transparent proxy, which allows programmers to create
   indistinguishable proxies for any type in Python (including built-in
