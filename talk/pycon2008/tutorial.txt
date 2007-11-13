@@ -38,6 +38,16 @@ Requirements
 
 XXX prepare
 
+Note for Reviewers
+==================
+
+As this is a very advanced topic, we don't expect too many people to show
+up. In case the tutorial would be accepted and there would be less than 10
+people showing up, we can do the tutorial for free.
+
+Also, in case there would be CPython developement tutorial, it would be
+nice if those two will not collide, if possible.
+
 Promotional summary
 ===================
 
@@ -55,13 +65,20 @@ Attendees are welcome to bring their own laptops.
 Outline
 =======
 
-XXX expand
-* half an hour of introduction and quick codebase skimming
-* one hour of modifying pypy's python interpreter (what exactly XXX)
-* an hour and a half of hands-on session, including pre-prepared
-  topics.
+* Introduction into pypy - 15 minutes
 
-* Notes for reviewers.
+  * Motivation - why Python in Python
+
+  * RPython - the restricted python
+
+  * Objectspace concept
+
+  * Backends - how we can compile to all platforms
+
+* Scheme over codebase - 15 minutes
+
+XXX example, think what that could be. Much of touching pypy,
+    not much doing algorithms IMHO
 
 * Tutorial outline for website publication, if different from the above.
 
