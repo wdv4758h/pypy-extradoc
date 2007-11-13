@@ -1,18 +1,25 @@
 Hands on PyPy - how to modify your virtual machine in 15 minutes
 ================================================================
 
+XXX We need a sexier title.
+
 * Presenter name(s) & contact information (email, telephone).
 
 Intended audience
 =================
 
-This tutorial is intended for people who has a desire to modify python's
-virtual machine, being uncomfortable with some design decisions, want an
-extra feature, fast modules not written in C or just a wish to experiment.
-Python fluency, including prior experience with meta-programming will be
-expected from atendees. No knowledge of C is needed nor required, although
-prior knowledge of any virtual machine (for example CPython) might be
-useful.
+This tutorial is intended for people who desire to modify python's
+virtual machine.
+
+Perhaps you are uncomfortable with some design decisions? want an
+extra feature? desire fast modules but don't want to write them
+in C?  or just wish to experiment?
+
+Attendees will be expected to be fluent in Python, and have prior
+experience with meta-programming (in any language).  No knowledge of C
+is needed nor required, although prior knowledge of any virtual
+machine (for example CPython) might be useful.  If you are wondering
+'what's a virtual machine' then this tutorial is not for you.
 
 Tutorial format description
 ===========================
