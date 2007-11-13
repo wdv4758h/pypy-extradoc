@@ -3,19 +3,37 @@ Hands on PyPy - how to modify your virtual machine in 15 minutes
 
 * Presenter name(s) & contact information (email, telephone).
 
-* Intended audience (difficulty level, experience required): non-programmers, beginning programmers, advanced users, CPython developers, etc.
-
 Intended audience
 =================
 
 This tutorial is intended for people who has a desire to modify python's
 virtual machine, being uncomfortable with some design decisions, want an
-extra feature or just a wish to experiment. Python fluency, including
-prior experience with meta-programming will be expected from atendees.
+extra feature, fast modules not written in C or just a wish to experiment.
+Python fluency, including prior experience with meta-programming will be
+expected from atendees. No knowledge of C is needed nor required, although
+prior knowledge of any virtual machine (for example) CPython might be
+useful.
 
-* Tutorial format description (lecture, interactive lecture, Q&A session [master class], hands-on, etc.). Be specific.
-* Recording: indicate if you are amenable to your tutorial being recorded. "I give permission to record and publish my PyCon tutorial for free distribution."
-* Requirements: A list of software and hardware requirements for the tutorial. (Laptop required or recommended? Python installed? Which version? 3rd-party packages required? Provide links & versions.)
+Tutorial format description
+===========================
+
+XXX rough sketch
+* half an hour of introduction and quick codebase skimming
+* one hour of modifying pypy's python interpreter (what exactly XXX)
+* an hour and a half of hands-on session, including pre-prepared
+  topics.
+
+Recording
+=========
+
+I give permission to record and publish my PyCon tutorial for free
+distribution.
+
+Requirements
+============
+
+XXX prepare
+
 * Notes for reviewers.
 * Promotional summary (max. 100 words).
 * Detailed tutorial outline, for review (include timing).
