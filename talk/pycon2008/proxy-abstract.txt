@@ -1,36 +1,36 @@
-XXX Understanding PyPy, and How It Let's You Do Things You Have Only Dreamed About. (*)
+XXX Understanding PyPy, and How It Lets You Do Things You Have Only Dreamed About. (*)
 XXX The PyPy way and the tales of nice features and pleasant design
 ================================================================================
 (* for particularly nerdy dreams :-) )
 
 Summary (max 100 words, for the website):
 
-In this talk we would like to outline pypy's unique features, namely
-sandboxing, transparent proxy, our distribution prototype and our security
-prototype, the taint objspace. We would also like to summarize our design
-decision which make it possible for such features to be non-pervasive to the
+In this talk we will outline PyPy's unique features, namely
+sandboxing, transparent proxying, our distribution prototype and our security
+prototype, the taint objspace (XXX "objspace" is obscure - might want to say something a non-pypy developer can understand here). We would also like to summarize our design
+decisions which make it possible for such features to be non-pervasive to the
 core interpreter codebase. Those features also works out of the box on
-different pypy target platforms (C/POSIX, .NET, JVM) from the single source
-interpreter.
+different PyPy target platforms (C/POSIX, .NET, JVM) from the single
+interpreter source.
 
 Description and outline:
 
 In this talk, we would like to present our paradigm-shifting architecture
 for dynamic languages and some features which are exclusively available in
-PyPy, due to our novel approach. Also thanks to our design, those features
+PyPy due to our novel approach. Also thanks to our design, those features
 are available on all of our target platforms (C/POSIX, .NET, JVM) and are
-independent on other decisions (garbage collector, stackless, JIT, etc.)
+independent of other decisions (garbage collector, stackless, JIT, etc.)
 
 Talk outline:
 
-* Quick recap of our motivation for creating pypy.
+* Quick recap of our motivation for creating PyPy.
 
 * The transparent proxy, which allows programmers to create
   indistinguishable proxies for any type in Python (including built-in
   python types like frames), with various usage showcases including
   our completely transparent remote access scheme.
 
-* the PyPy Sandbox, which allows to run a non-stripped version of
+* the PyPy Sandbox, which allows one to run a non-stripped (XXX not clear what "non-stripped" means) version of
   our Python interpreter in a controlled environment with a custom
   safety policy.
 
@@ -41,4 +41,4 @@ Talk outline:
   require pervasive changes to the interpreter core.
   Why our design allows us to describe a broad class of such changes
   as a "proxying operation" and finally, why design matters when you want
-  to get a butterfly out of the caterpillar instead of a bigger caterpillar.
+  to get a butterfly out of a caterpillar instead of a bigger caterpillar.
