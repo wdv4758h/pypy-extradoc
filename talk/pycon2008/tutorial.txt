@@ -11,17 +11,14 @@ virtual machine, being uncomfortable with some design decisions, want an
 extra feature, fast modules not written in C or just a wish to experiment.
 Python fluency, including prior experience with meta-programming will be
 expected from atendees. No knowledge of C is needed nor required, although
-prior knowledge of any virtual machine (for example) CPython might be
+prior knowledge of any virtual machine (for example CPython) might be
 useful.
 
 Tutorial format description
 ===========================
 
-XXX rough sketch
-* half an hour of introduction and quick codebase skimming
-* one hour of modifying pypy's python interpreter (what exactly XXX)
-* an hour and a half of hands-on session, including pre-prepared
-  topics.
+A brief introduction to pypy codebase and concepts, then hands-on session
+with pre-prepared tasks.
 
 Recording
 =========
@@ -34,9 +31,33 @@ Requirements
 
 XXX prepare
 
+Promotional summary
+===================
+
+Ever missed feature in your Python interpreter? Ever wondered how to write
+extensions in Python rather than C or Pyrex? Ever wondered how pypy works?
+
+This tutorial will give you detailed description how the PyPy python
+interpreter is constructed and how to change it to meet your needs.
+It'll also contain simple changes to the interpreter codebase as live coding
+session. Afterwards will be welcomed to experiment in groups on they're own
+on implementing prepared interpreter changes.
+
+Attendees are welcome to bring their own laptops.
+
+Outline
+=======
+
+XXX expand
+* half an hour of introduction and quick codebase skimming
+* one hour of modifying pypy's python interpreter (what exactly XXX)
+* an hour and a half of hands-on session, including pre-prepared
+  topics.
+
 * Notes for reviewers.
-* Promotional summary (max. 100 words).
-* Detailed tutorial outline, for review (include timing).
+
 * Tutorial outline for website publication, if different from the above.
+
 * Presenter bio (one paragraph), written in the third person ("Presenter Name is..."). Include where you live, your job, your projects, books you've written, volunteer activities, family, etc.
+
 * Previous experience: references of presentation/teaching engagements (sessions taught at OSCON, EuroPython, local user groups, at work, etc.). Extra consideration will be given to presenters with prior experience.
