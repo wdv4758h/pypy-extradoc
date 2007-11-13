@@ -17,7 +17,9 @@ Description and outline:
 
 In this talk, we would like to present our paradigm-shifting architecture
 for dynamic languages and some features which are exclusively available in
-PyPy, due to our novel approach.
+PyPy, due to our novel approach. Also thanks to our design, those features
+are available on all of our target platforms (C/POSIX, .NET, JVM) and are
+independent on other decisions (garbage collector, stackless, JIT, etc.)
 
 Talk outline:
 
