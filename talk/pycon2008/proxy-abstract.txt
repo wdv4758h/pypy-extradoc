@@ -7,7 +7,7 @@ Summary (max 100 words, for the website):
 
 In this talk we will outline PyPy's unique features, namely
 sandboxing, transparent proxying, our distribution prototype and our security
-prototype, the taint objspace (XXX "objspace" is obscure - might want to say something a non-pypy developer can understand here). We would also like to summarize our design
+prototype, the taint prototype. We would also like to summarize our design
 decisions which make it possible for such features to be non-pervasive to the
 core interpreter codebase. Those features also works out of the box on
 different PyPy target platforms (C/POSIX, .NET, JVM) from the single
