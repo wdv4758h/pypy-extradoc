@@ -38,6 +38,11 @@ Requirements
 
 XXX prepare
 
+* pypy checkout, codespeak account
+
+* pygame, ctypes or python2.5, libgc (boehm) - all not necessary,
+  but very useful
+
 Note for Reviewers
 ==================
 
@@ -75,10 +80,33 @@ Outline
 
   * Backends - how we can compile to all platforms
 
-* Scheme over codebase - 15 minutes
+* Skim over codebase - 15 minutes
 
-XXX example, think what that could be. Much of touching pypy,
-    not much doing algorithms IMHO
+* Implementing example modification to the VM - 1h
+
+  * break
+
+* Hands-on pypy, 1.5h
+
+Example
++++++++
+
+We would like to present one or two examples during the talk and
+offer some tasks for people to experiment with. The exact details about
+the examples will be prepared later, especially because given current
+pypy developement pace, a lot of things might be implemented till march.
+
+One of the following might be especially good for the purpose of talk:
+
+* (Re)implement the thunk objspace, the way to "freeze" computation as
+  long as they're not needed.
+
+* Implement specialized sort of tuples, like pairs, indistinguishable from
+  normal tuples from the application level code.
+
+* Implement dict.keys() as a lazily computed list.
+
+
 
 * Tutorial outline for website publication, if different from the above.
 
