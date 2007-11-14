@@ -31,8 +31,6 @@ Talk outline:
 
 * Quick recap of our motivation for creating PyPy.
 
-demos including
-
 * The transparent proxy, which allows programmers to create
   indistinguishable proxies for any type in Python (including built-in
   python types like frames), with various demos including one for
@@ -45,6 +43,9 @@ demos including
 * The Taint Object Space, which allows programmers to make sure that sensitive
   information does not cross I/O barriers.
 
+All the features mentioned above would be presented together
+with immediate usecase live demos how these features work and how
+to use them in the real-world applications.
 
 We conclude with a little bit of philosophy.
 
