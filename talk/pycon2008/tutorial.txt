@@ -36,12 +36,16 @@ distribution.
 Requirements
 ============
 
-XXX prepare
+Attendees are welcome to bring they're own laptops, while one for a group
+should suffice. We would like to know create codespeak.net accounts for people
+in advance, in order to provide smooth working on branches. Software
+requirements:
 
-* pypy checkout, codespeak account
+* subversion
 
-* pygame, ctypes or python2.5, libgc (boehm) - all not necessary,
-  but very useful
+* pypy checkout, from svn
+
+* python2.4 or 2.5
 
 Note for Reviewers
 ==================
@@ -88,8 +92,8 @@ Outline
 
 * Hands-on pypy, 1.5h
 
-Example
-+++++++
+Examples
+++++++++
 
 We would like to present one or two examples during the talk and
 offer some tasks for people to experiment with. The exact details about
@@ -105,6 +109,19 @@ One of the following might be especially good for the purpose of talk:
   normal tuples from the application level code.
 
 * Implement dict.keys() as a lazily computed list.
+
+Hands-on session details
+++++++++++++++++++++++++
+
+The hands-on session would be organized in groups of 2-5 persons, hacking
+one particular task, preferable on one computer with assistance of someone
+familiar with the pypy codebase. If there would be too many people, people
+familiar with pypy would need to move between groups. We'll prepare some tasks
+(like mentioned above), people are encouraged to suggest they're own tasks,
+preferably in advance so we can tell whether it's feasible to try that
+in 1.5h. Thanks to pypy design, we don't expect anyone to be familiar
+with coding in RPython, hence it would be only prototyping, with eventual
+followup during the sprint time.
 
 
 
