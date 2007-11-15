@@ -50,12 +50,16 @@ requirements:
 Note for Reviewers
 ==================
 
-As this is a very advanced topic, we don't expect too many people to show
-up. In case the tutorial would be accepted and there would be less than 10
-people showing up, we can do the tutorial for free.
+Note to the organisers:  This is a very advanced topic, and therefore
+it is hard to predict how many people will show up.  We realise that
+you reserve the right to cancel tutorials if fewer than 10 people 
+indicate an interest, and we think that this is a very real possibility
+in our case.  Should that occur, we would be willing to give the 
+tutorial for free.
 
-Also, in case there would be CPython developement tutorial, it would be
-nice if those two will not collide, if possible.
+If there is a python-dev tutorial planned for python developers, then
+it would be a good idea if they did not conflict, because this
+tutorial exactly targets the same potential audience.
 
 Promotional summary
 ===================
@@ -69,7 +73,7 @@ It'll also contain simple changes to the interpreter codebase as live coding
 session. Afterwards will be welcomed to experiment in groups on they're own
 on implementing prepared interpreter changes.
 
-Attendees are welcome to bring their own laptops.
+Attendees are welcome to bring their own laptops. 
 
 Outline
 =======
