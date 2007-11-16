@@ -18,6 +18,7 @@ Maciej Fijalkowski   19-26          Laura and Jacob's
 Armin Rigo           lives thereish
 Alexander Schremmer  19-26          Laura and Jacob's
 Richard Emslie       19-26          Laura and Jacob's
+Antonio Cuni         19-22          Laura and Jacob's
 ==================== ============== =====================
 
 
@@ -27,7 +28,6 @@ People on the following list were present at previous sprints:
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
 Michael Hudson       ?              ?
-Antonio Cuni         ?              ?
 Andrew Thompson      ?              ?
 Stephan Diehl        ?              ?
 Eric van Riet paap   ?              ?
