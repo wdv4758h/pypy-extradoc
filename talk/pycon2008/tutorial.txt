@@ -3,7 +3,11 @@ Hands on PyPy - how to modify your virtual machine in 15 minutes
 
 XXX We need a sexier title.
 
-* Presenter name(s) & contact information (email, telephone).
+Presenter name(s) & contact information
+=======================================
+
+Laura Creighton
+Maciej Fijalkowski
 
 Intended audience
 =================
@@ -37,7 +41,7 @@ Requirements
 ============
 
 Attendees are welcome to bring they're own laptops, while one for a group
-should suffice. We would like to know create codespeak.net accounts for people
+should suffice. We would like to create codespeak.net accounts for people
 in advance, in order to provide smooth working on branches. Software
 requirements:
 
@@ -99,17 +103,19 @@ Outline
 Examples
 ++++++++
 
-We would like to present one or two examples during the talk and
+We would like to present one or two examples of live-coding and changing
+the virtual machine during the talk and
 offer some tasks for people to experiment with. The exact details about
-the examples will be prepared later, especially because given current
-pypy developement pace, a lot of things might be implemented till march.
+the examples will be prepared later, especially that given current
+pypy developement pace, a lot of things might be implemented before March.
 
-One of the following might be especially good for the purpose of talk:
+One of the following might be especially good for the purpose of the tutorial:
 
 * (Re)implement the thunk objspace, the way to "freeze" computation as
   long as they're not needed.
 
-* Implement specialized sort of tuples, like pairs, indistinguishable from
+* Implement specialized sort of tuples, optimized for small number
+  of elements (for example two), indistinguishable from
   normal tuples from the application level code.
 
 * Implement dict.keys() as a lazily computed list.
@@ -118,19 +124,27 @@ Hands-on session details
 ++++++++++++++++++++++++
 
 The hands-on session would be organized in groups of 2-5 persons, hacking
-one particular task, preferable on one computer with assistance of someone
+one particular task, preferable on one computer with the assistance of someone
 familiar with the pypy codebase. If there would be too many people, people
 familiar with pypy would need to move between groups. We'll prepare some tasks
-(like mentioned above), people are encouraged to suggest they're own tasks,
+(similiar to mentioned above), although people are encouraged to suggest
+their own tasks,
 preferably in advance so we can tell whether it's feasible to try that
-in 1.5h. Thanks to pypy design, we don't expect anyone to be familiar
+in 1.5h. Thanks to the pypy design, we don't expect anyone to be familiar
 with coding in RPython, hence it would be only prototyping, with eventual
 followup during the sprint time.
 
+Tutorial outline for website publication
+========================================
 
+XXX fill in
 
-* Tutorial outline for website publication, if different from the above.
+Presenter bio
+=============
 
-* Presenter bio (one paragraph), written in the third person ("Presenter Name is..."). Include where you live, your job, your projects, books you've written, volunteer activities, family, etc.
+XXX fill in
 
-* Previous experience: references of presentation/teaching engagements (sessions taught at OSCON, EuroPython, local user groups, at work, etc.). Extra consideration will be given to presenters with prior experience.
+Previous experience
+===================
+
+Europython 2007, Ruby 2007, sprints XXX laura, you insert yours here
