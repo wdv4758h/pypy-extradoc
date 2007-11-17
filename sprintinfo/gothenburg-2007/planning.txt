@@ -1,0 +1,59 @@
+Topics and goals
+----------------
+
+Meta-Tasks
+++++++++++
+
+ - Tracker-gardening
+ - Start slowly thinking about 1.1 plans
+
+Translation toolchain
++++++++++++++++++++++
+
+
+ - finish rctypes removal
+
+ - move away from implicit keepalives
+ - raw_malloc should be split, rffi one should not use obmalloc (it's
+   not thread-safe)
+ - delegate finding type stuff like vtables etc to GC, cleaner interface
+   for rtti, simplify translator/c/gc.py
+
+ - clean up the tangle of including headers in the C backend
+
+ - review pdbplus, especially the graph commands, also in the light of
+   https://codespeak.net/issue/pypy-dev/issue303 and the fact that we
+   can have more than one translator/annotator around (with the
+   timeshifter)
+
+ - kill half concrete wrapper
+ 
+ - kill opaque hacks on the C backend
+  
+ - decide how to implement constants in rffi
+   
+ - think about/remove orphaned parts
+
+ - implement callback mechanism for rffi/lltype/ll2ctypes
+
+Interpreter
++++++++++++
+
+ - there's a shadow tracking bug it seems
+
+ - fix the taint space
+
+ - review the things implemented at applevel whether they are
+   performance-critical
+
+ - app-level ctypes
+    
+ - remove prebuilt costate vars  (might happen before)
+
+JIT
++++
+
+ - repair the JIT tests (if it doesn't happen before), the keep alive killing merge broke them
+ - start writing real unit tests for the merging logic
+
+
