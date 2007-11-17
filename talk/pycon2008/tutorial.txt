@@ -73,9 +73,9 @@ extensions in Python rather than C or Pyrex? Ever wondered how pypy works?
 
 This tutorial will give you detailed description how the PyPy python
 interpreter is constructed and how to change it to meet your needs.
-It'll also contain simple changes to the interpreter codebase as live coding
-session. Afterwards will be welcomed to experiment in groups on they're own
-on implementing prepared interpreter changes.
+It'll also contain simple changes to the interpreter codebase in a live coding
+session. Afterwards, we will work in small groups to experiment on 
+attendee-selected changes to the interpreter.
 
 Attendees are welcome to bring their own laptops. 
 
@@ -88,7 +88,7 @@ Outline
 
   * RPython - the restricted python
 
-  * Objectspace concept
+  * The Objectspace concept
 
   * Backends - how we can compile to all platforms
 
@@ -106,8 +106,8 @@ Examples
 We would like to present one or two examples of live-coding and changing
 the virtual machine during the talk and
 offer some tasks for people to experiment with. The exact details about
-the examples will be prepared later, especially that given current
-pypy developement pace, a lot of things might be implemented before March.
+the examples will be prepared later, when we get a sense of the interests
+of the attendees.
 
 One of the following might be especially good for the purpose of the tutorial:
 
@@ -123,16 +123,24 @@ One of the following might be especially good for the purpose of the tutorial:
 Hands-on session details
 ++++++++++++++++++++++++
 
-The hands-on session would be organized in groups of 2-5 persons, hacking
+The hands-on session would be organized in groups of 2-4 persons, hacking
 one particular task, preferable on one computer with the assistance of someone
-familiar with the pypy codebase. If there would be too many people, people
-familiar with pypy would need to move between groups. We'll prepare some tasks
-(similiar to mentioned above), although people are encouraged to suggest
-their own tasks,
-preferably in advance so we can tell whether it's feasible to try that
-in 1.5h. Thanks to the pypy design, we don't expect anyone to be familiar
-with coding in RPython, hence it would be only prototyping, with eventual
-followup during the sprint time.
+familiar with the pypy codebase. If the tutorial attendees greatly
+outnumber the pypy core team, then the people
+familiar with pypy would need to move between groups.
+
+We'd like tutorial attendees to suggest their own improvements, so that
+they get to scratch an itch that personally matters to them.  We will
+also provide a selected list of things we think would be interesting,
+in the off-chance that people either find this sort of imagining
+difficult, or can only think of tasks that would take more than
+1.5 hours to complete.  The idea is to give such people enough familiarity
+with pypy that they could attempt larger projects on their own.
+
+Given that tutorial members are not expected to be proficient with RPython,
+what is likely is that in the tutorial their solutions will only be
+prototyped (in Python).  Converting to RPython may have to wait for the
+post-conference Sprint.
 
 Tutorial outline for website publication
 ========================================
@@ -147,4 +155,10 @@ XXX fill in
 Previous experience
 ===================
 
-Europython 2007, Ruby 2007, sprints XXX laura, you insert yours here
+Europython 2007, Ruby 2007, sprints 
+
+Laura Creighton was a partner with Jim Joyce in Jim Joyce's Unix
+bookstore/The Gawain Group.  She has designed hundreds of hands-on
+tutorials -- though she nearly always left them for Jim Joyce, or
+one of our hired presenters to deliver.  In the 15 years since 
+Jim's death, she has learned to make better presentations.
