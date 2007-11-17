@@ -38,6 +38,8 @@ Translation toolchain
 
  - find out why our memcpy behaves so erratically
 
+ - refactor OO external objects
+
 Interpreter
 +++++++++++
 
