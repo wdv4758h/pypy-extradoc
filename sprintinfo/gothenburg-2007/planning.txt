@@ -36,6 +36,8 @@ Translation toolchain
 
  - implement callback mechanism for rffi/lltype/ll2ctypes
 
+ - find out why our memcpy behaves so erratically
+
 Interpreter
 +++++++++++
 
