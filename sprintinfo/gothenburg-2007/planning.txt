@@ -5,17 +5,19 @@ Meta-Tasks
 ++++++++++
 
  - Tracker-gardening
+ - Review the cpython regression test suite (skips/failures)
  - Start slowly thinking about 1.1 plans
 
 Translation toolchain
 +++++++++++++++++++++
 
-
  - finish rctypes removal
 
  - move away from implicit keepalives
+
  - raw_malloc should be split, rffi one should not use obmalloc (it's
    not thread-safe)
+
  - delegate finding type stuff like vtables etc to GC, cleaner interface
    for rtti, simplify translator/c/gc.py
 
@@ -50,14 +52,19 @@ Interpreter
  - review the things implemented at applevel whether they are
    performance-critical
 
- - app-level ctypes
-    
  - remove prebuilt costate vars  (might happen before)
 
 JIT
 +++
 
  - repair the JIT tests (if it doesn't happen before), the keep alive killing merge broke them
+
  - start writing real unit tests for the merging logic
 
+Discussion issues
++++++++++++++++++
+
+ - app-level ctypes
+ 
+ - separate compilation
 
