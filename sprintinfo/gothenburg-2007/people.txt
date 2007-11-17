@@ -8,7 +8,7 @@ available yet from them.
 ==================== ============== =====================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
-Carl Friedrich Bolz  ?              ?
+Carl Friedrich Bolz  19-25          Samuele's and Armin's
 Samuele Pedroni      lives there     
 Anders Chrigstrom    lives there
 Jacob Hallen         lives there
