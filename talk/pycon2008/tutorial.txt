@@ -154,12 +154,11 @@ Tutorial outline for website publication
 Presenter Bio
 =============
 
-Maciej Fijalkowski is a PyPy developer for two years now.
-XXX Give more technical details here? Besides, I've got no idea what to
-    put here
+Maciej Fijalkowski has been a PyPy developer for the past two years.
 
-XXX Laura, put your's here, although I've got no idea what's the real
-    difference between previous experience and short bio.
+Laura Creighton is a founder of the Swedish company Open End AB,
+which develops products in python and was a member of the consortium
+which received EU Sixth Framework IST funding to develop PyPy.
 
 Previous experience
 ===================
