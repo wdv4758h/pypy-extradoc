@@ -55,3 +55,10 @@ We conclude with a little bit of philosophy.
   as a "proxying operation" and finally, why design matters when you want
   to get a butterfly out of a caterpillar instead of just a bigger,
   healthier caterpillar.
+
+Bio
+===
+
+Maciej Fijalkowski is a PyPy developer for two years now. He has been
+presenting PyPy at the EuroPython 2007 in Vilnius as well as Rupy
+2007 in Poznan.
