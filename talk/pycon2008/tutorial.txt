@@ -151,11 +151,6 @@ Tutorial outline for website publication
 
 * Hands-on PyPy virtual machine
 
-Presenter bio
-=============
-
-XXX fill in
-
 Previous experience
 ===================
 
@@ -165,6 +160,4 @@ two years.
 
 Laura Creighton was a partner with Jim Joyce in Jim Joyce's Unix
 bookstore/The Gawain Group.  She has designed hundreds of hands-on
-tutorials -- though she nearly always left them for Jim Joyce, or
-one of our hired presenters to deliver.  In the 15 years since 
-Jim's death, she has learned to make better presentations.
+tutorials
