@@ -1,13 +1,11 @@
 Hands on PyPy - how to modify your virtual machine in 15 minutes
 ================================================================
 
-XXX We need a sexier title.
-
 Presenter name(s) & contact information
 =======================================
 
-Laura Creighton
-Maciej Fijalkowski
+Laura Creighton - lac@openend.se
+Maciej Fijalkowski - fijall@gmail.com
 
 Intended audience
 =================
@@ -17,13 +15,13 @@ virtual machine.
 
 Perhaps you are uncomfortable with some design decisions? want an
 extra feature? desire fast modules but don't want to write them
-in C?  or just wish to experiment?
+in C? or just wish to experiment?
 
-Attendees will be expected to be fluent in Python, and have prior
-experience with meta-programming (in any language).  No knowledge of C
+Attendees will be expected to be fluent in Python, preferably have prior
+experience with meta-programming.  No knowledge of C
 is needed nor required, although prior knowledge of any virtual
-machine (for example CPython) might be useful.  If you are wondering
-'what's a virtual machine' then this tutorial is not for you.
+machine construction (for example CPython) might be helpful.  If you are
+wondering 'what's a virtual machine' then this tutorial is not for you.
 
 Tutorial format description
 ===========================
@@ -51,8 +49,8 @@ requirements:
 
 * python2.4 or 2.5
 
-Note for Reviewers
-==================
+Notes for Reviewers
+===================
 
 Note to the organisers:  This is a very advanced topic, and therefore
 it is hard to predict how many people will show up.  We realise that
@@ -145,7 +143,13 @@ post-conference Sprint.
 Tutorial outline for website publication
 ========================================
 
-XXX fill in
+* Introduction into PyPy
+
+* Skim over codebase
+
+* Live coding session, modifying minor virtual machine aspect
+
+* Hands-on PyPy virtual machine
 
 Presenter bio
 =============
@@ -155,7 +159,9 @@ XXX fill in
 Previous experience
 ===================
 
-Europython 2007, Ruby 2007, sprints 
+Maciej Fijalkowski was giving talks at the EuroPython 2007 in Vilnius and
+Rupy 2007 in Poznan, as well as participating in PyPy sprints for the last
+two years.
 
 Laura Creighton was a partner with Jim Joyce in Jim Joyce's Unix
 bookstore/The Gawain Group.  She has designed hundreds of hands-on
