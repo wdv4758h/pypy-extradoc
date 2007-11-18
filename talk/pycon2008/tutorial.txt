@@ -151,6 +151,16 @@ Tutorial outline for website publication
 
 * Hands-on PyPy virtual machine
 
+Presenter Bio
+=============
+
+Maciej Fijalkowski is a PyPy developer for two years now.
+XXX Give more technical details here? Besides, I've got no idea what to
+    put here
+
+XXX Laura, put your's here, although I've got no idea what's the real
+    difference between previous experience and short bio.
+
 Previous experience
 ===================
 
