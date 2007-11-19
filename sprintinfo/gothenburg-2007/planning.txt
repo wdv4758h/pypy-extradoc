@@ -13,7 +13,8 @@ Translation toolchain
 
  - finish rctypes removal
 
- - move away from implicit keepalives
+ - kill remaining suggested_primitives
+
 
  - raw_malloc should be split, rffi one should not use obmalloc (it's
    not thread-safe)
@@ -49,6 +50,8 @@ Interpreter
 
  - fix the taint space
 
+ - fix the thunk space
+
  - review the things implemented at applevel whether they are
    performance-critical
 
@@ -62,7 +65,6 @@ Modules
 JIT
 +++
 
- - repair the JIT tests (if it doesn't happen before), the keep alive killing merge broke them
 
  - start writing real unit tests for the merging logic
 
