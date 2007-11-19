@@ -54,6 +54,11 @@ Interpreter
 
  - remove prebuilt costate vars  (might happen before)
 
+Modules
++++++++
+
+ - Take a look at module failures on Mac OS X (_socket)
+
 JIT
 +++
 
