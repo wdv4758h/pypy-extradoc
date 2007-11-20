@@ -6,42 +6,50 @@ Meta-Tasks
 
  - Tracker-gardening
  - Review the cpython regression test suite (skips/failures)
+ - think about/remove orphaned parts
+
+Wednesday after the planning session:
  - Start slowly thinking about 1.1 plans
+
 
 Translation toolchain
 +++++++++++++++++++++
 
+ - fix the nightly CPython test runs (Samuele)
+
+ - find out why our memcpy behaves so erratically
+
  - finish rctypes removal
 
- - kill remaining suggested_primitives
-
+ - kill remaining suggested_primitives (Armin, Alexander)
 
  - raw_malloc should be split, rffi one should not use obmalloc (it's
    not thread-safe)
 
  - delegate finding type stuff like vtables etc to GC, cleaner interface
    for rtti, simplify translator/c/gc.py
+     - kill opaque hacks in the C backend
 
  - clean up the tangle of including headers in the C backend
+
+ - remove the use of pyobjs in the test wrapping functions (Carl Friedrich,
+   Richard)
+
+ - remove the symbol table from the C backend
+
+ - kill half concrete wrapper
+  
+ - decide how to implement constants in rffi
+   
+
+ - implement callback mechanism for rffi/lltype/ll2ctypes
+
+ - refactor OO external objects (Maciek, Anto)
 
  - review pdbplus, especially the graph commands, also in the light of
    https://codespeak.net/issue/pypy-dev/issue303 and the fact that we
    can have more than one translator/annotator around (with the
    timeshifter)
-
- - kill half concrete wrapper
- 
- - kill opaque hacks on the C backend
-  
- - decide how to implement constants in rffi
-   
- - think about/remove orphaned parts
-
- - implement callback mechanism for rffi/lltype/ll2ctypes
-
- - find out why our memcpy behaves so erratically
-
- - refactor OO external objects
 
 Interpreter
 +++++++++++
