@@ -65,6 +65,8 @@ Interpreter
 
  - remove prebuilt costate vars  (might happen before)
 
+ - think about the __name__ of MixedModules, because *.py makes CLR unhappy
+
 Modules
 +++++++
 
