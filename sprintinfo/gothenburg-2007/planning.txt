@@ -17,7 +17,7 @@ Translation toolchain
 
  - fix the nightly CPython test runs (Samuele)
 
- - find out why our memcpy behaves so erratically
+ - find out why our memcpy behaves so erratically (Armin, Alexander, quickly)
 
  - finish rctypes removal
 
