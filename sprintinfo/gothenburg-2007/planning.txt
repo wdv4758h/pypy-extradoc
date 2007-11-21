@@ -8,7 +8,7 @@ Meta-Tasks
  - Review the cpython regression test suite (skips/failures)
  - think about/remove orphaned parts
 
-Wednesday after the planning session:
+Wednesday afternoon:
  - Start slowly thinking about 1.1 plans
 
 Thursday afternoon:
