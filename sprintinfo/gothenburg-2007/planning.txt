@@ -11,17 +11,33 @@ Meta-Tasks
 Wednesday after the planning session:
  - Start slowly thinking about 1.1 plans
 
+Thursday afternoon:
+ - discuss callback mechanism for rffi/lltype/ll2ctypes
+
+Friday:
+ - breakday
+
+Saturday:
+ - discuss approaches for extension modules
 
 Translation toolchain
 +++++++++++++++++++++
 
- - fix the nightly CPython test runs (Samuele)
+ - fix the nightly CPython test runs DONE
 
- - find out why our memcpy behaves so erratically (Armin, Alexander, quickly)
+ - kill remaining suggested_primitives DONE
+
+ - remove the symbol table from the C backend DONE
+
+ - fix windows compilation (christian)
+
+ - find out why our memcpy behaves so erratically
+   GCC behaves very erratically, so we won't work on this for now
 
  - finish rctypes removal
 
- - kill remaining suggested_primitives (Armin, Alexander)
+ - remove support for suggested_primitives and the extfunctable (alexander,
+   carl friedrich)
 
  - raw_malloc should be split, rffi one should not use obmalloc (it's
    not thread-safe)
@@ -32,19 +48,16 @@ Translation toolchain
 
  - clean up the tangle of including headers in the C backend
 
- - remove the use of pyobjs in the test wrapping functions (Carl Friedrich,
-   Richard)
-
- - remove the symbol table from the C backend
+ - remove the use of pyobjs in the test wrapping functions IN-PROGRESS
+   (richard, samuele)
 
  - kill half concrete wrapper
   
- - decide how to implement constants in rffi
+ - implement global variables in rffi (anto, maciek)
    
 
- - implement callback mechanism for rffi/lltype/ll2ctypes
-
- - refactor OO external objects (Maciek, Anto)
+ - refactor OO external objects. discussion happened, the outcome was that it
+   doesn't make sense, because javascript and cli are too different
 
  - review pdbplus, especially the graph commands, also in the light of
    https://codespeak.net/issue/pypy-dev/issue303 and the fact that we
@@ -61,7 +74,8 @@ Interpreter
  - fix the thunk space
 
  - review the things implemented at applevel whether they are
-   performance-critical
+   performance-critical IN-PROGRESS: moved super, classmethod, statimethod to
+   interplevel, some dict methods
 
  - remove prebuilt costate vars  (might happen before)
 
