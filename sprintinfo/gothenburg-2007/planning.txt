@@ -14,20 +14,13 @@ Wednesday afternoon:
 Thursday afternoon:
  - discuss callback mechanism for rffi/lltype/ll2ctypes
 
-Friday:
- - breakday
-
 Saturday:
  - discuss approaches for extension modules
 
 Translation toolchain
 +++++++++++++++++++++
 
- - fix the nightly CPython test runs DONE
-
- - kill remaining suggested_primitives DONE
-
- - remove the symbol table from the C backend DONE
+ - refactor rffi header, sources, includes management
 
  - fix windows compilation (christian)
 
@@ -36,9 +29,6 @@ Translation toolchain
 
  - finish rctypes removal
 
- - remove support for suggested_primitives and the extfunctable (alexander,
-   carl friedrich)
-
  - raw_malloc should be split, rffi one should not use obmalloc (it's
    not thread-safe)
 
@@ -46,23 +36,21 @@ Translation toolchain
    for rtti, simplify translator/c/gc.py
      - kill opaque hacks in the C backend
 
- - clean up the tangle of including headers in the C backend
+ - cleanup pyobj.py and rclass stuff and remove the ability to make cpython extensions, just dll
+   update gencapicall impl (cfbolz, samuele)
 
- - remove the use of pyobjs in the test wrapping functions IN-PROGRESS
-   (richard, samuele)
+ - clean up the tangle of including headers in the C backend
 
  - kill half concrete wrapper
   
- - implement global variables in rffi (anto, maciek)
+ - implement global variables in rffi (anto, maciek) DONE
    
-
- - refactor OO external objects. discussion happened, the outcome was that it
-   doesn't make sense, because javascript and cli are too different
-
  - review pdbplus, especially the graph commands, also in the light of
    https://codespeak.net/issue/pypy-dev/issue303 and the fact that we
    can have more than one translator/annotator around (with the
    timeshifter)
+
+ - fix test_thread etc
 
 Interpreter
 +++++++++++
