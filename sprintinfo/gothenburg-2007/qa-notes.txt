@@ -13,9 +13,6 @@ status:
 - nightly run of cpython regression tests on top of several pypy-c's 
   (running on samuele's linux Desktop machine) 
 
-- maciej (XXX) runs nightly tests of pypy-c, py.test -A on a private
-  machine
-
 
 missing: 
 
@@ -26,6 +23,7 @@ missing:
 
 - aggregation of information from all these automated runs
   goal: present summary of all results from automated runs at one place 
+  consider existing tools 
 
 
 releases 
@@ -34,6 +32,7 @@ goal:
     - what does "making a release" mean?
  
     - in addition to tests, run pypy with some real applications
+
     - have pervasive testing (see above) on demand  (and not only
       nightly) and on branches 
 
