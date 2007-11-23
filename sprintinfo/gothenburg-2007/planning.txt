@@ -8,21 +8,30 @@ Meta-Tasks
  - Review the cpython regression test suite (skips/failures)
  - think about/remove orphaned parts
 
-Wednesday afternoon:
- - Start slowly thinking about 1.1 plans
 
-Thursday afternoon:
+Discussion topics (dynamically scheduled):
  - discuss callback mechanism for rffi/lltype/ll2ctypes
-
-Saturday:
  - discuss approaches for extension modules
+   (probably Armin, Maciek, Alexander)
+
+ - discuss Q/A (Holger, Samuele, Carl Friedrich)
+ - discuss how to deal with the windows situation
+
 
 Translation toolchain
 +++++++++++++++++++++
 
- - refactor rffi header, sources, includes management
+ - refactor rffi header, sources, includes management IN-PROGRESS
+   (maciek, alexander)
 
- - fix windows compilation (christian)
+ - py-lib 0.9.1 release? (holger, maciek)
+
+ - tried to translate PyPy with LLVM IN-PROGRESS (found a bug in LLVM opt)
+
+ - some more work on cleaning up the startup process IN-PROGRESS (christian)
+
+ - fix windows compilation: rffi-platform checks have problem, which are being
+   approached now
 
  - find out why our memcpy behaves so erratically
    GCC behaves very erratically, so we won't work on this for now
@@ -36,21 +45,19 @@ Translation toolchain
    for rtti, simplify translator/c/gc.py
      - kill opaque hacks in the C backend
 
- - cleanup pyobj.py and rclass stuff and remove the ability to make cpython extensions, just dll
-   update gencapicall impl (cfbolz, samuele)
+ - cleanup pyobj.py and rclass stuff and remove the ability to make cpython
+   extensions, just dll
+   update gencapicall impl (cfbolz, samuele) IN-PROGRESS
 
  - clean up the tangle of including headers in the C backend
 
  - kill half concrete wrapper
   
- - implement global variables in rffi (anto, maciek) DONE
-   
  - review pdbplus, especially the graph commands, also in the light of
    https://codespeak.net/issue/pypy-dev/issue303 and the fact that we
    can have more than one translator/annotator around (with the
    timeshifter)
 
- - fix test_thread etc
 
 Interpreter
 +++++++++++
@@ -65,9 +72,10 @@ Interpreter
    performance-critical IN-PROGRESS: moved super, classmethod, statimethod to
    interplevel, some dict methods
 
- - remove prebuilt costate vars  (might happen before)
+ - remove prebuilt costate vars  (christian, armin?)
 
- - think about the __name__ of MixedModules, because *.py makes CLR unhappy
+ - look at the new failing test in test_descr.py
+
 
 Modules
 +++++++
