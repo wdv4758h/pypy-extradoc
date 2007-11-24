@@ -21,14 +21,14 @@ Discussion topics (dynamically scheduled):
 Translation toolchain
 +++++++++++++++++++++
 
- - refactor rffi header, sources, includes management IN-PROGRESS
-   (maciek, alexander)
+ - refactor rffi header, sources, includes management IN-PROGRESS (maciek,
+   alexander, armin)
 
  - py-lib 0.9.1 release? (holger, maciek)
 
- - tried to translate PyPy with LLVM IN-PROGRESS (found a bug in LLVM opt)
+ - tried to translate PyPy with LLVM DONE
 
- - some more work on cleaning up the startup process IN-PROGRESS (christian)
+ - some more work on cleaning up the startup process DONE
 
  - fix windows compilation: rffi-platform checks have problem, which are being
    approached now
@@ -36,7 +36,7 @@ Translation toolchain
  - find out why our memcpy behaves so erratically
    GCC behaves very erratically, so we won't work on this for now
 
- - finish rctypes removal
+ - finish rctypes removal DONE on a branch
 
  - raw_malloc should be split, rffi one should not use obmalloc (it's
    not thread-safe)
@@ -47,7 +47,7 @@ Translation toolchain
 
  - cleanup pyobj.py and rclass stuff and remove the ability to make cpython
    extensions, just dll
-   update gencapicall impl (cfbolz, samuele) IN-PROGRESS
+   update gencapicall impl (cfbolz, samuele) MORE-PROGRESS
 
  - clean up the tangle of including headers in the C backend
 
@@ -58,6 +58,7 @@ Translation toolchain
    can have more than one translator/annotator around (with the
    timeshifter)
 
+ - llvm profiling (richard)
 
 Interpreter
 +++++++++++
@@ -71,11 +72,13 @@ Interpreter
  - review the things implemented at applevel whether they are
    performance-critical IN-PROGRESS: moved super, classmethod, statimethod to
    interplevel, some dict methods
+   to be done: property, exceptions?
 
  - remove prebuilt costate vars  (christian, armin?)
 
  - look at the new failing test in test_descr.py
 
+ - fix __future__ imports IN-PROGRESS (arre)
 
 Modules
 +++++++
