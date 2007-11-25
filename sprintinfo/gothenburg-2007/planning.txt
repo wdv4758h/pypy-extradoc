@@ -10,21 +10,23 @@ Meta-Tasks
 
 
 Discussion topics (dynamically scheduled):
- - discuss callback mechanism for rffi/lltype/ll2ctypes
- - discuss approaches for extension modules
+ - discuss callback mechanism for rffi/lltype/ll2ctypes DONE, minutes missing
+   (maciek)
+ - discuss approaches for extension modules DONE
    (probably Armin, Maciek, Alexander)
 
- - discuss Q/A (Holger, Samuele, Carl Friedrich)
+ - discuss Q/A (Holger, Samuele, Carl Friedrich) DONE
  - discuss how to deal with the windows situation
 
+ - write blog posts (carl friedrich; maciek, samuele to review)
 
 Translation toolchain
 +++++++++++++++++++++
 
- - refactor rffi header, sources, includes management IN-PROGRESS (maciek,
+ - refactor rffi header, sources, includes management MORE PROGRESS (maciek,
    alexander, armin)
 
- - py-lib 0.9.1 release? (holger, maciek)
+ - py-lib 0.9.1 release?
 
  - tried to translate PyPy with LLVM DONE
 
@@ -36,18 +38,18 @@ Translation toolchain
  - find out why our memcpy behaves so erratically
    GCC behaves very erratically, so we won't work on this for now
 
- - finish rctypes removal DONE on a branch
+ - finish rctypes removal DONE
 
  - raw_malloc should be split, rffi one should not use obmalloc (it's
    not thread-safe)
 
  - delegate finding type stuff like vtables etc to GC, cleaner interface
-   for rtti, simplify translator/c/gc.py
-     - kill opaque hacks in the C backend
+   for rtti, simplify translator/c/gc.py (carl friedrich, samuele to discuss)
+     - kill opaque hacks in the C backend 
 
  - cleanup pyobj.py and rclass stuff and remove the ability to make cpython
-   extensions, just dll
-   update gencapicall impl (cfbolz, samuele) MORE-PROGRESS
+   extensions, just dll DONE
+ - update gencapicall impl
 
  - clean up the tangle of including headers in the C backend
 
@@ -60,6 +62,10 @@ Translation toolchain
 
  - llvm profiling (richard)
 
+ - fix generational GC bug? (armin, maciek)
+
+ - general wizardry (samuele)
+
 Interpreter
 +++++++++++
 
@@ -71,14 +77,13 @@ Interpreter
 
  - review the things implemented at applevel whether they are
    performance-critical IN-PROGRESS: moved super, classmethod, statimethod to
-   interplevel, some dict methods
-   to be done: property, exceptions?
+   interplevel, some dict methods, property
+   to be done:  exceptions?
 
- - remove prebuilt costate vars  (christian, armin?)
+ - remove prebuilt costate vars  (christian, armin?) STARTED
 
- - look at the new failing test in test_descr.py
-
- - fix __future__ imports IN-PROGRESS (arre)
+ - trying to port only the fixes of __future__ imports to dist (arre,
+   alexander)
 
 Modules
 +++++++
