@@ -23,10 +23,13 @@ To make porting third party modules reasonable, it should not be necessary
 to recompile all of PyPy every time you want to integrate a new extension
 module. This requires supporting separate compilation.
 
-Also this would be interesting ground work for a try to compile cpython modules
-with a pypy-supplied Python.h file and link them to pypy. This would require
-writing a lot of new functions (for the CPython API), though. Also it is not
-clear how large the expected speed impact would be (because of e. g. pinning).
+Providing the CPython C-API
+===========================
+Separate compilation would be interesting ground work for a try to compile
+cpython modules with a pypy-supplied Python.h file and link them to pypy. This
+would require writing a lot of new functions (for the CPython API), though.
+Also it is not clear how large the expected speed impact would be (because of 
+e.g. pinning).
 
 Support a tool like Swig or Boost
 =================================
