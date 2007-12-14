@@ -1,0 +1,7 @@
+
+Separate compilation
+====================
+
+To make porting third party modules reasonable, it should not be necessary
+to recompile all of PyPy every time you want to integrate a new extension
+module. This requires supporting separate compilation.

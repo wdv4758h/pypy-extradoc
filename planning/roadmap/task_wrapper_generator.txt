@@ -1,0 +1,17 @@
+Support a tool like Swig or Boost
+=================================
+
+To make it simpler to integrate C extensions with PyPy, we should support
+at least one tool that is already in use in the Python community.
+
+Google uses Swig heavily, so in a scenario where Google pays for some
+development, it would be natural to do Swig. Once PyPy gets traction
+we expect proponents of other tools to make their own ports.
+
+In addition to Swig, a PyPy version of ctypes should be implemented.
+An attempt to build a layer on top of the existing ctypes
+implementation for CPython has failed. Ctypes was not written with
+this kind of reuse in mind, and it would be harder to change it
+than to make an RPython implementation from scratch.
+
+XXX Some example use case needed here.

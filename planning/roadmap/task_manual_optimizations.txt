@@ -1,0 +1,9 @@
+Hand optimizations
+==================
+
+There are still some hand optimizations of the Python interpreter that
+are well worth doing, since they can be expected to yield significant
+performance improvements. For instance, some of our mircobenchmarks
+show particularly poor performance in some areas. The use of better
+algorithms should improve our performance numbers significantly for
+some of the benchmarks.
