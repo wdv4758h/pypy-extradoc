@@ -23,6 +23,11 @@ To make porting third party modules reasonable, it should not be necessary
 to recompile all of PyPy every time you want to integrate a new extension
 module. This requires supporting separate compilation.
 
+Also this would be interesting ground work for a try to compile cpython modules
+with a pypy-supplied Python.h file and link them to pypy. This would require
+writing a lot of new functions (for the CPython API), though. Also it is not
+clear how large the expected speed impact would be (because of e. g. pinning).
+
 Support a tool like Swig or Boost
 =================================
 
@@ -102,7 +107,8 @@ Support a GUI
 
 One of the C extension modules that we need to have in order to get
 traction is support for one of the multi-platform GUI toolkits. The
-choice is probably between Qt and wxWindows, with Tkinter as a
+choice is probably between gtk (in use by olpc and others), Qt (written in c++,
+using SIP to get a cpython package) and wxWindows, with Tkinter as a
 possible third. Someone with more understanding of the Python
 community than us should make the pick. Which one would bring more
 users to PyPy? Would any one of them prompt proponents of other
