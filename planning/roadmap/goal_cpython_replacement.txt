@@ -1,0 +1,32 @@
+This is a roadmap for the specific target of
+
+"Making PyPy a viable replacement for CPython"
+
+This does not include things like porting every C extension that
+works for CPython, but it does include porting enough modules that
+enough people can use PyPy in their daily production that they will
+do the porting of modules and other tasks that are beyond the
+resources of the core project.
+
+.. include:: task_refactor_jit.txt
+
+.. include:: task_optimize_jit.txt
+
+.. include:: task_separate_compilation.txt
+
+.. include:: task_cpython_api.txt
+
+.. include:: task_wrapper_generator.txt
+
+.. include:: task_more_modules.txt
+
+.. include:: task_manual_optimizations.txt
+
+.. include:: task_parser_cleanup.txt
+
+.. include:: task_multi_platform.txt
+
+.. include:: task_gui_support.txt
+
+.. include:: task_modules_3rdparty.txt
+

@@ -1,0 +1,6 @@
+Add optimizations to the JIT
+============================
+
+A base set of optimizations include common operations on floats and
+strings as well as general call optimization. Fixing bugs in the
+current JIT implementation is also needed.

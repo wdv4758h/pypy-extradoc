@@ -1,0 +1,10 @@
+Parser cleanup
+==============
+
+The parser is in a rather sorry state. Making it support various
+versions of Python is currently a rather nasty job. It needs replacing
+with a more robust design. The estimates for this are probably too low,
+since they were based on the idea of improving the existing parser.
+Subsequent attempts to improve the parser have prompted the idea of
+a rewrite. In the parser work, there is also time needed to upgrade
+the interpreter to handle all of Python 2.5.

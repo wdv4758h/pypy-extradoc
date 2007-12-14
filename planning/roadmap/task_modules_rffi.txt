@@ -1,0 +1,25 @@
+Port more modules to rffi style
+===============================
+
+Some standard modules written in C have already been ported to the
+rffi style, but more remain.
+XXX Flesh out with some more details. Examples for example.
+
+
+Move modules from app to interpreter level
+==========================================
+
+Some modules are implemented in Python at application level. For
+preformance reasons, they should be implemented at interpreter level.
+
+XXX Which ones?
+
+Write new modules
+=================
+
+There are still some modules in the standard library that need writing
+before PyPy is a reasonable replacement for CPython. Exactly which
+ones needs some investigation.
+XXX Flesh out with some more details. Examples for example.
+
+XXX these tasks should be merged, I think
