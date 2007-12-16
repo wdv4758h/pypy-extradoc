@@ -8,6 +8,8 @@ enough people can use PyPy in their daily production that they will
 do the porting of modules and other tasks that are beyond the
 resources of the core project.
 
+These tasks have no specific ordering currently. (XXX do they?)
+
 .. include:: task_refactor_jit.txt
 
 .. include:: task_optimize_jit.txt
@@ -18,7 +20,11 @@ resources of the core project.
 
 .. include:: task_wrapper_generator.txt
 
-.. include:: task_more_modules.txt
+.. include:: task_catch_up_with_2_x.txt
+
+.. include:: task_modules_rffi.txt
+
+.. include:: task_modules_3rdparty.txt
 
 .. include:: task_manual_optimizations.txt
 
