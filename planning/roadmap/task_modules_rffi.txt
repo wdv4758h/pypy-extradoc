@@ -10,9 +10,12 @@ Move modules from app to interpreter level
 ==========================================
 
 Some modules are implemented in Python at application level. For
-preformance reasons, they should be implemented at interpreter level.
+preformance reasons, many of them should eventually be implemented
+at interpreter level.
 
-XXX Which ones?
+These modules are: binascii, cPickle, cStringIO, cmath,
+collections, datetime, functional, functools(incomplete), imp,
+itertools.
 
 Write new modules
 =================
