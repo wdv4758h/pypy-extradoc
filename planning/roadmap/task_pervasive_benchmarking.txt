@@ -7,7 +7,7 @@ status:
 - some microbenchmarks, but coverage not consistent
   (see pypy/translator/microbench) 
 - some small-to-medium-sized apps as real-world benchmarks
-- benchmarks run on one machine (wyvern), no collection of results
+- benchmarks run on one machine (tuatara), no collection of results
 
 todo: 
 
