@@ -1,5 +1,5 @@
 Catch up with CPython 2.5/2.6
------------------------------
+=============================
 
 status: 
  - PyPy already implements a few features of 2.5 (PEP 309, PEP 338, PEP 341, PEP 357,

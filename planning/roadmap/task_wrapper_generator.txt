@@ -4,9 +4,3 @@ Support a tool like Swig or Boost
 To make it simpler to integrate C libraries with PyPy, we should support
 at least one of the wrapper generators that are already in use in the
 Python community.
-
-Google uses Swig heavily, so in a scenario where Google pays for some
-development, it would be natural to do Swig. Once PyPy gets traction
-we expect proponents of other tools to make their own ports.
-
-
