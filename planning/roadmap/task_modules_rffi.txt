@@ -13,7 +13,7 @@ Some modules are implemented in Python at application level. For
 preformance reasons, many of them should eventually be implemented
 at interpreter level.
 
-These modules are: binascii, cPickle, cStringIO, cmath,
+These modules are: array, binascii, cPickle, cStringIO, cmath,
 collections, datetime, functional, functools(incomplete), imp,
 itertools.
 
