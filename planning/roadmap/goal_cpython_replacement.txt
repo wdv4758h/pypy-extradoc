@@ -34,5 +34,4 @@ These tasks have no specific ordering currently. (XXX do they?)
 
 .. include:: task_gui_support.txt
 
-.. include:: task_modules_3rdparty.txt
 
