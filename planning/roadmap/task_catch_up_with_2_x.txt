@@ -2,8 +2,9 @@ Catch up with CPython 2.5/2.6
 =============================
 
 status: 
- - PyPy already implements a few features of 2.5 (PEP 309, PEP 338, PEP 341, PEP 357,
-   partition, any, all)
+
+ - PyPy already implements a few features of 2.5 (PEP 309, PEP 338,
+   PEP 341, PEP 357, partition, any, all)
 
 todo:
  - Implement these features that were new in CPython 2.5:
@@ -24,10 +25,12 @@ todo:
      - class C(): pass
 
  - Merge Stdlib of Python 2.5/2.6
- - Implement Python 2.6 features (not so important if 2.5 is the goal for this task)
+ - Implement Python 2.6 features (not so important if 2.5 is the goal
+   for this task)
 
 expected outcome:
- - PyPy supports Python 2.5 semantics and makes people with apps happy that use these
+ - PyPy supports Python 2.5 semantics and makes people with apps that use
+   these happy.
 
 dependencies:
  - None
