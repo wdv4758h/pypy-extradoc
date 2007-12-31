@@ -3,7 +3,9 @@
 =====================================================================
 ..                             image:: http://www.ermina.ch/002.JPG
 
-XXX nice introduction
+The next PyPy sprint will be in Leysin, Switzerland, for the fifth
+time.  This is a fully public sprint.  Newcomers and other topics
+than those suggested below are welcome.
 
 ------------------------------
 Goals and topics of the sprint
