@@ -31,6 +31,11 @@ Goals and topics of the sprint
   - Testing: e.g. we run various nightly test runs but the
     results are not summarized in a single page yet.
 
+  - LLVM: llvm 2 is now at version 2.1 and nicely stable
+    again.  Our llvm backend has improved in the last few
+    months, but refactoring it together with the genc backend
+    to share code more directly would be a nice task.
+
 * We are open to all sorts of other tasks during the sprint, just
   propose something.
 
