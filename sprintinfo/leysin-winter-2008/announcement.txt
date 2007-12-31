@@ -29,6 +29,9 @@ Goals and topics of the sprint
   - Testing: e.g. we run various nightly test runs but the
     results are not summarized in a single page yet.
 
+* We are open to all sorts of other tasks during the sprint, just
+  propose something.
+
 -----------------------
 Location & Accomodation
 -----------------------
