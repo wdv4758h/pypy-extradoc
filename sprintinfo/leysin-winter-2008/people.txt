@@ -12,6 +12,7 @@ available yet from them.
 ==================== ============== =====================
 Armin Rigo           --             private
 Carl Friedrich Bolz  12th-19th?     Ermina
+Antonio Cuni         14th-19th?     Ermina
 ==================== ============== =====================
 
 People on the following list were present at previous sprints: 
@@ -39,7 +40,6 @@ Anders Chrigstroem   ?              ?
 Samuele Pedroni      ?              ?
 Michael Hudson       ?              ?
 Niko Matsakis        ?              ?
-Antonio Cuni         ?              ?
 Maciej Fijalkowski   ?              ?
 Eric van Riet Paap   ?              ?
 Jacob Hallen         ?              ?
