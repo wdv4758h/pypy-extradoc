@@ -14,6 +14,7 @@ Armin Rigo           --             private
 Carl Friedrich Bolz  12th-19th?     Ermina
 Antonio Cuni         14th-19th?     Ermina
 Maciej Fijalkowski   11th-20th      Ermina (arrive at 10pm)
+Toby Watson          12th-19th      Ermina
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
