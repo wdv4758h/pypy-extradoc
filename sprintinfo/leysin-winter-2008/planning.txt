@@ -1,0 +1,22 @@
+
+Task ideas
+==========
+
+ - try getting debug information in the Java class files (Carl Friedrich,
+   Paul)
+
+ - benchmark the size of the young nursery for generational GC (Olivier, most
+   of Armin)
+
+ - look at the RPython microbenchmarks for Java (Toby, Armin around)
+ 
+ - work on CTypes
+
+ - think about summarizing test outcomes
+
+ - JVM integration (probably only when Anto is here)
+
+ - look at the CLI integration on the clr-module-improvements/ branch and
+   maybe improve/merge it?
+
+ 
