@@ -2,17 +2,17 @@
 Task ideas
 ==========
 
- - try getting debug information in the Java class files (Carl Friedrich,
-   Paul) DONE
+ - try getting debug information in the Java class files DONE
 
- - benchmark the size of the young nursery for generational GC (Olivier,
-   most of Armin) IN-PROGRESS, the result is that picking half the L2 cache
+ - benchmark the size of the young nursery for generational GC
+   DONE, the result still is that picking half the L2 cache
    size for the nursery sounds good
 
- - look at the RPython microbenchmarks for Java (Toby, Armin around)
+ - look at the RPython microbenchmarks for Java
    DONE, fixed sized-lists are slow
  
- - work on CTypes (Maciek, Armin) general non-progress
+ - work on CTypes (Carl Friedrich, Armin)
+   more general non-progress
 
  - think about summarizing test outcomes
 
@@ -23,6 +23,6 @@ Task ideas
    working correctly (Anto, Paul)
    
  - implement fixed-size lists as arrays in the ootypesystem (Carl Friedrich,
-   Toby) IN PROGRESS, backend support missing
+   Toby) IN PROGRESS, jvm backend supported, minor problems
 
  
