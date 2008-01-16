@@ -11,18 +11,23 @@ Task ideas
  - look at the RPython microbenchmarks for Java
    DONE, fixed sized-lists are slow
  
- - work on CTypes (Carl Friedrich, Armin)
+ - work on CTypes
    more general non-progress
+   nested structure and arrays of structure support in rawffi
 
  - think about summarizing test outcomes
 
  - JVM integration (probably only when Anto is here)
 
  - look at the CLI integration on the clr-module-improvements/ branch and
-   maybe improve/merge it? SOME PROGRESS, we gave up because python.net wasn't
-   working correctly (Anto, Paul)
+   maybe improve/merge it? DONE, branch is to be merged
    
  - implement fixed-size lists as arrays in the ootypesystem (Carl Friedrich,
-   Toby) IN PROGRESS, jvm backend supported, minor problems
-
+   Toby) IN PROGRESS, jvm backend supported, more minor problems
+   java bytecode verifier complains
  
+ - give a JIT code walkthrough (Armin)
+ 
+ - start writing more unit-style tests for the JIT (Armin, Anto, Maciek)
+ 
+ - explore the parsers a bit (Toby, Carl Friedrich)
