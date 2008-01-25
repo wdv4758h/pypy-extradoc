@@ -1,0 +1,23 @@
+Speakers: Maciej Fijalkowski
+
+Title: PyPy, Python interpreter written in Python
+
+Abstract: XXX
+
+Why another python interpreter?
+
+CPython is cool, but has limitations.
+
+Writing in C is ugly and unefficient.
+
+Let's write high-level interpreter in high-level language!
+
+Our cool features (which you haven't seen yet):
+
+* sandboxing
+* jit (python is too dynamic, let's compile it dynamically)
+* stackless (?)
+* frame pickling
+* gc in action
+
+xxx
