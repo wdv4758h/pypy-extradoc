@@ -2,22 +2,13 @@ Speakers: Maciej Fijalkowski
 
 Title: PyPy, Python interpreter written in Python
 
-Abstract: XXX
+Abstract: In this talk I would like to present the PyPy project, our motivation,
+state of art and targets. PyPy is both an extremely flexible python interpreter
+written in Python itself to avoid burden of writing in low-level languages
+(like C) and compiler toolchain which compiles restricted python to a variety
+of lower-level platforms (including C/POSIX, CLI, JVM...). I would like to
+present some cool features, especially those created since the last rupy
+conference in 2007. Also, I would like to showcase directions in which
+the PyPy project is going, including even more agressive JIT compilation.
 
-Why another python interpreter?
-
-CPython is cool, but has limitations.
-
-Writing in C is ugly and unefficient.
-
-Let's write high-level interpreter in high-level language!
-
-Our cool features (which you haven't seen yet):
-
-* sandboxing
-* jit (python is too dynamic, let's compile it dynamically)
-* stackless (?)
-* frame pickling
-* gc in action
-
-xxx
+Details about the PyPy project can be seen at http://codespeak.net/pypy/
