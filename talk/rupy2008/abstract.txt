@@ -10,7 +10,7 @@ focus on what is new since the last RuPy conference.  I am going to
 talk about speed and feature improvements, particularly our flexible
 garbage collection framework and the Just-in-time compiler generator. 
 This generator is used to automatically turn our Python interpreter 
-into a compiler for directly emiting assembler code. 
+into a compiler for directly emitting assembler code. 
 
 
 More about the PyPy project: http://codespeak.net/pypy/
