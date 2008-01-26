@@ -8,6 +8,6 @@ and a complete Python Interpreter written in a high level language.
 PyPy translates interpreters to C, .NET and the JVM.  The talk will 
 focus on what is new since the last RUPY conference.  I am going to 
 talk about speed and feature improvements, including the status 
-and future of PyPy's Just-In-Time compiler. 
+and future of PyPy's Just-In-Time compiler generator. 
 
 More about the PyPy project: http://codespeak.net/pypy/
