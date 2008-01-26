@@ -1,4 +1,4 @@
-Speakers: Maciej Fijalkowski
+Speakers: Maciej Fijalkowski, merlinux GmbH
 
 Title: PyPy - status and next goals 
 
@@ -7,7 +7,11 @@ the PyPy project: both a platform for implementing dynamic languages
 and a complete Python Interpreter written in a high level language.  
 PyPy translates interpreters to C, .NET and the JVM.  The talk will 
 focus on what is new since the last RUPY conference.  I am going to 
-talk about speed and feature improvements, including the status 
-and future of PyPy's Just-In-Time compiler generator. 
+talk about speed and feature improvements, including our flexible
+garbage collection framework and status and future of our Just-in-time
+compiler generator. This generator is used to automatically turn
+python interpreter into compiler directly emiting assembler code,
+extending the idea of the Psyco project.
+
 
 More about the PyPy project: http://codespeak.net/pypy/
