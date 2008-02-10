@@ -1,5 +1,7 @@
-Maciej Fijalkowski is a core pypy and py.test developer. He's working for
-merlinux GmbH on pypy and py.test from the period of 6th EU
-framework programme. He's giving talks at community conferences such as
-EuroPython and Pycon.
+Maciej Fijalkowski is a core developer of PyPy - 
+a Python Interpreter and Compiler and of py.test, 
+a popular testing tool.  He has successfully completed a 
+Summer of Code project and was contracted by merlinux (germany) 
+for several tasks in the PyPy EU research project.  He gave 
+talks at international European and US Python community conferences. 
 
