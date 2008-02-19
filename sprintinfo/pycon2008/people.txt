@@ -1,28 +1,27 @@
 
-People coming to the Leysin sprint Winter 2008
+People coming to the Pycon 2008 sprint
 ==================================================
 
 People who have a ``?`` in their arrive/depart or accomodation
 column are known to be coming but there are no details 
 available yet from them.
 
+People on the following list were present at previous sprints: 
 
 ==================== ============== =======================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =======================
-Armin Rigo           --             private
-Carl Friedrich Bolz  12th-19th?     Ermina
-Antonio Cuni         14th-19th?     Ermina
-Maciej Fijalkowski   11th-20th      Ermina (arrive at 10pm)
-Toby Watson          12th-19th      Ermina
-Paul deGrandis       12th-19th      Ermina
 ==================== ============== =======================
-
-People on the following list were present at previous sprints: 
 
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
+Armin Rigo           ?              ?
+Carl Friedrich Bolz  ?              ?
+Antonio Cuni         ?              ?
+Maciej Fijalkowski   ?              ?
+Toby Watson          ?              ?
+Paul deGrandis       ?              ?
 Christian Tismer     ?              ?
 Michael Hudson       ?              ?
 Anders Lehmann       ?              ?
@@ -30,7 +29,7 @@ Niklaus Haldimann    ?              ?
 Lene Wagner          ?              ?
 Amaury Forgeot d'Arc ?              ?
 Valentino Volonghi   ?              ?
-Boris Feigin	     ?              ?
+Boris Feigin	       ?              ?
 Andrew Thompson      ?              ?
 Bert Freudenberg     ?              ?
 Beatrice Duering     ?              ?
