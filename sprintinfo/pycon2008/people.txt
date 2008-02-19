@@ -13,6 +13,9 @@ People on the following list were present at previous sprints:
 ==================== ============== =======================
 ==================== ============== =======================
 
+
+People on the following list were present at previous sprints: 
+
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
