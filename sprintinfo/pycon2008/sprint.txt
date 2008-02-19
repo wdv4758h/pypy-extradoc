@@ -11,7 +11,7 @@ a variety of platforms including C/POSIX, JVM and CLI. PyPy also features
 a set of experimental features, like different GCs or different threading
 models, which makes it a good platform to experiment with the python language.
 
-Sprint leader: Maciej Fijalkowski (fijall@gmail.com)
+Sprint leader: Maciej Fijalkowski (fijal@merlinux.de)
 
 Attendees: list will be available at
 http://codespeak.net/pypy/extradoc/sprintinfo/pycon2008/people.txt
