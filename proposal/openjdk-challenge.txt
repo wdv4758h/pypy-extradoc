@@ -1,0 +1,58 @@
+Porting the PyPy JIT to JVM and MLVM
+====================================
+
+PyPy and its JIT generator
+--------------------------
+
+PyPy_ is an open source research project that aims to produce a
+flexible and fast implementation of the Python language (XXX: should
+we mention other languages implementations?)
+
+PyPy is divided into two main parts: the Python interpreter, which
+implements the Python language and its written in RPython_, and the
+Translation Toolchain (TT), which transforms and translates programs
+written in RPython into the final executables.  RPython is a subset of
+Python specifically designed to allow the TT to analyze RPython
+programs and translate them into lower level, very efficient
+executables.
+
+Currently, the TT of PyPy provides three complete backends that
+generate C code, bytecode for CLI/.NET and bytecode for the JVM.  By
+using these backends, we can get Python implementations that run on a
+standard C/Posix environment, on the CLI or on the JVM.
+
+It is important to underline that the job of the TT is not limited to
+the translation into an efficient executable, but it actively
+transform the source interpreter by adding new features and
+translation aspects, such as garbage collection, stackless
+capabilities, etc. (XXX: link).
+
+The most exciting feature of the TT is the ability to automatically
+turn the interpreter into a JIT compiler that exploits partial
+evaluation techniques to dynamically generate efficient code.
+
+Currently, the PyPy JIT works only in conjunction with the C backend;
+early results are very good, since the resulting Python interpreter
+can run numeric intensive computations at roughly the same speed of C
+(XXX: link).
+
+XXX: should we mention the currently half-working CLI JIT backend?
+
+
+Porting the JIT to the JVM
+--------------------------
+
+The goal of this proposal is to extend the PyPy JIT to work in
+conjunction with the JVM backend.  After the work has been completed,
+it will be possibile to translate the interpreter into a Python
+implementation that runs on top of the JVM and contains a JIT; the JIT
+will dynamically translate part of Python programs into JVM bytecode,
+which will then be executed by the underlying virtual machine.
+
+
+
+
+.. _PyPy: http://codespeak.net/pypy
+.. _RPython: http://codespeak.net/pypy/dist/pypy/doc/coding-guide.html#rpython 
+
+
