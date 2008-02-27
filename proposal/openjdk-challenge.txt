@@ -28,7 +28,11 @@ etc.
 
 The most exciting feature of the TT is the ability to automatically
 turn the interpreter into a JIT compiler that exploits partial
-evaluation techniques to dynamically generate efficient code.
+evaluation techniques to dynamically generate efficient code.  The
+novel idea behind PyPy JIT is to delay the compilation until we know
+all the informations useful for emitting optimized code, thus
+being potentially much more efficient than all the current other
+alternatives (see the "Related Work" section).
 
 Currently, the PyPy JIT works only in conjunction with the C backend;
 early results are very good, the resulting Python interpreter
