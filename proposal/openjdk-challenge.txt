@@ -115,6 +115,7 @@ For an example of a function with is highly optimized by the PyPy JIT,
 look at the `function f1`_: when executed by a pypy-c compiled with
 JIT support, it runs roughly at the same speed as its C equivalent
 compiled with `gcc -O1`. (XXX: is there a link somewhere?)
+(XXX it's only gcc -O0, not -O1)
 
 We also expect to find benchmarks in which the JIT that targets the
 MLVM will perform better thant the JIT that targets the plain JVM,
@@ -174,6 +175,12 @@ a hot topic:
   - in the .NET world, IronPython also emit code dynamically to
     optimize hot spots, but not in a pervasive way as JRuby or PyPy.
 
+    XXX (arigo) I'm confused by the previous sentence.  I thought
+    that IronPython and Jython both emitted .NET/JVM bytecode as their
+    only way to compile Python source.  I also imagined that JRuby
+    did exactly the same.  I.e. all of IronPython, Jython and JRuby
+    work by turning each source unit to native bytecode by a direct
+    translation - no?
 
 
 .. _PyPy: http://codespeak.net/pypy
