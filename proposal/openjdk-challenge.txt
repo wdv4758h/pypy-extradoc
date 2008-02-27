@@ -65,7 +65,7 @@ tried in a couple of projects (see the "Related Work" section), it has
 to been said that the JVM was not originally designed for such
 applications; for example, the process of loading a single method is
 very expensive, since it involves the creation and loading of a
-sorrounding class.
+surrounding class.
 
 The new Da Vinci Machine contains a lot of interesting features that
 could be effectively exploited by the PyPy JIT to produce an even more
@@ -132,8 +132,8 @@ complete, the resulting pypy-jvm will automatically take advantage of
 all the optimizations written for the others backend.
 
 We also expect to find benchmarks in which the JIT that targets the
-MLVM will perform better thant the JIT that targets the plain JVM,
-though it is hard to speficy a precise commitment here without knowing
+MLVM will perform better than the JIT that targets the plain JVM,
+though it is hard to specify a precise commitment here without knowing
 which features of the MLVM will be possible to use.
 
 
@@ -180,7 +180,7 @@ a hot topic:
     efficient implementation of EcmaScript which runs on top of the JVM;
 
   - Jython compiles Python source code to JVM bytecode; however,
-    unlike most compilers, the compilation phase occours when the JVM
+    unlike most compilers, the compilation phase occurs when the JVM
     has already been started, by generating and loading bytecode on
     the fly; despite emitting code at runtime, this kind of compiler
     really works ahead of time (AOT), because the code is fully
