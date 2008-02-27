@@ -5,16 +5,15 @@ PyPy and its JIT generator
 --------------------------
 
 PyPy_ is an open source research project that aims to produce a
-flexible and fast implementation of the Python language (XXX: should
-we mention other languages implementations?)
+flexible and fast implementation of the Python language.
 
 PyPy is divided into two main parts: the Python interpreter, which
 implements the Python language and is written in RPython_, and the
-Translation Toolchain (TT), (XXX: written in Python?) which transforms and translates programs
-written in RPython into the final executables.  RPython is a subset of
-Python specifically designed to allow the TT to analyze RPython
-programs and translate them into lower level, very efficient
-executables.
+Translation Toolchain (TT), written in Python, which transforms and
+translates programs written in RPython into the final executables.
+RPython is a subset of Python specifically designed to allow the TT to
+analyze RPython programs and translate them into lower level, very
+efficient executables.
 
 Currently, the TT of PyPy provides three complete backends that
 generate C code, bytecode for CLI/.NET and bytecode for the JVM.  By
@@ -22,11 +21,10 @@ using these backends, we can get Python implementations that run on a
 standard C/Posix environment, on the CLI or on the JVM.
 
 It is important to underline that the job of the TT is not limited to
-translation into an efficient executable, but it actively
-transforms the source interpreter by adding new features and
-translation aspects, such as garbage collection, stackless
-capabilities, etc. (XXX: link) (XXX: not sure stackless is well known,
-say microthreading instead?? mention proxying or security aspects??).
+translation into an efficient executable, but it actively transforms
+the source interpreter by adding new features and translation aspects,
+such as garbage collection, microthreading (like `Stackless Python`_),
+etc.
 
 The most exciting feature of the TT is the ability to automatically
 turn the interpreter into a JIT compiler that exploits partial
@@ -34,10 +32,13 @@ evaluation techniques to dynamically generate efficient code.
 
 Currently, the PyPy JIT works only in conjunction with the C backend;
 early results are very good, the resulting Python interpreter
-can run numeric intensive computations at roughly the same speed of C
-(XXX: link).
+can run numeric intensive computations at roughly the same speed of C,
+as shown by the `technical report`_ on the JIT.
 
-XXX: should we mention the currently half-working CLI JIT backend?
+Moreover, there is an experimental JIT backend that emits code for the
+CLI; it is still work in progress and very incomplete, but it shows
+that the it is possible to adapt the PyPy JIT to emit code for object
+oriented virtual machines.
 
 
 Porting the JIT to the JVM
@@ -50,15 +51,13 @@ implementation that runs on top of the JVM and contains a JIT; the JIT
 will dynamically translate part of Python programs into JVM bytecode,
 which will then be executed by the underlying virtual machine.
 
-XXX: should we explain in more detail what we are doing?
-
 
 Porting the JIT to the MLVM
 ---------------------------
 
 As stated above, PyPy JIT for JVM would work by dynamically emitting
 and loading JVM bytecode at runtime.  Even if this approach has been
-tried in a couple of projects (XXX: link to JRuby for example), it has
+tried in a couple of projects (see the "Related Work" section), it has
 to been said that the JVM was not originally designed for such
 applications; for example, the process of loading a single method is
 very expensive, since it involves the creation and loading of a
@@ -80,6 +79,7 @@ special features when needed.
 Moreover, the experience of this project will help the MLVM team to
 understand which features are really useful to implement dynamic
 languages on top of the JVM and which one we still lack.
+
 
 Deliverables
 ------------
@@ -119,8 +119,13 @@ which have not been optimized yet.
 For an example of a function with is highly optimized by the PyPy JIT,
 look at the `function f1`_: when executed by a pypy-c compiled with
 JIT support, it runs roughly at the same speed as its C equivalent
-compiled with `gcc -O1`. (XXX: is there a link somewhere?)
-(XXX it's only gcc -O0, not -O1)
+compiled with `gcc -O0`.
+
+Making the Python interpreter to exploit the full potential of the JIT
+is a separate task and it is out of the scope of this proposal; it is
+important to underline that once the JVM backend for the JIT is
+complete, the resulting pypy-jvm will automatically take advantage of
+all the optimizations written for the others backend.
 
 We also expect to find benchmarks in which the JIT that targets the
 MLVM will perform better thant the JIT that targets the plain JVM,
@@ -131,22 +136,21 @@ which features of the MLVM will be possible to use.
 Relevance to the community
 --------------------------
 
-Recently the community has shown a lot of interest in dynamic languages
-which run
-on top of the JVM.  Even if currently Jython(XXX: link) is the only usable
-implementation of Python for the JVM, PyPy has the potential to become the
-reference implementation in the future.  
+Recently the community has shown a lot of interest in dynamic
+languages which run on top of the JVM.  Even if currently Jython_ is
+the only usable implementation of Python for the JVM, PyPy has the
+potential to become the reference implementation in the future.
 
 To have a working JIT for the JVM is an important step towards making PyPy
 the fastest Python for the JVM, ever.  Moreover, due to the innovative
-ideas implemented by PyPy, it is possible (XXX: likely?) that Python could become
+ideas implemented by PyPy, it is likely that Python could become
 the fastest dynamic language that runs on the top of the JVM.
 
 Finally, PyPy is not limited to Python: it is entirely possible to
 write interpreters for languages other than Python and translate them
-with the TT; as a proof of concept, PyPy already contains 
-fairly complete implementations of Prolog and Smalltalk, as well
-as partial implementations of JavaScript and Scheme. (XXX: did I overstate things?)
+with the TT; as a proof of concept, PyPy already contains
+implementations of Prolog, Smalltalk, JavaScript and Scheme, with
+various degrees of completeness.
 
 Since the JIT generator is independent of the Python languages, it
 will be possible to automatically add a JIT compiler to every language
@@ -171,27 +175,66 @@ a hot topic:
   - `this paper`_ shows how this technique is exploited to write an
     efficient implementation of EcmaScript which runs on top of the JVM;
 
-  - JRuby also comes with a JIT compiler that dynamically translates
-    Ruby code into JVM bytecode, however, unlike PyPy
-    JRuby doesn't exploit type information that is known only
-    at runtime to produce specialized, efficient versions of the
-    function; moreover, while the JRuby JIT is hand-written, the whole
-    goal of the PyPy JIT generator is to generate it automatically
-    from the intepreter;
+  - Jython compiles Python source code to JVM bytecode; however,
+    unlike most compilers, the compilation phase occours when the JVM
+    has already been started, by generating and loading bytecode on
+    the fly; despite emitting code at runtime, this kind of compiler
+    really works ahead of time (AOT), because the code is fully
+    emitted before the program starts, and it doesn't exploit
+    additional informations that would be available only at runtime
+    (e.g., informations about the types that each variable can
+    assume);
 
-  - in the .NET world, IronPython also emits code dynamically to
-    optimize hot spots, but not in a pervasive way as JRuby or PyPy.
+  - JRuby supports interpretation, AOT compilation and JIT
+    compilation; when the JIT compilation is enabled, JRuby interprets
+    methods until a call threshold is reached, then it compiles the
+    method body to JVM bytecode to be executed from that point on;
+    however, even if the compilation is truly just in time, JRuby
+    doesn't exploit type informations that are known only at runtime to
+    produce specialized, efficient versions of the function;
 
-    XXX (arigo) I'm confused by the previous sentence.  I thought
-    that IronPython and Jython both emitted .NET/JVM bytecode as their
-    only way to compile Python source.  I also imagined that JRuby
-    did exactly the same.  I.e. all of IronPython, Jython and JRuby
-    work by turning each source unit to native bytecode by a direct
-    translation - no?
+  - in the .NET world, IronPython works more or less as Jython;
+    additionally, it exploits dynamic code generation to implement
+    `Polymorphic Inline Caches`_.
+
+PyPy JIT is different of all of these, because runtime and compile
+time are continuously intermixed; by waiting until the very last
+possible moment to emit code, the JIT compiler is able to exploit all
+the runtime informations that wouldn't be available before, e.g. the
+exact type of all the variables involved; thus, it can generate many
+specialized, fast versions of each function, which in theory could run
+at the same speed of manually written Java code.
+
+Moreover, the JIT compiler is automatically generated by the TT: we
+believe, based on previous experiences as Psyco_, that manually
+writing a JIT compiler of that kind is hard and error prone,
+especially when the source language is as complex as Python; by
+writing a JIT compiler generator, we get JIT compilers that are
+correct by design for all languages implemented through the TT for
+free.
+
+
+Developer
+---------
+
+Antonio Cuni is one of the core developers of PyPy; he is the main
+author of the CLI backend, and the coauthor of the JVM backend;
+recently, it began working on the experimental CLI backend for the
+JIT.
+
+Currently, he is a PhD student at Univeristà degli Studi di Genova,
+doing research in the area of implementation of dynamic languages on
+top of object oriented virtual machines.
 
 
 .. _PyPy: http://codespeak.net/pypy
 .. _RPython: http://codespeak.net/pypy/dist/pypy/doc/coding-guide.html#rpython 
+.. _`Stackless Python`: http://www.stackless.com/
+.. _`technical report`: http://codespeak.net/pypy/extradoc/eu-report/D08.2_JIT_Compiler_Architecture-2007-05-01.pdf
 .. _`John Rose said`: http://blogs.sun.com/jrose/entry/a_day_with_pypy
+.. _Jython: http://www.jython.org
 .. _`function f1`: http://codespeak.net/svn/pypy/dist/demo/jit/f1.py
 .. _`this paper`: http://www.ics.uci.edu/~franz/Site/pubs-pdf/ICS-TR-07-10.pdf
+.. _`Polymorphic Inline Caches`: http://www.cs.ucsb.edu/~urs/oocsb/papers/ecoop91.pdf
+.. _Psyco: http://psyco.sourceforge.net/
+
