@@ -16,7 +16,7 @@ analyze RPython programs and translate them into lower level, very
 efficient executables.
 
 Currently, the TT of PyPy provides three complete backends that
-generate C code, bytecode for CLI/.NET and bytecode for the JVM.  By
+generate C code, bytecode for CLI/.NET or bytecode for the JVM.  By
 using these backends, we can get Python implementations that run on a
 standard C/Posix environment, on the CLI or on the JVM.
 
@@ -34,14 +34,14 @@ all the informations useful for emitting optimized code, thus
 being potentially much more efficient than all the current other
 alternatives (see the "Related Work" section).
 
-Currently, the PyPy JIT works only in conjunction with the C backend;
-early results are very good, the resulting Python interpreter
-can run numeric intensive computations at roughly the same speed of C,
+Currently, the PyPy JIT works only in conjunction with the C backend.
+Early results are very good. The resulting Python interpreter
+can run numerically intensive computations at roughly the same speed of C,
 as shown by the `technical report`_ on the JIT.
 
 Moreover, there is an experimental JIT backend that emits code for the
-CLI; it is still work in progress and very incomplete, but it shows
-that the it is possible to adapt the PyPy JIT to emit code for object
+CLI; it is still a work in progress and very incomplete, but it shows
+that the is possible to adapt the PyPy JIT to emit code for object
 oriented virtual machines.
 
 
@@ -129,7 +129,8 @@ Making the Python interpreter to exploit the full potential of the JIT
 is a separate task and it is out of the scope of this proposal; it is
 important to underline that once the JVM backend for the JIT is
 complete, the resulting pypy-jvm will automatically take advantage of
-all the optimizations written for the others backend.
+all the optimizations written for the other backends. XXX expand
+this by one sentence because this is unclear as written
 
 We also expect to find benchmarks in which the JIT that targets the
 MLVM will perform better than the JIT that targets the plain JVM,
@@ -194,17 +195,18 @@ a hot topic:
     methods until a call threshold is reached, then it compiles the
     method body to JVM bytecode to be executed from that point on;
     however, even if the compilation is truly just in time, JRuby
-    doesn't exploit type informations that are known only at runtime to
+    doesn't exploit type information that is known only at runtime to
     produce specialized, efficient versions of the function;
 
   - in the .NET world, IronPython works more or less as Jython;
     additionally, it exploits dynamic code generation to implement
     `Polymorphic Inline Caches`_.
 
-PyPy JIT is different of all of these, because runtime and compile
+The PyPy JIT is different from all of these, because runtime and compile
 time are continuously intermixed; by waiting until the very last
 possible moment to emit code, the JIT compiler is able to exploit all
-the runtime informations that wouldn't be available before, e.g. the
+the runtime information, including that which is only available late
+in the process, e.g. the
 exact type of all the variables involved; thus, it can generate many
 specialized, fast versions of each function, which in theory could run
 at the same speed of manually written Java code.
