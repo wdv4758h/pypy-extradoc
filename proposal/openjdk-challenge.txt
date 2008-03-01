@@ -26,13 +26,14 @@ the source interpreter by adding new features and translation aspects,
 such as garbage collection, microthreading (like `Stackless Python`_),
 etc.
 
-The most exciting feature of the TT is the ability apply partial
+The most exciting feature of the TT is the ability to apply partial
 evaluation techniques to automatically turn the interpreter into a JIT
 compiler which generates efficient code dynamically.  The key idea
-behind PyPy JIT is to delay the compilation until we know all the
+behind the PyPy JIT is to systematically delay compilation until we know all the
 information useful for emitting optimized code, thus being potentially
 much more efficient than all the current other alternatives (see the
-"Related Work" section).
+"Related Work" section). This is done using a mechanism which can be seen as a
+generalized version of polymorphic inline caches.
 
 Currently, the PyPy JIT works only in conjunction with the C backend.
 Early results are very good. The resulting Python interpreter
