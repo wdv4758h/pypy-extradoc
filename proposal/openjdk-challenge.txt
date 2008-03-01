@@ -223,18 +223,22 @@ correct by design for all languages implemented through the TT for
 free.
 
 
-Developer
----------
+Developers
+----------
 
 Antonio Cuni is one of the core developers of PyPy; he is the main
 author of the CLI backend, and the coauthor of the JVM backend;
-recently, it began working on the experimental CLI backend for the
+recently, he began working on the experimental CLI backend for the
 JIT.
 
 Currently, he is a PhD student at Univeristà degli Studi di Genova,
 doing research in the area of implementation of dynamic languages on
 top of object oriented virtual machines.
 
+Carl Friedrich Bolz also is a core developer of PyPy. He worked on various areas
+including the garbage collectors, optimizations and the Python interpreter. He
+is currently doing a Master's thesis at the Heinrich-Heine-Universität
+Düsseldorf about improving PyPy's JIT compiler generator.
 
 .. _PyPy: http://codespeak.net/pypy
 .. _RPython: http://codespeak.net/pypy/dist/pypy/doc/coding-guide.html#rpython 
