@@ -76,7 +76,7 @@ Features of the MLVM that could be exploited by PyPy JIT include but
 are not limited to: dynamic invocation, lightweight bytecode loading,
 tail calls, etc.
 
-Implementation wise, the JIT backends for the plain JVM and for the
+Implementation-wise, the JIT backends for the plain JVM and for the
 MLVM could share most of the code, with the latter making use of the
 special features when needed.
 
@@ -150,7 +150,7 @@ potential to become the reference implementation in the future.
 Jython people)
 
 To have a working JIT for the JVM is an important step towards making PyPy
-the fastest Python for the JVM, ever.  Moreover, due to the innovative
+the fastest Python for the JVM.  Moreover, due to the innovative
 ideas implemented by PyPy, it is likely that Python could become
 the fastest dynamic language of its class that runs on the top of the JVM.
 
@@ -228,7 +228,7 @@ Developers
 
 Antonio Cuni is one of the core developers of PyPy; he is the main
 author of the CLI backend, and the coauthor of the JVM backend;
-recently, he began working on the experimental CLI backend for the
+recently, he began working on an experimental CLI backend for the
 JIT.
 
 Currently, he is a PhD student at Univeristà degli Studi di Genova,
