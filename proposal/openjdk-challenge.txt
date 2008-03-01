@@ -142,13 +142,6 @@ which features of the MLVM will be possible to use.
 Relevance to the community
 --------------------------
 
-Recently the community has shown a lot of interest in dynamic
-languages which run on top of the JVM.  Even if currently Jython_ is
-the only usable implementation of Python for the JVM, PyPy has the
-potential to become the reference implementation in the future.
-(XXX careful: this enters politics country, I guess we don't want to piss of the
-Jython people)
-
 To have a working JIT for the JVM is an important step towards making PyPy
 the fastest Python for the JVM.  Moreover, due to the innovative
 ideas implemented by PyPy, it is likely that Python could become
