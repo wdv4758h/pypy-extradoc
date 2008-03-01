@@ -26,13 +26,13 @@ the source interpreter by adding new features and translation aspects,
 such as garbage collection, microthreading (like `Stackless Python`_),
 etc.
 
-The most exciting feature of the TT is the ability apply partial evaluation
-techniques to automatically turn the interpreter into a JIT compiler which
-generates efficient code dynamically.  The (XXX not so novel: hotspot does it too)
-novel idea behind PyPy JIT is to delay the compilation until we know
-all the information useful for emitting optimized code, thus
-being potentially much more efficient than all the current other
-alternatives (see the "Related Work" section).
+The most exciting feature of the TT is the ability apply partial
+evaluation techniques to automatically turn the interpreter into a JIT
+compiler which generates efficient code dynamically.  The key idea
+behind PyPy JIT is to delay the compilation until we know all the
+information useful for emitting optimized code, thus being potentially
+much more efficient than all the current other alternatives (see the
+"Related Work" section).
 
 Currently, the PyPy JIT works only in conjunction with the C backend.
 Early results are very good. The resulting Python interpreter
@@ -131,7 +131,7 @@ interpreter, it is out of the scope of this proposal. It is important
 to underline that this work is independent from the backend being used,
 so once the PyPy interpreter is fully optimized for the
 JIT, PyPy for the JVM will automatically take advantage of these improvements
-ups, without needing to change the JIT backend for the JVM.
+without needing to change the JIT backend for the JVM.
 
 We also expect to find benchmarks in which the JIT that targets the
 MLVM will perform better than the JIT that targets the plain JVM,
@@ -222,9 +222,7 @@ Developers
 Antonio Cuni is one of the core developers of PyPy; he is the main
 author of the CLI backend, and the coauthor of the JVM backend;
 recently, he began working on an experimental CLI backend for the
-JIT.
-
-Currently, he is a PhD student at Univeristà degli Studi di Genova,
+JIT.  Currently, he is a PhD student at Univeristà degli Studi di Genova,
 doing research in the area of implementation of dynamic languages on
 top of object oriented virtual machines.
 
