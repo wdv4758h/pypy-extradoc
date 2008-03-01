@@ -41,7 +41,7 @@ as shown by the `technical report`_ on the JIT.
 
 Moreover, there is an experimental JIT backend that emits code for the
 CLI; it is still a work in progress and very incomplete, but it shows
-that the is possible to adapt the PyPy JIT to emit code for object
+that it is possible to adapt the PyPy JIT to emit code for object
 oriented virtual machines.
 
 
@@ -126,11 +126,11 @@ JIT support, it runs roughly at the same speed as its C equivalent
 compiled with `gcc -O0`.
 
 Making the Python interpreter to exploit the full potential of the JIT
-is a separate task and it is out of the scope of this proposal; it is
-important to underline that once the JVM backend for the JIT is
-complete, the resulting pypy-jvm will automatically take advantage of
-all the optimizations written for the other backends. XXX expand
-this by one sentence because this is unclear as written
+is a separate task and since it requires some small changes to the
+interpreter, it is out of the scope of this proposal. It is important
+to underline that once the PyPy interpreter is fully optimized for the
+JIT, PyPy for the JVM will automatically take advantage of these speed
+ups, without needing to change the JIT backend for the JVM.
 
 We also expect to find benchmarks in which the JIT that targets the
 MLVM will perform better than the JIT that targets the plain JVM,
