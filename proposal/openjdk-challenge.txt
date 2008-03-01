@@ -182,7 +182,7 @@ a hot topic:
     has already been started, by generating and loading bytecode on
     the fly; despite emitting code at runtime, this kind of compiler
     really works ahead of time (AOT), because the code is fully
-    emitted before the program starts, and it doesn't exploit
+    emitted before the (Python) program starts, and it doesn't exploit
     additional informations that would be available only at runtime
     (most importantly informations about the types that each variable can
     assume);
