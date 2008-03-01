@@ -233,6 +233,11 @@ optimizations and the Python interpreter. He is currently doing a
 Master's thesis at the Heinrich-Heine-Universität Düsseldorf about
 improving PyPy's JIT compiler generator.
 
+Nicholas Matsakis (nicholas.matsakis@inf.ethz.ch) is also a core developer of
+PyPy.  He was the primary developer of the current JVM backend for PyPy, and
+has participated in several PyPy sprints on various topics.  He is currently
+doing his PhD at ETH Zurich under the tutelage of Professor Thomas Gross.
+
 .. _PyPy: http://codespeak.net/pypy
 .. _RPython: http://codespeak.net/pypy/dist/pypy/doc/coding-guide.html#rpython 
 .. _`Stackless Python`: http://www.stackless.com/
