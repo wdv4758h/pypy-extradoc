@@ -10,7 +10,7 @@ Writing virtual machine for a dynamic language
 
 * Example - Python
 
-* Coded in low-level language, like C (or Java or C#)
+* Coded in a low-level language, such as C (or Java or C#)
 
 * Hard-coded design decisions (garbage collection, threading model)
 
@@ -31,9 +31,9 @@ Motivation - we can do better
 Generating virtual machines instead of writing by hand
 ======================================================
 
-* Use high-level language
+* Use a high-level language
 
-* Use statically-analyzable language
+* Use a statically analyzable language
 
 * Have a flexible compiler toolchain to do the job for you
 
@@ -51,29 +51,29 @@ Even more
 
 * Compile it to your platform (C/POSIX, .NET, ...)
 
-Example of benefit from our architecture
-========================================
+An Example of benefit from our architecture
+===========================================
 
 * Python has complicated semantics
 
 * Python guarantees that it won't segfault on
   C stack exhaustion
 
-* CPython includes some stack checks in the source, but they don't catch all
-  cases
+* CPython includes some stack checks in the source, but they don't catch every
+  case
 
 XXX segfault example
 
 * We include it automatically so all cases are guaranteed to be covered
 
-Another example of static-analyzis of interpreter source
+Another example of static analysis of interpreter source
 ========================================================
 
 * sandboxing
 
-* very small piece of code to trust
+* a very small piece of code to trust
 
-* changes every call to external function automatically
+* changes every call to an external function automatically
 
 * build your own library (in python) which implements
   your own security policy
@@ -83,7 +83,7 @@ XXX demo
 RPython
 =======
 
-* We use RPython, a proper subset of python to implement
+* We use RPython, a proper subset of Python to implement
   a Python interpreter
 
 * More static than Python
@@ -92,20 +92,20 @@ RPython
 
 * Still high-level, fully analyzable
 
-* Interpreter itself (written in RPython) interprets
-  normal Python.
+* The Interpreter itself (written in RPython) interprets
+  normal Python.  XXX I would say the user's code does not have to be written inRPython as its own bullet here
 
 Abstract interpretation
 =======================
 
 XXX I would leave out the term abstract interpretation completely. just call it flow graph buildin
-* We start from importing python module
+* We start by importing a python module
 
-* Next step is to analyze the bytecode and to produce a forest of flow graphs
+* Next we analyze the bytecode and produce a forest of flow graphs
 
-* We call this abstract interpretation of bytecode
+* We call this the abstract interpretation of bytecode
 
-* Bytecode can be prepared dynamically (meta-programming)
+* The bytecode can be prepared dynamically (meta-programming)
 
 Flow graphs
 ===========
@@ -119,10 +119,10 @@ XXX demo
 Annotation
 ==========
 
-* A part which does the type inference over existing
+* The part which does the type inference over existing
   graphs
 
-* Powerful but practical type system, not nearly as rich as
+* A Powerful but practical type system, not nearly as rich as
   say haskell (XXX comparison makes no real sense, it's very different)
 
 RTyper
@@ -133,11 +133,11 @@ RTyper
 * Two type systems:
 
   - lltype, for backends that understand pointers,
-    structures etc.
+    structures etc.  XXX its what they _don't understand that is important
 
   - ootype, for backends that have notion of objects
 
-* lltype has more details, like implementation of strings
+* lltype has more low-level details, such as an implementation of strings
   (ootype assumes strings built-in)
 
 Translation aspects
@@ -157,7 +157,8 @@ GC framework
 * implemented as a translation aspect
 
 * things like write barriers are inserted automatically
-  (programmer have no need to worry about that)
+  (programmers have no need to worry about that) XXX you need to get rid of
+  that 'like'.  What do we call them?  Rewording the whole thing better.
 
 * different root finding strategies
 
@@ -175,20 +176,19 @@ Backends
 * llinterpreter - a virtual backend for running flow graphs
   directly, useful for testing
 
-* for example, things like .NET bindings are
-  backend specific
+* .NET bindings, for example, are backend specific
 
-Special translation aspect
-==========================
+One Special translation aspect
+==============================
 
 * generating Just-in-time compilers from interpreters
 
 JIT - motivation
 ================
 
-* Interpreters are way easier to write than compilers
+* Interpreters are much easier to write than compilers
 
-* One cannot achieve C-level performance with static analyzis
+* One cannot achieve C-level performance with static analysis
 
 * Dynamic compilation can produce faster results
   than static compilation (e.g. a good Java VM versus gcj)
@@ -204,8 +204,8 @@ Traditional JIT approach
 
 * We can do better!
 
-PyPy approach for jit
-=========================
+PyPy approach for JIT
+=====================
 
 XXX include overview2.png
 
@@ -214,10 +214,14 @@ JIT - basics
 
 * partial evaluation
 
-* automatic move from interpreter to compiler
-XXX futamura link
+* automatic move from the interpreter to the compiler
+XXX futamura link XXX what does 'move' mean here?  If it means what
+I think it does, you need 'the interpreter' and 'the compiler' -- but
+if it doesn't then this could be wrong.
 
-* relatively little practical applications so far
+* relatively few practical applications so far XXX you mean 'there are
+hardly any people using this technique', and not 'hardly any people 
+would find it useful to use this technique, correct?
 
 JIT - general idea
 ===================
@@ -225,17 +229,17 @@ JIT - general idea
 * constant-propagate python bytecode through the interpreter
 
 * may not yield good performance (our experiments show
-  about 2x for removing intepretation overhead)
+  about 2x for removing intepretation overhead) XXX slide?
 
-* things like types still are not known
+* things such as the types are still not known
 
 Solution: promotion
 ===================
 
 * Enhance partial evaluation to be able to *promote* run-time
-  value into compile-time
+  values into compile-time values
 
-* Implementation-wise this is a generalization of polymorphic
+* Implementation-wise this is a generalization of the polymorphic
   in-line caches used in Java VM JITs
 
 XXX put slide about virtualizables somewhere
@@ -255,16 +259,16 @@ Concrete ingredients
 Irrelevant to program written
 ==============================
 
-* Those techniques can be relatively easily applied
-  to different interpreters, just by hints
+* These techniques can be applied relatively easily 
+  to other interpreters, just by (XXX changing the ?) hints
 
-* Or to any other programs written in RPython
-  (say templating language with templates being constant)
+* Or to any other program written in RPython
+  (for instance a templating language where the templates are constant)
 
 JIT details - hint annotator
-==================================
+============================
 
-* Annotator is very similiar to normal one, it
+* This annotator is very similiar to the normal one; it
   adds color propagation
 
 * Green - compile-time, can be constant-folded
@@ -290,14 +294,14 @@ XXX demo
 JIT details - backends
 ======================
 
-* JIT backends care for assembler generation
+* JIT backends take care of (XXX is that what you meant?) assembler generation  XXX I like 'JIT backends produce assembly code' lac
 
 * As usual, we plan to have many (PPC, i386, JVM,
   dummy one...)
 
 * They're very rudimentary right now
 
-* It's relatively pleasant job to write python generating
+* It's a relatively pleasant job to write Python that generates
   assembler code
 
 * We would definitely benefit from help from an assembler
@@ -316,7 +320,7 @@ JIT conclusion
 
 * About the same as gcc -O0
 
-* We can definitely do better, for example by enhancing backends
+* We can definitely do better, for example by enhancing the backends
 
 * There is a lot of work to be done in JIT area
 
@@ -328,7 +332,7 @@ JIT plans
 * For long-enough running programs that's theoretically
   possible
 
-* We have more information at runtime that one might have
+* We have more information at runtime than one can have
   at compile-time
 
 JIT short term plans
@@ -343,16 +347,17 @@ Developement technology
 
 * We use test driven developement extensively
 
-* We've got test suite which runs on a single processor for ~8 hours
+* We've got a test suite which runs on a single processor for ~8 hours
 
-* Special testing tool, py.test, little hassle and a lot of features
+* Our special testing tool, py.test, little hassle and a lot of features
+XXX add written by us? lac
 
-* Sprint-driven developement
+* Sprint-driven development
 
 It's not only technical
 ===========================
 
-* EU Framework Programme 6th
+* EU 6th Framework Programme
 
 * Actively searching for both grants and consultancy contracts
 
