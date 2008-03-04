@@ -101,6 +101,55 @@ Special translation aspect
 
 * generating Just-in-time compilers from interpreters
 
+JIT - motivation
+================
+
+* Interpreters are way easier to write than compilers
+
+* One cannot achieve C-level performance with static analyzis
+
+* Theoretically, dynamic compilation can be a lot faster
+  than static one
+
+Traditional JIT approach
+========================
+
+* Written by hand
+
+* Carefully encoded language semantics
+
+* Hard to maintain as language evolves
+
+* We can do better!
+
+PyPy approach for jit
+=========================
+
+XXX include overview2.png
+
+JIT - basics
+============
+
+* partial evaluation
+
+* automatic move from interpreter to compiler
+XXX futamura link
+
+* relatively little practical applications so far
+
+JIT - general idea
+===================
+
+* constant-propagate python bytecode into an interpreter
+
+* may not yield good performance (our experiments show
+  about 2x for removing intepretation overhead)
+
+* things like types still are not known
+
+Solution: promotion
+===================
+
 XXX JIT STUFF FOLLOWS XXX
 
 It's not only technical
