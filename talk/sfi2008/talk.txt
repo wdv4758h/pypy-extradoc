@@ -40,13 +40,17 @@ Generating virtual machines instead of writing by hand
 RPython
 =======
 
-* We use RPython, a proper subset of python
+* We use RPython, a proper subset of python to implement
+  a Python interpreter
 
 * More static than Python
 
 * Designed for speed
 
 * Still high-level, fully analyzable
+
+* Interpreter itself (written in RPython) interprets
+  normal python.
 
 Abstract interpretation
 =======================
@@ -163,6 +167,11 @@ JIT - general idea
 
 Solution: promotion
 ===================
+
+* Enhance partial evaluation to be able to *promote* run-time
+  value into compile-time
+
+
 
 XXX JIT STUFF FOLLOWS XXX
 
