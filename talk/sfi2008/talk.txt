@@ -108,8 +108,8 @@ JIT - motivation
 
 * One cannot achieve C-level performance with static analyzis
 
-* Theoretically, dynamic compilation can be a lot faster
-  than static one
+* Theoretically, dynamic compilation can produce faster results
+  than static compilation
 
 Traditional JIT approach
 ========================
@@ -168,6 +168,6 @@ It's not only technical (2)
 
 * EU Framework Programme 6th
 
-* Actively searching for both grants and commercial support
+* Actively searching for both grants and consultancy contracts
 
 ...
