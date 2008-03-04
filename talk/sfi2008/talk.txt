@@ -42,7 +42,7 @@ RPython
 
 * Still high-level, fully analyzable
 
-* Meta-programming language for RPython is Python
+* Meta-programming language for RPython is Python (XXX might be confusing?)
 
 Abstract interpretation
 =======================
@@ -59,7 +59,7 @@ Compilation toolchain
 
 * Compiles to a variety of backends (C, LLVM, CLI, JVM, ...)
 
-* Vowes into so called translation aspects, like gc
+* Weaves in so called translation aspects, like gc
 
 * Optimizes (constant folding, malloc removal, inlining)
 
@@ -81,9 +81,9 @@ GC framework
 
 * different root finding strategies
 
-* effective (RPython is faster than C when gc is a bottleneck)
+* effective (RPython is faster than C when GC is a bottleneck)
 
-* gcs are written in RPython as well
+* GCs are written in RPython as well
 
 JIT stuff
 =========
