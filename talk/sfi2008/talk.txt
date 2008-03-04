@@ -1,0 +1,71 @@
+
+Title slide
+==============
+
+Author: Maciej Fijalkowski
+Title: PyPy - Automatic Generation of VMs for Dynamic Languages
+
+Writing virtual machine for a dynamic language
+==============================================
+
+* Example - Python
+
+* Coded in low-level language, like C (or Java or C#)
+
+* Hard-coded design decisions (garbage collection, threading model)
+
+XXX Another slide
+==================
+
+* Given m languages, n platforms and o important design decisions,
+  we've got n*m*o effort, we can do better.
+
+* We want n+m+o
+
+Generating virtual machines instead of writing by hand
+======================================================
+
+* Use high-level language
+
+* Use statically-analyzable language
+
+* Have a flexible compiler toolchain to do the job for you
+
+RPython
+=======
+
+* We use RPython, a proper subset of python
+
+* More static than Python
+
+* Designed for speed
+
+* Still high-level, fully analyzable
+
+* Meta-programming language for RPython is Python
+
+Abstract interpretation
+=======================
+
+XXX explain
+
+Flow graphs
+===========
+
+XXX show pygame viewer and how does it change over time
+
+Compilation toolchain
+=====================
+
+* Compiles to a variety of backends (C, LLVM, CLI, JVM, ...)
+
+* Vowes into so called translation aspects, like gc
+
+* Optimizes (constant folding, malloc removal, inlining)
+
+Example of superiority
+======================
+
+XXX explain how our stack-checking code is far better
+    than CPython's one
+
