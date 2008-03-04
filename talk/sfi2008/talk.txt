@@ -69,3 +69,23 @@ Example of superiority
 XXX explain how our stack-checking code is far better
     than CPython's one
 
+GC framework
+============
+
+* flexible
+
+* implemented as a translation aspect
+
+* things like write barriers are inserted automatically
+  (programmer have no need to worry about that)
+
+* different root finding strategies
+
+* effective (RPython is faster than C when gc is a bottleneck)
+
+* gcs are written in RPython as well
+
+JIT stuff
+=========
+
+XXX follows
