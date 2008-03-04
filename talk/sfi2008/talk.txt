@@ -57,14 +57,14 @@ Example of benefit from our architecture
 * Python has complicated semantics
 
 * Python guarantees that it won't segfault on
-  stack exhaustion
+  C stack exhaustion
 
-* CPython includes few stack checks along the source
+* CPython includes some stack checks in the source, but they don't catch all
+  cases
 
 XXX segfault example
 
-* We include it automatically searching for all cycles
-  in all graphs
+* We include it automatically so all cases are guaranteed to be covered
 
 Another example of static-analyzis of interpreter source
 ========================================================
@@ -93,14 +93,15 @@ RPython
 * Still high-level, fully analyzable
 
 * Interpreter itself (written in RPython) interprets
-  normal python.
+  normal Python.
 
 Abstract interpretation
 =======================
 
+XXX I would leave out the term abstract interpretation completely. just call it flow graph buildin
 * We start from importing python module
 
-* Next step is to change bytecode into the forest of flow graphs
+* Next step is to analyze the bytecode and to producet a forest of flow graphs
 
 * We call this abstract interpretation of bytecode
 
@@ -121,8 +122,8 @@ Annotation
 * A part which does the type inference over existing
   graphs
 
-* Powerful type system, yet not nearly as rich as
-  say haskell
+* Powerful but practical type system, not nearly as rich as
+  say haskell (XXX comparison makes no real sense, it's very different)
 
 RTyper
 ======
@@ -221,7 +222,7 @@ XXX futamura link
 JIT - general idea
 ===================
 
-* constant-propagate python bytecode into an interpreter
+* constant-propagate python bytecode through the interpreter
 
 * may not yield good performance (our experiments show
   about 2x for removing intepretation overhead)
@@ -244,7 +245,7 @@ Concrete ingredients
 * Promotion on certain paths to achieve
   "static-enough" parts
 
-* Lazy allocation of objects (when they escape)
+* Lazy allocation of objects (allocation only happens when the object escapes)
 
 * Use CPU stack and registers (we're not very good at it)
 
@@ -279,7 +280,7 @@ JIT details - the rainbow interpreter
 * We dump colored graphs as a bytecode and interpret them
 
 * We could compile it, but interpreting dynamic
-  languages is easier than compiling (XXX???)
+  languages is easier than compiling (XXX??? (cfbolz: kill this))
 
 XXX demo
 
