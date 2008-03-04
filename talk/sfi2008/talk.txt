@@ -37,6 +37,49 @@ Generating virtual machines instead of writing by hand
 
 * Have a flexible compiler toolchain to do the job for you
 
+General idea
+============
+
+XXX overview1.png
+
+Even more
+=========
+
+* Take any interpreter, python, javascript, smalltalk...
+
+* Make some decisions (whether to use jit, which gc)
+
+* Compile it to your platform (C/POSIX, .NET, ...)
+
+How we benefit from general architecture
+========================================
+
+* Python has complicated semantics
+
+* Python guarantees that it won't segfault on
+  stack exhaustion
+
+* CPython includes few stack checks along the source
+
+XXX segfault example
+
+* We include it automatically searching for all cycles
+  in all graphs
+
+Another example of static-analyzis of interpreter source
+========================================================
+
+* sandboxing
+
+* very small piece of code to trust
+
+* changes every call to external function automatically
+
+* build your own library (in python) which implements
+  your own security policy
+
+XXX demo
+
 RPython
 =======
 
@@ -105,34 +148,6 @@ Translation aspects
 
 * ...
 
-Backends
-========
-
-* lltype-based - C, LLVM
-
-* ootype-based - CLI, JVM, ...
-
-* llinterpreter - a virtual backend for running flow graphs
-  directly, useful for testing
-
-* for example, things like .NET bindings are
-  backend specific
-
-Interpreters
-============
-
-* We've got more than just Python
-
-* There is prolog, smalltalk, javascript...
-
-* Hence we can compile different possible combinations
-
-Example of superiority
-======================
-
-XXX explain how our stack-checking code is far better
-    than CPython's one
-
 GC framework
 ============
 
@@ -149,19 +164,18 @@ GC framework
 
 * GCs are written in RPython as well
 
-Example of static-analysis related feature
-==========================================
+Backends
+========
 
-* sandboxing
+* lltype-based - C, LLVM
 
-* very small piece of code to trust
+* ootype-based - CLI, JVM, ...
 
-* changes every call to external function automatically
+* llinterpreter - a virtual backend for running flow graphs
+  directly, useful for testing
 
-* build your own library (in python) which implements
-  your own security policy
-
-XXX demo
+* for example, things like .NET bindings are
+  backend specific
 
 Special translation aspect
 ==========================
