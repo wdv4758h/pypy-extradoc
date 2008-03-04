@@ -51,7 +51,7 @@ Even more
 
 * Compile it to your platform (C/POSIX, .NET, ...)
 
-How we benefit from general architecture
+Example of benefit from our architecture
 ========================================
 
 * Python has complicated semantics
