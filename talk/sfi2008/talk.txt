@@ -112,6 +112,9 @@ Backends
 
 * ootype-based - CLI, JVM, ...
 
+* llinterpreter - a virtual backend for running flow graphs
+  directly, useful for testing
+
 * for example, things like .NET bindings are
   backend specific
 
@@ -217,20 +220,118 @@ Solution: promotion
 * Enhance partial evaluation to be able to *promote* run-time
   value into compile-time
 
-XXX JIT STUFF FOLLOWS XXX
+XXX put slide about virtualizables somewhere
 
-It's not only technical
+Concrete ingredients
+====================
+
+* Variety of hints to guide partial evaluation
+
+* Promotion on certain paths to achieve
+  "static-enough" parts
+
+* Lazy allocation of objects (when they escape)
+
+* Use CPU stack and registers (we're not very good at it)
+
+Irrelevant to program written
+==============================
+
+* Those techniques can be relatively easily applied
+  to different interpreters, just by hints
+
+* Or to any other programs written in RPython
+  (say templating language with templates being constant)
+
+JIT details - hint annotator
+==================================
+
+* Annotator is very similiar to normal one, it
+  adds color propagation
+
+* Green - compile-time, can be constant-folded
+
+* Red - runtime
+
+* Some rules about the color propagation
+
+XXX demo
+
+JIT details - the rainbow interpreter
+=====================================
+
+* Very very experimental, lives on a branch right now
+
+* We dump colored graphs as a bytecode and interpret them
+
+* We could compile it, but interpreting dynamic
+  languages is easier than compiling (XXX???)
+
+XXX demo
+
+JIT details - backends
+======================
+
+* JIT backends care for assembler generation
+
+* As usual, we plan to have many (PPC, i386, JVM,
+  dummy one...)
+
+* They're very rudimentary right now
+
+* It's relatively pleasant job to write python generating
+  assembler code
+
+* We would definitely benefit from help from an assembler
+  expert
+
+Example
+========
+
+XXX demo of compilation of DFA or NFA or toy language
+
+JIT conclusion
+==============
+
+* We're able to run carefully crafted examples ~60x faster
+  than CPython
+
+* About the same as gcc -O0
+
+* We can definitely do better, for example by enhancing backends
+
+* There is a lot of work to be done in JIT area
+
+JIT plans
+=========
+
+* Faster than C!
+
+* For long-enough running programs that's theoretically
+  possible
+
+* We have more information at runtime that one might have
+  at compile-time
+
+JIT short term plans
+=====================
+
+* Compile just hotspots (not everything)
+
+XXX finish
+
+Developement technology
 =======================
 
 * We use test driven developement extensively
 
 * We've got test suite which runs on a single processor for ~8 hours
 
-* Special testing tool, py.test, little hassle a lot of features
+* Special testing tool, py.test, little hassle and a lot of features
 
 * Sprint-driven developement
 
-It's not only technical (2)
+It's not only technical
 ===========================
 
 * EU Framework Programme 6th
