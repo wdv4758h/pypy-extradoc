@@ -101,7 +101,7 @@ Abstract interpretation
 XXX I would leave out the term abstract interpretation completely. just call it flow graph buildin
 * We start from importing python module
 
-* Next step is to analyze the bytecode and to producet a forest of flow graphs
+* Next step is to analyze the bytecode and to produce a forest of flow graphs
 
 * We call this abstract interpretation of bytecode
 
@@ -190,8 +190,8 @@ JIT - motivation
 
 * One cannot achieve C-level performance with static analyzis
 
-* Theoretically, dynamic compilation can produce faster results
-  than static compilation
+* Dynamic compilation can produce faster results
+  than static compilation (e.g. a good Java VM versus gcj)
 
 Traditional JIT approach
 ========================
@@ -234,6 +234,9 @@ Solution: promotion
 
 * Enhance partial evaluation to be able to *promote* run-time
   value into compile-time
+
+* Implementation-wise this is a generalization of polymorphic
+  in-line caches used in Java VM JITs
 
 XXX put slide about virtualizables somewhere
 
