@@ -72,14 +72,57 @@ Flow graphs
 
 XXX demo
 
-Compilation toolchain
-=====================
+Annotation
+==========
 
-* Compiles to a variety of backends (C, LLVM, CLI, JVM, ...)
+* A part which does the type inference over existing
+  graphs
 
-* Weaves in so called translation aspects, like gc
+* Powerful type system, yet not nearly as rich as
+  say haskell
 
-* Optimizes (constant folding, malloc removal, inlining)
+RTyper
+======
+
+* Translates high-level graphs into lower-levels
+
+* Two type systems:
+
+  - lltype, for backends that understand pointers,
+    structures etc.
+
+  - ootype, for backends that have notion of objects
+
+* lltype has more details, like implementation of strings
+  (ootype assumes strings built-in)
+
+Translation aspects
+===================
+
+* Optimizations (inlining, malloc removal)
+
+* Different GCs
+
+* ...
+
+Backends
+========
+
+* lltype-based - C, LLVM
+
+* ootype-based - CLI, JVM, ...
+
+* for example, things like .NET bindings are
+  backend specific
+
+Interpreters
+============
+
+* We've got more than just Python
+
+* There is prolog, smalltalk, javascript...
+
+* Hence we can compile different possible combinations
 
 Example of superiority
 ======================
@@ -111,6 +154,9 @@ Example of static-analysis related feature
 * very small piece of code to trust
 
 * changes every call to external function automatically
+
+* build your own library (in python) which implements
+  your own security policy
 
 XXX demo
 
@@ -171,8 +217,6 @@ Solution: promotion
 * Enhance partial evaluation to be able to *promote* run-time
   value into compile-time
 
-
-
 XXX JIT STUFF FOLLOWS XXX
 
 It's not only technical
@@ -192,5 +236,10 @@ It's not only technical (2)
 * EU Framework Programme 6th
 
 * Actively searching for both grants and consultancy contracts
+
+Project future
+===============
+
+XXX
 
 ...
