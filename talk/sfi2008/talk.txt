@@ -85,7 +85,40 @@ GC framework
 
 * GCs are written in RPython as well
 
-JIT stuff
-=========
+Example of static-analysis related feature
+==========================================
 
-XXX follows
+* sandboxing
+
+* very small piece of code to trust
+
+* changes every call to external function automatically
+
+XXX demo
+
+Special translation aspect
+==========================
+
+* generating Just-in-time compilers from interpreters
+
+XXX JIT STUFF FOLLOWS XXX
+
+It's not only technical
+=======================
+
+* We use test driven developement extensively
+
+* We've got test suite which runs on a single processor for ~8 hours
+
+* Special testing tool, py.test, little hassle a lot of features
+
+* Sprint-driven developement
+
+It's not only technical (2)
+===========================
+
+* EU Framework Programme 6th
+
+* Actively searching for both grants and commercial support
+
+...
