@@ -14,13 +14,19 @@ Writing virtual machine for a dynamic language
 
 * Hard-coded design decisions (garbage collection, threading model)
 
-XXX Another slide
-==================
+Motivation - we can do better
+=============================
 
 * Given m languages, n platforms and o important design decisions,
   we've got n*m*o effort, we can do better.
 
 * We want n+m+o
+
+* Primary example - CPython.
+
+  - refcounting fixed hard to change
+
+  - psyco, jit for python hard to maintain
 
 Generating virtual machines instead of writing by hand
 ======================================================
@@ -42,17 +48,25 @@ RPython
 
 * Still high-level, fully analyzable
 
-* Meta-programming language for RPython is Python (XXX might be confusing?)
-
 Abstract interpretation
 =======================
 
-XXX explain
+* We start from importing python module
+
+* Next step is to change bytecode into the forest of flow graphs
+
+* We call this abstract interpretation of bytecode
+
+* Bytecode can be prepared dynamically (meta-programming)
 
 Flow graphs
 ===========
 
-XXX show pygame viewer and how does it change over time
+* Intermediate representation
+
+* Can encode different layers of abstraction
+
+XXX demo
 
 Compilation toolchain
 =====================
