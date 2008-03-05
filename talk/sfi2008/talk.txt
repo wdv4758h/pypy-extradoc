@@ -1,12 +1,14 @@
 
-Title slide
+==============
+PyPy
 ==============
 
-Author: Maciej Fijalkowski
-Title: PyPy - Automatic Generation of VMs for Dynamic Languages
+:Author: Maciej Fijalkowski
+:Title: PyPy - Automatic Generation of VMs for Dynamic Languages
+:Date: 6th March 2008
 
-Writing virtual machine for a dynamic language
-==============================================
+VMs for dynamic languages
+===================================
 
 * Example - Python
 
@@ -14,33 +16,50 @@ Writing virtual machine for a dynamic language
 
 * Hard-coded design decisions (garbage collection, threading model)
 
-Motivation - we can do better
-=============================
-
-* Given m languages, n platforms and o important design decisions,
-  we've got n*m*o effort, we can do better.
-
-* We want n+m+o
-
 * Primary example - CPython.
 
   - refcounting fixed hard to change
 
   - psyco, jit for python hard to maintain
 
-Generating virtual machines instead of writing by hand
-======================================================
+Ideally, we would...
+====================
 
 * Use a high-level language
 
 * Use a statically analyzable language
 
-* Have a flexible compiler toolchain to do the job for you
+* Have a flexible compiler toolchain to do part of the job for you
+
+Generating VMs
+==============
+
+* Writing by hand is a lot of trouble
+
+* We want to perform each of the following once:
+
+  - encode the language semantics
+
+  - encode language-agnostic design decisions (ie threading model)
+
+  - encode platform details
+
+PyPy Motivation
+===============
+
+* Create highly-flexible compiler toolchain
+
+* Use high-level language for encoding semantics
+
+* Use compiler toolchain to make things like JIT orthogonal to
+  language semantics encoding
 
 General idea
 ============
 
-XXX overview1.png
+.. raw:: html
+
+   <img src="overview1.png"/>
 
 Even more
 =========
@@ -92,13 +111,11 @@ RPython
 
 * Still high-level, fully analyzable
 
-* The Interpreter itself (written in RPython) interprets
-  normal Python.  XXX I would say the user's code does not have to be written inRPython as its own bullet here
+* User code (executed by the interpreter) is full python (not restricted)
 
 Abstract interpretation
 =======================
 
-XXX I would leave out the term abstract interpretation completely. just call it flow graph buildin
 * We start by importing a python module
 
 * Next we analyze the bytecode and produce a forest of flow graphs
@@ -156,15 +173,15 @@ GC framework
 
 * implemented as a translation aspect
 
-* things like write barriers are inserted automatically
-  (programmers have no need to worry about that) XXX you need to get rid of
-  that 'like'.  What do we call them?  Rewording the whole thing better.
+* gc-specific things, such as write barriers, are inserted automatically
 
 * different root finding strategies
 
 * effective (RPython is faster than C when GC is a bottleneck)
 
 * GCs are written in RPython as well
+
+* Motivation: MMtk
 
 Backends
 ========
@@ -207,21 +224,20 @@ Traditional JIT approach
 PyPy approach for JIT
 =====================
 
-XXX include overview2.png
+.. raw:: html
+
+   <div>
+   <img src="overview2.png"/>
+   </div>
 
 JIT - basics
 ============
 
 * partial evaluation
 
-* automatic move from the interpreter to the compiler
-XXX futamura link XXX what does 'move' mean here?  If it means what
-I think it does, you need 'the interpreter' and 'the compiler' -- but
-if it doesn't then this could be wrong.
+* automatic generation of a compiler from an interpreter
 
-* relatively few practical applications so far XXX you mean 'there are
-hardly any people using this technique', and not 'hardly any people 
-would find it useful to use this technique, correct?
+* relatively few practical applications so far
 
 JIT - general idea
 ===================
@@ -229,7 +245,7 @@ JIT - general idea
 * constant-propagate python bytecode through the interpreter
 
 * may not yield good performance (our experiments show
-  about 2x for removing intepretation overhead) XXX slide?
+  about 2x for removing intepretation overhead)
 
 * things such as the types are still not known
 
@@ -260,7 +276,7 @@ Irrelevant to program written
 ==============================
 
 * These techniques can be applied relatively easily 
-  to other interpreters, just by (XXX changing the ?) hints
+  to other interpreters, just by adding a few hints
 
 * Or to any other program written in RPython
   (for instance a templating language where the templates are constant)
@@ -286,15 +302,12 @@ JIT details - the rainbow interpreter
 
 * We dump colored graphs as a bytecode and interpret them
 
-* We could compile it, but interpreting dynamic
-  languages is easier than compiling (XXX??? (cfbolz: kill this))
-
 XXX demo
 
 JIT details - backends
 ======================
 
-* JIT backends take care of (XXX is that what you meant?) assembler generation  XXX I like 'JIT backends produce assembly code' lac
+* JIT backends produce assembly code from coloured graphs
 
 * As usual, we plan to have many (PPC, i386, JVM,
   dummy one...)
@@ -340,7 +353,11 @@ JIT short term plans
 
 * Compile just hotspots (not everything)
 
-XXX finish
+* Extend backends and make them smarter
+
+* Make generating assembly code faster
+
+* Benchmark bottlenecks
 
 Developement technology
 =======================
@@ -350,7 +367,6 @@ Developement technology
 * We've got a test suite which runs on a single processor for ~8 hours
 
 * Our special testing tool, py.test, little hassle and a lot of features
-XXX add written by us? lac
 
 * Sprint-driven development
 
@@ -364,6 +380,11 @@ It's not only technical
 Project future
 ===============
 
-XXX
+* More JIT work
 
-...
+* Making PyPy's python interpreter run existing
+  applications
+
+* Interfacing with external libraries
+
+* We're very friendly for newcomers
