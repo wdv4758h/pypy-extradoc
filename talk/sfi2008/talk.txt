@@ -3,7 +3,7 @@
 PyPy
 ==============
 
-:Author: Maciej Fijalkowski
+:Author: Maciej Fijalkowski, merlinux GmbH
 :Title: PyPy - Automatic Generation of VMs for Dynamic Languages
 :Date: 6th March 2008
 
@@ -51,8 +51,9 @@ PyPy Motivation
 
 * Use high-level language for encoding semantics
 
-* Use compiler toolchain to make things like JIT orthogonal to
-  language semantics encoding
+* Use compiler toolchain to try hard to make
+  performance decisions orthogonal to language semantics
+  encoding
 
 General idea
 ============
@@ -66,7 +67,7 @@ Even more
 
 * Take any interpreter, python, javascript, smalltalk...
 
-* Make some decisions (whether to use jit, which gc)
+* Make some decisions (which gc to use...)
 
 * Compile it to your platform (C/POSIX, .NET, ...)
 
