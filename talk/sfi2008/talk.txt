@@ -52,7 +52,7 @@ PyPy Motivation
 * Use high-level language for encoding semantics
 
 * Use compiler toolchain to try hard to make
-  performance decisions orthogonal to language semantics
+  things such as object model orthogonal to language semantics
   encoding
 
 General idea
