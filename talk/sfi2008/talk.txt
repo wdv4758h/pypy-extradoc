@@ -27,7 +27,7 @@ Ideally, we would...
 
 * Use a high-level language
 
-* Use a statically analyzable language
+* Use a statically analyzable implementation language
 
 * Have a flexible compiler toolchain to do part of the job for you
 
@@ -81,8 +81,6 @@ An Example of benefit from our architecture
 
 * CPython includes some stack checks in the source, but they don't catch every
   case
-
-XXX segfault example
 
 * We include it automatically so all cases are guaranteed to be covered
 
