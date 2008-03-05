@@ -55,6 +55,17 @@ PyPy Motivation
   things such as object model orthogonal to language semantics
   encoding
 
+Developement technology
+=======================
+
+* We use test driven developement extensively
+
+* We've got a test suite which runs on a single processor for ~8 hours
+
+* Our special testing tool, py.test, little hassle and a lot of features
+
+* Sprint-driven development
+
 General idea
 ============
 
@@ -71,32 +82,32 @@ Even more
 
 * Compile it to your platform (C/POSIX, .NET, ...)
 
-An Example of benefit from our architecture
-===========================================
+An example of benefit
+=====================
 
 * Python has complicated semantics
 
 * Python guarantees that it won't segfault on
-  C stack exhaustion
+  a stack exhaustion
 
-* CPython includes some stack checks in the source, but they don't catch every
-  case
+* CPython includes some stack checks in the source, but they
+  don't catch every case
 
 * We include it automatically so all cases are guaranteed to be covered
 
-Another example of static analysis of interpreter source
+Example of static analysis
 ========================================================
 
-* sandboxing
+* we analyze interpreter source, not user code!
+
+* replace all external calls with stubs
 
 * a very small piece of code to trust
-
-* changes every call to an external function automatically
 
 * build your own library (in python) which implements
   your own security policy
 
-XXX demo
+* no need to worry about third party modules
 
 RPython
 =======
@@ -130,16 +141,15 @@ Flow graphs
 
 * Can encode different layers of abstraction
 
-XXX demo
-
 Annotation
 ==========
 
 * The part which does the type inference over existing
   graphs
 
-* A Powerful but practical type system, not nearly as rich as
-  say haskell (XXX comparison makes no real sense, it's very different)
+* A Powerful but practical type system
+
+* Still very high-level
 
 RTyper
 ======
@@ -149,7 +159,7 @@ RTyper
 * Two type systems:
 
   - lltype, for backends that understand pointers,
-    structures etc.  XXX its what they _don't understand that is important
+    structures etc.
 
   - ootype, for backends that have notion of objects
 
@@ -194,7 +204,7 @@ Backends
 
 * .NET bindings, for example, are backend specific
 
-One Special translation aspect
+Special translation aspect
 ==============================
 
 * generating Just-in-time compilers from interpreters
@@ -271,7 +281,7 @@ Concrete ingredients
 
 * Use CPU stack and registers (we're not very good at it)
 
-Irrelevant to program written
+Irrelevant to interpreter
 ==============================
 
 * These techniques can be applied relatively easily 
@@ -280,7 +290,7 @@ Irrelevant to program written
 * Or to any other program written in RPython
   (for instance a templating language where the templates are constant)
 
-JIT details - hint annotator
+The hint annotator
 ============================
 
 * This annotator is very similiar to the normal one; it
@@ -294,7 +304,7 @@ JIT details - hint annotator
 
 XXX demo
 
-JIT details - the rainbow interpreter
+The rainbow interpreter
 =====================================
 
 * Very very experimental, lives on a branch right now
@@ -318,11 +328,6 @@ JIT details - backends
 
 * We would definitely benefit from help from an assembler
   expert
-
-Example
-========
-
-XXX demo of compilation of DFA or NFA or toy language
 
 JIT conclusion
 ==============
@@ -357,17 +362,6 @@ JIT short term plans
 * Make generating assembly code faster
 
 * Benchmark bottlenecks
-
-Developement technology
-=======================
-
-* We use test driven developement extensively
-
-* We've got a test suite which runs on a single processor for ~8 hours
-
-* Our special testing tool, py.test, little hassle and a lot of features
-
-* Sprint-driven development
 
 It's not only technical
 ===========================
