@@ -20,7 +20,7 @@ VMs for dynamic languages
 
   - refcounting fixed hard to change
 
-  - psyco, jit for python hard to maintain
+  - global interpreter lock hard to change
 
 Ideally, we would...
 ====================
