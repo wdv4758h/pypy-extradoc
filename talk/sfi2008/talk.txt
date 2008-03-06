@@ -55,12 +55,12 @@ PyPy Motivation
   things such as object model orthogonal to language semantics
   encoding
 
-Developement technology
+Development technology
 =======================
 
-* We use test driven developement extensively
+* We use test driven development extensively
 
-* We've got a test suite which runs on a single processor for ~8 hours
+* We've got a test suite which would need ~8 hours to run on a single processor
 
 * Our special testing tool, py.test, little hassle and a lot of features
 
@@ -126,7 +126,7 @@ RPython
 Abstract interpretation
 =======================
 
-* We start by importing a python module
+* We start by importing the RPython modules on top of CPython
 
 * Next we analyze the bytecode and produce a forest of flow graphs
 
@@ -214,7 +214,8 @@ JIT - motivation
 
 * Interpreters are much easier to write than compilers
 
-* One cannot achieve C-level performance with static analysis
+* For many languages, one cannot achieve C-level performance
+  with static analysis
 
 * Dynamic compilation can produce faster results
   than static compilation (e.g. a good Java VM versus gcj)
@@ -230,7 +231,7 @@ Traditional JIT approach
 
 * We can do better!
 
-PyPy approach for JIT
+PyPy approach to JIT
 =====================
 
 .. raw:: html
@@ -246,7 +247,7 @@ JIT - basics
 
 * automatic generation of a compiler from an interpreter
 
-* relatively few practical applications so far
+* an old idea with relatively few practical applications so far
 
 JIT - general idea
 ===================
@@ -256,7 +257,7 @@ JIT - general idea
 * may not yield good performance (our experiments show
   about 2x for removing intepretation overhead)
 
-* things such as the types are still not known
+* things such as the types of Python objects are still not known
 
 Solution: promotion
 ===================
@@ -279,7 +280,8 @@ Concrete ingredients
 
 * Lazy allocation of objects (allocation only happens when the object escapes)
 
-* Use CPU stack and registers (we're not very good at it)
+* Use CPU stack and registers as a cache for Python frame
+  objects that live in the heap
 
 Irrelevant to interpreter
 ==============================
