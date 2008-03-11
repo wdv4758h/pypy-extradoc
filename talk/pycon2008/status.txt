@@ -14,13 +14,13 @@ Next half an hour
 
 * What we're working on
 
-* Few examples why it work
+* A few examples of why it works
 
 * Where we're going
 
 * Why you should not use RPython
 
-* Implementation details available on sunday's evening
+* Implementation details available on Sunday evening
 
 PyPy - motivation
 =================================
@@ -30,15 +30,15 @@ PyPy - motivation
 * IronPython, Jython - bound to specific VM
 
 * Separate language specification from low-level details,
-  such as gc or just in time compilation
+  such as GC or just in time compilation
 
-* Psyco hard to maintain
+* Psyco and Stackless Python hard to maintain
 
 PyPy - user motivation
 =======================
 
 * One shall never be forced to write anything in C
-  for performance reasons (with exception to embedded
+  for performance reasons (with some exceptions: embedded
   devices etc.)
 
 * Just-in-time compiler should make number-crunching
@@ -60,13 +60,13 @@ Status of PyPy backends
 =======================
 
 * We can compile to C and LLVM including threads (GIL),
-  stackless (but not both), different gcs and all modules
+  stackless (but not both), different GCs and all modules
 
 * We can compile to CLI and JVM with reduced set of modules,
   no threads
 
 * Some bindings to .NET for CLI, working on getting
-  Java libraries to JVM
+  Java libraries to the JVM PyPy
 
 Status of speed in PyPy
 =======================
@@ -84,7 +84,7 @@ Status of JIT in PyPy
 
 * Even more needs to happen
 
-* If your problem is similiar enough to counting fibonnaci numbers,
+* If your problem is similiar enough to counting Fibonacci numbers,
   we're as fast as psyco
 
 * PyPy's JIT is way easier to extend (think PPC, think 64 bit,
@@ -93,15 +93,15 @@ Status of JIT in PyPy
 RPython
 =======
 
-* The static subset of Python which we user for implementing
+* The static subset of Python which we used for implementing the
   interpreter
 
-* Our compiler toolchain analyzes RPython (ie interpreter source code,
+* Our compiler toolchain analyzes RPython (i.e. interpreter source code,
   like C), not the user program
 
-* Our interpreter is normal Python interpreter
+* Our interpreter is a "normal Python" interpreter
 
-* User has nothing to do with RPython
+* The user has nothing to do with RPython
 
 RPython (2)
 ===========
@@ -114,10 +114,12 @@ RPython (2)
 
 * It's fast, helps us not to code in C
 
-* Ideally, JIT will achieve same level of speed
+* Ideally, our JIT will achieve the same level of speed
 
 RPython - language
 ==================
+
+* It's high level but only convenient if you want to write interpreters :-)
 
 * Usually tons of metaprogramming
 
@@ -151,11 +153,11 @@ PyPy - future
 PyPy - JIT future
 =================
 
-* A lot of work happening (demos on sunday)
+* A lot of work happening (demos on Sunday)
 
-* Short term goal - support for floats, better assembler
+* Short term goal - more general Python programs seeing speedups
 
-* More general Python programs seeing speedups
+* Machine code backend: need support for floats, better assembler
 
 * A lot of benchmarking and tweaking
 
