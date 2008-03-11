@@ -1,0 +1,162 @@
+
+==============
+Status of PyPy
+==============
+
+:Author: Maciej Fijalkowski, merlinux GmbH
+:Title: PyPy from the user perspective
+:Date: XXX
+
+Next half an hour
+=================
+
+* PyPy motivation and status
+
+* What we're working on
+
+* Few examples why it work
+
+* Where we're going
+
+* Why you should not use RPython
+
+* Implementation details available on sunday's evening
+
+PyPy - motivation
+=================================
+
+* CPython is nice, but not very flexible
+
+* IronPython, Jython - bound to specific VM
+
+* Separate language specification from low-level details,
+  such as gc or just in time compilation
+
+* Psyco hard to maintain
+
+PyPy - user motivation
+=======================
+
+* One shall never be forced to write anything in C
+  for performance reasons (with exception to embedded
+  devices etc.)
+
+* Just-in-time compiler should make number-crunching
+  and static-enough code fast enough
+
+* One shall never care about low-level details
+
+Status of PyPy
+==============
+
+* Very compliant language (to Python 2.4/2.5)
+
+* Some modules from stdlib missing, no 3rd party
+  modules at all
+
+* Recently - ctypes
+
+Status of PyPy backends
+=======================
+
+* We can compile to C and LLVM including threads (GIL),
+  stackless (but not both), different gcs and all modules
+
+* We can compile to CLI and JVM with reduced set of modules,
+  no threads
+
+* Some bindings to .NET for CLI, working on getting
+  Java libraries to JVM
+
+Status of speed in PyPy
+=======================
+
+* Hard to find decent python-only benchmarks in the wild
+
+* Pystone 1.5, Richards 1., gcbench 0.9 (compared to CPython 2.5)
+
+* Real world apps usually 1.5-2., sometimes as slow as 3x.
+
+Status of JIT in PyPy
+=====================
+
+* A lot of work has happened
+
+* Even more needs to happen
+
+* If your problem is similiar enough to counting fibonnaci numbers,
+  we're as fast as psyco
+
+* PyPy's JIT is way easier to extend (think PPC, think 64 bit,
+  think floats)
+
+RPython
+=======
+
+* The static subset of Python which we user for implementing
+  interpreter
+
+* Our compiler toolchain analyzes RPython (ie interpreter source code,
+  like C), not the user program
+
+* Our interpreter is normal Python interpreter
+
+* User has nothing to do with RPython
+
+RPython (2)
+===========
+
+* It's not a general purpose language
+
+* One has to have a very good reason to use it
+
+* Clunky error messages (XXX demo)
+
+* It's fast, helps us not to code in C
+
+* Ideally, JIT will achieve same level of speed
+
+RPython - language
+==================
+
+* Usually tons of metaprogramming
+
+* Like C++ - you can write books about tricks
+
+* Hard to extend
+
+XXX this slides needs to fit somewhere
+
+Example of useful feature - sanboxing
+=====================================
+
+XXX fill
+
+Example of useful feature - tproxy & distribution
+=================================================
+
+XXX fill
+
+PyPy - future
+=============
+
+* Making 3rd party modules run on PyPy - you can help,
+  notably by porting some to ctypes
+
+* Making different programs run on PyPy - you can help
+
+* We're thinking about providing different ways of getting
+  3rd party modules
+
+PyPy - JIT future
+=================
+
+* A lot of work happening (demos on sunday)
+
+* Short term goal - support for floats, better assembler
+
+* More general Python programs seeing speedups
+
+* A lot of benchmarking and tweaking
+
+* Yes, you can help as well
