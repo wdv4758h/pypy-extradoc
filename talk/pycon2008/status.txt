@@ -27,7 +27,7 @@ PyPy - motivation
 
 * CPython is nice, but not very flexible
 
-* IronPython, Jython - bound to specific VM
+* IronPython, Jython - bound to the specific VM
 
 * Separate language specification from low-level details,
   such as GC or just in time compilation
@@ -129,15 +129,52 @@ RPython - language
 
 XXX this slides needs to fit somewhere
 
-Example of useful feature - sanboxing
-=====================================
+Example of useful feature - sandboxing
+======================================
 
-XXX fill
+* we analyze interpreter source (not user code) for
+  all external function calls
 
-Example of useful feature - tproxy & distribution
-=================================================
+* we replace them all with stubs interacting only with
+  stdin/stdout
 
-XXX fill
+* small piece of code to trust (no worry about 3rd party modules
+  or whatever)
+
+* very flexible policy
+
+* special switches for buffer overflows and common
+  errors in interpreters (disregard to user code!)
+
+* can work as well with smalltalk or prolog vm (XXX kill this?)
+
+XXX demo
+
+Example of useful feature - tproxy
+===================================
+
+* app-level code for controlling behavior of
+  any type (even frames or tracebacks)
+
+* very similiar concept to .NET VM transparent
+  proxy
+
+XXX demo
+
+Example of useful feature - distribution
+=========================================
+
+* very simple distribution protocol built
+  on top of transparent proxy
+
+* done in smalltalk in 70s
+
+* can work on any types, so you can
+  raise remote traceback and everything will be fine
+
+* nice experiment, few lines of code (XXX how many exactly?)
+
+XXX demo
 
 PyPy - future
 =============
