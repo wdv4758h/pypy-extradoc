@@ -54,7 +54,7 @@ Status of PyPy
 * Some modules from stdlib missing, no 3rd party
   modules at all
 
-* Recently - ctypes
+* Recent developement - ctypes
 
 Status of PyPy backends
 =======================
