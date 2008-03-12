@@ -5,7 +5,7 @@ Status of PyPy
 
 :Author: Maciej Fijalkowski, merlinux GmbH
 :Title: PyPy from the user perspective
-:Date: XXX
+:Date: 16 March 2008
 
 Next half an hour
 =================
@@ -25,12 +25,12 @@ Next half an hour
 PyPy - motivation
 =================================
 
-* CPython is nice, but not very flexible
+* CPython is nice, but not flexible enough
 
 * IronPython, Jython - bound to the specific VM
 
 * Separate language specification from low-level details,
-  such as GC or just in time compilation
+  such as GC or platform to run
 
 * Psyco and Stackless Python hard to maintain
 
