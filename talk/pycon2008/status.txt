@@ -37,21 +37,21 @@ PyPy - motivation
 PyPy - user motivation
 =======================
 
-* One shall never be forced to write anything in C
+* One should never be forced to write anything in C
   for performance reasons (with some exceptions: embedded
   devices etc.)
 
 * Just-in-time compiler should make number-crunching
   and static-enough code fast enough
 
-* One shall never care about low-level details
+* One should never care about low-level details
 
 Status of PyPy
 ==============
 
 * Very compliant language (to Python 2.4/2.5)
 
-* Some modules from stdlib missing, no 3rd party
+* Some modules from the stdlib are missing, no 3rd party
   modules at all
 
 * Recent developement - ctypes
@@ -62,7 +62,7 @@ Status of PyPy backends
 * We can compile to C and LLVM including threads (GIL),
   stackless (but not both), different GCs and all modules
 
-* We can compile to CLI and JVM with reduced set of modules,
+* We can compile to CLI and JVM with a reduced set of modules,
   no threads
 
 * Some bindings to .NET for CLI, working on getting
@@ -73,7 +73,7 @@ Status of speed in PyPy
 
 * Hard to find decent python-only benchmarks in the wild
 
-* Pystone 1.5, Richards 1., gcbench 0.9 (compared to CPython 2.5)
+* Pystone 1.5, Richards 1., gcbench 0.9 (compared to CPython version 2.5)
 
 * Real world apps usually 1.5-2., sometimes as slow as 3x.
 
@@ -101,7 +101,7 @@ RPython
 
 * Our interpreter is a "normal Python" interpreter
 
-* The user has nothing to do with RPython
+* Only PyPy implementers should know anything about RPython
 
 RPython (2)
 ===========
@@ -112,7 +112,7 @@ RPython (2)
 
 * Clunky error messages (XXX demo)
 
-* It's fast, helps us not to code in C
+* It's fast, it is pleasant not to code in C
 
 * Ideally, our JIT will achieve the same level of speed
 
@@ -156,7 +156,7 @@ Example of useful feature - tproxy
 * app-level code for controlling behavior of
   any type (even frames or tracebacks)
 
-* very similiar concept to .NET VM transparent
+* very similiar concept to the  .NET VM transparent
   proxy
 
 XXX demo
@@ -164,13 +164,13 @@ XXX demo
 Example of useful feature - distribution
 =========================================
 
-* very simple distribution protocol built
-  on top of transparent proxy
+* a very simple distribution protocol built
+  on top of a transparent proxy
 
-* done in smalltalk in 70s
+* done in smalltalk in the 70s
 
-* can work on any types, so you can
-  raise remote traceback and everything will be fine
+* can work on any type, so you can
+  raise a remote traceback and everything will be fine
 
 * nice experiment, few lines of code (XXX how many exactly?)
 
