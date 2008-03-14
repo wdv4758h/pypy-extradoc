@@ -117,24 +117,21 @@ Sandboxing
 * small piece of code to trust (no worry about 3rd party modules
   or whatever)
 
-.. XXX maybe put sandboxed.png on its own page and make it
-   twice bigger for readability
-
-.. raw:: html
-
-   <img src="sandboxed.png"/>
-
-More about sandboxing
-======================
-
-* cannot segfault (unlike CPython)
-
 * very flexible policy
 
 * extra run-time checks for all possible buffer overflows
   in interpreter source (still, not analyzing any user code)
 
-* demo
+* cannot segfault (unlike CPython)
+
+.. XXX maybe put sandboxed.png on its own page and make it
+   twice bigger for readability
+
+More about sandboxing
+======================
+
+.. image:: sandboxed.png
+   :align: center
 
 Transparent proxy
 ===================================
@@ -165,11 +162,7 @@ Distribution prototype
 Distribution diagram
 =====================
 
-.. XXX all texts far too small to read
-
-.. raw:: html
-
-   <img src="distribution.png"/>
+.. image:: distribution.png
 
 RPython
 =======
