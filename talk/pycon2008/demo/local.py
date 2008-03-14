@@ -10,6 +10,12 @@ def f():
     print "Calling f"
     return 8
 
+def catch():
+    try:
+        r.get_remote('x').raising()
+    except:
+        import pdb
+        pdb.post_mortem(sys.exc_info()[2])
 
 if __name__ == '__main__':
     send, receive = socket_connecter(('localhost', PORT))

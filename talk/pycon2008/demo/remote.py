@@ -13,6 +13,11 @@ class X:
         print "Calling meth"
         return f() + self.xxx
 
+    def raising(self):
+        def f():
+            1/0
+        f()
+
 x = X()
 
 def f(name):
