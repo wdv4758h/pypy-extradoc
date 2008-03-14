@@ -80,12 +80,16 @@ Status of speed in PyPy
 Pystone speed over time
 ========================
 
-XXX insert from the web page
+.. raw:: html
+
+   <img src="plot_pystone.png"/>
 
 Richards speed over time
 ==========================
 
-XXX insert from the web page
+.. raw:: html
+
+   <img src="plot_richards.png"/>
 
 Status of JIT in PyPy
 =====================
@@ -104,25 +108,26 @@ Sandboxing
 ==========
 
 * we analyze interpreter source (not user code) for
-  all external function calls
-
-* we replace them all with stubs interacting only with
-  stdin/stdout
+  all external function calls and replace them with stubs
 
 * small piece of code to trust (no worry about 3rd party modules
   or whatever)
 
-* very flexible policy
+.. raw:: html
 
-* special switches for buffer overflows and common
-  errors in interpreters (disregard to user code!)
+   <img src="sandboxed.png"/>
+
+More about sandboxing
+======================
 
 * cannot segfault (unlike CPython)
 
-Sandboxing diagram
-==================
+* very flexible policy
 
-XXX
+* there are special switches for all possible buffer overflows
+  in interpreter source (still, not analyzing any user code)
+
+* demo
 
 Transparent proxy
 ===================================
@@ -133,10 +138,7 @@ Transparent proxy
 * very similiar concept to the  .NET VM transparent
   proxy
 
-Tproxy diagram
-================
-
-XXX
+* demo
 
 Distribution prototype
 =========================================
@@ -219,3 +221,15 @@ PyPy - JIT future
 * A lot of benchmarking and tweaking
 
 * Yes, you can help as well
+
+PyPy - more info
+==================
+
+* http://codespeak.net/pypy - web page
+
+* http://morepypy.blogspot.com - blog
+
+* IRC channel #pypy on irc.freenode.net
+
+* newcomer-friendly
+
