@@ -1,14 +1,12 @@
 
-XXX order of slides is a bit random, I will reorder them
-
 ===========================================
-py.test - rapid testing with minimal effort
+py.test
 ===========================================
 
-:authors: Maciej Fijalkowski, Holger Krekel (merlinux GmbH), Brian Dorsey
+:authors: Maciej Fijalkowski (merlinux GmbH), Brian Dorsey (noonhat)
+:Title: py.test - rapid testing with minimal effort
 :date: 16 March 2008
-:event: Pycon 2008, Chicago IL
-XXX fill details
+:Event: Pycon 2008, Chicago IL
 
 Intro
 ==========
@@ -26,11 +24,16 @@ Writing tests with py.test
 
 * almost identical to nose
 
-* def test_something(): defines test function
+* def ``test_foo():`` defines test function
 
-* class TestSomething: defines test class
+* ``class TestFoo:`` defines test class
 
 * setup/teardown on many levels (module, class, function)
+
+* generative tests:
+
+  def test_one():
+      yield function, arg
 
 Automatic test collection
 ==========================
@@ -41,16 +44,18 @@ Automatic test collection
 
 * py.test --collectonly to show tests which would run
 
-XXX demo of --collectonly
+* demo
 
 assert by assert
 =================
 
-* no self.assertEqual, self.failUnlessEqual and friends
+* no self.assertEqual, self.failNotUnlessEqual and friends
 
-* assert x == 3 is enough
+* ``assert x == 3`` is enough
 
-* assert reinterpretation (XXX demo)
+* assert reinterpretation
+
+* demo
 
 stdout/err capturing
 =====================
