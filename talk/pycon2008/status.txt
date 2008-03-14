@@ -77,6 +77,16 @@ Status of speed in PyPy
 
 * Real world apps usually 1.5-2., sometimes as slow as 3x.
 
+Pystone speed over time
+========================
+
+XXX insert from the web page
+
+Richards speed over time
+==========================
+
+XXX insert from the web page
+
 Status of JIT in PyPy
 =====================
 
@@ -109,6 +119,11 @@ Sandboxing
 
 * cannot segfault (unlike CPython)
 
+Sandboxing diagram
+==================
+
+XXX
+
 Transparent proxy
 ===================================
 
@@ -117,6 +132,11 @@ Transparent proxy
 
 * very similiar concept to the  .NET VM transparent
   proxy
+
+Tproxy diagram
+================
+
+XXX
 
 Distribution prototype
 =========================================
@@ -131,8 +151,16 @@ Distribution prototype
 
 * nice experiment, ~700 lines of code
 
+Distribution diagram
+=====================
+
+XXX
+
 RPython
 =======
+
+* In short - syntax of Python, restrictions of Java, error
+  messages as readable as MUMPS
 
 * The static subset of Python which we used for implementing the
   interpreter
