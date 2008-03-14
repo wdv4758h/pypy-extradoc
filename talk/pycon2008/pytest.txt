@@ -6,7 +6,8 @@ py.test - rapid testing with minimal effort
 ===========================================
 
 :authors: Maciej Fijalkowski, Holger Krekel (merlinux GmbH), Brian Dorsey
-:date: XXX
+:date: 16 March 2008
+:event: Pycon 2008, Chicago IL
 XXX fill details
 
 Intro

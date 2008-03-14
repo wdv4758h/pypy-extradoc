@@ -49,7 +49,7 @@ PyPy - user motivation
 Status of PyPy
 ==============
 
-* Very compliant language (to Python 2.4/2.5)
+* Very compliant language (to Python version 2.4/2.5)
 
 * Some modules from the stdlib are missing, no 3rd party
   modules at all
@@ -87,8 +87,49 @@ Status of JIT in PyPy
 * If your problem is similiar enough to counting Fibonacci numbers,
   we're as fast as psyco
 
-* PyPy's JIT is way easier to extend (think PPC, think 64 bit,
+* PyPy's JIT is way easier to extend than psyco (think PPC, think 64 bit,
   think floats)
+
+Sandboxing
+==========
+
+* we analyze interpreter source (not user code) for
+  all external function calls
+
+* we replace them all with stubs interacting only with
+  stdin/stdout
+
+* small piece of code to trust (no worry about 3rd party modules
+  or whatever)
+
+* very flexible policy
+
+* special switches for buffer overflows and common
+  errors in interpreters (disregard to user code!)
+
+* cannot segfault (unlike CPython)
+
+Transparent proxy
+===================================
+
+* app-level code for controlling behavior of
+  any type (even frames or tracebacks)
+
+* very similiar concept to the  .NET VM transparent
+  proxy
+
+Distribution prototype
+=========================================
+
+* a very simple distribution protocol built
+  on top of a transparent proxy
+
+* done in smalltalk in the 70s
+
+* can work on any type, so you can
+  raise a remote traceback and everything will be fine
+
+* nice experiment, ~700 lines of code
 
 RPython
 =======
@@ -110,7 +151,7 @@ RPython (2)
 
 * One has to have a very good reason to use it
 
-* Clunky error messages (XXX demo)
+* Clunky error messages
 
 * It's fast, it is pleasant not to code in C
 
@@ -126,55 +167,6 @@ RPython - language
 * Like C++ - you can write books about tricks
 
 * Hard to extend
-
-XXX this slides needs to fit somewhere
-
-Example of useful feature - sandboxing
-======================================
-
-* we analyze interpreter source (not user code) for
-  all external function calls
-
-* we replace them all with stubs interacting only with
-  stdin/stdout
-
-* small piece of code to trust (no worry about 3rd party modules
-  or whatever)
-
-* very flexible policy
-
-* special switches for buffer overflows and common
-  errors in interpreters (disregard to user code!)
-
-* can work as well with smalltalk or prolog vm (XXX kill this?)
-
-XXX demo
-
-Example of useful feature - tproxy
-===================================
-
-* app-level code for controlling behavior of
-  any type (even frames or tracebacks)
-
-* very similiar concept to the  .NET VM transparent
-  proxy
-
-XXX demo
-
-Example of useful feature - distribution
-=========================================
-
-* a very simple distribution protocol built
-  on top of a transparent proxy
-
-* done in smalltalk in the 70s
-
-* can work on any type, so you can
-  raise a remote traceback and everything will be fine
-
-* nice experiment, few lines of code (XXX how many exactly?)
-
-XXX demo
 
 PyPy - future
 =============
