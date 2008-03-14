@@ -153,10 +153,14 @@ Distribution prototype
 
 * nice experiment, ~700 lines of code
 
+* demo
+
 Distribution diagram
 =====================
 
-XXX
+.. raw:: html
+
+   <img src="distribution.png"/>
 
 RPython
 =======
@@ -231,5 +235,4 @@ PyPy - more info
 
 * IRC channel #pypy on irc.freenode.net
 
-* newcomer-friendly
 
