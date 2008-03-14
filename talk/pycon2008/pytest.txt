@@ -15,7 +15,7 @@ Intro
 
 * if you think 5 lines are more than 2
 
-* minimal boilerplate approach
+* minimal boilerplate code
 
 * cross-project testing tool
 
@@ -26,20 +26,20 @@ Writing tests with py.test
 
 * almost identical to nose
 
-* def test_one(): defines test function
+* def test_something(): defines test function
 
-* class TestClass: defines test class
+* class TestSomething: defines test class
 
-* setup/teardown on many layers (module, class, function)
+* setup/teardown on many levels (module, class, function)
 
 Automatic test collection
 ==========================
 
-* no need of specific test runners
+* no need for specific test runners
 
 * simply running py.test is enough
 
-* py.test --collectonly to show all tests to run
+* py.test --collectonly to show tests which would run
 
 XXX demo of --collectonly
 
@@ -48,7 +48,7 @@ assert by assert
 
 * no self.assertEqual, self.failUnlessEqual and friends
 
-* assert x == 3 is fine enough
+* assert x == 3 is enough
 
 * assert reinterpretation (XXX demo)
 
@@ -56,6 +56,8 @@ stdout/err capturing
 =====================
 
 * no point in showing output of working tests
+
+* leave your debug prints in your tests
 
 * options to control
 
@@ -68,7 +70,7 @@ test selection
 
 * -k -name selects all but name
 
-* multiple -k are such as "and" operator
+* multiple -k are treated as "and" operator
 
 installation
 =============
@@ -87,7 +89,7 @@ ad-hoc test distribution
 
 * can connect over Popen, Ssh, socket...
 
-* rsyncs local dir, no need of doing it manually
+* rsyncs local dir, no need to copy files
 
 XXX demo
 
@@ -96,7 +98,7 @@ web reporter
 
 * useful for running distributed tests
 
-* still needs some work (any volunteer?)
+* still needs some work (any volunteers?)
 
 extending
 ==============
