@@ -54,7 +54,7 @@ Status of PyPy
 * Some modules from the stdlib are missing, no 3rd party
   modules at all
 
-* Recent developement - ctypes
+* Recent development - ctypes
 
 Status of PyPy backends
 =======================
@@ -83,6 +83,10 @@ Pystone speed over time
 .. raw:: html
 
    <img src="plot_pystone.png"/>
+
+.. XXX make sure you explain this while keeping in mind
+   that all texts in this image are probably too small
+   to be read by people
 
 Richards speed over time
 ==========================
@@ -113,6 +117,9 @@ Sandboxing
 * small piece of code to trust (no worry about 3rd party modules
   or whatever)
 
+.. XXX maybe put sandboxed.png on its own page and make it
+   twice bigger for readability
+
 .. raw:: html
 
    <img src="sandboxed.png"/>
@@ -124,7 +131,7 @@ More about sandboxing
 
 * very flexible policy
 
-* there are special switches for all possible buffer overflows
+* extra run-time checks for all possible buffer overflows
   in interpreter source (still, not analyzing any user code)
 
 * demo
@@ -157,6 +164,8 @@ Distribution prototype
 
 Distribution diagram
 =====================
+
+.. XXX all texts far too small to read
 
 .. raw:: html
 
@@ -208,7 +217,8 @@ PyPy - future
 * Making 3rd party modules run on PyPy - you can help,
   notably by porting some to ctypes
 
-* Making different programs run on PyPy - you can help
+* Making different programs run on PyPy - you can help,
+  even just by trying and telling us
 
 * We're thinking about providing different ways of getting
   3rd party modules
@@ -220,7 +230,7 @@ PyPy - JIT future
 
 * Short term goal - more general Python programs seeing speedups
 
-* Machine code backend: need support for floats, better assembler
+* Machine code backend: needs support for floats, better assembler
 
 * A lot of benchmarking and tweaking
 
