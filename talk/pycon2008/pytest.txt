@@ -11,16 +11,16 @@ py.test
 Intro
 ==========
 
-* minimal boilerplate code
-
 * general purpose testing tool
+
+* minimal boilerplate code
 
 * developed partly for purposes of PyPy
 
 Writing tests with py.test
 ===========================
 
-* almost identical to nose
+* almost identical to Nose 
 
 * def ``test_foo():`` defines test function
 
@@ -133,4 +133,6 @@ future
 * 0.9 was Feb 2007, so releasing 1.0 soon
 
 * cleanup a bit, more plugin architecture
+
+* more common interface with Nose (skip, raises, etc)
 
