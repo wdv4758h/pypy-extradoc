@@ -11,11 +11,9 @@ py.test
 Intro
 ==========
 
-* if you think 5 lines are more than 2
-
 * minimal boilerplate code
 
-* cross-project testing tool
+* general purpose testing tool
 
 * developed partly for purposes of PyPy
 
@@ -30,7 +28,7 @@ Writing tests with py.test
 
 * setup/teardown on many levels (module, class, function)
 
-* generative tests:
+* generative tests::
 
   def test_one():
       yield function, arg
@@ -71,7 +69,7 @@ test selection
 
 * -k selects tests
 
-* -k classname.methodname works as well (XXX trunk only???)
+* -k classname.methodname works as well (trunk only)
 
 * -k -name selects all but name
 
@@ -80,7 +78,7 @@ test selection
 installation
 =============
 
-* easy_install pylib XXX check
+* easy_install py
 
 * run py.test on your testing directory
 
@@ -96,7 +94,7 @@ ad-hoc test distribution
 
 * rsyncs local dir, no need to copy files
 
-XXX demo
+* demo
 
 web reporter
 =============
@@ -110,7 +108,7 @@ extending
 
 * conftest.py does the "magic"
 
-* you can add options per-project (XXX demo)
+* you can add options per-project
 
 * you can change the way tests are run (validating ReST,
   running ecma test suite, etc.)
@@ -129,8 +127,6 @@ extending - reporters
 
 * reporter hooks (trunk only)
 
-XXX demo
-
 future
 ==========
 
@@ -138,4 +134,3 @@ future
 
 * cleanup a bit, more plugin architecture
 
-* ...
