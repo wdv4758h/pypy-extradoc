@@ -30,8 +30,8 @@ Writing tests with py.test
 
 * generative tests::
 
-  def test_one():
-      yield function, arg
+   def test_one():
+       yield function, arg
 
 Automatic test collection
 ==========================
