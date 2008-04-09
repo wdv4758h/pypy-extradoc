@@ -1,0 +1,41 @@
+
+Introduction:
+
+ - A flexible toolkit for writing interpreters
+   - gives you lots of amenities, GC, multiplatform, JIT, common libraries
+
+ - Containing a full Python interpreter
+   - cool extra features, lazy evaluation, stackless, ...
+
+
+
+Status:
+
+ - Last year's developments:
+   - cleanups:
+     - getting rid of unmaintainable features
+     - unicode support in RPython
+
+   - a much better GC, generational
+   - started a ctypes implementation
+   - .NET integration
+   - tons of performance tweaks
+
+ - GCs:
+
+
+
+Next Goals:
+
+ - JIT
+   - overview
+   - rewrite currently happening
+   - a Master thesis and a Ph.D. about this in progress
+   - we are starting to hit the hard bits that need real research
+
+ - some imaginable performance tweaks missing
+ - approaching real-world usefulness
+ - 
+
+
+
