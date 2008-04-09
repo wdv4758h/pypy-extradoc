@@ -68,9 +68,7 @@
     A flexible toolkit for writing interpreters
     \begin{itemize}
       \item
-        giving you lots of ameninities
-        XXX don't use such words IMO, try to be more understandable
-        XXX audience is mostly students
+        giving you lots of help
       \item
         translation to lots of environments
       \item
@@ -89,12 +87,11 @@
       \item
         extra features
       \item
-        lazy evaluation
-        XXX I don't like advertising features that don't work
-      \item
         stackless
       \item
         various introspection enhancements
+      \item
+        experimental things like lazy evaluation
     \end{itemize}
   \item
     Open Source project (MIT licenced)
@@ -147,7 +144,6 @@
   \item implemented in C
   \item can be used to wrap C libraries rather effortlessly
   \item no need to write C code to interface with libraries
-        XXX ctypes demo maybe...
   
   \end{itemize}
   \pause
@@ -178,11 +174,11 @@
   \frametitle{Garbage Collection}
   \begin{itemize}
   \item RPython itself is garbage collected
-        XXX this is the first time you mention RPython, that's
-        XXX either too late, or not mention it at all
-  \item when translating to C, a GC is woven into the program
-        XXX another hard word
-  \item GCs are completely written in Python (XXX RPython)
+%        XXX this is the first time you mention RPython, that's
+%        XXX either too late, or not mention it at all
+%        no, it is mentioned in the pictures part
+  \item when translating to C, a GC is integrated into the program
+  \item GCs are completely written in RPython
   \item similar to the MMTK toolkit of Jikes RVM
   \item two fast GCs: semispace, generational
   \item lots of care to get the semantics right:
