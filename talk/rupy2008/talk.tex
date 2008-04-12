@@ -15,7 +15,7 @@
 \usepackage{times}
 \usepackage[T1]{fontenc}
 
-\title{PyPy – status and next goals}
+\title{PyPy – Status and Next Goals}
 
 \author{Carl Friedrich Bolz}
 
@@ -63,14 +63,22 @@
 
 \begin{frame}
   \frametitle{What is PyPy?}
+  ... pretty pictures and demos
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{What is PyPy?}
   \begin{itemize}
   \item
     A flexible toolkit for writing interpreters
     \begin{itemize}
       \item
+        geared at dynamic languages
+      \item
         giving you lots of help
       \item
-        translation to lots of environments
+        translation to various of environments (C, .NET, Java)
       \item
         a mostly good GC
       \item
@@ -80,8 +88,10 @@
     \end{itemize}
   \pause
   \item
-    the biggest implemented interpreter is a full Python interpreter
+    a Python interpreter
     \begin{itemize}
+      \item
+        using the toolkit
       \item
         implementing Python 2.4 semantics fully
       \item
@@ -93,15 +103,10 @@
       \item
         experimental things like lazy evaluation
     \end{itemize}
+  \item most important goal: flexibility at all levels
   \item
     Open Source project (MIT licenced)
   \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{What is PyPy?}
-  ... pretty pictures and demos
 \end{frame}
 
 
@@ -141,9 +146,8 @@
   \frametitle{CTypes}
   \begin{itemize}
   \item CTypes is a libffi wrapper for CPython
-  \item implemented in C
-  \item can be used to wrap C libraries rather effortlessly
   \item no need to write C code to interface with libraries
+  \item can be used to wrap C libraries rather effortlessly
   
   \end{itemize}
   \pause
@@ -180,7 +184,6 @@
 %        no, it is mentioned in the pictures part
   \item when translating to C, a GC is integrated into the program
   \item GCs are completely written in RPython
-  \item similar to the MMTK toolkit of Jikes RVM
   \item two fast GCs: semispace, generational
   \item lots of care to get the semantics right:
     \begin{itemize}
@@ -190,7 +193,7 @@
     \end{itemize}
   \item performance pretty good
   \item memory-bound benchmarks faster than CPython
-  \item ... demo
+  \item ... tiny demo
   \end{itemize}
 \end{frame}
 
@@ -200,6 +203,7 @@
   Problems:
   \begin{itemize}
   \item writing good JITs for dynamic languages is hard work
+  \item good performance needs lots of care
   \item keeping up with new language features is hard
   \item compilers are a bad encoding for language semantics
   \pause
@@ -221,7 +225,7 @@
   \begin{itemize}
   \item If you cannot write a JIT, don't do that then
   \pause
-  \item Idea: Automatically Generate the JIT from the interpreter
+  \item Idea: Automatically generate the JIT from the interpreter
   \pause
   \end{itemize}
   \begin{block}{
@@ -241,8 +245,8 @@
   Writing a JIT generator is hard, but:
   \begin{itemize}
   \item You only need to do it once
-  \item the effort of writing a JIT generator is independent of the size of the language
   \item can keep up with language evolution
+  \item the JIT is correct by construction
   \item retargetting the JIT is possible (e.g. to .NET, as Antonio Cuni is doing right now)
   \item make the JIT behave radically differently is much easier with a generator
   \item it's fun too
@@ -262,7 +266,6 @@
   \item goes into the direction of a tracing JIT
   \item right now we are starting to hit the hard bits
   \item we hope to get really good results for more general code in a few months
-  \item ... demo
   \end{itemize}
 \end{frame}
 
