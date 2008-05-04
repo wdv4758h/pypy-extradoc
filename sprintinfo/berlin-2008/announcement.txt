@@ -16,8 +16,8 @@ Goals and topics of the sprint
 
   - work on PyPy's JIT generator: we are refactoring parts of the
     compiling logic, in ways that may also allow generating better
-    machine code for loops (people with knowledge on compilers and SSA,
-    welcome)
+    machine code for loops (people or aliens with knowledge on
+    compilers and SSA, welcome)
 
   - work on the SPy VM, PyPy's Squeak implementation, particularly the
     graphics capabilities
