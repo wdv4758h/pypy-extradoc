@@ -42,7 +42,7 @@ The sprint will take place in the c-base in Berlin. The address is::
     10179 Berlin
 
 To get there, take the U-Bahn or S-Bahn to the station
-"JannowitzbrÃ¼cke". See here_ for a map to get to c-base from there.
+"Jannowitzbrücke". See here_ for a map to get to c-base from there.
 
 .. _here: http://maps.google.com/maps?f=q&hl=en&geocode=&q=c-base+berlin&ie=UTF8&ll=52.515464,13.408985&spn=0.020449,0.057335&z=15&iwloc=A
 
