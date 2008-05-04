@@ -10,6 +10,7 @@ available yet from them.
 ==================== ============== =======================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =======================
+Maciej Fijalkowski   14-22.V        private
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
@@ -48,7 +49,6 @@ Sylvain Thénault     ?              ?
 Armin Rigo           ?              ?
 Carl Friedrich Bolz  ?              ?
 Antonio Cuni         ?              ?
-Maciej Fijalkowski   ?              ?
 Toby Watson          ?              ?
 Paul deGrandis       ?              ?
 ==================== ============== =====================
