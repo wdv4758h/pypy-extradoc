@@ -11,6 +11,7 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =======================
 Maciej Fijalkowski   14-22.V        private
+Stephan Diehl        ?              private
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
@@ -31,7 +32,6 @@ Bert Freudenberg     ?              ?
 Beatrice Duering     ?              ?
 Richard Emslie       ?              ?
 Johan Hahn           ?              ?
-Stephan Diehl        ?              ?
 Niko Matsakis        ?              ?
 Alexander Schremmer  ?              ?
 Anders Chrigstroem   ?              ?
