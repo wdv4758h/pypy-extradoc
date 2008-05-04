@@ -3,7 +3,7 @@
 =====================================================================
 
 The next PyPy sprint will be in the crashed `c-base space station`_, Berlin,
-Germany, Earth.  Solar System.  This is a fully public sprint: newcomers (from
+Germany, Earth, Solar System.  This is a fully public sprint: newcomers (from
 all planets) and topics other than those proposed below are welcome.
 
 .. _`c-base space station`: http://www.c-base.org/
@@ -13,8 +13,9 @@ all planets) and topics other than those proposed below are welcome.
 Goals and topics of the sprint
 ------------------------------
 
-  - work on PyPy's JIT generator or the assembler backends (people with
-    knowledge of CPU details welcome)
+  - work on PyPy's JIT generator: we are refactoring parts of the compiling
+    logic, in ways that may also allow generating better machine code for
+    loops (people with knowledge on compilers and SSA, welcome)
 
   - work on the SPy VM, PyPy's Squeak implementation, particularly the graphics
     capabilities
@@ -31,14 +32,14 @@ Goals and topics of the sprint
 Location & Accomodation
 -----------------------
 
-The sprint will take place in the c-base in Berlin. The address is:
+The sprint will take place in the c-base in Berlin. The address is::
 
     c-base e.V.
     Rungestrasse 20
     10179 Berlin
 
 To get there, take the U-Bahn or S-Bahn to the station "Jannowitzbrücke". See
-here_ for a rough map to get from c-base from there.
+here_ for a rough map to get to c-base from there.
 
 .. _here: http://www.c-base.org/cv50f/core/c-tour/htdocs/location.html
 
@@ -51,10 +52,14 @@ rights:
 
   http://codespeak.net/mailman/listinfo/pypy-sprint
 
+Of course, especially given the location, it's ok to show up even if you
+didn't register.  (The c-base has probably got the plans of Guido's
+famous time machine anyway, so you can register last week.)
+
 
 -----------
 Exact times
 -----------
 
 The sprint will be from 17th to 22nd of May 2008. We will start sprinting every
-day at 10. An introduction will be given on the first day, if there is interest
+day at 10. An introduction will be given on the first day, if there is interest.
