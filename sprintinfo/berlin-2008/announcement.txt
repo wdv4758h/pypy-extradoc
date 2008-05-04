@@ -2,15 +2,19 @@
          PyPy Berlin Sprint (17-22nd May 2008)
 =====================================================================
 
-The next PyPy sprint will be in the `c-base space station`_, Berlin, Germany, Earth.
-Solar System.  This is a fully public sprint: newcomers (from all planets) and
-topics other than those proposed below are welcome.
+The next PyPy sprint will be in the crashed `c-base space station`_, Berlin,
+Germany, Earth.  Solar System.  This is a fully public sprint: newcomers (from
+all planets) and topics other than those proposed below are welcome.
+
+.. _`c-base space station`: http://www.c-base.org/
+
 
 ------------------------------
 Goals and topics of the sprint
 ------------------------------
 
-  - work on PyPy's assembler JIT backends
+  - work on PyPy's JIT generator or the assembler backends (people with
+    knowledge of CPU details welcome)
 
   - work on the SPy VM, PyPy's Squeak implementation, particularly the graphics
     capabilities
@@ -27,11 +31,23 @@ Goals and topics of the sprint
 Location & Accomodation
 -----------------------
 
-Please register by svn:
+The sprint will take place in the c-base in Berlin. The address is:
+
+    c-base e.V.
+    Rungestrasse 20
+    10179 Berlin
+
+To get there, take the U-Bahn or S-Bahn to the station "Jannowitzbrücke". See
+here_ for a rough map to get from c-base from there.
+
+.. _here: http://www.c-base.org/cv50f/core/c-tour/htdocs/location.html
+
+If you want to come, please register via by svn:
 
   http://codespeak.net/svn/pypy/extradoc/sprintinfo/berlin-2008/people.txt
 
-or on the pypy-sprint mailing list if you do not yet have check-in rights:
+or write a mail to the pypy-sprint mailing list if you do not yet have check-in
+rights:
 
   http://codespeak.net/mailman/listinfo/pypy-sprint
 
@@ -40,3 +56,5 @@ or on the pypy-sprint mailing list if you do not yet have check-in rights:
 Exact times
 -----------
 
+The sprint will be from 17th to 22nd of May 2008. We will start sprinting every
+day at 10. An introduction will be given on the first day, if there is interest
