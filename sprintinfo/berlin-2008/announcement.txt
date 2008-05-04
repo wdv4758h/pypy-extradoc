@@ -1,0 +1,42 @@
+=====================================================================
+         PyPy Berlin Sprint (17-22nd May 2008)
+=====================================================================
+
+The next PyPy sprint will be in the `c-base space station`_, Berlin, Germany, Earth.
+Solar System.  This is a fully public sprint: newcomers (from all planets) and
+topics other than those proposed below are welcome.
+
+------------------------------
+Goals and topics of the sprint
+------------------------------
+
+  - work on PyPy's assembler JIT backends
+
+  - work on the SPy VM, PyPy's Squeak implementation, particularly the graphics
+    capabilities
+
+  - work on PyPy's GameBoy emulator, which also needs graphics support
+
+  - trying some large pure-Python applications or libraries on PyPy and fixing
+    the resulting bugs. Possibilities are Zope 3, Django and others.
+
+* We are open to all sorts of other tasks during the sprint, just
+  propose something.
+
+-----------------------
+Location & Accomodation
+-----------------------
+
+Please register by svn:
+
+  http://codespeak.net/svn/pypy/extradoc/sprintinfo/berlin-2008/people.txt
+
+or on the pypy-sprint mailing list if you do not yet have check-in rights:
+
+  http://codespeak.net/mailman/listinfo/pypy-sprint
+
+
+-----------
+Exact times
+-----------
+
