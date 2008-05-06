@@ -5,20 +5,11 @@
 ========================================================================
 
 The Art of Generating Virtual Machines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. raw:: html
-
-   <br>
-   <center>
-   <table border=0>
-   <tr><td>Samuele Pedroni</td><td>&nbsp;&nbsp;&nbsp;</td>
-       <td>Laura Creighton</td></tr>
-   <tr><td>Armin Rigo</td><td></td>
-       <td>Jacob Hallén</td></tr>
-   </table>
-   <a href="http://codespeak.net/pypy/">http://codespeak.net/pypy/</a>
-   </center>
+:Author: Antonio Cuni (DISI - University of Genova)
+:Place: PyCon Due
+:Date: May 10th, 2008
 
 
 Translation
@@ -87,16 +78,6 @@ PyPy uses abstract interpretation extensively:
 
 also uses Flow Graph transformation and rewriting.
 
-Representation choice
-========================
-
-A complex part of RPython translation:
-
-* RPython types are still rich
-
-* we have to choose implementations and representations
-  that work for the target platforms (C vs. OO VMs)
-
 Type Systems
 =========================
 
@@ -117,19 +98,9 @@ Translation:
 
 * turns them into *LL Flow Graphs* or *OO Flow Graphs*
 
-* which are then sent to the backends.
+* the flowgraphs are transformed in various ways
 
-Type systems and helpers
-===========================
-
-We have emulation of the type systems that can run on top of CPython
-for testing but also for:
-
-- constructing and representing the prebuilt data that our approach involves
-  (we start from live objects)
-
-- helper functions (e.g. implementations of RPython types)
-  use the emulations which our translation knows about too
+* then they are sent to the backends.
 
 
 Translation aspects
@@ -267,14 +238,28 @@ Partial evaluation (PE):
   constant-propagate it into the Python
   interpreter.
 
+
+PE for dummies
+==============
+
++---------------------+--------------------+-----------------------+
+| | def f(x, y):      | | *(case x=3)*     | | *(case x=10)*       |
+| |   x2 = x * x      | | def f_3(y):      | | def f_10(y):        |
+| |   y2 = y * y      | |   y2 = y * y     | |   y2 = y * y        |
+| |   return x2 + y2  | |   return 9 + y2  | |   return 100 + y2   |
++---------------------+--------------------+-----------------------+
+
+* What happens if x is the bytecode instead of an integer?
+
+
 Challenges
 ======================
 
-* Effective dynamic compilation requires feedback of runtime
-  information into compile-time
-
 * A shortcoming of PE is that in many cases not much can be really
   assumed constant at compile-time: poor results
+
+* Effective dynamic compilation requires feedback of runtime
+  information into compile-time
 
 * For a dynamic language: types are a primary example
 
@@ -312,20 +297,19 @@ Language-agnostic
 
 * By construction all interpreter/language features are supported
 
+
 pypy-c-jit
 ======================
-
-.. where to put this? 
 
 PyPy 1.0 contains both the dynamic compiler generator and the start of
 its application to PyPy's Python intepreter.
 
+JIT refactoring in-progress.
+
 * included are backends for IA32 and PPC
+* experimental/incomplete CLI backend
 * integer arithmetic operations are optimized
 * for these, we are in the speed range of ``gcc -O0``
-* demo (63x faster than CPython)
-
-.. demo f1
 
 
 EXTRA MATERIAL
@@ -333,28 +317,62 @@ EXTRA MATERIAL
 
 * More about the JIT Generation:
 
-  - The *Timeshifting* transformation
+  - The *Rainbow interpreter*
   - *Virtuals* and *Promotion*
 
-* More on the Stackless transformation
 
-  - *Resume points*
+Execution steps
+===============
 
-* More on any other part that you are interested in
+* Translation time
 
-* More demos
+  - pypy-c-jit is translated into an executable
+
+  - the JIT compiler is automatically generated
+
+* Compile-time: the JIT compiler runs
+
+* Runtime: the JIT compiled code runs
+
+* Compile-time and runtime are intermixed
 
 
-The transformation
+The Rainbow interpreter
 ==================================
 
-* The generation process is implemented as a
-  transformation of the low-level control flow graphs
-  of the interpreter
+* A special interpreter whose goal is to produce executable code
+
+* Written in RPython
 
 * Guided by a binding time analysis ("color" of the graphs)
 
-* *"timeshifting"*
+* Green operations: executed at compile-time
+
+* Red operations: produce code that executes the operation at runtime
+
+
+Rainbow architecture
+====================
+
+* (translation time)
+
+* Low-level flowgraphs are produced
+
+* The *hint-annotator* colors the variables
+
+* The *rainbow codewriter* translates flowgraphs into rainbow bytecode
+
+* (compile-time)
+
+* The rainbow interpreter executes the bytecode
+
+* As a result, it procude executable code
+
+* (runtime)
+
+* The code produced by the rainbow interpreter is executed
+
+
 
 Coloring
 =================
@@ -368,7 +386,7 @@ Coloring
 We reuse the type inference
 framework to propagate colors
 
-Timeshifting Basics
+PE with colors
 ====================
 
 * Green operations: unchanged, executed at compile-time
@@ -382,7 +400,7 @@ Timeshifting Basics
 | |   ``return`` :green:`x2` ``+`` :red:`y2`    | |   ``return 9 + y2``                   | |   ``return 100 + y2``                      |
 +-----------------------------------------------+-----------------------------------------+----------------------------------------------+
 
-Timeshifting Control Flow
+PE Control Flow
 ===========================
 
 - red split points: schedule multiple compilation states 
@@ -508,16 +526,4 @@ Virtualizable Frames
   and stack
 - outside world access gets intercepted
   to be able to force lazy virtual data into the heap
-
-
-Resume points
-===============
-
-Based on the Stackless Transformation:
-
-- this transformation can also insert code that allows to construct
-  artificial chains of activation states corresponding to labeled points in the
-  program
-
-- we use this to support resuming serialized language-level coroutines
 
