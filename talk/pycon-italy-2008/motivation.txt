@@ -233,15 +233,3 @@ Language-agnostic
 
 * By construction all interpreter/language features are supported
 
-pypy-c-jit
-======================
-
-PyPy 1.0 contains both the dynamic compiler generator and the start of
-its application to PyPy's Python intepreter.
-
-JIT refactoring in-progress.
-
-* included are backends for IA32 and PPC
-* experimental/incomplete CLI backend
-* integer arithmetic operations are optimized
-* for these, we are in the speed range of ``gcc -O0``
