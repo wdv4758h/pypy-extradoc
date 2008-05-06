@@ -34,28 +34,32 @@ Agenda
 * (demo)
 
 
-PyPy status update
-==================
+PyPy status update (1)
+======================
 
-What happened in the last year:
+- JVM backend completed, pypy-jvm
 
-  - JVM backend completed, pypy-jvm
+- some new GCs, much faster than ever
 
-  - some new GCs, much faster than ever; e.g., generational GC
+- ctypes for PyPy
 
-  - ctypes for PyPy
+- JIT refactoring, needed to make the JIT production-ready
 
-  - various performance improvements
+- improved .NET integration for pypy-cli
 
-      * as fast as CPython on pystone
+- new blog: http://morepypy.blogspot.com
 
-      * slighly faster on richards
 
-      * less than 2x slower on other benchmarks
+PyPy status update (2)
+======================
 
-  - JIT refactoring, needed to make the JIT production-ready
+- various performance improvements
 
-  - improved .NET integration for pypy-cli
+- slighly slower than CPython on pystone (10-20%)
+
+- but faster on richards (20-24%)
+
+- less than 2x slower on other benchmarks
 
 
 Interpreters
@@ -232,14 +236,12 @@ Language-agnostic
 pypy-c-jit
 ======================
 
-.. where to put this? 
-
 PyPy 1.0 contains both the dynamic compiler generator and the start of
 its application to PyPy's Python intepreter.
 
+JIT refactoring in-progress.
+
 * included are backends for IA32 and PPC
+* experimental/incomplete CLI backend
 * integer arithmetic operations are optimized
 * for these, we are in the speed range of ``gcc -O0``
-* demo (63x faster than CPython)
-
-.. demo f1
