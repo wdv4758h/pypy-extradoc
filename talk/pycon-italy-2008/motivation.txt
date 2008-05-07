@@ -1,15 +1,14 @@
 .. include:: <s5defs.txt>
 
-========================================================================
-                                  PyPy
-========================================================================
+.. raw:: latex
 
-The Art of Generating Virtual Machines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \author[Antonio Cuni]{Antonio Cuni -- DISI, Università degli Studi di Genova}
+  \institute[PyCon Due 2008]{PyCon Due 2008 - Firenze}
+  \date{May 10, 2008}
 
-:Author: Antonio Cuni (DISI - University of Genova)
-:Place: PyCon Due
-:Date: May 10th, 2008
+
+PyPy and The Art of Generating Virtual Machines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 PyPy
@@ -233,3 +232,4 @@ Language-agnostic
 
 * By construction all interpreter/language features are supported
 
+.. include:: technical.txt
