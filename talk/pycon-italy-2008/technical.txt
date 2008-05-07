@@ -1,40 +1,5 @@
 
 
-Translation
-==============================================
-
-.. raw:: html
-
-   <br>
-
-Going from interpreters to VMs
-------------------------------
-
-In PyPy interpreters are written in RPython:
-
-* A subset of Python amenable to static analysis
-
-* Still fully garbage collected
-
-* Rich built-in types
-
-RPython is still close to Python.
-
-Translation
-==============================================
-
-.. raw:: html
-
-   <br>
-
-Going from interpreters to VMs (2)
-----------------------------------
-
-The translation tool-chain implements good static compilation
-of RPython to multiple targets.
-
-It has pluggable backends, and inserts low-level details
-as needed (*translation aspects*).
 
 Translation details
 =======================
@@ -142,31 +107,6 @@ primitives, used to express GC in RPython directly.
 
 .. MMTk reference
 
-Stackless transformation
-=========================
-
-Inserts support code around calls such that the stack can be unwound.
-
-- Functions can store their current activation frame state to the heap
-
-- Chains of saved activation state can be resumed
-
-We have implemented coroutine switching using this.
-
-A special aspect
-==================================
-
-.. raw:: html
-
-   <br>
-   <br>
-   <center>
-
-**Generating JIT compilers**
-
-.. raw:: html
-
-   </center>
 
 JIT motivation
 ==================================
@@ -187,15 +127,12 @@ Traditional JIT compilers
 
 Need for novel approaches!
 
-PyPy Approach: Goal
+PyPy Architecture
 =============================
-
-.. raw:: html
-
-   <br>
 
 .. image:: overview2.png
    :align: center
+   :scale: 60
 
 
 Basics

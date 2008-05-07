@@ -13,6 +13,8 @@ PyPy is both:
 
   - a framework for writing dynamic languages
 
+Today we will focus on the latter.
+
 
 Agenda
 ======
@@ -119,6 +121,9 @@ We built enough infrastructure such that:
 
 Targets as different as C and the industry OO VMs (JVM, CLR) are supported.
 
+A special aspect: **Generating JIT compilers**
+
+
 PyPy as a project
 ===================
 
@@ -142,15 +147,9 @@ PyPy Approach
    :align: center
    :scale: 45
 
-Translation
-==============================================
-
-.. raw:: html
-
-   <br>
 
 Going from interpreters to VMs
-------------------------------
+==============================
 
 In PyPy interpreters are written in RPython:
 
@@ -162,58 +161,7 @@ In PyPy interpreters are written in RPython:
 
 RPython is still close to Python.
 
-A special aspect
-==================================
 
-.. raw:: html
 
-   <br>
-   <br>
-   <center>
-
-**Generating JIT compilers**
-
-.. raw:: html
-
-   </center>
-
-JIT motivation
-==================================
-
-Flexibility vs. Performance:
-
-* Interpreters are easy to write and evolve
-
-* For high performance, dynamic compilation is required
-
-Traditional JIT compilers
-===============================
-
-* Huge resource investment
-* The richer the semantics, the harder to write
-* Poor encoding of language semantics
-* Hard to evolve
-
-Need for novel approaches!
-
-PyPy Approach: Goal
-=============================
-
-.. raw:: html
-
-   <br>
-
-.. image:: overview2.png
-   :align: center
-
-Language-agnostic
-====================
-
-* The dynamic generation process and primitives are language-agnostic.
-
-* The language implementations should be able to evolve up to
-  maintaining the hints.
-
-* By construction all interpreter/language features are supported
 
 .. include:: technical.txt
