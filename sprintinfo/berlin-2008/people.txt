@@ -12,6 +12,8 @@ available yet from them.
 ==================== ============== =======================
 Maciej Fijalkowski   14-22.V        private
 Stephan Diehl        ?              private
+Toon Verwaest        14-16-22       hotel - Die Fabrik
+Camillo Bruni        14-16-22       hotel - Die Fabrik
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
