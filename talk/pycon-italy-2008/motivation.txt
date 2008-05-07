@@ -1,12 +1,5 @@
 .. include:: <s5defs.txt>
 
-.. raw:: latex
-
-  \author[Antonio Cuni]{Antonio Cuni -- DISI, Università degli Studi di Genova}
-  \institute[PyCon Due 2008]{PyCon Due 2008 - Firenze}
-  \date{May 10, 2008}
-
-
 PyPy and The Art of Generating Virtual Machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
