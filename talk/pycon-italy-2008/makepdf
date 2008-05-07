@@ -1,3 +1,9 @@
 #!/bin/bash
 
-rst2beamer.py --stylesheet=stylesheet.latex motivation.txt motivation.latex && pdflatex motivation.latex
+# WARNING: to work, it needs this patch for docutils
+# https://sourceforge.net/tracker/?func=detail&atid=422032&aid=1459707&group_id=38414
+
+rst2beamer.py --stylesheet=stylesheet.latex motivation.txt motivation.latex || exit
+sed 's/\\date{}/\\input{author.latex}/' -i motivation.latex || exit
+pdflatex motivation.latex || exit
+
