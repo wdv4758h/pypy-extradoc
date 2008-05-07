@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rst2beamer.py --stylesheet=stylesheet.latex motivation.txt motivation.latex && pdflatex motivation.latex

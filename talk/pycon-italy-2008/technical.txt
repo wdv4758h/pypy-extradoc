@@ -1,15 +1,3 @@
-.. include:: <s5defs.txt>
-
-========================================================================
-                                  PyPy
-========================================================================
-
-The Art of Generating Virtual Machines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-:Author: Antonio Cuni (DISI - University of Genova)
-:Place: PyCon Due
-:Date: May 10th, 2008
 
 
 Translation
