@@ -1,7 +1,7 @@
 
 
 
-Translation details
+Translation details (1)
 =======================
 
 .. raw:: html
@@ -31,7 +31,7 @@ PyPy uses abstract interpretation extensively:
 
 also uses Flow Graph transformation and rewriting.
 
-Type Systems
+Type Systems (1)
 =========================
 
 We model the different targets through different type systems:
@@ -42,7 +42,7 @@ We model the different targets through different type systems:
 - OO (object oriented targets): classes and instances
   with inheritance and dispatching
 
-Type systems (2)
+Type Systems (2)
 ===========================
 
 Translation:
@@ -56,7 +56,7 @@ Translation:
 * then they are sent to the backends.
 
 
-Translation aspects
+Translation aspects (1)
 ========================
 
 The interpreters in RPython are free of low-level details
@@ -167,14 +167,38 @@ Partial evaluation (PE):
 PE for dummies
 ==============
 
-+---------------------+--------------------+-----------------------+
-| | def f(x, y):      | | *(case x=3)*     | | *(case x=10)*       |
-| |   x2 = x * x      | | def f_3(y):      | | def f_10(y):        |
-| |   y2 = y * y      | |   y2 = y * y     | |   y2 = y * y        |
-| |   return x2 + y2  | |   return 9 + y2  | |   return 100 + y2   |
-+---------------------+--------------------+-----------------------+
+|example<| Example |>|
+::
 
-* What happens if x is the bytecode instead of an integer?
+  def f(x, y):    
+    x2 = x * x    
+    y2 = y * y    
+    return x2 + y2
+
+|end_example|
+
+|pause|
+|column1|
+|alert<| case x=3 |>|
+::
+
+  def f_3(y):    
+    y2 = y * y   
+    return 9 + y2
+
+|end_alert|
+
+|pause|
+|column2|
+|alert<| case x=10 |>|
+::
+
+  def f_10(y):    
+    y2 = y * y   
+    return 100 + y2
+
+|end_alert|
+|end_columns|
 
 
 Challenges
@@ -279,7 +303,7 @@ The Rainbow interpreter
 Rainbow architecture
 ====================
 
-* (translation time)
+|alert<| Translation time |>|
 
 * Low-level flowgraphs are produced
 
@@ -287,23 +311,30 @@ Rainbow architecture
 
 * The *rainbow codewriter* translates flowgraphs into rainbow bytecode
 
-* (compile-time)
+|end_alert|
+
+|pause|
+|example<| Compile-time |>|
 
 * The rainbow interpreter executes the bytecode
 
 * As a result, it procude executable code
 
-* (runtime)
+|end_example|
 
-* The code produced by the rainbow interpreter is executed
+|pause|
+|alert<| Runtime |>|
 
+* The produced code is executed
+
+|end_alert|
 
 
 Coloring
 =================
 
-* Green: compile-time value
-* Red: runtime value
+* :green:`Green`: compile-time value
+* :red:`Red`: runtime value
 
 * The hints give constraints from which the colors
   of all values are derived
@@ -311,32 +342,79 @@ Coloring
 We reuse the type inference
 framework to propagate colors
 
-PE with colors
-====================
+Partial Evaluation with Colors
+==============================
 
-* Green operations: unchanged, executed at compile-time
+* :green:`Green operations`: unchanged, executed at compile-time
 
-* Red operations: converted into corresponding code emitting code
+* :red:`Red operations`: converted into corresponding code emitting code
 
-+-----------------------------------------------+-----------------------------------------+----------------------------------------------+
-| | ``def f(`` :green:`x`, :red:`y` ``):``      | | *(case x=3)*                          | | *(case x=10)*                              |
-| |   :green:`x2` = :green:`x` ``*`` :green:`x` | | ``def f_3(y):``                       | | ``def f_10(y):``                           |
-| |   :red:`y2`   = :red:`y`   ``*`` :red:`y`   | |   ``y2 = y * y``                      | |   ``y2 = y * y``                           |
-| |   ``return`` :green:`x2` ``+`` :red:`y2`    | |   ``return 9 + y2``                   | |   ``return 100 + y2``                      |
-+-----------------------------------------------+-----------------------------------------+----------------------------------------------+
+|pause|
+|column1|
+|example<| Example |>|
 
-PE Control Flow
-===========================
+.. raw:: latex
+
+   \smallskip
+   \begin{rtbliteral}
+   def~f(\green{x},~\red{y}):~\\
+   ~~\green{x2}~=~\green{x}~*~\green{x}~\\
+   ~~\red{y2}~=~\red{y}~*~\red{y}~\\
+   ~~return~\green{x2}~+~\red{y2}
+   \end{rtbliteral}
+   \smallskip
+
+|end_example|
+
+|pause|
+|column2|
+|alert<| case x=10 |>|
+::
+
+  def f_10(y):    
+    y2 = y * y   
+    return 100 + y2
+
+|end_alert|
+|end_columns|
+
+
+Partial Evaluate Control Flow
+===============================
 
 - red split points: schedule multiple compilation states 
 - merge points: merge logic to reuse code for equivalent states
 
-+-----------------------------+----------------------------+
-| | ``if`` :red:`x`:          | | :green:`(case y != 0)`   |
-| |   ``print "x is true"``   | | ``if x:``                |
-| | ``if`` :green:`y`:        | |   ``print "x is true"``  |
-| |   ``print "y is true"``   | | ``print "y is true"``    |
-+-----------------------------+----------------------------+
+|pause|
+|column1|
+|example<| Example |>|
+
+.. raw:: latex
+
+   \smallskip
+   \begin{rtbliteral}
+   if~\red{x}:\\
+   ~~print~"x is true"\\
+   if~\green{y}:\\
+   ~~print~"y is true"
+   \end{rtbliteral}
+   \smallskip
+
+|end_example|
+
+|pause|
+|column2|
+|alert<| case y != 0 |>|
+::
+
+  if x:
+    print "x is true"
+  print "y is true"
+
+
+|end_alert|
+|end_columns|
+
 
 Promotion
 =================
