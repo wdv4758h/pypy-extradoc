@@ -1,4 +1,4 @@
-.. include:: <s5defs.txt>
+.. include:: beamerdefs.txt
 
 PyPy and The Art of Generating Virtual Machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
