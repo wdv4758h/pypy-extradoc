@@ -66,41 +66,6 @@ Interpreters
 * Flexible and easy to evolve, if written in high-level language
   (without low-level details)
 
-The PyPy Project
-==================
-
-We built enough infrastructure such that:
-
-* speed is regained
-
-* features requiring low-level manipulations are (re-)added as *aspects*
-
-* interpreters are kept simple and uncluttered
-
-Targets as different as C and the industry OO VMs (JVM, CLR) are supported.
-
-PyPy as a project
-===================
-
-We operate both as an open source with production usage aspirations and
-research project.
-
-We focus on the whole system.
-
-We want the tool-chain itself to be as simple as possible
-(but not simpler).
-
-Some of what we do is relatively straight-forward, some is challenging
-(generating dynamic compilers!).
-
-The Origin of PyPy
-=====================
-
-PyPy is a reaction to the frustrations, resource problems and
-duplicated efforts of how mainstream open-source languages (like
-Python) are implemented now.
-
-
 Folk Wisdom
 ====================================================
 
@@ -141,15 +106,41 @@ because they are traditionally written in low-level languages:
   (CPython - Jython - IronPython)
 
 
+The PyPy Project
+==================
+
+We built enough infrastructure such that:
+
+* speed is regained
+
+* features requiring low-level manipulations are (re-)added as *aspects*
+
+* interpreters are kept simple and uncluttered
+
+Targets as different as C and the industry OO VMs (JVM, CLR) are supported.
+
+PyPy as a project
+===================
+
+- We operate both as an open source with production usage aspirations and
+  research project.
+
+- We focus on the whole system.
+
+- We want the tool-chain itself to be as simple as possible
+  (but not simpler).
+
+- Some of what we do is relatively straight-forward, some is challenging
+  (generating dynamic compilers!).
+
+
+
 PyPy Approach
 =============================
 
-.. raw:: html
-
-   <br>
-
 .. image:: overview1.png
    :align: center
+   :scale: 45
 
 Translation
 ==============================================
