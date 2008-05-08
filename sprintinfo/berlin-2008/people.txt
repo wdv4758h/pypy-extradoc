@@ -15,6 +15,7 @@ Stephan Diehl        ?              private
 Toon Verwaest        14-16-22       hotel - Die Fabrik
 Camillo Bruni        14-16-22       hotel - Die Fabrik
 Samuele Pedroni      16-21          Hotel Klassik Berlin
+Armin Rigo           14-22(noon)    private, thanks Stephan
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
