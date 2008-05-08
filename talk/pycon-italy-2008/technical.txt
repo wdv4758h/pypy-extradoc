@@ -286,6 +286,12 @@ Execution steps
 The Rainbow interpreter
 ==================================
 
+.. raw:: latex
+
+  {\vspace{-1cm}\hfill\scalebox{0.300000}{\includegraphics{rainbow.png}}}
+
+  \addvspace{0.3cm}
+
 * A special interpreter whose goal is to produce executable code
 
 * Written in RPython
