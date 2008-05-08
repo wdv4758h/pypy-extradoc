@@ -16,6 +16,7 @@ Toon Verwaest        14-16-22       hotel - Die Fabrik
 Camillo Bruni        14-16-22       hotel - Die Fabrik
 Samuele Pedroni      16-21          Hotel Klassik Berlin
 Armin Rigo           14-22(noon)    private, thanks Stephan
+Carl Friedrich Bolz  14-22          Die Fabrik
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
@@ -51,7 +52,6 @@ Leonardo Santagada   ?              ?
 Alexandre Fayolle    ?              ?
 Sylvain Thénault     ?              ?
 Armin Rigo           ?              ?
-Carl Friedrich Bolz  ?              ?
 Antonio Cuni         ?              ?
 Toby Watson          ?              ?
 Paul deGrandis       ?              ?
