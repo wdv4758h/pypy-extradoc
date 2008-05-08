@@ -505,12 +505,15 @@ Virtuals + Promotion
 Conclusion (JIT)
 ================
 
-Effective dynamic compiler generation make flexibility and ease of
-evolution mostly **orthogonal to the performance question**.
+- Effective dynamic compiler generation
 
-Implementers are free to implement languages as **understandable interpreters**.
+  * flexibility and ease of evolution
 
-PyPy proves this a viable approach worth of further exploration.
+  *  **orthogonal to the performance question**.
+
+- Languages implemented as **understandable interpreters**.
+
+- PyPy proves this a viable approach worth of further exploration.
 
 
 .. backend material: not for the general talk

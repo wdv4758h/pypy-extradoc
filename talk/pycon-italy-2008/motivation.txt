@@ -1,9 +1,3 @@
-.. include:: beamerdefs.txt
-
-PyPy and The Art of Generating Virtual Machines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 PyPy
 ==================
 
@@ -164,4 +158,4 @@ RPython is still close to Python.
 
 
 
-.. include:: technical.txt
+
