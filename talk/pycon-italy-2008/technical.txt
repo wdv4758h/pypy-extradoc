@@ -4,10 +4,6 @@
 Translation details (1)
 =======================
 
-.. raw:: html
-
-   <table border=0><tr><td>
-
 - First, load and initialize RPython code inside a normal Python VM
 
 - RPython translation starts from the resulting "live" bytecode
@@ -15,9 +11,10 @@ Translation details (1)
 - Unified "intermediate code" representation:
   a forest of *Control Flow Graphs*
 
-.. raw:: html
+.. image:: flowgraph.png
+   :align: right
+   :scale: 30
 
-   </td><td>&nbsp;</td><td><img src="flowgraph.png"></td></tr></table>
 
 Translation details (2)
 =======================
@@ -434,61 +431,76 @@ seen runtime values
 Promotion (example)
 ========================
 
-+----------------------------------------------------------------------------+---------------------------------------------------------------+
-| | ``def f(`` :red:`x`, :red:`y` ``):``                                     |                                                               |
-| |   :green:`x1` = ``hint(``:red:`x`, ``promote=True)``                     | | ``def f_(x, y):``                                           |
-| |   ``return`` :green:`x1` ``*`` :green:`x1` ``+`` :red:`y` ``*`` :red:`y` | |   ``switch x:``                                             |
-|                                                                            | |     ``pass``                                                |
-|                                                                            | |   ``default:``                                              |
-|                                                                            | |     ``compile_more(value=x)``                               |
-|                                                                            | |                                                             |
-|                                                                            +---------------------------------------------------------------+
-|                                                                            | | ``def f_(x, y):``                                           |
-|                                                                            | |   ``switch x:``                                             |
-|                                                                            | |     *case 3:*                                               |
-|                                                                            | |       *return 9 + y*y*                                      |
-|                                                                            | |   ``default:``                                              |
-|                                                                            | |     ``compile_more(value=x)``                               |
-|                                                                            | |                                                             |
-+----------------------------------------------------------------------------+---------------------------------------------------------------+
+|example<| Example |>|
+
+.. raw:: latex
+
+   \smallskip
+   \begin{rtbliteral}
+   def~f(\red{x},~\red{y}):\\
+   ~~\green{x1}~=~hint(\red{x},~promote=True)\\
+   ~~return~\green{x1}*\green{x1}~+~\red{y}*\red{y}
+   \end{rtbliteral}
+   \smallskip
+
+|end_example|
+
+|small|
+|pause|
+|column1|
+|alert<| original |>|
+::
+
+  def f_(x, y):
+    switch x:
+      pass
+    default:
+      compile_more(x)
+
+|end_alert|
+
+|pause|
+|column2|
+|alert<| augmented |>|
+::
+
+  def f_(x, y):
+    switch x:
+      case 3:
+        return 9 + y*y
+    default:
+      compile_more(x)
+
+|end_alert|
+|end_columns|
+|end_small|
+
+
 
 Virtuals + Promotion
 =====================
+
+|small|
+|example<| Example from PyPy (simplified!) |>|
  
-* Example from PyPy (simplified!):
+.. raw:: latex
 
-+----------------------------------------------------------------------------------------+
-| | ``def add_python_objects(``:red:`obj1`, :red:`obj2` ``):``                           |
-| |     :green:`obj1cls` = ``hint(``:red:`obj1`. ``__class__, promote=True)``            |
-| |     :green:`obj2cls` = ``hint(``:red:`obj2`. ``__class__, promote=True)``            |
-| |     ``if`` :green:`obj1cls` ``is IntObject and`` :green:`obj2cls` ``is IntObject:``  |
-| |         :red:`x` = :red:`obj1`. ``intval``                                           |
-| |         :red:`y` = :red:`obj2`. ``intval``                                           |
-| |         :red:`z` = :red:`x` ``+`` :red:`y`                                           |
-| |         ``return IntObject(intval=``:red:`z` ``)``                                   |
-+----------------------------------------------------------------------------------------+
+   \smallskip
+   \begin{rtbliteral}
+   def~add\_python\_objects(\red{obj1},~\red{obj2}):\\
+   ~~\green{obj1cls}~=~hint(\red{obj1}.\_\_class\_\_,~promote=True)\\
+   ~~\green{obj2cls}~=~hint(\red{obj2}.\_\_class\_\_,~promote=True)\\
+   ~~if~\green{obj1cls}~is~IntObject~and~\green{obj2cls}~is~IntObject:\\
+   ~~~~\red{x}~=~\red{obj1}.intval\\
+   ~~~~\red{y}~=~\red{obj2}.intval\\
+   ~~~~\red{z}~=~\red{x}~+~\red{y}\\
+   ~~~~return~IntObject(intval=\red{z})\\
+   \end{rtbliteral}
+   \smallskip
 
-Virtuals + Promotion
-=====================
+|end_example|
+|end_small|
 
-| *The factorial for the Toy Language interpreter:*
-|                                  ``PUSH 1   #  accumulator``
-|                                  ``PUSHARG``
-|                              ``start:``
-|                                  ``PICK 0``
-|                                  ``PUSH 1``
-|                                  ``LE``
-|                                  ``BR_COND exit``
-|                                  ``SWAP``
-|                                  ``PICK 1``
-|                                  ``MUL``
-|                                  ``SWAP``
-|                                  ``PUSH 1``
-|                                  ``SUB``
-|                                  ``PUSH 1``
-|                                  ``BR_COND start``
-
-.. tlc example results
 
 Conclusion (JIT)
 ================
@@ -515,6 +527,8 @@ Open Issues
 - jit only the hot-spots
 
 - more hints needed in PyPy's Python
+
+- JIT backends for CLI/JVM
 
 Virtualizable Frames
 ======================
