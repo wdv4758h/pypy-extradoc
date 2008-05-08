@@ -315,7 +315,7 @@ Rainbow architecture
 
 * The rainbow interpreter executes the bytecode
 
-* As a result, it procude executable code
+* As a result, it produces executable code
 
 |end_example|
 
@@ -424,7 +424,7 @@ seen runtime values
   the compiler with runtime values.
   
 * On callback the compiler adds one more case to the switch and
-  generate more code assuming the received value.
+  generates more code assuming the received value.
 
 .. need to save state in a compact form: paths
 
