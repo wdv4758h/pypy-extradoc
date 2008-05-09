@@ -52,22 +52,77 @@
   % You might wish to add the option [pausesections]
 %\end{frame}
 
-\begin{frame}
-  \frametitle{Scope}
-  This talk is about: XXX
-  \begin{itemize}
-  \item
-    writing a Squeak implementation
-  \item
-    with eight people
-  \item
-    in five days
-  \item
-    using PyPy
-\end{frame}
+\frame{
+    \frametitle{Scope}
+    This talk is about: XXX
+    \itemize{
+    \item writing a Squeak implementation
+    \item with eight people
+    \item in five days
+    \item using PyPy
+    }
+}
 
 
+\frame{
+    \frametitle{What is PyPy}
+    \itemize{
+    \item started as a Python implementation in Python
+    \item developed into a general environment for implementing dynamic languages
+    \item supports the language developer with a lot of infrastructure
+    \item Open Source project, MIT license
+    \item most important goal: abstracting over low-level details
+    \item don't fix decisions about low-level details 
+    }
+}
 
+\frame{
+    \frametitle{PyPy's Approach to VM Construction}
+    \itemize{
+    \item implement an interpreter for the dynamic language in RPython
+    \item translate this interpreter to a low-level language
+    \item translating inserts low-level details
+    \item a variety of target environment: C, LLVM, JVM, .NET
+    % XXX write about model-driven development?
+    }
+    \pause
+    \begin{block} {What is RPython?}
+        \itemize{
+        \item a more static subset of Python
+        \item static enough to enable type inference
+        \item still rather expressive: exceptions, inheritance, dynamic dispatch
+        \item analysis starts after importing of interpreter
+        \item enables compile-time metaprogramming
+        }
+    \end{block}
+}
+
+\frame{
+    \begin{block} {Translation Aspects}
+        \itemize{
+        \item many aspects of the final VM are orthogonal to language semantics
+        \item examples: GC strategy, threading model, many object details
+        \item non-trivial translation aspect: auto-generating a dynamic compiler
+        \item those shouldn't manifest in the interpreter source
+        \item they are inserted during translation
+        }
+    \end{block}
+    \pause
+    \begin{block} {Compile-Time Metaprogramming}
+        \itemize{
+        \item PyPy's translation toolchain starts analysis after importing
+        \item arbitrary (non-RPython) code can be executed during import
+        \item this allows metaprogramming of parts of the interpreter
+        }
+    \end{block}
+}
+
+\frame{
+    \frametitle{The SPy VM}
+    \itemize{
+        \item foo
+    }
+}
 \end{document}
 
 
