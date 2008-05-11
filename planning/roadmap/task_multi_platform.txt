@@ -5,10 +5,11 @@ status:
 
  - We currently have PyPy with Posix support running on the following
    platforms:
+
    - Linux ia32
    - Mac OS/X ia32
    - Mac OS/X powerpc
-   - Windows ia32 
+   - Windows ia32 (only limited, a few known issues, needs a maintainer)
 
 todo:
 

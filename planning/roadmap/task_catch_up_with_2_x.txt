@@ -5,6 +5,7 @@ status:
 
  - PyPy already implements a few features of 2.5 (PEP 309, PEP 338,
    PEP 341, PEP 357, partition, any, all)
+ - Currently underway (Google SOC 2008 project)
 
 todo:
  - Implement these features that were new in CPython 2.5:

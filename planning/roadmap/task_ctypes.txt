@@ -2,6 +2,7 @@ Support app-level ctypes
 ========================
 
 status:
+ - Done (with a few minor exceptions).
 
 todo:
  - As a first approach for providing C-level bindings, we should implement
