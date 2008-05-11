@@ -11,10 +11,6 @@ resources of the core project.
 These tasks are loosley ordered by categories (speed, extra features,
 external modules) (XXX: have a more structured outline?)
 
-.. include:: task_refactor_jit.txt
-
-.. include:: task_optimize_jit.txt
-
 .. include:: task_manual_optimizations.txt
 
 .. include:: task_multi_platform.txt
@@ -28,6 +24,11 @@ external modules) (XXX: have a more structured outline?)
 .. include:: task_modules_rffi.txt
 
 .. include:: task_ctypes.txt
+
+.. include:: task_refactor_jit.txt
+
+.. include:: task_optimize_jit.txt
+
 
 .. include:: task_wrapper_generator.txt
 
