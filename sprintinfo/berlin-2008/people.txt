@@ -17,7 +17,7 @@ Camillo Bruni        14-16-22       hotel - Die Fabrik
 Samuele Pedroni      16-21          Hotel Klassik Berlin
 Armin Rigo           14-22(noon)    private, thanks Stephan
 Carl Friedrich Bolz  14-22          Die Fabrik
-Antonio Cuni         19-24          ?
+Antonio Cuni         19-24          A&O Hotel Mitte
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
@@ -41,7 +41,6 @@ Johan Hahn           ?              ?
 Niko Matsakis        ?              ?
 Alexander Schremmer  ?              ?
 Anders Chrigstroem   ?              ?
-Samuele Pedroni      ?              ?
 Michael Hudson       ?              ?
 Niko Matsakis        ?              ?
 Eric van Riet Paap   ?              ?
@@ -52,7 +51,6 @@ Guido Wesdorp        ?              ?
 Leonardo Santagada   ?              ?
 Alexandre Fayolle    ?              ?
 Sylvain Thénault     ?              ?
-Armin Rigo           ?              ?
 Toby Watson          ?              ?
 Paul deGrandis       ?              ?
 ==================== ============== =====================
