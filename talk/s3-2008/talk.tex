@@ -224,12 +224,12 @@
 \frame[containsverbatim, plain, shrink=10]{
   \begin{verbatim}
 bool_ops = [
-    (LESSTHAN, operator.lt),
-    (GREATERTHAN, operator.gt),
-    (LESSOREQUAL, operator.le),
-    (GREATEROREQUAL,operator.ge),
-    (EQUAL, operator.eq),
-    (NOTEQUAL, operator.ne)
+    (LESSTHAN, lambda x, y: x < y),
+    (GREATERTHAN, lambda x, y: x > y),
+    (LESSOREQUAL, lambda x, y: x <= y),
+    (GREATEROREQUAL,lambda x, y: x >= y),
+    (EQUAL, lambda x, y: x == y),
+    (NOTEQUAL, lambda x, y: x != y)
     ]
 
 
