@@ -1,0 +1,40 @@
+
+
+Berlin Sprint 
+=============
+
+People Present:
+
+ - Carl Friedrich
+ - Toon
+ - Armin
+ - Peter
+ - Karl
+ - Camillo
+ - Stephan
+ - Alexander
+ - Maciek
+ - Felix
+ - Samuele
+ - Adrian
+
+Tasks:
+
+ - gameboy emulator
+ - adding sdl bindings to rpython (Camillo, Karl, Armin)
+ - django porting
+ - making sqlite-ctypes work on PyPy (Samuele, Felix, Maciek)
+ - hybrid-io-improvements branch
+ - work on SPy, decide about the branch (Alexander, Toon, Carl Friedrich)
+ - complete Stackless interface (Adrian, Stephan, Peter)
+ - discussions/starting on separate compilation
+
+
+  - work on PyPy's JIT generator: we are refactoring parts of the
+    compiling logic, in ways that may also allow generating better
+    machine code for loops (people or aliens with knowledge on
+    compilers and SSA, welcome)
+
+  - trying some large pure-Python applications or libraries on PyPy and
+    fixing the resulting bugs. Possibilities are Zope 3, Django and
+    others.
