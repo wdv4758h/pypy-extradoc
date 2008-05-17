@@ -19,6 +19,7 @@ Armin Rigo           14-22(noon)    private, thanks Stephan
 Carl Friedrich Bolz  14-22          Die Fabrik
 Antonio Cuni         19-24          A&O Hotel Mitte
 Alexander Schremmer  16(night)-18   www.singer109.com
+Holger Krekel        19/evening-22  private 
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
