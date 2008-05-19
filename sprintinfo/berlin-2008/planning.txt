@@ -20,21 +20,24 @@ People Present:
 
 Tasks:
 
- - gameboy emulator: trying to translate, lots of blocked blocks (Armin looking, Camillo)
- - adding sdl bindings to rpython (Camillo, Karl, Armin) IN-PROGRESS
+ - gameboy emulator translation DONE
+ - adding sdl bindings to rpython (Camillo, Stephan) MORE PROGRESS: mouse movement works now too 
  - django porting: using django with sqlite-ctypes works (Samuele, Maciek)
                    90/200 tests failing
-                   more robustapply work
-                   dictionary subclassing
- - making sqlite-ctypes work on PyPy DONE (mostly)
+                   more robustapply work: turned out to be an sqlite problem
+                   dictionary subclassing: found the problem, unclear how to fix
+ - making sqlite-ctypes work on PyPy DONE
  - hybrid-io-improvements branch: discussions happened
- - work on SPy, decide about the branch (Toon, Carl Friedrich)
+ - work on SPy, decide about the branch (Toon, Carl Friedrich) IN-PROGRESS
    work on sanitizing the spy shadow branch
- - complete Stackless interface (Stephan, Peter)
-   work on channel preferences
-   some cleanup needed
- - discussions/starting on separate compilation (Armin, Samuele, Maciek, Alexander)
+ - complete Stackless interface
+   work on channel preferences DONE
+   some cleanup needed DONE
+ - discussion about composable coroutines DONE
+ - discussions/starting on separate compilation
  - discuss our own GCs and threads
+ - discussion about the JIT
+ - trying to run Zope 3 a bit (Armin, Peter)
 
 
   - work on PyPy's JIT generator: we are refactoring parts of the
