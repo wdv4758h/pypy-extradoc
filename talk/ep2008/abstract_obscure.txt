@@ -1,0 +1,36 @@
+Title
+=====
+
+PyPy - garbage collection details.
+
+Summary
+=======
+
+Obscure, naked, details of garbage collection strategies available in pypy.
+Will contain performance difference of various operations depending on
+chosen GC.
+
+Abstract
+========
+
+In this talk, we'll cover garbage collection strategies present in PyPy.
+We'll not go into implementation details of those, but instead we'll
+try to explain how certain operations behave and especially how they
+present different performance characteristics than cpython's reference
+counting strategy. We'll also explain why certain programming patterns
+work well on some garbage collectors and doesn't work too well on others
+and how to avoid such obstacles.
+
+Proposed Length of talk required
+================================
+
+30 minutes.
+
+Brief Biography
+===============
+
+Maciej Fijalkowski is a core pypy developer, particularly interested
+in obscure details of various parts.
+
+Armin Rigo is the author of psyco JIT, as well as key person behind
+most pypy's obscure advanced details.
