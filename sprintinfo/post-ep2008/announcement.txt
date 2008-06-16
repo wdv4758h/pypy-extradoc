@@ -22,7 +22,7 @@ Goals and topics of the sprint
 There are many possible and interesting sprint topics to work on - here
 we list some possible task areas:
 
-* XXX fill me
+* try out Python programs and fix them or fix PyPy or fix performance bottlenecks
 * some JIT improvement work
 * port the stackless transform to ootypesystem
 * other interesting stuff that you would like to work on ...;-)
