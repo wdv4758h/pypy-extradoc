@@ -1,0 +1,62 @@
+
+Intro
+=====
+
+* Memory management model
+
+* GC is *not* only the part that takes
+  care of circular references
+
+...
+
+What is refcounting?
+====================
+
+XXX explain
+
+What is a generational moving GC?
+=================================
+
+XXX explain
+
+Finalizers
+==========
+
+* Semantic differencies
+
+* __del__ called immediately considered to be
+  implementation-dependent
+
+Finalizers - resurrection
+=========================
+
+XXX
+
+Finalizers - cycles with __del__
+================================
+
+XXX
+
+Calling C-level code
+====================
+
+* Problems with moving
+
+* Problems with write barriers
+
+...
+
+Strange operation costs
+=======================
+
+* id
+
+XXX what else?
+
+Allocation cost
+================
+
+* refcounting/C malloc - expensive
+
+* generational gc - cheap
+
