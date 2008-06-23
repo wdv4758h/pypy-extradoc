@@ -27,7 +27,7 @@ XXX
 Finalizers
 ==========
 
-* Semantic differencies
+* Semantic differences
 
 * __del__ called immediately considered to be
   implementation-dependent
