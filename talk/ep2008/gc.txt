@@ -19,6 +19,11 @@ What is a generational moving GC?
 
 XXX explain
 
+Difference in performance
+=========================
+
+XXX
+
 Finalizers
 ==========
 
@@ -60,3 +65,17 @@ Allocation cost
 
 * generational gc - cheap
 
+Allocating large amount of objects
+==================================
+
+* CPython - O(n^2) where n is number of objects
+  allocated
+
+* Any reasonable generational GC should do better
+
+Collection costs
+================
+
+* Full collection - costly (always the case with cpython)
+
+* Nursery collection - quick
