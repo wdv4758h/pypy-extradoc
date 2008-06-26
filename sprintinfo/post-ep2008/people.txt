@@ -12,6 +12,7 @@ available yet from them.
 ==================== ============== ============================
 Antonio Cuni         6-13           http://www.jnn.lt/
 Holger Krekel        6-13           http://www.litinterp.lt/
+Maciej Fijalkowski   6-13           http://www.jnn.lt/
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
@@ -19,7 +20,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
-Maciej Fijalkowski   ?              ?
 Samuele Pedroni      ?              ?
 Armin Rigo           ?              ?
 Carl Friedrich Bolz  ?              ?
