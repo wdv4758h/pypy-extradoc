@@ -1,0 +1,88 @@
+
+PyPy status
+===========
+
+* more details recent developements
+
+* where we're going
+
+* sponsorship (?)
+
+Production ready
+=====================
+
+* We concentrated on running
+  existing applications on top of pypy
+
+* Sometimes requiring this application changes
+
+Ctypes
+======
+
+* Official way of having bindings to 
+  external (C) libraries for pypy
+
+* Slow, but getting better
+
+* Sponsored by google
+
+* Can handle ie pyglet, pymunk or Sole Scion
+
+Ctypes configure
+================
+
+* Our own small addition to general
+  ctypes usefulness
+
+* Invokes C compiler for small details
+
+* Can handle #defines, types, structure layout
+  etc.
+
+Sqlite
+======
+
+* Part of cpython stdlib
+
+* We use Gerhard Haering's version
+  (XXX link)
+
+* Works reasonably well after fixes
+
+Django
+======
+
+* We run (almost) unmodified django
+
+* We'll run 1.0 definitely
+
+Pylons
+======
+
+* Worked almost out of the box once eggs
+  are working (1 day)
+
+* No sqlalchemy yet
+
+Twisted & Nevow
+===============
+
+* Twisted have some glitches
+
+* Nevow works
+
+* We don't support pycrypto nor pyopenssl
+
+Speed - decent gcs
+==================
+
+* Faster than refcounting
+
+* Still need some glitches
+
+Speed - JIT
+===========
+
+* Not ready yet!
+
+XXX anything else?
