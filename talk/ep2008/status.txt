@@ -14,19 +14,19 @@ Production ready
 * We concentrated on running
   existing applications on top of pypy
 
-* Sometimes requiring this application changes
+* Sometimes requiring to change applications slightly
 
 Ctypes
 ======
 
-* Official way of having bindings to 
+* Official way to have bindings to 
   external (C) libraries for pypy
 
 * Slow, but getting better
 
 * Sponsored by google
 
-* Can handle ie pyglet, pymunk or Sole Scion
+* Can handle ie pysqlite-ctypes, pyglet, pymunk or Sole Scion
 
 Ctypes configure
 ================
@@ -44,7 +44,7 @@ Sqlite
 
 * Part of cpython stdlib
 
-* We use Gerhard Haering's version
+* We use Gerhard Haering's ctypes version
   (XXX link)
 
 * Works reasonably well after fixes
@@ -53,6 +53,8 @@ Django
 ======
 
 * We run (almost) unmodified django
+
+* Only sqlite DB backend for now
 
 * We'll run 1.0 definitely
 
@@ -73,6 +75,13 @@ Twisted & Nevow
 
 * We don't support pycrypto nor pyopenssl
 
+Bittorrent
+==========
+
+XXX fill me
+http://morepypy.blogspot.com/2008/03/bittorrent-on-pypy.html
+
+
 Conclusion
 ==========
 
@@ -92,6 +101,11 @@ XXX - list comprehension variable in __all__
 XXX - relying on untested and undocumented private stuff
       (zipimport._zip_directory_cache)
 
+Speed - comparison with CPython
+===============================
+
+XXX fill me
+
 Speed - decent gcs
 ==================
 
@@ -103,5 +117,16 @@ Speed - JIT
 ===========
 
 * Not ready yet!
+
+Other backends
+==============
+
+* pypy-jvm runs!
+
+* more integration between pypy-cli and .NET
+
+* general speed improvements
+
+* both backends are progressing - very slowly though
 
 XXX anything else?
