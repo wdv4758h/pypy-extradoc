@@ -73,6 +73,25 @@ Twisted & Nevow
 
 * We don't support pycrypto nor pyopenssl
 
+Conclusion
+==========
+
+* There is no feature obscure enough for people
+  not to rely on it
+
+* Generally it's fairly unlikely we'll ever try
+  to support stuff without tests
+
+Examples of obscure features
+============================
+
+XXX - non-string keys in typedict
+
+XXX - list comprehension variable in __all__
+
+XXX - relying on untested and undocumented private stuff
+      (zipimport._zip_directory_cache)
+
 Speed - decent gcs
 ==================
 
