@@ -1,12 +1,19 @@
-
+===========
 PyPy status
 ===========
 
+:Author: Maciej Fijalkowski
+:Location: Europython 2008
+:Date: 7 July 2008
+
+What this talk is about
+=======================
+
 * more details recent developements
 
-* where we're going
+* our plans
 
-* sponsorship (?)
+* how we're going to achieve this
 
 Production ready
 =====================
