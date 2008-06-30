@@ -7,56 +7,41 @@ Intro
 * GC is *not* only the part that takes
   care of circular references
 
-...
-
 What is refcounting?
 ====================
 
-XXX explain
+* Store a field on each object which is a number
+  of references
+
+* Each time you play with it increase refcount
+
+* When refcount goes to 0, delete object
 
 What is a generational moving GC?
 =================================
 
-XXX explain
+XXX explain, probably few slides, quick:
+
+* Different generations of objects
+
+* Collection runs from roots to all objects
+
+* Young objects are kept in nursery
+
+* Older ones are moved away
+
+* Write barriers, old objects referencing young ones
 
 Difference in performance
 =========================
 
-XXX
+* no mutable fields on objects in generational
+ (cache friendly)
 
-Finalizers
-==========
+* stuff moves around sometimes
 
-* Semantic differences
-
-* __del__ called immediately considered to be
-  implementation-dependent
-
-Finalizers - resurrection
-=========================
-
-XXX
-
-Finalizers - cycles with __del__
-================================
-
-XXX
-
-Calling C-level code
-====================
-
-* Problems with moving
-
-* Problems with write barriers
-
-...
-
-Strange operation costs
-=======================
-
-* id
-
-XXX what else?
+* assuming certain usecases (not many old objects referencing
+  young ones)
 
 Allocation cost
 ================
@@ -79,3 +64,56 @@ Collection costs
 * Full collection - costly (always the case with cpython)
 
 * Nursery collection - quick
+
+Finalizers
+==========
+
+* Semantic differences
+
+* __del__ called immediately considered to be
+  implementation-dependent
+
+Finalizers - resurrection
+=========================
+
+* what happens if your __del__ puts reference back
+  to itself?
+
+* in CPython it can be called more than once
+
+* in other implementations, only once
+
+Finalizers - cycles with __del__
+================================
+
+* in CPython, they never get collected
+
+* interesting example - a module global with __del__
+
+* in PyPy, cycle gets broken in random order
+
+* no hacks like globals clearing
+
+When to call __del__?
+=====================
+
+* example open('x', 'w').write('stuff')
+
+* on refcounting, flushes file immediately
+
+* on any other gc, it might be deferred for
+  a while
+
+Calling C-level code
+====================
+
+* Problems with moving
+
+* Problems with write barriers
+
+Strange operation costs
+=======================
+
+* id
+
+XXX what else?
