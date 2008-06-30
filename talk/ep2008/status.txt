@@ -15,6 +15,8 @@ What this talk is about
 
 * how we're going to achieve this
 
+* more or less recap of our blog
+
 Production ready
 =====================
 
@@ -22,6 +24,9 @@ Production ready
   existing applications on top of pypy
 
 * Sometimes requiring to change applications slightly
+
+* Especially refcounting details tend to be a problem
+  open('xxx', 'w').write('stuff')
 
 Ctypes
 ======
@@ -35,6 +40,10 @@ Ctypes
 
 * Can handle ie pysqlite-ctypes, pyglet, pymunk or Sole Scion
 
+XXX demo of sole scion and pyglet
+
+* ctypes is getting better as a side effect
+
 Ctypes configure
 ================
 
@@ -45,6 +54,8 @@ Ctypes configure
 
 * Can handle #defines, types, structure layout
   etc.
+
+XXX demo
 
 Sqlite
 ======
@@ -65,13 +76,18 @@ Django
 
 * We'll run 1.0 definitely
 
+XXX demo
+
 Pylons
 ======
 
 * Worked almost out of the box once eggs
   are working (1 day)
 
-* No sqlalchemy yet
+* No sqlalchemy yet, obscure problems
+  ahead
+
+XXX demo
 
 Twisted & Nevow
 ===============
@@ -80,14 +96,18 @@ Twisted & Nevow
 
 * Nevow works
 
-* We don't support pycrypto nor pyopenssl
+* We don't support pycrypto nor pyopenssl and we
+  won't
 
-Bittorrent
-==========
+Other software
+==============
 
-XXX fill me
-http://morepypy.blogspot.com/2008/03/bittorrent-on-pypy.html
+* bittorrent
 
+* pypy translation toolchain
+
+* various smaller things, templating engines,
+  most pure-python software
 
 Conclusion
 ==========
@@ -108,32 +128,60 @@ XXX - list comprehension variable in __all__
 XXX - relying on untested and undocumented private stuff
       (zipimport._zip_directory_cache)
 
+XXX - exact strings in exceptions
+
 Speed - comparison with CPython
 ===============================
 
-XXX fill me
+* We're something between 0.8-2x slower than
+  cpython on various benchmarks.
+
+* gcbench - 0.8 (fast gc)
+
+* We're progressing slowly
 
 Speed - decent gcs
 ==================
 
 * Faster than refcounting
 
-* Still need some glitches
+* Better handling of obscure cases
 
-Speed - JIT
-===========
+* Troubles with ie communication with C
+
+Speed - JIT generator
+=====================
 
 * Not ready yet!
+
+* Will be super fast
+
+* Prolog prototype
 
 Other backends
 ==============
 
 * pypy-jvm runs!
 
-* more integration between pypy-cli and .NET
+* More integration between pypy-cli and .NET
 
-* general speed improvements
+* General speed improvements
 
-* both backends are progressing - very slowly though
+* Both backends are progressing - very slowly though
 
-XXX anything else?
+Plans
+=====
+
+* More JIT - faster Python
+
+* Support full cpython's stdlib
+
+* Get more funding money
+
+No-plans
+========
+
+* RPython extensions for CPython
+
+* Maintain arbitrary number of third-party
+  extension modules
