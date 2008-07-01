@@ -2,6 +2,19 @@
 Intro
 =====
 
+::
+
+    From arigo to fijal: should we discuss this a bit?  I still don't
+    know exactly what this talk is trying to achieve but I would
+    personally imagine that to give an intro to GC techniques we need
+    pictures with objects as boxes and references as arrows.  Also I
+    think we should go for "CPython" slide, a "Jython / IronPython"
+    slide, possibly a "IronPython on Mono" slide to introduce Boehm, and
+    finally several PyPy slides starting from the simple mark-and-sweep
+    and progressing to moving GCs with some more motivation, finally
+    reaching generational moving GCs.
+
+
 * Memory management model
 
 * GC is *not* only the part that takes
@@ -54,7 +67,8 @@ Allocating large amount of objects
 ==================================
 
 * CPython - O(n^2) where n is number of objects
-  allocated
+  allocated (XXX this is a temporary problem more than
+  a deep issue, it might be fixed soon in CPython)
 
 * Any reasonable generational GC should do better
 
@@ -62,6 +76,7 @@ Collection costs
 ================
 
 * Full collection - costly (always the case with cpython)
+  (XXX wrong, CPython uses 3 generations in its cycle finder)
 
 * Nursery collection - quick
 
@@ -89,6 +104,10 @@ Finalizers - cycles with __del__
 * in CPython, they never get collected
 
 * interesting example - a module global with __del__
+  (XXX not sure I follow what you mean here.  Python
+  was designed so that most objects don't have a
+  reference to the module they come from, but just
+  a module name, precisely to avoid cycles)
 
 * in PyPy, cycle gets broken in random order
 
