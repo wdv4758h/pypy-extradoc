@@ -14,6 +14,15 @@ Intro
     and progressing to moving GCs with some more motivation, finally
     reaching generational moving GCs.
 
+    I could imagine preparing this talk in a completely different
+    way than with slides with text -- mostly as images.  Some of
+    the text you've written below would go attached to the
+    corresponding images.
+
+    Still I'm not sure how, or if, we can fill 25 minutes.
+    Maybe it's ok to go for a 15-20 minutes talk and give
+    people time for questions and a larger break.
+
 
 * Memory management model
 
