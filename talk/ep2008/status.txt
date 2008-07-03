@@ -112,16 +112,8 @@ Other software
 * various smaller things, templating engines,
   most pure-python software
 
-Conclusion
-==========
-
-* There is no feature obscure enough for people
-  not to rely on it
-
-* It's extremely hard to try to run stuff on PyPy that doesn't have unittests
-
-Examples of obscure features
-============================
+Obscure differences to CPython 
+==============================
 
 * non-string keys in __dict__ of types
 
@@ -133,6 +125,17 @@ Examples of obscure features
 * exact message matching in exception catching
   code
 
+Conclusion on Compatibility
+============================
+
+* lessons learned: There is no feature obscure enough for people
+  not to rely on it.  But PyPy can usually mimick CPython sufficiently. 
+
+* pypy-c probably most compatible to CPython Interpreter
+
+* main blocker for running apps will be missing external modules
+ 
+
 Speed - comparison with CPython
 ===============================
 
@@ -141,7 +144,7 @@ Speed - comparison with CPython
 
 * gcbench - 0.8 (because of our faster GC)
 
-* We're progressing slowly
+* steady but slow progress 
 
 Speed - decent GCs
 ==================
@@ -200,16 +203,14 @@ Cleanup sprint
 Plans
 =====
 
-* More JIT - faster Python
+* More JIT - faster Python 
 
 * Support full CPython's stdlib
 
 * make PyPy impossible to segfault - close to that already
 
-No-plans
-========
+* adapt PyPy to more platforms
 
-* RPython extensions for CPython
+* aim for special optimisations, targets and security goals
+  and get funding for it 
 
-* Maintain arbitrary number of third-party
-  extension modules
