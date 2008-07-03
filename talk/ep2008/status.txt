@@ -63,7 +63,6 @@ Sqlite
 * Part of cpython stdlib
 
 * We use Gerhard Haering's ctypes version
-  (XXX link)
 
 * Works reasonably well after fixes
 
@@ -121,14 +120,15 @@ Conclusion
 Examples of obscure features
 ============================
 
-XXX - non-string keys in typedict
+* non-string keys in typedict
 
-XXX - list comprehension variable in __all__
+* list comprehension variable in __all__
 
-XXX - relying on untested and undocumented private stuff
-      (zipimport._zip_directory_cache)
+* relying on untested and undocumented private stuff
+  (zipimport._zip_directory_cache)
 
-XXX - exact strings in exceptions
+* exact message matching in exception catching
+  code
 
 Speed - comparison with CPython
 ===============================
@@ -147,7 +147,7 @@ Speed - decent gcs
 
 * Better handling of obscure cases
 
-* Troubles with ie communication with C
+* Troubles with for example communication with C
 
 Speed - JIT generator
 =====================
@@ -169,6 +169,19 @@ Other backends
 
 * Both backends are progressing - very slowly though
 
+Sandboxing
+==========
+
+* Fully sandboxed python interpreter
+
+* All external calls to C goes via another
+  python process
+
+* Special library for making custom
+  policies
+
+XXX demo
+
 Plans
 =====
 
@@ -176,7 +189,7 @@ Plans
 
 * Support full cpython's stdlib
 
-* Get more funding money
+* Unable to segfault
 
 No-plans
 ========
