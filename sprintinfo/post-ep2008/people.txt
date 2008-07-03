@@ -13,6 +13,7 @@ available yet from them.
 Antonio Cuni         6-13           http://www.jnn.lt/
 Holger Krekel        6-13           http://www.litinterp.lt/
 Maciej Fijalkowski   6-13           http://www.jnn.lt/
+Jakub Gustak         6-13           http://hospitalityclub.org/
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
