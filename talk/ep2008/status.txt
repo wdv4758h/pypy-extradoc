@@ -118,8 +118,7 @@ Conclusion
 * There is no feature obscure enough for people
   not to rely on it
 
-* Generally it's fairly unlikely we'll ever try
-  to support stuff without tests XXX what does this mean? we already support things that are untested in CPython
+* It's extremely hard to try to run stuff on PyPy that doesn't have unittests
 
 Examples of obscure features
 ============================
