@@ -188,6 +188,16 @@ Sandboxing
 
 XXX demo
 
+Cleanup sprint
+==============
+
+* Got rid of semi-cool semi-working features
+
+* Reduced code size
+
+* Allowed us to progress forward into
+  advanced features
+
 Plans
 =====
 
