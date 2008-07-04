@@ -188,12 +188,15 @@ Sandboxing
 * Special library for making custom
   policies
 
+XXX image
+
 XXX demo
 
 Cleanup sprint
 ==============
 
-* Got rid of semi-cool semi-working features
+* Got rid of semi-cool semi-working
+  proofs of concept
 
 * Reduced code size
 
@@ -207,10 +210,14 @@ Plans
 
 * Support full CPython's stdlib
 
-* make PyPy impossible to segfault - close to that already
+* Aim for more funding in pushing pypy
+  forward (more at the next talk)
 
-* adapt PyPy to more platforms
+Links
+=====
 
-* aim for special optimisations, targets and security goals
-  and get funding for it 
+* http://codespeak.net/pypy
 
+* http://morepypy.blogspot.com
+
+* this talk is already online
