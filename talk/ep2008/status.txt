@@ -1,6 +1,6 @@
-===========
-PyPy status
-===========
+================
+PyPy status talk
+================
 
 :Author: Maciej Fijalkowski
 :Location: Europython 2008
@@ -20,87 +20,96 @@ What this talk is about
 Production ready
 =====================
 
-* We worked a lot on running
+* we worked a lot on running
   existing applications on top of PyPy
 
-* Sometimes requiring to change applications slightly
+* sometimes requiring to change applications slightly
 
-* Especially refcounting details tend to be a problem
+* especially refcounting details tend to be a problem
+
+::
+
   open('xxx', 'w').write('stuff')
 
 CTypes
 ======
 
-* Official way to have bindings to 
+* official way to have bindings to 
   external (C) libraries for PyPy
 
-* Slow, but getting better
+* slow, but getting better
 
-* Sponsored by Google
-
-* Can handle i.e. pysqlite-ctypes, pyglet, pymunk or Sole Scion
-
-XXX demo of sole scion and pyglet
+* can handle i.e. pysqlite-ctypes, pyglet, pymunk or Sole Scion
 
 * ctypes is getting better as a side effect:
 
-  * bugs found
-  * helper libraries
-  * possibility of porting to Jython/IronPython
+ * errno handling
+
+ * bugfixes
+
+ * helper libraries
+
+* part of google sponsoring
+
+* demo
 
 CTypes configure
 ================
 
-* Our own small addition to general
+* our own small addition to general
   CTypes usefulness
 
-* Invokes C compiler for small details
+* invokes C compiler for small details
 
-* Can handle #defines, types, structure layout
+* can handle #defines, types, structure layout
   etc.
-
-XXX demo
 
 Sqlite
 ======
 
-* Part of cpython stdlib since 2.5
+* part of cpython stdlib since 2.5
 
-* We use Gerhard Haering's CTypes version
+* we use Gerhard Haering's CTypes version
 
-* Works reasonably well after some fixes
+* works reasonably well after some fixes
 
 Django
 ======
 
-* We run (almost) unmodified Django
+* we run (almost) unmodified Django
 
-* Only sqlite DB backend for now
+* only sqlite DB backend for now
 
-* Cooperation with Django people to make sure that Django 1.0 works with PyPy
+* cooperation with Django people to make sure
+  that Django 1.0 works with PyPy
 
-XXX demo
+XXX demo, link
 
 Pylons
 ======
 
-* Worked almost out of the box once eggs
-  are working (1 day)
+* worked almost out of the box once eggs
+  were working (1 day)
 
-* No SQLAlchemy yet, obscure problems
+* no SQLAlchemy yet, obscure problems
   ahead
 
-XXX demo
+* unmodified passes all tests
+
+XXX demo, link
 
 Twisted & Nevow
 ===============
 
-* Twisted have some glitches
+* twisted have some glitches, but mostly works
 
-* Nevow works
+* nevow works
 
-* We don't support PyCrypto nor PyOpenSSL and we
-  won't anytime soon (if nobody contributes CTypes versions)
+* we don't support PyCrypto nor PyOpenSSL and we
+  won't anytime soon (if nobody contributes CTypes or rpython
+  versions)
+
+XXX link
 
 Other software
 ==============
@@ -117,7 +126,7 @@ Obscure differences to CPython
 
 * non-string keys in __dict__ of types
 
-* list comprehension variable in __all__
+* exact naming of a list comprehension variable
 
 * relying on untested and undocumented private stuff
   (zipimport._zip_directory_cache)
@@ -125,92 +134,108 @@ Obscure differences to CPython
 * exact message matching in exception catching
   code
 
+* refcounting details
+
 Conclusion on Compatibility
 ============================
 
 * lessons learned: There is no feature obscure enough for people
-  not to rely on it.  But PyPy can usually mimick CPython sufficiently. 
+  not to rely on it. But PyPy can usually mimick CPython sufficiently. 
 
 * pypy-c probably most compatible to CPython Interpreter
 
 * main blocker for running apps will be missing external modules
- 
 
 Speed - comparison with CPython
 ===============================
 
-* We're something between 0.8-2x slower than
+* we're something between 0.8-2x slower than
   CPython on various benchmarks.
 
 * gcbench - 0.8 (because of our faster GC)
 
-* steady but slow progress 
+* steady but slow progress
+
+* we hope for our JIT to be a huge leap ahead
 
 Speed - decent GCs
 ==================
 
-* Faster than refcounting
+* faster than refcounting
 
-* Better handling of obscure cases
+* better handling of unusual patterns
 
-* Troubles with for example communication with C
+* troubles with for example communication with C
+
+* details on different talk
 
 Speed - JIT generator
 =====================
 
-* Not ready yet!
+* not ready yet!
 
-* Will be super fast
+* will be super fast
 
-* Prolog prototype
+* prolog prototype
+
+* psyco is a nice proof that this approach
+  would work
 
 Other backends
 ==============
 
 * PyPy-jvm runs!
 
-* More integration between pypy-cli and .NET
+* more integration between pypy-cli and .NET
 
-* General speed improvements
+* general speed improvements
 
-* Both backends are progressing - very slowly though
+* both backends are progressing - very slowly though
 
 * contributors wanted!
 
 Sandboxing
 ==========
 
-* Fully sandboxed python interpreter
+* fully sandboxed python interpreter
 
-* All external calls to C goes via another
+* all external calls to C goes via another
   python process
 
-* Special library for making custom
+* special library for making custom
   policies
 
-XXX image
+.. image:: sandboxed.png
+   :scale: 30
+   :align: center
 
 XXX demo
 
-Cleanup sprint
-==============
+A lot of cleanups
+=================
 
-* Got rid of semi-cool semi-working
+* got rid of semi-cool semi-working
   proofs of concept
 
-* Reduced code size
+* examples: CPython extension compiler,
+  rctypes
 
-* Allowed us to progress forward into
+* reduced code size
+
+* allowed us to progress forward into
   advanced features
+
+* included sprint dedicated to cleanup
+  (on which noone was allowed to add features)
 
 Plans
 =====
 
-* More JIT - faster Python 
+* more JIT - faster Python 
 
-* Support full CPython's stdlib
+* support full CPython's stdlib
 
-* Aim for more funding in pushing pypy
+* aim for more funding in pushing pypy
   forward (more at the next talk)
 
 Links
