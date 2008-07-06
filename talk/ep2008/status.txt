@@ -1,10 +1,6 @@
-================
+======================
 PyPy status talk
-================
-
-:Author: Maciej Fijalkowski
-:Location: Europython 2008
-:Date: 7 July 2008
+======================
 
 What this talk is about
 =======================
@@ -83,7 +79,7 @@ Django
 * cooperation with Django people to make sure
   that Django 1.0 works with PyPy
 
-XXX demo, link
+* http://www.djangoproject.com/
 
 Pylons
 ======
@@ -96,7 +92,7 @@ Pylons
 
 * unmodified passes all tests
 
-XXX demo, link
+* http://pylonshq.com/
 
 Twisted & Nevow
 ===============
@@ -109,7 +105,7 @@ Twisted & Nevow
   won't anytime soon (if nobody contributes CTypes or rpython
   versions)
 
-XXX link
+* http://twistedmatrix.com/
 
 Other software
 ==============
@@ -121,8 +117,8 @@ Other software
 * various smaller things, templating engines,
   most pure-python software
 
-Obscure differences to CPython 
-==============================
+Obscure details that people rely on
+===================================
 
 * non-string keys in __dict__ of types
 
@@ -208,8 +204,6 @@ Sandboxing
 .. image:: sandboxed.png
    :scale: 30
    :align: center
-
-XXX demo
 
 A lot of cleanups
 =================
