@@ -1,0 +1,18 @@
+EuroPython sprint
+=================
+
+People Present:
+
+fill me :-)
+
+Tasks:
+
+ - try out Python programs and fix them or fix PyPy or fix performance bottlenecks
+ 
+ - some JIT improvement work
+
+ - port the stackless transform to ootypesystem
+
+ - improve rlib.rjvm (java bindings for rpython)
+
+ - profile & speedup pypy-jvm
