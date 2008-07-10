@@ -3,16 +3,34 @@ EuroPython sprint
 
 People Present:
 
-fill me :-)
+jakub, gasper, david, andrew, jonathan, geoff, anto, stephan,
+henrik, dinu, jacob, marius, samuele, fijal, arigo
 
 Tasks:
 
- - try out Python programs and fix them or fix PyPy or fix performance bottlenecks
- 
- - some JIT improvement work
+ - try out Python programs and fix them or fix PyPy or fix
+   performance bottlenecks (geoff, henrik, david, fijal around)
 
+ - support for profiling the calls to builtins (stephan, fijal
+   around)
+
+ - fix the default options of "translate.py", make "--help"
+   show only the reasonable options, remove "--faassen",
+   etc. (samuele, others for discussion)
+
+ - dotviewer improvements (expanding & collapsing, etc.)
+   and eventually make it a separate project (dinu, marius)
+
+ - start a tutorial on how to write a language interpreter
+   in RPython with PyPy (jonathan, ...)
+ 
  - port the stackless transform to ootypesystem
 
  - improve rlib.rjvm (java bindings for rpython)
 
  - profile & speedup pypy-jvm
+
+ - more extension modules, with ctypes or rpython (andrew,
+   jakub, gasper, ...)
+
+ - general wizardry (anto, arigo)
