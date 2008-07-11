@@ -9,20 +9,26 @@ henrik, dinu, jacob, marius, samuele, fijal, arigo
 Tasks:
 
  - try out Python programs and fix them or fix PyPy or fix
-   performance bottlenecks (geoff, henrik, david, fijal around)
+   performance bottlenecks. (fijal, henrikv)
+   * Django seems to be running.
+   * Fixed _rawffi for Mac OS X
+   * CherryPy works out of the box
 
- - support for profiling the calls to builtins (stephan, fijal
-   around)
+ - support for profiling the calls to builtins (IN-PROGRESS)
+   (stephan, anto)
 
  - fix the default options of "translate.py", make "--help"
    show only the reasonable options, remove "--faassen",
    etc. (samuele, others for discussion)
 
  - dotviewer improvements (expanding & collapsing, etc.)
-   and eventually make it a separate project (dinu, marius)
+   and eventually make it a separate project
+   * Having fun
+   * Minor progress
+   * IN-PROGRESS (dinu, marius)
 
  - start a tutorial on how to write a language interpreter
-   in RPython with PyPy (jonathan, ...)
+   in RPython with PyPy
  
  - port the stackless transform to ootypesystem
 
@@ -30,7 +36,7 @@ Tasks:
 
  - profile & speedup pypy-jvm
 
- - more extension modules, with ctypes or rpython (andrew,
-   jakub, gasper, ...)
+ - more extension modules, with ctypes or rpython
+   * itertools IN-PROGRESS (adurdin, jakub, anto around)
 
  - general wizardry (anto, arigo)
