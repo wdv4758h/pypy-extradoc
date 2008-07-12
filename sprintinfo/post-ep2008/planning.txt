@@ -13,30 +13,29 @@ Tasks:
    * Django seems to be running.
    * Fixed _rawffi for Mac OS X
    * CherryPy works out of the box
+   * Pinax project/application runs on pypy-c
+   * update play1.codespeak.net and make this work there
+   * filed even more Django tickets
+   * started http://code.djangoproject.com/wiki/DjangoAndPyPy
 
- - support for profiling the calls to builtins (IN-PROGRESS)
-   (stephan, anto)
+ - support for profiling the calls to builtins with
+   sys.setprofile(): TESTING
 
  - fix the default options of "translate.py", make "--help"
    show only the reasonable options, remove "--faassen",
    etc. (samuele, others for discussion)
 
- - dotviewer improvements (expanding & collapsing, etc.)
-   and eventually make it a separate project
-   * Having fun
-   * Minor progress
-   * IN-PROGRESS (dinu, marius)
-
  - start a tutorial on how to write a language interpreter
-   in RPython with PyPy
+   in RPython with PyPy: SOME PROGRESS, but no more today
  
- - port the stackless transform to ootypesystem
-
- - improve rlib.rjvm (java bindings for rpython)
-
- - profile & speedup pypy-jvm
-
  - more extension modules, with ctypes or rpython
-   * itertools IN-PROGRESS (adurdin, jakub, anto around)
+   * itertools EVEN MORE IN-PROGRESS (adurdin, jakub)
+   * hashlib, ctypes->openssl IN-PROGRESS (gasper, fijal
+     around)
+ 
+ - port the Python interpreter for Malbolge to RPython:
+   IN-PROGRESS
+
+ - work on _rawffi.py for Jython was started :-)
 
  - general wizardry (anto, arigo)
