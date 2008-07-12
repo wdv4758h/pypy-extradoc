@@ -17,7 +17,7 @@ major todos:
 - review ctypes skipped tests 
 - threading works nicely 
 - a build process that integrates well with distutils,
-  easy_install should fail gracefully for c-extensions 
+  should fail gracefully for c-extensions 
 - setup automated windows testing, integrate testing "pypy-c"
   on all platforms, **have one central pypy-c testing page**
 - check missing standard library modules
