@@ -19,7 +19,7 @@ please interrupt and ask questions!
 
 The When of PyPy
 ---------------------
-- 2001: startup of PyPy OSS work on codespeak 
+- 2003: startup of PyPy OSS work on codespeak 
   (get your own JIT for your favourite language for free)
 - 2004-2007: consolidation through EU-project
   (results as well as growing community)
