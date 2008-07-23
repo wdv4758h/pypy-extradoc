@@ -11,6 +11,7 @@ discuss and demo some current highlights such as PyPy's
 robust virtualization/sandboxing approach for Python programs. 
 
 level: beginner to intermediate
+duration: 45 minutes
 
 biography
 ------------
