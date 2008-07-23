@@ -12,7 +12,7 @@ Writing yet another interpreter in C or even Java is not it.
 PyPy is a framework to implement dynamic languages that embraces this
 challenge. It allows us to write such languages in the form of simple
 interpreters, expressed in a rich subset of Python. This means that
-the resulting implementations can can be evolved with reasonable
+the resulting implementations can be evolved with reasonable
 effort.  
 
 PyPy then generates a variety of virtual machines (VMs) from a single
