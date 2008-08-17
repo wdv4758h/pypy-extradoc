@@ -28,3 +28,5 @@ Expected outcome:
 Dependencies:
 
  - `Refactor RPython external objects interface`_
+
+.. _`Refactor RPython external objects interface`: task_external_objects.html

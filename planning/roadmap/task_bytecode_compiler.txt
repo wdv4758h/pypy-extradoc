@@ -23,3 +23,5 @@ Expected outcome:
 Dependencies:
 
  - `Port the JIT to ootype`_
+
+.. _`Port the JIT to ootype`: task_jit_ootype.html

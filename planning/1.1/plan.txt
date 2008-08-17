@@ -25,8 +25,7 @@ major todos:
   trunk after all tests have passed 
 - refactor documentation to have separated entry points: 
   - for users of the mainline PyPy Python Interpreter 
-  - for advanced users/developers/experimenters of the PyPy Python
-    Interpreter 
+  - for advanced users/developers/experimenters of the PyPy Python Interpreter 
   - all the rest - toolchain, prolog, squeak, javascript 
 - revise and cleanup play1 - run more things through sandboxing? 
 - debian packaging? 
