@@ -56,11 +56,8 @@ NOTES AND DONE TASKS
 
   - integrate and test: 
     - (arigo,pedronis,arre, IN-PROGRESS): wp08 docs & examples, getting-started 
-    - (cfbolz) test wp09 getting-started examples: 
-      - after some fixing things seem to work
-    - wp09 docs, examples and code - maybe what we have is good enough?
-      (christian looking into this currently) a bit of progress, 
-      but no feedback/interaction with DFKI/Danish yet. 
+    - (cfbolz) test wp09 getting-started examples: after some fixing things seem to work
+    - wp09 docs, examples and code - maybe what we have is good enough?  (christian looking into this currently) a bit of progress, but no feedback/interaction with DFKI/Danish yet. 
 
 
   - move pedronis/pypy-c-testing, pedronis/tarball-testing 
@@ -74,12 +71,10 @@ NOTES AND DONE TASKS
 
 
   - (done by NNN: fijal, NNN) play1 issues: 
-    - rebuild pypy's to use the new readline stub (fixing 
-      ugly stdout/stdin interactions) 
+    - rebuild pypy's to use the new readline stub (fixing ugly stdout/stdin interactions) 
     - review/refine help (add examples where necessary)
     - make examples execute more cleanly
-    - fix linking (it gets easily confused if you click around), 
-      make correct 404 and 500 pages
+    - fix linking (it gets easily confused if you click around), make correct 404 and 500 pages
     - discuss/do a JIT demo
 
   - (DROPPED for 1.0) include documentation/entry point for 
@@ -95,18 +90,14 @@ NOTES AND DONE TASKS
 
   - (DONE) consider where/how to put special builtins ("pypymagic"
     might not be a good name), suggestions: 
-    - names: not pypymagic, not pypybuiltin, holger and cf to propose
-      (done, result is __pypy__)
+    - names: not pypymagic, not pypybuiltin, holger and cf to propose (done, result is __pypy__)
     - document pypybuiltin module (add docstrings) (done)
-    - functions should only be there if the according option
-      is enabled (e.g. method cache) (done)
-    - functions only relating to py.py should not appear in
-      translated version (unless they work :) (done)
-    (cfbolz)
+    - functions should only be there if the according option is enabled (e.g. method cache) (done)
+    - functions only relating to py.py should not appear in translated version (unless they work :) (done) (cfbolz)
 
   - (done, still a bit of doc's/demo refinements maybe) 
-     make transparent proxies more prominent 
-     because they are a rather powerful feature)
+    make transparent proxies more prominent 
+    because they are a rather powerful feature)
     - write a nice support module (pypy/lib/tputil.py - in progress)
     - write/review documentation (in-progress)
     - fix bugs if any

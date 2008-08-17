@@ -32,3 +32,7 @@ Dependencies:
 
 .. _FePy: http://fepy.sourceforge.net/
 
+
+.. _`Separate compilation`: task_separate_compilation.html
+.. _`Refactor RPython external objects interface`: task_external_objects.html
+.. _`Integration with the hosting virtual machine`: task_integration_vm.html
