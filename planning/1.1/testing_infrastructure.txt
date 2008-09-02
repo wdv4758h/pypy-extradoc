@@ -3,7 +3,7 @@ our testing infrastructure.
 
 People present (irc nicks):
 arigato, fijal, hpk, ondrej, sanxiyn, pedronis, mon-mon, getxsick, iko,
-bgola, exarkun, jacob22
+bgola, exarkun, jacob22, antocuni
 
 We discussed the current available machines, the state of buildbot work and requirements for out testing infrastructure.
 
