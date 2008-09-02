@@ -25,8 +25,11 @@ We listed the following requirements:
   pypyc-s)
 
 After looking at the state of buildbot work we mainly decided to try
-to extend buildbot usage to cover all our nightly testing needs. We
-looked at machines availability/assignments at least for the
+to extend buildbot usage to cover all our nightly testing
+needs. exarkun and bigdog have already a buildbot based setup that can
+do nightly translations: http://codespeak.net/svn/pypy/build/bot/ .
+
+We then looked at machines availability/assignments at least for the
 development phase of switching over to buildbot.
 
 wyvern.cs.uni-duesseldorf.de: buildmaster at least for the
