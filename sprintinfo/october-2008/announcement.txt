@@ -1,0 +1,71 @@
+========================================================
+(XXX) PyPy sprint 7-15th October, 2008
+========================================================
+
+arrival day: 7th October
+departure day: 15th October
+Location XXX Czech Republic or Duesseldorf, GER
+
+------------------------------
+Goals and topics of the sprint
+------------------------------
+
+There are many possible and interesting sprint topics - 
+here are the pre-announced topics that some of us 
+are set to work on: 
+
+* work towards PyPy 1.1 release
+* make pypy-c fit for small devices like mobile phones
+* try out Python programs and fix them or fix PyPy or fix performance bottlenecks
+* other interesting stuff that you would like to work on ...;-)
+
+------------------------------
+Getting there
+------------------------------
+XXX
+
+------------------------------
+Accomodation
+------------------------------
+
+
+------------
+Registration
+------------
+
+If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
+and drop a note about your interests and post any questions.  More
+organisational information will be sent to that list.
+
+Please register by adding yourself on the following list (via svn):
+
+  http://codespeak.net/svn/pypy/extradoc/sprintinfo/post-ep2008/people.txt
+
+or on the pypy-sprint mailing list if you do not yet have check-in rights:
+
+  http://codespeak.net/mailman/listinfo/pypy-sprint
+
+---------------------------------------
+Preparation (if you feel it is needed):
+---------------------------------------
+
+* read the `getting-started`_ pages on http://codespeak.net/pypy
+
+* for inspiration, overview and technical status you are welcome to
+  read `the technical reports available and other relevant documentation`_
+
+* please direct any technical and/or development oriented questions to
+  pypy-dev at codespeak.net and any sprint organizing/logistical
+  questions to pypy-sprint at codespeak.net
+
+We are looking forward to meet you at the Vilnius Post EuroPython
+PyPy sprint!
+
+The PyPy team 
+
+.. See also ..
+
+.. _getting-started: http://codespeak.net/pypy/dist/pypy/doc/getting-started.html
+.. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
+.. _`the technical reports available and other relevant documentation`: http://codespeak.net/pypy/dist/pypy/doc/index.html
+.. _`EuroPython schedule`: http://europython.org/timetable
