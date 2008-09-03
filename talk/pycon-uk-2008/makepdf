@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# you can find rst2beamer.py here:
+# http://codespeak.net/svn/user/antocuni/bin/rst2beamer.py
+
 # WARNING: to work, it needs this patch for docutils
 # https://sourceforge.net/tracker/?func=detail&atid=422032&aid=1459707&group_id=38414
 
