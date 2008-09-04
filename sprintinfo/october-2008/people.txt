@@ -11,7 +11,7 @@ available yet from them.
 ==================== ============== ============================
 Antonio Cuni         
 Holger Krekel        5-15 possible  ???
-Maciej Fijalkowski  
+Maciej Fijalkowski   5-15 possible  ???
 Armin Rigo       
 Samuele Pedroni 
 Carl Friedrich Bolz  3rd Oct - ???   my flat
