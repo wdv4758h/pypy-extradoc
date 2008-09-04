@@ -10,7 +10,7 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== ============================
 Antonio Cuni         
-Holger Krekel        
+Holger Krekel        5-15 possible  ???
 Maciej Fijalkowski  
 Armin Rigo       
 Samuele Pedroni 
