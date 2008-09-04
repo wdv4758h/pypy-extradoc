@@ -1,10 +1,10 @@
 ========================================================
-(XXX) PyPy sprint 7-15th October, 2008
+Düsseldorf PyPy sprint 7-15th October, 2008
 ========================================================
 
-arrival day: 7th October
-departure day: 15th October
-Location XXX Czech Republic or Duesseldorf, GER
+The next PyPy sprint will be held in the Computer Science department of
+Heinrich-Heine Universität Düsseldorf from the 7th to the 15th of October.
+
 
 ------------------------------
 Goals and topics of the sprint
@@ -22,7 +22,16 @@ are set to work on:
 ------------------------------
 Getting there
 ------------------------------
-XXX
+
+
+The sprint will take place in a seminar room of the computer science
+department. It is in the building 25.12 of the university campus, second
+floor. For travel instructions see
+
+    http://stups.cs.uni-duesseldorf.de/anreise/esbahn.php
+
+
+
 
 ------------------------------
 Accomodation
@@ -58,8 +67,7 @@ Preparation (if you feel it is needed):
   pypy-dev at codespeak.net and any sprint organizing/logistical
   questions to pypy-sprint at codespeak.net
 
-We are looking forward to meet you at the Vilnius Post EuroPython
-PyPy sprint!
+We are looking forward to meet you at the Düsseldorf PyPy sprint!
 
 The PyPy team 
 
