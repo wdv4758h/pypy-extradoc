@@ -3,7 +3,11 @@ Düsseldorf PyPy sprint 7-15th October, 2008
 ========================================================
 
 The next PyPy sprint will be held in the Computer Science department of
-Heinrich-Heine Universität Düsseldorf from the 7th to the 15th of October.
+Heinrich-Heine Universität Düsseldorf from the 8th to the 14th of
+October.
+
+arrival day: 7th October
+departure day: 15th October
 
 
 ------------------------------
