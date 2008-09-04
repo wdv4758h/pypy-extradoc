@@ -2,21 +2,23 @@
 Düsseldorf PyPy sprint 7-15th October, 2008
 ========================================================
 
-The next PyPy sprint will be held in the Computer Science department of
-Heinrich-Heine Universität Düsseldorf from the 8th to the 14th of
-October.
+The pypy team is heading for a new sprint meetup, this time 
+aiming at a 1.1 release and to tweak pypy to work better with
+small devices.   The sprint is going to take place at the 
+Computer Science department of Heinrich-Heine Universität 
+Düsseldorf (Germany). 
+
+XXX times may change to become 5-13th october respectively 
 
 arrival day: 7th October
 departure day: 15th October
-
 
 ------------------------------
 Goals and topics of the sprint
 ------------------------------
 
 There are many possible and interesting sprint topics - 
-here are the pre-announced topics that some of us 
-are set to work on: 
+here are some goals and ideas: 
 
 * work towards PyPy 1.1 release
 * make pypy-c fit for small devices like mobile phones
@@ -34,13 +36,15 @@ floor. For travel instructions see
 
     http://stups.cs.uni-duesseldorf.de/anreise/esbahn.php
 
-
-
-
 ------------------------------
 Accomodation
 ------------------------------
 
+We may be able to fit some people into private flats 
+and otherwise there are several hotels, one recommended 
+one is the http://www.hotel-hillesheim.de/ where we are
+investigating regarding a group rate - if you are interested
+please register and tell ASAP. 
 
 ------------
 Registration
