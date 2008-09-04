@@ -14,7 +14,7 @@ Holger Krekel
 Maciej Fijalkowski  
 Armin Rigo       
 Samuele Pedroni 
-Carl Friedrich Bolz  
+Carl Friedrich Bolz  3rd Oct - ???   my flat
 Alexander Schremmer  
 ==================== ============== ============================
 
