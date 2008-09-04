@@ -15,7 +15,7 @@ Maciej Fijalkowski   5-15 possible  ???
 Armin Rigo       
 Samuele Pedroni 
 Carl Friedrich Bolz  3rd Oct - ???   my flat
-Alexander Schremmer  
+Alexander Schremmer  5-15 possible
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
