@@ -1,5 +1,5 @@
         
-People coming to the PyPy sprint 7-14th September 
+People coming to the PyPy sprint 5-13th September 
 =====================================================================
 
 People who have a ``?`` in their arrive/depart or accomodation
@@ -10,7 +10,7 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== ============================
 Antonio Cuni         5-15 possible  ???
-Holger Krekel        5-15 possible  ???
+Holger Krekel        5-13th         interested in sharing room 
 Maciej Fijalkowski   5-15 possible  ???
 Armin Rigo       
 Samuele Pedroni 

@@ -1,40 +1,26 @@
 ========================================================
-Düsseldorf PyPy sprint 7-15th October, 2008
+Düsseldorf PyPy sprint 5-13th October, 2008
 ========================================================
 
-The pypy team is heading for a new sprint meetup, this time 
-aiming at a 1.1 release and to tweak pypy to work better with
-small devices.   The sprint is going to take place at the 
-Computer Science department of Heinrich-Heine Universität 
-Düsseldorf (Germany). 
+The PyPy team is heading for a new sprint meetup, this time 
+aiming at a 1.1 release and to work on integrating PyPy better 
+with small devices.   We are also open to other sprint topics!
 
-XXX times may change to become 5-13th october respectively 
+The sprint is going to take place at the Computer Science
+department of Heinrich-Heine Universität Düsseldorf (Germany).  
 
-arrival day: 7th October
-departure day: 15th October
+Infos in a nutshell: 
 
-------------------------------
-Goals and topics of the sprint
-------------------------------
+arrival day: Sunday, 5th October 
 
-There are many possible and interesting sprint topics - 
-here are some goals and ideas: 
+departure day: Monday, 13th October 
 
-* work towards PyPy 1.1 release
-* make pypy-c fit for small devices like mobile phones
-* try out Python programs and fix them or fix PyPy or fix performance bottlenecks
-* other interesting stuff that you would like to work on ...;-)
+sprint days: 6-12th october with breaks 
 
-------------------------------
-Getting there
-------------------------------
-
-
-The sprint will take place in a seminar room of the computer science
-department. It is in the building 25.12 of the university campus, second
-floor. For travel instructions see
-
-    http://stups.cs.uni-duesseldorf.de/anreise/esbahn.php
+Location: Seminar room of the computer science department, situated 
+in the building 25.12 of the university campus, second
+floor. For travel instructions see 
+http://stups.cs.uni-duesseldorf.de/anreise/esbahn.php
 
 ------------------------------
 Accomodation
@@ -43,8 +29,8 @@ Accomodation
 We may be able to fit some people into private flats 
 and otherwise there are several hotels, one recommended 
 one is the http://www.hotel-hillesheim.de/ where we are
-investigating regarding a group rate - if you are interested
-please register and tell ASAP. 
+investigating regarding a cheaper group rate. 
+Please register ASAP if you want to benefit. 
 
 There are also some hotels that are used by visitors to the university and are
 quite close to the uni. None of us have been at them, so we have no experience
@@ -65,6 +51,14 @@ Supposed to be extremely nice, but also expensive.
 http://www.uni-duesseldorf.de/home/gaeste/schlossmickeln
 
 
+-----------------------
+Funding your travel 
+-----------------------
+
+We have a limited budget for funding travels.  If you want to
+participate but need travel funding please register and send
+a note to the pypy-sprint mailing list.  We'll see what we can
+do to help.
 
 ------------
 Registration
@@ -76,9 +70,10 @@ organisational information will be sent to that list.
 
 Please register by adding yourself on the following list (via svn):
 
-  http://codespeak.net/svn/pypy/extradoc/sprintinfo/post-ep2008/people.txt
+  http://codespeak.net/svn/pypy/extradoc/sprintinfo/october-2008/people.txt
 
-or on the pypy-sprint mailing list if you do not yet have check-in rights:
+or announceyourself on the pypy-sprint mailing list if you do not 
+yet have check-in rights:
 
   http://codespeak.net/mailman/listinfo/pypy-sprint
 
