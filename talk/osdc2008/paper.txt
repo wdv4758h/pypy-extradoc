@@ -1,0 +1,45 @@
+The PyPy Project And You
+========================
+
+Abstract
+--------
+
+  PyPy aims to provide a common translation and support framework for
+  producing implementations of dynamic languages, emphasising a clean
+  separation between language specification and implementation
+  aspects and a compliant, flexible and fast implementation of the
+  Python Language using the above framework to enable new advanced
+  features without having to encode low level details into it.
+
+  This paper gives a brief overview of the motivation and status of
+  PyPy and attempts to explain why anyone who cares about the
+  implementation of dynamic languages should be interested in it.
+
+What is PyPy?
+-------------
+
+
+
+Motivation
+----------
+
+
+PyPy's Big Idea And The PyPy Meta-Platform
+------------------------------------------
+
+
+The LxOxP problem
+-----------------
+
+
+Status
+------
+
+
+An Example Translation
+----------------------
+
+
+The Future
+----------
+
