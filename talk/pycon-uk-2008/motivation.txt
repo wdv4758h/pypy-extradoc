@@ -7,7 +7,8 @@ PyPy is both:
 
   - a framework for writing dynamic languages
 
-Today we will focus on the latter.
+Today we will focus on the latter,
+former is discussed on another talk.
 
 
 Agenda
