@@ -72,12 +72,9 @@ Sqlite
 Django
 ======
 
-* we run (almost) unmodified Django
+* we run unmodified Django 1.0
 
 * only sqlite DB backend for now
-
-* cooperation with Django people to make sure
-  that Django 1.0 works with PyPy
 
 * http://www.djangoproject.com/
 
