@@ -23,34 +23,6 @@ Agenda
 * (demo)
 
 
-PyPy status update (1)
-======================
-
-- JVM backend completed, pypy-jvm
-
-- some new GCs, much faster than ever
-
-- ctypes for PyPy
-
-- JIT refactoring, needed to make the JIT production-ready
-
-- improved .NET integration for pypy-cli
-
-- new blog: http://morepypy.blogspot.com
-
-
-PyPy status update (2)
-======================
-
-- various performance improvements
-
-- slighly slower than CPython on pystone (10-20%)
-
-- but faster on richards (20-24%)
-
-- less than 2x slower on other benchmarks
-
-
 Interpreters
 ==================
 
