@@ -1,6 +1,8 @@
 The PyPy Project And You
 ========================
 
+:author: Michael Hudson <micahel@gmail.com>
+
 Abstract
 --------
 
@@ -15,13 +17,64 @@ Abstract
   PyPy and attempts to explain why anyone who cares about the
   implementation of dynamic languages should be interested in it.
 
+
 What is PyPy?
 -------------
 
+PyPy is:
+
+ * An implementation of Python in Python
+ * A very flexible compiler framework (with some features that are
+   especially useful for implementing dynamic languages)
+ * An open source project (MIT license)
+ * A lot of fun!
+
+PyPy was also:
+
+ * A Structured Targeted REsearch Proposal (STREP), partly funded by
+   the European Union
+ * The funding period ended at the end of March 2007
+ * In May 2007 we had our final technical review, and "[PyPy] fully
+   achieved its objectives and tech goals and has even exceeded
+   expectations"
+
+It has now gone back to being a project that people mostly work on in
+their spare time, with some people making PyPy the topic of Masters'
+theses and similar.  Google's Open Source Programs Office also
+sponsored some work on getting real world applications running PyPy
+(more on that later).
 
 
 Motivation
 ----------
+
+The beginnings PyPy can be traced to the first EuroPython conference
+in 2002, where some of the people who ultimately became involved in
+the project met in person for the first time, and realized they had a
+common interest: we were all interested in modifying and extending the
+CPython *implementation* of the Python language, rather than the
+language itself (which was and still is the usual topic of discussion
+on the python-dev list).
+
+These people included:
+
+ * Armin Rigo, the author of Pysco, the well-known Python accelerator.
+ * Christian Tismer, the author of the "Stackless" variant of CPython,
+   which adds coroutines and other related forms of non-traditional
+   control flow to the language.
+ * Samuele Pedroni, at the time, the maintainer of Jython.
+ * Myself, at the time one of the more active CPython developers.
+
+While in many ways there's nothing deeply wrong about CPython, which
+is written in a straightforward style in clear C, there are some
+inherent issues:
+
+ * Being written in C, it is hard to port to the JVM or CLI.
+ * Extensions to the language like Stackless have to be painfully kept
+   up to date with language changes as they are made.
+ * Some implementation decisions, such as using reference counting for
+   memory management or a Global Interpreter Lock, are very hard to
+   change by now.
 
 
 PyPy's Big Idea And The PyPy Meta-Platform
