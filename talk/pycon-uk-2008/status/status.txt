@@ -2,19 +2,19 @@
 PyPy status talk
 ======================
 
+XXX maybe missing: threading improvements?  more on GCs? 
+
 What this talk is about
 =======================
 
-* more details about recent developments
+* tell what Python Interpreter can run today 
 
-* our plans for the near future
+* what we are heading for with the 1.1 release 
 
-* how we're going to achieve them
+* Questions and Answers 
 
-* readers of our blog might know many of those things
-
-Production ready
-=====================
+Getting Production ready
+==========================
 
 * we worked a lot on running
   existing applications on top of PyPy
@@ -114,6 +114,8 @@ Other software
 
 * PyPy translation toolchain
 
+* py lib 
+
 * various smaller things, templating engines,
   most pure-python software
 
@@ -132,38 +134,46 @@ Obscure details that people rely on
 
 * refcounting details
 
+Transition to 2.5
+==========================
+
+XXX
+* SOC project Bruno Gola 
+* almost complete
+* missing more testing, stdlib porting 
+
 Conclusion on Compatibility
 ============================
 
 * lessons learned: There is no feature obscure enough for people
-  not to rely on it. But PyPy can usually mimick CPython sufficiently. 
+  not to rely on it. 
 
-* pypy-c probably most compatible to CPython Interpreter
+* pypy-c interpreter probably the most compatible to CPython
 
 * main blocker for running apps will be missing external modules
 
 Speed - comparison with CPython
 ===============================
 
-* we're something between 0.8-2x slower than
+* we're something between 0.8-4x slower than
   CPython on various benchmarks.
-
-* gcbench - 0.8 (because of our faster GC)
 
 * steady but slow progress
 
 * we hope for our JIT to be a huge leap ahead
 
-Speed - decent GCs
-==================
+* pypy-c has fastest Interpreter startup
 
-* faster than refcounting
+Memory - comparison with CPython
+===================================
+
+* PyPy has pluggable Garbage Collection 
+
+* gcbench - 0.8 (because of our faster GCs)
 
 * better handling of unusual patterns
 
-* troubles with for example communication with C
-
-* details on different talk
+* care needed with communication with C
 
 Speed - JIT generator
 =====================
@@ -205,38 +215,34 @@ Sandboxing
    :scale: 30
    :align: center
 
-A lot of cleanups
-=================
+pypy-c on small devices
+===============================
 
-* got rid of semi-cool semi-working
-  proofs of concept
+- cross-compilation 
+- startup time 
+- security 
+- RAM usage 
+- share interpreter state across processes
+- pypy approach a very good fit! 
 
-* examples: CPython extension compiler,
-  rctypes
+1.1 release goals 
+===================================
 
-* reduced code size
+XXX check/review/complete
 
-* allowed us to progress forward into
-  advanced features
+- compatible to Python 2.5.2 
+- well tested on win/linux/osx 
+- running some major packages unmodified 
+- easy_install/distutils working 
+- deliver pypy-c binary installs windows 
 
-* included sprint dedicated to cleanup
-  (on which noone was allowed to add features)
+Contact / Q&A 
+==========================
 
-Plans
-=====
-
-* more JIT - faster Python 
-
-* support full CPython's stdlib
-
-* aim for more funding in pushing pypy
-  forward (more at the next talk)
-
-Links
-=====
 
 * http://codespeak.net/pypy
 
 * http://morepypy.blogspot.com
 
-* this talk is already online
+holger krekel, Maciej Fijalkowski
+<dir@merlinux.eu> 
