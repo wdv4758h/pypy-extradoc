@@ -96,7 +96,7 @@ Pylons
 Twisted & Nevow
 ===============
 
-* twisted have some glitches, but mostly works
+* twisted works (60/4500 tests failing)
 
 * nevow works
 
