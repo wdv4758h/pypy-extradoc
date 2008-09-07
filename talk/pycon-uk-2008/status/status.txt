@@ -47,6 +47,8 @@ CTypes
 
 * part of google sponsoring
 
+* 32bit only by now
+
 * demo
 
 CTypes configure
@@ -113,6 +115,8 @@ Other software
 
 * py lib 
 
+* sympy
+
 * various smaller things, templating engines,
   most pure-python software
 
@@ -134,9 +138,10 @@ Obscure details that people rely on
 Transition to 2.5
 ==========================
 
-XXX
 * SOC project Bruno Gola 
+
 * almost complete
+
 * missing more testing, stdlib porting 
 
 Conclusion on Compatibility
@@ -172,6 +177,8 @@ Memory - comparison with CPython
 
 * care needed with communication with C
 
+* GCs are semi-decent
+
 Speed - JIT generator
 =====================
 
@@ -179,7 +186,7 @@ Speed - JIT generator
 
 * will be super fast
 
-* prolog prototype
+* some prototypes, research ongoing
 
 * psyco is a nice proof that this approach
   would work
