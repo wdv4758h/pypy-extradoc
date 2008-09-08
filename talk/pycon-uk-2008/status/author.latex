@@ -1,6 +1,6 @@
 \definecolor{rrblitbackground}{rgb}{0.0, 0.0, 0.0}
 
-\title[PyPy and The Art of Generating VMs]{PyPy and The Art of Generating Virtual Machines}
+\title[PyPy status talk]{PyPy status talk}
 \author[H. Krekel, M. Fijalkowski]{Holger Krekel \and Maciej Fijalkowski\\Merlinux GmbH}
 
 \institute[PyCon UK 2008]{PyCon UK 2008 - Birmingham}
