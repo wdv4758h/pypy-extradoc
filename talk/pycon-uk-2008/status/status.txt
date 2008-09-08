@@ -76,9 +76,9 @@ Django
 
 * only sqlite DB backend for now
 
-* http://www.djangoproject.com/
+http://www.djangoproject.com
 
-* http://code.djangoproject.com/wiki/DjangoAndPyPy
+http://code.djangoproject.com/wiki/DjangoAndPyPy
 
 Pylons
 ======
@@ -234,6 +234,7 @@ pypy-c on small devices
 
 - compatible to Python 2.5.2 
 - well tested on win/linux 32 bit 
+- os/x and 64 also targets
 - running some major packages unmodified 
 - easy_install/distutils working 
 - deliver pypy-c binary installs windows 
