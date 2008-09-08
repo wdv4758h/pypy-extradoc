@@ -47,8 +47,6 @@ CTypes
 
 * 32bit only by now
 
-* demo
-
 CTypes configure
 ================
 
