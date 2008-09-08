@@ -248,3 +248,11 @@ at http://merlinux.eu
 PyPy: http://codespeak.net/pypy
 
 Blog: http://morepypy.blogspot.com
+
+.. raw:: latex
+
+    \begin{figure}
+    \includegraphics[width=64px,height=64px]{merlinux-logo.jpg}
+    \qquad
+    \includegraphics[width=80px]{../../img/py-web.png}
+    \end{figure}

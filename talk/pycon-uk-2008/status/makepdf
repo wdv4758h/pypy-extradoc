@@ -9,5 +9,6 @@
 BASE=status
 rst2beamer.py --stylesheet=stylesheet.latex --documentoptions=14pt $BASE.txt $BASE.latex || exit
 sed 's/\\date{}/\\input{author.latex}/' -i $BASE.latex || exit
+sed 's/\\maketitle/\\input{title.latex}/' -i $BASE.latex || exit
 pdflatex $BASE.latex  || exit
 
