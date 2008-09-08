@@ -80,6 +80,8 @@ Django
 
 * http://www.djangoproject.com/
 
+* http://code.djangoproject.com/wiki/DjangoAndPyPy
+
 Pylons
 ======
 
