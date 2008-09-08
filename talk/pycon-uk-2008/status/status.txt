@@ -1,8 +1,6 @@
-======================
-PyPy status talk
-======================
-
-XXX maybe missing: threading improvements?  more on GCs? 
+================================
+PyPy Python Interpreter status 
+================================
 
 What this talk is about
 =======================
@@ -234,10 +232,8 @@ pypy-c on small devices
 1.1 release goals 
 ===================================
 
-XXX check/review/complete
-
 - compatible to Python 2.5.2 
-- well tested on win/linux/osx 
+- well tested on win/linux 32 bit 
 - running some major packages unmodified 
 - easy_install/distutils working 
 - deliver pypy-c binary installs windows 
@@ -245,10 +241,9 @@ XXX check/review/complete
 Contact / Q&A 
 ==========================
 
-
-* http://codespeak.net/pypy
-
-* http://morepypy.blogspot.com
-
 holger krekel, Maciej Fijalkowski
-<dir@merlinux.eu> 
+at http://merlinux.eu
+
+PyPy: http://codespeak.net/pypy
+
+Blog: http://morepypy.blogspot.com
