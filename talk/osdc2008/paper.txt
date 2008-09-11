@@ -100,28 +100,37 @@ that analysed the specification/implementation was written.
 
 The code that does the analysis -- now revealed in its true colours to
 basically be a compiler for this restricted subset of Python -- is
-generally referred to as the 'translator.  It is unlike most compilers
-takes as input live Python objects (as opposed to source code).  It
-abstractly interprets the bytecode of functions to produce flow
-graphs.  Further layers of abstract interpretation perform more
-analysis and gradually reduce the level of abstraction before finally
-C or other source code is generated
+generally referred to as the 'translator'.  It is unlike most
+compilers in that takes as input live Python objects (as opposed to
+source code).  It abstractly interprets the bytecode of functions to
+produce flow graphs.  Further layers of abstract interpretation
+perform more analysis and gradually reduce the level of abstraction
+before finally C or other source code is generated
 
 The *LxOxP* problem
 -------------------
 
 We'd written this compiler framework, with only one expected
-non-trivial input (our Python interpreter).  We realized that it would
-be suitable for implementations of other dynamically-typed programming
-languages.  Now have implementations of Prolog, JavaScript and Scheme
-(to varying extents)
+non-trivial input (our Python interpreter).  We eventually realized
+that it would be suitable for implementations of other
+dynamically-typed programming languages.  Now have implementations of
+Prolog, JavaScript and Scheme (to varying extents).
 
 This leads to one of PyPy's meta-goals, ameliorating the so-called
 LxOxP problem: given
 
   * L dynamic languages
+
+    * for example Python, Scheme, Ruby...
+
   * O target platforms
+
+    * for example C/POSIX, CLI, JVM...
+
   * P implementation decisions
+
+    * for example include a JIT, a moving garbage collector,
+      stackless-style features...
 
 we don't want to have to write LxOxP different interpreters by hand.
 PyPy aims to reduce this to an L+O+P problem:
@@ -135,10 +144,40 @@ Then let the magic of PyPy(TM) tie it all together :-)
 Status
 ------
 
+PyPy when translated with the C backend (often called pypy-c) and most
+optimizations enabled is currently a reasonably fast and extremely
+conformant implementation of Python 2.4.4.
 
-An Example Translation
-----------------------
+Reasonably fast: depending on the code being run, pypy-c ranges from
+being 20% faster to about twice as slow as CPython (the
+still-experimental Just-In-Time compiler runs some (admittedly
+carefully chosen) programs 60 times faster).
 
+Extremely conformant: pypy-c runs Django 1.0, Pylons, Twisted and
+Nevow unmodified (thanks to Google's Open Source office for funding
+work on this).  There are two main sources of incompatibilities:
+
+ - extension modules.  PyPy supports a fair selection of the standard
+   extension modules (socket, struct, zlib, ctypes...) but hardly any
+   third party modules.
+
+ - finalizer semantics, for example assuming that immediately after
+   executing this code::
+
+        >>> open('file.txt', 'w').write('blah')
+
+   that the file object is already closed.
+
+The former is usually a much more significant problem, of course.
+
+Compatibility with Python 2.5 is almost complete in a branch.  2.6
+shouldn't be too hard.  No Python 3 yet :)
+
+The currently supported backends target C/POSIX (like CPython), CLI
+(like IronPython) and the JVM (like Jython).
+
+There are incomplete backends for LLVM (the Low Level Virtual
+Machine), Common Lisp, Squeak and JavaScript.
 
 The Future
 ----------
