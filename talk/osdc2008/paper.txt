@@ -92,7 +92,7 @@ PyPy's Big Idea And The PyPy Meta-Platform
 XXX Get copy of that image in here somehow.
 
 We chose to specify the Python language by writing an implementation
-if Python in a restricted subset of Python that is amenable to
+of Python in a restricted subset of Python that is amenable to
 analysis.  This let us write unit tests for parts of our
 specification/implementation before we had the whole thing done, and
 also let us test the whole specification/implementation before the code
@@ -107,6 +107,10 @@ produce flow graphs.  Further layers of abstract interpretation
 perform more analysis and gradually reduce the level of abstraction
 before finally C or other source code is generated
 
+XXX (cfbolz) I found this section a bit confusing, giving that it's the
+technical intro. It's all a bit clunky, and I think that the fact that we are
+using abstract interpretation is mostly a detail.
+
 The *LxOxP* problem
 -------------------
 
@@ -114,7 +118,8 @@ We'd written this compiler framework, with only one expected
 non-trivial input (our Python interpreter).  We eventually realized
 that it would be suitable for implementations of other
 dynamically-typed programming languages.  Now have implementations of
-Prolog, JavaScript and Scheme (to varying extents).
+Prolog, JavaScript, Smalltalk and Scheme (to varying extents). We also have a
+mostly working Gameboy emulator.
 
 This leads to one of PyPy's meta-goals, ameliorating the so-called
 LxOxP problem: given
@@ -147,6 +152,7 @@ Status
 PyPy when translated with the C backend (often called pypy-c) and most
 optimizations enabled is currently a reasonably fast and extremely
 conformant implementation of Python 2.4.4.
+XXX is conformant a word?
 
 Reasonably fast: depending on the code being run, pypy-c ranges from
 being 20% faster to about twice as slow as CPython (the
@@ -193,7 +199,7 @@ about 2-3 times a year.
 Future
 ------
 
-For all that we've acheived so far, I think that the bulk of the work
+For all that we've achieved so far, I think that the bulk of the work
 so far has being laying the groundwork for the really fun stuff.
 
 The area with the most exciting potential is the JIT.  PyPy has
