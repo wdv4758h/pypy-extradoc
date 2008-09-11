@@ -3,6 +3,10 @@ The PyPy Project And You
 
 :author: Michael Hudson <micahel@gmail.com>
 
+XXX the focus in the paper shifts from translation framework  
+XXX to pypy as python interpreter.  I'd recommend to up-front
+XXX distinguish more clearly.  
+
 Abstract
 --------
 
@@ -47,6 +51,11 @@ sponsored some work on getting real world applications running PyPy
 
 Motivation
 ----------
+
+XXX it's good to highlight the shared idea/value of 
+XXX focusing on implementation rather than language design 
+XXX (it's till the case today, i'd say). 
+XXX if it's meant to tell how PyPy came about it's a mispresentation though
 
 The beginnings PyPy can be traced to the first EuroPython conference
 in 2002, where some of the people who ultimately became involved in
@@ -149,10 +158,15 @@ Then let the magic of PyPy(TM) tie it all together :-)
 Status
 ------
 
+XXX some words about GCs, memory usage? 
+
 PyPy when translated with the C backend (often called pypy-c) and most
 optimizations enabled is currently a reasonably fast and extremely
 conformant implementation of Python 2.4.4.
 XXX is conformant a word?
+
+XXX isn't it a wider range like 0.8 to 5 times, see e.g. recent sympy feedback on pypy-dev from Ondrej
+with an emphasis on it rather being slower usually? 
 
 Reasonably fast: depending on the code being run, pypy-c ranges from
 being 20% faster to about twice as slow as CPython (the
@@ -176,6 +190,8 @@ work on this).  There are two main sources of incompatibilities:
 
 The former is usually a much more significant problem, of course.
 
+XXX mention sandboxing as a distinguished feature?  
+
 Compatibility with Python 2.5 is almost complete in a branch.  2.6
 shouldn't be too hard.  No Python 3 yet :)
 
@@ -190,6 +206,7 @@ About The Project
 
 PyPy started as a classic open-source, spare-time project, was funded
 for a while, and is currently mostly a spare-time project again.
+XXX not a completely adequate description, e.g. google contracts
 
 Right from the start, however, the project was driven along by
 *sprints* -- focused week long coding sessions.  During the funding
@@ -205,6 +222,11 @@ so far has being laying the groundwork for the really fun stuff.
 The area with the most exciting potential is the JIT.  PyPy has
 already extended the state of the art in automatically generating a
 JIT compiler for an implementation of a dynamic language.
+
+XXX mention that PyPy provides unprecedented possibilities in 
+    producing Interpreters for specific environments (memory-constrained, 
+    sandboxing, gaming-engines etc.) ?  (hpk) i at least think it's a 
+    very exciting area as well. 
 
 Down at the more nuts and bolts implementation level, something I'm
 interested in myself is stealing ideas -- and maybe even code -- from
