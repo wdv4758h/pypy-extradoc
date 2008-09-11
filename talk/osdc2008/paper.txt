@@ -179,6 +179,42 @@ The currently supported backends target C/POSIX (like CPython), CLI
 There are incomplete backends for LLVM (the Low Level Virtual
 Machine), Common Lisp, Squeak and JavaScript.
 
-The Future
-----------
+About The Project
+-----------------
 
+PyPy started as a classic open-source, spare-time project, was funded
+for a while, and is currently mostly a spare-time project again.
+
+Right from the start, however, the project was driven along by
+*sprints* -- focused week long coding sessions.  During the funding
+period we had sprints about every 6 weeks, but now they're happening
+about 2-3 times a year.
+
+Future
+------
+
+For all that we've acheived so far, I think that the bulk of the work
+so far has being laying the groundwork for the really fun stuff.
+
+The area with the most exciting potential is the JIT.  PyPy has
+already extended the state of the art in automatically generating a
+JIT compiler for an implementation of a dynamic language.
+
+Down at the more nuts and bolts implementation level, something I'm
+interested in myself is stealing ideas -- and maybe even code -- from
+garbage collectors developed by the Jikes RVM project.
+
+Something we'd really like to see are implementations of other dynamic
+languages -- Ruby being an obvious example :) -- which would, when the
+JIT magic is more advanced, get a Just in Time compiler almost for
+free.
+
+Join the fun!
+-------------
+
+Read documentation:
+
+     http://codespeak.net/pypy/
+
+Come hang out in the #pypy IRC channel on freenode, subscribe to and
+post to the pypy-dev mailing list.
