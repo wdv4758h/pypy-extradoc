@@ -5,11 +5,37 @@ PyPy Python Interpreter status
 What this talk is about
 =======================
 
+* a bit of motivation
+
 * tell what Python Interpreter can run today 
 
 * what we are heading for with the 1.1 release 
 
 * Questions and Answers 
+
+PyPy - motivation
+=================================
+
+* CPython is nice, but not flexible enough
+
+* IronPython, Jython - bound to the specific VM
+
+* Separate language specification from low-level details,
+  such as GC or platform to run
+
+* Psyco and Stackless Python hard to maintain
+
+PyPy - user motivation
+=======================
+
+* One should never be forced to write anything in C
+  for performance reasons (with some exceptions: embedded
+  devices etc.)
+
+* Just-in-time compiler should make number-crunching
+  and static-enough code fast enough
+
+* One should never care about low-level details
 
 Getting Production ready
 ==========================
@@ -31,9 +57,11 @@ CTypes
 * official way to have bindings to 
   external (C) libraries for PyPy
 
-* can handle i.e. pysqlite-ctypes, pyglet, pymunk or Sole Scion
+* can handle i.e. pysqlite-ctypes, pyglet, pymunk or Sole Scion,
+  almost whatever....
 
-* has better errno handling, bugfixes
+* contribution to original ctypes
+  (better errno handling, bugfixes, tests...)
 
 * part of google sponsoring
 
