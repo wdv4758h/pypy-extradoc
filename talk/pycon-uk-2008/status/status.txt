@@ -37,6 +37,16 @@ PyPy - user motivation
 
 * One should never care about low-level details
 
+Brief history of PyPy
+==========================
+
+* first sprint 2003, about 30 more by now
+* CPython/Psyco/Jython/Stackless developers participating
+* MIT-License, more sprints
+* EU Research project 2004-2007
+* 2007-2008 - open source project
+* some google sponsoring
+
 Getting Production ready
 ==========================
 
@@ -186,6 +196,18 @@ Speed - comparison with CPython
 
 * pypy-c has fastest Interpreter startup
 
+Speed - JIT generator
+=====================
+
+* not ready yet!
+
+* will be super fast
+
+* some prototypes, research ongoing
+
+* psyco is a nice proof that this approach
+  would work
+
 Memory - comparison with CPython
 ===================================
 
@@ -199,17 +221,6 @@ Memory - comparison with CPython
 
 * GCs are semi-decent
 
-Speed - JIT generator
-=====================
-
-* not ready yet!
-
-* will be super fast
-
-* some prototypes, research ongoing
-
-* psyco is a nice proof that this approach
-  would work
 
 Threading / Stackless
 ===================================
