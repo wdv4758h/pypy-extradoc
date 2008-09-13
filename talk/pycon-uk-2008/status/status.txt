@@ -31,21 +31,13 @@ CTypes
 * official way to have bindings to 
   external (C) libraries for PyPy
 
-* slow, but getting better
-
 * can handle i.e. pysqlite-ctypes, pyglet, pymunk or Sole Scion
 
-* ctypes is getting better as a side effect:
-
- * errno handling
-
- * bugfixes
-
- * helper libraries
+* has better errno handling, bugfixes
 
 * part of google sponsoring
 
-* 32bit only by now
+* note: 32bit and a bit slow
 
 CTypes configure
 ================
@@ -104,8 +96,11 @@ Twisted & Nevow
 
 * http://twistedmatrix.com/
 
+
 Other software
 ==============
+
+* pure python should just work 
 
 * BitTorrent
 
@@ -115,8 +110,7 @@ Other software
 
 * sympy
 
-* various smaller things, templating engines,
-  most pure-python software
+* various smaller things, templating engines
 
 Obscure details that people rely on
 ===================================
@@ -189,6 +183,17 @@ Speed - JIT generator
 * psyco is a nice proof that this approach
   would work
 
+Threading / Stackless
+===================================
+
+* currently using GIL, quite robust 
+
+* free threading? "it's work" 
+
+* pypy-c has software threading / stackless
+
+* added during translation
+
 Other backends
 ==============
 
@@ -232,10 +237,9 @@ pypy-c on small devices
 
 - compatible to Python 2.5.2 
 - well tested on win/linux 32 bit 
-- os/x and 64 also targets
-- running some major packages unmodified 
+- running major packages unmodified 
 - easy_install/distutils working 
-- deliver pypy-c binary installs windows 
+- help e.g. by writing ctypes modules 
 
 Contact / Q&A 
 ==========================
