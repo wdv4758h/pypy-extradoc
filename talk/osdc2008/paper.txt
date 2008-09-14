@@ -197,8 +197,10 @@ options:
  * Naive refcounting (used only in tests, really).
  * A mark and sweep garbage collector.
  * A copying generational collector.
+ * Extended copying generational collection with different generations
+   for young and large or old objects.
 
-The copying generational collector has the best performance.
+The extended copying generational collector has the best performance.
 
 
 The Compiled Interpreter
