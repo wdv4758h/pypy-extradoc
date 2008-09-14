@@ -4,6 +4,8 @@ The PyPy Project And You
 :author: Michael Hudson <micahel@gmail.com>
 
 
+.. contents::
+
 Abstract
 --------
 
