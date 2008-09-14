@@ -69,6 +69,8 @@ straightforward style in clear C, but there are some inherent issues:
    and other non-traditional control flow to Python, have to be
    painfully kept up to date with language changes as they are made.
 
+XXX mention psyco
+
  * Some implementation decisions, such as using reference counting for
    memory management or a Global Interpreter Lock for threading, are
    a lot of work to change.
@@ -95,7 +97,7 @@ In broad brush terms, PyPy's idea is quite simple:
    :scale: 50
 
 We chose to specify the Python language by writing an implementation
-of Python in a restricted subset of Python that is amenable to
+of Python in a restricted strict subset of Python that is amenable to
 analysis, which had a practical advantage: we could test the
 specification/implementation simply by running it as a Python program.
 
