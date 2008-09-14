@@ -3,9 +3,6 @@ The PyPy Project And You
 
 :author: Michael Hudson <micahel@gmail.com>
 
-XXX the focus in the paper shifts from translation framework  
-XXX to pypy as python interpreter.  I'd recommend to up-front
-XXX distinguish more clearly.  
 
 Abstract
 --------
