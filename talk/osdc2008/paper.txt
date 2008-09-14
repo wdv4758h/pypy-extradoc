@@ -85,9 +85,9 @@ In broad brush terms, PyPy's idea is quite simple:
  * Analyze this description
  * Take various implementation decisions, for example:
 
-  * Decide whether to include stackless- or psyco-like features
-  * Decide whether to optimize for memory footprint or performance
-  * Decide on the target platform
+  * Whether to include stackless- or psyco-like features
+  * Whether to optimize for memory footprint or performance
+  * Select the target platform
 
  * Translate to a lower-level, efficient form
 
@@ -96,9 +96,8 @@ In broad brush terms, PyPy's idea is quite simple:
 
 We chose to specify the Python language by writing an implementation
 of Python in a restricted subset of Python that is amenable to
-analysis, which had an obvious practical advantage: we could test
-parts or all of the specification/implementation simply by running
-it.
+analysis, which had a practical advantage: we could test the
+specification/implementation simply by running it as a Python program.
 
 This means that almost from the start, PyPy has had two major
 components:
@@ -174,7 +173,7 @@ tests that do not depend on extension modules (Google's Open Source
 office recently funded some work on running "real" applications on
 PyPy).
 
-By far the commonest incompatibility is the lack of extension modules.
+By far the most common incompatibility is the lack of extension modules.
 PyPy supports a fair selection of the commonest extension modules --
 socket, select, ctypes, zlib, struct, ... -- but by no means all.
 
@@ -211,38 +210,53 @@ slower, with most programs clocking in at about half CPython's speed.
 Unique Stuff
 ++++++++++++
 
-JIT!
+PyPy has a number of unique features that hint at the flexibility it's
+architecture brings.
 
-Transparent Proxies.
+ * The JIT: PyPy's Just-in-time compiler is still experimental, but
+   can run certain carefully designed programs sixty times faster than
+   CPython.  The *really* interesting thing about PyPy's JIT is that
+   it was *automatically generated* from the interpreter
+   implementation.
 
-Sandboxing.
+ * Sandboxed execution: it is possible to compile a version of PyPy
+   that has all calls to external functions replaced with 
 
-JS backend.
+ * The JavaScript backend.  This potentially allows you to write
+   validation for your web forms once, in Python, and execute them
+   both in the browser (in JavaScript) and on the server.
 
+.. XXX Could mention transparent proxies, dynamic grammar, ?
 
 Future
 ------
 
-For all that we've achieved so far, I think that the bulk of the work
-so far has being laying the groundwork for the really fun stuff.
+I think that the bulk of the work on PyPy so far has being laying the
+groundwork for the really fun stuff.
 
-The area with the most exciting potential is the JIT.  PyPy has
-already extended the state of the art in automatically generating a
-JIT compiler for an implementation of a dynamic language.
+As mentioned above, one of the basic goals of PyPy is to allow
+separation of language and implementation.  For example, today if you
+want a language implementation for use in a low memory situation, you
+might choose Lua over Ruby or Python for this reason.  But maybe one
+day, you will be able to chose to compile a version of, say, Ruby
+using PyPy making decisions to save memory and use that instead.
 
-XXX mention that PyPy provides unprecedented possibilities in 
-    producing Interpreters for specific environments (memory-constrained, 
-    sandboxing, gaming-engines etc.) ?  (hpk) i at least think it's a 
-    very exciting area as well. 
+In a similar vein, the sandboxing mentioned above might widen the
+choice of languages suitable for scripting a game, or running code in
+a web browser.
+
+However, the area with the most exciting potential is probably the
+JIT.  PyPy has already extended the state of the art in automatically
+generating a JIT compiler for an implementation of a dynamic language.
 
 Down at the more nuts and bolts implementation level, something I'm
 interested in myself is stealing ideas -- and maybe even code -- from
 garbage collectors developed by the Jikes RVM project.
 
-Something we'd really like to see are implementations of other dynamic
-languages -- Ruby being an obvious example :) -- which would, when the
-JIT magic is more advanced, get a Just in Time compiler almost for
-free.
+Something we'd really really like to see are implementations of other
+dynamic languages -- Ruby being an obvious example :) -- which would,
+when the JIT magic is more advanced, get a Just in Time compiler
+almost for free, be sandboxable.
 
 
 Getting involved
@@ -256,3 +270,9 @@ Come hang out in the #pypy IRC channel on freenode, subscribe to and
 post to the pypy-dev mailing list.
 
 XXX expand this.
+
+Acknowledgements
+----------------
+
+Thanks to Maciek Fijalkowski, Jonathan Lange, Holger Krekel and Carl
+Friedrich Bolz for comments on drafts.
