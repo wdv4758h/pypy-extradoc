@@ -218,20 +218,6 @@ Sandboxing.
 JS backend.
 
 
-About The Project
------------------
-
-PyPy started as a classic open-source, spare-time project.  For a
-while -- two and a bit years -- about ten people worked full time on
-PyPy as part of the EU-funded project.  Now, XXX not sure what to
-write here XXX.
-
-Right from the start, however, the project was driven along by
-*sprints* -- focused week long coding sessions.  During the funding
-period we had sprints about every 6 weeks, but now they're happening
-about 2-3 times a year.
-
-
 Future
 ------
 
