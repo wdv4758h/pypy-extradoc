@@ -202,6 +202,7 @@ options:
 
 The extended copying generational collector has the best performance.
 
+XXX mention various threading approaches maybe?
 
 The Compiled Interpreter
 ++++++++++++++++++++++++
@@ -210,6 +211,7 @@ When compiled with all optimizations enabled, PyPy translated to C has
 performance roughly comparable to CPython, from 20% faster to 5 times
 slower, with most programs clocking in at about half CPython's speed.
 
+XXX mention that that's without a JIT at all.
 
 Unique Stuff
 ++++++++++++
@@ -228,13 +230,17 @@ architecture brings.
    to another process which can choose how to interpret this reqest.
    In this way it's possible to build an interpreter which has a very
    limited view of the file system and can only use a prescribed
-   amount of CPU and memory.
+   amount of CPU and memory. The thing which differentiates it from
+   other sandboxed python implementations is that it doesn't restrict
+   language features at all.
 
  * The JavaScript backend.  This potentially allows you to write
    validation for your web forms once, in Python, and execute them
    both in the browser (in JavaScript) and on the server.
 
 .. XXX Could mention transparent proxies, dynamic grammar, ?
+
+XXX [fijal] mention transparent proxies, kill javascript backend
 
 Future
 ------
