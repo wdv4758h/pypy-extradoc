@@ -189,7 +189,7 @@ The Compiler
 
 PyPy's compiler has working backends that target C + POSIX (on Linux,
 Windows and OS X), the JVM and the CLI, and backends in various states
-of completeness for LLVM, Common Lisp and Squeak.
+of completeness for LLVM, Common Lisp, JavaScript and Squeak.
 
 When targeting C/POSIX, it supports a range of garbage collection
 options:
@@ -213,15 +213,22 @@ slower, with most programs clocking in at about half CPython's speed.
 Unique Stuff
 ++++++++++++
 
-XXX mention sandboxing as a distinguished feature?  
+JIT!
+
+Transparent Proxies.
+
+Sandboxing.
+
+JS backend.
 
 
 About The Project
 -----------------
 
-PyPy started as a classic open-source, spare-time project, was funded
-for a while, and is currently mostly a spare-time project again.
-XXX not a completely adequate description, e.g. google contracts
+PyPy started as a classic open-source, spare-time project.  For a
+while -- two and a bit years -- about ten people worked full time on
+PyPy as part of the EU-funded project.  Now, XXX not sure what to
+write here XXX.
 
 Right from the start, however, the project was driven along by
 *sprints* -- focused week long coding sessions.  During the funding
@@ -254,8 +261,8 @@ JIT magic is more advanced, get a Just in Time compiler almost for
 free.
 
 
-Join the fun!
--------------
+Getting involved
+----------------
 
 Read documentation:
 
@@ -263,3 +270,5 @@ Read documentation:
 
 Come hang out in the #pypy IRC channel on freenode, subscribe to and
 post to the pypy-dev mailing list.
+
+XXX expand this.
