@@ -42,6 +42,12 @@ PyPy was also:
    achieved its objectives and tech goals and has even exceeded
    expectations"
 
+XXX
+Nowadays pypy is both open source project that people work on in their
+spare time and project seeking funding from various companies to improve
+certain parts of the project.
+XXX
+
 It has now gone back to being a project that people mostly work on in
 their spare time, with some people making PyPy the topic of Masters'
 theses and similar.  Google's Open Source Programs Office also
