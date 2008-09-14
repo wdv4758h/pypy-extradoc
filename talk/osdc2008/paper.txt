@@ -255,6 +255,11 @@ might choose Lua over Ruby or Python for this reason.  But maybe one
 day, you will be able to chose to compile a version of, say, Ruby
 using PyPy making decisions to save memory and use that instead.
 
+XXX we know that pypy uses less memory per-object.
+
+XXX mention maybe that pypy has a very fast interpreter startup which
+    is useful for say CGI or embedded
+
 In a similar vein, the sandboxing mentioned above might widen the
 choice of languages suitable for scripting a game, or running code in
 a web browser.
