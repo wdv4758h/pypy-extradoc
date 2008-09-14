@@ -222,7 +222,11 @@ architecture brings.
    implementation.
 
  * Sandboxed execution: it is possible to compile a version of PyPy
-   that has all calls to external functions replaced with 
+   that has all calls to external functions replaced with *requests*
+   to another process which can choose how to interpret this reqest.
+   In this way it's possible to build an interpreter which has a very
+   limited view of the file system and can only use a prescribed
+   amount of CPU and memory.
 
  * The JavaScript backend.  This potentially allows you to write
    validation for your web forms once, in Python, and execute them
@@ -264,14 +268,13 @@ almost for free, be sandboxable.
 Getting involved
 ----------------
 
-Read documentation:
+Like most open source projects, PyPy has a website:
 
      http://codespeak.net/pypy/
 
-Come hang out in the #pypy IRC channel on freenode, subscribe to and
-post to the pypy-dev mailing list.
-
-XXX expand this.
+with, perhaps not so usually, extensive documentation.  We also have
+an active IRC channel, #pypy on freenode, and a reasonably low-volume
+mailing list, pypy-dev.
 
 Acknowledgements
 ----------------
