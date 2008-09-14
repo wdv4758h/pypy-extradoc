@@ -98,7 +98,8 @@ PyPy's Big Idea And The PyPy Meta-Platform
 
  * Translate to a lower-level, efficient form
 
-XXX Get copy of that image in here somehow.
+.. image:: bigidea.png
+   :scale: 50
 
 We chose to specify the Python language by writing an implementation
 of Python in a restricted subset of Python that is amenable to
@@ -162,7 +163,7 @@ XXX some words about GCs, memory usage?
 
 PyPy when translated with the C backend (often called pypy-c) and most
 optimizations enabled is currently a reasonably fast and extremely
-conformant implementation of Python 2.4.4.
+conforming implementation of Python 2.4.4.
 XXX is conformant a word?
 
 XXX isn't it a wider range like 0.8 to 5 times, see e.g. recent sympy feedback on pypy-dev from Ondrej
@@ -173,7 +174,7 @@ being 20% faster to about twice as slow as CPython (the
 still-experimental Just-In-Time compiler runs some (admittedly
 carefully chosen) programs 60 times faster).
 
-Extremely conformant: pypy-c runs Django 1.0, Pylons, Twisted and
+Extremely conforming: pypy-c runs Django 1.0, Pylons, Twisted and
 Nevow unmodified (thanks to Google's Open Source office for funding
 work on this).  There are two main sources of incompatibilities:
 
