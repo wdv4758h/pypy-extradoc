@@ -66,10 +66,9 @@ straightforward style in clear C, but there are some inherent issues:
    platforms such as the JVM or CLI.
 
  * Extensions to the language like Stackless, which adds coroutines
-   and other non-traditional control flow to Python, have to be
-   painfully kept up to date with language changes as they are made.
-
-XXX mention psyco
+   and other non-traditional control flow to Python, or Pysco, Armin
+   Rigo's specializing compiler, have to be painfully kept up to date
+   with language changes as they are made.
 
  * Some implementation decisions, such as using reference counting for
    memory management or a Global Interpreter Lock for threading, are
@@ -191,27 +190,27 @@ Windows and OS X), the JVM and the CLI, and backends in various states
 of completeness for LLVM and JavaScript.
 
 When targeting C/POSIX, it supports a range of garbage collection
-options:
+options, including:
 
  * Using the Boehm-Demers-Weiser conservative garbage collector.
  * Naive refcounting (used only in tests, really).
  * A mark and sweep garbage collector.
+ * A copying semi-space collector.
  * A copying generational collector.
- * Extended copying generational collection with different generations
-   for young and large or old objects.
+ * A 'hybrid' generational collector that uses a semi-space for the
+   nursery and mark and sweep for the oldest generation.
 
-The extended copying generational collector has the best performance.
+The hybrid collector has the best performance.
 
-XXX mention various threading approaches maybe?
+The compiler supports threading with a GIL-like model.
 
 The Compiled Interpreter
 ++++++++++++++++++++++++
 
 When compiled with all optimizations enabled, PyPy translated to C has
 performance roughly comparable to CPython, from 20% faster to 5 times
-slower, with most programs clocking in at about half CPython's speed.
-
-XXX mention that that's without a JIT at all.
+slower, with most programs clocking in at about half CPython's speed
+(without any JIT magic).
 
 Unique Stuff
 ++++++++++++
@@ -234,13 +233,6 @@ architecture brings.
    other sandboxed python implementations is that it doesn't restrict
    language features at all.
 
- * The JavaScript backend.  This potentially allows you to write
-   validation for your web forms once, in Python, and execute them
-   both in the browser (in JavaScript) and on the server.
-
-.. XXX Could mention transparent proxies, dynamic grammar, ?
-
-XXX [fijal] mention transparent proxies, kill javascript backend
 
 Future
 ------
@@ -254,11 +246,6 @@ want a language implementation for use in a low memory situation, you
 might choose Lua over Ruby or Python for this reason.  But maybe one
 day, you will be able to chose to compile a version of, say, Ruby
 using PyPy making decisions to save memory and use that instead.
-
-XXX we know that pypy uses less memory per-object.
-
-XXX mention maybe that pypy has a very fast interpreter startup which
-    is useful for say CGI or embedded
 
 In a similar vein, the sandboxing mentioned above might widen the
 choice of languages suitable for scripting a game, or running code in
