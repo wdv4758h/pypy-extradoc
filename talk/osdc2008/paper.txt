@@ -42,7 +42,7 @@ PyPy was also:
    expectations"
 
 Nowadays PyPy is both an open source project that people work on in
-their spare time and as part of their studies and also project seeking
+their spare time and as part of their studies and also a project seeking
 funding from various companies to improve certain parts of the
 project.
 
@@ -198,7 +198,7 @@ options, including:
  * A copying semi-space collector.
  * A copying generational collector.
  * A 'hybrid' generational collector that uses a semi-space for the
-   nursery and mark and sweep for the oldest generation.
+   intermediate generations and mark and sweep for the oldest generation.
 
 The hybrid collector has the best performance.
 
@@ -262,7 +262,7 @@ garbage collectors developed by the Jikes RVM project.
 Something we'd really really like to see are implementations of other
 dynamic languages -- Ruby being an obvious example :) -- which would,
 when the JIT magic is more advanced, get a Just in Time compiler
-almost for free, be sandboxable.
+almost for free, and be sandboxable.
 
 
 Getting involved
