@@ -16,6 +16,8 @@ Armin Rigo
 Samuele Pedroni 
 Carl Friedrich Bolz  3rd Oct - ???   my flat
 Alexander Schremmer  5-15 possible
+Samuele Pedroni      5-13           Hotel Blaettler
+Anders Hammarqvist   5-13           Hotel Blaettler
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
