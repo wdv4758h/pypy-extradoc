@@ -1,0 +1,37 @@
+Why yet another python interpreter?
+===================================
+
+* PyPy - very compatible to CPython
+
+* Interpreter written in a static subset of Python
+
+* Waaaay easier to experiment with
+
+Interpreter startup time
+========================
+
+XXX
+
+Memory usage
+============
+
+* Pluggable garbage collectors - why not come with something
+  embedded friendly?
+
+* Less per-object overhead
+
+* Impossible in CPython optimizations
+
+Multiple interpreters
+=====================
+
+* Again, pluggable GCs
+
+* Share some static data (pyc files, modules, etc.)
+
+JIT
+===
+
+* In progress for x86
+
+* Why not run on ARM as well?
