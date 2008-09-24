@@ -9,7 +9,7 @@ available yet from them.
 ==================== ============== ============================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== ============================
-Antonio Cuni         5-15 possible  ???
+Antonio Cuni         2-sys.maxint   private
 Holger Krekel        5-13th         interested in sharing room 
 Maciej Fijalkowski   5-15 possible  ???
 Armin Rigo           3-inf          private
