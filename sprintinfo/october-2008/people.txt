@@ -11,13 +11,13 @@ available yet from them.
 ==================== ============== ============================
 Antonio Cuni         2-sys.maxint   private
 Holger Krekel        5-13th         Hotel Schumann 
-Maciej Fijalkowski   5-15 possible  ???
+Maciej Fijalkowski   5-15 possible  antos's flat
 Armin Rigo           3-inf          private
-Carl Friedrich Bolz  3rd Oct - ???   my flat
-Alexander Schremmer  5-15 possible
+Carl Friedrich Bolz  3rd Oct - ???  my flat
+Alexander Schremmer  5-15 possible  carl's flat
 Samuele Pedroni      5-13           Hotel Blaettler
 Anders Hammarqvist   5-13           Hotel Blaettler
-Jakub Gustak         6-9            ???
+Jakub Gustak         6-9            carl's flat
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
