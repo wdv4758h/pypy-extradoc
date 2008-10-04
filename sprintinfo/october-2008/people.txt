@@ -18,6 +18,7 @@ Alexander Schremmer  5-15 possible  carl's flat
 Samuele Pedroni      5-13           Hotel Blaettler
 Anders Hammarqvist   5-13           Hotel Blaettler
 Jakub Gustak         6-9            carl's flat
+John Witulski        living there   living there
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
