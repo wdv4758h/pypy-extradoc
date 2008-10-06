@@ -1,0 +1,51 @@
+
+Düsseldorf Sprint Planning
+==========================
+
+People present:
+    - Carl Friedrich
+    - John
+    - Anto
+    - Alexander
+    - Samuele
+    - Iko
+    - Armin
+    - Holger in theory
+
+
+Tasks:
+ 
+ - improve the 64-bit JIT backend (John, Anto)
+
+ 
+ - merge the pypy-pytrunk branch (Samuele)
+
+ - run the CPython tests through buildbot on pypy-c
+
+ - look at the TODO list of the buildbot stuff
+
+ - merge the 2.5 branch
+
+ - windows buildbot slave
+
+
+
+
+ - looking at the static data of pypy-c (Carl Friedrich, Alexander)
+
+ - use shared dicts for oldstyle classes (Carl Friedrich, Alexander)
+ 
+ - malloc-removal-directed inlining to reduce the code size (Armin, Iko)
+
+ - measuring memory behaviour
+
+ - run memory-benchmarks nightly?
+
+
+ - builtin-profiling branch needs to be merged
+
+Discussion Tasks:
+
+ - JIT roadmap
+ - C++ bindings‽
+ - release plans, goals
