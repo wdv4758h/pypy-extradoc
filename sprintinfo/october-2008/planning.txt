@@ -10,39 +10,48 @@ People present:
     - Samuele
     - Iko
     - Armin
-    - Holger in theory
+    - Holger in practice
 
 
 Tasks:
  
- - improve the 64-bit JIT backend (John, Anto)
+ - improve the 64-bit JIT backend PROGRESS (John, ...)
 
  
- - merge the pypy-pytrunk branch (Samuele)
+ - merge the pypy-pytrunk branch DONE: merged and removed
 
- - run the CPython tests through buildbot on pypy-c
+ - run translation and the CPython tests through buildbot on pypy-c
+   SOME PROGRESS (Samuele, Holger)
+
+ - get access to bigdog's Windows machine and set up a buildbot slave 
 
  - look at the TODO list of the buildbot stuff
 
- - merge the 2.5 branch
+ - merge the 2.5 branch (Iko, Armin, Maciek, Jakub, Carl Friedrich)
+    - fix module bugs: BASICALLY DONE
+    - update stdlib to 2.5.2
+    - run more CPython tests
 
  - windows buildbot slave
 
 
 
 
- - looking at the static data of pypy-c (Carl Friedrich, Alexander)
+ - looking at the static data of pypy-c IN-PROGRESS (Alexander, Anto)
 
- - use shared dicts for oldstyle classes (Carl Friedrich, Alexander)
+ - use shared dicts for oldstyle classes DONE
  
- - malloc-removal-directed inlining to reduce the code size (Armin, Iko)
+ - malloc-removal-directed inlining to reduce the code size NEW APPROACH NEEDED
 
  - measuring memory behaviour
 
  - run memory-benchmarks nightly?
 
+ - merge gc-experiments branch?
 
  - builtin-profiling branch needs to be merged
+
+ - py-lib needs some fixes about pdb
 
 Discussion Tasks:
 
