@@ -15,43 +15,50 @@ People present:
 
 Tasks:
  
- - improve the 64-bit JIT backend PROGRESS (John, ...)
+ - improve the 64-bit JIT backend MORE PROGRESS (John, ...)
+   loops are working now
 
  
  - merge the pypy-pytrunk branch DONE: merged and removed
 
  - run translation and the CPython tests through buildbot on pypy-c
-   SOME PROGRESS (Samuele, Holger)
+   BASICALLY DONE: buildmaster on codespeak now
 
- - get access to bigdog's Windows machine and set up a buildbot slave 
+ - cleanup wyvern (Samuele)
+
+ - ask bigdog to add his machines
+
+ - add a py.test -A builder
 
  - look at the TODO list of the buildbot stuff
 
- - merge the 2.5 branch (Iko, Armin, Maciek, Jakub, Carl Friedrich)
-    - fix module bugs: BASICALLY DONE
-    - update stdlib to 2.5.2
-    - run more CPython tests
-
- - windows buildbot slave
-
+ - merge the 2.5 branch (Maciek, Jakub)
+    - fix pypy/module bugs: BASICALLY DONE
+    - update stdlib to 2.5.2 DONE
+    - fix more CPython tests IN-PROGRESS
+    - finish set stuff (Iko, Carl Friedrich)
 
 
 
- - looking at the static data of pypy-c IN-PROGRESS (Alexander, Anto)
 
- - use shared dicts for oldstyle classes DONE
- 
+ - looking at the static data of pypy-c BASICALLY DONE, integration needed
+   (Alexander, Anto)
+
  - malloc-removal-directed inlining to reduce the code size NEW APPROACH NEEDED
 
  - measuring memory behaviour
 
  - run memory-benchmarks nightly?
 
- - merge gc-experiments branch?
+ - merge gc-experiments branch (Carl Friedrich, Maciek)
 
  - builtin-profiling branch needs to be merged
 
- - py-lib needs some fixes about pdb
+ - py-lib needs some fixes about pdb DONE
+
+ 
+ - setting up a scratchbox environment (Alexander, Holger)
+ - measuring startup behaviour (Alexander, Holger)
 
 Discussion Tasks:
 
