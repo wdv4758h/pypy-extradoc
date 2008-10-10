@@ -19,49 +19,38 @@ Tasks:
    loops are working now
 
  
- - merge the pypy-pytrunk branch DONE: merged and removed
-
- - run translation and the CPython tests through buildbot on pypy-c
-   BASICALLY DONE: buildmaster on codespeak now
-
- - cleanup wyvern (Samuele)
-
- - ask bigdog to add his machines
+ - cleanup wyvern DONE
 
  - add a py.test -A builder
 
  - look at the TODO list of the buildbot stuff
 
- - merge the 2.5 branch (Maciek, Jakub)
-    - fix pypy/module bugs: BASICALLY DONE
-    - update stdlib to 2.5.2 DONE
+ - merge the 2.5 branch (Armin, Anto, Iko)
     - fix more CPython tests IN-PROGRESS
-    - finish set stuff (Iko, Carl Friedrich)
+    - fix translation (Iko, Carl Friedrich)
 
 
 
 
- - looking at the static data of pypy-c BASICALLY DONE, integration needed
-   (Alexander, Anto)
-
- - malloc-removal-directed inlining to reduce the code size NEW APPROACH NEEDED
+ - malloc-removal-directed inlining to reduce the code size SOME PROGRESS
 
  - measuring memory behaviour
 
  - run memory-benchmarks nightly?
 
- - merge gc-experiments branch (Carl Friedrich, Maciek)
+ - merge gc-experiments branch DONE
 
- - builtin-profiling branch needs to be merged
+ - builtin-profiling branch needs to be merged (Armin, Anto)
 
- - py-lib needs some fixes about pdb DONE
-
- 
- - setting up a scratchbox environment (Alexander, Holger)
+ - setting up a scratchbox environment DONE
  - measuring startup behaviour (Alexander, Holger)
+
+ - add code to print statistics to mark-and-compact (Alexander, Holger, Carl Friedrich)
+
+ - cbuild.py refactoring (Maciek, Samuele)
 
 Discussion Tasks:
 
  - JIT roadmap
  - C++ bindings‽
- - release plans, goals
+ - release plans, goals at 17.00 today
