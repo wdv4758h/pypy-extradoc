@@ -19,17 +19,14 @@ Tasks:
    loops are working now
 
  
- - cleanup wyvern DONE
-
  - add a py.test -A builder
 
  - look at the TODO list of the buildbot stuff
 
- - merge the 2.5 branch (Armin, Anto, Iko)
-    - fix more CPython tests IN-PROGRESS
-    - fix translation (Iko, Carl Friedrich)
+ - merge the 2.5 branch DONE
+ - fix more CPython tests ALWAYS PROGRESS (Anto, Iko)
 
-
+ - start implementing get/set/delslice on a branch MERGED
 
 
  - malloc-removal-directed inlining to reduce the code size SOME PROGRESS
@@ -38,19 +35,30 @@ Tasks:
 
  - run memory-benchmarks nightly?
 
- - merge gc-experiments branch DONE
+ - builtin-profiling branch needs to be merged DONE
 
- - builtin-profiling branch needs to be merged (Armin, Anto)
+ - measuring startup behaviour IN-PROGRESS: problems are marshalling, compiler
 
- - setting up a scratchbox environment DONE
- - measuring startup behaviour (Alexander, Holger)
+ - measuring the base interpreter size DONE
 
- - add code to print statistics to mark-and-compact (Alexander, Holger, Carl Friedrich)
+ - take a quick look at marshal
 
- - cbuild.py refactoring (Maciek, Samuele)
+ - look at compressing unicodedata DONE, other approach needed
+
+ - add code to print statistics to mark-and-compact DONE
+
+ - cbuild.py refactoring IN-PROGRESS (Maciek, Samuele)
+
+ - PEPM abstract (Carl Friedrich, Armin)
+
+ - fix stackless stuff (Armin, Carl Friedrich)
+
+ - clean up the room (all)
+
+ - take over the world plan (Holger, Alexander)
+
 
 Discussion Tasks:
 
- - JIT roadmap
- - C++ bindings‽
- - release plans, goals at 17.00 today
+ - JIT roadmap after planning session
+ - C++ bindings‽ 15.00 today DONE
