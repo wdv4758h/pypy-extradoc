@@ -1,0 +1,95 @@
+================================================
+PyPy - nowe podejscie do tworzenia interpreterow
+================================================
+
+O czym bede opowiadal
+=====================
+
+* Co to jest PyPy?
+
+* Dlaczego?
+
+* Co chcemy osiagnac?
+
+* Jak nam idzie?
+
+Kim jestem?
+===========
+
+* Maciej Fijalkowski
+
+* od ~2 lat zajmuje sie glownie PyPy
+
+* pracuje dla Merlinux GmbH XXX link
+
+* nie umiem ustawic polskich liter...
+
+Co to jest PyPy?
+================
+
+* interpreter pythona napisany w pythonie
+
+* framework do pisania interpreterow dynamicznych
+  jezykow
+
+* open source software
+
+* dzis bede mowil glownie o interpreterze
+
+Po co nam to?
+=============
+
+* CPython jest fajny, ale ciezko zmienic pewne decyzje
+  (np garbage collector)
+
+* Napisany w C
+
+* Srodowisko, ktore umie pythona, a do rozwijania jezyka
+  potrzebni sa ludzie biegli w C
+
+* XXX ...
+
+Status na dzis
+==============================
+
+* 2.5
+
+* ctypes (np pysqlite-ctypes, pyglet, pymunk ...)
+
+* django
+
+* wiekszosc testow CPython'a
+
+* sympy
+
+* twoj program...
+
+
+xxx
+
+Sandbox
+=======
+
+Maemo
+=====
+
+Cele
+====
+
+JIT
+===
+
+Q&A
+===
+
+
+Dlaczego pypy
+
+Kilka dem
+
+Co z tego mamy
+
+Maemo
+
+Sandbox
+
