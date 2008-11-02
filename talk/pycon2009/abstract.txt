@@ -8,3 +8,8 @@ usable python interpreter. Although pypy is not yet a viable CPython
 replacement, PyPy is able to run sophisticated python applications like
 django or twisted. This talk will also contain a part about the motivations driving
 current PyPy's developement and its targets for the future.
+
+Detailed description
+====================
+
+XXX insert it here
