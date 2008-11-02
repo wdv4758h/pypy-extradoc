@@ -2,9 +2,9 @@
 PyPy status talk
 ================
 
-In this talk, I'll present last year of improvements that happened in the pypy
-area. PyPy went a long way from being a research project towards being a
-usable python interpreter. Although pypy is not yet viable cpython
+In this talk, I'll present the improvements that happened last year in PyPy. 
+PyPy went a long way from being purely a research project towards being a
+usable python interpreter. Although pypy is not yet a viable CPython
 replacement, PyPy is able to run sophisticated python applications like
-django or twisted. Talk will also contain part about motivation driving
-PyPy's developement and targets for the future.
+django or twisted. This talk will also contain a part about the motivations driving
+current PyPy's developement and its targets for the future.
