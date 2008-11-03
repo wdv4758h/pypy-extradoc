@@ -25,10 +25,33 @@ We'll showcase the PyPy approach which allows to run
 unrestricted Python code but control all file, IO, CPU and RAM
 resources.  We'll discuss the underlying model and discuss
 shortcomings and future possibilities.  
-  
-outline for review:
 
-Python in a Sandbox 
+description: 
+
+In the 17 years of Python existence there have been numerous 
+approaches to "sandbox" Python, Zope's RestrictedPython 
+and Google AppEngine being popular examples.  PyPy takes 
+a fresh approach and allows to systematically control 
+all access to Files and IO.  This not only allows 
+to prevent a process from accessing system resources 
+but it allows to provide a fully virtualized system environment - 
+for example a Python program cannot easily detect that its
+file objects are in fact provided by another Python process. 
+
+Not only Files and IO but also RAM and CPU usage are controlable 
+which makes the PyPy approach probably the first to 
+provide a fully sandboxed Python environment without placing
+restrictions on language usage. 
+
+We'll also discuss discuss some open issues and will take 
+further discussion - probably schedule Open Space time
+to discuss further work. 
+
+Note that in this talk we will not talk much about 
+architecture and other aspects of the PyPy projects. 
+
+
+slide outline for review:
 
 - Sandboxing movitation 
 - PyPy's sandboxing large picture 
