@@ -29,3 +29,22 @@ in PyPy.  While there are a lot of people interested
 in the PyPy project (and rightfully so :) we feel that we do not do 
 too well regarding getting a larger community involved.  We'd like
 to understand better how we can improve.  
+
+simple outline of slides:
+
+- Overview 
+- PyPy 1.1: getting production ready ...
+- CTypes
+- CTypes configure
+- Sqlite, Django, Pylons, Twisted & Nevow
+- Other software
+- 2.5 compatibility 
+- threading 
+- Speed - comparison with CPython
+- memory - comparison with CPython 
+- pypy-c on small devices
+- GC plans 
+- JIT status and plans 
+- documentation status 
+- what would you like to see and do with PyPy? 
+
