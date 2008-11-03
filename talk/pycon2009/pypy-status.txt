@@ -35,15 +35,15 @@ simple outline of slides:
 - Overview 
 - PyPy 1.1: getting production ready ...
 - CTypes
-- CTypes configure
+- CTypes improvements
 - Sqlite, Django, Pylons, Twisted & Nevow
 - Other software
 - 2.5 compatibility 
 - threading 
-- Speed - comparison with CPython
+- speed - comparison with CPython
 - memory - comparison with CPython 
 - pypy-c on small devices
-- GC plans 
+- GC status and plans
 - JIT status and plans 
 - documentation status 
 - Q&A
