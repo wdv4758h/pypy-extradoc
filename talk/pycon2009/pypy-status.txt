@@ -2,29 +2,27 @@
 PyPy status talk
 ================
 
-In this talk, I'll present the improvements that happened last year in PyPy. 
-PyPy went a long way from being purely a research project towards being a
-usable python interpreter. Although pypy is not yet a viable CPython
-replacement, PyPy is able to run sophisticated python applications like
-django or twisted. This talk will also contain a part about the motivations driving
-current PyPy's developement and its targets for the future.
+In this talk, I'll present the improvements that happened last year in PyPy.
+PyPy has come a long way.  It's gone from being purely a research project to
+being a usable python interpreter.  Although PyPy is not yet a viable CPython
+replacement, PyPy is able to run sophisticated python applications like Django
+and Twisted. This talk will also explain the motivations driving current PyPy
+developement and its targets for the future.
 
 Detailed description
 ====================
 
-In this talk I will concentrate mostly on the rapid progress which the PyPy project has
-undertaken during the last year (since the last PyCon talk). It includes things like
-running large Python applications/frameworks on top of PyPy, but also
-thinks like upcoming release (which hopefully will happen before PyCon)
-and also support for various new platforms, like supporting the Maemo platfrom for
-mobile devices. Since there is a long way from now till PyCon, it's hard to
-predict what else might happen.
-
-I would also like to talk about PyPy's potential future, where we are going
-and how we would like to approach XXX finish this sentence reasonably
-
-I think PyPy project, despite recent progress in this area, still lacks
-deeper community understanding and hence this talk will try to clarify
-many details about the future and goals of the PyPy project.
-
-XXX maybe insert guido's interest in pypy becoming the next impl?
+In this talk I will concentrate on the rapid progress which the PyPy project
+has undertaken during the last year, since the last PyCon talk.  This progress
+includes things like running large Python applications/frameworks on top of
+PyPy, an upcoming release (which hopefully will happen before PyCon) and
+support for various new platforms.  For example, PyPy now supports the Maemo
+platform for mobile devices.  Since there is a long way from now till PyCon,
+the talk will also cover any unexpected developments between now and then.
+ 
+I would also like to talk about PyPy's future, where we are going and how we
+would like to approach building a larger community and user-base.
+ 
+I think PyPy project, despite recent progress in this area, still lacks deeper
+community understanding and hence this talk will try to clarify many details
+about the future and goals of the PyPy project.
