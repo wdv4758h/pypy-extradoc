@@ -20,7 +20,7 @@ applications/frameworks on top of PyPy, an upcoming release
 (which hopefully will happen before PyCon) and support for
 various new platforms.  For example, PyPy now supports the
 Maemo platform for mobile devices.  Moreover, we will talk
-about the our improved Garbage collectors and also highlight
+about our improved Garbage collectors and highlight
 current JIT status and plans. 
 
 We would also like to talk about PyPy's future, where we are going and how we
