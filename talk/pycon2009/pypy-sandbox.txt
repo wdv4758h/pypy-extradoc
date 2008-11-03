@@ -18,12 +18,10 @@ tutorials at EuroPython 2008 and Pycon-UK 2008.
 
 Talk summary: 
 
-Have you been looking for ways how to run untrusted Python
-code or how to restrict file and other IO access?  Not
-satisfied with what you found so far? 
-We'll showcase the PyPy approach which allows to run
-unrestricted Python code but control all file, IO, CPU and RAM
-resources.  We'll discuss the underlying model and discuss
+Old questions, news answers. How to run untrusted Python code? 
+We'll showcase the PyPy virtualization approach which allows 
+to control all file, IO, CPU and RAM resources of a Python
+interpreter.  We'll discuss the underlying model and discuss
 shortcomings and future possibilities.  
 
 description: 
@@ -33,25 +31,25 @@ approaches to "sandbox" Python, Zope's RestrictedPython
 and Google AppEngine being popular examples.  PyPy takes 
 a fresh approach and allows to systematically control 
 all access to Files and IO.  This not only allows 
-to prevent a process from accessing system resources 
-but it allows to provide a fully virtualized system environment - 
-for example a Python program cannot easily detect that its
-file objects are in fact provided by another Python process. 
+restricting access but provides a fully virtualized 
+system environment to a Python process - for example a Python
+program cannot easily detect that its file objects are in fact
+provided by another Python process. 
 
-Not only Files and IO but also RAM and CPU usage are controlable 
-which makes the PyPy approach probably the first to 
-provide a fully sandboxed Python environment without placing
-restrictions on language usage. 
-
-We'll also discuss discuss some open issues and will take 
-further discussion - probably schedule Open Space time
-to discuss further work. 
+Apart from Files and IO one can also RAM and CPU usage 
+which makes the PyPy approach probably the farthest 
+reaching one so far - providing a secure environment
+for running untrusted code without without placing
+restrictions on language usage.  The talk will showcase
+and discuss these features as well as open questions. 
+If time is not sufficient we'll schedule Open Space time. 
 
 Note that in this talk we will not talk much about 
-architecture and other aspects of the PyPy projects. 
+architecture and other aspects of the PyPy project. 
+Basic familiarity with the project and/or reading up
+a bit on the pypy website is recommended. 
 
-
-slide outline for review:
+simple slide outline:
 
 - Sandboxing movitation 
 - PyPy's sandboxing large picture 
