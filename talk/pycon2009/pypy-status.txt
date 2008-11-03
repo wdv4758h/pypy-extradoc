@@ -26,9 +26,11 @@ current JIT status and plans.
 We would also like to talk about PyPy's future, where we are going and how we
 would like to approach building a larger community and user-base.
 
-We think that PyPy project, despite recent progress in this area, still
-lacks deeper community understanding and hence this talk will try to
-clarify many details and uncertanities about the PyPy project.
+Note that this talk will focus on the PyPy Python interpreter
+and in particular its C backend version.  There are many more aspects 
+to the PyPy project but we don't intend to highlight them during 
+this talk.  This is part of an attempt to provide a clearer project 
+message and focus. 
 
 simple outline of slides:
 
