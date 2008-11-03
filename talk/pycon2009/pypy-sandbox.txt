@@ -1,0 +1,40 @@
+Title: Python in a sandbox
+Presenter: Holger Krekel <holger@merlinux.eu>
+Recording: i give permission to record and publish my PyCon talk for free distribution. 
+Talk length: 30 minutes, if possible more
+Intended Audience: advanced python programmers
+Format of talk: interactive lecture, questions welcome at all times
+Categories: Core, Other Implementations/PyPy, Embedding and extending Python
+
+Presenter bio: 
+
+Holger Krekel is a co-founder of the PyPy project and
+participates on many levels in it.  He is the initiator and
+maintainer of the popular py.test and a few other tools.  In
+2004 he founded merlinux, a company focusing on PyPy and py.test 
+developments.  Holger has talks at many EuroPython and 
+PyCon confereces and gave well received testing 
+tutorials at EuroPython 2008 and Pycon-UK 2008. 
+
+Talk summary: 
+
+Have you been looking for ways how to run untrusted Python
+code or how to restrict file and other IO access?  Not
+satisfied with what you found so far? 
+We'll showcase the PyPy approach which allows to run
+unrestricted Python code but control all file, IO, CPU and RAM
+resources.  We'll discuss the underlying model and discuss
+shortcomings and future possibilities.  
+  
+outline for review:
+
+Python in a Sandbox 
+
+- Sandboxing movitation 
+- PyPy's sandboxing large picture 
+- virtualizing IO access 
+- Demo 
+- controler and sandboxed process 
+- managing RAM and CPU restrictions
+- shortcomings
+- future directions
