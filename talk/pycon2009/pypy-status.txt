@@ -23,12 +23,12 @@ Maemo platform for mobile devices.  Moreover, we will talk
 about the our improved Garbage collectors and also highlight
 current JIT status and plans. 
 
-After we stated the goals of current PyPy developers we would
-then like to discuss with the audience about their interests 
-in PyPy.  While there are a lot of people interested 
-in the PyPy project (and rightfully so :) we feel that we do not do 
-too well regarding getting a larger community involved.  We'd like
-to understand better how we can improve.  
+We would also like to talk about PyPy's future, where we are going and how we
+would like to approach building a larger community and user-base.
+
+We think that PyPy project, despite recent progress in this area, still
+lacks deeper community understanding and hence this talk will try to
+clarify many details and uncertanities about the PyPy project.
 
 simple outline of slides:
 
@@ -46,5 +46,5 @@ simple outline of slides:
 - GC plans 
 - JIT status and plans 
 - documentation status 
-- what would you like to see and do with PyPy? 
+- Q&A
 
