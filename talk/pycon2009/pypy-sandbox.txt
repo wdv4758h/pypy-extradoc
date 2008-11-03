@@ -1,7 +1,7 @@
 Title: Python in a sandbox
 Presenter: Holger Krekel <holger@merlinux.eu>
 Recording: i give permission to record and publish my PyCon talk for free distribution. 
-Talk length: 30 minutes, if possible more
+Talk length: 30 minutes, if possible 45 minutes 
 Intended Audience: advanced python programmers
 Format of talk: interactive lecture, questions welcome at all times
 Categories: Core, Other Implementations/PyPy, Embedding and extending Python
@@ -20,9 +20,9 @@ Talk summary:
 
 Old questions, news answers. How to run untrusted Python code? 
 We'll showcase the PyPy virtualization approach which allows 
-to control all file, IO, CPU and RAM resources of a Python
-interpreter.  We'll discuss the underlying model and discuss
-shortcomings and future possibilities.  
+to control all IO, syscalls, CPU and RAM resources of a Python
+interpreter.  We'll discuss the usage model, shortcomings and 
+future possibilities.  
 
 description: 
 
@@ -30,38 +30,27 @@ In the 17 years of Python existence there have been numerous
 approaches to "sandbox" Python, Zope's RestrictedPython 
 and Google AppEngine being popular examples.  PyPy takes 
 a fresh approach and allows to systematically control 
-all access to Files and IO.  This not only allows 
-restricting access but provides a fully virtualized 
-system environment to a Python process - for example a Python
-program cannot easily detect that its file objects are in fact
-provided by another Python process. 
+all access to IO and each syscall or call into a C library. 
+Apart from restricting access control is reach enough to construct 
+a fully virtualized system environment to a Python process.  For 
+example a Python program cannot easily detect that its file 
+objects are in fact provided by another Python process. 
 
-XXX [fijal] important detail - we don't restrict python as a language at all
-XXX it also allows arbitrary access to *any* calls to C, not just files and IO
-
-Apart from Files and IO one can also RAM and CPU usage 
-which makes the PyPy approach probably the farthest 
-reaching one so far - providing a secure environment
-for running untrusted code without without placing
-restrictions on language usage.  The talk will showcase
-and discuss these features as well as open questions. 
-If time is not sufficient we'll schedule Open Space time. 
-
-Note that in this talk we will not talk much about 
-architecture and other aspects of the PyPy project. 
-Basic familiarity with the project and/or reading up
-a bit on the pypy website is recommended. 
-
-XXX [fijal] why? I think that reader should not know about pypy
-XXX architecture in order to hear this talk
+Apart from IO access and syscalls one can also restrict RAM 
+and CPU usage.  The PyPy sandboxing model thus provides a
+a secure environment for running untrusted code without 
+without placing restrictions on language usage.  The talk 
+will showcase and discuss usage of these features and
+mention open issues and questions.  If time is not sufficient
+we'll schedule Open Space time. 
 
 simple slide outline:
 
 - Sandboxing movitation 
 - PyPy's sandboxing large picture 
 - virtualizing IO access 
-- Demo 
+- virtualizing syscalls 
 - controler and sandboxed process 
+- Demo 
 - managing RAM and CPU restrictions
-- shortcomings
-- future directions
+- shortcomings & future directions
