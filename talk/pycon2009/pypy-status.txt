@@ -2,27 +2,30 @@
 PyPy status talk
 ================
 
-In this talk, I'll present the improvements that happened last year in PyPy.
 PyPy has come a long way.  It's gone from being purely a research project to
-being a usable python interpreter.  Although PyPy is not yet a viable CPython
-replacement, PyPy is able to run sophisticated python applications like Django
-and Twisted. This talk will also explain the motivations driving current PyPy
+providing a flexible and reasonably fast Python Interpreter, itself implemented 
+in Python.  Although PyPy is not yet a viable CPython replacement, PyPy is able 
+to run sophisticated python applications like Django and Twisted.  In this 
+talk, we'll focus on improvements that happened during the last year in PyPy.
+This talk will also explain the motivations driving current PyPy
 developement and its targets for the future.
 
 Detailed description
 ====================
 
-In this talk I will concentrate on the rapid progress which the PyPy project
-has undertaken during the last year, since the last PyCon talk.  This progress
-includes things like running large Python applications/frameworks on top of
-PyPy, an upcoming release (which hopefully will happen before PyCon) and
-support for various new platforms.  For example, PyPy now supports the Maemo
-platform for mobile devices.  Since there is a long way from now till PyCon,
-the talk will also cover any unexpected developments between now and then.
- 
-I would also like to talk about PyPy's future, where we are going and how we
-would like to approach building a larger community and user-base.
- 
-I think PyPy project, despite recent progress in this area, still lacks deeper
-community understanding and hence this talk will try to clarify many details
-about the future and goals of the PyPy project.
+In this talk we will concentrate on the rapid progress which
+the PyPy project has undertaken since Pycon US 2008.  This
+progress includes things like running large Python
+applications/frameworks on top of PyPy, an upcoming release
+(which hopefully will happen before PyCon) and support for
+various new platforms.  For example, PyPy now supports the
+Maemo platform for mobile devices.  Moreover, we will talk
+about the our improved Garbage collectors and also highlight
+current JIT status and plans. 
+
+After we stated the goals of current PyPy developers we would
+then like to discuss with the audience about their interests 
+in PyPy.  While there are a lot of people interested 
+in the PyPy project (and rightfully so :) we feel that we do not do 
+too well regarding getting a larger community involved.  We'd like
+to understand better how we can improve.  
