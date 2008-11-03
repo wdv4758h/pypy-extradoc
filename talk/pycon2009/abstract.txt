@@ -12,4 +12,19 @@ current PyPy's developement and its targets for the future.
 Detailed description
 ====================
 
-XXX insert it here
+In this talk I would concetrate mostly on rapid progress which pypy project has
+undertaken during last year (since last pycon talk). It includes things like
+running large python applications/frameworks on top of pypy, but also
+thinks like upcoming release (which hopefully will happen before pycon)
+and also various platforms support, like nokia's supported maemo for
+mobile devices. Since there is long way from now till pycon, it's hard to
+predict what else might happen.
+
+I would also like to talk about pypy's potential future, where we are going
+and how we would like to approach XXX finish this sentence reasonably
+
+I think pypy project, despite recent progress in this area, still lacks
+deeper community understanding and hence this talk will try to clarify
+many details about the future and goals of pypy project.
+
+XXX maybe insert guido's interest in pypy becoming the next impl?
