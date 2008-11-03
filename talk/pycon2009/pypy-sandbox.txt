@@ -36,6 +36,9 @@ system environment to a Python process - for example a Python
 program cannot easily detect that its file objects are in fact
 provided by another Python process. 
 
+XXX [fijal] important detail - we don't restrict python as a language at all
+XXX it also allows arbitrary access to *any* calls to C, not just files and IO
+
 Apart from Files and IO one can also RAM and CPU usage 
 which makes the PyPy approach probably the farthest 
 reaching one so far - providing a secure environment
@@ -48,6 +51,9 @@ Note that in this talk we will not talk much about
 architecture and other aspects of the PyPy project. 
 Basic familiarity with the project and/or reading up
 a bit on the pypy website is recommended. 
+
+XXX [fijal] why? I think that reader should not know about pypy
+XXX architecture in order to hear this talk
 
 simple slide outline:
 
