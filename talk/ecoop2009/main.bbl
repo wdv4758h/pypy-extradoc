@@ -1,0 +1,29 @@
+\begin{thebibliography}{1}
+
+\bibitem{AACM-DLS07}
+D.~Ancona, M.~Ancona, A~Cuni, and N.~Matsakis.
+\newblock R{P}ython: a {S}tep {T}owards {R}econciling {D}ynamically and
+  {S}tatically {T}yped {OO} {L}anguages.
+\newblock In {\em O{OPSLA} 2007 {P}roceedings and {C}ompanion, {DLS}'07:
+  {P}roceedings of the 2007 {S}ymposium on {D}ynamic {L}anguages}, pages
+  53--64. ACM, 2007.
+
+\bibitem{BolzEtAl08}
+C.~F. Bolz, A.~Kuhn, A.~Lienhard, N.~D. Matsakis, O.~Nierstrasz, L.~Renggli,
+  A.~Rigo, and T.~Verwaest.
+\newblock Back to the future in one week - implementing a smalltalk vm in pypy.
+\newblock In {\em Self-Sustaining Systems, First Workshop, S3 2008, Potsdam,
+  Revised Selected Papers}, volume 5146 of {\em Lecture Notes in Computer
+  Science}, pages 123--139, 2008.
+
+\bibitem{Futamura99}
+Yoshihiko Futamura.
+\newblock Partial evaluation of computation process, revisited.
+\newblock {\em Higher Order Symbol. Comput.}, 12(4):377--380, 1999.
+
+\bibitem{RigoPedroni06}
+A.~Rigo and S.~Pedroni.
+\newblock Py{P}y's approach to virtual machine construction.
+\newblock In {\em OOPSLA Companion}, pages 944--953, 2006.
+
+\end{thebibliography}
