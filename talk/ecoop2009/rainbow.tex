@@ -1,0 +1,96 @@
+\section{The Rainbow Interpreter}
+
+The JIT compiler is implemented by running the "Rainbow interpreter", whose
+output is a compiled function.
+
+Variables and opcodes are colored:
+
+  - green values are known at compile time, and green operations are executed
+    when interpreting the bytecode;
+
+  - red values are not known until runtime; the result of a red operation is a
+    piece of machine code that will compute the result at runtime.
+
+The Rainbow bytecode is produced at translation time, when the JIT compiler is
+generated.
+
+Here are summarized the various phases of the JIT:
+
+Translation time:
+
+  * Low-level flowgraphs are produced
+
+  * The *hint-annotator* colors the variables
+
+  * The *rainbow codewriter* translates flowgraphs into rainbow bytecode
+
+
+Compile-time:
+
+  * The rainbow interpreter executes the bytecode
+
+  * As a result, it produces executable code
+
+Runtime:
+
+  * The produced code is executed
+
+
+\subsection{Example of Rainbow bytecode and execution}
+
+TODO
+
+\subsection{Promotion}
+
+There are values that, if known at compile time, allow the JIT compiler to
+produce very efficient code.  Unfortunately, these values are tipically red,
+e.g. the exact type of a variable.
+
+"Promotion" is a particular operation that convert a red value into a green
+value; i.e., after the promotion of a variable, the JIT compiler knows its
+value at compile time. Since the value of a red variable is not known until
+runtime, we need to postpone the compilation phase after the runtime phase.
+
+This is done by continuously intermixing compile time and runtime; a promotion
+is implemented in this way:
+
+  * (compile time): the rainbow interpreter produces machine code until it
+    hits a promotion point; e.g.::
+
+    \begin{lstlisting}[language=C]
+        y = hint(x, promote=True)
+        return y+10
+    \end{lstlisting}
+
+  * (compile time): at this point, it generates special machine code that when
+    reached calls the JIT compiler again; the JIT compilation stops::
+
+    \begin{lstlisting}[language=C]
+        switch(y) {
+            default: compile_more(y);
+        }
+    \end{lstlisting}
+
+  * (runtime): the machine code is executed; when it reaches a promotion
+    point, it executes the special machine code we described in the previous
+    point; the JIT compiler is invoked again;
+
+  * (compile time): now we finally know the exact value of our red variable,
+    and we can promote it to green; suppose that the value of 'y' is 32::
+
+    \begin{lstlisting}[language=C]
+        switch(y) {
+            32: return 42;
+            default: compile_more(y);
+        }
+    \end{lstlisting}
+
+    Note that the operation "y+10" has been constant-folded into "42", as it
+    was a green operation.
+
+  * (runtime) the execution restart from the point it stopped, until a new
+    unhandled promotion point is reached.
+
+\subsection{Virtuals and virtualizables}
+
+TODO

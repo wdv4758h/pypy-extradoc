@@ -1,0 +1,45 @@
+\documentclass{llncs}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[sans]{dsfont}
+\usepackage{color}
+\usepackage{xspace}
+\usepackage{listings}
+\usepackage[pdftex]{graphicx}
+
+%\input{macros}
+
+\pagestyle{plain}
+
+\lstset{mathescape=true,language=Java,basicstyle=\tt,keywordstyle=\bf}
+
+%\renewcommand{\baselinestretch}{.98}
+
+\begin{document}
+\title{Automatic generation of JIT compilers for dynamic languages
+  in .NET\thanks{This work has been partially
+supported by MIUR EOS DUE - Extensible Object Systems for Dynamic and
+Unpredictable Environments.}}
+
+
+\author{Davide Ancona\inst{1} \and Carl Friedrich Bolz\inst{2} \and Antonio Cuni\inst{1} \and Armin Rigo}
+
+\institute{DISI, University of Genova, Italy 
+\and 
+Softwaretechnik und Programmiersprachen
+ Heinrich-Heine-Universit\"at D\"usseldorf}
+
+\maketitle
+
+\input{abstract}
+\input{intro}
+\input{jitgen}
+\input{rainbow}
+\input{clibackend}
+%\input{conclusion}
+
+\bibliographystyle{plain}
+\bibliography{ALLMY}
+
+\end{document}
