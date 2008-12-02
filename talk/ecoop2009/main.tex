@@ -32,6 +32,30 @@ Softwaretechnik und Programmiersprachen
 
 \maketitle
 
+\section{Tentative structure}
+\begin{itemize}
+  \item Introduction \& background; main contributions:
+    \begin{itemize}
+      \item Promotion
+      \item (unboxing)
+      \item JIT layering
+    \end{itemize}
+  \item How the generated JITs work
+    \begin{itemize}
+      \item Promotion: allows intermixing compile-time and runtime; how to
+        compare with polymorphic inline caches and partial evaluation
+      \item unboxing: how they compare with tracing JITs
+      \item (don't talk about merging)
+    \end{itemize}
+  \item .NET backend
+  \item How the JIT generator works
+  \item Benchmarks (TLC)
+  \item Future works
+  \item Conclusions
+\end{itemize}
+    
+
+
 \input{abstract}
 \input{intro}
 \input{jitgen}
