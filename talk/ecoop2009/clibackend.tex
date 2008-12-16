@@ -92,14 +92,37 @@ Also following an external link whose target is the initial block of a
 method is not difficult: the corresponding method has to be invoked
 with the appropriate arguments.
 
+What cannot be easily implemented in CLI is following an external link
+whose target is not an initial block; consider, for instance, the
+outgoing link of the block dynamically added in the right-hand side
+picture of Figure~\ref{flexswitch-fig}. How it is possible to pass the
+right arguments to the target block?
+
+To solve this problem a special block, called \emph{dispatcher}, is
+added to every method; whenever a method is invoked, its dispatcher is
+executed first\footnote{Recall that the dispatcher is a special block
+and must not be confused with the initial block of a method.} to
+determine which block has to be executed.
+This is done by passing to the method a 32 bits number, called 
+\emph{block id}, which uniquely identifies the next block of the graph to be executed.
+The high word of a block id is the id of the method to which the block
+belongs, whereas the low word is a progressive number identifying
+each block implemented by the method.
+
+The picture in Figure~\ref{block-id-fig} shows a graph composed of three methods (for
+simplicity, dispatchers are not shown); method ids are in red, whereas
+block numbers are in black. 
+The graph contains three external links; in particular, note the link
+between blocks \texttt{0x00020001} and \texttt{0x00010001} which
+connects two blocks implemented by different methods.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[height=6cm]{blockid}
+\caption{Method and block ids.}\label{block-id-fig}
+\end{center}
+\end{figure}
 
 \commentout{
-
-
-Using this approach, after a while the blocks of our original graph are scattered over a lot of different methods; however, there are no constraints about how these blocks can be linked together, so it happens to have links between blocks which are not in the same method. In the following, we will refer to them as external links.
-
-If the external block we want to jump to happens to be at the beginning of its containing method, it is enough to invoke the method; but, what if we want to jump somewhere in the middle? What we really want is to produce a method which has multiple entry-points; again, doing it in assembly would be trivial, but the virtual machine does not provide any support for it, so we need a work around.
-
 Each method in a graph is assigned an unique 16 bit method id; each block in a method is assigned a progressive 16 bit block number. From this two numbers, we can compute the block id as an unsigned integer, by storing the method id in the first 16 bits and the block number in the second 16 bits. By construction, the block id is guaranteed to be unique in the graph.
 
 The following picture shows a graph composed of three methods; the id of each method is shown in red, while the block ids are shown in red (for the method id part) and black (for the block number part). The graph contains three external links; in particular, note the link between blocks 0x00020001 and 0x00010001 which connects two block that resides in different methods.
