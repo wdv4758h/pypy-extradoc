@@ -19,8 +19,7 @@ A flexswitch is a special kind of switch which can be dynamically
 extended with new cases; intuitively, its behavior can be described
 well in terms of flow graphs. Indeed, a flexswitch can be considered 
 as a special flow graph block where links to newly created blocks are
-dynamically added whenever new cases are needed. \dacom{in theory links could also be removed, but I
-  do not know whether this possibility has been considered in Rainbow}
+dynamically added whenever new cases are needed. 
 
 \begin{figure}[h]
 \begin{center}
@@ -41,8 +40,8 @@ by linking the cyan block with a freshly created new block.
 
 \subsection{Implementing flexswitches in CLI}
 
-Implementing flexswitches for backends generating assembly code is
-quite straightforward: basically, a new jump has to be inserted in the
+Implementing flexswitches for backends generating machine code is
+not too complex: basically, a new jump has to be inserted in the
 existing code to point to the newly generated code fragment.
 
 Unfortunately, the CLI VM does not allow modification of code which
@@ -54,22 +53,33 @@ Since in .NET methods are the basic units of compilation, a possible
 solution consists in creating a new method 
 any time a new case has to be added to a flexswitch.
 \dacom{comment for Antonio: I am not sure this is the best solution. This cannot work for Java where classes are the basic
-  units}
+  units. Closures will be available only with Java Dolphin and I do
+  not know how much efficient will be}
+In this way, whereas flow graphs without flexswitches are translated
+to a single method, the translation of flow graphs which can dynamically grow because of
+flexswitches will be scattered over several methods.
+Summarizing, the backend behaves in the following way:
+\begin{itemize}
+\item Each flow graph is translated in a collection of methods which
+  can grow dynamically. \dacom{I propose primary/secondary instead of
+    the overloaded terms main/child} Each collection must contain at least one
+  method, called \emph{primary}, which is the first to be created.
+  All other methods, called \emph{secondary}, are added dynamically 
+  whenever a new case is added to a flexswitch.
 
-\dacom{I still have to polish what comes next}
+\item Each either primary or secondary method corresponds to the
+  translation of some of the blocks of a single flow graph. 
+\end{itemize} 
 
-\newcommand{\commentout}[1]{}
+When  a new case is added to a flexswitch, new blocks are generated
+and translated by the backend in a new single method pointed
+by a delegate which is stored in the code implementing the flexswitch,
+so that the method can be invoked later.
+
+\subsubsection{Non local links}
+
 \commentout{
-Because of all these constraints we cannot simply map each graph to its own method, since we saw that our graphs can grow after they have already been executed few times.
 
-Hence, we need to distinguish between the two concepts:
-
-        * a graph is the logical unit of code as seen by the JIT compiler: concretely, the CLI JIT backend renders it as one or more methods;
-        * a method is a collection of basic blocks; each method has the so called parent graph, i.e. the graph its blocks logically belongs to.
-
-The first method of a graph is called main method (which has nothing to do with the Main static methods found in .exe files); other methods are called children methods.
-
-When we want to add a new case to the flexswitch, we create a method containing all the new code; then we wrap the method inside a delegate (the .NET equivalent of a function pointer) and pass it to the flexswitch, so that it can later invoke it.
 The hard bit: non-local links
 
 Using this approach, after a while the blocks of our original graph are scattered over a lot of different methods; however, there are no constraints about how these blocks can be linked together, so it happens to have links between blocks which are not in the same method. In the following, we will refer to them as non-local links.
@@ -124,6 +134,7 @@ To implement the dispatch block we can exploit the switch opcode of the CLI; if 
 Obviously, the slow dispatching logic is needed only when we want to jump to a non-local block; if the target block happens to reside in the same method as the current one, we can directly jump to it, completely removing the overhead.
 
 Moreover, the dispatch blocks are emitted only if needed, i.e. if the parent graph contains at least one flexswitch; graphs without flexswitches are rendered in the obvious way, by making one method per graph.
+
 The slow bit: passing arguments
 
 Jumping to the correct block is not enough to follow a link: as we said before, each link carries a set of arguments to be passed from the source to the target block. As usual, passing arguments across local links is easy, as we can just use local variables to hold their values; on the other hand, non-local links make things more complex.
@@ -216,3 +227,5 @@ Being so innovative, the problem of this approach is that the current virtual ma
 
 At the moment, the CLI JIT backend is almost complete, and all the hardest problems seems to be solved; the next step is to fix all the remaining bugs and implement some minor feature that it's still missing, then try to apply it to the full Python language and see what is the outcome.
 }
+
+% LocalWords:  flexswitches backend flexswitch
