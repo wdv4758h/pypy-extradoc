@@ -24,6 +24,10 @@ relatively little practical impact so far.
 
 Assume the Python bytecode to be constant, and constant-propagate it into the
 Python interpreter.
+\cfbolz{note to self: steal bits from the master thesis?}
+
+\cfbolz{I would propose to use either TLC as an example here, or something that
+looks at least like an interpreter loop}
 
 Example::
 \begin{lstlisting}[language=Python]
@@ -50,17 +54,172 @@ constant at compile-time, and this leads to poor results.  Effective dynamic
 compilation requires feedback of runtime information into compile-time; for a
 dynamic language, types are a primary example.
 
+Partial evaluation (PE) comes in two flavors:
+
+\begin{itemize}
+\item \emph{On-line} partial evaluation: a compiler-like algorithm takes the
+source code of the function \texttt{f(x, y)} (or its intermediate representation,
+i.e. its control flow graph), and some partial
+information, e.g. \texttt{x=5}.  From this, it produces the residual function
+\texttt{g(y)} directly, by following in which operations the knowledge \texttt{x=5} can
+be used, which loops can be unrolled, etc.
+
+\item \emph{Off-line} partial evalution: in many cases, the goal of partial
+evaluation is to improve performance in a specific application.  Assume that we
+have a single known function \texttt{f(x, y)} in which we think that the value
+of \texttt{x} will change slowly during the execution of our program – much
+more slowly than the value of \texttt{y}.  An obvious example is a loop that
+calls \texttt{f(x, y)} many times with always the same value \texttt{x}.  We
+could then use an on-line partial evaluator to produce a \texttt{g(y)} for each
+new value of \texttt{x}.  In practice, the overhead of the partial evaluator
+might be too large for it to be executed at run-time.  However, if we know the
+function \texttt{f} in advance, and if we know \emph{which} arguments are the
+ones that we will want to partially evaluate \texttt{f} with, then we do not
+need a full compiler-like analysis of \texttt{f} every time the value of
+\texttt{x} changes.  We can precompute once and for all a specialized function
+\texttt{f1(x)}, which when called produces the residual function \texttt{g(y)}
+corresponding to \texttt{x}.  This is \emph{off-line partial evaluation}; the
+specialized function \texttt{f1(x)} is called a \emph{generating extension}.
+\end{itemize}
+
+Off-line partial evaluation is usually based on \emph{binding-time analysis}, which
+is the process of determining among the variables used in a function (or
+a set of functions) which ones are going to be known in advance and
+which ones are not.  In the example of \texttt{f(x, y)}, such an analysis
+would be able to infer that the constantness of the argument \texttt{x}
+implies the constantness of many intermediate values used in the
+function.  The \emph{binding time} of a variable determines how early the
+value of the variable will be known.
+
+\cfbolz{XXX: unclear how the next paragraph will fit into the text in the end.
+it's certainly wrong as it is}
+Once binding times have been determined, one possible approach to
+producing the generating extension itself is by self-applying on-line
+partial evaluators.  This is known as the second Futamura projection
+\cite{Futamura99}.  So far it is unclear if this approach can lead to optimal
+results, or even if it scales well.  In PyPy we selected a more direct
+approach: the generating extension is produced by transformation of the
+control flow graphs of the interpreter, guided by the binding times.  We
+call this process \emph{timeshifting}.
+
 
 \subsection{Execution steps}
 
-* Translation time
 
-  - pypy-c-jit is translated into an executable
+PyPy contains a framework for generating just-in-time compilers using
+off-line partial evaluation.  As such, there are three distinct phases:
 
-  - the JIT compiler is automatically generated
+\begin{itemize}
+\item \emph{Translation time:} during the normal translation of an RPython
+program, say the TLC interpreter, we perform binding-time analysis on the
+interpreter.  This produces a generating extension, which is linked with the
+rest of the program. \cfbolz{XXX not quite right}
 
-* Compile-time: the JIT compiler runs
+\item \emph{Compile time:} during the execution of the program, when a new
+bytecode is about to be interpreted, the generating extension is invoked
+instead.  As the generating extension is a compiler, all the computations it
+performs are called compile-time computations.  Its sole effect is to produce
+residual code.
 
-* Runtime: the JIT compiled code runs
+\item \emph{Run time:} the normal execution of the program (which includes the
+time spent running the residual code created by the generating extension).
+\end{itemize}
 
-* Compile-time and runtime are intermixed
+Translation time is a purely off-line phase; compile time and run time are
+actually highly interleaved during the execution of the program.
+
+\subsection{Binding Time Analysis}
+
+At translation time, PyPy performs binding-time analysis of the source
+RPython program after it has been turned to low-level graphs, i.e. at
+the level at which operations manipulate pointer-and-structure-like
+objects.
+
+The binding-time terminology that we are using in PyPy is based on the
+colors that we use when displaying the control flow graphs:
+
+\begin{itemize}
+\item \emph{Green} variables contain values that are known at compile-time;
+\item \emph{Red} variables contain values that are not known until run-time.
+\end{itemize}
+
+The binding-time analyzer of our translation tool-chain is based on the
+same type inference engine that is used on the source RPython program,
+the annotator.  In this mode, it is called the \emph{hint-annotator}; it
+operates over input graphs that are already low-level instead of
+RPython-level, and propagates annotations that do not track types but
+value dependencies and manually-provided binding time hints.
+
+The normal process of the hint-annotator is to propagate the binding
+time (i.e. color) of the variables using the following kind of rules:
+
+\begin{itemize}
+\item For a foldable operation (i.e. one without side effect and which depends
+only on its argument values), if all arguments are green, then the result can
+be green too.
+
+\item Non-foldable operations always produce a red result.
+
+\item At join points, where multiple possible values (depending on control
+flow) are meeting into a fresh variable, if any incoming value comes from a red
+variable, the result is red.  Otherwise, the color of the result might be
+green.  We do not make it eagerly green, because of the control flow
+dependency: the residual function is basically a constant-folded copy of the
+source function, so it might retain some of the same control flow.  The value
+that needs to be stored in the fresh join variable thus depends on which
+branches are taken in the residual graph.
+\end{itemize}
+
+\subsubsection{Hints}
+
+Our goal in designing our approach to binding-time analysis was to
+minimize the number of explicit hints that the user must provide in
+the source of the RPython program.  This minimalism was not pushed to
+extremes, though, to keep the hint-annotator reasonably simple.  
+
+The driving idea was that hints should be need-oriented.  Indeed, in a
+program like an interpreter, there are a small number of places where it
+would be clearly beneficial for a given value to be known at
+compile-time, i.e. green: this is where we require the hints to be
+added.
+
+The hint-annotator assumes that all variables are red by default, and
+then propagates annotations that record dependency information.
+When encountering the user-provided hints, the dependency information
+is used to make some variables green.  All
+hints are in the form of an operation \texttt{hint(v1, someflag=True)}
+which semantically just returns its first argument unmodified.
+
+The crucial need-oriented hint is \texttt{v2 = hint(v1, concrete=True)}
+which should be used in places where the programmer considers the
+knowledge of the value to be essential.  This hint is interpreted by
+the hint-annotator as a request for both \texttt{v1} and \texttt{v2} to be green.  It
+has a \emph{global} effect on the binding times: it means that not only
+\texttt{v1} but all the values that \texttt{v1} depends on – recursively –
+are forced to be green.  The hint-annotator complains if the
+dependencies of \texttt{v1} include a value that cannot be green, like
+a value read out of a field of a non-immutable structure.
+
+Such a need-oriented backward propagation has advantages over the
+commonly used forward propagation, in which a variable is compile-time
+if and only if all the variables it depends on are also compile-time.  A
+known issue with forward propagation is that it may mark as compile-time
+either more variables than expected (which leads to over-specialization
+of the residual code), or less variables than expected (preventing
+specialization to occur where it would be the most useful).  Our
+need-oriented approach reduces the problem of over-specialization, and
+it prevents under-specialization: an unsatisfiable \texttt{hint(v1,
+concrete=True)} is reported as an error.
+
+In our context, though, such an error can be corrected.  This is done by
+promoting a well-chosen variable among the ones that \texttt{v1} depends on.
+
+Promotion is invoked with the use of a hint as well:
+\texttt{v2 = hint(v1, promote=True)}.
+This hint is a \emph{local} request for \texttt{v2} to be green, without
+requiring \texttt{v1} to be green.  Note that this amounts to copying
+a red value into a green one, which is not possible in classical
+approaches to partial evaluation.  See the Promotion section XXX ref for a
+complete discussion of promotion.
+
+
