@@ -68,7 +68,10 @@ Summarizing, the backend behaves in the following way:
   whenever a new case is added to a flexswitch.
 
 \item Each either primary or secondary method corresponds to the
-  translation of some of the blocks of a single flow graph. 
+  translation of some of the blocks of a single flow graph. Each
+  method has an initial block whose input variables are the
+  parameters of the method; the input variables of all other blocks
+  are local variables of the method.
 \end{itemize} 
 
 When  a new case is added to a flexswitch, new blocks are generated
@@ -76,21 +79,32 @@ and translated by the backend in a new single method pointed
 by a delegate which is stored in the code implementing the flexswitch,
 so that the method can be invoked later.
 
-\subsubsection{Non local links}
+\subsubsection{Internal and external links}
+
+A link is called \emph{internal} if it connects two blocks implemented in the same method,
+ \emph{external} otherwise.
+
+Following an internal link is not difficult in CLI bytecode: a jump to
+the corresponding code fragment in the same method is emitted 
+to execute the new block, whereas the appropriate local variables are
+used for passing arguments.
+Also following an external link whose target is the initial block of a
+method is not difficult: the corresponding method has to be invoked
+with the appropriate arguments.
+
 
 \commentout{
 
-The hard bit: non-local links
 
-Using this approach, after a while the blocks of our original graph are scattered over a lot of different methods; however, there are no constraints about how these blocks can be linked together, so it happens to have links between blocks which are not in the same method. In the following, we will refer to them as non-local links.
+Using this approach, after a while the blocks of our original graph are scattered over a lot of different methods; however, there are no constraints about how these blocks can be linked together, so it happens to have links between blocks which are not in the same method. In the following, we will refer to them as external links.
 
-If the non-local block we want to jump to happens to be at the beginning of its containing method, it is enough to invoke the method; but, what if we want to jump somewhere in the middle? What we really want is to produce a method which has multiple entry-points; again, doing it in assembly would be trivial, but the virtual machine does not provide any support for it, so we need a work around.
+If the external block we want to jump to happens to be at the beginning of its containing method, it is enough to invoke the method; but, what if we want to jump somewhere in the middle? What we really want is to produce a method which has multiple entry-points; again, doing it in assembly would be trivial, but the virtual machine does not provide any support for it, so we need a work around.
 
 Each method in a graph is assigned an unique 16 bit method id; each block in a method is assigned a progressive 16 bit block number. From this two numbers, we can compute the block id as an unsigned integer, by storing the method id in the first 16 bits and the block number in the second 16 bits. By construction, the block id is guaranteed to be unique in the graph.
 
-The following picture shows a graph composed of three methods; the id of each method is shown in red, while the block ids are shown in red (for the method id part) and black (for the block number part). The graph contains three non-local links; in particular, note the link between blocks 0x00020001 and 0x00010001 which connects two block that resides in different methods.
+The following picture shows a graph composed of three methods; the id of each method is shown in red, while the block ids are shown in red (for the method id part) and black (for the block number part). The graph contains three external links; in particular, note the link between blocks 0x00020001 and 0x00010001 which connects two block that resides in different methods.
 
-Every method contains a special dispatch block, (not shown in the picture above) whose goal is to jump to the specified block number inside the method itself. The first argument of a child method is always a block id; when the method starts, it immediately jumps to the dispatch block, and thus to the desired block.
+Every method contains a special dispatch block, (not shown in the picture above) whose goal is to jump to the specified block number inside the method itself. The first argument of a secondary method is always a block id; when the method starts, it immediately jumps to the dispatch block, and thus to the desired block.
 
 For example, suppose to have a method which contains 3 blocks numbered 0, 1, 2; here is how its dispatch blocks looks like; for simplicity it is shown as C# code, but it is actually generated as IL bytecode:
 
@@ -114,38 +128,38 @@ default:
 throw new Exception("Invalid block id");
 }
 
-Whenever we want to jump to a non-local block, it is enough to store the block id in the appropriate variable and jump to the dispatch block. If the block resides in a different method, the jump_to_unknown block is entered; this special block is implemented differently by the main method and the child methods, as we will see soon.
+Whenever we want to jump to a external block, it is enough to store the block id in the appropriate variable and jump to the dispatch block. If the block resides in a different method, the jump_to_unknown block is entered; this special block is implemented differently by the main method and the secondary methods, as we will see soon.
 
 Each time a new method is added to the graph, we build a delegate for it, and store it in a special array called method_map; since we assign the method id sequentially starting from 0, we are sure that to fetch the method whose id is n we can simply load the n-th element of the array.
 
-The jump_to_unknown block of the main method uses this array to select the right method, and calls it (FlexSwitchCase is the type of delegates for all children methods):
+The jump_to_unknown block of the main method uses this array to select the right method, and calls it (FlexSwitchCase is the type of delegates for all secondary methods):
 
 // jump_to_unknown block of the main method
 FlexSwitchCase meth = method_map[methodid];
 blockid = meth(blockid, ...); // execute the method
 goto dispatch_block;
 
-Each child method returns a block id specifying the next block to jump to; after its execution, we assign the return value to the blockid variable, and jump again to the dispatch block, which will jump again to the appropriate block.
+Each secondary method returns a block id specifying the next block to jump to; after its execution, we assign the return value to the blockid variable, and jump again to the dispatch block, which will jump again to the appropriate block.
 
-Keeping this in mind, it is straightforward to implement the jump_to_unknown block of children methods: it is enough to return the target block id to the caller, and let its dispatch loop do the right thing. If the caller is also a child method, it will return it again, until we reach the dispatch loop of the main method, which will finally do the jump. In theory, we could implement things differently and jumping directly from a child method to another one, but in that case the call stack could grows indefinitely in case of a tight loop between two blocks residing in different methods.
+Keeping this in mind, it is straightforward to implement the jump_to_unknown block of secondary methods: it is enough to return the target block id to the caller, and let its dispatch loop do the right thing. If the caller is also a secondary method, it will return it again, until we reach the dispatch loop of the main method, which will finally do the jump. In theory, we could implement things differently and jumping directly from a secondary method to another one, but in that case the call stack could grows indefinitely in case of a tight loop between two blocks residing in different methods.
 
-To implement the dispatch block we can exploit the switch opcode of the CLI; if the .NET JIT is smart enough, it can render it using an indirect jump; overall, jumping to a non-local block consists of an indirect function call (by invoking the delegate) plus an indirect jump (by executing the switch opcode); even if this is more costly than a simple direct jump, we will see in the next section that this not the main source of overhead when following a non-local link.
+To implement the dispatch block we can exploit the switch opcode of the CLI; if the .NET JIT is smart enough, it can render it using an indirect jump; overall, jumping to a external block consists of an indirect function call (by invoking the delegate) plus an indirect jump (by executing the switch opcode); even if this is more costly than a simple direct jump, we will see in the next section that this not the main source of overhead when following a external link.
 
-Obviously, the slow dispatching logic is needed only when we want to jump to a non-local block; if the target block happens to reside in the same method as the current one, we can directly jump to it, completely removing the overhead.
+Obviously, the slow dispatching logic is needed only when we want to jump to a external block; if the target block happens to reside in the same method as the current one, we can directly jump to it, completely removing the overhead.
 
 Moreover, the dispatch blocks are emitted only if needed, i.e. if the parent graph contains at least one flexswitch; graphs without flexswitches are rendered in the obvious way, by making one method per graph.
 
 The slow bit: passing arguments
 
-Jumping to the correct block is not enough to follow a link: as we said before, each link carries a set of arguments to be passed from the source to the target block. As usual, passing arguments across local links is easy, as we can just use local variables to hold their values; on the other hand, non-local links make things more complex.
+Jumping to the correct block is not enough to follow a link: as we said before, each link carries a set of arguments to be passed from the source to the target block. As usual, passing arguments across internal links is easy, as we can just use local variables to hold their values; on the other hand, external links make things more complex.
 
 The only way to jump to a block is to invoke its containing method, so the first solution that comes to mind is to specify its input arguments as parameter of the method; however, each block has potentially a different number (and different types) of input arguments than every other block, so we need to think of something else.
 
 An alternative solution could be to compute the union of the sets of input arguments of all the blocks in the method, and use this set as a signature for the method; this way, there would be enough space to specify the input arguments for every block we might want to jump to, each block ignoring the exceeding unused parameters.
 
-Unfortunately, all the children methods must have the very same signature, as they are all called from the same calling site in the dispatch block of the main method. Since the union of the set of input arguments (and hence the computed signature) varies from method to method, this solution cannot work.
+Unfortunately, all the secondary methods must have the very same signature, as they are all called from the same calling site in the dispatch block of the main method. Since the union of the set of input arguments (and hence the computed signature) varies from method to method, this solution cannot work.
 
-We might think to determine the signature by computing the union of input arguments of all blocks in the graph; this way, all the children methods would have the same signature. But as we said above, the graph grows new blocks at runtime, so we cannot determine in advance which set of input arguments we will need.
+We might think to determine the signature by computing the union of input arguments of all blocks in the graph; this way, all the secondary methods would have the same signature. But as we said above, the graph grows new blocks at runtime, so we cannot determine in advance which set of input arguments we will need.
 
 To solve the problem we need a way to pass a variable number of arguments without knowing in advance neither their number nor their types. Thus, we use an instance of this class:
 
@@ -163,7 +177,7 @@ This solution impose a huge overhead on both writing and reading arguments:
         * when writing, we need to make sure that the arrays are big enough to contains all the arguments we need; if not, we need to allocate a bigger array. Moreover, for each argument we store into the array the virtual machine performs a bound-check, even if we know the index will never be out of bounds (because we checked the size of the array in advance);
         * when reading, the same bound-check is performed for each argument read; moreover, for each value read from the objs array we need to insert a downcast.
 
-To mitigate the performance drop, we avoid to allocate a new InputArgs object each time we do a non-local jump; instead, we preallocate one at the beginning of the main method, and reuse it all the time.
+To mitigate the performance drop, we avoid to allocate a new InputArgs object each time we do a external jump; instead, we preallocate one at the beginning of the main method, and reuse it all the time.
 
 Our benchmarks show that passing arguments in arrays is about 10 times slower than passing them as real parameter of a method. Unfortunately, we couldn't come up with anything better.
 Implement flexswitches
@@ -199,20 +213,20 @@ As shown by previous sections, the first argument of a FlexSwitchCase is the blo
 The value returned by execute is the next block id to jump to; if the value is not found in the values array, we return the default_blockid, whose value has been set before by the JIT compiler; default_blockid usually points to a block containing code to restart the JIT compiler again; when the JIT compiler restarts, it emits more code for the missing case, then calls add_case on the flexswitch; from now on, the new blocks are wired into the existing graph, and we finally managed to implement growable graphs.
 Performances
 
-As we saw, implementing growable graphs for CLI is a pain, as the virtual machine offers very little support, so we need an incredible amount of workarounds. Moreover, the code generated is much worse than what an assembly backend could produce, and the cost of following a non-local link is very high compared to local links.
+As we saw, implementing growable graphs for CLI is a pain, as the virtual machine offers very little support, so we need an incredible amount of workarounds. Moreover, the code generated is much worse than what an assembly backend could produce, and the cost of following a external link is very high compared to internal links.
 
 However, our first blog post showed that we still get very good performances; how is it possible?
 
-As usual in computer science, most of the time of a running program in spent in a tiny fraction of the code; our benchmark is no exception, and the vast majority of the time is spent in the inner loop that multiplies numbers; the graph is built in such a way that all the blocks that are part of the inner loop reside in the same method, so that all links inside are local (and fast).
+As usual in computer science, most of the time of a running program in spent in a tiny fraction of the code; our benchmark is no exception, and the vast majority of the time is spent in the inner loop that multiplies numbers; the graph is built in such a way that all the blocks that are part of the inner loop reside in the same method, so that all links inside are internal (and fast).
 
-Flexswitches and non-local links play a key role to select the right specialized implementation of the inner loop, but once it is selected they are not executed anymore until we have finished the computation.
+Flexswitches and external links play a key role to select the right specialized implementation of the inner loop, but once it is selected they are not executed anymore until we have finished the computation.
 
-It is still unclear how things will look like when we will compile the full Python language instead of a toy one; depending on the code, it could be possible to have non-local links inside the inner loop, thus making performance much worse.
+It is still unclear how things will look like when we will compile the full Python language instead of a toy one; depending on the code, it could be possible to have external links inside the inner loop, thus making performance much worse.
 Alternative implementations
 
 Before implementing the solution described here, we carefully studied a lot of possible alternatives, but all of them either didn't work because of a limitation of the virtual machine or they could work but with terrible performances.
 
-In particular, in theory it is possible to implement non-local links using tail calls, by putting each block in its own method and doing a tail call instead of a jump; this would also solve the problem of how to pass arguments, as each method could have its own signature matching the input args of the block. I would like to explain this solution in a more detailed way as I think it's really elegant and nice, but since this post is already too long, I'll stop here :-).
+In particular, in theory it is possible to implement external links using tail calls, by putting each block in its own method and doing a tail call instead of a jump; this would also solve the problem of how to pass arguments, as each method could have its own signature matching the input args of the block. I would like to explain this solution in a more detailed way as I think it's really elegant and nice, but since this post is already too long, I'll stop here :-).
 
 In theory, if the .NET JIT were smart enough it could inline and optimize away the tail calls (or at least many of those) and give us very efficient code. However, one benchmark I wrote shows that tail calls are up to 10 times slower (!!!) than normal calls, thus making impractical to use them for our purposes.
 Conclusion
