@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage[sans]{dsfont}
 \usepackage{color}
+\usepackage{ifthen}
 \usepackage{xspace}
 \usepackage{listings}
 \usepackage[pdftex]{graphicx}
@@ -15,8 +16,24 @@
 \lstset{mathescape=true,language=Java,basicstyle=\tt,keywordstyle=\bf}
 
 %\renewcommand{\baselinestretch}{.98}
-\newcommand{\dacom}[1]{{\small [{\bf DA}: #1]}}
-\newcommand{\anto}[1]{{\small [{\bf ANTO}: #1]}}
+\newboolean{showcomments}
+\setboolean{showcomments}{true}
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\nb}[2]{
+    \fbox{\bfseries\sffamily\scriptsize#1}
+    {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+   }
+   \newcommand{\version}{\emph{\scriptsize$-$Id: main.tex 19055 2008-06-05 11:20:31Z cfbolz $-$}}
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{}
+  }
+
+\newcommand\AK[1]{\nb{akuhn}{#1}}
+\newcommand\on[1]{\nb{oscar}{#1}}
+\newcommand\dacom[1]{\nb{DA}{#1}}
+\newcommand\cfbolz[1]{\nb{CFB}{#1}}
+\newcommand\anto[1]{\nb{ANTO}{#1}}
 \newcommand{\commentout}[1]{}
 
 \begin{document}
