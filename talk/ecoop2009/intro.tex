@@ -10,16 +10,19 @@ level virtual machine like CLI or JVM is easier than targeting a real CPU, but
 it still require a lot of work, as IronPython, Jython, JRuby demonstrate.
 
 Moreover, writing a static compiler is often not enough to get high
-performances; IronPython and JRuby are going in the direction of JIT compiling
+performance; IronPython and JRuby are going in the direction of JIT compiling
 specialized versions of the code depending on the actual values/types seen at
-runtime; this approach seems to work, but write it manually requires an
+runtime; this approach seems to work, but writing it manually requires an
 enormous effort.
 
-PyPy's idea is to automatize the generation of static/JIT compilers in order
-to reduce at minimun the effort required to get a fast implementation of a
+\cfbolz{we should cite the dyla paper somewhere here}
+
+PyPy's idea is to automatize the generation of JIT compilers in order
+to reduce to a minimum the effort required to get a fast implementation of a
 dynamic language; all you have to do is to write a high level specification of
-the language (by writing an interpreter), and put it through PyPy's
-translation toolchain.
+the language (by writing an interpreter), and putting it through PyPy's
+translation toolchain. The automatic generation of JIT compilers is done with
+the help of partial evaluation techniques.
 
 \subsection{PyPy and RPython}
 
@@ -49,7 +52,7 @@ efficient translation of the interpreter to low-level code.
 Compilation of the interpreter is implemented as a stepwise
 refinement by means of a translation toolchain which performs type
 analysis, code optimizations and several transformations aiming at 
-incrementally providing implementation details as memory management or the threading model.
+incrementally providing implementation details such as memory management or the threading model.
 The different kinds of intermediate codes  which are refined 
 during the translation process are all represented by a collection of control flow graphs,
 at several levels of abstractions.
@@ -60,15 +63,23 @@ corresponding backend.
 Currently, three fully developed backends are available to produce
 executable C/POSIX code, Java and CLI/.NET bytecode. 
 
-Despite the PyPy infrastructure was specifically developed 
-for Python, in fact it can be used for implementing
-other languages. Indeed, PyPy has been successfully experimented with
-several languages as Smalltalk \cite{BolzEtAl08}, JavaScript, Scheme and Prolog.
+Despite having been specifically developed for Python, the PyPy infrastructure
+can in fact be used for implementing other languages. Indeed, there were
+successful experiments of using PyPy to implement several other languages such
+as Smalltalk \cite{BolzEtAl08}, JavaScript, Scheme and Prolog.
 As suggested by Figure~\ref{pypy-fig}, a portable interpreter for a
 generic language $L$  can be
-easily developed once an abstract interpreter for $L$ is implemented in
+easily developed once an interpreter for $L$ has been implemented in
 RPython.
+
+\subsection{PyPy and JIT-Generation}
+
+This section will give a high-level overview of how the JIT-generation process
+works. More details will be given in subsequent sections.
+
 
 Another interesting feature of PyPy
 is that just-in-time compilers can be semi-automatically generated from the
 interpreter source.
+
+XXX list contributions clearly
