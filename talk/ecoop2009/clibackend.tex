@@ -62,14 +62,14 @@ Summarizing, the backend behaves in the following way:
 \begin{itemize}
 \item Each flow graph is translated in a collection of methods which
   can grow dynamically. \dacom{I propose primary/secondary instead of
-    the overloaded terms main/child} Each collection must contain at least one
+    the overloaded terms main/child} Each collection contains at least one
   method, called \emph{primary}, which is the first to be created.
   All other methods, called \emph{secondary}, are added dynamically 
   whenever a new case is added to a flexswitch.
 
-\item Each either primary or secondary method corresponds to the
-  translation of some of the blocks of a single flow graph. Each
-  method has an initial block whose input variables are the
+\item Each either primary or secondary method implements a certain
+  number of blocks, all belonging to the same flow graph. Among these blocks
+  there always exists an initial block whose input variables are
   parameters of the method; the input variables of all other blocks
   are local variables of the method.
 \end{itemize} 
@@ -81,10 +81,11 @@ so that the method can be invoked later.
 
 \subsubsection{Internal and external links}
 
-A link is called \emph{internal} if it connects two blocks implemented in the same method,
+A link is called \emph{internal} if it connects two blocks implemented
+by the same method,
  \emph{external} otherwise.
 
-Following an internal link is not difficult in CLI bytecode: a jump to
+Following an internal link is not difficult in IL bytecode: a jump to
 the corresponding code fragment in the same method is emitted 
 to execute the new block, whereas the appropriate local variables are
 used for passing arguments.
@@ -98,15 +99,15 @@ outgoing link of the block dynamically added in the right-hand side
 picture of Figure~\ref{flexswitch-fig}. How it is possible to pass the
 right arguments to the target block?
 
-To solve this problem a special block, called \emph{dispatcher}, is
-added to every method; whenever a method is invoked, its dispatcher is
-executed first\footnote{Recall that the dispatcher is a special block
-and must not be confused with the initial block of a method.} to
+To solve this problem every method contains a special code, called
+\emph{dispatcher}; whenever a method is invoked, its dispatcher is
+executed first\footnote{The dispatcher should not be
+confused with the initial block of a method.} to
 determine which block has to be executed.
 This is done by passing to the method a 32 bits number, called 
 \emph{block id}, which uniquely identifies the next block of the graph to be executed.
 The high word of a block id is the id of the method to which the block
-belongs, whereas the low word is a progressive number identifying
+belongs, whereas the low word is a progressive number univocally identifying
 each block implemented by the method.
 
 The picture in Figure~\ref{block-id-fig} shows a graph composed of three methods (for
@@ -122,50 +123,61 @@ connects two blocks implemented by different methods.
 \end{center}
 \end{figure}
 
-\commentout{
-Each method in a graph is assigned an unique 16 bit method id; each block in a method is assigned a progressive 16 bit block number. From this two numbers, we can compute the block id as an unsigned integer, by storing the method id in the first 16 bits and the block number in the second 16 bits. By construction, the block id is guaranteed to be unique in the graph.
-
-The following picture shows a graph composed of three methods; the id of each method is shown in red, while the block ids are shown in red (for the method id part) and black (for the block number part). The graph contains three external links; in particular, note the link between blocks 0x00020001 and 0x00010001 which connects two block that resides in different methods.
-
-Every method contains a special dispatch block, (not shown in the picture above) whose goal is to jump to the specified block number inside the method itself. The first argument of a secondary method is always a block id; when the method starts, it immediately jumps to the dispatch block, and thus to the desired block.
-
-For example, suppose to have a method which contains 3 blocks numbered 0, 1, 2; here is how its dispatch blocks looks like; for simplicity it is shown as C# code, but it is actually generated as IL bytecode:
-
+For instance, the code\footnote{For simplicity we write C\# code instead of
+the actual IL bytecode.} generated for the dispatcher of method \texttt{0x0002}
+is similar to the following fragment: 
+\begin{small}
+\begin{lstlisting}[language={[Sharp]C}]
 // dispatch block
-int methodid = (blockid & 0xFFFF0000) >> 16); // take the first 16 bits
-int blocknum = blockid && 0x0000FFFF;         // take the second 16 bits
-
+int methodid = (blockid && 0xFFFF0000) >> 16; 
+int blocknum = blockid && 0x0000FFFF;         
 if (methodid != MY_METHOD_ID) {
-// jump_to_unknown block
-...
+  // jump_to_ext 
+  ...
 }
-
 switch(blocknum) {
-case 0:
-goto block0;
-case 1:
-goto block1;
-case 2:
-goto block2;
-default:
-throw new Exception("Invalid block id");
+  case 0: goto block0;
+  case 1: goto block1;
+  default: throw new Exception("Invalid block id");
 }
+\end{lstlisting}
+\end{small}
+If the next block to be executed is implemented in the same method
+({\small\lstinline{methodid == MY_METHOD_ID}}), then the appropriate
+jump to the corresponding code is executed. Otherwise, the \lstinline{jump_to_ext}
+part of the dispatcher has to be executed.
+The code that actually jumps to an external block is contained in
+the dispatcher of the primary method, whereas the
+\lstinline{jump_to_ext} code of dispatchers of secondary methods
+simply delegates the dispatcher of the primary method of the same
+graph (see later).
 
-Whenever we want to jump to a external block, it is enough to store the block id in the appropriate variable and jump to the dispatch block. If the block resides in a different method, the jump_to_unknown block is entered; this special block is implemented differently by the main method and the secondary methods, as we will see soon.
-
-Each time a new method is added to the graph, we build a delegate for it, and store it in a special array called method_map; since we assign the method id sequentially starting from 0, we are sure that to fetch the method whose id is n we can simply load the n-th element of the array.
-
-The jump_to_unknown block of the main method uses this array to select the right method, and calls it (FlexSwitchCase is the type of delegates for all secondary methods):
-
-// jump_to_unknown block of the main method
+The primary method is responsible for the bookkeeping of the secondary
+methods which are added to the same graph dynamically. This can be 
+simply implemented with an array mapping method id of secondary methods
+to the corresponding delegate. Therefore, the primary methods contain
+the following \lstinline{jump_to_ext} code (where
+\lstinline{FlexSwitchCase} is the type of delegates for secondary methods):
+\begin{small}
+\begin{lstlisting}[language={[Sharp]C}] 
+// jump_to_ext
 FlexSwitchCase meth = method_map[methodid];
 blockid = meth(blockid, ...); // execute the method
 goto dispatch_block;
+\end{lstlisting}
+\end{small}
+Each secondary method returns the block id of the next block to be
+executed; therefore, after the secondary method has returned, the
+dispatcher of the primary method will be executed again to jump
+to the correct next block. 
 
-Each secondary method returns a block id specifying the next block to jump to; after its execution, we assign the return value to the blockid variable, and jump again to the dispatch block, which will jump again to the appropriate block.
+To avoid mutual recursion and an undesired growth of the stack,
+the \lstinline{jump_to_ext} code in dispatchers of secondary methods
+just returns the block id of the next block; since the primary method
+is always the first method of the graph which is called, the correct
+jump will be eventually executed by the dispatcher of the primary method.
 
-Keeping this in mind, it is straightforward to implement the jump_to_unknown block of secondary methods: it is enough to return the target block id to the caller, and let its dispatch loop do the right thing. If the caller is also a secondary method, it will return it again, until we reach the dispatch loop of the main method, which will finally do the jump. In theory, we could implement things differently and jumping directly from a secondary method to another one, but in that case the call stack could grows indefinitely in case of a tight loop between two blocks residing in different methods.
-
+\commentout{
 To implement the dispatch block we can exploit the switch opcode of the CLI; if the .NET JIT is smart enough, it can render it using an indirect jump; overall, jumping to a external block consists of an indirect function call (by invoking the delegate) plus an indirect jump (by executing the switch opcode); even if this is more costly than a simple direct jump, we will see in the next section that this not the main source of overhead when following a external link.
 
 Obviously, the slow dispatching logic is needed only when we want to jump to a external block; if the target block happens to reside in the same method as the current one, we can directly jump to it, completely removing the overhead.
@@ -265,4 +277,5 @@ Being so innovative, the problem of this approach is that the current virtual ma
 At the moment, the CLI JIT backend is almost complete, and all the hardest problems seems to be solved; the next step is to fix all the remaining bugs and implement some minor feature that it's still missing, then try to apply it to the full Python language and see what is the outcome.
 }
 
-% LocalWords:  flexswitches backend flexswitch
+% LocalWords:  flexswitches backend flexswitch methodid blockid xFFFF blocknum
+% LocalWords:  FFFF goto FlexSwitchCase meth
