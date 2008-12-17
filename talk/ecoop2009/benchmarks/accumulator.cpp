@@ -5,8 +5,8 @@
 class Accumulator
 {
  public:
-  virtual void accumulate(int x);
-  virtual int getvalue();
+  virtual void accumulate(int x) = 0;
+  virtual int getvalue() = 0;
 };
 
 class Add : public Accumulator
@@ -18,11 +18,11 @@ public:
     value = 0;
   }
 
-  void accumulate(int x)
+  virtual void accumulate(int x)
   {
     value += x;
   }
-  int getvalue()
+  virtual int getvalue()
   {
     return value;
   }
@@ -36,11 +36,11 @@ public:
   {
     value = 0;
   }
-  void accumulate(int x)
+  virtual void accumulate(int x)
   {
     value++;
   }
-  int getvalue()
+  virtual int getvalue()
   {
     return value;
   }
