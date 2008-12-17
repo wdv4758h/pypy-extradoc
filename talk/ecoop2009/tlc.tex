@@ -38,7 +38,7 @@ The virtual machine is stack-based, and provides several operations:
 
 Obviously, not all the operations are applicable to all objects. For example,
 it is not possible to \lstinline{ADD} an integer and an object, or reading an
-attribute from an object which does not provide it.  Being a dynamic language,
+attribute from an object which does not provide it.  Being dynamically typed,
 the VM needs to do all these checks at runtime; in case one of the check
 fails, the execution is simply aborted.
 
@@ -70,8 +70,7 @@ neg:
 Since reading TLC programs at bytecode level is hard, in this paper we will
 use an invented Python-like syntax to describe examples, even if we need to
 remind that the actual programs are written in the assembler language showed
-above. The following listing shows the same example as above written in the
-Python-like syntax:
+above. Thus, the example above can be written in the following way:
 
 \begin{lstlisting}
 def main(n):
