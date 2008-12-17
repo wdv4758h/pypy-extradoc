@@ -1,6 +1,7 @@
 
 #include <stdlib.h>
 #include <iostream>
+#include <sys/time.h>
 
 class Accumulator
 {
@@ -68,6 +69,15 @@ int accumulator(int n)
 
 int main(int argc, char **argv)
 {
-  int arg;
+  int arg, res;
+  struct timeval t0, t1;
+  double time;
+  
   arg = atoi(argv[1]);
+  gettimeofday(&t0, NULL);
+  res = accumulator(arg);
+  gettimeofday(&t1, NULL);
+  time = ((t1.tv_sec + ((float)t1.tv_usec / 1000000)) -
+          (t0.tv_sec + ((float)t0.tv_usec / 1000000)));
+  std::cout << "C++ " << arg << " " << time << "\n";
 }
