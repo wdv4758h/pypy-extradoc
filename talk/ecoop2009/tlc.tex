@@ -42,6 +42,35 @@ attribute from an object which does not provide it.  Being dynamically typed,
 the VM needs to do all these checks at runtime; in case one of the check
 fails, the execution is simply aborted.
 
+\subsection{TLC features}
+\label{sec:tlc-features}
+
+Despite being very simple and minimalistic, \lstinline{TLC} is a good
+candidate as a language to test our JIT generator, as it has some of the
+features that makes most of current dynamic languages so slow:
+
+\begin{itemize}
+
+\item \textbf{Stack based VM}: this kind of VM requires all the operands to be
+  on top of the evaluation stack.  As a consequence programs spend a lot of
+  time pushing and popping values to/from the stack, or doing other stack
+  related operations.  However, thanks to its simplicity this is still the
+  most common and preferred way to implement VMs.
+
+\item \textbf{Boxed integers}: integer objects are internally represented as
+  an instance of the \lstinline{IntObj} class, whose field \lstinline{value}
+  contains the real value.  By having boxed integers, common arithmetic
+  operations are made very slow, because each time we want to load/store their
+  value we need to go through an extra level of indirection.  Moreover, in
+  case of a complex expression, it is necessary to create many temporary
+  objects to hold intermediate results.
+
+\item \textbf{Dynamic lookup}: attributes and methods are looked up at
+  runtime, because there is no way to know in advance if and where an object
+  have that particular attribute or method.
+\end{itemize}
+
+
 \subsection{TLC examples}
 
 As we said above, TLC exists only at bytecode level; to ease the development
