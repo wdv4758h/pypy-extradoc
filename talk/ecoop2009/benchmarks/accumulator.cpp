@@ -79,5 +79,5 @@ int main(int argc, char **argv)
   gettimeofday(&t1, NULL);
   time = ((t1.tv_sec + ((float)t1.tv_usec / 1000000)) -
           (t0.tv_sec + ((float)t0.tv_usec / 1000000)));
-  std::cout << "C++ " << arg << " " << time << "\n";
+  std::cout << "C++ " << res << " " << time << "\n";
 }
