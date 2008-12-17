@@ -1,0 +1,47 @@
+\section{The TLC language}
+
+In this section, we will briefly describe \emph{TLC}, a simple dynamic
+language that we developed to exercise our JIT compiler generator.  As most of
+dynamic languages around, \emph{TLC} is implemented through a virtual machine
+that interprets a custom bytecode. Since our main interest is in the runtime
+performance of the VM, we did not implement the parser nor the bytecode
+compiler, but only the VM itself.
+
+TLC provides four different types:
+\begin{enumerate}
+\item Integers
+\item \lstinline{nil}, whose only value is the null value
+\item Objects
+\item Lisp-like lists
+\end{enumerate}
+
+Objects represent a collection of named attributes (much like JavaScript or
+Self) and named methods.  At creation time, it is necessary to specify the set
+of attributes of the object, as well as its methods.  Once the object has been
+created, it is not possible to add/remove attributes and methods.
+
+The virtual machine is stack-based, and provides several operations:
+
+\begin{itemize}
+\item \textbf{Stack manipulation}: standard operations to manipulate the
+  stack, such as \lstinline{PUSH}, \lstinline{POP}, \lstinline{SWAP}, etc.
+\item \textbf{Flow control} to do conditional and unconditional jumps.
+\item \textbf{Arithmetic}: numerical operations on integers, like
+  \lstinline{ADD}, \lstinline{SUB}, etc.
+\item \textbf{Comparisons} like \lstinline{EQ}, \lstinline{LT},
+  \lstinline{GT}, etc.
+\item \textbf{Object-oriented}: operations on objects: \lstinline{NEW},
+  \lstinline{GETATTR}, \lstinline{SETATTR}, \lstinline{SEND}.
+\item \textbf{List operations}: \lstinline{CONS}, \lstinline{CAR},
+  \lstinline{CDR}.
+\end{itemize}
+
+Obviously, not all the operations are applicable to all objects. For example,
+it is not possible to \lstinline{ADD} an integer and an object, or reading an
+attribute from an object which does not provide it.  Being a dynamic language,
+the VM needs to do all these checks at runtime; in case one of the check
+fails, the execution is simply aborted.
+
+\anto{should we try to invent a syntax for TLC and provide some examples?}
+\cfbolz{we should provide an example with the assembler syntax}
+
