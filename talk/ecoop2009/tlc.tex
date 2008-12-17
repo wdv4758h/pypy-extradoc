@@ -42,6 +42,40 @@ attribute from an object which does not provide it.  Being a dynamic language,
 the VM needs to do all these checks at runtime; in case one of the check
 fails, the execution is simply aborted.
 
-\anto{should we try to invent a syntax for TLC and provide some examples?}
-\cfbolz{we should provide an example with the assembler syntax}
+\subsection{TLC examples}
 
+As we said above, TLC exists only at bytecode level; to ease the development
+of TLC programs, we wrote an assembler that generates TLC bytecode. The
+following example shows a simple program that computes the absolute value of
+the given integer:
+
+\begin{lstlisting}
+main:             # stack: []
+    PUSHARG       #        [n]
+    PUSH 0        #        [n, 0]
+    LT            #        [n<0]
+    BR_COND neg
+
+pos:              #        []
+    PUSHARG       #        [n]
+    RETURN
+
+neg:
+    PUSH 0        #        [0]
+    PUSHARG       #        [0,n]
+    SUB           #        [-n]
+    RETURN
+\end{lstlisting}
+
+Since reading TLC programs at bytecode level is hard, in this paper we will
+use an invented Python-like syntax to describe examples, even if we need to
+remind that the actual programs are written in the assembler language showed
+above. The following listing shows the same example as above written in the
+Python-like syntax:
+
+\begin{lstlisting}
+def main(n):
+    if n<0:
+        return -n
+    return n
+\end{lstlisting}
