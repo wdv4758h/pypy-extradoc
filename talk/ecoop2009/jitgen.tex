@@ -16,15 +16,46 @@ dynamic compiler from an interpreter; the idea is inspired by Psyco, which
 uses the same techniques but it's manually written instead of being
 automatically generated.
 
-The original idea is by Futamura \cite{Futamura99}. He proposed to generate compilers
-from interpreters with automatic specialization, but his work has had
-relatively little practical impact so far.
-
 \subsection{Partial evaluation}
 
-Assume the Python bytecode to be constant, and constant-propagate it into the
-Python interpreter.
-\cfbolz{note to self: steal bits from the master thesis?}
+In 1971 Yoshihiko Futamura published a paper \cite{Futamura99} that proposed a
+technique to automatically transform an interpreter of a programming language
+into a compiler for the same language. This would solve the problem of having to
+write a compiler instead of a much simpler interpreter. He proposed to use
+partial evaluation to achieve this goal. He defined partial evaluation along the following lines:
+
+Given a program $P$ with $m + n$ input variables $s_1, ..., s_m$ and $d_1, ...,
+d_n$, the partial evaluation of $P$ with respect to concrete values $s'_1, ...,
+s'_m$ for the first $m$ variables is a program $P'$. The program $P'$ takes only
+the input variables $d_1, ..., d_n$ but behaves exactly like $P$ with the
+concrete values (but is hopefully more efficient). This transformation is done
+by a program $S$, the partial evaluator, which takes $P$ and $s_1, ..., s_m$ as
+input:
+
+    $$S(P, (s'_1, ..., s'_m)) = P'$$
+
+The variables $s_1, ..., s_m$ are called the \emph{static} variables, the
+variables $d_1, ..., d_n$ are called the \emph{dynamic} variables; $P'$ is the
+\emph{residual code}. Partial evaluation creates a version of $P$ that works
+only for a fixed set of inputs for the first $m$ arguments. This effect is
+called \emph{specialization}.
+
+When $P$ is an interpreter for a programming language, then the $s_1, ..., s_m$
+are chosen such that they represent the program that the interpreter is
+interpreting and the $d_1, ..., d_n$ represent the input of this program. Then
+$P'$ can be regarded as a compiled version of the program that the chosen $s'_1,
+..., s'_m$ represent, since it is a version of the interpreter that can only
+interpret this program. Now once the partial evaluator $S$ is implemented, it is
+actually enough to implement an interpreter for a new language and use $S$
+together with this interpreter to compile programs in that new language.
+
+A valid implementation for $S$ would be to just put the concrete values into $P$
+to get $P'$, which would not actually produce any performance benefits compared with
+directly using $P$. A good implementation for $S$ should instead make use of the
+information it has and evaluate all the parts of the program that actually
+depend only on the $s_1, ..., s_m$ and to remove parts of $P$ that cannot be
+reached given the concrete values.
+
 
 \cfbolz{I would propose to use either TLC as an example here, or something that
 looks at least like an interpreter loop}
@@ -102,8 +133,9 @@ approach: the generating extension is produced by transformation of the
 control flow graphs of the interpreter, guided by the binding times.  We
 call this process \emph{timeshifting}.
 
+XXX write something about the problems of classical PE?
 
-\subsection{Execution steps}
+\subsection{Partial Evaluation in PyPy}
 
 
 PyPy contains a framework for generating just-in-time compilers using
@@ -139,16 +171,20 @@ The binding-time terminology that we are using in PyPy is based on the
 colors that we use when displaying the control flow graphs:
 
 \begin{itemize}
-\item \emph{Green} variables contain values that are known at compile-time;
-\item \emph{Red} variables contain values that are not known until run-time.
+\item \emph{Green} variables contain values that are known at compile-time.
+They correspond to static arguments.
+\item \emph{Red} variables contain values that are usually not known
+compile-time. They correspond to dynamic arguments.
 \end{itemize}
 
-The binding-time analyzer of our translation tool-chain is based on the
+The binding-time analyzer of our translation tool-chain is using a simple
+abstract-interpretation based analysis. It is based on the
 same type inference engine that is used on the source RPython program,
 the annotator.  In this mode, it is called the \emph{hint-annotator}; it
 operates over input graphs that are already low-level instead of
 RPython-level, and propagates annotations that do not track types but
 value dependencies and manually-provided binding time hints.
+XXX the above needs rewriting when the background section is there
 
 The normal process of the hint-annotator is to propagate the binding
 time (i.e. color) of the variables using the following kind of rules:
@@ -196,9 +232,9 @@ knowledge of the value to be essential.  This hint is interpreted by
 the hint-annotator as a request for both \texttt{v1} and \texttt{v2} to be green.  It
 has a \emph{global} effect on the binding times: it means that not only
 \texttt{v1} but all the values that \texttt{v1} depends on – recursively –
-are forced to be green.  The hint-annotator complains if the
+are forced to be green.  The hint-annotator gives an error if the
 dependencies of \texttt{v1} include a value that cannot be green, like
-a value read out of a field of a non-immutable structure.
+a value read out of a field of a non-immutable instance.
 
 Such a need-oriented backward propagation has advantages over the
 commonly used forward propagation, in which a variable is compile-time
@@ -211,9 +247,6 @@ need-oriented approach reduces the problem of over-specialization, and
 it prevents under-specialization: an unsatisfiable \texttt{hint(v1,
 concrete=True)} is reported as an error.
 
-In our context, though, such an error can be corrected.  This is done by
-promoting a well-chosen variable among the ones that \texttt{v1} depends on.
-
 Promotion is invoked with the use of a hint as well:
 \texttt{v2 = hint(v1, promote=True)}.
 This hint is a \emph{local} request for \texttt{v2} to be green, without
@@ -221,5 +254,4 @@ requiring \texttt{v1} to be green.  Note that this amounts to copying
 a red value into a green one, which is not possible in classical
 approaches to partial evaluation.  See the Promotion section XXX ref for a
 complete discussion of promotion.
-
 
