@@ -56,36 +56,50 @@ information it has and evaluate all the parts of the program that actually
 depend only on the $s_1, ..., s_m$ and to remove parts of $P$ that cannot be
 reached given the concrete values.
 
+\begin{figure}[h]
+\label{fig:tlc-main}
+\begin{center}
+\input{tlc-simplified.py}
+\caption{The main loop of the TLC interpreter}
+\end{center}
+\end{figure}
 
-\cfbolz{I would propose to use either TLC as an example here, or something that
-looks at least like an interpreter loop}
+Let us look at an example. Figure \ref{fig:tlc-main} shows parts of the
+main-loop of the TLC interpreter (in slightly simplified form). The static
+arguments of this functions would typically be the \lstinline{code} argument
+(containing the bytecode as a string), the \lstinline{pc} argument (containing
+the initial program counter) and the \lstinline{pool} argument (containing the
+constant pool). The \lstinline{args} argument is dynamic since it contains the
+user-input of the interpreted function. Since the \lstinline{while} loop and the
+contained conditions depend only on static arguments it will typically be
+unrolled by a partial evaluator.
 
-Example::
-\begin{lstlisting}[language=Python]
-  def f(x, y):    
-    x2 = x * x    
-    y2 = y * y    
-    return x2 + y2
+When the function is partially evaluated with respect to the TLC example
+function shown in Figure XXX (which computes the absolute value of a number),
+the residual code would look like in Figure \ref{fig:tlc-folded}. This version
+is already a great improvement over pure interpretation, all the bytecode
+dispatch overhead has been removed. However, the function as shown is still
+rather inefficient, due to lots of superfluous stack handling and also due to
+some indirect calls for implementing comparison (\lstinline{lt}) and
+subtraction (\lstinline{sub}).
 
-**case x=3** ::
+\begin{figure}[h]
+\label{fig:tlc-folded}
+\begin{center}
+\input{tlc-folded.py}
+\caption{The residual code of the TLC main loop with respect to the
+\lstinline{abs} function }
+\end{center}
+\end{figure}
 
-  def f_3(y):    
-    y2 = y * y   
-    return 9 + y2
+This shows a common shortcoming of partial evaluation when applied to a dynamic
+language: The partial evaluator (just like an ahead-of-time compiler) cannot
+make assumptions about the types of objects, which leads to poor results.
+Effective dynamic compilation requires feedback of runtime information into
+compile-time. This is no different for partial evaluation.
 
-**case x=10** ::
-
-  def f_10(y):    
-    y2 = y * y   
-    return 100 + y2
-\end{lstlisting}
-
-A shortcoming of PE is that in many cases not much can be really assumed
-constant at compile-time, and this leads to poor results.  Effective dynamic
-compilation requires feedback of runtime information into compile-time; for a
-dynamic language, types are a primary example.
-
-Partial evaluation (PE) comes in two flavors:
+Partial evaluation (PE) comes in two flavors: \cfbolz{if we have space problems
+we should kill the bits about online and offline PE}
 
 \begin{itemize}
 \item \emph{On-line} partial evaluation: a compiler-like algorithm takes the
