@@ -144,7 +144,9 @@ switch(blocknum) {
 \end{small}
 If the next block to be executed is implemented in the same method
 ({\small\lstinline{methodid == MY_METHOD_ID}}), then the appropriate
-jump to the corresponding code is executed. Otherwise, the \lstinline{jump_to_ext}
+jump to the corresponding code is executed, hence internal links
+can be managed efficiently.
+Otherwise, the \lstinline{jump_to_ext}
 part of the dispatcher has to be executed.
 The code that actually jumps to an external block is contained in
 the dispatcher of the primary method, whereas the
@@ -177,105 +179,120 @@ just returns the block id of the next block; since the primary method
 is always the first method of the graph which is called, the correct
 jump will be eventually executed by the dispatcher of the primary method.
 
-\commentout{
-To implement the dispatch block we can exploit the switch opcode of the CLI; if the .NET JIT is smart enough, it can render it using an indirect jump; overall, jumping to a external block consists of an indirect function call (by invoking the delegate) plus an indirect jump (by executing the switch opcode); even if this is more costly than a simple direct jump, we will see in the next section that this not the main source of overhead when following a external link.
+Clearly this complex translation is performed only for flow graphs
+having at least one flexswitch; flow graphs without flexswitches
+are implemented in a more efficient and direct way by a unique method
+with no dispatcher.
 
-Obviously, the slow dispatching logic is needed only when we want to jump to a external block; if the target block happens to reside in the same method as the current one, we can directly jump to it, completely removing the overhead.
+\subsubsection{Passing arguments to external links}
 
-Moreover, the dispatch blocks are emitted only if needed, i.e. if the parent graph contains at least one flexswitch; graphs without flexswitches are rendered in the obvious way, by making one method per graph.
+The main drawback of our solution is that passing arguments across
+external links cannot be done efficiently by using the parameters of
+methods for the following reasons:
+\begin{itemize}
+\item In general, the number and type of arguments is different for every block in a graph;
 
-The slow bit: passing arguments
+\item The number of blocks of a graph can grow dynamically, therefore
+  it is not possible to compute in advance the union of the arguments
+  of all blocks in a graph; 
 
-Jumping to the correct block is not enough to follow a link: as we said before, each link carries a set of arguments to be passed from the source to the target block. As usual, passing arguments across internal links is easy, as we can just use local variables to hold their values; on the other hand, external links make things more complex.
+\item Since external jumps are implemented with a delegate, all the
+  secondary methods of a graph must have the same signature.
+\end{itemize}
 
-The only way to jump to a block is to invoke its containing method, so the first solution that comes to mind is to specify its input arguments as parameter of the method; however, each block has potentially a different number (and different types) of input arguments than every other block, so we need to think of something else.
-
-An alternative solution could be to compute the union of the sets of input arguments of all the blocks in the method, and use this set as a signature for the method; this way, there would be enough space to specify the input arguments for every block we might want to jump to, each block ignoring the exceeding unused parameters.
-
-Unfortunately, all the secondary methods must have the very same signature, as they are all called from the same calling site in the dispatch block of the main method. Since the union of the set of input arguments (and hence the computed signature) varies from method to method, this solution cannot work.
-
-We might think to determine the signature by computing the union of input arguments of all blocks in the graph; this way, all the secondary methods would have the same signature. But as we said above, the graph grows new blocks at runtime, so we cannot determine in advance which set of input arguments we will need.
-
-To solve the problem we need a way to pass a variable number of arguments without knowing in advance neither their number nor their types. Thus, we use an instance of this class:
-
+Therefore, the only solution we came up with is defining a class
+\lstinline{InputArgs} for passing sequences of arguments whose length
+and type is variable.
+\begin{small}
+\begin{lstlisting}[language={[Sharp]C}] 
 public class InputArgs {
-public int[] ints;
-public float[] floats;
-public object[] objs;
-...
+  public int[] ints;
+  public float[] floats;
+  public object[] objs;
+  ...
 }
+\end{lstlisting}
+\end{small}
+Unfortunately, with this solution passing arguments to external links
+becomes quite slow:
+\begin{itemize}
+\item When writing arguments, array re-allocation may be needed in
+  case the number of arguments exceeds the dimension of the
+  array. Furthermore the VM will always perform bound-checks, even
+  when the size is explicitly checked in advance;
 
-Since the fields are arrays, they can grow as needed to contain any number of arguments; arguments whose type is primitive are stored in the ints or floats array, depending on their type; arguments whose type is a reference type are stored in the objs array: it's up to each block to cast each argument back to the needed type.
+\item When reading arguments, a bound-check is performed by the VM for
+  accessing each argument; furthermore, an appropriate downcast must be
+  inserted anytime an argument of type object is read.
+\end{itemize}
+Of course, we do not need to create a new object of class
+\lstinline{InputArgs} any time we need to perform an external jump;
+instead, a unique object is created at the beginning of the execution
+of the primary method. 
 
-This solution impose a huge overhead on both writing and reading arguments:
+\subsubsection{Implementation of flexswitches}
+Finally, we can have a look at the implementation of flexswitches.
+The following snippet shows the special case of integer flexswitches.
+\begin{small}
+\begin{lstlisting}[language={[Sharp]C}] 
+public class IntLowLevelFlexSwitch:BaseLowLevelFlexSwitch {
+  public uint default_blockid = 0xFFFFFFFF;
+  public int numcases = 0;
+  public int[] values = new int[4];
+  public FlexSwitchCase[] cases = new FlexSwitchCase[4];
 
-        * when writing, we need to make sure that the arrays are big enough to contains all the arguments we need; if not, we need to allocate a bigger array. Moreover, for each argument we store into the array the virtual machine performs a bound-check, even if we know the index will never be out of bounds (because we checked the size of the array in advance);
-        * when reading, the same bound-check is performed for each argument read; moreover, for each value read from the objs array we need to insert a downcast.
+  public void add_case(int value, FlexSwitchCase c)
+  {
+    ...
+  }
 
-To mitigate the performance drop, we avoid to allocate a new InputArgs object each time we do a external jump; instead, we preallocate one at the beginning of the main method, and reuse it all the time.
-
-Our benchmarks show that passing arguments in arrays is about 10 times slower than passing them as real parameter of a method. Unfortunately, we couldn't come up with anything better.
-Implement flexswitches
-
-Now, we can exploit all this machinery to implement flexswitches, as this is our ultimate goal. As described above, the point is to be able to add new cases at runtime, each case represented as a delegate. Here is an excerpt of the C# class that implements a flexswitch that switches over an integer value:
-
-public class IntLowLevelFlexSwitch:
-{
-public uint default_blockid = 0xFFFFFFFF;
-public int numcases = 0;
-public int[] values = new int[4];
-public FlexSwitchCase[] cases = new FlexSwitchCase[4];
-
-public void add_case(int value, FlexSwitchCase c)
-{
-...
+  public uint execute(int value, InputArgs args)
+  {
+    for(int i=0; i<numcases; i++)
+    if (values[i] == value) {
+      return cases[i](0, args);
+    }
+    return default_blockid;
+  }
 }
+\end{lstlisting}
+\end{small}
+The mapping from integers values to delegates (pointing to secondary
+methods) is just implemented by the two arrays \lstinline{values} and
+\lstinline{cases}. Method \lstinline{add_case} extends the mapping
+whenever a new case is added to the flexswitch.
+  
+The most interesting part is the body of method \lstinline{execute},
+which takes a value and a set of input arguments to be passed across
+the link and jumps to the right block by performing a linear search in
+array \lstinline{values}.
 
-public uint execute(int value, InputArgs args)
-{
-for(int i=0; i<numcases; i++)
-if (values[i] == value) {
- return cases[i](0, args);
-}
-return default_blockid;
-}
-}
+Recall that the first argument of delegate \lstinline{FlexSwitchCase}
+is the block id to jump to; since the target of an external jump is
+always the initial block of the method, the first argument will be
+always 0.
 
-For each case, we store both the triggering value and the corresponding delegate; the add_case method takes care to append value and c to the values and cases arrays, respectively (and resize them if necessary). The interesting bit is the execute method: it takes a value and a set of input arguments to be passed across the link and jumps to the right block by performing a linear search in the values array.
+The value returned by method \lstinline{execute} is the next block id
+to be executed; 
+in case no association is found for \lstinline{value},
+\lstinline{default_blockid} is returned. The value of
+\lstinline{default_blockid} is initially set by the JIT compiler and
+usually corresponds to a block containing code to restart the JIT
+compiler for creating a new secondary method with the new code for the
+missing case, and updating the flexswitch by calling method
+\lstinline{add_case}.
 
-As shown by previous sections, the first argument of a FlexSwitchCase is the block id to jump to; since when we go through a flexswitch we always want to jump to the first block of the method, we pass the special value 0 as a block id, which precisely means jump to the first block. This little optimization let us not to have to explicitly store the block id for the first block of all the cases.
-
-The value returned by execute is the next block id to jump to; if the value is not found in the values array, we return the default_blockid, whose value has been set before by the JIT compiler; default_blockid usually points to a block containing code to restart the JIT compiler again; when the JIT compiler restarts, it emits more code for the missing case, then calls add_case on the flexswitch; from now on, the new blocks are wired into the existing graph, and we finally managed to implement growable graphs.
-Performances
-
-As we saw, implementing growable graphs for CLI is a pain, as the virtual machine offers very little support, so we need an incredible amount of workarounds. Moreover, the code generated is much worse than what an assembly backend could produce, and the cost of following a external link is very high compared to internal links.
-
-However, our first blog post showed that we still get very good performances; how is it possible?
-
-As usual in computer science, most of the time of a running program in spent in a tiny fraction of the code; our benchmark is no exception, and the vast majority of the time is spent in the inner loop that multiplies numbers; the graph is built in such a way that all the blocks that are part of the inner loop reside in the same method, so that all links inside are internal (and fast).
-
-Flexswitches and external links play a key role to select the right specialized implementation of the inner loop, but once it is selected they are not executed anymore until we have finished the computation.
-
-It is still unclear how things will look like when we will compile the full Python language instead of a toy one; depending on the code, it could be possible to have external links inside the inner loop, thus making performance much worse.
-Alternative implementations
-
+\subsection{Alternative implementations}
+\dacom{need to be discussed with Antonio}
+\commentout{
 Before implementing the solution described here, we carefully studied a lot of possible alternatives, but all of them either didn't work because of a limitation of the virtual machine or they could work but with terrible performances.
 
-In particular, in theory it is possible to implement external links using tail calls, by putting each block in its own method and doing a tail call instead of a jump; this would also solve the problem of how to pass arguments, as each method could have its own signature matching the input args of the block. I would like to explain this solution in a more detailed way as I think it's really elegant and nice, but since this post is already too long, I'll stop here :-).
+In particular, in theory it is possible to implement external links using tail calls, by putting each block in its own method and doing a tail call instead of a jump; this would also solve the problem of how to pass arguments, as each method could have its own signature matching the input args of the block. I would like to explain this solution in a more detailed way as I think it's really elegant and nice.
 
 In theory, if the .NET JIT were smart enough it could inline and optimize away the tail calls (or at least many of those) and give us very efficient code. However, one benchmark I wrote shows that tail calls are up to 10 times slower (!!!) than normal calls, thus making impractical to use them for our purposes.
-Conclusion
-
-Despite the complexity of the implementation, our result are extremely good; the speedup we got is impressive, and it proves that PyPy's approach to JIT compiler can work well also on top of object oriented virtual machines like .NET or the JVM.
-
-Generating bytecode for those machine at runtime is not a new idea; Jython, IronPython, JRuby and other languages have been doing this for years. However, Jython and IronPython do only a simple "static" translation, which doesn't take advantage of the informations gathered at runtime to generate better, faster and specialized code. Recently, JRuby grew a new strategy to JIT-compile only hotspots, taking advantage of some informations gathered while interpreting the code; this is still a "one-shot" compilation, where the compiled code does not change over time.
-
-To my knowledge, PyPy brings the first example of a language which implements a truly JIT compiler on top of the underlying JIT compiler of the virtual machine, emitting bytecode that changes and adapts over the time. If someone knows other languages doing that, I would really like to know more.
-
-Being so innovative, the problem of this approach is that the current virtual machines are not designed to support it in a native way, and this forces us to put a lot of workarounds that slow down the generated code. The hope is that in the future the virtual machines will grow features that help us to generate such kind of code. The experimental Da Vinci VM seems to go in the right direction, so it is possible that in the future I will try to write a JIT backend for it.
-
-At the moment, the CLI JIT backend is almost complete, and all the hardest problems seems to be solved; the next step is to fix all the remaining bugs and implement some minor feature that it's still missing, then try to apply it to the full Python language and see what is the outcome.
 }
 
 % LocalWords:  flexswitches backend flexswitch methodid blockid xFFFF blocknum
-% LocalWords:  FFFF goto FlexSwitchCase meth
+% LocalWords:  FFFF goto FlexSwitchCase meth InputArgs ints objs VM uint args
+% LocalWords:  IntLowLevelFlexSwitch BaseLowLevelFlexSwitch xFFFFFFFF numcases
+% LocalWords:  JIT
