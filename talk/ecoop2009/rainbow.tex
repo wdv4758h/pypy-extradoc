@@ -26,8 +26,8 @@ TODO
 
 In the sequel, we describe in more details one of the main new
 techniques introduced in our approach, which we call \emph{promotion}.  In
-short, it allows an arbitrary run-time value to be turned into a
-compile-time value at any point in time.  Promotion is thus the central way by
+short, it allows an arbitrary run-time (i.e. red) value to be turned into a
+compile-time (i.e. green) value at any point in time.  Promotion is thus the central way by
 which we make use of the fact that the JIT is running interleaved with actual
 program execution. Each promotion point is explicitly defined with a hint that
 must be put in the source code of the interpreter.
@@ -46,14 +46,14 @@ Promotion requires interleaving compile-time and run-time phases,
 otherwise the compiler can only use information that is known ahead of
 time. It is impossible in the "classical" approaches to partial
 evaluation, in which the compiler always runs fully ahead of execution
-This is a problem in many large use cases.  For example, in an
+This is a problem in many realistic use cases.  For example, in an
 interpreter for a dynamic language, there is mostly no information
 that can be clearly and statically used by the compiler before any
 code has run.
 
-A very different point of view on promotion is as a generalization of
-techniques that already exist in dynamic compilers as found in modern
-object-oriented language virtual machines.  In this context feedback
+A very different point of view on promotion is as a generalization of techniques
+that already exist in dynamic compilers as found in modern virtual machines for
+object-oriented language.  In this context feedback
 techniques are crucial for good results.  The main goal is to
 optimize and reduce the overhead of dynamic dispatching and indirect
 invocation.  This is achieved with variations on the technique of
@@ -66,38 +66,37 @@ better optimization results.
 In the presence of promotion, dispatch optimization can usually be
 reframed as a partial evaluation task.  Indeed, if the type of the
 object being dispatched to is known at compile-time, the lookup can be
-folded, and only a (possibly inlined) direct call remains in the
+folded, and only a (possibly even inlined) direct call remains in the
 generated code.  In the case where the type of the object is not known
 at compile-time, it can first be read at run-time out of the object and
 promoted to compile-time.  As we will see in the sequel, this produces
-very similar machine code \footnote{This can also be seen as a generalization of
+machine code very similar to that of polymorphic inline
+caches\footnote{Promotion can also be seen as a generalization of
 a partial evaluation transformation called "The Trick" (see e.g. \cite{XXX}),
 which again produces similar code but which is only applicable for finite sets
 of values.}.
 
-The essential advantage is that it is no longer tied to the details of
+The essential advantage of promotion is that it is no longer tied to the details of
 the dispatch semantics of the language being interpreted, but applies in
 more general situations.  Promotion is thus the central enabling
 primitive to make partial evaluation a practical approach to language
 independent dynamic compiler generation.
 
-\subsection{Promotion as Applied to the TLC}
+\subsection{Implementing Promotion}
 
-XXX
+The implementation of promotion requires a tight coupling between
+compile-time and run-time: a \emph{callback}, put in the generated code,
+which can invoke the compiler again.  When the callback is actually
+reached at run-time, and only then, the compiler resumes and uses the
+knowledge of the actual run-time value to generate more code.
 
-\subsection{Promotion in Practise}
+The new generated code is potentially different for each run-time value
+seen.  This implies that the generated code needs to contain some sort
+of updatable switch, which can pick the right code path based on the
+run-time value.
 
-There are values that, if known at compile time, allow the JIT compiler to
-produce very efficient code.  Unfortunately, these values are tipically red,
-e.g. the exact type of a variable.
-
-"Promotion" is a particular operation that convert a red value into a green
-value; i.e., after the promotion of a variable, the JIT compiler knows its
-value at compile time. Since the value of a red variable is not known until
-runtime, we need to postpone the compilation phase after the runtime phase.
-
-This is done by continuously intermixing compile time and runtime; a promotion
-is implemented in this way:
+\cfbolz{I think this example is confusing, it is unclear in which order things
+happen how. I will try to come up with something different}.
 
 \begin{itemize}
   \item (compile time): the rainbow interpreter produces machine code until it
@@ -138,32 +137,27 @@ is implemented in this way:
     unhandled promotion point is reached.
 \end{itemize}
 
+\subsection{Promotion as Applied to the TLC}
+
+XXX maybe a tlc example can be used for the example above?
+
+
 \section{Automatic Unboxing of Intermediate Results}
 
 XXX the following section needs a rewriting to be much more high-level and to
 compare more directly with classical escape analysis
 
-Interpreters for dynamic languages typically allocate a lot of small
-objects, for example due to boxing.  For this reason, we
-implemented a way for the compiler to generate residual memory
-allocations as lazily as possible.  The idea is to try to keep new
-run-time structures "exploded": instead of a single run-time pointer to
-a heap-allocated data structure, the structure is "virtualized" as a set
-of fresh variables, one per field.  In the compiler, the variable that
-would normally contain the pointer to the structure gets instead a
-content that is neither a run-time value nor a compile-time constant,
-but a special \emph{virtual structure} – a compile-time data structure that
-recursively contains new variables, each of which can again store a
-run-time, a compile-time, or a virtual structure value.
-
-This approach is based on the fact that the "run-time values" carried
-around by the compiler really represent run-time locations – the name of
-a CPU register or a position in the machine stack frame.  This is the
-case for both regular variables and the fields of virtual structures.
-It means that the compilation of a \texttt{getfield} or \texttt{setfield}
-operation performed on a virtual structure simply loads or stores such a
-location reference into the virtual structure; the actual value is not
-copied around at run-time.
+Interpreters for dynamic languages typically continuously allocate a lot of small
+objects, for example due to boxing. This makes arithmetic operations extremely
+inefficient. For this reason, we
+implemented a way for the compiler to try to avoid memory allocations in the
+residual code as long as possible. The idea is to try to keep new
+run-time structures "exploded": instead of a single run-time object allocated on
+the heap, the object is "virtualized" as a set
+of fresh variables, one per field. Only when the object can be accessed by from
+somewhere else is it actually allocated on the heap. The effect of this is similar to that of
+escape analysis \cite{XXX}, which also prevents allocations of objects that can
+be proven to not escape a method or set of methods.
 
 It is not always possible to keep structures virtual.  The main
 situation in which it needs to be "forced" (i.e. actually allocated at
@@ -172,8 +166,10 @@ a field of a real heap structure.
 
 Virtual structures still avoid the run-time allocation of most
 short-lived objects, even in non-trivial situations.  The following
-example shows a typical case.  Consider the Python expression \texttt{a+b+c}.
-Assume that \texttt{a} contains an integer.  The PyPy Python interpreter
+example shows a typical case.  XXX use TLC example
+
+
+The PyPy Python interpreter
 implements application-level integers as boxes – instances of a
 \texttt{W\_IntObject} class with a single \texttt{intval} field.  Here is the
 addition of two integers:
@@ -187,6 +183,7 @@ XXX needs to use TLC examples
         return W_IntObject(result)
 \end{verbatim}
 
+XXX kill the rest?!‽
 When interpreting the bytecode for \texttt{a+b+c}, two calls to \texttt{add()} are
 issued; the intermediate \texttt{W\_IntObject} instance is built by the first
 call and thrown away after the second call.  By contrast, when the
