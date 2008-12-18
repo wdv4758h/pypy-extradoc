@@ -235,13 +235,13 @@ Probably, the C\# code is slower because:
 \item The object is still allocated on the heap, and thus there is an extra
   level of indirection to access the \lstinline{value} field.
 \item The method call is optimized through a \emph{polymorphic inline cache}
-  (XXX: citation needed), that requires a guard check at each iteration.
+  \cite{hoelzle_optimizing_1991}, that requires a guard check at each iteration.
 \end{itemize}
 
 \anto{maybe we should move the following paragraph to
   abstract/introduction/conclusion?}
 
-Despite being only a microbenchark, this result is very important as it proves
+Despite being only a microbenchmarks, this result is very important as it proves
 that our strategy of intermixing compile time and runtime can yield to better
 performances than current techniques.  The result is even more impressive if
 we consider dynamically typed languages as TLC are usually considered much

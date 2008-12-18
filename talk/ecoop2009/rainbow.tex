@@ -57,7 +57,7 @@ object-oriented language.  In this context feedback
 techniques are crucial for good results.  The main goal is to
 optimize and reduce the overhead of dynamic dispatching and indirect
 invocation.  This is achieved with variations on the technique of
-polymorphic inline caches \cite{XXX}: the dynamic lookups are cached and
+polymorphic inline caches \cite{hoelzle_optimizing_1991}: the dynamic lookups are cached and
 the corresponding generated machine code contains chains of
 compare-and-jump instructions which are modified at run-time.  These
 techniques also allow the gathering of information to direct inlining for even
@@ -71,10 +71,7 @@ generated code.  In the case where the type of the object is not known
 at compile-time, it can first be read at run-time out of the object and
 promoted to compile-time.  As we will see in the sequel, this produces
 machine code very similar to that of polymorphic inline
-caches\footnote{Promotion can also be seen as a generalization of
-a partial evaluation transformation called "The Trick" (see e.g. \cite{XXX}),
-which again produces similar code but which is only applicable for finite sets
-of values.}.
+caches.
 
 The essential advantage of promotion is that it is no longer tied to the details of
 the dispatch semantics of the language being interpreted, but applies in
