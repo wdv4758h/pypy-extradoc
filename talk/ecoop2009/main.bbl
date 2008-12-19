@@ -11,7 +11,8 @@ D.~Ancona, M.~Ancona, A~Cuni, and N.~Matsakis.
 \bibitem{BolzEtAl08}
 C.~F. Bolz, A.~Kuhn, A.~Lienhard, N.~D. Matsakis, O.~Nierstrasz, L.~Renggli,
   A.~Rigo, and T.~Verwaest.
-\newblock Back to the future in one week - implementing a smalltalk vm in pypy.
+\newblock Back to the future in one week - implementing a smalltalk vm in
+  {P}y{P}y.
 \newblock In {\em Self-Sustaining Systems, First Workshop, S3 2008, Potsdam,
   Revised Selected Papers}, volume 5146 of {\em Lecture Notes in Computer
   Science}, pages 123--139, 2008.
@@ -20,6 +21,13 @@ C.~F. Bolz, A.~Kuhn, A.~Lienhard, N.~D. Matsakis, O.~Nierstrasz, L.~Renggli,
 Yoshihiko Futamura.
 \newblock Partial evaluation of computation process, revisited.
 \newblock {\em Higher Order Symbol. Comput.}, 12(4):377--380, 1999.
+
+\bibitem{hoelzle_optimizing_1991}
+Urs H{\"o}lzle, Craig Chambers, and David Ungar.
+\newblock Optimizing dynamically-typed object-oriented languages with
+  polymorphic inline caches.
+\newblock In {\em Proceedings of the European Conference on Object-Oriented
+  Programming}, pages 21--38. Springer-Verlag, 1991.
 
 \bibitem{RigoPedroni06}
 A.~Rigo and S.~Pedroni.

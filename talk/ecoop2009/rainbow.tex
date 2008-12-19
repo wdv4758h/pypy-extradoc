@@ -23,6 +23,7 @@ possible}
 TODO
 
 \section{Promotion}
+\label{sec:promotion}
 
 In the sequel, we describe in more details one of the main new
 techniques introduced in our approach, which we call \emph{promotion}.  In
@@ -164,13 +165,9 @@ a field of a real heap structure.
 
 Virtual structures still avoid the run-time allocation of most
 short-lived objects, even in non-trivial situations.  The following
-example shows a typical case.  XXX use TLC example
-
-
-The PyPy Python interpreter
-implements application-level integers as boxes – instances of a
-\texttt{W\_IntObject} class with a single \texttt{intval} field.  Here is the
-addition of two integers:
+example shows a typical case.  The TLC interpreter implements application-level
+integers as boxes – instances of an \texttt{IntObject} class with a single
+field.
 
 XXX needs to use TLC examples
 \begin{verbatim}
