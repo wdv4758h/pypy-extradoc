@@ -188,6 +188,8 @@ class IntObj(Obj):
     ...
     def lt(self, other): 
         return self.value < other.int_o()
+    def int_o(self):
+        return self.value
 \end{lstlisting}
 \caption{Excerpt of the \lstlisting{IntObj} class}
 \label{fig:tlc-intobj}
@@ -233,7 +235,7 @@ def interp_eval_abs(args):
     switch cls_a:
         IntObj:
             hint(b, promote_class=True)
-            v0 = IntObj(a.value < b.int_o())
+            v0 = IntObj(b.value < a.value)
             ...
         default: 
             continue_compilation(jitstate, cls_a)
@@ -243,25 +245,29 @@ def interp_eval_abs(args):
 \end{center}
 \end{figure}
 
-The first time the flexswitch is executed, the \lstlisting{default} branch is
-taken, and the special function \lstlisting{continue_compilation} restarts the
-JIT compiler, passing it the just-seen value of \lstlisting{cls_a}.  The JIT
+The first time the flexswitch is executed, the \lstinline{default} branch is
+taken, and the special function \lstinline{continue_compilation} restarts the
+JIT compiler, passing it the just-seen value of \lstinline{cls_a}.  The JIT
 compiler generates new specialized code, and \emph{patches} the flexswitch to
 add the new case, which is then executed.
 
-If later an instance of \lstlisting{IntObj} hits the flexswitch again, the
+If later an instance of \lstinline{IntObj} hits the flexswitch again, the
 code is executed without needing of more calls to the JIT compiler.  On the
 other hand, if the flexswitch is hit by an instance of some other class, the
-\lstlisting{default} branch will be selected again and the whole process will
+\lstinline{default} branch will be selected again and the whole process will
 restart.
 
-Now, let us examine the content of the \lstlisting{IntObj} case: first, there
-is a hint to promote the class of \lstlisting{b}.  Although in general
+Now, let us examine the content of the \lstinline{IntObj} case: first, there
+is a hint to promote the class of \lstinline{b}.  Although in general
 promotion is implemented through a flexswitch, in this case it is not needed
-as \lstlisting{b} holds a \emph{virtual instance}, whose class is already
+as \lstinline{b} holds a \emph{virtual instance}, whose class is already
 known (as described in previous section).
 
+Then, the compiler knows the exact class of \lstinline{b}, thus it can inline
+the calls to \lstinline{lt}.  Moreover, inside \lstinline{lt} there is a
+call to \lstinline{a.int_o()}, which is inlined as well for the very same
+reason.
 
-%since at this
-%point we know the exact class of \lstinline{a} as we can see, the body of the
-%\lstlisting{IntObj.lt} method has been inlined,
+Moreover, as we saw in section \ref{sec:virtuals}, the \lstinline{IntObj}
+instance can be virtualized, so that the subsequent \lstinline{BR_COND} opcode
+can be compiled efficiently without needing any more flexswitch.
