@@ -170,5 +170,87 @@ is shown in figure \ref{fig:tlc-main-hints}.
 \end{center}
 \end{figure}
 
+\begin{figure}[h]
+\begin{center}
+\begin{lstlisting}[language=Python]
+class IntObj(Obj):
+    ...
+    def lt(self, other): 
+        return self.value < other.int_o()
+\end{lstlisting}
+\caption{Excerpt of the \lstlisting{IntObj} class}
+\label{fig:tlc-intobj}
+\end{center}
+\end{figure}
+
 By promoting the class of \lstlisting{a} and \lstlisting{b}, we tell the JIT
 compiler not to generate code until it knows the exact RPython class of both.
+Figure \ref{fig:tlc-abs-promotion-1} shows the
+code \footnote{\lstinline{switch} is not a legal (R)Python statement, it is
+  used here only as a pseudocode example} generated while compiling the usual
+\lstlisting{abs} function: note that, compared to figure
+\ref{fig:tlc-folded-virtualized}, the code stops just before the calls
+\lstlisting{b.lt(a)}.
+
+\begin{figure}[h]
+\begin{center}
+\begin{lstlisting}[language=Python]
+def interp_eval_abs(args):
+    v0 = args[0]
+    v1 = IntObj(0)
+    a, b = v0, v1
+    hint(a, promote_class=True) # no-op
+    cls_a = a.__class__
+    switch cls_a:
+        default: 
+            continue_compilation(jitstate, cls_a)
+\end{lstlisting}
+\caption{Promotion example 1}
+\label{fig:tlc-abs-promotion-1}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\begin{lstlisting}[language=Python]
+def interp_eval_abs(args):
+    v0 = args[0]
+    v1 = IntObj(0)
+    a, b = v0, v1
+    hint(a, promote_class=True) # no-op
+    cls_a = a.__class__
+    switch cls_a:
+        IntObj:
+            hint(b, promote_class=True)
+            v0 = IntObj(a.value < b.int_o())
+            ...
+        default: 
+            continue_compilation(jitstate, cls_a)
+\end{lstlisting}
+\caption{Promotion example 2}
+\label{fig:tlc-abs-promotion-2}
+\end{center}
+\end{figure}
+
+The first time the flexswitch is executed, the \lstlisting{default} branch is
+taken, and the special function \lstlisting{continue_compilation} restarts the
+JIT compiler, passing it the just-seen value of \lstlisting{cls_a}.  The JIT
+compiler generates new specialized code, and \emph{patches} the flexswitch to
+add the new case, which is then executed.
+
+If later an instance of \lstlisting{IntObj} hits the flexswitch again, the
+code is executed without needing of more calls to the JIT compiler.  On the
+other hand, if the flexswitch is hit by an instance of some other class, the
+\lstlisting{default} branch will be selected again and the whole process will
+restart.
+
+Now, let us examine the content of the \lstlisting{IntObj} case: first, there
+is a hint to promote the class of \lstlisting{b}.  Although in general
+promotion is implemented through a flexswitch, in this case it is not needed
+as \lstlisting{b} holds a \emph{virtual instance}, whose class is already
+known (as described in previous section).
+
+
+%since at this
+%point we know the exact class of \lstinline{a} as we can see, the body of the
+%\lstlisting{IntObj.lt} method has been inlined,
