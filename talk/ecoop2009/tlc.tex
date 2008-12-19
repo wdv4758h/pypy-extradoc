@@ -21,7 +21,8 @@ TLC provides four different types:
 Objects represent a collection of named attributes (much like JavaScript or
 Self) and named methods.  At creation time, it is necessary to specify the set
 of attributes of the object, as well as its methods.  Once the object has been
-created, it is not possible to add/remove attributes and methods.
+created, it is possible to call methods and read or write attributes, but not
+to add or remove them.
 
 The interpreter for the language is stack-based and uses bytecode to represent
 the program. It provides the following bytecode instructions:
@@ -47,10 +48,8 @@ attribute from an object which does not provide it.  Being dynamically typed,
 the VM needs to do all these checks at runtime; in case one of the check
 fails, the execution is simply aborted.
 
-\subsection{TLC features}
-\label{sec:tlc-features}
-\cfbolz{calling this sections "features" is a bit obscure, since it is more
-properties of the implementation}
+\subsection{TLC properties}
+\label{sec:tlc-properties}
 
 Despite being very simple and minimalistic, \lstinline{TLC} is a good
 candidate as a language to test our JIT generator, as it has some of the
