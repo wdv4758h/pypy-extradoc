@@ -13,5 +13,5 @@ def interp_eval_abs(args):
         v1 = args[0]      #         [v0, v1]
         a, b = v0, v1     #         []
         v0 = b.sub(a)     #         [v0]
-        return v
+        return v0
 \end{lstlisting}
