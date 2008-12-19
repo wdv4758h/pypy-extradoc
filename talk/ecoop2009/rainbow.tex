@@ -19,40 +19,34 @@ be proven to not escape a method or set of methods.
 It is not always possible to keep structures virtual.  The main
 situation in which it needs to be "forced" (i.e. actually allocated at
 run-time) is when the pointer escapes to some non-virtual location like
-a field of a real heap structure.
+a field of a real heap structure.  Virtual structures still avoid the run-time
+ allocation of most short-lived objects, even in non-trivial situations.  
 
-Virtual structures still avoid the run-time allocation of most
-short-lived objects, even in non-trivial situations.  The following
-example shows a typical case.  The TLC interpreter implements application-level
-integers as boxes – instances of an \texttt{IntObject} class with a single
-field.
+In addition to virtual structures, the compiler can also handle virtual
+containers, namely lists and dictionaries \footnote{(R)Python's dictionaries
+  are equivalent to .NET \lstinline{Hashtable}s}.  If the indexing operations
+can be evaluated at compile-time (i.e., if the variables holding the indexes
+are green), the compiler internally keeps track of the state of the container
+and store the items as local variables.
 
+Look again at figure \ref{fig:tlc-folded}: the list in the \lstinline{stack}
+variable never escapes from the function.  Moreover, all the indexing
+operations (either done explicitly or implicitly by \lstinline{append} and
+\lstinline{pop}) are evaluable at compile-time.  Thus, the list is kept
+\emph{virtual} and its elements are stored in variables $v_n$, where $n$
+represents the index in the list.  Figure \ref{fig:tlc-folded-virtualized}
+show how the resulting code looks like; to ease the reading, the state of the
+\lstinline{stack} as kept by the compiler is shown in the comments.
 
-The PyPy Python interpreter
-implements application-level integers as boxes – instances of a
-\texttt{W\_IntObject} class with a single \texttt{intval} field.  Here is the
-addition of two integers:
-
-XXX needs to use TLC examples
-\begin{verbatim}
-    def add(w1, w2):            # w1, w2 are W_IntObject instances
-        value1 = w1.intval
-        value2 = w2.intval
-        result = value1 + value2
-        return W_IntObject(result)
-\end{verbatim}
+\begin{figure}[h]
+\begin{center}
+\input{tlc-folded-virtualized.py}
+\caption{The result of virtualizing the \lstinline{stack} list}
+\label{fig:tlc-main}
+\end{center}
+\end{figure}
 
 XXX kill the rest?!‽
-When interpreting the bytecode for \texttt{a+b+c}, two calls to \texttt{add()} are
-issued; the intermediate \texttt{W\_IntObject} instance is built by the first
-call and thrown away after the second call.  By contrast, when the
-interpreter is turned into a compiler, the construction of the
-\texttt{W\_IntObject} object leads to a virtual structure whose \texttt{intval}
-field directly references the register in which the run-time addition
-put its result.  This location is read out of the virtual structure at
-the beginning of the second \texttt{add()}, and the second run-time addition
-directly operates on the same register.
-
 An interesting effect of virtual structures is that they play nicely with
 promotion.  Indeed, before the interpreter can call the proper \texttt{add()}
 function for integers, it must first determine that the two arguments
