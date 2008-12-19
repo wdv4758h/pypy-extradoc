@@ -57,25 +57,6 @@ because it avoids the allocation of unneeded temporary objects, but also
 because it makes possible to optimize method calls on them, as the JIT
 compiler knows their exact type in advance.
 
-XXX kill the rest?!‽
-An interesting effect of virtual structures is that they play nicely with
-promotion.  Indeed, before the interpreter can call the proper \texttt{add()}
-function for integers, it must first determine that the two arguments
-are indeed integer objects.  In the corresponding dispatch logic, we
-have added two hints to promote the type of each of the two arguments.
-This produces a compiler that has the following behavior: in the general
-case, the expression \texttt{a+b} will generate two consecutive run-time
-switches followed by the residual code of the proper version of
-\texttt{add()}.  However, in \texttt{a+b+c}, the virtual structure representing
-the intermediate value will contain a compile-time constant as type.
-Promoting a compile-time constant is trivial – no run-time code is
-generated.  The whole expression \texttt{a+b+c} thus only requires three
-switches instead of four.  It is easy to see that even more switches can
-be skipped in larger examples; typically, in a tight loop manipulating
-only integers, all objects are virtual structures for the compiler and
-the residual code is theoretically optimal – all type propagation and
-boxing/unboxing occurs at compile-time.
-
 
 \section{Promotion}
 \label{sec:promotion}
@@ -144,9 +125,9 @@ This hint is a \emph{local} request for \texttt{v2} to be green, without
 requiring \texttt{v1} to be green.  Note that this amounts to copying
 a red value into a green one, which is not possible in classical
 approaches to partial evaluation. A slightly different hint can be used to
-promote the \emph{class} of an instance. This is done with \lstinline{hint(v1,
-promote_class=True)}. It does not have an effect on the bindings of any
-variable.
+promote the \emph{class} of an instance. This is done with
+\lstinline{hint(v1, promote_class=True)}. It does not have an effect on the
+bindings of any variable.
 
 
 \subsection{Implementing Promotion}
@@ -164,12 +145,22 @@ run-time value.
 
 Let us look again at the TLC example.  To ease the reading, figure
 \ref{fig:tlc-main} showed a simplified version of TLC's main loop, which did
-not include the hints.  The real implementation of the \lstinline{LT} opcode
-is shown in figure \ref{fig:tlc-main-hints}.
+not include the hints.  The implementation of the \lstinline{LT} opcode with
+hints added is shown in figure \ref{fig:tlc-main-hints}.
 
 \begin{figure}[h]
 \begin{center}
 \begin{lstlisting}[language=Python]
+def interp_eval(code, pc, args, pool):
+    code_len = len(code)
+    stack = []
+    while pc < code_len:
+        opcode = ord(code[pc])
+        opcode = hint(opcode, promote_class=True)
+        pc += 1
+
+        if opcode == PUSH:
+            ...
         elif opcode == LT:
             a, b = stack.pop(), stack.pop()
             hint(a, promote_class=True)
@@ -188,22 +179,24 @@ class IntObj(Obj):
     ...
     def lt(self, other): 
         return self.value < other.int_o()
+    def sub(self, other):
+        return IntObj(self.value - other.int_o())
     def int_o(self):
         return self.value
 \end{lstlisting}
-\caption{Excerpt of the \lstlisting{IntObj} class}
+\caption{Excerpt of the \lstinline{IntObj} class}
 \label{fig:tlc-intobj}
 \end{center}
 \end{figure}
 
-By promoting the class of \lstlisting{a} and \lstlisting{b}, we tell the JIT
+By promoting the class of \lstinline{a} and \lstinline{b}, we tell the JIT
 compiler not to generate code until it knows the exact RPython class of both.
 Figure \ref{fig:tlc-abs-promotion-1} shows the
 code \footnote{\lstinline{switch} is not a legal (R)Python statement, it is
   used here only as a pseudocode example} generated while compiling the usual
-\lstlisting{abs} function: note that, compared to figure
+\lstinline{abs} function: note that, compared to figure
 \ref{fig:tlc-folded-virtualized}, the code stops just before the calls
-\lstlisting{b.lt(a)}.
+\lstinline{b.lt(a)}.
 
 \begin{figure}[h]
 \begin{center}
@@ -212,7 +205,7 @@ def interp_eval_abs(args):
     v0 = args[0]
     v1 = IntObj(0)
     a, b = v0, v1
-    hint(a, promote_class=True) # no-op
+    # hint(a, promote_class=True) implemented as follows:
     cls_a = a.__class__
     switch cls_a:
         default: 
@@ -230,13 +223,20 @@ def interp_eval_abs(args):
     v0 = args[0]
     v1 = IntObj(0)
     a, b = v0, v1
-    hint(a, promote_class=True) # no-op
+    # hint(a, promote_class=True) implemented as follows:
     cls_a = a.__class__
     switch cls_a:
         IntObj:
-            hint(b, promote_class=True)
+            # hint(b, promote_class=True) needs no code
             v0 = IntObj(b.value < a.value)
-            ...
+            if v0.value:
+                return a
+            else:
+                v0 = IntObj(0)
+                v1 = args[0]
+                a, b = v0, v1
+                v0 = IntObj(b.value - a.value)
+                return v0
         default: 
             continue_compilation(jitstate, cls_a)
 \end{lstlisting}
