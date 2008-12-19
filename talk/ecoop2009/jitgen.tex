@@ -60,7 +60,7 @@ reached given the concrete values.
 \label{fig:tlc-main}
 \begin{center}
 \input{tlc-simplified.py}
-\caption{The main loop of the TLC interpreter}
+\caption{The main loop of the TLC interpreter, written in RPython}
 \end{center}
 \end{figure}
 
@@ -194,7 +194,7 @@ compile-time. They correspond to dynamic arguments.
 The binding-time analyzer of our translation tool-chain is using a simple
 abstract-interpretation based analysis. It is based on the
 same type inference engine that is used on the source RPython program,
-the annotator.  In this mode, it is called the \emph{hint-annotator}; it
+the annotator \anto{I'm not sure we should mention the annotator, as it is not referred anywhere else}.  In this mode, it is called the \emph{hint-annotator}; it
 operates over input graphs that are already low-level instead of
 RPython-level, and propagates annotations that do not track types but
 value dependencies and manually-provided binding time hints.

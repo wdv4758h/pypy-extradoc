@@ -52,17 +52,13 @@ virtual machines as those for .NET and Java.
 Since in .NET methods are the basic units of compilation, a possible
 solution consists in creating a new method 
 any time a new case has to be added to a flexswitch.
-\dacom{comment for Antonio: I am not sure this is the best solution. This cannot work for Java where classes are the basic
-  units. Closures will be available only with Java Dolphin and I do
-  not know how much efficient will be}
 In this way, whereas flow graphs without flexswitches are translated
 to a single method, the translation of flow graphs which can dynamically grow because of
 flexswitches will be scattered over several methods.
 Summarizing, the backend behaves in the following way:
 \begin{itemize}
 \item Each flow graph is translated in a collection of methods which
-  can grow dynamically. \dacom{I propose primary/secondary instead of
-    the overloaded terms main/child} Each collection contains at least one
+  can grow dynamically. Each collection contains at least one
   method, called \emph{primary}, which is the first to be created.
   All other methods, called \emph{secondary}, are added dynamically 
   whenever a new case is added to a flexswitch.
@@ -71,12 +67,13 @@ Summarizing, the backend behaves in the following way:
   number of blocks, all belonging to the same flow graph. Among these blocks
   there always exists an initial block whose input variables are
   parameters of the method; the input variables of all other blocks
-  are local variables of the method.
+  are local variables of the method. \anto{This is wrong: the signature of the secondary methods is fixed, and input args are passed inside the InputArgs class, not as methodo parameters}
 \end{itemize} 
 
 When  a new case is added to a flexswitch, new blocks are generated
 and translated by the backend in a new single method pointed
-by a delegate which is stored in the code implementing the flexswitch,
+by a delegate \footnote{\emph{Delegates} are the .NET equivalent of function pointers}
+ of  which is stored in the code implementing the flexswitch,
 so that the method can be invoked later.
 
 \subsubsection{Internal and external links}
@@ -88,7 +85,7 @@ by the same method,
 Following an internal link is not difficult in IL bytecode: a jump to
 the corresponding code fragment in the same method is emitted 
 to execute the new block, whereas the appropriate local variables are
-used for passing arguments.
+used for passing arguments. \anto{this is wrong for the same reason as above}
 Also following an external link whose target is the initial block of a
 method is not difficult: the corresponding method has to be invoked
 with the appropriate arguments.
@@ -106,7 +103,7 @@ confused with the initial block of a method.} to
 determine which block has to be executed.
 This is done by passing to the method a 32 bits number, called 
 \emph{block id}, which uniquely identifies the next block of the graph to be executed.
-The high word of a block id is the id of the method to which the block
+The high word \anto{a word is 32 bit, block num and method id are 16 bit each} of a block id is the id of the method to which the block
 belongs, whereas the low word is a progressive number univocally identifying
 each block implemented by the method.
 
@@ -145,7 +142,7 @@ switch(blocknum) {
 If the next block to be executed is implemented in the same method
 ({\small\lstinline{methodid == MY_METHOD_ID}}), then the appropriate
 jump to the corresponding code is executed, hence internal links
-can be managed efficiently.
+can be managed efficiently. \anto{wrong: internal links don't go through the dispatcher}
 Otherwise, the \lstinline{jump_to_ext}
 part of the dispatcher has to be executed.
 The code that actually jumps to an external block is contained in
@@ -267,10 +264,10 @@ which takes a value and a set of input arguments to be passed across
 the link and jumps to the right block by performing a linear search in
 array \lstinline{values}.
 
-Recall that the first argument of delegate \lstinline{FlexSwitchCase}
-is the block id to jump to; since the target of an external jump is
-always the initial block of the method, the first argument will be
-always 0.
+Recall that the first argument of delegate \lstinline{FlexSwitchCase} is the
+block id to jump to. By construction, the target block of a flexswitch is
+always the first in a secondary method, and we use the special value
+\lstinline{0} to signal this.
 
 The value returned by method \lstinline{execute} is the next block id
 to be executed; 

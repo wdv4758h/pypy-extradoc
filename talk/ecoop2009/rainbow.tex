@@ -140,6 +140,7 @@ XXX maybe a tlc example can be used for the example above?
 
 
 \section{Automatic Unboxing of Intermediate Results}
+\label{sec:virtuals}
 
 XXX the following section needs a rewriting to be much more high-level and to
 compare more directly with classical escape analysis
@@ -151,7 +152,7 @@ implemented a way for the compiler to try to avoid memory allocations in the
 residual code as long as possible. The idea is to try to keep new
 run-time structures "exploded": instead of a single run-time object allocated on
 the heap, the object is "virtualized" as a set
-of fresh variables, one per field. Only when the object can be accessed by from
+of fresh local variables, one per field. Only when the object can be accessed by from
 somewhere else is it actually allocated on the heap. The effect of this is similar to that of
 escape analysis \cite{XXX}, which also prevents allocations of objects that can
 be proven to not escape a method or set of methods.
