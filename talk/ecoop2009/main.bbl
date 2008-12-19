@@ -8,6 +8,13 @@ D.~Ancona, M.~Ancona, A~Cuni, and N.~Matsakis.
   {P}roceedings of the 2007 {S}ymposium on {D}ynamic {L}anguages}, pages
   53--64. ACM, 2007.
 
+\bibitem{Blanchet99escapeanalysis}
+Bruno Blanchet.
+\newblock Escape analysis for object oriented languages. application to java.
+\newblock In {\em In Proceedings of the 14th Annual Conference on
+  Object-Oriented Programming Systems, Languages and Applications}, pages
+  20--34, 1999.
+
 \bibitem{BolzEtAl08}
 C.~F. Bolz, A.~Kuhn, A.~Lienhard, N.~D. Matsakis, O.~Nierstrasz, L.~Renggli,
   A.~Rigo, and T.~Verwaest.
@@ -36,6 +43,14 @@ Charles Consel and Fran\c{c}ois No{\"e}l.
 \newblock A general approach for run-time specialization and its application to
   {C}.
 \newblock In {\em POPL}, pages 145--156, 1996.
+
+\bibitem{Choi99escapeanalysis}
+Jong deok Choi, Manish Gupta, Mauricio Serrano, Vugranam~C. Sreedhar, and Sam
+  Midkiff.
+\newblock Escape analysis for java.
+\newblock In {\em In Proceedings of the 14th Annual Conference on
+  Object-Oriented Programming Systems, Languages and Applications}, pages
+  1--19. ACM Press, 1999.
 
 \bibitem{Futamura99}
 Yoshihiko Futamura.
