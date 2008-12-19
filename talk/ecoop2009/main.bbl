@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{AACM-DLS07}
 D.~Ancona, M.~Ancona, A~Cuni, and N.~Matsakis.
@@ -17,10 +17,49 @@ C.~F. Bolz, A.~Kuhn, A.~Lienhard, N.~D. Matsakis, O.~Nierstrasz, L.~Renggli,
   Revised Selected Papers}, volume 5146 of {\em Lecture Notes in Computer
   Science}, pages 123--139, 2008.
 
+\bibitem{chang_efficient_2007}
+Mason Chang, Michael Bebenita, Alexander Yermolovich, Andreas Gal, and Michael
+  Franz.
+\newblock Efficient just-in-time execution of dynamically typed languages via
+  code specialization using precise runtime type inference.
+\newblock Technical report, Donald Bren School of Information and Computer
+  Science, University of California, Irvine, 2007.
+
+\bibitem{DBLP:conf/dagstuhl/ConselHNNV96}
+Charles Consel, Luke Hornof, Fran\c{c}ois No{\"e}l, Jacques Noy{\'e}, and
+  Nicolae Volansche.
+\newblock A uniform approach for compile-time and run-time specialization.
+\newblock In {\em Dagstuhl Seminar on Partial Evaluation}, pages 54--72, 1996.
+
+\bibitem{DBLP:conf/popl/ConselN96}
+Charles Consel and Fran\c{c}ois No{\"e}l.
+\newblock A general approach for run-time specialization and its application to
+  {C}.
+\newblock In {\em POPL}, pages 145--156, 1996.
+
 \bibitem{Futamura99}
 Yoshihiko Futamura.
 \newblock Partial evaluation of computation process, revisited.
 \newblock {\em Higher Order Symbol. Comput.}, 12(4):377--380, 1999.
+
+\bibitem{gal_incremental_2006}
+Andreas Gal and Michael Franz.
+\newblock Incremental dynamic code generation with trace trees.
+\newblock Technical report, Donald Bren School of Information and Computer
+  Science, University of California, Irvine, November 2006.
+
+\bibitem{gal_hotpathvm_2006}
+Andreas Gal, Christian~W. Probst, and Michael Franz.
+\newblock {HotpathVM}: an effective {JIT} compiler for resource-constrained
+  devices.
+\newblock In {\em Proceedings of the 2nd international conference on Virtual
+  execution environments}, pages 144--153, Ottawa, Ontario, Canada, 2006. ACM.
+
+\bibitem{grant_dyc_2000}
+Brian Grant, Markus Mock, Matthai Philipose, Craig Chambers, and Susan~J.
+  Eggers.
+\newblock {DyC}: an expressive annotation-directed dynamic compiler for {C}.
+\newblock {\em Theoretical Computer Science}, 248:147--199, 2000.
 
 \bibitem{hoelzle_optimizing_1991}
 Urs H{\"o}lzle, Craig Chambers, and David Ungar.
@@ -29,9 +68,26 @@ Urs H{\"o}lzle, Craig Chambers, and David Ungar.
 \newblock In {\em Proceedings of the European Conference on Object-Oriented
   Programming}, pages 21--38. Springer-Verlag, 1991.
 
+\bibitem{Jones:peval}
+Neil~D. Jones, Carsten~K. Gomard, and Peter Sestoft.
+\newblock {\em Partial Evaluation and Automatic Program Generation}.
+\newblock Prentice Hall, 1993.
+
 \bibitem{RigoPedroni06}
 A.~Rigo and S.~Pedroni.
 \newblock Py{P}y's approach to virtual machine construction.
 \newblock In {\em OOPSLA Companion}, pages 944--953, 2006.
+
+\bibitem{DBLP:conf/pepm/Rigo04}
+Armin Rigo.
+\newblock Representation-based just-in-time specialization and the psyco
+  prototype for python.
+\newblock In {\em PEPM}, pages 15--26, 2004.
+
+\bibitem{sullivan_dynamic_2001}
+Gregory~T. Sullivan.
+\newblock Dynamic partial evaluation.
+\newblock In {\em Proceedings of the Second Symposium on Programs as Data
+  Objects}, pages 238--256. Springer-Verlag, 2001.
 
 \end{thebibliography}

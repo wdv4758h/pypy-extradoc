@@ -1,6 +1,59 @@
 \section{Related Word}
-XXX add me
+Promotion is a concept that we have already explored in other contexts. Psyco is
+a run-time specialiser for Python that uses promotion (called ``unlift'' in
+\cite{DBLP:conf/pepm/Rigo04}). However, Psyco is a manually written JIT, is
+not applicable to other languages and cannot be retargetted.
+
+
+ - reference standard jit stuff, PICs \cite{hoelzle_optimizing_1991}, this one: http://www.cs.ucsb.edu/~urs/oocsb/self/papers/type-feedback.html
+ 
+ - compare against tracing JITs \cite{gal_hotpathvm_2006}. tracing jits make
+ implementing jits much easier, maybe less need for JIT generation. also, they
+ concentrate on loops, which makes them produce a lot less code (which will need
+ to be addressed in our work as well).
+
+ so far tracing JITs have less general allocation removal techniques, which
+ makes them get less speedup in a dynamic language with boxing
+
+in my master I had this snippet:
+
+"""
+The generated code typically contains guards; in recent research
+\cite{gal_incremental_2006} on Java, these guards' behaviour is extended to be
+similar to our promotion.  This has been used twice to implement a dynamic
+language (JavaScript), by Tamarin\footnote{{\tt
+http://www.mozilla.org/projects/tamarin/}} and in \cite{chang_efficient_2007}.
+"""
+
+There has been an enormous amount of work on partial evaluation for compiler
+generation. A good introduction is given in \cite{Jones:peval}. However, most of
+it is for generating ahead-of-time compilers, which cannot produce very good
+performance results for dynamic languages.
+
+However, there is also some research on runtime partial evaluation. One of the
+earliest examples is Tempo for C
+\cite{DBLP:conf/popl/ConselN96,DBLP:conf/dagstuhl/ConselHNNV96}. However, it is
+essentially an offline specializer ``packaged as a library''; decisions about
+what can be specialized and how are pre-determined.
+
+Another work in this direction is DyC \cite{grant_dyc_2000}, another runtime
+specializer for C.  Specialization decisions are also pre-determined, but
+``polyvariant program-point specialization'' gives a coarse-grained equivalent
+of our promotion.  Targeting the C language makes higher-level specialization
+difficult, though (e.g.\ \texttt{mallocs} are not removed).
+
+Greg Sullivan introduced "Dynamic Partial Evaluation", which is a special
+form of partial evaluation at runtime \cite{sullivan_dynamic_2001} and describes
+an implementation for a small dynamic language based on lambda calculus. This
+work is conceptually very close to our own.
+% XXX there are no performance figures, we have no clue how much of this is
+% implemented. not sure how to write this
+
+ - apart from that we maybe should talk about escape analysis
+ \cite{Blanchet99escapeanalysis}, \cite{Choi99escapeanalysis}
+ our algorithm is totally simple-minded in comparison, but is useful in practise
 
 \section{Conclusion}
 
 XXX add me
+
