@@ -80,10 +80,12 @@ properties that makes most of current dynamic languages so slow:
 \subsection{TLC examples}
 
 As we said above, TLC exists only at bytecode level; to ease the development
-of TLC programs, we wrote an assembler that generates TLC bytecode. The
-following example shows a simple program that computes the absolute value of
-the given integer:
+of TLC programs, we wrote an assembler that generates TLC bytecode. Figure \ref{fig:tlc-abs}
+shows a simple program that computes the absolute value of
+the given integer.
 
+\begin{figure}[h]
+\begin{center}
 \begin{lstlisting}
 main:             # stack: []
     PUSHARG       #        [n]
@@ -101,6 +103,11 @@ neg:
     SUB           #        [-n]
     RETURN
 \end{lstlisting}
+\caption{The TLC bytecode for computing the absolute value of a function}
+\label{fig:tlc-abs}
+\end{center}
+\end{figure}
+
 
 Since reading TLC programs at bytecode level is hard, in this paper we will
 use an invented Python-like syntax to describe examples, although we need to
