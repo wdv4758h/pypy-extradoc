@@ -67,7 +67,7 @@ reached given the concrete values.
 Let us look at an example. Figure \ref{fig:tlc-main} shows parts of the
 main-loop of the TLC interpreter (in slightly simplified form). The static
 arguments of this functions would typically be the \lstinline{code} argument
-(containing the bytecode as a string \anto{what about using array of bytes instead of string? For .NET/JVM people, there is a strong difference between the twos}), the \lstinline{pc} argument (containing
+(containing the bytecode as a string), the \lstinline{pc} argument (containing
 the initial program counter) and the \lstinline{pool} argument (containing the
 constant pool). The \lstinline{args} argument is dynamic since it contains the
 user-input of the interpreted function. Since the \lstinline{while} loop and the
