@@ -57,10 +57,10 @@ depend only on the $s_1, ..., s_m$ and to remove parts of $P$ that cannot be
 reached given the concrete values.
 
 \begin{figure}[h]
-\label{fig:tlc-main}
 \begin{center}
 \input{tlc-simplified.py}
 \caption{The main loop of the TLC interpreter, written in RPython}
+\label{fig:tlc-main}
 \end{center}
 \end{figure}
 
@@ -84,11 +84,11 @@ some indirect calls for implementing comparison (\lstinline{lt}) and
 subtraction (\lstinline{sub}).
 
 \begin{figure}[h]
-\label{fig:tlc-folded}
 \begin{center}
 \input{tlc-folded.py}
 \caption{The residual code of the TLC main loop with respect to the
 \lstinline{abs} function }
+\label{fig:tlc-folded}
 \end{center}
 \end{figure}
 
