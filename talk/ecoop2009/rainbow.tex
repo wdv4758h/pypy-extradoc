@@ -4,6 +4,9 @@
 XXX the following section needs a rewriting to be much more high-level and to
 compare more directly with classical escape analysis
 
+\anto{Maybe we should talk about ``virtual instances'' and not structures,
+  considering the context}
+
 Interpreters for dynamic languages typically continuously allocate a lot of small
 objects, for example due to boxing. This makes arithmetic operations extremely
 inefficient. For this reason, we
@@ -45,6 +48,14 @@ show how the resulting code looks like; to ease the reading, the state of the
 \label{fig:tlc-main}
 \end{center}
 \end{figure}
+
+Even if not shown in the example, \lstinline{stack} is not the only
+virtualized object.  In particular the two objects created by
+\lstinline{IntObj(0)} are also virtualized, and their fields are stored as
+local variables as well.  Virtualizion of instances is important not only
+because it avoids the allocation of unneeded temporary objects, but also
+because it makes possible to optimize method calls on them, as the JIT
+compiler knows their exact type in advance.
 
 XXX kill the rest?!‽
 An interesting effect of virtual structures is that they play nicely with
@@ -106,7 +117,10 @@ polymorphic inline caches \cite{hoelzle_optimizing_1991}: the dynamic lookups ar
 the corresponding generated machine code contains chains of
 compare-and-jump instructions which are modified at run-time.  These
 techniques also allow the gathering of information to direct inlining for even
-better optimization results.
+better optimization results. 
+\anto{What about this: While traditional PICs are only applied to indirect
+  calls, promotion is a more general operation that can be applied to any kind
+  of value, including instances of user-defined classes or integer numbers}
 
 In the presence of promotion, dispatch optimization can usually be
 reframed as a partial evaluation task.  Indeed, if the type of the
@@ -134,54 +148,27 @@ knowledge of the actual run-time value to generate more code.
 
 The new generated code is potentially different for each run-time value
 seen.  This implies that the generated code needs to contain some sort
-of updatable switch, which can pick the right code path based on the
+of updatable switch, or \emph{flexswitch}, which can pick the right code path based on the
 run-time value.
 
-\cfbolz{I think this example is confusing, it is unclear in which order things
-happen how. I will try to come up with something different}.
+Let us look again at the TLC example.  To ease the reading, figure
+\ref{fig:tlc-main} showed a simplified version of TLC's main loop, which did
+not include the hints.  The real implementation of the \lstinline{LT} opcode
+is shown in figure \ref{fig:tlc-main-hints}.
 
-\begin{itemize}
-  %XXX remove mention of rainbow interp. but this needs to be rewritten anyway
-  \item (compile time): the rainbow interpreter produces machine code until it
-    hits a promotion point; e.g.::
+\begin{figure}[h]
+\begin{center}
+\begin{lstlisting}[language=Python]
+        elif opcode == LT:
+            a, b = stack.pop(), stack.pop()
+            hint(a, promote_class=True)
+            hint(b, promote_class=True)
+            stack.append(IntObj(b.lt(a)))
+\end{lstlisting}
+\caption{Usage of hints in TLC's main loop}
+\label{fig:tlc-main-hints}
+\end{center}
+\end{figure}
 
-    \begin{lstlisting}[language=C]
-        y = hint(x, promote=True)
-        return y+10
-    \end{lstlisting}
-
-  \item (compile time): at this point, it generates special machine code that when
-    reached calls the JIT compiler again; the JIT compilation stops::
-
-    \begin{lstlisting}[language=C]
-        switch(y) {
-            default: compile_more(y);
-        }
-    \end{lstlisting}
-
-  \item (runtime): the machine code is executed; when it reaches a promotion
-    point, it executes the special machine code we described in the previous
-    point; the JIT compiler is invoked again;
-
-  \item (compile time): now we finally know the exact value of our red variable,
-    and we can promote it to green; suppose that the value of 'y' is 32::
-
-    \begin{lstlisting}[language=C]
-        switch(y) {
-            32: return 42;
-            default: compile_more(y);
-        }
-    \end{lstlisting}
-
-    Note that the operation "y+10" has been constant-folded into "42", as it
-    was a green operation.
-
-  \item (runtime) the execution restart from the point it stopped, until a new
-    unhandled promotion point is reached.
-\end{itemize}
-
-\subsection{Promotion as Applied to the TLC}
-
-XXX maybe a tlc example can be used for the example above?
-
-
+By promoting the class of \lstlisting{a} and \lstlisting{b}, we tell the JIT
+compiler not to generate code until it knows the exact RPython class of both.
