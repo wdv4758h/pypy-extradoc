@@ -138,6 +138,17 @@ more general situations.  Promotion is thus the central enabling
 primitive to make partial evaluation a practical approach to language
 independent dynamic compiler generation.
 
+Promotion is invoked with the use of a hint as well:
+\texttt{v2 = hint(v1, promote=True)}.
+This hint is a \emph{local} request for \texttt{v2} to be green, without
+requiring \texttt{v1} to be green.  Note that this amounts to copying
+a red value into a green one, which is not possible in classical
+approaches to partial evaluation. A slightly different hint can be used to
+promote the \emph{class} of an instance. This is done with \lstinline{hint(v1,
+promote_class=True)}. It does not have an effect on the bindings of any
+variable.
+
+
 \subsection{Implementing Promotion}
 
 The implementation of promotion requires a tight coupling between

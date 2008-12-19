@@ -136,17 +136,6 @@ implies the constantness of many intermediate values used in the
 function.  The \emph{binding time} of a variable determines how early the
 value of the variable will be known.
 
-\cfbolz{XXX: unclear how the next paragraph will fit into the text in the end.
-it's certainly wrong as it is}
-Once binding times have been determined, one possible approach to
-producing the generating extension itself is by self-applying on-line
-partial evaluators.  This is known as the second Futamura projection
-\cite{Futamura99}.  So far it is unclear if this approach can lead to optimal
-results, or even if it scales well.  In PyPy we selected a more direct
-approach: the generating extension is produced by transformation of the
-control flow graphs of the interpreter, guided by the binding times.  We
-call this process \emph{timeshifting}.
-
 XXX write something about the problems of classical PE?
 
 \subsection{Binding Time Analysis in PyPy}
@@ -154,8 +143,8 @@ XXX write something about the problems of classical PE?
 XXX need better transition text from last section
 At translation time, PyPy performs binding-time analysis of the source
 RPython program after it has been turned to low-level graphs, i.e. at
-the level at which operations manipulate pointer-and-structure-like
-objects.
+the level at which operations manipulate objects that have a fixed type
+attached.
 
 The binding-time terminology that we are using in PyPy is based on the
 colors that we use when displaying the control flow graphs:
@@ -169,12 +158,11 @@ compile-time. They correspond to dynamic arguments.
 
 The binding-time analyzer of our translation tool-chain is using a simple
 abstract-interpretation based analysis. It is based on the
-same type inference engine that is used on the source RPython program,
-the annotator \anto{I'm not sure we should mention the annotator, as it is not referred anywhere else}.  In this mode, it is called the \emph{hint-annotator}; it
+same type inference engine that is used on the source RPython program.
+This is called the \emph{hint-annotator}; it
 operates over input graphs that are already low-level instead of
 RPython-level, and propagates annotations that do not track types but
 value dependencies and manually-provided binding time hints.
-XXX the above needs rewriting when the background section is there
 
 The normal process of the hint-annotator is to propagate the binding
 time (i.e. color) of the variables using the following kind of rules:
@@ -238,13 +226,3 @@ need-oriented approach reduces the problem of over-specialization, and
 it prevents under-specialization: an unsatisfiable \texttt{hint(v1,
 concrete=True)} is reported as an error.
 
-XXX move this to the promotion section
-Promotion is invoked with the use of a hint as well:
-\texttt{v2 = hint(v1, promote=True)}.
-This hint is a \emph{local} request for \texttt{v2} to be green, without
-requiring \texttt{v1} to be green.  Note that this amounts to copying
-a red value into a green one, which is not possible in classical
-approaches to partial evaluation.  See Section \ref{sec:promotion} for a
-complete discussion of promotion.
-
-\anto{We should at least mention the promote_class hint}
