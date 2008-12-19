@@ -1,31 +1,27 @@
 \section{Automatic Unboxing of Intermediate Results}
 \label{sec:virtuals}
 
-XXX the following section needs a rewriting to be much more high-level and to
-compare more directly with classical escape analysis
-
-\anto{Maybe we should talk about ``virtual instances'' and not structures,
-  considering the context}
-
 Interpreters for dynamic languages typically continuously allocate a lot of small
 objects, for example due to boxing. This makes arithmetic operations extremely
 inefficient. For this reason, we
 implemented a way for the compiler to try to avoid memory allocations in the
 residual code as long as possible. The idea is to try to keep new
-run-time structures "exploded": instead of a single run-time object allocated on
+run-time instances "exploded": instead of a single run-time object allocated on
 the heap, the object is "virtualized" as a set
 of fresh local variables, one per field. Only when the object can be accessed by from
 somewhere else is it actually allocated on the heap. The effect of this is similar to that of
-escape analysis \cite{XXX}, which also prevents allocations of objects that can
-be proven to not escape a method or set of methods.
+escape analysis \cite{Blanchet99escapeanalysis}, \cite{Choi99escapeanalysis},
+which also prevents allocations of objects that can be proven to not escape a
+method or set of methods (the algorithms however are a lot more advanced than
+our very simple analysis).
 
-It is not always possible to keep structures virtual.  The main
+It is not always possible to keep instances virtual.  The main
 situation in which it needs to be "forced" (i.e. actually allocated at
 run-time) is when the pointer escapes to some non-virtual location like
-a field of a real heap structure.  Virtual structures still avoid the run-time
+a field of a real heap structure.  Virtual instances still avoid the run-time
  allocation of most short-lived objects, even in non-trivial situations.  
 
-In addition to virtual structures, the compiler can also handle virtual
+In addition to virtual instances, the compiler can also handle virtual
 containers, namely lists and dictionaries \footnote{(R)Python's dictionaries
   are equivalent to .NET \lstinline{Hashtable}s}.  If the indexing operations
 can be evaluated at compile-time (i.e., if the variables holding the indexes
@@ -211,7 +207,7 @@ def interp_eval_abs(args):
         default: 
             continue_compilation(jitstate, cls_a)
 \end{lstlisting}
-\caption{Promotion example 1}
+\caption{Promotion step 1}
 \label{fig:tlc-abs-promotion-1}
 \end{center}
 \end{figure}
@@ -240,7 +236,7 @@ def interp_eval_abs(args):
         default: 
             continue_compilation(jitstate, cls_a)
 \end{lstlisting}
-\caption{Promotion example 2}
+\caption{Promotion step 2}
 \label{fig:tlc-abs-promotion-2}
 \end{center}
 \end{figure}
