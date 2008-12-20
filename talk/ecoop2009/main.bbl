@@ -83,6 +83,13 @@ Urs H{\"o}lzle, Craig Chambers, and David Ungar.
 \newblock In {\em Proceedings of the European Conference on Object-Oriented
   Programming}, pages 21--38. Springer-Verlag, 1991.
 
+\bibitem{hoelzle_type_feedback_1994}
+Urs H\"{o}lzle and David Ungar.
+\newblock Optimizing dynamically-dispatched calls with run-time type feedback.
+\newblock In {\em PLDI '94: Proceedings of the ACM SIGPLAN 1994 conference on
+  Programming language design and implementation}, pages 326--336, New York,
+  NY, USA, 1994. ACM.
+
 \bibitem{Jones:peval}
 Neil~D. Jones, Carsten~K. Gomard, and Peter Sestoft.
 \newblock {\em Partial Evaluation and Automatic Program Generation}.
