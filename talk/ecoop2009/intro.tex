@@ -22,9 +22,16 @@ the language (by writing an interpreter), and putting it through PyPy's
 translation toolchain. The automatic generation of JIT compilers is done with
 the help of partial evaluation techniques.
 
-The contributions of this paper are \emph{promotion}, a generalization of
-polymorphic inline caches that make partial evaluation practical for dynamic
-languages and trying out the idea of JIT-layering XXX.
+Instead of emitting code for a real CPU, the generated JIT compilers described
+in this paper emit code for a virtual machine: before being executed, the
+emitted code will be compiled again by .NET's own JIT compiler, thus having
+two \emph{layers} of JIT compilation.
+
+The contributions of this paper are twofold: (1) \emph{promotion} is a
+generalization of polymorphic inline caches that make partial evaluation
+practical for dynamic languages; (2) we demonstrated that the idea of
+\emph{JIT layering} can give good results, as dynamic languages can be even
+faster than their static counterparts.
 
 \subsection{PyPy and RPython}
 
