@@ -125,6 +125,7 @@ bindings of any variable.
 
 
 \subsection{Implementing Promotion}
+\label{sec:implementing-promotion}
 
 The implementation of promotion requires a tight coupling between
 compile-time and run-time: a \emph{callback}, put in the generated code,
@@ -226,7 +227,8 @@ def interp_eval_abs(args):
         IntObj:
             # hint(b, promote_class=True) needs no code
             v0 = IntObj(b.value < a.value)
-            if v0.value:
+            cond = v0
+            if cond.value:
                 return a
             else:
                 v0 = IntObj(0)
@@ -267,4 +269,27 @@ reason.  Moreover, as we saw in section \ref{sec:virtuals}, the \lstinline{IntOb
 instance can be virtualized, so that the subsequent \lstinline{BR_COND} opcode
 can be compiled efficiently without needing any more flexswitch.
 
-\anto{We should show the very final version of the code, with all instances virtualized}
+Figure~\ref{fig:tlc-abs-final} shows the final, fully optimized version of the
+code, with all the instances virtualized and the unneeded temporary variables
+removed.
+
+\begin{figure}[h]
+\begin{center}
+\begin{lstlisting}[language=Python]
+def interp_eval_abs(args):
+    a = args[0]
+    cls_a = a.__class__
+    switch cls_a:
+        IntObj:
+            # 0 is the constant "value" field of the virtualized IntObj(0)
+            if 0 < a.value:
+                return a
+            else:
+                return IntObj(0 - a.value)
+        default: 
+            continue_compilation(jitstate, cls_a)
+\end{lstlisting}
+\caption{Final optimized version of the \lstinline{abs} example}
+\label{fig:tlc-abs-final}
+\end{center}
+\end{figure}
