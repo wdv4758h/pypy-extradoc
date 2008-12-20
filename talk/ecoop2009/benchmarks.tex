@@ -87,60 +87,41 @@ def main(n):
 \end{lstlisting}
 }
 
-\anto{these tables are ugly}
-
-\cfbolz{can we make one figure of all the tables?}
 \begin{table}[ht]
-  \begin{tabular}{|l|r|r|r|r||r|r|}
-    \hline
-    \textbf{n} & 
-    \textbf{Interp} &
-    \textbf{JIT} &
-    \textbf{JIT 2} &
-    \textbf{C\#} &
-    \textbf{Interp/JIT 2} &
-    \textbf{JIT 2/C\#} \\
-    \hline
+  \begin{center}
 
-    $10$    &   0.031  &  0.422  &  0.000  &  0.000  &      N/A  &    N/A \\
-    $10^7$  &  30.984  &  0.453  &  0.047  &  0.031  &  661.000  &  1.500 \\
-    $10^8$  &     N/A  &  0.859  &  0.453  &  0.359  &      N/A  &  1.261 \\
-    $10^9$  &     N/A  &  4.844  &  4.641  &  3.438  &      N/A  &  1.350 \\
+  \begin{tabular}{l|rrrrrr}
+    \multicolumn{5}{c}{\textbf{Factorial}} \\ [0.5ex]
 
+    \textbf{$n$}          & $10$  & $10^7$           & $10^8$         & $10^9$         \\
     \hline
+    \textbf{Interp}       & 0.031 & 30.984           & N/A            & N/A            \\
+    \textbf{JIT}          & 0.422 &  0.453           & 0.859          & 4.844          \\
+    \textbf{JIT 2}        & 0.000 &  0.047           & 0.453          & 4.641          \\
+    \textbf{C\#}          & 0.000 &  0.031           & 0.359          & 3.438          \\
+    \textbf{Interp/JIT 2} & N/A   & \textbf{661.000} & N/A            & N/A            \\
+    \textbf{JIT 2/C\#}    & N/A   & \textbf{1.500}   & \textbf{1.261} & \textbf{1.350} \\ [3ex]
 
+
+    \multicolumn{5}{c}{\textbf{Fibonacci}} \\ [0.5ex]
+
+    \textbf{$n$}          & $10$  & $10^7$           & $10^8$         & $10^9$         \\
+    \hline
+    \textbf{Interp}       & 0.031 & 29.359           & 0.000          & 0.000          \\
+    \textbf{JIT}          & 0.453 &  0.469           & 0.688          & 2.953          \\
+    \textbf{JIT 2}        & 0.000 &  0.016           & 0.250          & 2.500          \\ 
+    \textbf{C\#}          & 0.000 &  0.016           & 0.234          & 2.453          \\
+    \textbf{Interp/JIT 2} & N/A   & \textbf{1879.962}& N/A            & N/A            \\
+    \textbf{JIT 2/C\#}    & N/A   & \textbf{0.999}   & \textbf{1.067} & \textbf{1.019} \\
   \end{tabular}
-  \caption{Factorial benchmark}
-  \label{tab:factorial}
+
+  \end{center}
+  \caption{Factorial and Fibonacci benchmarks}
+  \label{tab:factorial-fibo}
 \end{table}
 
 
-\begin{table}[ht]
-  \begin{tabular}{|l|r|r|r|r||r|r|}
-    \hline
-    \textbf{n} & 
-    \textbf{Interp} &
-    \textbf{JIT} &
-    \textbf{JIT 2} &
-    \textbf{C\#} &
-    \textbf{Interp/JIT 2} &
-    \textbf{JIT 2/C\#} \\
-    \hline
-
-    $10$    &   0.031  &  0.453  &  0.000  &  0.000  &       N/A  &  N/A   \\
-    $10^7$  &  29.359  &  0.469  &  0.016  &  0.016  &  1879.962  &  0.999 \\
-    $10^8$  &     N/A  &  0.688  &  0.250  &  0.234  &       N/A  &  1.067 \\
-    $10^9$  &     N/A  &  2.953  &  2.500  &  2.453  &       N/A  &  1.019 \\
-
-    \hline
-
-  \end{tabular}
-  \caption{Fibonacci benchmark}
-  \label{tab:fibo}
-\end{table}
-
-
-Tables \ref{tab:factorial} and \ref{tab:fibo} show the seconds spent to calculate
+Table \ref{tab:factorial-fibo} shows the seconds spent to calculate
 the factorial and Fibonacci for various $n$.  As we can see, for small values
 of $n$ the time spent running the JIT compiler is much higher than the time
 spent to simply interpret the program.  This is an expected result, as till
@@ -221,34 +202,34 @@ as a local variable.  As a result, the generated code results in a simple loop
 doing additions in-place.
 
 \begin{table}[ht]
-  \begin{tabular}{|l|r|r|r|r||r|r|}
-    \hline
-    \textbf{n} & 
-    \textbf{Interp} &
-    \textbf{JIT} &
-    \textbf{JIT 2} &
-    \textbf{C\#} &
-    \textbf{Interp/JIT 2} &
-    \textbf{JIT 2/C\#} \\
-    \hline
+  \begin{center}
 
-    $10$    &   0.031  &  0.453  &  0.000  &  0.000  &      N/A  &  N/A   \\
-    $10^7$  &  43.063  &  0.516  &  0.047  &  0.063  &  918.765  &  0.750 \\
-    $10^8$  &     N/A  &  0.875  &  0.453  &  0.563  &      N/A  &  0.806 \\
-    $10^9$  &     N/A  &  4.188  &  3.672  &  5.953  &      N/A  &  0.617 \\
+  \begin{tabular}{l|rrrrrr}
+    \multicolumn{5}{c}{\textbf{Accumulator}} \\ [0.5ex]
 
+    \textbf{$n$}          & $10$  & $10^7$           & $10^8$         & $10^9$         \\
     \hline
+    \textbf{Interp}       & 0.031 & 43.063           & N/A            & N/A            \\
+    \textbf{JIT}          & 0.453 &  0.516           & 0.875          & 4.188          \\
+    \textbf{JIT 2}        & 0.000 &  0.047           & 0.453          & 3.672          \\
+    \textbf{C\#}          & 0.000 &  0.063           & 0.563          & 5.953          \\
+    \textbf{Interp/JIT 2} & N/A   & \textbf{918.765} & N/A            & N/A            \\
+    \textbf{JIT 2/C\#}    & N/A   & \textbf{0.750}   & \textbf{0.806} & \textbf{0.617} \\
 
   \end{tabular}
+  \end{center}
   \caption{Accumulator benchmark}
   \label{tab:accumulator}
 \end{table}
 
 
+
+
+
 Table \ref{tab:accumulator} show the results for the benchmark.  Again, we can
 see that the speedup of the JIT over the interpreter is comparable to the
 other two benchmarks.  However, the really interesting part is the comparison
-with the equivalent C\# code, as the code generated by the JIT is
+with the equivalent C\# code, as the code generated by the JIT is up to 1.62 times
 \textbf{faster}.
 
 Probably, the C\# code is slower because:
