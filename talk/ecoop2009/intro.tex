@@ -28,6 +28,7 @@ languages and trying out the idea of JIT-layering XXX.
 
 \subsection{PyPy and RPython}
 
+\commentout{
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=.6\textwidth]{diagram0}
@@ -35,6 +36,7 @@ languages and trying out the idea of JIT-layering XXX.
   language $L$ for several platforms}\label{pypy-fig}
 \end{center}
 \end{figure}
+}
 
 The \emph{PyPy} project\footnote{\texttt{http://codespeak.net/pypy/}}
 \cite{RigoPedroni06} was initially conceived to develop an implementation of Python which
@@ -65,10 +67,13 @@ Despite having been specifically developed for Python, the PyPy infrastructure
 can in fact be used for implementing other languages. Indeed, there were
 successful experiments of using PyPy to implement several other languages such
 as Smalltalk \cite{BolzEtAl08}, JavaScript, Scheme and Prolog.
+
+\commentout{
 As suggested by Figure~\ref{pypy-fig}, a portable interpreter for a
 generic language $L$  can be
 easily developed once an interpreter for $L$ has been implemented in
 RPython.
+}
 
 \subsection{PyPy and JIT-Generation}
 
