@@ -22,7 +22,7 @@ a field of a real heap structure.  Virtual instances still avoid the run-time
  allocation of most short-lived objects, even in non-trivial situations.  
 
 In addition to virtual instances, the compiler can also handle virtual
-containers, namely lists and dictionaries \footnote{(R)Python's dictionaries
+containers, namely lists and dictionaries\footnote{(R)Python's dictionaries
   are equivalent to .NET \lstinline{Hashtable}s}.  If the indexing operations
 can be evaluated at compile-time (i.e., if the variables holding the indexes
 are green), the compiler internally keeps track of the state of the container
@@ -190,10 +190,10 @@ class IntObj(Obj):
 By promoting the class of \lstinline{a} and \lstinline{b}, we tell the JIT
 compiler not to generate code until it knows the exact RPython class of both.
 Figure \ref{fig:tlc-abs-promotion-1} shows the
-code \footnote{\lstinline{switch} is not a legal (R)Python statement, it is
-  used here only as a pseudocode example} generated while compiling the usual
+code\footnote{\lstinline{switch} is not a legal (R)Python statement, it is
+  used here only as a pseudocode example.} generated while compiling the usual
 \lstinline{abs} function: note that, compared to figure
-\ref{fig:tlc-folded-virtualized}, the code stops just before the calls
+\ref{fig:tlc-folded-virtualized}, the code stops just before the call
 \lstinline{b.lt(a)}.
 
 \begin{figure}[h]
