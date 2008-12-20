@@ -152,7 +152,7 @@ def interp_eval(code, pc, args, pool):
     stack = []
     while pc < code_len:
         opcode = ord(code[pc])
-        opcode = hint(opcode, promote_class=True)
+        opcode = hint(opcode, concrete=True)
         pc += 1
 
         if opcode == PUSH:
