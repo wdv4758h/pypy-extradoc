@@ -56,5 +56,17 @@ totally simple-minded, but it is still useful in practise.
 
 \section{Conclusion}
 
-XXX add me
+high level structure:
 
+1. We presented PyPy JIT generator 
+
+2. interpreters can exploit the JIT generator by placing few hints here and
+there to guide the generation of code
+
+3. generated JITs produce fast code thanks to \textbf{promotion} (our first
+contribution) and automatic unboxing
+
+4. we presented a way to implement promotion/flexswitches on top of .NET
+
+5. our second contribution is to show that the idea of JIT layering can work
+well, as for some cases we can get performances even better than C\#
