@@ -12,7 +12,7 @@ etc. etc.
 \end{figure}
 
 The JIT generation framework uses partial evaluation techniques to generate a
-dynamic compiler from an interpreter; the idea is inspired by Psyco, which
+dynamic compiler from an interpreter; the idea is inspired by Psyco \cite{DBLP:conf/pepm/Rigo04}, which
 uses the same techniques but it's manually written instead of being
 automatically generated.
 
@@ -161,7 +161,9 @@ abstract-interpretation based analysis. It is based on the
 same type inference engine that is used on the source RPython program.
 This is called the \emph{hint-annotator}; it
 operates over input graphs that are already low-level instead of
-RPython-level, and propagates annotations that do not track types but
+RPython-level, \anto{we never make distinction between low-level and rpython-level 
+flowgraphs, do we? I propose to talk about ``intermediate flowgraphs''} 
+and propagates annotations that do not track types but
 value dependencies and manually-provided binding time hints.
 
 The normal process of the hint-annotator is to propagate the binding
@@ -226,3 +228,5 @@ need-oriented approach reduces the problem of over-specialization, and
 it prevents under-specialization: an unsatisfiable \texttt{hint(v1,
 concrete=True)} is reported as an error.
 
+\anto{maybe we should at least mention promotion, and refer to the proper
+  section for details?}

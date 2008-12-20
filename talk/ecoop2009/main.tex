@@ -14,13 +14,23 @@
 \usepackage{ifthen}
 \usepackage{xspace}
 \usepackage{listings}
+\usepackage{fancyvrb}
 \usepackage[pdftex]{graphicx}
 
 %\input{macros}
 
 \pagestyle{plain}
 
-\lstset{mathescape=true,language=Java,basicstyle=\tt,keywordstyle=\bf}
+%\lstset{mathescape=true,language=Java,basicstyle=\tt,keywordstyle=\bf}
+\lstset{language=Python,
+        basicstyle=\footnotesize\ttfamily,
+        keywordstyle=\color{blue}, % I couldn't find a way to make chars both bold and tt
+        frame=lines,
+        stringstyle=\color{blue},
+        fancyvrb=true,
+        xleftmargin=20pt,xrightmargin=20pt,
+        showstringspaces=false}
+
 
 %\renewcommand{\baselinestretch}{.98}
 \newboolean{showcomments}
