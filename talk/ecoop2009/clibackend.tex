@@ -148,8 +148,8 @@ connects two blocks implemented by different methods.
 \end{center}
 \end{figure}
 
-For instance, the code\footnote{For simplicity we write C\# code instead of
-the actual IL bytecode.} generated for the dispatcher of method \texttt{0x0002}
+The code\footnote{For simplicity we write C\# code instead of
+the actual IL bytecode.} generated for the dispatcher of methods
 is similar to the following fragment: 
 \begin{small}
 \begin{lstlisting}[language={[Sharp]C}]
@@ -171,12 +171,8 @@ If the next block to be executed is implemented in the same method
 ({\small\lstinline{methodid == MY_METHOD_ID}}), then the appropriate
 jump to the corresponding code is executed.
 Otherwise, the \lstinline{jump_to_ext}
-part of the dispatcher has to be executed.
-The code that actually jumps to an external block is contained in
-the dispatcher of the primary method, whereas the
-\lstinline{jump_to_ext} code of dispatchers of secondary methods
-simply delegates the dispatcher of the primary method of the same
-graph (see later).
+part of the dispatcher has to be executed, which is implemented differently 
+by primary and secondary methods.
 
 The primary method is responsible for the bookkeeping of the secondary
 methods which are added to the same graph dynamically. This can be 
@@ -265,13 +261,11 @@ public class IntLowLevelFlexSwitch:BaseLowLevelFlexSwitch {
   public int[] values = new int[4];
   public FlexSwitchCase[] cases = new FlexSwitchCase[4];
 
-  public void add_case(int value, FlexSwitchCase c)
-  {
+  public void add_case(int value, FlexSwitchCase c) {
     ...
   }
 
-  public uint execute(int value, InputArgs args)
-  {
+  public uint execute(int value, InputArgs args) {
     for(int i=0; i<numcases; i++)
     if (values[i] == value) {
       return cases[i](0, args);
@@ -305,20 +299,6 @@ usually corresponds to a block containing code to restart the JIT
 compiler for creating a new secondary method with the new code for the
 missing case, and updating the flexswitch by calling method
 \lstinline{add_case}.
-
-\subsection{Alternative implementations}
-\dacom{need to be discussed with Antonio}
-
-\anto{I propose to wait until the rest of paper is more or less in a final
-  state, and see how much space is left}
-
-\commentout{
-Before implementing the solution described here, we carefully studied a lot of possible alternatives, but all of them either didn't work because of a limitation of the virtual machine or they could work but with terrible performances.
-
-In particular, in theory it is possible to implement external links using tail calls, by putting each block in its own method and doing a tail call instead of a jump; this would also solve the problem of how to pass arguments, as each method could have its own signature matching the input args of the block. I would like to explain this solution in a more detailed way as I think it's really elegant and nice.
-
-In theory, if the .NET JIT were smart enough it could inline and optimize away the tail calls (or at least many of those) and give us very efficient code. However, one benchmark I wrote shows that tail calls are up to 10 times slower (!!!) than normal calls, thus making impractical to use them for our purposes.
-}
 
 % LocalWords:  flexswitches backend flexswitch methodid blockid xFFFF blocknum
 % LocalWords:  FFFF goto FlexSwitchCase meth InputArgs ints objs VM uint args
