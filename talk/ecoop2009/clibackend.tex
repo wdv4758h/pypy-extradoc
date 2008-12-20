@@ -16,14 +16,13 @@ interface between the JIT works?}
 
 \subsection{Flexswitches}
 
-As already explained, \dacom{I guess flexswitches will be introduced
-  in the previous sect.} \emph{flexswitch} is one of the key
+As already explained, \emph{flexswitch} is one of the key
 concepts allowing the JIT compiler generator to produce code which can
 be incrementally specialized and compiled at run time.
 
 A flexswitch is a special kind of switch which can be dynamically
-extended with new cases; intuitively, its behavior can be described
-well in terms of flow graphs. Indeed, a flexswitch can be considered 
+extended with new cases.  Intuitively, its behavior can be described
+well in terms of flow graphs: a flexswitch can be considered 
 as a special flow graph block where links to newly created blocks are
 dynamically added whenever new cases are needed. 
 
@@ -58,10 +57,15 @@ virtual machines as those for .NET and Java.
 Since in .NET methods are the basic units of compilation, a possible
 solution consists in creating a new method 
 any time a new case has to be added to a flexswitch.
-In this way, whereas flow graphs without flexswitches are translated
-to a single method, the translation of flow graphs which can dynamically grow because of
-flexswitches will be scattered over several methods.
-Summarizing, the backend behaves in the following way:
+
+It is important to underline the difference between flow graphs and a methods:
+the first are the logical unit of code as seen by the JIT compiler, each of
+them being concretely implemented by \emph{one or more} methods.
+
+In this way, whereas flow graphs without flexswitches are translated to a
+single method, the translation of \emph{growable} flow graphs will be
+scattered over several methods.  Summarizing, the backend behaves in the
+following way:
 \begin{itemize}
 \item Each flow graph is translated in a collection of methods which
   can grow dynamically. Each collection contains at least one
@@ -70,49 +74,44 @@ Summarizing, the backend behaves in the following way:
   whenever a new case is added to a flexswitch.
 
 \item Each either primary or secondary method implements a certain
-  number of blocks, all belonging to the same flow graph. Among these blocks
-  there always exists an initial block whose input arguments 
-  might be passed as arguments of the method; however, for
-  implementation  reasons (see the details below) the input variables
-  of all blocks (including the initial one)
-  are implemented as local variables of the method. 
+  number of blocks, all belonging to the same flow graph.
 \end{itemize} 
 
-When  a new case is added to a flexswitch, new blocks are generated
-and translated by the backend in a new single method pointed
-by a delegate \footnote{\emph{Delegates} are the .NET equivalent of function pointers}
- of  which is stored in the code implementing the flexswitch,
-so that the method can be invoked later.
+When a new case is added to a flexswitch, the backend generates the new blocks
+into a new single method.  The newly created method is pointed by a
+delegate \footnote{\emph{Delegates} are the .NET equivalent of function
+  pointers} stored in the flexswitch, so that it can be invoked later when
+needed.
 
 \subsubsection{Internal and external links}
 
-A link is called \emph{internal} if it connects two blocks implemented
-by the same method,
+A link is called \emph{internal} if it connects two blocks contained
+in the same method,
  \emph{external} otherwise.
 
-Following an internal link would  not be difficult in IL bytecode: a jump to
+Following an internal link is easy in IL bytecode: a jump to
 the corresponding code fragment in the same method can be emitted 
 to execute the new block, whereas the appropriate local variables can be
 used for passing arguments. 
-Also following an external link whose target is an initial block could
-be easily implemented, by just invoking the corresponding method.
 
+Following an external link whose target is an initial block could also
+be easily implemented, by just invoking the corresponding method.
 What cannot be easily implemented in CLI is following an external link
 whose target is not an initial block; consider, for instance, the
 outgoing link of the block dynamically added in the right-hand side
-picture of Figure~\ref{flexswitch-fig}. How it is possible to pass the
-right arguments to the target block?
+picture of Figure~\ref{flexswitch-fig}. How it is possible to jump in 
+the middle of a method?
 
 To solve this problem every method contains a special code, called
-\emph{dispatcher}; whenever a method is invoked, its dispatcher is
+\emph{dispatcher}: whenever a method is invoked, its dispatcher is
 executed first\footnote{The dispatcher should not be
 confused with the initial block of a method.} to
 determine which block has to be executed.
 This is done by passing to the method a 32 bits number, called 
 \emph{block id}, which uniquely identifies the next block of the graph to be executed.
-The high 2 bytes \dacom{word was meant as a fixed-sized group of bits} of a block id constitute the id of the method to which the block
-belongs, whereas the low 2 bytes constitute a progressive number univocally identifying
-each block implemented by the method.
+The high 2 bytes of a block id constitute the \emph{method id}, which 
+univocally identifies a method in a graph, whereas the low 2 bytes constitute
+a progressive number univocally identifying a block inside each method.
 
 The picture in Figure~\ref{block-id-fig} shows a graph composed of three methods (for
 simplicity, dispatchers are not shown); method ids are in red, whereas
@@ -204,7 +203,7 @@ methods for the following reasons:
   secondary methods of a graph must have the same signature.
 \end{itemize}
 
-Therefore, the only solution we came up with is defining a class
+Therefore, the solution we came up with is defining a class
 \lstinline{InputArgs} for passing sequences of arguments whose length
 and type is variable.
 \begin{small}
