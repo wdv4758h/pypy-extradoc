@@ -221,5 +221,8 @@ need-oriented approach reduces the problem of over-specialization, and
 it prevents under-specialization: an unsatisfiable \texttt{hint(v1,
 concrete=True)} is reported as an error.
 
-\anto{maybe we should at least mention promotion, and refer to the proper
-  section for details?}
+There are cases in which having a green variable is essential for generating
+good code, but it is not possible to use the \texttt{concrete} due to an
+unsatisfiable dependency: Section~\ref{sec:promotion} introduces
+\emph{promotion}, the novel technique that makes possible to solve this
+problem.
