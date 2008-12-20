@@ -15,10 +15,7 @@ specialized versions of the code depending on the actual values/types seen at
 runtime; this approach seems to work, but writing it manually requires an
 enormous effort.
 
-\cfbolz{we should cite the dyla paper somewhere here. also, we generally need
-more references}
-
-PyPy's approach is to automatize the generation of JIT compilers in order
+PyPy's approach \cite{RiBo07_223} is to automatize the generation of JIT compilers in order
 to reduce to a minimum the effort required to get a fast implementation of a
 dynamic language; all you have to do is to write a high level specification of
 the language (by writing an interpreter), and putting it through PyPy's

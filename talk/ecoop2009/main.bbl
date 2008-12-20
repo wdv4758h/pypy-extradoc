@@ -99,6 +99,11 @@ Armin Rigo.
   prototype for python.
 \newblock In {\em PEPM}, pages 15--26, 2004.
 
+\bibitem{RiBo07_223}
+Armin Rigo and Carl~Friedrich Bolz.
+\newblock {How to not write Virtual Machines for Dynamic Languages }.
+\newblock In {\em Proceeding of Dyla 2007 (to appear)}, pages~--, 2007.
+
 \bibitem{sullivan_dynamic_2001}
 Gregory~T. Sullivan.
 \newblock Dynamic partial evaluation.
