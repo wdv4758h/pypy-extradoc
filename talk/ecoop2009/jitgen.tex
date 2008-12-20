@@ -138,17 +138,10 @@ implies the constantness of many intermediate values used in the
 function.  The \emph{binding time} of a variable determines how early the
 value of the variable will be known.
 
-XXX write something about the problems of classical PE?
-
 \subsection{Binding Time Analysis in PyPy}
 
-XXX need better transition text from last section
 At translation time, PyPy performs binding-time analysis of the source
-RPython program after it has been turned to low-level graphs, i.e. at
-the level at which operations manipulate objects that have a fixed type
-attached.
-
-The binding-time terminology that we are using in PyPy is based on the
+RPython program.  The binding-time terminology that we are using in PyPy is based on the
 colors that we use when displaying the control flow graphs:
 
 \begin{itemize}
@@ -162,9 +155,7 @@ The binding-time analyzer of our translation tool-chain is using a simple
 abstract-interpretation based analysis. It is based on the
 same type inference engine that is used on the source RPython program.
 This is called the \emph{hint-annotator}; it
-operates over input graphs that are already low-level instead of
-RPython-level, \anto{we never make distinction between low-level and rpython-level 
-flowgraphs, do we? I propose to talk about ``intermediate flowgraphs''} 
+operates over input flowgraphs
 and propagates annotations that do not track types but
 value dependencies and manually-provided binding time hints.
 
