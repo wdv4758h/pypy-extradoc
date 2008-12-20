@@ -1,24 +1,46 @@
 \section{The CLI backend for the Generated JIT}
 \label{sec:clibackend}
 
-%\subsection{Promotion on CLI}
-%
-%Implementing promotion on top of CLI is not straightforward, as it needs to
-%patch and modify the already generated code, and this is not possible on .NET.
-%
-%To solve, we do xxx and yyy etc. etc.
-%
+\subsection{JIT layering}
 
-\anto{XXX: add an overview section of the backend, else we only talk about
-  flexswitches}
-\cfbolz{it should maybe also have a nice introductory paragraph how the
-interface between the JIT works?}
+From the implementation point of view, the JIT generator is divided into a
+frontend and several backends.  The goal of the frontend is to generate a JIT
+compiler which works as described in the previous sections.  Internally, the
+frontend represents the compiled code as \emph{flow graphs}, and the role of
+the backends is to translate flowgraphs into machine code.
+
+At the moment of writing, three backends have been implemented: one for Intel
+\emph{x86} processors, one for \emph{PowerPC} processors, and one for the
+\emph{CLI Virtual Machine}.  The latter is special because instead of emitting
+code for a real CPU it emits code for a virtual machine: before being
+executed, the generated code will be compiled again by .NET's own JIT
+compiler.
+
+Thus, when using the CLI backend, we actually have two layers of
+JIT-compilation, each layer removing away different kinds of overhead.  By
+operating at a higher level, our JIT can potentially do a better job than the
+.NET one in some contexts, as our benchmarks demonstrate (see
+section~\ref{sec:benchmarks}).  On the other hand, the lower-level .NET JIT is
+very good at producing machine code, much more than PyPy's own \emph{x86}
+backend for example.  By combining the strengths of both we can get highly
+efficient machine code.
+
+As usual, the drawback is that programs that runs for a very short period of
+time could run slower with JIT than without, due to the time spent doing the
+initial (double) compilation.  It is important to underline that so far we
+mostly focused making the JIT able to produce very fast code, without trying
+to optimzed the compilation phase itself.
 
 \subsection{Flexswitches}
 
-As already explained, \emph{flexswitch} is one of the key
-concepts allowing the JIT compiler generator to produce code which can
-be incrementally specialized and compiled at run time.
+For a large part, implementing the CLI backend is easy and straightforward, as
+there is a close corrispondence between most of the operations used by
+frontend's flowgraphs and the CLI instructions.  Thus, we will not dig into
+details for this part.
+
+However the concept of \emph{flexswitch}, as described in
+Section~\ref{sec:implementing-promotion}, does not have any direct equivalent
+in the CLI model, and it is hard to implement efficiently.
 
 A flexswitch is a special kind of switch which can be dynamically
 extended with new cases.  Intuitively, its behavior can be described
@@ -87,7 +109,7 @@ needed.
 
 A link is called \emph{internal} if it connects two blocks contained
 in the same method,
- \emph{external} otherwise.
+\emph{external} otherwise.
 
 Following an internal link is easy in IL bytecode: a jump to
 the corresponding code fragment in the same method can be emitted 
@@ -122,8 +144,7 @@ connects two blocks implemented by different methods.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[height=6cm]{blockid}
-\caption{Method and block ids.\dacom{in the picture ``Main method'' must be
-    replaced with ``Primary method'' and in the primary method the block with number 0 should be added}}\label{block-id-fig}
+\caption{Method and block ids.}\label{block-id-fig}
 \end{center}
 \end{figure}
 
