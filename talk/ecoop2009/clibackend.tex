@@ -6,7 +6,7 @@
 From the implementation point of view, the JIT generator is divided into a
 frontend and several backends.  The goal of the frontend is to generate a JIT
 compiler which works as described in the previous sections.  Internally, the
-frontend represents the compiled code as \emph{flow graphs}, and the role of
+JIT represents the compiled code as \emph{flow graphs}, and the role of
 the backends is to translate flowgraphs into machine code.
 
 At the moment of writing, three backends have been implemented: one for Intel
@@ -20,7 +20,7 @@ Thus, when using the CLI backend, we actually have two layers of
 JIT-compilation, each layer removing away different kinds of overhead.  By
 operating at a higher level, our JIT can potentially do a better job than the
 .NET one in some contexts, as our benchmarks demonstrate (see
-section~\ref{sec:benchmarks}).  On the other hand, the lower-level .NET JIT is
+Section~\ref{sec:benchmarks}).  On the other hand, the lower-level .NET JIT is
 very good at producing machine code, much more than PyPy's own \emph{x86}
 backend for example.  By combining the strengths of both we can get highly
 efficient machine code.

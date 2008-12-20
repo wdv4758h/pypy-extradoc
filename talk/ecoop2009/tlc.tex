@@ -45,7 +45,7 @@ the program. It provides the following bytecode instructions:
 Obviously, not all the operations are applicable to all types. For example,
 it is not possible to \lstinline{ADD} an integer and an object, or reading an
 attribute from an object which does not provide it.  Being dynamically typed,
-the VM needs to do all these checks at runtime; in case one of the check
+the interpreter needs to do all these checks at runtime; in case one of the check
 fails, the execution is simply aborted.
 
 \subsection{TLC properties}
@@ -82,7 +82,8 @@ properties that makes most of current dynamic languages so slow:
 As we said above, TLC exists only at bytecode level; to ease the development
 of TLC programs, we wrote an assembler that generates TLC bytecode. Figure \ref{fig:tlc-abs}
 shows a simple program that computes the absolute value of
-the given integer.
+the given integer.  In the subsequent sections, we will examine step-by-step 
+how the generated JIT compiler manages to produce a fully optimized version of it.
 
 \begin{figure}[h]
 \begin{center}
