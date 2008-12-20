@@ -41,7 +41,7 @@ show how the resulting code looks like; to ease the reading, the state of the
 \begin{center}
 \input{tlc-folded-virtualized.py}
 \caption{The result of virtualizing the \lstinline{stack} list}
-\label{fig:tlc-main}
+\label{fig:tlc-folded-virtualized}
 \end{center}
 \end{figure}
 
@@ -114,7 +114,7 @@ primitive to make partial evaluation a practical approach to language
 independent dynamic compiler generation.
 
 Promotion is invoked with the use of a hint as well:
-\texttt{v2 = hint(v1, promote=True)}.
+\lstinline{v2 = hint(v1, promote=True)}.
 This hint is a \emph{local} request for \texttt{v2} to be green, without
 requiring \texttt{v1} to be green.  Note that this amounts to copying
 a red value into a green one, which is not possible in classical
@@ -144,43 +144,46 @@ hints added is shown in figure \ref{fig:tlc-main-hints}.
 
 \begin{figure}[h]
 \begin{center}
-\begin{lstlisting}[language=Python]
+\begin{tabular}{l|l}
+\begin{lstlisting}
 def interp_eval(code, pc, args, pool):
-    code_len = len(code)
-    stack = []
-    while pc < code_len:
-        opcode = ord(code[pc])
-        opcode = hint(opcode, concrete=True)
-        pc += 1
+  code_len = len(code)
+  stack = []
+  while pc < code_len:
+      opcode = ord(code[pc])
+      opcode = hint(opcode, concrete=True)
+      pc += 1
 
-        if opcode == PUSH:
-            ...
-        elif opcode == LT:
-            a, b = stack.pop(), stack.pop()
-            hint(a, promote_class=True)
-            hint(b, promote_class=True)
-            stack.append(IntObj(b.lt(a)))
+      if opcode == PUSH:
+          ...
+      elif opcode == LT:
+        a, b = stack.pop(), stack.pop()
+        hint(a, promote_class=True)
+        hint(b, promote_class=True)
+        stack.append(IntObj(b.lt(a)))
 \end{lstlisting}
-\caption{Usage of hints in TLC's main loop}
-\label{fig:tlc-main-hints}
-\end{center}
-\end{figure}
-
-\begin{figure}[h]
-\begin{center}
-\begin{lstlisting}[language=Python]
+&
+\hspace{2pt}
+\begin{lstlisting}
 class IntObj(Obj):
-    ...
-    def lt(self, other): 
-        return self.value < other.int_o()
-    def sub(self, other):
-        return IntObj(self.value - other.int_o())
-    def int_o(self):
-        return self.value
+
+  def lt(self, other): 
+    return (self.value < 
+            other.int_o())
+
+  def sub(self, other):
+    return IntObj(self.value -
+                  other.int_o())
+
+  def int_o(self):
+    return self.value
+
+  ...
 \end{lstlisting}
-\caption{Excerpt of the \lstinline{IntObj} class}
-\label{fig:tlc-intobj}
+\end{tabular}
 \end{center}
+\caption{Usage of hints in TLC's main loop and excerpt of the \lstinline{IntObj} class}
+\label{fig:tlc-main-hints}
 \end{figure}
 
 By promoting the class of \lstinline{a} and \lstinline{b}, we tell the JIT
