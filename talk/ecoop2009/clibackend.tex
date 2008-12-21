@@ -12,7 +12,7 @@ the backends is to translate flowgraphs into machine code.
 At the moment of writing, three backends have been implemented: one for Intel
 \emph{x86} processors, one for \emph{PowerPC} processors, and one for the
 \emph{CLI Virtual Machine}.  The latter is special because instead of emitting
-code for a real CPU it emits code for a virtual machine \footnote{By using the 
+code for a real CPU it emits code for a virtual machine\footnote{By using the 
 \lstinline{Reflection.Emit} namespace and creating \lstinline{DynamicMethod}s.}: 
 before being
 executed, the generated code will be compiled again by .NET's own JIT
