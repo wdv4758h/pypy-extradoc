@@ -111,6 +111,12 @@ Armin Rigo and Carl~Friedrich Bolz.
 \newblock {How to not write Virtual Machines for Dynamic Languages }.
 \newblock In {\em Proceeding of Dyla 2007 (to appear)}, pages~--, 2007.
 
+\bibitem{PyPyJIT}
+Armin Rigo and Samuele Pedroni.
+\newblock {JIT} compiler architecture.
+\newblock Technical Report D08.2, PyPy Consortium, 2007.
+\newblock http://codespeak.net/pypy/dist/pypy/doc/index-report.html.
+
 \bibitem{sullivan_dynamic_2001}
 Gregory~T. Sullivan.
 \newblock Dynamic partial evaluation.
