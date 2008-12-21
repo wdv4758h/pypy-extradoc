@@ -3,8 +3,6 @@
 
 \subsection{JIT layering}
 
-%\anto{Mention Reflection.Emit}
-
 From the implementation point of view, the JIT generator is divided into a
 frontend and several backends.  The goal of the frontend is to generate a JIT
 compiler which works as described in the previous sections.  Internally, the
@@ -14,7 +12,9 @@ the backends is to translate flowgraphs into machine code.
 At the moment of writing, three backends have been implemented: one for Intel
 \emph{x86} processors, one for \emph{PowerPC} processors, and one for the
 \emph{CLI Virtual Machine}.  The latter is special because instead of emitting
-code for a real CPU it emits code for a virtual machine: before being
+code for a real CPU it emits code for a virtual machine \footnote{By using the 
+\lstinline{Reflection.Emit} namespace and creating \lstinline{DynamicMethod}s.}: 
+before being
 executed, the generated code will be compiled again by .NET's own JIT
 compiler.
 
