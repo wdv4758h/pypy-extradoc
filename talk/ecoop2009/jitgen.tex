@@ -100,51 +100,15 @@ This shows a common shortcoming of partial evaluation when applied to a dynamic
 language: The partial evaluator (just like an ahead-of-time compiler) cannot
 make assumptions about the types of objects, which leads to poor results.
 Effective dynamic compilation requires feedback of runtime information into
-compile-time. This is no different for partial evaluation.
+compile-time. This is no different for partial evaluation, and subsequent sections shows how we managed to solve this problem.
 
-Partial evaluation (PE) comes in two flavors: \cfbolz{if we have space problems
-we should kill the bits about online and offline PE}
-
-\begin{itemize}
-\item \emph{On-line} partial evaluation: a compiler-like algorithm takes the
-source code of the function \texttt{f(x, y)} (or its intermediate representation,
-i.e. its control flow graph), and some partial
-information, e.g. \texttt{x=5}.  From this, it produces the residual function
-\texttt{g(y)} directly, by following in which operations the knowledge \texttt{x=5} can
-be used, which loops can be unrolled, etc.
-
-\item \emph{Off-line} partial evalution: in many cases, the goal of partial
-evaluation is to improve performance in a specific application.  Assume that we
-have a single known function \texttt{f(x, y)} in which we think that the value
-of \texttt{x} will change slowly during the execution of our program – much
-more slowly than the value of \texttt{y}.  An obvious example is a loop that
-calls \texttt{f(x, y)} many times with always the same value \texttt{x}.  We
-could then use an on-line partial evaluator to produce a \texttt{g(y)} for each
-new value of \texttt{x}.  In practice, the overhead of the partial evaluator
-might be too large for it to be executed at run-time.  However, if we know the
-function \texttt{f} in advance, and if we know \emph{which} arguments are the
-ones that we will want to partially evaluate \texttt{f} with, then we do not
-need a full compiler-like analysis of \texttt{f} every time the value of
-\texttt{x} changes.  We can precompute once and for all a specialized function
-\texttt{f1(x)}, which when called produces the residual function \texttt{g(y)}
-corresponding to \texttt{x}.  This is \emph{off-line partial evaluation}; the
-specialized function \texttt{f1(x)} is called a \emph{generating extension}.
-\end{itemize}
-
-Off-line partial evaluation is usually based on \emph{binding-time analysis}, which
-is the process of determining among the variables used in a function (or
-a set of functions) which ones are going to be known in advance and
-which ones are not.  In the example of \texttt{f(x, y)}, such an analysis
-would be able to infer that the constantness of the argument \texttt{x}
-implies the constantness of many intermediate values used in the
-function.  The \emph{binding time} of a variable determines how early the
-value of the variable will be known.
 
 \subsection{Binding Time Analysis in PyPy}
 
-At translation time, PyPy performs binding-time analysis of the source
-RPython program.  The binding-time terminology that we are using in PyPy is based on the
-colors that we use when displaying the control flow graphs:
+At translation time, PyPy performs binding-time analysis of the source RPython
+program, to determine which variables are static and which dynamic.  The
+binding-time terminology that we are using in PyPy is based on the colors that
+we use when displaying the control flow graphs:
 
 \begin{itemize}
 \item \emph{Green} variables contain values that are known at compile-time.
