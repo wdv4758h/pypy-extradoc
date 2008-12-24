@@ -5,13 +5,13 @@ a run-time specialiser for Python that uses promotion (called ``unlift'' in
 \cite{DBLP:conf/pepm/Rigo04}). However, Psyco is a manually written JIT, is
 not applicable to other languages and cannot be retargetted.
 
-Moreover, the idea of promotion of is a generalization of \emph{Polymorphic
+Moreover, the idea of promotion is a generalization of \emph{Polymorphic
   Inline Caches} \cite{hoelzle_optimizing_1991}, as well as the idea of using
 runtime feedback to produce more efficient code
 \cite{hoelzle_type_feedback_1994}.
 
 PyPy-style JIT compilers are hard to write manually, thus we chose to write a
-JIT generator.  Tracing JIT compilers \cite{gal_hotpathvm_2006} also gives
+JIT generator.  Tracing JIT compilers \cite{gal_hotpathvm_2006} also give
 good results but are much easier to write, making the need for an automatic
 generator less urgent.  However so far tracing JITs have less general
 allocation removal techniques, which makes them get less speedup in a dynamic

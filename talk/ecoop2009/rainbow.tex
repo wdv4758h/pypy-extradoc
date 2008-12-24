@@ -251,7 +251,7 @@ compiler generates new specialized code, and \emph{patches} the flexswitch to
 add the new case, which is then executed.
 
 If later an instance of \lstinline{IntObj} hits the flexswitch again, the
-code is executed without needing of more calls to the JIT compiler.  On the
+code is executed without needing more calls to the JIT compiler.  On the
 other hand, if the flexswitch is hit by an instance of some other class, the
 \lstinline{default} branch will be selected again and the whole process will
 restart.

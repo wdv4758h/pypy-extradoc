@@ -20,11 +20,12 @@ To measure the speedup we get with the JIT, we run each program three times:
 \end{enumerate}
 
 Moreover, for each benchmark we also show the time taken by running the
-equivalent program written in C\#\footnote{The sources for both TLC and C\#
+equivalent program written in C\#.\footnote{The sources for both TLC and C\#
   programs are available at:
+
   http://codespeak.net/svn/pypy/extradoc/talk/ecoop2009/benchmarks/}
 
-The benchmarks have been run on machine with an Intel Pentium 4 CPU running at
+The benchmarks have been run on a machine with an Intel Pentium 4 CPU running at
 3.20 GHz and 2 GB of RAM, running Microsoft Windows XP and Microsoft .NET
 Framework 2.0.
 
@@ -123,7 +124,7 @@ all links inside are internal (and fast).
 To measure how the JIT handles object-oriented features, we wrote a very
 simple benchmark that involves attribute lookups and polymorphic method calls.
 Since the TLC assembler source is long and hard to read,
-Figure~\ref{fig:accumulator} shows the equivalent program written in an
+figure~\ref{fig:accumulator} shows the equivalent program written in an
 invented Python-like syntax.
 
 \begin{figure}[h]
@@ -168,7 +169,7 @@ implement this behaviour.
 
 As already discussed, our generated JIT does not compile the whole function at
 once. Instead, it compiles and executes code chunk by chunk, waiting until it
-knows enough informations to generate highly efficient code.  In particualr,
+knows enough informations to generate highly efficient code.  In particular,
 at the time it emits the code for the inner loop it exactly knows the
 type of \lstinline{obj}, thus it can remove the overhead of dynamic dispatch
 and inline the method call.  Moreover, since \lstinline{obj} never escapes the
