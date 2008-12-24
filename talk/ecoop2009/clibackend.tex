@@ -36,7 +36,7 @@ to optimze the compilation phase itself.
 \subsection{Flexswitches}
 
 For a large part, implementing the CLI backend is easy and straightforward, as
-there is a close corrispondence between most of the operations used by
+there is a close correspondence between most of the operations used by
 frontend's flowgraphs and the CLI instructions.  Thus, we will not dig into
 details for this part.
 
@@ -103,7 +103,7 @@ following way:
 \end{itemize} 
 
 When a new case is added to a flexswitch, the backend generates the new blocks
-into a new single method.  The newly created method is pointed by a
+into a new single method.  The newly created method is pointed to by a
 delegate\footnote{\emph{Delegates} are the .NET equivalent of function
   pointers.} stored in the flexswitch, so that it can be invoked later when
 needed.
@@ -124,7 +124,7 @@ be easily implemented, by just invoking the corresponding method.
 What cannot be easily implemented in CLI is following an external link
 whose target is not an initial block; consider, for instance, the
 outgoing link of the block dynamically added in the right-hand side
-picture of Figure~\ref{flexswitch-fig}. How it is possible to jump in 
+picture of Figure~\ref{flexswitch-fig}. How is it possible to jump into
 the middle of a method?
 
 To solve this problem every method contains a special code, called
