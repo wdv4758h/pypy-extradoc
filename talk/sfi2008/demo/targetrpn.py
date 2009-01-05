@@ -12,3 +12,4 @@ def entry_point(argv):
 
 def target(*args):
     return entry_point, None
+

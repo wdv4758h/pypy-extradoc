@@ -40,7 +40,7 @@ Generating VMs
 
   - encode the language semantics
 
-  - encode language-agnostic design decisions (ie threading model)
+  - encode language-agnostic design decisions (ie object model)
 
   - encode platform details
 
@@ -102,7 +102,7 @@ Example of static analysis
 
 * replace all external calls with stubs
 
-* a very small piece of code to trust
+* sandboxing - a very small piece of code to trust
 
 * build your own library (in python) which implements
   your own security policy
@@ -268,8 +268,6 @@ Solution: promotion
 * Implementation-wise this is a generalization of the polymorphic
   in-line caches used in Java VM JITs
 
-XXX put slide about virtualizables somewhere
-
 Concrete ingredients
 ====================
 
@@ -304,16 +302,12 @@ The hint annotator
 
 * Some rules about the color propagation
 
-XXX demo
-
 The rainbow interpreter
 =====================================
 
 * Very very experimental, lives on a branch right now
 
 * We dump colored graphs as a bytecode and interpret them
-
-XXX demo
 
 JIT details - backends
 ======================
