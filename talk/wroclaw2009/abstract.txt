@@ -10,6 +10,8 @@ Prezentacja nie zakłada uprzedniej znajomości pythona i jest skierowana
 do wszystkich zainteresowanych implementacją dynamicznych jezyków.
 
 W dniach 7-14 lutego odbędzie się na terenie Politechniki Wroclawskiej
-sprint PyPy. Sprint jest to XXX
+sprint PyPy. Sprint jest to krotka (w tym wypadku tydzien) sesja intensywnego
+programowania, czesto w wykonaniu pair programming. Jest to rowniez
+wysmienita okazja do spotkania z developerami i wdrozenia sie do projektu.
 Lokalizacja sprintu, Zintegrowane Centrum Studenckie, Wybrzeże
 Wyspiańskiego 23-25, budynek C-13, sala 3.01.
