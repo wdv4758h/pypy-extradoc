@@ -11,3 +11,5 @@ do wszystkich zainteresowanych implementacją dynamicznych jezyków.
 
 W dniach 7-14 lutego odbędzie się na terenie Politechniki Wroclawskiej
 sprint PyPy. Sprint jest to XXX
+Lokalizacja sprintu, Zintegrowane Centrum Studenckie, Wybrzeże
+Wyspiańskiego 23-25, budynek C-13, sala 3.01.
