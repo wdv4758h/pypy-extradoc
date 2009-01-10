@@ -5,4 +5,6 @@ Prezentacja bedzie pokrywac motywacje, dlaczego nowy interpreter
 pythona, wysokopoziomowy rzut oka na architekture oraz na mozliwosci
 szybkiej interpretacji dynamicznych jezykow. Jednym z ciekawszych
 aspektow bedzie prezentacja dynamicznej kompilacji pythona (JIT - just
-in time compilation), ktory sam jest napisany w pythonie.
+in time compilation), ktory sam jest napisany w pythonie. Prezentacja
+nie zaklada uprzedniej znajomosci pythona i jest skierowana do wszystkich
+zainteresowanych implementacja dynamicznych jezykow.
