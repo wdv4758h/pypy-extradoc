@@ -1,13 +1,13 @@
 PyPy - interpreter pythona napisany w pythonie. Celem projektu jest
 dostarczenie lepszego i szybszego interpretera pythona niż CPython,
 jednocześnie nie używając C ani żadnego niskopoziomowego języka.
-Prezentacja będzie pokrywać motywacje, dlaczego nowy interpreter
-pythona, wysokopoziomowy rzut oka na architekturę oraz na możliwości
-szybkiej interpretacji dynamicznych języków. Jednym z ciekawszych
-aspektów będzie prezentacja dynamicznej kompilacji pythona (JIT - just
-in time compilation), który sam jest napisany w pythonie. Prezentacja
-nie zakłada uprzedniej znajomości pythona i jest skierowana do wszystkich
-zainteresowanych implementacją dynamicznych jezyków.
+Prezentacja przedstawi motywacje towarzyszące stworzeniu nowego
+interpretera pythona, wysokopoziomowy rzut oka na architekturę oraz
+na możliwości szybkiej interpretacji dynamicznych języków. Jednym
+z ciekawszych aspektów będzie prezentacja dynamicznej kompilacji pythona
+(JIT - just in time compilation), która sama napisana jest w pythonie.
+Prezentacja nie zakłada uprzedniej znajomości pythona i jest skierowana
+do wszystkich zainteresowanych implementacją dynamicznych jezyków.
 
 W dniach 7-14 lutego odbędzie się na terenie Politechniki Wroclawskiej
 sprint PyPy. Sprint jest to XXX
