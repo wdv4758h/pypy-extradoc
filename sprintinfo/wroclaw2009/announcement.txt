@@ -1,0 +1,69 @@
+========================================================
+Wrocław PyPy sprint 7-14th February, 2009
+========================================================
+
+--------
+Location
+--------
+
+Wrocław University of Technology, Poland
+Wybrzeże Wyspiańskiego 23-25, Wrocław
+building: C-13 (picture: http://tinyurl.com/6vvzwq)
+room: 3.01 (3rd floor)
+opening-hours: 8-21 (but the building is opened 24h/7)
+campus map: http://www.pwr.wroc.pl/upload_module/images/english/campus_map.png
+city map: http://tinyurl.com/7q3tfx
+
+---------------
+Native speakers
+---------------
+
+Official language in Poland is polish. There shouldn't be any problem with
+english (especially during hotel booking etc) but if you need any help,
+here is a list of native speakers whose participate the spring. Feel free
+to contact with any of them:
+
+ * Maciej Fijałkowski ( fijall at gmail.com )
+ * Bartosz Skowron ( getxsick at gmail.com )
+ * Jakub Gustak ( jgustak at gmail.com )
+
+------------
+Registration
+------------
+
+If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
+and drop a note about your interests and post any questions.  More
+organisational information will be sent to that list.
+
+Please register by adding yourself on the following list (via svn):
+
+  http://codespeak.net/svn/pypy/extradoc/sprintinfo/wroclaw2009/people.txt
+
+or announce yourself on the pypy-sprint mailing list if you do not 
+yet have check-in rights:
+
+  http://codespeak.net/mailman/listinfo/pypy-sprint
+
+--------------------------------------
+Preparation (if you feel it is needed)
+--------------------------------------
+
+* read the `getting-started`_ pages on http://codespeak.net/pypy
+
+* for inspiration, overview and technical status you are welcome to
+  read `the technical reports available and other relevant documentation`_
+
+* please direct any technical and/or development oriented questions to
+  pypy-dev at codespeak.net and any sprint organizing/logistical
+  questions to pypy-sprint at codespeak.net
+
+We are looking forward to meet you at the Wrocław PyPy sprint!
+
+The PyPy team 
+
+.. See also ..
+
+.. _getting-started: http://codespeak.net/pypy/dist/pypy/doc/getting-started.html
+.. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
+.. _`the technical reports available and other relevant documentation`: http://codespeak.net/pypy/dist/pypy/doc/index.html
+
