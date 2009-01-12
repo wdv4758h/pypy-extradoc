@@ -1,3 +1,19 @@
+
+XXX: wstawic polskie literki
+
+==========================================================================
+PyPy - nowe podejscie do tworzenia maszyn wirtualnych jezykow dynamicznych
+==========================================================================
+
+Data: 22.I.2008
+---------------
+
+Miejsce: XXX sala
+-----------------
+
+Prelegent: Maciej Fijalkowski
+-----------------------------
+
 PyPy - interpreter pythona napisany w pythonie. Celem projektu jest
 dostarczenie lepszego i szybszego interpretera pythona niż CPython,
 jednocześnie nie używając C ani żadnego niskopoziomowego języka.
@@ -5,13 +21,31 @@ Prezentacja przedstawi motywacje towarzyszące stworzeniu nowego
 interpretera pythona, wysokopoziomowy rzut oka na architekturę oraz
 na możliwości szybkiej interpretacji dynamicznych języków. Jednym
 z ciekawszych aspektów będzie prezentacja dynamicznej kompilacji pythona
-(JIT - just in time compilation), która sama napisana jest w pythonie.
+(*JIT* - just in time compilation), która sama napisana jest w pythonie.
 Prezentacja nie zakłada uprzedniej znajomości pythona i jest skierowana
 do wszystkich zainteresowanych implementacją dynamicznych jezyków.
 
 W dniach 7-14 lutego odbędzie się na terenie Politechniki Wroclawskiej
-sprint PyPy. Sprint jest to krótka (w tym wypadku tydzień) sesja intensywnego
+sprint PyPy. *Sprint( jest to krótka (w tym wypadku tydzień) sesja intensywnego
 programowania, często w wykonaniu pair programming. Jest to również
 wyśmienita okazja do spotkania z developerami i wdrożenia się do projektu.
 Lokalizacja sprintu, Zintegrowane Centrum Studenckie, Wybrzeże
 Wyspiańskiego 23-25, budynek C-13, sala 3.01.
+
+XXX: skopiowac BIO z merlinux.de
+
+Linki:
+------
+
+PyPy - http://codespeak.net/pypy
+blog - http://morepypy.blogspot.com
+Sprint - http://en.wikipedia.org/wiki/Hackathon#Sprints
+JIT - http://en.wikipedia.org/wiki/Just-in-time_compilation
+
+Wiecej do czytania:
+-------------------
+
+psyco - Just in time compiler dla pythona, projekt poprzedzajacy PyPy,
+tworzony przez tych samych ludzi: http://psyco.sourceforge.net/
+
+XXX linki do papierow o tracing JIT, chyba nie....
