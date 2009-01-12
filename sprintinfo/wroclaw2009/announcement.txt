@@ -20,7 +20,7 @@ Native speakers
 
 Official language in Poland is polish. There shouldn't be any problem with
 english at all (especially during hotel booking etc) but if you need any help,
-here is a list of native speakers who participate the spring. Feel free
+here is a list of native speakers who participate in the sprint. Feel free
 to contact with any of them:
 
  * Maciej Fijałkowski ( fijall at gmail.com )
