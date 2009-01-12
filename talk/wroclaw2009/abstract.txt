@@ -1,17 +1,14 @@
-
-XXX: wstawic polskie literki
-
 ==========================================================================
-PyPy - nowe podejscie do tworzenia maszyn wirtualnych jezykow dynamicznych
+PyPy - nowe podejście do tworzenia maszyn wirtualnych języków dynamicznych
 ==========================================================================
 
-Data: 22.I.2008
----------------
+Data: 22.I.2008 19:00
+---------------------
 
-Miejsce: XXX sala
------------------
+Miejsce: Politechnika Wrocławska, budynek C-13, sala 0.31
+---------------------------------------------------------
 
-Prelegent: Maciej Fijalkowski
+Prelegent: Maciej Fijałkowski
 -----------------------------
 
 PyPy - interpreter pythona napisany w pythonie. Celem projektu jest
@@ -26,13 +23,18 @@ Prezentacja nie zakłada uprzedniej znajomości pythona i jest skierowana
 do wszystkich zainteresowanych implementacją dynamicznych jezyków.
 
 W dniach 7-14 lutego odbędzie się na terenie Politechniki Wroclawskiej
-sprint PyPy. *Sprint( jest to krótka (w tym wypadku tydzień) sesja intensywnego
-programowania, często w wykonaniu pair programming. Jest to również
-wyśmienita okazja do spotkania z developerami i wdrożenia się do projektu.
-Lokalizacja sprintu, Zintegrowane Centrum Studenckie, Wybrzeże
-Wyspiańskiego 23-25, budynek C-13, sala 3.01.
+sprint PyPy. *Sprint* - jest to krótka (w tym wypadku tydzień) sesja
+intensywnego programowania, często w wykonaniu pair programming. Jest
+to również wyśmienita okazja do spotkania z developerami i wdrożenia się
+do projektu. Lokalizacja sprintu, Politechnika Wrocławska, Zintegrowane
+Centrum Studenckie, Wybrzeże Wyspiańskiego 23-25, budynek C-13, sala 3.01.
 
-XXX: skopiowac BIO z merlinux.de
+Maciej Fijałkowski:
+-------------------
+
+Maciek jest core developerem projektu PyPy. Uczestniczy i rozwija wiele
+aspektów związanych z projektem. Jest pracownikiem Merlinux GmbH od
+2006 roku. Maciek ma także duży wkład w bibliotekę py.test.
 
 Linki:
 ------
