@@ -2,6 +2,14 @@
 Wrocław PyPy sprint 7-14th February, 2009
 ========================================================
 
+The next PyPy sprint will be held in Wrocław, Poland. This is fully public
+sprint and all newcomers are welcomed. Preceeding the sprint there
+will be a talk at University of Technology in Warsaw held at 22nd of January.
+
+Worth noting is that this is a perfect time and place to go cross country
+skiing either before or after sprint, so if anyone wants to participate in
+such activity, we can organize something.
+
 --------
 Location
 --------
@@ -43,6 +51,15 @@ or announce yourself on the pypy-sprint mailing list if you do not
 yet have check-in rights:
 
   http://codespeak.net/mailman/listinfo/pypy-sprint
+
+-------
+Flights
+-------
+
+You can either fly directly to Wroclaw, with many international connections
+(like one to Dortmund and one to Duesseldorf). Details are available on
+airport's webpage: http://www.airport.wroclaw.pl/en/. You can also fly to:
+Warsaw (5h by train), Berlin (6h by train) or Poznan (2h by train).
 
 --------------------------------------
 Preparation (if you feel it is needed)
