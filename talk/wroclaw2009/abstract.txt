@@ -32,9 +32,9 @@ Centrum Studenckie, Wybrzeże Wyspiańskiego 23-25, budynek C-13, sala 3.01.
 Maciej Fijałkowski:
 -------------------
 
-Maciek jest core developerem projektu PyPy. Uczestniczy i rozwija wiele
-aspektów związanych z projektem. Jest pracownikiem Merlinux GmbH od
-2006 roku. Maciek ma także duży wkład w bibliotekę py.test.
+Maciej jest core developerem projektu PyPy. Uczestniczy i rozwija wiele
+aspektów związanych z projektem. Wyglaszal wyklady na wielu miedzynarodowych
+konferencjach pythonowych, miedzy innymi PyCon, RuPy czy EuroPython.
 
 Linki:
 ------
@@ -49,5 +49,3 @@ Wiecej do czytania:
 
 psyco - Just in time compiler dla pythona, projekt poprzedzajacy PyPy,
 tworzony przez tych samych ludzi: http://psyco.sourceforge.net/
-
-XXX linki do papierow o tracing JIT, chyba nie....
