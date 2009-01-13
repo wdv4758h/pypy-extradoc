@@ -33,8 +33,8 @@ Maciej Fijałkowski:
 -------------------
 
 Maciej jest core developerem projektu PyPy. Uczestniczy i rozwija wiele
-aspektów związanych z projektem. Wyglaszal wyklady na wielu miedzynarodowych
-konferencjach pythonowych, miedzy innymi PyCon, RuPy czy EuroPython.
+aspektów związanych z projektem. Wygłaszał wykłady na wielu międzynarodowych
+konferencjach pythonowych, między innymi PyCon, RuPy czy EuroPython.
 
 Linki:
 ------
@@ -44,8 +44,8 @@ blog - http://morepypy.blogspot.com
 Sprint - http://en.wikipedia.org/wiki/Hackathon#Sprints
 JIT - http://en.wikipedia.org/wiki/Just-in-time_compilation
 
-Wiecej do czytania:
+Więcej do czytania:
 -------------------
 
-psyco - Just in time compiler dla pythona, projekt poprzedzajacy PyPy,
+psyco - Just in time compiler dla pythona, projekt poprzedzający PyPy,
 tworzony przez tych samych ludzi: http://psyco.sourceforge.net/
