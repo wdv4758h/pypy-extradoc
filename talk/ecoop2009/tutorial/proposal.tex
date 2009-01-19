@@ -71,31 +71,40 @@
 \and 
 Softwaretechnik und Programmiersprachen
  Heinrich-Heine-Universit\"at D\"usseldorf}
-
 \maketitle
+
+
+\begin{abstract}
+We propose to give a tutorial on how to use the PyPy project to write
+interpreters for dynamic languages. PyPy supports compiling such interpreters
+to various target environments (like .NET or C/Posix) and automatically
+generating a Just-In-Time compiler for them. PyPy is thus an emerging tool to
+help implement fast, portable multi-platform interpreters with less effort.
+\end{abstract}
 
 The easiest way to implement a dynamic language such as JavaScript or Python is
 to write an interpreter for it; however, interpreters are slow. An alternative
 is to write a compiler; writing a compiler that targets a high level virtual
 machine like CLI or JVM is easier than targeting a real CPU, but it still
-require a lot of work, as IronPython, Jython, JRuby demonstrate. Moreover,
-the various platforms have to be targeted independently.
+require a lot of work, as demonstrated by the IronPython, Jython, JRuby
+projects. Moreover, the various platforms (either VM or real hardware) have to
+be targeted independently.
 
-The PyPy project\footnote{\url{http://codespeak.net/pypy}} \cite{RiBo07_223}
+The PyPy project\footnote{\url{http://codespeak.net/pypy}} \cite{RigoPedroni06}
+\cite{RiBo07_223}
 aims to make the implementation of dynamic
-languages easier by providing a toolchain that allows to translate an
+languages easier by providing a toolchain that allows to compile an
 interpreter to various target platforms, including the JVM, .NET and C/Posix. 
-In addition, we are working on being able to automatically transform the
+In addition, we are working automatically transforming the
 interpreter into a specializing JIT-compiler to vastly increase performance.
-The goal is to minimize the effort required to get a fast implementation of a
+The goal is to minimize the effort required to get a fast implementation for a
 dynamic language.
 
-This tutorial will give an insight into the usage of the PyPy translation
+This tutorial will provide insights into the usage of the PyPy translation
 toolchain by giving a step-by-step introduction. The topics covered are how to
-write an interpreter for a dynamic language for PyPy and make it possible to
+write an interpreter for a dynamic language with PyPy and make it possible to
 automatically generate a JIT for it.  We will showcase a typical interpreter for a
 small dynamic language as a running example.
-
 
 
 Outline of the tutorial:
