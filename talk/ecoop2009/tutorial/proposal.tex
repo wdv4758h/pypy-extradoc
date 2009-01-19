@@ -1,0 +1,105 @@
+\documentclass{llncs}
+
+
+ %%%% Compression Light+: LNCS margin reduced by +/-7mm along all edges (RG).
+%\textwidth=130mm   % LNCS: 122mm
+%\textheight=203mm  % LNCS: 193mm
+
+\renewcommand{\baselinestretch}{0.97}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[sans]{dsfont}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{xspace}
+\usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage{multirow}
+\usepackage[pdftex]{graphicx}
+
+%\input{macros}
+
+\pagestyle{plain}
+
+%\lstset{mathescape=true,language=Java,basicstyle=\tt,keywordstyle=\bf}
+\lstset{language=Python,
+        basicstyle=\scriptsize\ttfamily,
+        keywordstyle=\color{blue}, % I couldn't find a way to make chars both bold and tt
+        frame=none,
+        stringstyle=\color{blue},
+        fancyvrb=true,
+        xleftmargin=20pt,xrightmargin=20pt,
+        showstringspaces=false}
+
+\setlength{\tabcolsep}{1ex}
+
+
+%\renewcommand{\baselinestretch}{.98}
+\newboolean{showcomments}
+\setboolean{showcomments}{false}
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\nb}[2]{
+    \fbox{\bfseries\sffamily\scriptsize#1}
+    {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+   }
+   \newcommand{\version}{\emph{\scriptsize$-$Id: main.tex 19055 2008-06-05 11:20:31Z cfbolz $-$}}
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{}
+  }
+
+\newcommand\dacom[1]{\nb{DA}{#1}}
+\newcommand\cfbolz[1]{\nb{CFB}{#1}}
+\newcommand\anto[1]{\nb{ANTO}{#1}}
+\newcommand\arigo[1]{\nb{AR}{#1}}
+\newcommand{\commentout}[1]{}
+
+\let\oldcite=\cite
+
+\renewcommand\cite[1]{\ifthenelse{\equal{#1}{XXX}}{[citation~needed]}{\oldcite{#1}}}
+
+
+\begin{document}
+\title{Tutorial Proposal: Writing Interpreters for Dynamic Languages Using PyPy
+(and Getting Them Fast)}
+
+
+\author{Carl Friedrich Bolz\inst{2} \email{cfbolz@gmx.de} \and Antonio Cuni\inst{1} \email{anto.cuni@gmail.com} \and Armin Rigo\inst{2} \email{arigo@tunes.org}}
+
+\institute{DISI, University of Genova, Italy 
+\and 
+Softwaretechnik und Programmiersprachen
+ Heinrich-Heine-Universit\"at D\"usseldorf}
+
+\maketitle
+
+The easiest way to implement a dynamic language such as JavaScript or Python is
+to write an interpreter for it; however, interpreters are slow. An alternative
+is to write a compiler; writing a compiler that targets a high level virtual
+machine like CLI or JVM is easier than targeting a real CPU, but it still
+require a lot of work, as IronPython, Jython, JRuby demonstrate. Moreover,
+the various platforms have to be targeted independently.
+
+The PyPy project \cite{RiBo07_223} aims to make the implementation of dynamic
+languages easier by providing a toolchain that allows to translate an
+interpreter to various target platforms, including the JVM, .NET and C/Posix. 
+In addition, we are working on being able to automatically transform the
+interpreter into a specializing JIT-compiler to vastly increase performance.
+The goal is to minimize the effort required to get a fast implementation of a
+dynamic language.
+
+
+
+Outline of the tutorial:
+
+ - introduction to PyPy
+ - present the small language and its interpreter
+ - show how to compile the interpreter to various platforms
+ - show how to apply JIT-generator
+
+
+\bibliographystyle{plain}
+\bibliography{main}
+
+\end{document}
