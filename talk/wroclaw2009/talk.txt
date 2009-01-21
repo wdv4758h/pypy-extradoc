@@ -1,0 +1,73 @@
+=========================
+PyPy - XXX title
+=========================
+
+Title page
+==========
+
+What this talk is about?
+========================
+
+* general overview of dynamic languages vm
+
+* example: python
+
+* challenges of classic approach
+
+* possible solution - pypy
+
+Dynamic languages VM's
+======================
+
+* written in lower level language (C, Java)
+
+* usually hard coded design decisions
+  (ie GC, object layout, threading model)
+
+* hard to maintain
+
+* a challenge between performance and maintainability
+
+Example - python
+================
+
+* primary implementation - CPython
+
+* written in C
+
+* hard-coded - Global Interpreter Lock
+
+* hard-coded - refcounting for garbage collection
+
+Example - python (2)
+====================
+
+* Jython, IronPython - bound to a specific VM
+
+* not really winning in terms of performance
+
+* Java is still not the best language ever
+
+* both are compilers, harder to maintain
+
+Ideally, we would ...
+=====================
+
+* use a high level language, to describe an interpreter
+
+* get performance by dynamic compilation
+
+* separate language semantics from designe decisions
+
+n*m*l problem
+=============
+
+* n - dynamic languages
+
+* m - design decisions (GC, JIT, etc.)
+
+* l - platforms (JVM, .NET, C/Posix)
+
+* we want n+m+l effort, instead of n*m*l!
+
+XXX finish
