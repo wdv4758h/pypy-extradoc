@@ -13,13 +13,13 @@ What this talk is about?
 
 * possible solution - pypy
 
-Dynamic languages VM's
+Dynamic languages VMs
 ======================
 
 * written in lower level language (C, Java)
 
 * usually hard coded design decisions
-  (ie GC, object layout, threading model)
+  (eg about GC, object layout, threading model)
 
 * hard to maintain
 
@@ -96,13 +96,13 @@ PyPy - high level architecture
 PyPy - implementation language
 ==============================
 
-* RPython - restricted susbset of Python
+* RPython - restricted subset of Python
 
-* but still a valid python
+* but still valid python
 
 * static enough to compile to efficient code
 
-* not necesarilly nice language
+* not necessarily a nice language
 
 * ... but better than C
 
