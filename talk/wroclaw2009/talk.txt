@@ -44,7 +44,7 @@ Example - python (2)
 
 * Jython, IronPython - bound to a specific VM
 
-* not really winning in terms of performance
+* about the same performance as CPython
 
 * Java is still not the best language ever
 
@@ -57,7 +57,7 @@ Ideally, we would ...
 
 * get performance by dynamic compilation
 
-* separate language semantics from designe decisions
+* separate language semantics from design decisions
 
 n*m*l problem
 =============
@@ -68,6 +68,6 @@ n*m*l problem
 
 * l - platforms (JVM, .NET, C/Posix)
 
-* we want n+m+l effort, instead of n*m*l!
+* we want an ``n+m+l`` effort, instead of ``n*m*l`` !
 
 XXX finish
