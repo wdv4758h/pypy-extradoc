@@ -2,9 +2,6 @@
 PyPy - XXX title
 =========================
 
-Title page
-==========
-
 What this talk is about?
 ========================
 
@@ -39,6 +36,8 @@ Example - python
 
 * hard-coded - refcounting for garbage collection
 
+* psyco - very hard to maintain
+
 Example - python (2)
 ====================
 
@@ -70,4 +69,40 @@ n*m*l problem
 
 * we want an ``n+m+l`` effort, instead of ``n*m*l`` !
 
-XXX finish
+Happy snakes
+============
+
+.. image:: happy_snake.jpg
+   :align: center
+   :scale: 40
+
+PyPy - high level goals
+=======================
+
+* solve n*m*l problem
+
+* create a nice, fast and maintainable python implementation
+
+* that runs on C/Posix, .NET, JVM, whatever
+
+* with JIT
+
+PyPy - high level architecture
+==============================
+
+.. image:: architecture.png
+   :scale: 60
+
+PyPy - implementation language
+==============================
+
+* RPython - restricted susbset of Python
+
+* but still a valid python
+
+* static enough to compile to efficient code
+
+* not necesarilly nice language
+
+* ... but better than C
+
