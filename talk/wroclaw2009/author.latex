@@ -1,0 +1,8 @@
+\definecolor{rrblitbackground}{rgb}{0.0, 0.0, 0.0}
+
+\title[PyPy status talk]{PyPy status talk}
+\author[M. Fijalkowski]{Maciej Fijalkowski\\
+Merlinux GmbH}
+
+\institute[Politechnika Wroclawska]{Politechnika Wroclawska}
+\date{January 22 2009}
