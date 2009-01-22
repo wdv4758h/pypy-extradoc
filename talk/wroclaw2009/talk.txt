@@ -93,6 +93,12 @@ PyPy - high level architecture
 .. image:: architecture.png
    :scale: 60
 
+PyPy - high level architecture (2)
+==================================
+
+.. image:: architecture2.png
+   :scale: 60
+
 PyPy - implementation language
 ==============================
 
@@ -105,4 +111,78 @@ PyPy - implementation language
 * not necessarily a nice language
 
 * ... but better than C
+
+PyPy - why so complex?
+=======================
+
+* because we control translation toolchain,
+  we can have work done for us
+
+* nice example - garbage collection
+
+* hopefully even nicer example - JIT
+
+Python interpreter status
+=========================
+
+* almost as fast as CPython (from 0.8x to 4x slower)
+
+* it's 99% compatible with CPython
+
+* comes with majority of CPython's stdlib (including ctypes)
+
+PyPy - garbage collection
+=========================
+
+* written in RPython
+
+* completely separated from interpreter
+
+* nicely testable on top of Python
+
+* faster than CPython ones
+
+* very easy to write new ones
+
+JIT - idea
+==========
+
+* dynamic compilation is a way to go for dynamic
+  languages
+
+* examples: psyco, strongtalk, modern JavaScript engines
+
+* python is a very complex language, far more complex
+  than JavaScript
+
+* hence, JIT generator is required!
+
+JIT - status
+============
+
+* 4th generation of JIT in PyPy
+
+* 1st generation was able to speed up examples
+  up to 60x (same as psyco)
+
+* not ready yet
+
+* based on tracing JIT by Michael Franz
+  (the same paper as tracemonkey is based on)
+
+JIT - the main idea
+===================
+
+* we find hotspot loops, which are executed
+  often enough
+
+* we "trace" those loops and produce machine code
+
+* next time we enter the loop, we execute fast
+  machine code
+
+* we do this on interpreter source level,
+  instead of doing that on python's source
+  code
+
 
