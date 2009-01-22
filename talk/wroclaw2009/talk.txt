@@ -99,6 +99,21 @@ PyPy - high level architecture (2)
 .. image:: architecture2.png
    :scale: 60
 
+PyPy - implementation language
+==============================
+
+* RPython - restricted subset of Python
+
+* but still valid python
+
+* static enough to compile to efficient code
+
+* static enough to be able to analyze it
+
+* not necessarily a nice language
+
+* ... but better than C
+
 An example of benefit
 =====================
 
@@ -112,21 +127,11 @@ An example of benefit
 
 * We include it automatically so all cases are guaranteed to be covered
 
-PyPy - implementation language
-==============================
-
-* RPython - restricted subset of Python
-
-* but still valid python
-
-* static enough to compile to efficient code
-
-* not necessarily a nice language
-
-* ... but better than C
-
 PyPy - why so complex?
 =======================
+
+* interpreter is just a relatively small piece
+  of code
 
 * because we control translation toolchain,
   we can have work done for us
@@ -159,7 +164,7 @@ PyPy - garbage collection
 
 * very easy to write new ones
 
-JIT - idea
+JIT - why?
 ==========
 
 * dynamic compilation is a way to go for dynamic
@@ -204,6 +209,22 @@ JIT - the main idea
 * we do this on interpreter source level,
   instead of doing that on python's source
   code
+
+JIT - a zoom into tracing
+=========================
+
+* first, hot spot is found
+
+* then, it's traced by a jit to find out
+  what operations really occured
+
+* a loop is closed by a jump back
+
+* assembler code from list of operations
+  performed is generated
+
+* there are insterted guards, which check
+  for branches
 
 Project future
 ==============
