@@ -99,6 +99,19 @@ PyPy - high level architecture (2)
 .. image:: architecture2.png
    :scale: 60
 
+An example of benefit
+=====================
+
+* Python has complicated semantics
+
+* Python guarantees that it won't segfault on
+  a stack exhaustion
+
+* CPython includes some stack checks in the source, but they
+  don't catch every case
+
+* We include it automatically so all cases are guaranteed to be covered
+
 PyPy - implementation language
 ==============================
 
@@ -170,6 +183,8 @@ JIT - status
 * based on tracing JIT by Michael Franz
   (the same paper as tracemonkey is based on)
 
+* written in RPython!
+
 JIT - the main idea
 ===================
 
@@ -185,4 +200,22 @@ JIT - the main idea
   instead of doing that on python's source
   code
 
+Project future
+==============
 
+* more JIT
+
+* more funding
+
+* 1.1 release this spring
+
+* sprint in Wroclaw 7-14 February
+
+Q&A
+===
+
+* this slides: http://codespeak.net/svn/pypy/extradoc/talk/wroclaw2009/talk.pdf
+
+* blog: http://morepypy.blogspot.com
+
+* project webpage: http://codespeak.net/pypy
