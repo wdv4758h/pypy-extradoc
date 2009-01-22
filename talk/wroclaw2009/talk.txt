@@ -235,7 +235,7 @@ Project future
 
 * 1.1 release this spring
 
-* sprint in Wroclaw 7-14 February
+* sprint in Wrocław 7-14 February
 
 Q&A
 ===
