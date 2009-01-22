@@ -144,6 +144,8 @@ Python interpreter status
 
 * comes with majority of CPython's stdlib (including ctypes)
 
+* able to run django, twisted, pylons...
+
 PyPy - garbage collection
 =========================
 
@@ -177,6 +179,9 @@ JIT - status
 
 * 1st generation was able to speed up examples
   up to 60x (same as psyco)
+
+* psyco (0th generation) was able to speedup
+  python programs up to the same as gcc -O0
 
 * not ready yet
 
@@ -214,7 +219,8 @@ Project future
 Q&A
 ===
 
-* this slides: http://codespeak.net/svn/pypy/extradoc/talk/wroclaw2009/talk.pdf
+* this slides: http://codespeak.net/svn/pypy/extradoc/talk/
+  wroclaw2009/talk.pdf
 
 * blog: http://morepypy.blogspot.com
 
