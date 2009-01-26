@@ -1,0 +1,10 @@
+                                                                                                                        
+Holger started with game and general computer hacking ages
+ago, went through university, some consulting and bank
+contracting until finally arriving at working in free software
+environments fulltime.  He founded merlinux in 2004, which
+contracts Python specialists. Holger Krekel is a co-founder of
+the PyPy project, both a new Python implemenation and a
+framework for implementing dynamic languages.  Holger also
+authors a well known python testing framework and is interested
+in new paradigms for deploying programs in networks. 
