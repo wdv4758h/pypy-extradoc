@@ -10,6 +10,7 @@ available yet from them.
 ==================== ============== ============================
 Samuele Pedroni       6/15           Hotel Duet
 Bartosz Skowron       7/14           private
+Maciej Fijalkowski    5/15				   private
 
 ==================== ============== ============================
 
@@ -20,7 +21,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
 Antonio Cuni         ?				?
 Holger Krekel		 ?				?
-Maciej Fijalkowski   ?				?
 Jakub Gustak		 ?				?
 Stephan Diehl		 ?				?
 Samuele Pedroni		 ?				?
