@@ -11,6 +11,7 @@ available yet from them.
 Samuele Pedroni       6/15           Hotel Duet
 Bartosz Skowron       7/14           private
 Maciej Fijalkowski    5/15				   private
+Armin Rigo            5/13           ?
 
 ==================== ============== ============================
 
