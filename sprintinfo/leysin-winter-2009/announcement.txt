@@ -23,6 +23,13 @@ Goals and topics of the sprint
   installations close.  (There was quite a lot of snow this winter, so
   there should be some left even though it's relatively late in the season.)
 
+-----------
+Exact times
+-----------
+
+Officially, 14-21 April 2009.  The idea is that the 14th should be the arrival
+day, so we won't work too much until the 15th.
+
 -----------------------
 Location & Accomodation
 -----------------------
@@ -54,10 +61,3 @@ or on the pypy-sprint mailing list if you do not yet have check-in rights:
 You need a Swiss-to-(insert country here) power adapter.  There will be
 some Swiss-to-EU adapters around -- bring a EU-format power strip if you
 have one.
-
------------
-Exact times
------------
-
-Officially, 14-21 April 2009.  The idea is that the 14th should be the arrival
-day, so we won't work too much until the 15th.
