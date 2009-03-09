@@ -1,5 +1,5 @@
 
-People coming to the Leysin sprint Winter 2008
+People coming to the Leysin sprint Winter 2009
 ==================================================
 
 People who have a ``?`` in their arrive/depart or accomodation
@@ -11,6 +11,7 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =======================
 Armin Rigo           --             private
+Carl Friedrich Bolz  14th-21st      Ermina
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
@@ -18,7 +19,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
-Carl Friedrich Bolz  ?              ?
 Antonio Cuni         ?              ?
 Maciej Fijalkowski   ?              ?
 Toby Watson          ?              ?
