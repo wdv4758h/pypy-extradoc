@@ -1,0 +1,326 @@
+=====================================
+PyPy: status and mobile perspectives 
+=====================================
+
+What this talk is about
+=======================
+
+* Status of PyPy / 1.1 release 
+
+* resource usage / startup time 
+
+* some ideas for improvements 
+
+
+PyPy? 
+========
+
+In this talk mostly: 
+
+    PyPy = PyPy Python Interpreter 
+
+PyPy - developer motivation
+=================================
+
+* Separate language specification from low-level details
+
+* layer GCs, JIT, Stackless atop the spec 
+
+* generate interpreters for C, .NET, JVM, embedded platforms, ... 
+
+PyPy - user motivation
+=======================
+
+* use Python rather than C for performance 
+
+* have a more resource efficient interpreter 
+
+* support more programming paradigms 
+
+* Just-in-time compiler should make number-crunching
+  and static-enough code fast enough
+
+
+Getting Production ready
+==========================
+
+* we worked a lot on running
+  existing applications on top of PyPy
+
+* PyPy today very (most?) compatible to Python 2.5 
+
+* main blocker for running apps will be **missing external modules**
+
+
+Sqlite
+======
+
+* part of cpython stdlib since 2.5
+
+* we use Gerhard Haering's CTypes version
+
+* works reasonably well after some fixes
+
+Django
+======
+
+* we run unmodified Django 1.0
+
+* only with sqlite DB backend for now
+
+http://www.djangoproject.com
+
+http://code.djangoproject.com/wiki/DjangoAndPyPy
+
+
+Pylons
+======
+
+* worked almost out of the box once eggs
+  were working (1 day)
+
+* no SQLAlchemy yet, obscure problems
+  ahead
+
+* unmodified passes all tests
+
+* http://pylonshq.com/
+
+Twisted & Nevow
+===============
+
+* twisted works (60/4500 tests failing)
+
+* nevow works
+
+* we don't support PyCrypto nor PyOpenSSL and we
+  won't anytime soon (if nobody contributes CTypes or rpython
+  versions)
+
+* http://twistedmatrix.com/
+
+
+Other software
+==============
+
+* pure python should just work 
+
+* setup.py / distutils works 
+
+* BitTorrent
+
+* PyPy translation toolchain
+
+* py lib 
+
+* sympy
+
+CTypes
+======
+
+* official way to have bindings to 
+  external (C) libraries for PyPy
+
+* can handle i.e. pysqlite-ctypes, pyglet, pymunk or Sole Scion,
+  almost whatever....
+
+* contribution to original ctypes
+  (better errno handling, bugfixes, tests...)
+
+* part of google sponsoring
+
+* XXX 32bit and a bit slow
+
+CTypes configure
+================
+
+* our own small addition to general
+  CTypes usefulness
+
+* invokes C compiler for small details
+
+* can handle #defines, types, structure layout
+  etc.
+
+Memory - comparison with CPython
+===================================
+
+* PyPy has pluggable Garbage Collection 
+
+* gcbench - 0.8 (because of our faster GCs)
+
+* better handling of unusual patterns
+
+* care needed with communication with C
+
+* GCs are semi-decent
+
+
+Speed of executing bytecode 
+===============================
+
+* we're something between 0.8-4x slower than
+  CPython on executing bytecode 
+
+* our JIT is to be the huge leap beyond CPython 
+
+
+Threading / Stackless
+===================================
+
+* currently using GIL, quite robust 
+
+* free threading? requires research + some work 
+
+* pypy-c has software threading / stackless
+
+* added during translation
+
+Other backends
+==============
+
+* PyPy-jvm runs!
+
+* more integration between pypy-cli and .NET
+
+* general speed improvements
+
+* both backends are progressing - very slowly though
+
+* contributors wanted!
+
+Sandboxing
+==========
+
+* fully sandboxed python interpreter
+
+* all external calls to C goes via another
+  python process
+
+* special library for making custom
+  policies
+
+.. image:: sandboxed.png
+   :scale: 30
+   :align: center
+
+pypy-c measurements on Maemo 
+===============================
+
+- cross-compiled to Maemo 
+- measurements done on N810 device 
+- done with http://codespeak.net/svn/pypy/build/benchmem/pypy/
+- python object sizes, application benchmarks, startup time 
+- base interpreter size, GC pauses, interpretation speed 
+
+Python object sizes
+=======================
+
+- PyPy has smaller "per-object" RAM usage 
+- class instances usually at 50% of CPython size or less
+- a lot of room for further optimizations 
+
+see table at http://codespeak.net/~hpk/openbossa09/table-objsizes.html
+
+startup time 
+=======================
+
+   +--------------+--------+-------------+---------------+
+   |startup       |python  |pypy-Omem-opt|python-launcher|
+   +--------------+--------+-------------+---------------+
+   |site          |**0.24**|**0.16**/0.13|**0.11**/0.00  |
+   +--------------+--------+-------------+---------------+
+   |nosite        |**0.21**|**0.04**/0.03|**0.11**/0.00  |
+   +--------------+--------+-------------+---------------+
+   |importos      |**0.21**|**0.04**/0.03|**0.11**/0.00  |
+   +--------------+--------+-------------+---------------+
+   |importdecimal |**0.47**|**0.42**/0.39|**0.34**/0.00  |
+   +--------------+--------+-------------+---------------+
+   |importoptparse|**0.54**|**0.04**/0.01|**0.11**/0.00  |
+   +--------------+--------+-------------+---------------+
+
+where pypy is currently worse 
+===================================
+
+- interpreter size: larger than cpython, but mostly shareable
+- gc collection pauses can be larger: needs work 
+- bytecode execution speed: 1-4 times slower than CPython 
+
+(FYI also our parser and compiler implementation is bad) 
+
+Where pypy is already better 
+=============================
+
+- more efficient RAM usage 
+- faster startup 
+- more secure
+
+Extension modules
+===================
+
+- for binding to C-libs: ctypes 
+- for speed: JIT or if need be: rpython 
+- binding to C++? 
+
+Idea: C++ Extension modules 
+=============================
+
+- idea: use CERN's Reflex mechanism 
+- generate shared "introspect" library for each C++ lib
+- write generic small extension module in Python 
+
+Idea: perfect PYC files 
+============================
+
+- PYC file gets MMAPed into process memory 
+- interpreter directly works with memory data structures 
+- executes bytecode to construct __dict__
+
+-> total sharing of bytecode and constants 
+-> no allocation of redundant objects during import 
+
+Idea: next-generation GC work 
+===============================
+
+- currently: naive Mark&Compact  (500 lines of code) 
+- port/implement researched techniques 
+- malloc-directed inlining 
+- maximize shared interpreter state
+- minimize collection pauses / incremental collection
+
+a word about doing GCs
+===================================
+
+- program your GC in Python 
+- test your GC in Python 
+- get tracebacks on memory faults 
+- once ready, translate with Python Interpreter 
+
+Outlook / 
+=========
+
+- PyPy 1.1 release in 1-2 months 
+- get the JIT to surpass CPython speed 
+- perfect/commoditize Python sandboxing 
+- help/do compatibility work, ext modules 
+- C++? 
+- bring PyPy to symbian and more mobiles? 
+
+Contact / Q&A 
+==========================
+
+holger krekel
+at http://merlinux.eu
+
+PyPy: http://codespeak.net/pypy
+
+My Blog: http://tetamap.wordpress.com
+PyPy Blog: http://morepypy.blogspot.com
+
+.. raw:: latex
+
+    \begin{figure}
+    \includegraphics[width=64px,height=64px]{merlinux-logo.jpg}
+    \qquad
+    \includegraphics[width=80px]{../../img/py-web.png}
+    \end{figure}
