@@ -2,6 +2,16 @@
 PyPy: status and mobile perspectives 
 =====================================
 
+Where i come from ...
+========================
+
+.. image:: little_red_riding_hood_by_marikaz.jpg
+   :scale: 100
+   :align: left
+ 
+http://marikaz.deviantart.com/ CC 3.0 AN-ND
+
+
 What this talk is about
 =======================
 
@@ -9,24 +19,31 @@ What this talk is about
 
 * resource usage / startup time 
 
-* some ideas for improvements 
-
+* ideas/visions 
 
 PyPy? 
 ========
 
-In this talk mostly: 
+In this talk mostly: PyPy = PyPy Python Interpreter 
 
-    PyPy = PyPy Python Interpreter 
+.. image:: arch-pypy-basic.png
+   :scale: 50
+   :align: center
+
 
 PyPy - developer motivation
 =================================
 
-* Separate language specification from low-level details
+* high level language specification! 
 
 * layer GCs, JIT, Stackless atop the spec 
 
 * generate interpreters for C, .NET, JVM, embedded platforms, ... 
+
+
+.. image:: pypy-multitarget.png
+   :scale: 50
+   :align: center
 
 PyPy - user motivation
 =======================
@@ -37,20 +54,24 @@ PyPy - user motivation
 
 * support more programming paradigms 
 
-* Just-in-time compiler should make number-crunching
-  and static-enough code fast enough
 
+what else is PyPy? 
+=======================
 
-Getting Production ready
-==========================
+Virtual Machine translation framework!
 
-* we worked a lot on running
-  existing applications on top of PyPy
+.. image:: mario.png
+   :scale: 100
+   :align: center
 
-* PyPy today very (most?) compatible to Python 2.5 
+Getting Production ready / PyPy 1.1
+=====================================
 
-* main blocker for running apps will be **missing external modules**
+.. image:: new_color_in_dark_old_city_by_marikaz.jpg
+   :scale: 100
+   :align: left
 
+http://marikaz.deviantart.com/  CC 3.0 AN-ND
 
 Sqlite
 ======
@@ -72,12 +93,10 @@ http://www.djangoproject.com
 
 http://code.djangoproject.com/wiki/DjangoAndPyPy
 
-
 Pylons
 ======
 
-* worked almost out of the box once eggs
-  were working (1 day)
+* works out of the box  
 
 * no SQLAlchemy yet, obscure problems
   ahead
@@ -89,13 +108,9 @@ Pylons
 Twisted & Nevow
 ===============
 
-* twisted works (60/4500 tests failing)
+* twisted works (<30/4500 tests failing)
 
 * nevow works
-
-* we don't support PyCrypto nor PyOpenSSL and we
-  won't anytime soon (if nobody contributes CTypes or rpython
-  versions)
 
 * http://twistedmatrix.com/
 
@@ -109,192 +124,228 @@ Other software
 
 * BitTorrent
 
-* PyPy translation toolchain
-
-* py lib 
+* PyPy translation toolchain, py lib 
 
 * sympy
 
-CTypes
-======
+So why doesn't PyPy work for me? 
+====================================
 
-* official way to have bindings to 
-  external (C) libraries for PyPy
+* PyPy not compatible to CPython extensions
+* we have many builtin modules
+* but 3rd party modules largely missing
 
-* can handle i.e. pysqlite-ctypes, pyglet, pymunk or Sole Scion,
-  almost whatever....
+PyPy Answers for Extension modules 
+====================================
 
-* contribution to original ctypes
-  (better errno handling, bugfixes, tests...)
+- for using C-libs: CTypes 
+- for speed: JIT or if need be, RPython
+- for using C++ libs: ??? 
 
-* part of google sponsoring
+CTypes status 
+====================
 
-* XXX 32bit and a bit slow
+* dynamically interact with C objects from Python
+* examples: pyslite, pyglet (opengl), many others 
+* only 32Bit and a bit slow 
 
-CTypes configure
-================
+PyPy resource usage 
+==================================
 
-* our own small addition to general
-  CTypes usefulness
+.. image:: end_of_a_age_by_marikaz.jpg
+   :scale: 100
+   :align: left
 
-* invokes C compiler for small details
-
-* can handle #defines, types, structure layout
-  etc.
-
-Memory - comparison with CPython
-===================================
-
-* PyPy has pluggable Garbage Collection 
-
-* gcbench - 0.8 (because of our faster GCs)
-
-* better handling of unusual patterns
-
-* care needed with communication with C
-
-* GCs are semi-decent
-
+http://marikaz.deviantart.com/  CC 3.0 AN-ND
 
 Speed of executing bytecode 
 ===============================
 
-* we're something between 0.8-4x slower than
-  CPython on executing bytecode 
+* somewhere between 0.8-4x times CPython speed 
 
 * our JIT is to be the huge leap beyond CPython 
 
+* some more static optimizations? 
+
+A Memory benchmark
+===================================
+
+* gcbench performs at 0.8 the time of CPython
+
+* PyPy has pluggable Garbage Collection 
+
+* better handling of unusual patterns
 
 Threading / Stackless
 ===================================
 
-* currently using GIL, quite robust 
+* pypy-c has massive software threading 
+
+* OS-threads: currently using GIL, quite robust 
 
 * free threading? requires research + some work 
 
-* pypy-c has software threading / stackless
+* all threading: added during translation! 
 
-* added during translation
-
-Other backends
-==============
-
-* PyPy-jvm runs!
-
-* more integration between pypy-cli and .NET
-
-* general speed improvements
-
-* both backends are progressing - very slowly though
-
-* contributors wanted!
-
-Sandboxing
-==========
-
-* fully sandboxed python interpreter
-
-* all external calls to C goes via another
-  python process
-
-* special library for making custom
-  policies
-
-.. image:: sandboxed.png
-   :scale: 30
-   :align: center
 
 pypy-c measurements on Maemo 
 ===============================
 
 - cross-compiled to Maemo 
-- measurements done on N810 device 
-- done with http://codespeak.net/svn/pypy/build/benchmem/pypy/
-- python object sizes, application benchmarks, startup time 
+
+- measurements were done on N810 device 
+
+- python object sizes, app benchmarks, startup time 
+
 - base interpreter size, GC pauses, interpretation speed 
+
+- see http://codespeak.net/svn/pypy/build/benchmem
 
 Python object sizes
 =======================
 
 - PyPy has smaller "per-object" RAM usage 
-- class instances usually at 50% of CPython size or less
-- a lot of room for further optimizations 
 
-see table at http://codespeak.net/~hpk/openbossa09/table-objsizes.html
+- instances usually at 50% of CPython size
 
-startup time 
-=======================
+- as efficient as CPython's __slots__ without the caveats
 
-   +--------------+--------+-------------+---------------+
-   |startup       |python  |pypy-Omem-opt|python-launcher|
-   +--------------+--------+-------------+---------------+
-   |site          |**0.24**|**0.16**/0.13|**0.11**/0.00  |
-   +--------------+--------+-------------+---------------+
-   |nosite        |**0.21**|**0.04**/0.03|**0.11**/0.00  |
-   +--------------+--------+-------------+---------------+
-   |importos      |**0.21**|**0.04**/0.03|**0.11**/0.00  |
-   +--------------+--------+-------------+---------------+
-   |importdecimal |**0.47**|**0.42**/0.39|**0.34**/0.00  |
-   +--------------+--------+-------------+---------------+
-   |importoptparse|**0.54**|**0.04**/0.01|**0.11**/0.00  |
-   +--------------+--------+-------------+---------------+
+- room for further optimizations 
+
+table at http://codespeak.net/~hpk/openbossa2009/table-objsize.html
+
+Maemo Interpreter startup time 
+===============================
+
++--------------+--------+--------+---------------+
+|startup       |python  |Omem-opt|python-launcher|
++--------------+--------+--------+---------------+
+|site          |**0.24**|**0.16**|**0.11**       |
++--------------+--------+--------+---------------+
+|nosite        |**0.21**|**0.04**|**0.11**       |
++--------------+--------+--------+---------------+
+|importos      |**0.21**|**0.04**|**0.11**       |
++--------------+--------+--------+---------------+
+|importdecimal |**0.47**|**0.42**|**0.34**       |
++--------------+--------+--------+---------------+
+|importoptparse|**0.54**|**0.04**|**0.11**       |
++--------------+--------+--------+---------------+
+
+PyPy has faster startup if few bytecode execution is involved
 
 where pypy is currently worse 
 ===================================
 
-- interpreter size: larger than cpython, but mostly shareable
-- gc collection pauses can be larger: needs work 
+- larger (but shareable) base interpreter size 
+- gc collection pauses can be larger: tuning? 
 - bytecode execution speed: 1-4 times slower than CPython 
 
-(FYI also our parser and compiler implementation is bad) 
+(oh, and our parser and compiler speed is particularly bad) 
 
-Where pypy is already better 
+Python Application benchmarks
+==============================
+
+   +------------------------+-----------------+-----------------+
+   |app benchmark           |python           |pypy-Omem        |
+   +------------------------+-----------------+-----------------+
+   |allocate_and_throw_away |**28152** / 20578|**17700** / 9845 |
+   +------------------------+-----------------+-----------------+
+   |allocate_constant_number|**11528** / 11279|**7712** / 4792  |
+   +------------------------+-----------------+-----------------+
+   |allocate_couple         |**28136** / 21254|**17712** / 9882 |
+   +------------------------+-----------------+-----------------+
+   |cpython_nasty           |**30592** / 23743|**15648** / 9061 |
+   +------------------------+-----------------+-----------------+
+   |gcbench                 |**9548** / 7454  |**17936** / 13419|
+   +------------------------+-----------------+-----------------+
+   |list_of_messages        |**31908** / 13924|**14000** / 7879 |
+   +------------------------+-----------------+-----------------+
+
+Summary measurements
 =============================
 
-- more efficient RAM usage 
-- faster startup 
-- more secure
+* slower bytecode execution speed
+* larger (but shareable) base interpreter size 
+* smaller objects
+* better app behaviour  
+* faster startup (if few imports are involved) 
 
-Extension modules
-===================
+Note: not much work to optimise non-speed issues was done yet!
 
-- for binding to C-libs: ctypes 
-- for speed: JIT or if need be: rpython 
-- binding to C++? 
+
+Ideas and visions 
+=============================
+
+.. image:: flying_lady_by_marikaz.jpg
+   :scale: 100
+   :align: left
+
+http://marikaz.deviantart.com/  CC 3.0 AN-ND
 
 Idea: C++ Extension modules 
 =============================
 
 - idea: use CERN's Reflex mechanism 
-- generate shared "introspect" library for each C++ lib
-- write generic small extension module in Python 
+- tool compiles shared "introspect" library for each C++ lib
+- introspect-library handled by generic helper module 
+- maybe generically work with C++ libs? 
+- otherwise: small module to do extra bits 
+- IOW, some more thought and experimentation needed 
 
-Idea: perfect PYC files 
+perfect PYC files 
 ============================
 
-- PYC file gets MMAPed into process memory 
-- interpreter directly works with memory data structures 
-- executes bytecode to construct __dict__
+- MMAP (newstyle) PYC file into into memory 
+- execute bytecode to construct module namespace 
+- but: directly work with PYC data, zero-copy 
+- don't touch mmaped pages unless needed 
+- **no allocs of redundant objects during import**
+- **total sharing of bytecode and constants**
 
--> total sharing of bytecode and constants 
--> no allocation of redundant objects during import 
+JIT for overhead elimination
+====================================
 
-Idea: next-generation GC work 
-===============================
+- JIT to speed up code up to 100 times 
+- keep a good memory/speed gain balance! 
+- parametrize JIT heuristics to care for very hot paths
+- JIT could remove overheads for calling into C++!
+
+Next-generation Garbage Collection
+====================================
 
 - currently: naive Mark&Compact  (500 lines of code) 
-- port/implement researched techniques 
+- port/implement newer techniques 
 - malloc-directed inlining 
 - maximize shared interpreter state
-- minimize collection pauses / incremental collection
 
 a word about doing GCs
 ===================================
 
 - program your GC in Python 
 - test your GC in Python 
-- get tracebacks on memory faults 
+- get Python tracebacks instead of segfaults
 - once ready, translate with Python Interpreter 
+
+One last bit
+=================
+
+.. image:: mystical_color_statue_by_marikaz.jpg 
+   :scale: 100
+   :align: left
+
+http://marikaz.deviantart.com/  CC 3.0 AN-ND
+
+Sandboxing / Virtualization 
+=================================
+
+* we have a fully sandboxed interpreter!
+
+* all IO and OS external calls serialized to 
+  separate process
+
+.. image:: sandboxed.png
+   :scale: 30
+   :align: center
 
 Outlook / 
 =========
@@ -309,13 +360,13 @@ Outlook /
 Contact / Q&A 
 ==========================
 
-holger krekel
-at http://merlinux.eu
+holger krekel at http://merlinux.eu
+Blog: http://tetamap.wordpress.com
 
 PyPy: http://codespeak.net/pypy
-
-My Blog: http://tetamap.wordpress.com
 PyPy Blog: http://morepypy.blogspot.com
+
+Photos: http://marikaz.deviantart.com/gallery/
 
 .. raw:: latex
 
