@@ -191,15 +191,15 @@ Threading / Stackless
 pypy-c measurements on Maemo 
 ===============================
 
-- cross-compiled to Maemo 
+- PyPy now cross-compiles via Scratchbox
 
-- measurements were done on N810 device 
+- we measured pypy-c on N810 device
 
 - python object sizes, app benchmarks, startup time 
 
 - base interpreter size, GC pauses, interpretation speed 
 
-- see http://codespeak.net/svn/pypy/build/benchmem
+- tool see http://codespeak.net/svn/pypy/build/benchmem
 
 Python object sizes
 =======================
