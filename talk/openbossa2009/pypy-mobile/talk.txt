@@ -12,14 +12,25 @@ Where i come from ...
 http://marikaz.deviantart.com/ CC 3.0 AN-ND
 
 
+Some technical background
+============================
+
+- started with programming small devices in 1986 
+- Motorola assembler for game companies 
+- studied computer science in the nineties 
+- C++, C, Corba, Java, UML, consulting ... 
+- 2001: arrived at Python and FOSS
+- founded PyPy and py.test projects
+- founded merlinux, a developer company 
+
 What this talk is about
 =======================
 
 * Status of PyPy / 1.1 release 
 
-* resource usage / startup time 
+* resource usage 
 
-* ideas/visions 
+* ideas, visions, next steps
 
 PyPy? 
 ========
@@ -34,11 +45,11 @@ In this talk mostly: PyPy = PyPy Python Interpreter
 PyPy - developer motivation
 =================================
 
-* high level language specification! 
+* **high level Python specification**! 
 
 * layer GCs, JIT, Stackless atop the spec 
 
-* generate interpreters for C, .NET, JVM, embedded platforms, ... 
+* **generate interpreters** for targets 
 
 
 .. image:: pypy-multitarget.png
@@ -133,16 +144,16 @@ So why doesn't PyPy work for me?
 
 * PyPy not compatible to CPython extensions
 * we have many builtin modules
-* but 3rd party modules largely missing
+* many 3rd party modules missing
 
 PyPy Answers for Extension modules 
 ====================================
 
 - for using C-libs: CTypes 
-- for speed: JIT or if need be, RPython
-- for using C++ libs: ??? 
+- for speed: JIT (or if one must, RPython)
+- for using C++ libs: Reflex?
 
-CTypes status 
+CTypes 
 ====================
 
 * dynamically interact with C objects from Python
@@ -165,7 +176,7 @@ Speed of executing bytecode
 
 * our JIT is to be the huge leap beyond CPython 
 
-* some more static optimizations? 
+* we can also do more source optimizations
 
 A Memory benchmark
 ===================================
@@ -181,11 +192,11 @@ Threading / Stackless
 
 * pypy-c has massive software threading 
 
-* OS-threads: currently using GIL, quite robust 
+* OS-threads: currently using GIL
 
-* free threading? requires research + some work 
+* free threading? 
 
-* all threading: added during translation! 
+* threading aspects: added during translation! 
 
 
 pypy-c measurements on Maemo 
@@ -195,10 +206,6 @@ pypy-c measurements on Maemo
 
 - we measured pypy-c on N810 device
 
-- python object sizes, app benchmarks, startup time 
-
-- base interpreter size, GC pauses, interpretation speed 
-
 - tool see http://codespeak.net/svn/pypy/build/benchmem
 
 Python object sizes
@@ -206,71 +213,60 @@ Python object sizes
 
 - PyPy has smaller "per-object" RAM usage 
 
-- instances usually at 50% of CPython size
+- **instances usually at 50% of CPython size**
 
-- as efficient as CPython's __slots__ without the caveats
+- like CPython's __slots__ without the caveats
 
 - room for further optimizations 
 
 table at http://codespeak.net/~hpk/openbossa2009/table-objsize.html
 
-Maemo Interpreter startup time 
-===============================
+Maemo PyPy Interpreter startup time 
+=====================================
 
 +--------------+--------+--------+---------------+
 |startup       |python  |Omem-opt|python-launcher|
 +--------------+--------+--------+---------------+
-|site          |**0.24**|**0.16**|**0.11**       |
+|site          |  0.24  |  0.16  |  0.11         |
 +--------------+--------+--------+---------------+
-|nosite        |**0.21**|**0.04**|**0.11**       |
+|nosite        |  0.21  |  0.04  |  0.11         |
 +--------------+--------+--------+---------------+
-|importos      |**0.21**|**0.04**|**0.11**       |
+|importos      |  0.21  |  0.04  |  0.11         |
 +--------------+--------+--------+---------------+
-|importdecimal |**0.47**|**0.42**|**0.34**       |
+|impdec        |  0.47  |  0.42  |  0.34         |
 +--------------+--------+--------+---------------+
-|importoptparse|**0.54**|**0.04**|**0.11**       |
+|impopt        |  0.54  |  0.04  |  0.11         |
 +--------------+--------+--------+---------------+
 
-PyPy has faster startup if few bytecode execution is involved
+PyPy has faster startup on "pre-imported" modules
+
+
+Python Application benchmarks
+==============================
+
+- pypy-c better on avg/maximum usage app-benchmarks
+- gcbench for some uninvestigated reason much worse 
+
+see http://codespeak.net/~hpk/openbossa2009/table-appprofiles.html
+
 
 where pypy is currently worse 
 ===================================
 
 - larger (but shareable) base interpreter size 
-- gc collection pauses can be larger: tuning? 
+- gc collection pauses can be larger: needs tuning
 - bytecode execution speed: 1-4 times slower than CPython 
 
-(oh, and our parser and compiler speed is particularly bad) 
-
-Python Application benchmarks
-==============================
-
-   +------------------------+-----------------+-----------------+
-   |app benchmark           |python           |pypy-Omem        |
-   +------------------------+-----------------+-----------------+
-   |allocate_and_throw_away |**28152** / 20578|**17700** / 9845 |
-   +------------------------+-----------------+-----------------+
-   |allocate_constant_number|**11528** / 11279|**7712** / 4792  |
-   +------------------------+-----------------+-----------------+
-   |allocate_couple         |**28136** / 21254|**17712** / 9882 |
-   +------------------------+-----------------+-----------------+
-   |cpython_nasty           |**30592** / 23743|**15648** / 9061 |
-   +------------------------+-----------------+-----------------+
-   |gcbench                 |**9548** / 7454  |**17936** / 13419|
-   +------------------------+-----------------+-----------------+
-   |list_of_messages        |**31908** / 13924|**14000** / 7879 |
-   +------------------------+-----------------+-----------------+
+(btw, our parser and compiler speed is particularly bad) 
 
 Summary measurements
 =============================
 
 * slower bytecode execution speed
 * larger (but shareable) base interpreter size 
-* smaller objects
-* better app behaviour  
-* faster startup (if few imports are involved) 
-
-Note: not much work to optimise non-speed issues was done yet!
+* smaller Python objects
+* better app allocation behaviour  
+* faster startup 
 
 
 Ideas and visions 
@@ -282,15 +278,15 @@ Ideas and visions
 
 http://marikaz.deviantart.com/  CC 3.0 AN-ND
 
-Idea: C++ Extension modules 
-=============================
+Idea for C++ Extension modules 
+================================
 
-- idea: use CERN's Reflex mechanism 
+- use CERN's Reflex tools/approach
 - tool compiles shared "introspect" library for each C++ lib
 - introspect-library handled by generic helper module 
-- maybe generically work with C++ libs? 
-- otherwise: small module to do extra bits 
-- IOW, some more thought and experimentation needed 
+- probably a very good approach for PyPy 
+
+http://root.cern.ch/drupal/content/reflex
 
 perfect PYC files 
 ============================
@@ -300,23 +296,25 @@ perfect PYC files
 - but: directly work with PYC data, zero-copy 
 - don't touch mmaped pages unless needed 
 - **no allocs of redundant objects during import**
-- **total sharing of bytecode and constants**
+- **interpreters share all code objects**
 
 JIT for overhead elimination
 ====================================
 
 - JIT to speed up code up to 100 times 
-- keep a good memory/speed gain balance! 
 - parametrize JIT heuristics to care for very hot paths
-- JIT could remove overheads for calling into C++!
+- keep a good memory/speed gain balance
+- JIT could maybe also remove overheads for calling into C++
 
 Next-generation Garbage Collection
 ====================================
 
-- currently: naive Mark&Compact  (500 lines of code) 
-- port/implement newer techniques 
+- currently: naive Mark&Compact  (600 lines of code) 
+- port/implement newer techniques (e.g. deferred refcounting) 
+- even more compact GC headers 
 - malloc-directed inlining 
-- maximize shared interpreter state
+- maximize shared interpreter state 
+- co-operate with kernel in swapping/collect situations
 
 a word about doing GCs
 ===================================
@@ -325,6 +323,14 @@ a word about doing GCs
 - test your GC in Python 
 - get Python tracebacks instead of segfaults
 - once ready, translate with Python Interpreter 
+
+other optimizations 
+=====================
+
+- revisit/measure decisions in ARM context 
+- splitting static data into immutable/modifiable
+- group data to avoid fragmentation 
+- run multiple apps in one process, isolated and robust 
 
 One last bit
 =================
@@ -338,7 +344,7 @@ http://marikaz.deviantart.com/  CC 3.0 AN-ND
 Sandboxing / Virtualization 
 =================================
 
-* we have a fully sandboxed interpreter!
+* PyPy can generate a virtualized Python! 
 
 * all IO and OS external calls serialized to 
   separate process
@@ -347,23 +353,23 @@ Sandboxing / Virtualization
    :scale: 30
    :align: center
 
-Outlook / 
-=========
+Current priorities and interests 
+==================================
 
-- PyPy 1.1 release in 1-2 months 
-- get the JIT to surpass CPython speed 
+- expect PyPy 1.1 release in around 2 months
+- then: JIT to surpass CPython speed 
 - perfect/commoditize Python sandboxing 
 - help/do compatibility work, ext modules 
-- C++? 
-- bring PyPy to symbian and more mobiles? 
 
 Contact / Q&A 
 ==========================
 
 holger krekel at http://merlinux.eu
+
 Blog: http://tetamap.wordpress.com
 
 PyPy: http://codespeak.net/pypy
+
 PyPy Blog: http://morepypy.blogspot.com
 
 Photos: http://marikaz.deviantart.com/gallery/
