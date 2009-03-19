@@ -17,6 +17,8 @@ Samuele Pedroni      14th-22nd      Ermina
 Anders Hammarquist   14th-22nd      Ermina
 ==================== ============== =======================
 
+Samuele and Anders Hammarquist would like to share a two persons room.
+
 People on the following list were present at previous sprints: 
 
 ==================== ============== =====================
