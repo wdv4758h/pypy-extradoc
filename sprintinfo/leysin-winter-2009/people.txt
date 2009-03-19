@@ -13,6 +13,8 @@ available yet from them.
 Armin Rigo           --             private
 Carl Friedrich Bolz  14th-21st      Ermina
 Antonio Cuni         14th-21st      Ermina
+Samuele Pedroni      14th-22nd      Ermina
+Anders Hammarquist   14th-22nd      Ermina
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
