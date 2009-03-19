@@ -28,9 +28,9 @@ What this talk is about
 
 * Status of PyPy / 1.1 release 
 
-* resource usage 
+* resource usage, measurements on N810
 
-* ideas, visions, next steps
+* ideas and next steps 
 
 PyPy? 
 ========
@@ -346,8 +346,10 @@ Sandboxing / Virtualization
 
 * PyPy can generate a virtualized Python! 
 
-* all IO and OS external calls serialized to 
-  separate process
+* IO and OS calls controled by separate process
+
+* RAM and CPU time control 
+
 
 .. image:: sandboxed.png
    :scale: 30
@@ -356,8 +358,8 @@ Sandboxing / Virtualization
 Current priorities and interests 
 ==================================
 
-- expect PyPy 1.1 release in around 2 months
-- then: JIT to surpass CPython speed 
+- PyPy 1.1 release in around 2 months
+- afterwards: JIT to surpass CPython speed 
 - perfect/commoditize Python sandboxing 
 - help/do compatibility work, ext modules 
 
