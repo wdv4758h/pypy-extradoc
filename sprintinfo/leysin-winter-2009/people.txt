@@ -12,6 +12,7 @@ available yet from them.
 ==================== ============== =======================
 Armin Rigo           --             private
 Carl Friedrich Bolz  14th-21st      Ermina
+Antonio Cuni         14th-21st      Ermina
 ==================== ============== =======================
 
 People on the following list were present at previous sprints: 
@@ -19,7 +20,6 @@ People on the following list were present at previous sprints:
 ==================== ============== =====================
        Name          Arrive/Depart  Accomodation 
 ==================== ============== =====================
-Antonio Cuni         ?              ?
 Maciej Fijalkowski   ?              ?
 Toby Watson          ?              ?
 Paul deGrandis       ?              ?
