@@ -2,63 +2,49 @@
 PyPy - Motivation 
 =================================
 
-* **high level Python specification** (in RPyhton) 
-
-* layer GCs, JIT, Stackless atop the spec 
-
-* **generate** efficient interpreters for targets 
-
-.. (antocuni) I would say "generate efficient VMs", not "interpreters"
-
-
-.. image:: pypy-multitarget.png
+.. image:: picture.png
    :scale: 50
    :align: center
 
-RPython - two words 
-==========================
+High level specification - how exactly
+=======================================
 
-- RPython is a subset of Python, used in a static way
-- whole-program type-inference
-- GCs, threading, stackless applied as graph transforms
-- you can implement other languages or VMs in RPython
+* in our opinion specification that cannot be run
+  is not worth it
 
+* Python is high level enough
 
-Virtual Machine translation! 
-==========================================
+* We derived a static subset of Python that can be
+  efficiently compiled, called RPython
 
-.. image:: mario.png
-   :scale: 100
-   :align: center
+XXX show mario
 
-Next-generation Garbage Collection
+Garbage Collection framework
 ====================================
 
-- currently: naive Mark&Compact  (600 lines of code) 
-- port/implement newer techniques (e.g. deferred refcounting) 
-- even more compact GC headers 
-- malloc-directed inlining 
-- maximize shared interpreter state 
-- co-operate with kernel in swapping/collect situations
+* Written in Python
 
-PyPy's GC framework
-===================================
+* We introduced a bunch of low-level primitives
 
-- program your GC in Python 
-- test your GC in Python 
-- get Python tracebacks instead of segfaults
-- once ready, translate with Python Interpreter 
+* We can test a GC on top of Python (running specification)
+
+* ... and translate to a target
+
+* Completely interpreter-agnostic
+
+XXX show a piece of code in GC
 
 
 Generating JIT Compilers
 ========================================
 
+* We apply JIT generator to specification
 
-Current Challenges
+* A couple of manual hints is required
+
+* We can try on top of Python as well
+
+Challenges
 ======================
 
-* generate a working JIT-compiling Python Interpreter 
-* PyPy 1.1 release 
-* more extension modules, C++ bindings? 
-* split into multiple projects 
-
+XXX out of time I suppose
