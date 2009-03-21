@@ -1,0 +1,12 @@
+
+Multi target picture
+====================
+
+RPython - two words
+===================
+
+Garbage collector source code - it's all Python
+===============================================
+
+JIT - simple interpreter and run on PyPy
+========================================
