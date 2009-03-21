@@ -8,6 +8,8 @@ PyPy - Motivation
 
 * **generate** efficient interpreters for targets 
 
+.. (antocuni) I would say "generate efficient VMs", not "interpreters"
+
 
 .. image:: pypy-multitarget.png
    :scale: 50
@@ -16,7 +18,7 @@ PyPy - Motivation
 RPython - two words 
 ==========================
 
-- RPython is a subset of Python, used in a statical way
+- RPython is a subset of Python, used in a static way
 - whole-program type-inference
 - GCs, threading, stackless applied as graph transforms
 - you can implement other languages or VMs in RPython
