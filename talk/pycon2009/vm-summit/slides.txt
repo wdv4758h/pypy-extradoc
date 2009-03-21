@@ -1,12 +1,62 @@
 
-Multi target picture
-====================
+PyPy - Motivation 
+=================================
 
-RPython - two words
-===================
+* **high level Python specification** (in RPyhton) 
 
-Garbage collector source code - it's all Python
-===============================================
+* layer GCs, JIT, Stackless atop the spec 
 
-JIT - simple interpreter and run on PyPy
+* **generate** efficient interpreters for targets 
+
+
+.. image:: pypy-multitarget.png
+   :scale: 50
+   :align: center
+
+RPython - two words 
+==========================
+
+- RPython is a subset of Python, used in a statical way
+- whole-program type-inference
+- GCs, threading, stackless applied as graph transforms
+- you can implement other languages or VMs in RPython
+
+
+Virtual Machine translation! 
+==========================================
+
+.. image:: mario.png
+   :scale: 100
+   :align: center
+
+Next-generation Garbage Collection
+====================================
+
+- currently: naive Mark&Compact  (600 lines of code) 
+- port/implement newer techniques (e.g. deferred refcounting) 
+- even more compact GC headers 
+- malloc-directed inlining 
+- maximize shared interpreter state 
+- co-operate with kernel in swapping/collect situations
+
+PyPy's GC framework
+===================================
+
+- program your GC in Python 
+- test your GC in Python 
+- get Python tracebacks instead of segfaults
+- once ready, translate with Python Interpreter 
+
+
+Generating JIT Compilers
 ========================================
+
+
+Current Challenges
+======================
+
+* generate a working JIT-compiling Python Interpreter 
+* PyPy 1.1 release 
+* more extension modules, C++ bindings? 
+* split into multiple projects 
+
