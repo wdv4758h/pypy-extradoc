@@ -9,6 +9,8 @@ PyPy - Motivation
 High level implementation - how exactly
 =======================================
 
+* Raise the level at which you implement programming languages
+
 * Python is high level enough
 
 * We derived a static subset of Python that can be
