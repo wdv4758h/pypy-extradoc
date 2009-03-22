@@ -6,11 +6,8 @@ PyPy - Motivation
    :scale: 50
    :align: center
 
-High level specification - how exactly
+High level implementation - how exactly
 =======================================
-
-* in our opinion specification that cannot be run
-  is not worth it
 
 * Python is high level enough
 
