@@ -37,7 +37,7 @@ XXX show a piece of code in GC
 Generating JIT Compilers
 ========================================
 
-* We apply JIT generator to specification
+* We apply JIT generator to interpreters
 
 * A couple of manual hints is required
 
