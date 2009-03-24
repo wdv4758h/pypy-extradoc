@@ -94,6 +94,8 @@ CTypes configure
 * can handle #defines, types, structure layout
   etc.
 
+* works also for CPython! (antocuni)
+
 Sqlite
 ======
 
