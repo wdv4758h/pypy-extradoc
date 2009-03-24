@@ -83,19 +83,6 @@ CTypes
 
 * note: 32bit and a bit slow
 
-CTypes configure
-================
-
-* our own small addition to general
-  CTypes usefulness
-
-* invokes C compiler for small details
-
-* can handle #defines, types, structure layout
-  etc.
-
-* works also for CPython! (antocuni)
-
 Sqlite
 ======
 
@@ -247,10 +234,15 @@ pypy-c on small devices
 ===============================
 
 - cross-compilation 
+
 - startup time 
+
 - security 
+
 - RAM usage 
+
 - share interpreter state across processes
+
 - pypy approach a very good fit! 
 
 1.1 release
