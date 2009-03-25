@@ -1,49 +1,70 @@
-
-PyPy - Motivation 
+PyPy - what is it? 
 =================================
 
-.. image:: picture.png
-   :scale: 50
-   :align: center
+* a Python Interpreter
+* a VM Generator
 
-High level implementation - how exactly
+Python Interpreter
+=================================
+
+* single source "specification" in RPython 
+* PyPy compiles it to native C, .NET, JVM
+
+RPython: static subset of Python 
 =======================================
 
-* Raise the level at which you implement programming languages
+* static subset of Python 
+* we do whole-program type-inference
 
-* Python is high level enough
+Interpreters written in RPython
+=======================================
 
-* We derived a static subset of Python that can be
-  efficiently compiled, called RPython
+* directly testable on top of CPython 
 
-XXX show mario
+* GC, threading, **JIT-Compiler** added automatically! 
 
 Garbage Collection framework
 ====================================
 
-* Written in Python
+* write GC in RPython
+* test in simulation (with pdb!) 
+* weave into translation of *any* interpreter
 
-* We introduced a bunch of low-level primitives
+JIT-Compiler Generator 
+====================================
 
-* We can test a GC on top of Python (running specification)
+* written in RPython
+* test in simulation (with pdb!) 
+* weave into translation of *any* interpreter
 
-* ... and translate to a target
+JIT-generator for Python 
+====================================
 
-* Completely interpreter-agnostic
+* removes object boxing, frame objects penalties
+* but can present them if needed!
+* current speedup: 20 times for simple examples 
 
-XXX show a piece of code in GC
+Any Interpreter or VM? 
+====================================
 
+.. image:: mario.png
+   :scale: 100
+   :align: center
 
-Generating JIT Compilers
+Strong points 
 ========================================
 
-* We apply JIT generator to interpreters
+* large automated test suite, good debugging tools 
+* Generating **efficient* Interpreters 
+* works for Python, a relatively complex language
 
-* A couple of manual hints is required
+Challenges 
+========================================
 
-* We can try on top of Python as well
+* generate full JIT-Compiler for Python! 
 
-Challenges
-======================
+* release and distribute Python Interpreter 
 
-XXX out of time I suppose
+* get some more funding 
+
+
