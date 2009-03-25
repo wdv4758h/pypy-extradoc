@@ -35,7 +35,6 @@ stackless / threading
 
 * stackless transform for rpython programs (*any* interpreter)
 * infinite recursion, greenlets, co-routines in Python! 
-* composable!
 
 JIT-Compiler Generator 
 ====================================
@@ -62,7 +61,7 @@ Strong points
 ========================================
 
 * large automated test suite, good debugging tools 
-* Generating **efficient* Interpreters 
+* Generating *efficient* Interpreters 
 * works for Python, a relatively complex language
 
 Challenges 
