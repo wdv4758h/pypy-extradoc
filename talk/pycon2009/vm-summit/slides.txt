@@ -33,8 +33,8 @@ Garbage Collection framework
 stackless / threading 
 ====================================
 
-* stackless transform for rpython programs 
-* inifite recursion, greenlets, co-routines in Python! 
+* stackless transform for rpython programs (*any* interpreter)
+* infinite recursion, greenlets, co-routines in Python! 
 * composable!
 
 JIT-Compiler Generator 
@@ -68,7 +68,8 @@ Strong points
 Challenges 
 ========================================
 
-* generate full JIT-Compiler for Python! 
+* improve the JIT generator until it can generate a
+  good JIT-Compiler for Python! 
 
 * release and distribute Python Interpreter 
 
