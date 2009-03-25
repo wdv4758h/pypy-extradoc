@@ -30,6 +30,13 @@ Garbage Collection framework
 * test in simulation (with pdb!) 
 * weave into translation of *any* interpreter
 
+stackless / threading 
+====================================
+
+* stackless transform for rpython programs 
+* inifite recursion, greenlets, co-routines in Python! 
+* composable!
+
 JIT-Compiler Generator 
 ====================================
 
