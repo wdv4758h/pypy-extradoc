@@ -1,0 +1,126 @@
+==========================
+Python in a sandbox
+==========================
+
+This talk contents
+==================
+
+* How to run sandboxed Python using
+  PyPy
+
+* A couple of demos
+
+* How to define security policies
+
+* Status, future, Q&A
+
+What is a sandboxed python?
+============================
+
+* A way to execute untrusted code separated
+  from application
+
+* Separation from each other
+
+* Eventual integration with existing APIs
+
+* Example: Google App Engine
+
+Other solutions
+===============================
+
+* There is a lot of implementation's out there
+  in the wild
+
+* They do subset of:
+
+* bytecode/source verification
+
+* CPython source modification/monkey patching
+
+* platform-level security (GAE)
+
+* restrict python language to something harmless
+  (zope's restricted python)
+
+Problems
+===========
+
+* Patchy approach - "we fix all places that moight be
+  potentially dangerous"
+
+* Tradeoffs - either usability suffer or security is
+  hard to control
+
+* "Noone cracked it so far" approach is not
+  "security by design"
+
+Our approach
+==============
+
+* Modify all calls to platform (C) into something
+  harmless. XXX what?
+
+* Do that in a systematic manner, not touching the interpreter
+  source
+
+* Small code base to be trusted
+
+* Changes to interpreter doesn't break anything
+
+But there is more...
+====================
+
+* Memory limit (GC support)
+
+* CPU time limit
+
+* XXX ...
+
+Drawbacks
+==========
+
+* Each sandbox is in a separate process
+
+* Sandbox doesn't have access directly to any
+  APIs (only via file descriptor reading/writing)
+
+How to use it?
+===============
+
+XXX
+
+Demo
+=====
+
+XXX
+
+Embedding in your web app
+=========================
+
+XXX
+
+Custom file access policies
+============================
+
+XXX
+
+Custom APIs
+============
+
+XXX
+
+What next?
+==========
+
+* Definitely write more docs, advertise it a bit
+  more
+
+* Blog
+
+* Special web page
+
+Q&A
+===
+
+XXX
