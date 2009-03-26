@@ -46,7 +46,7 @@ Other solutions
 Problems
 ===========
 
-* Patchy approach - "we fix all places that moight be
+* Patchy approach - "we fix all places that might be
   potentially dangerous"
 
 * Tradeoffs - either usability suffer or security is
@@ -84,6 +84,9 @@ Drawbacks
 
 * Sandbox doesn't have access directly to any
   APIs (only via file descriptor reading/writing)
+
+XXX: the sentence above is not clear: as it's written it seems you *can*
+read/write everything on the disk
 
 How to use it?
 ===============
