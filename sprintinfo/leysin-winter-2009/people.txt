@@ -15,11 +15,14 @@ Carl Friedrich Bolz  14th-21st      Ermina
 Antonio Cuni         15th-21st      Ermina
 Samuele Pedroni      14th-22nd      Ermina
 Anders Hammarquist   14th-22nd      Ermina
+Christian Tismer     14th-22nd      Ermina
 ==================== ============== =======================
 
 Samuele and Anders Hammarquist would like to share a two persons room.
 
 Antonio would like to share a room with someone, volunteers are welcome :-)
+
+Christian is sorry but he needs a single room.
 
 People on the following list were present at previous sprints: 
 
