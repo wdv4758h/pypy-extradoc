@@ -88,7 +88,11 @@ Drawbacks
 How to use it?
 ===============
 
-XXX
+* translate pypy with --sandbox (takes a while)
+
+* run using pypy_interact.py
+
+* implement your own custom policy
 
 Demo
 =====
@@ -98,7 +102,9 @@ XXX
 Embedding in your web app
 =========================
 
-XXX
+* XXX
+
+* XXX
 
 Custom file access policies
 ============================
