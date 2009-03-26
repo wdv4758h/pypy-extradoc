@@ -82,11 +82,8 @@ Drawbacks
 
 * Each sandbox is in a separate process
 
-* Sandbox doesn't have access directly to any
-  APIs (only via file descriptor reading/writing)
-
-XXX: the sentence above is not clear: as it's written it seems you *can*
-read/write everything on the disk
+* Sandbox doesn't have a direct access to any
+  APIs
 
 How to use it?
 ===============
