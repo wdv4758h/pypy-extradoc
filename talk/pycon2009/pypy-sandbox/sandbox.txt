@@ -94,27 +94,25 @@ How to use it?
 
 * implement your own custom policy
 
-Demo
-=====
-
-XXX
+* demo
 
 Embedding in your web app
 =========================
 
-* XXX
-
-* XXX
+* http://codespeak.net/svn/user/getxsick/django-sandbox/
 
 Custom file access policies
 ============================
 
-XXX
+* write your own python code to control it
 
 Custom APIs
 ============
 
-XXX
+* provide an API that marshals/pickles data to
+  an outer layer
+
+* outer layer that accesses actual platform
 
 What next?
 ==========
@@ -126,7 +124,13 @@ What next?
 
 * Special web page
 
+* besides that, it's ready to use
+
 Q&A
 ===
 
-XXX
+* http://merlinux.eu
+
+* http://pypy.org
+
+* We really need a special web page....
