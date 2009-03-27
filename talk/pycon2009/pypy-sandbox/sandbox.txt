@@ -79,9 +79,9 @@ of the interpreter.
 PyPy virtualized Interpreter 
 ====================================
 
-.. image:: img/sandbox1.png 
-   :scale: 100
-   :align: left
+.. image:: sandbox1.png 
+   :scale: 50
+   :align: center
 
 Places to security-review
 =============================
