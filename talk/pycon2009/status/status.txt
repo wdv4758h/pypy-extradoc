@@ -5,13 +5,13 @@ PyPy's Python Interpreter status
 What this talk is about
 =======================
 
-* A bit of motivation
+* Why we work on PyPy?
 
-* What we can run on top of PyPy
+* What you can run on top of PyPy
 
 * How fast is PyPy?
 
-* 1.1 release coming
+* Details about coming 1.1 release
 
 * Questions and Answers 
 
@@ -152,7 +152,6 @@ Obscure details that people rely on
 * exact naming of a list comprehension variable
 
 * relying on untested and undocumented private stuff
-  (zipimport._zip_directory_cache)
 
 * exact message matching in exception catching
   code
@@ -173,11 +172,9 @@ Speed - comparison with CPython
 ===============================
 
 * we're something between 0.8-4x slower than
-  CPython on various benchmarks.
+  CPython on various benchmarks without JIT
 
-* steady but slow progress
-
-* we hope for our JIT to be a huge leap ahead
+* our JIT is a huge leap ahead
 
 * pypy-c has fastest Interpreter startup
 
@@ -192,6 +189,8 @@ Speed - JIT generator
   programs
 
 * probably won't make it to 1.1
+
+* completely separated from the interpreter
 
 Memory - comparison with CPython
 ===================================
@@ -209,13 +208,13 @@ Memory - comparison with CPython
 Threading / Stackless
 ===================================
 
-* currently using GIL, quite robust 
+* currently using GIL
 
 * free threading? "it's work" 
 
 * pypy-c has software threading / stackless
 
-* added during translation
+* no modifications to interpreter involved
 
 Other backends
 ==============
