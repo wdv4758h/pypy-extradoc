@@ -128,16 +128,6 @@ Custom file access policies
 
 code your own policy in plain python
 
-Custom APIs
-============
-
-XXX why "Custom APIs" in the title? find this slide confusing
-
-* provide an API that marshals/pickles data to
-  an outer layer
-
-* controling process accesses actual platform
-
 What next?
 ==========
 
