@@ -1,7 +1,8 @@
 \definecolor{rrblitbackground}{rgb}{0.0, 0.0, 0.0}
 
-\title[PyPy status / mobile perspectives]{PyPy status / mobile perspectives}
-\author[H. Krekel]{Holger Krekel \\ http://merlinux.eu}
+\title[PyPy VM]{PyPy VM}
+\author[H. Krekel, M. Fijalkowski]{Holger Krekel \and Maciej Fijalkowski\\
+Merlinux GmbH}
 
-\institute[OpenBossa 2009, Recife, Brazil]{OpenBossa 2009, Brazil}
-\date{March 11, 2009}
+\institute[PyCon 2009]{PyCon 2009 - Rosemont}
+\date{March 28 2009}
