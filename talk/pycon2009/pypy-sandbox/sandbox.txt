@@ -5,12 +5,11 @@ Python in a sandbox
 This talk contents
 ==================
 
-* How to run sandboxed Python using
-  PyPy
+* Problems with current sandboxing approaches
+
+* PyPy sandboxing and virtualization
 
 * A couple of demos
-
-* How to define security policies
 
 * Status, future, Q&A
 
@@ -55,82 +54,107 @@ Problems
 * "Noone cracked it so far" approach is not
   "security by design"
 
-Our approach
-==============
+"fixing all places manually"
+=================================
 
-* Modify all calls to platform (C) into something
-  harmless. XXX what?
+sidenote: enter the "browser hack" challenge a week ago:
 
-* Do that in a systematic manner, not touching the interpreter
-  source
+* **fully security-updated** IE8, Firefox, Safari access an URL 
 
-* Small code base to be trusted
+* hacker answers the URL access 
 
-* Changes to interpreter doesn't break anything
+* within a day above browsers were hacked
 
-But there is more...
+**something is wrong with an approach
+that despite so much attention and effort
+is so easy to break**
+
+PyPy's sandboxing
+==================
+
+automatically transform all C-lib/os calls 
+in our low-level graph representation 
+of the interpreter. 
+
+PyPy virtualized Interpreter 
+====================================
+
+.. image:: img/sandbox1.png 
+   :scale: 100
+   :align: left
+
+Places to security-review
+=============================
+
+* algos for transforming the graphs
+* interaction code controler<->sandbox 
+* controler process code
+
+Robustness and freedom!
+==========================
+
+Changes to the interpreter don't break sandbox! 
+
+Additional goodies
 ====================
 
 * Memory limit (GC support)
 
 * CPU time limit
 
-* XXX ...
-
 Drawbacks
 ==========
 
 * Each sandbox is in a separate process
 
-* Sandbox doesn't have a direct access to any
-  APIs
+* Sandbox doesn't have direct access to any APIs
 
-How to use it?
-===============
+How to use it today?
+=======================
 
 * translate pypy with --sandbox (takes a while)
 
 * run using pypy_interact.py
-
-* implement your own custom policy
 
 * demo
 
 Embedding in your web app
 =========================
 
-* http://codespeak.net/svn/user/getxsick/django-sandbox/
+http://codespeak.net/svn/user/getxsick/django-sandbox/
 
 Custom file access policies
 ============================
 
-* write your own python code to control it
+code your own policy in plain python
 
 Custom APIs
 ============
 
+XXX why "Custom APIs" in the title? find this slide confusing
+
 * provide an API that marshals/pickles data to
   an outer layer
 
-* outer layer that accesses actual platform
+* controling process accesses actual platform
 
 What next?
 ==========
 
-* Definitely write more docs, advertise it a bit
-  more
+* come up with nice methods of integrating with 
+  App code, try PyPy's transparent proxies? 
 
-* Blog
+* Improve docs, spawn separate project
 
-* Special web page
-
-* besides that, it's ready to use
+* get funding for teaching and helping 
+  companies to make full use of it. 
 
 Q&A
 ===
 
-* http://merlinux.eu
+Maciej Fijalkowski, Holger Krekel at
 
-* http://pypy.org
+http://merlinux.eu
 
-* We really need a special web page....
+Project webpage: http://pypy.org
+
