@@ -225,9 +225,9 @@ Threading / Stackless
 Other backends
 ==============
 
-* PyPy-jvm runs!
+* PyPy-CLI runs!  Still needs a bit more integration with .NET
 
-* more integration between pypy-cli and .NET
+* PyPy-JVM runs, little integration so far
 
 * general speed improvements
 
