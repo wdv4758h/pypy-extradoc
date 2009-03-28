@@ -263,7 +263,7 @@ pypy-c on small devices
 
 - help e.g. by writing ctypes modules 
 
-- hopefully next month
+- hopefully released next month
 
 Contact / Q&A 
 ==========================
