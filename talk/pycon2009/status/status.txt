@@ -139,6 +139,15 @@ Twisted & Nevow
 
 * http://twistedmatrix.com/
 
+Stackless
+=========
+
+* We support stackless
+
+* tasklets, frame pickling, greenlets
+
+* fully cross-platform
+
 Other software
 ==============
 
