@@ -91,7 +91,7 @@ CTypes
 
 * part of google sponsoring
 
-* note: 32bit and a bit slow
+* note: a bit slow
 
 Sqlite
 ======
