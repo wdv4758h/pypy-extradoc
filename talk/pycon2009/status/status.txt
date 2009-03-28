@@ -211,9 +211,6 @@ Memory - comparison with CPython
 
 * PyPy has pluggable Garbage Collection 
 
-* gcbench - 0.8 (because of our faster GCs)
-
-
 Threading / Stackless
 ===================================
 
