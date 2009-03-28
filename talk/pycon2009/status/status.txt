@@ -15,6 +15,17 @@ What this talk is about
 
 * Questions and Answers 
 
+
+PyPy - user motivation
+=======================
+
+* use Python rather than C for performance 
+
+* have a more speedy, resource efficient interpreter 
+
+* support more programming paradigms 
+
+
 PyPy - motivation
 =================================
 
@@ -22,21 +33,20 @@ PyPy - motivation
 
 * IronPython, Jython - bound to the specific VM
 
-* Separate language specification from low-level details,
-  such as GC or platform to run
-
 * Psyco and Stackless Python hard to maintain
 
-PyPy - user motivation
-=======================
+PyPy: generating Python Interpreter 
+=====================================
 
-* One should never be forced to write anything in C
-  for performance reasons (with some exceptions possibly)
+* **high level Python specification**! 
 
-* Just-in-time compiler should make number-crunching
-  and static-enough code fast enough
+* layer GCs, JIT, Stackless atop the spec 
 
-* One should never care about low-level details
+* **generate interpreters** for targets 
+
+.. image:: pypy-multitarget.png
+   :scale: 50
+   :align: center
 
 Brief history of PyPy
 ==========================
@@ -195,15 +205,14 @@ Speed - JIT generator
 Memory - comparison with CPython
 ===================================
 
+* PyPy has smaller Python objects
+
+* user class instances often 50% of CPython size! 
+
 * PyPy has pluggable Garbage Collection 
 
 * gcbench - 0.8 (because of our faster GCs)
 
-* better handling of unusual patterns
-
-* care needed with communication with C
-
-* GCs are semi-decent
 
 Threading / Stackless
 ===================================
