@@ -68,8 +68,6 @@ interpreter.  XXX
 
 \end{abstract}
 
-XXX write somewhere that we will be predominantly occupied with bytecode
-interpreters
 XXX write somewhere that one problem of using tracing JITs for dynamic languages
 is that dynamic languages have very complex bytecodes
 
@@ -304,10 +302,11 @@ partially). This means that there are two interpreters involved, and we need
 terminology to distinguish them. On the one hand, there is the interpreter that
 the tracing JIT uses to perform tracing. This we will call the \emph{tracing
 interpreter}. On the other hand, there is the interpreter that is running the
-users programs, which we will call the \emph{language interpreter}. The program
-that the language interpreter executes we will call the \emph{user program}
-(from the point of view of a VM author, the "user" is a programmer using the
-VM).
+users programs, which we will call the \emph{language interpreter}. In the
+following, we will assume that the language interpreter is bytecode-based. The
+program that the language interpreter executes we will call the \emph{user
+program} (from the point of view of a VM author, the "user" is a programmer
+using the VM).
 
 Similarly, we need to distinguish loops at two different levels:
 \emph{interpreter loops} are loops \emph{inside} the language interpreter. On
