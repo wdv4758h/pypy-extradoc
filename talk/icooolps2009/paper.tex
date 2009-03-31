@@ -1,0 +1,630 @@
+\documentclass{acm_proc_article-sp}
+
+\usepackage{ifthen}
+\usepackage{fancyvrb}
+\usepackage{color}
+
+\let\oldcite=\cite
+
+\renewcommand\cite[1]{\ifthenelse{\equal{#1}{XXX}}{[citation~needed]}{\oldcite{#1}}}
+
+\begin{document}
+
+\title{Tracing the Meta-Level: PyPy's JIT Compiler}
+
+\numberofauthors{2}
+\author{
+\alignauthor Carl Friedrich Bolz\\
+       \affaddr{Heinrich-Heine-Universität Düsseldorf}\\
+       \affaddr{Softwaretechnik und Programmiersprachen}\\
+       \affaddr{Institut für Informatik}\\ 
+       \affaddr{Universitätsstra{\ss}e 1}\\
+       \affaddr{D-40225 Düsseldorf}\\
+       \affaddr{Deutschland}\\
+       \email{cfbolz@gmx.de}
+\alignauthor Armin Rigo\\
+       \email{arigo@tunes.org}
+}
+\maketitle
+
+
+%\category{D.3.4}{Programming Languages}{Processors}[code generation,
+%interpreters, run-time environments]
+%\category{F.3.2}{Logics and Meanings of Programs}{Semantics of Programming
+%Languages}[program analysis]
+
+\begin{abstract}
+In this paper we describe the ongoing research in the PyPy project to write a
+JIT compiler that is automatically adapted to various languages, given an
+interpreter for that language. This is achieved with the help of a slightly
+adapted tracing JIT compiler in combination with some hints by the author of the
+interpreter.  XXX
+
+\end{abstract}
+
+XXX write somewhere that we will be predominantly occupied with bytecode
+interpreters
+XXX write somewhere that one problem of using tracing JITs for dynamic languages
+is that dynamic languages have very complex bytecodes
+
+
+\section{Introduction}
+
+Dynamic languages, rise in popularity, bla bla XXX
+
+One of the often-cited drawbacks of dynamic languages is the performance
+penalties they impose. Typically they are slower than statically typed languages
+\cite{XXX}. Even though there has been a lot of research into improving the
+performance of dynamic languages \cite{XXX}, those techniques are not as widely
+used as one would expect. Many dynamic language implementations use completely
+straightforward bytecode-interpreters without any advanced implementation
+techniques like just-in-time compilation. There are a number of reasons for
+this. Most of them boil down to the inherent complexities of using compilation.
+Interpreters are simple to understand and to implement whereas writing a
+just-in-time compiler is an error-prone task that is even made harder by the
+dynamic features of a language.
+
+writing an interpreter has many advantages... XXX
+
+A recent approach to getting better performance for dynamic languages is that of
+tracing JIT compilers. XXX
+
+The PyPy project is trying to find approaches to generally ease the
+implementation of dynamic languages. It started as a Python implementation in
+Python, but has now extended its goals to be generally useful for implementing
+other dynamic languages as well. The general approach is to implement an
+interpreter for the language in a subset of Python. This subset is chosen in
+such a way that programs in it can be compiled into various target environments,
+such as C/Posix, the CLR or the JVM. The PyPy project is described in more
+details in Section \ref{sect:pypy}.
+
+In this paper we discuss ongoing work in the PyPy project to improve the
+performance of interpreters written with the help of the PyPy toolchain. The
+approach is that of a tracing JIT compiler. Opposed to the tracing JITs for dynamic
+languages that exist so far, PyPy's tracing JIT operates "one level down",
+e.g. traces the execution of the interpreter, as opposed to the execution
+of the user program. The fact that the program the tracing JIT compiles is
+in our case always an interpreter brings its own set of problems. We describe
+tracing JITs and their application to interpreters in Section
+\ref{sect:tracing}.  By this approach we hope to get a JIT compiler that can be
+applied to a variety of dynamic languages, given an interpreter for them. The
+process is not completely automatic but needs a small number of hints from the
+interpreter author, to help the tracing JIT. The details of how the process
+integrates into the rest of PyPy will be explained in Section
+\ref{sect:implementation}. This work is not finished, but already produces some
+promising results, which we will discuss in Section \ref{sect:evaluation}.
+
+
+%- dynamic languages important
+%- notoriously difficult to achieve good performance
+%- even though the techniques exist since a while, not many implementations
+%  actually use them
+%    - hard to get all corner-cases right
+%    - languages evolve
+%    - modern dynamic languages are large
+%    - open source/research communities don't have that many resources
+%
+%- PyPy project: trying find approaches to ease the implementation of dynamic
+%languages
+%- explore general ways to improve on the speed of dynamic languages with reduced
+%effort
+%- approach: write a tracing JIT that is applicable to many different languages,
+%by tracing "one level done"
+%- needs some hints by the interpreter-writer + slightly different optimizations
+%- paper will describe the problems of applying a tracing jit to an interpreter
+%- different integration needed than a typical tracing jit
+
+
+\section{The PyPy Project}
+\label{sect:pypy}
+
+The PyPy project\footnote{http://codespeak.net/pypy} was started to implement a
+new Python interpreter in Python but has now extended its goals to be an
+environment where flexible implementation of dynamic languages can be written.
+To implement a dynamic language with PyPy, an interpreter for that language has
+to be written in RPython. RPython ("Restricted Python") is a subset of Python
+chosen in such a way that type inference can be performed on it. The language
+interpreter can then be translated with the help of PyPy into various target
+environments, such as C/Posix, the CLR and the JVM. This is done by a component
+of PyPy called the \emph{translation toolchain}.
+
+The central idea of this way to implement VMs is that the interpreter
+implementation in RPython should be as free as possible of low-level
+implementation details, such as memory management strategy, threading model or
+object layout. Instead, these details are inserted into the VM during the
+translation process by the translation toolchain. This makes it possible to
+change these details later, if that becomes necessary. This is something that is
+hard to do with a traditional VM written in a low-level language such as C,
+since the low-level details need to be fixed early in the development-process.
+XXX is this paragraph really needed?
+
+In the following we will describe some details of the translation process, since
+they are needed in Section \ref{sect:implementation}. The first step is to produce
+control flow graphs of all functions of the RPython program. Afterwards, type
+inference is performed to gain type information about all the variables in the
+flow graphs. Afterwards, the abstraction level of the operations in the graphs
+is lowered in a stepwise fashion. At the end of this process, all operations in
+the graphs correspond rather directly to a simple operation in C. The variables
+are annotated with a C-like type system containing primitive types (like
+\texttt{Signed}, \texttt{Bool}, etc.) or pointer types pointing to Structs,
+Arrays or Functions.
+
+XXX example. reuse the one of the tracing jit?
+
+The translation process usually just turns these graphs into C code so that they
+can be compiled into an executable. However, they can also be interpreted in
+various ways. This is useful for testing and debugging the translation toolchain
+because the produced error messages in case of a crash are a lot more helpful
+than what would be produced after compilation to C. These low-level graphs are
+also what the tracing JIT takes as input, as we will see later.
+
+
+%- original goal: Python interpreter in Python
+%- general way to write flexible VMs for dynamic languages
+%- interpreter written in RPython, subset of Python to allow type inference
+%- translation toolchain
+%   - naive forward-propagation type inference
+%   - lowering of abstractions
+%   - lltype system, monomorphic C-level operations
+%   - type system: primitives, pointers to structs and arrays
+%   - still assumes presence of GC
+%   - can be interpreted in various ways
+
+\section{Tracing JIT Compilers}
+\label{sect:tracing}
+
+Tracing JITs are an idea explored by the Dynamo project
+\cite{bala_dynamo:transparent_2000} in the context of dynamic optimization of
+machine code at runtime. The techniques were then successfully applied to Java
+VMs \cite{gal_hotpathvm:effective_2006}. It also turned out that they are a
+relatively simple way to implement a JIT compiler for a dynamic language
+\cite{XXX}. The technique is now used by both and are now being used by both Mozilla's
+TraceMonkey JavaScript VM \cite{XXX} and Adobe's Tamarin ActionScript VM
+\cite{XXX}.
+
+Tracing JITs are built on the following basic assumptions:
+
+\begin{itemize}
+ \item programs spend most of their runtime in loops
+ \item several iterations of the same loop are likely to take similar code paths
+\end{itemize}
+
+The basic approach of a tracing JIT is to only generate machine code for the hot
+code paths of commonly executed loops and to interpret the rest of the program.
+The code for those common loops however should be highly optimized, including
+aggressive inlining.
+
+The generation of loops works as follows: At first, everything is interpreted.
+The interpreter does a bit of lightweight profiling to figure out which loops
+are run often. This lightweight profiling is usually done by having a counter on
+each backward jump instruction that counts how often this particular backward jump
+was executed. Since loops need a backward jump somewhere, this method finds
+loops in the user program.
+
+When a common loop is identified, the interpreter enters a
+special mode (called tracing mode). When in tracing mode, the interpreter
+records a history (the \emph{trace}) of all the operations it executes, in addition
+to actually performing the operations. During tracing, the trace is repeatedly
+(XXX make this more precise: when does the check happen?)
+checked whether the interpreter is at a position in the program that it had seen
+earlier in the trace. If this happens, the trace recorded corresponds to a loop
+in the program that the tracing interpreter is running. At this point, this loop
+is turned into machine code by taking the trace and making machine code versions
+of all the operations in it. The machine code can then be immediately executed,
+as it represents exactly the loop that is being interpreted at the moment anyway.
+
+This process assumes that the path through the loop that was traced is a
+"typical" example of possible paths (which is statistically likely). Of course
+it is possible that later another path through the loop is taken, therefore the
+machine code will contain \emph{guards}, which check that the path is still the same.
+If a guard fails during execution of the machine code, the machine code is left
+and execution falls back to using interpretation (there are more complex
+mechanisms in place to still produce more code for the cases of guard failures,
+but they are of no importance for this paper XXX is that true?).
+
+It is important to understand when the tracer considers a loop in the trace to
+be closed. This happens when the \emph{position key} is the same as at an earlier
+point. The position key describes the position of the execution of the program,
+e.g. usually contains things like the function currently being executed and the
+program counter position of the tracing interpreter. The tracing interpreter
+does not need to check all the time whether the position key already occurred
+earlier, but only at instructions that are able to change the position key
+to an earlier value, e.g. a backward branch instruction. Note that this is
+already the second place where backward branches are treated specially: During
+interpretation they are the place where the profiling is performed and where
+tracing is started or already existing assembler code entered; during tracing
+they are the place where the check for a closed loop is performed.
+
+Let's look at a small example. Take the following (slightly contrived) RPython
+code:
+\begin{verbatim}
+def f(a, b):
+    if b % 46 == 41:
+        return a - b
+    else:
+        return a + b
+def strange_sum(n):
+    result = 0
+    while n >= 0:
+        result = f(result, n)
+        n -= 1
+    return result
+\end{verbatim}
+
+At first those functions will be interpreted, but after a while, profiling shows
+that the \texttt{while} loop in \texttt{strange\_sum} is executed often.  The
+tracing JIT will then start trace the execution of that loop.  The trace would
+look as follows:
+\begin{verbatim}
+loop_header(result0, n0)
+i0 = int_mod(n0, Const(46))
+i1 = int_eq(i0, Const(41))
+guard_false(i1)
+result1 = int_add(result0, n0)
+n1 = int_sub(n0, Const(1))
+i2 = int_ge(n1, Const(0))
+guard_true(i2) [result1]
+jump(result1, n1)
+\end{verbatim}
+
+XXX add a note about the SSA-ness of the trace
+
+This trace will then be turned into machine code. Note that the machine code
+loop is by itself infinite and can only be left via a guard failure. Also note
+\texttt{f} was inlined into the loop and how the common \texttt{else} case was
+turned into machine code, while the other one is implemented via a guard
+failure. The variables in square brackets after the guards are the state that
+the interpreter will get when the guard fails.
+
+%- general introduction to tracing
+%- assumptions
+%- mixed-mode execution environment: interpretation, tracing, compilation,
+%  running native code
+%- write why tracing jits are particularly well suited for dynamic languages
+
+\subsection{Applying a Tracing JIT to an Interpreter}
+
+XXX \cite{sullivan_dynamic_2003} somewhere
+
+The tracing JIT of the PyPy project is atypical in that it is not applied to the
+user program, but to the interpreter running the user program. In this section
+we will explore what problems this brings, and how to solve them (at least
+partially). This means that there are two interpreters involved, and we need
+terminology to distinguish them. On the one hand, there is the interpreter that
+the tracing JIT uses to perform tracing. This we will call the \emph{tracing
+interpreter}. On the other hand, there is the interpreter that is running the
+users programs, which we will call the \emph{language interpreter}. The program
+that the language interpreter executes we will call the \emph{user program}
+(from the point of view of a VM author, the "user" is a programmer using the
+VM).
+
+A tracing JIT compiler finds the hot loops of the program it is compiling. In
+our case, this program is the language interpreter. The hot loop of the language
+interpreter is the bytecode dispatch loop. Usually it is also the only hot loop.
+Tracing one iteration of this loop means that the execution of one bytecode was
+seen. This means that the resulting machine code will correspond to a loop, that
+assumes that this particular bytecode will be executed many times in a row,
+which is clearly very unlikely.
+
+\begin{figure}
+\input{code/tlr-paper.py}
+\caption{A very simple bytecode interpreter with registers and an accumulator.}
+\label{fig:tlr-basic}
+\end{figure}
+
+\begin{figure}
+\begin{verbatim}
+    MOV_A_R     0   # i = a
+    MOV_A_R     1   # copy of 'a'
+    
+    # 4:
+    MOV_R_A     0   # i--
+    DECR_A
+    MOV_A_R     0    
+
+    MOV_R_A     2   # res += a
+    ADD_R_TO_A  1
+    MOV_A_R     2
+    
+    MOV_R_A     0   # if i!=0: goto 4
+    JUMP_IF_A   4
+
+    MOV_R_A     2   # return res
+    RETURN_A
+\end{verbatim}
+\caption{Example bytecode: Compute the square of the accumulator}
+\label{fig:square}
+\end{figure}
+
+Let's look at an example. Figure \ref{fig:tlr-basic} shows the code of a very
+simple bytecode interpreter with 256 registers and an accumulator. The
+\texttt{bytecode} argument is a string of bytes and all register and the
+accumulator are integers. A simple program for this interpreter that computes
+the square of the accumulator is shown in Figure \ref{fig:square}. If the
+tracing interpreter traces the execution of the \texttt{DECR\_A} bytecode, the
+trace would look as follows:
+\input{code/normal-tracing.txt}
+
+To improve this situation, the tracing JIT could trace the execution of several
+bytecodes, thus effectively unrolling the bytecode dispatch loop. Ideally, the
+bytecode loop should be unrolled exactly so much, that the unrolled version
+corresponds to a loop on the level of the user program. A loop in the user
+program occurs when the program counter of the language interpreter has the
+same value many times. This program counter is typically one or several
+variables in the language interpreter, for example the bytecode object of the
+currently executed function of the user program and the position of the current
+bytecode within that.
+
+Since the tracing JIT cannot know which parts of the language interpreter are
+the program counter, the author of the language interpreter needs to mark the
+relevant variables of the language interpreter with the help of a \emph{hint}.
+The tracing interpreter will then effectively add the values of these variables
+to the position key. This means, that the loop will only be considered to be
+closed, if these variables that are making up program counter at the language
+interpreter level are the same a second time. Such a loop is a loop of the user
+program. The program counter of the language interpreter can only be the same a
+second time after an instruction in the user program sets it to an earlier
+value. This happens only at backward jumps in the language interpreter. That
+means that the tracing interpreter needs to check for a closed loop only when it
+encounters a backward jump in the language interpreter. Again the tracing JIT
+cannot known where the backward branch is located, so it needs to be told with
+the help of a hint by the author of the language interpreter.
+
+The condition for reusing already existing machine code needs to be adapted to
+this new situation. In a classical tracing JIT there is at most one piece of
+assembler code per loop of the jitted program, which in our case is the language
+interpreter. When applying the tracing JIT to the language interpreter as
+described so far, \emph{all} pieces of assembler code correspond to the bytecode
+dispatch loop of the language interpreter. They correspond to different
+unrollings and paths of that loop though. To figure out which of them to use
+when trying to enter assembler code again, the program counter of the language
+interpreter needs to be checked. If it corresponds to the position key of one of
+the pieces of assembler code, then this assembler code can be entered. This
+check again only needs to be performed at the backward branches of the language
+interpreter.
+
+There is a similar conceptual problem about the point where tracing is started.
+Tracing starts when the tracing interpreter sees one particular loop often
+enough. This loop is always going to be the bytecode dispatch loop of the
+language interpreter, so the tracing interpreter will start tracing all the
+time. This is not sensible. It makes more sense to start tracing only if a
+particular loop in the user program would be seen often enough. Thus we
+need to change the lightweight profiling to identify the loops of the user
+program. Therefore profiling is also done at the backward branches of the
+language interpreter, using one counter per seen program counter of the language
+interpreter.
+
+\begin{figure}
+\input{code/tlr-paper-full.py}
+\caption{Simple bytecode interpreter with hints applied}
+\label{fig:tlr-full}
+\end{figure}
+
+Let's look at which hints would need to be applied to the example interpreter
+from Figure \ref{fig:tlr-basic}. The basic thing needed to apply hints is a
+subclass of \texttt{JitDriver} that lists all the variables of the bytecode
+loop. The variables are classified into two groups, red variables and green
+variables. The green variables are those that the tracing JIT should consider to
+be part of the program counter of the language interpreter. In the case of the
+example, the \texttt{pc} variable is obviously part of the program counter.
+However, the \texttt{bytecode} variable is also counted as green, since the
+\texttt{pc} variable is meaningless without the knowledge of which bytecode
+string is currently being interpreted. All other variables are red.
+
+In addition to the classification of the variables, there are two methods of
+\texttt{JitDriver} that need to be called. Both of them get as arguments the
+current values of the variables listed in the definition of the driver. The
+first one is \texttt{jit\_merge\_point} which needs to be put at the beginning
+of the body of the bytecode dispatch loop. The other, more interesting one, is
+\texttt{can\_enter\_jit}. This method needs to be called at the end of any
+instruction that can set the program counter of the language interpreter to an
+earlier value. For the example this is only the \texttt{JUMP\_IF\_A}
+instruction, and only if it is actually a backward jump. The place where this
+method is called is where the language interpreter performs profiling to decide
+when to start tracing. It is also the place where the tracing JIT checks
+whether a loop is closed. This is considered to be the case when the values of
+the "green" variables are the same as at an earlier call to the
+\texttt{can\_enter\_jit} method.
+
+For the small example the hints look like a lot of work. However, the amount of
+hints is essentially constant no matter how large the interpreter is, which
+makes it seem less significant for larger interpreters.
+
+When executing the Square function of Figure \ref{fig:square}, the profiling
+will identify the loop in the square function to be hot, and start tracing. It
+traces the execution of the interpreter running the loop of the square function
+for one iteration, thus unrolling the interpreter loop of the example
+interpreter eight times. The resulting trace can be seen in Figure 
+\ref{fig:trace-no-green-folding}.
+
+\begin{figure}
+\input{code/no-green-folding.txt}
+\caption{Trace when executing the Square function of Figure \ref{fig:square},
+with the corresponding bytecodes as comments.}
+\label{fig:trace-no-green-folding}
+\end{figure}
+
+XXX summarize at which points the tracing interpreter needed changing
+XXX all changes only to the position key and when to enter/leave the tracer!
+XXX tracing remains essentially the same
+
+\subsection{Improving the Result}
+
+The critical problem of tracing the execution of just one bytecode has been
+solved, the loop corresponds exactly to the loop in the square function.
+However, the resulting trace is a bit too long. Most of its operations are not
+actually doing any computation that is part of the square function. Instead,
+they manipulate the data structures of the language interpreter. While this is
+to be expected, given that the tracing interpreter looks at the execution of the
+language interpreter, it would still be nicer if some of these operations could
+be removed.
+
+The simple insight how to greatly improve the situation is that most of the
+operations in the trace are actually concerned with manipulating the
+bytecode and the program counter. Those are stored in variables that are part of
+the position key (they are "green"), that means that the tracer checks that they
+are some fixed value at the beginning of the loop. In the example the check
+would be that the \texttt{bytecode} variable is the bytecode string
+corresponding to the square function and that the \texttt{pc} variable is
+\texttt{4}. Therefore it is possible to constant-fold computations on them away,
+as long as the operations are side-effect free. Since strings are immutable in
+Python, it is possible to constant-fold the \texttt{strgetitem} operation. The
+\texttt{int\_add} operations can be folded anyway.
+
+With this optimization enabled, the trace looks as in Figure
+\ref{fig:trace-full}. Now a lot of the language interpreter is actually gone
+from the trace and what is left corresponds very closely to the loop of the
+square function. The only vestige of the language interpreter is the fact that
+the register list is still used to store the state of the computation. This
+could be removed by some other optimization, but is maybe not really all that
+bad anyway (in fact we have an experimental optimization that does exactly that,
+but it is not finished).
+
+\begin{figure}
+\input{code/full.txt}
+\caption{Trace when executing the Square function of Figure \ref{fig:square},
+with the corresponding bytecodes as comments. The constant-folding of operations
+on green variables is enabled.}
+\label{fig:trace-full}
+\end{figure}
+
+
+
+%- problem: typical bytecode loops don't follow the general assumption of tracing
+%- needs to unroll bytecode loop
+%    - how often to unroll
+%    - when to start tracing?
+%    - unroll exactly so that unrolled loop corresponds to loop of the user
+%      program
+%- how to improve matters: introducing merge keys
+%- constant-folding of operations on green things
+%    - similarities to BTA of partial evaluation
+
+\section{Implementation Issues}
+\label{sect:implementation}
+
+In this section we will describe some of the practical issues when implementing
+the scheme described in the last section in PyPy. In particular we will describe
+some of the problems of integrating the various parts with each other.
+
+The first integration problem is how to \emph{not} integrate the tracing JIT at
+all. It should be possible to choose when the interpreter is translated to C
+whether the JIT should be built in or not. If the JIT is not enabled, all the
+hints that are possibly in the interpreter source are just ignored by the
+translation process. In this way, the result of the translation is identical to
+as if no hints were present in the interpreter at all.
+
+If the JIT is enabled, things are more interesting. A classical tracing JIT will
+interpret the program it is running until a common loop is identified, at which
+point tracing and ultimately assembler generation starts. The tracing JIT in
+PyPy is operating on the language interpreter, which is written in RPython. But
+RPython programs are translatable to C. This means that interpreting the
+language interpreter before a common loop is found is clearly not desirable,
+since the overhead of this double-interpretation would be significantly too big
+to be practical.
+
+What is done instead is that the language interpreter keeps running as a C
+program, until a common loop in the user program is found. To identify loops the
+C version of the language interpreter is generated in such a way that at the
+place that corresponds to the \texttt{can\_enter\_jit} hint profiling is
+performed using the program counter of the language interpreter. Apart from this
+bit of profiling, the language interpreter behaves in just the same way as
+without a JIT.
+
+When a hot loop in the user program is identified, tracing is started. The
+tracing interpreter is invoked to start tracing the language interpreter that is
+running the user program. Of course the tracing interpreter cannot actually
+trace the execution of the C representation of the language interpreter. Instead
+it takes the state of the execution of the language interpreter and starts
+tracing using a bytecode representation of the language interpreter. That means
+there are two "versions" of the language interpreter embedded in the final
+executable of the VM: On the one hand it is there as executable machine code, on
+the other hand as bytecode for the tracing interpreter. It also means that
+tracing is costly as it incurs exactly a double interpretation overhead.
+
+From then on things proceed like described in Section \ref{sect:tracing}. The
+tracing interpreter tries to find a loop in the user program, if it found one it
+will produce machine code for that loop and this machine code will be
+immediately executed. The machine code is executed until a guard fails. Then the
+execution should fall back to normal interpretation by the language interpreter.
+This falling back is possibly a complex process, since the guard failure can
+have occurred arbitrarily deep in a helper function of the language interpreter,
+which would make it hard to rebuild the state of the language interpreter and
+let it run from that point (e.g. this would involve building a potentially deep
+C stack). Instead the falling back is achieved by a special \emph{fallback
+interpreter} which runs the language interpreter and the user program from the
+point of the guard failure. The fallback interpreter is essentially a variant of
+the tracing interpreter that does not keep a trace. The fallback interpreter
+runs until execution reaches a safe point where it is easy to let the C version
+of the language interpreter resume its operation. Usually this means that the
+fallback interpreter executes at most one bytecode operation of the language
+interpreter. After the language interpreter takes over again, the whole process
+starts again.
+
+\subsection{Various Issues}
+
+This section will hint at some other implementation issues and optimizations
+that we have done that are beyond the scope of this paper (and will be subject
+of a later publication).
+
+\textbf{Assembler Backends:} The tracing interpreter uses a well-defined
+interface to an assembler backend for code generation. This makes it possible to
+easily port the tracing JIT to various architectures (including, we hope, to
+virtual machines such as the JVM where backend could generate bytecode at
+runtime).
+
+\textbf{Trace Trees:} This paper ignored the problem of guards that fail in a
+large percentage of cases because there are several equally likely paths through
+a loop. This of course is not always practicable. Therefore we also start
+tracing from guards that failed many times and produce assembler code for that
+path, instead of always falling back to interpretation. 
+
+\textbf{Allocation Removal:} A key optimization for making the approach
+produce good code for more complex dynamic language is to perform escape
+analysis on the loop operation after tracing has been performed. In this way all
+objects that are allocated during the loop and don't actually escape the loop do
+not need to be allocated on the heap at all but can be exploded into their
+respective fields.  This is very helpful for dynamic languages where primitive
+types are often boxed, as the constant allocation of intermediate results is
+very costly.
+
+\textbf{Optimizing Frame Objects:} One problem with the removal of allocations
+is that many dynamic languages are so reflective that they allow the
+introspection of the frame object that the interpreter uses to store local
+variables (e.g. SmallTalk, Python). This means that intermediate results always
+escape because they are stored into the frame object, rendering the allocation
+removal optimization ineffective. To remedy this problem we make it possible to
+update the frame object lazily only when it is actually accessed from outside of
+the code generated by the JIT.
+
+\section{Evaluation}
+
+\label{sect:evaluation}
+%- benchmarks
+%    - running example
+%    - gameboy?
+
+\section{Related Work}
+
+% dynamorio stuff
+% partial evaluation
+% XXX
+
+\section{Conclusion and Next Steps}
+
+%\begin{verbatim}
+%- next steps:
+%  - Apply to other things, like smalltalk
+%- conclusions
+% - advantages + disadvantages in the meta-level approach
+% - advantages are that the complex operations that occur in dynamic languages
+%   are accessible to the tracer
+\cite{bolz_back_2008}
+\cite{Psyco}
+
+\bigskip
+
+\bibliographystyle{abbrv}
+\bibliography{paper}
+
+\end{document}

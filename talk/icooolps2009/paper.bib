@@ -1,0 +1,160 @@
+﻿
+@techreport{miranda_context_1999,
+	title = {Context Management in {VisualWorks} 5i},
+	abstract = {Smalltalk-80 provides a reification of execution state in the form of context objects which represent procedure activation records. Smalltalk-80 also provides full closures with indefinite extent. These features pose interesting implementation challenges because a naïve implementation entails instantiating context objects on every method activation, but typical Smalltalk-80 programs obey stack discipline for the vast majority of activations. Both software and hardware implementations of Smalltalk-80 have mapped contexts and closure activations to stack frames but not without overhead when compared to traditional stack-based activation and return in “conventional” languages. We present a new design for contexts and closures that significantly reduces the overall overhead of these features and imposes overhead only in code that actually manipulates execution state in the form of contexts.},
+	institution = {{ParcPlace} Division, {CINCOM,} Inc.},
+	author = {Eliot Miranda},
+	year = {1999},
+},
+
+@inproceedings{sullivan_dynamic_2003,
+	address = {San Diego, California},
+	title = {Dynamic native optimization of interpreters},
+	isbn = {1-58113-655-2},
+	url = {http://portal.acm.org/citation.cfm?id=858570.858576},
+	doi = {10.1145/858570.858576},
+	abstract = {For domain specific languages, "scripting languages", dynamic languages, and for virtual machine-based languages, the most straightforward implementation strategy is to write an interpreter. A simple interpreter consists of a loop that fetches the next bytecode, dispatches to the routine handling that bytecode, then loops. There are many ways to improve upon this simple mechanism, but as long as the execution of the program is driven by a representation of the program other than as a stream of native instructions, there will be some "interpretive {overhead".There} is a long history of approaches to removing interpretive overhead from programming language implementations. In practice, what often happens is that, once an interpreted language becomes popular, pressure builds to improve performance until eventually a project is undertaken to implement a native Just In Time {(JIT)} compiler for the language. Implementing a {JIT} is usually a large effort, affects a significant part of the existing language implementation, and adds a significant amount of code and complexity to the overall code {base.In} this paper, we present an innovative approach that dynamically removes much of the interpreted overhead from language implementations, with minimal instrumentation of the original interpreter. While it does not give the performance improvements of hand-crafted native compilers, our system provides an appealing point on the language implementation spectrum.},
+	booktitle = {Proceedings of the 2003 workshop on Interpreters, virtual machines and emulators},
+	publisher = {{ACM}},
+	author = {Gregory T. Sullivan and Derek L. Bruening and Iris Baron and Timothy Garnett and Saman Amarasinghe},
+	year = {2003},
+	pages = {50--57},
+},
+
+@inbook{bolz_back_2008,
+	title = {Back to the Future in One Week — Implementing a Smalltalk {VM} in {PyPy}},
+	url = {http://dx.doi.org/10.1007/978-3-540-89275-5_7},
+	abstract = {We report on our experiences with the Spy project, including implementation details and benchmark results. Spy is a re-implementation of the Squeak (i.e. Smalltalk-80) {VM} using the {PyPy} toolchain. The {PyPy} project allows code written in {RPython,} a subset of Python, to be translated
+to a multitude of different backends and architectures. During the translation, many aspects of the implementation can be
+independently tuned, such as the garbage collection algorithm or threading implementation. In this way, a whole host of interpreters
+can be derived from one abstract interpreter definition. Spy aims to bring these benefits to Squeak, allowing for greater portability and, eventually, improved performance. The current
+Spy codebase is able to run a small set of benchmarks that demonstrate performance superior to many similar Smalltalk {VMs,} but
+which still run slower than in Squeak itself. Spy was built from scratch over the course of a week during a joint {Squeak-PyPy} Sprint in Bern last autumn.
+},
+	booktitle = {{Self-Sustaining} Systems},
+	author = {Carl Friedrich Bolz and Adrian Kuhn and Adrian Lienhard and Nicholas Matsakis and Oscar Nierstrasz and Lukas Renggli and Armin Rigo and Toon Verwaest},
+	year = {2008},
+	pages = {123--139}
+},
+
+@inproceedings{hlzle_optimizing_1994,
+	address = {Orlando, Florida, United States},
+	title = {Optimizing dynamically-dispatched calls with run-time type feedback},
+	isbn = {{0-89791-662-X}},
+	url = {http://portal.acm.org/citation.cfm?id=178243.178478},
+	doi = {10.1145/178243.178478},
+	abstract = {Note: {OCR} errors may be found in this Reference List extracted from the full text article. {ACM} has opted to expose the complete List rather than only correct and linked references.},
+	booktitle = {Proceedings of the {ACM} {SIGPLAN} 1994 conference on Programming language design and implementation},
+	publisher = {{ACM}},
+	author = {Urs Hölzle and David Ungar},
+	year = {1994},
+	pages = {326--336},
+},
+
+@techreport{andreas_gal_incremental_2006,
+	title = {Incremental Dynamic Code Generation with Trace Trees},
+	abstract = {The unit of compilation for traditional just-in-time compilers is the method. We have explored trace-based compilation, in which the unit of compilation is a loop, potentially spanning multiple methods and even library code. Using a new intermediate representation that is discovered and updated lazily on-demand while the program is being executed, our compiler generates code that is competitive with traditional dynamic compilers, but that uses only a fraction of the compile time and memory footprint.},
+	number = {{ICS-TR-06-16}},
+	institution = {Donald Bren School of Information and Computer Science, University of California, Irvine},
+	author = {Andreas Gal and Michael Franz},
+	month = nov,
+	year = {2006},
+	pages = {11}
+},
+
+@techreport{mason_chang_efficient_2007,
+	title = {Efficient {Just-In-Time} Execution of Dynamically Typed Languages
+Via Code Specialization Using Precise Runtime Type Inference},
+	abstract = {Dynamically typed languages such as {JavaScript} present a challenge to just-in-time compilers. In contrast to statically typed languages such as {JVML,} in which there are specific opcodes for common operations on primitive types (such as iadd for integer addition), all operations in dynamically typed language such as {JavaScript} are late-bound. Often enough, types cannot be inferred with certainty ahead of execution. As a result, just-in-time compilers for dynamically typed languages have tended to perform worse than their statically-typed counterparts. We present a new approach to compiling dynamically typed languages in which code traces observed during execution are dynamically specialized for each actually observed run-time type. For most benchmark programs, our prototype {JavaScript} virtual machine outperforms every other {JavaScript} platform known to us.},
+	number = {{ICS-TR-07-10}},
+	institution = {Donald Bren School of Information and Computer Science, University of California, Irvine},
+	author = {Mason Chang and Michael Bebenita and Alexander Yermolovich and Andreas Gal and Michael Franz},
+	year = {2007},
+},
+
+@inproceedings{andreas_gal_one_2007,
+	address = {Berlin, Germany},
+	title = {One Method At A Time Is Quite a Waste of Time},
+	abstract = {Most just-in-time compilers for object-oriented languages operate at the granularity of methods. Unfortunately, even “hot” methods often contain "cold" code paths. As a consequence, just-in-time compilers waste time compiling code that will be executed only rarely, if at all. We discuss an alternative approach in which only truly “hot” code is ever compiled.
+},
+	booktitle = {Proceedings of the Second Workshop on Implementation, Compilation, Optimization of {Object-Oriented} Languages, Programs and Systems {(ICOOOLPS'2007)}},
+	author = {Andreas Gal and Michael Bebenita and Michael Franz},
+	month = jul,
+	year = {2007},
+	pages = {11--16},
+},
+
+@inproceedings{carl_friedrich_bolz_to_2007,
+	title = {How to not write a Virtual Machine},
+	abstract = {Typical modern dynamic languages have a growing number of implementations. We explore the reasons for this situation, and the limitations it imposes on open source or academic communities that lack the resources to fine-tune and maintain them all. It is sometimes proposed that implementing dynamic languages on top of a standardized general-purpose object-oriented virtual machine (like Java or {.NET)} would help reduce this burden. We propose a complementary alternative to writing custom virtual machine {(VMs)} by hand, validated by the {PyPy} project: flexibly generating {VMs} from a high-level "specification",
+inserting features and low-level details automatically – including good just-in-time compilers tuned to the dynamic language at hand.
+We believe this to be ultimately a better investment of efforts than the development of more and more advanced general-purpose object
+oriented {VMs.} In this paper we compare these two approaches in detail.},
+	booktitle = {Proceedings of 3rd Workshop on Dynamic Languages and Applications {(DYLA} 2007)},
+	author = {Carl Friedrich Bolz and Armin Rigo},
+	year = {2007}
+},
+
+@inproceedings{rigo_pypys_2006,
+	address = {Portland, Oregon, {USA}},
+	title = {{PyPy's} approach to virtual machine construction},
+	isbn = {{1-59593-491-X}},
+	url = {http://portal.acm.org/citation.cfm?id=1176753},
+	doi = {10.1145/1176617.1176753},
+	abstract = {The {PyPy} project seeks to prove both on a research and a practical level the feasibility of constructing a virtual machine {(VM)} for a dynamic language in a dynamic language - in this case, Python. The aim is to translate (i.e. compile) the {VM} to arbitrary target environments, ranging in level from {C/Posix} to {Smalltalk/Squeak} via Java and {CLI/.NET,} while still being of reasonable efficiency within these {environments.A} key tool to achieve this goal is the systematic reuse of the Python language as a system programming language at various levels of our architecture and translation process. For each level, we design a corresponding type system and apply a generic type inference engine - for example, the garbage collector is written in a style that manipulates simulated pointer and address objects, and when translated to C these operations become C-level pointer and address instructions.},
+	booktitle = {Companion to the 21st {ACM} {SIGPLAN} conference on Object-oriented programming systems, languages, and applications},
+	publisher = {{ACM}},
+	author = {Armin Rigo and Samuele Pedroni},
+	year = {2006},
+	pages = {944--953}
+},
+
+@article{bala_dynamo:transparent_2000,
+	title = {Dynamo: a transparent dynamic optimization system},
+	volume = {35},
+	url = {http://citeseer.ist.psu.edu/bala00dynamo.html},
+	number = {5},
+	journal = {{ACM} {SIG{\textbackslash}-PLAN} Notices},
+	author = {Vasanth Bala and Evelyn Duesterwald and Sanjeev Banerjia},
+	year = {2000},
+	pages = {1--12}
+},
+
+@inproceedings{gal_hotpathvm:effective_2006,
+	address = {Ottawa, Ontario, Canada},
+	title = {{HotpathVM:} an effective {JIT} compiler for resource-constrained devices},
+	isbn = {1-59593-332-6},
+	url = {http://portal.acm.org/citation.cfm?doid=1134760.1134780},
+	doi = {10.1145/1134760.1134780},
+	abstract = {We present a just-in-time compiler for a Java {VM} that is small enough to fit on resource-constrained devices, yet is surprisingly effective. Our system dynamically identifies traces of frequently executed bytecode instructions (which may span several basic blocks across several methods) and compiles them via Static Single Assignment {(SSA)} construction. Our novel use of {SSA} form in this context allows to hoist instructions across trace side-exits without necessitating expensive compensation code in off-trace paths. The overall memory consumption (code and data) of our system is only 150 {kBytes,} yet benchmarks show a speedup that in some cases rivals heavy-weight just-in-time compilers.},
+	booktitle = {Proceedings of the 2nd international conference on Virtual execution environments},
+	publisher = {{ACM}},
+	author = {Andreas Gal and Christian W. Probst and Michael Franz},
+	year = {2006},
+	pages = {144--153}
+},
+
+@inproceedings{hlzle_optimizing_1991,
+	title = {Optimizing {Dynamically-Typed} {Object-Oriented} Languages With Polymorphic Inline Caches},
+	isbn = {3-540-54262-0},
+	url = {http://portal.acm.org/citation.cfm?id=679193&dl=ACM&coll=portal},
+	booktitle = {Proceedings of the European Conference on {Object-Oriented} Programming},
+	publisher = {{Springer-Verlag}},
+	author = {Urs Hölzle and Craig Chambers and David Ungar},
+	year = {1991},
+	pages = {21--38}
+},
+
+@inproceedings{rigo_representation-based_2004,
+	address = {Verona, Italy},
+	title = {Representation-based just-in-time specialization and the psyco prototype for python},
+	isbn = {1-58113-835-0},
+	url = {http://portal.acm.org/citation.cfm?id=1014010},
+	doi = {10.1145/1014007.1014010},
+	abstract = {A powerful application of specialization is to remove interpretative overhead: a language can be implemented with an interpreter, whose performance is then improved by specializing it for a given program source. This approach is only moderately successful with very high level languages, where the operation of each single step can be highly dependent on run-time data and context. In the present paper, the Psyco prototype for the Python language is presented. It introduces two novel techniques. The first is just-in-time specialization, or specialization by need, which introduces the "unlifting" ability for a value to be promoted from run-time to compile-time during specialization -- the inverse of the lift operator of partial evaluation. Its presence gives an unusual and powerful perspective on the specialization process. The second technique is representations, a theory of data-oriented specialization generalizing the traditional specialization domains (i.e. the compile-time/run-time dichotomy).},
+	booktitle = {Proceedings of the 2004 {ACM} {SIGPLAN} symposium on Partial evaluation and semantics-based program manipulation},
+	publisher = {{ACM}},
+	author = {Armin Rigo},
+	year = {2004},
+	pages = {15--26}
+}
