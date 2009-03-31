@@ -357,14 +357,18 @@ simple bytecode interpreter with 256 registers and an accumulator. The
 \texttt{bytecode} argument is a string of bytes and all register and the
 accumulator are integers. A simple program for this interpreter that computes
 the square of the accumulator is shown in Figure \ref{fig:square}. If the
-tracing interpreter traces the execution of the \texttt{DECR\_A} opcode (whose integer value is 7), the
-trace would look as follows:
-\input{code/normal-tracing.txt}
-
+tracing interpreter traces the execution of the \texttt{DECR\_A} opcode (whose
+integer value is 7), the trace would look as in Figure \ref{fig:trace-normal}.
 Because of the guard on \texttt{opcode0}, the code compiled from this trace will
 be useful only when executing a long series of \texttt{DECR\_A} opcodes. For all
 the other operations the guard will fail, which will mean that performance is
 probably not improved at all.
+
+\begin{figure}
+\input{code/normal-tracing.txt}
+\caption{Trace when executing the \texttt{DECR\_A} opcode}
+\label{fig:trace-normal}
+\end{figure}
 
 % YYY: (anto) I reviewd until here
 
