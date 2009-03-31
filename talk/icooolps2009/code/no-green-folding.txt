@@ -1,0 +1,62 @@
+{\small
+\begin{verbatim}
+loop_start(a0, regs0, bytecode0, pc0)
+# MOV_R_A 0
+opcode0 = strgetitem(bytecode0, pc0)
+pc1 = int_add(pc0, Const(1))
+guard_value(opcode0, Const(2))
+n1 = strgetitem(bytecode0, pc1)
+pc2 = int_add(pc1, Const(1))
+a1 = call(Const(<* fn list_getitem>), regs0, n1)
+# DECR_A
+opcode1 = strgetitem(bytecode0, pc2)
+pc3 = int_add(pc2, Const(1))
+guard_value(opcode1, Const(7))
+a2 = int_sub(a1, Const(1))
+# MOV_A_R 0
+opcode1 = strgetitem(bytecode0, pc3)
+pc4 = int_add(pc3, Const(1))
+guard_value(opcode1, Const(1)) 
+n2 = strgetitem(bytecode0, pc4)
+pc5 = int_add(pc4, Const(1))
+call(Const(<* fn list_setitem>), regs0, n2, a2)
+# MOV_R_A 2
+opcode2 = strgetitem(bytecode0, pc5)
+pc6 = int_add(pc5, Const(1))
+guard_value(opcode2, Const(2))
+n3 = strgetitem(bytecode0, pc6)
+pc7 = int_add(pc6, Const(1))
+a3 = call(Const(<* fn list_getitem>), regs0, n3)
+# ADD_R_TO_A 1
+opcode3 = strgetitem(bytecode0, pc7)
+pc8 = int_add(pc7, Const(1))
+guard_value(opcode3, Const(5))
+n4 = strgetitem(bytecode0, pc8)
+pc9 = int_add(pc8, Const(1))
+i0 = call(Const(<* fn list_getitem>), regs0, n4)
+a4 = int_add(a3, i0)
+# MOV_A_R 2
+opcode4 = strgetitem(bytecode0, pc9)
+pc10 = int_add(pc9, Const(1))
+guard_value(opcode4, Const(1))
+n5 = strgetitem(bytecode0, pc10)
+pc11 = int_add(pc10, Const(1))
+call(Const(<* fn list_setitem>), regs0, n5, a4)
+# MOV_R_A 0
+opcode5 = strgetitem(bytecode0, pc11)
+pc12 = int_add(pc11, Const(1))
+guard_value(opcode5, Const(2))
+n6 = strgetitem(bytecode0, pc12)
+pc13 = int_add(pc12, Const(1))
+a5 = call(Const(<* fn list_getitem>), regs0, n6)
+# JUMP_IF_A 4
+opcode6 = strgetitem(bytecode0, pc13)
+pc14 = int_add(pc13, Const(1))
+guard_value(opcode6, Const(3))
+target0 = strgetitem(bytecode0, pc14)
+pc15 = int_add(pc14, Const(1))
+i1 = int_is_true(a5)
+guard_true(i1)
+jump(a5, regs0, bytecode0, target0)
+\end{verbatim}
+}
