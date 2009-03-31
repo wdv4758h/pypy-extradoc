@@ -309,25 +309,18 @@ that the language interpreter executes we will call the \emph{user program}
 (from the point of view of a VM author, the "user" is a programmer using the
 VM).
 
-\anto{I find this para a bit confusing, but I don't really know how to improve
-  it. I try a rewriting, feel free to revert}
+Similarly, we need to distinguish loops at two different levels:
+\emph{interpreter loops} are loops \emph{inside} the language interpreter. On
+the other hand, \emph{user loops} are loops in the user program.
 
-\sout{A tracing JIT compiler finds the hot loops of the program it is compiling. In
+A tracing JIT compiler finds the hot loops of the program it is compiling. In
 our case, this program is the language interpreter. The hot loop of the language
-interpreter is the bytecode dispatch loop. Usually it is also the only hot loop.
-Tracing one iteration of this loop means that the execution of one opcode was
-seen. This means that the resulting machine code will correspond to a loop, that
-assumes that this particular opcode will be executed many times in a row,
-which is clearly very unlikely.}
-
-\anto{Similarly, we need to distinguish two kind of loops: \emph{interpreter
-    loops} are loops \textbf{inside} the language interpreter (e.g., the
-  bytecode dispatch loop). \emph{User loops} are loops in the user program.}
-
-\anto{To improve the performances of the user programs, we need to find and
-  compile traces that correspond to user loops.  The strategy described in
-  section \ref{sect:tracing} does not work well, as it only detects
-  interpreter loops, and in particular the bytecode dispatch one.}
+interpreter is its bytecode dispatch loop. Usually that is is also the only hot
+loop of the language interpreter.  Tracing one iteration of this loop means that
+the recorded trace corresponds to execution of one opcode. This means that the
+assumption that the tracing JIT makes -- that several iterations of a hot loop
+take the same or similar code paths -- is just wrong in this case. It is very
+unlikely that the same particular opcode is executed many times in a row.
 
 \begin{figure}
 \input{code/tlr-paper.py}
@@ -368,10 +361,10 @@ tracing interpreter traces the execution of the \texttt{DECR\_A} opcode (whose i
 trace would look as follows:
 \input{code/normal-tracing.txt}
 
-\anto{ Because of the guard on \texttt{opcode0}, the code compiled from this
-  trace will be useful only when executing a \texttt{DECR\_A}.  For all the
-  other operations the guard will fail, making the whole system probably
-  slower than without JIT.}
+Because of the guard on \texttt{opcode0}, the code compiled from this trace will
+be useful only when executing a long series of \texttt{DECR\_A} opcodes. For all
+the other operations the guard will fail, which will mean that performance is
+probably not improved at all.
 
 % YYY: (anto) I reviewd until here
 
