@@ -153,49 +153,14 @@ interpreter can then be translated with the help of PyPy into various target
 environments, such as C/Posix, the CLI and the JVM. This is done by a component
 of PyPy called the \emph{translation toolchain}.
 
-
-\anto{XXX: are the following paragraphs really needed? I don't think this
-  details are needed in Section \ref{sect:implementation}.  I would say
-  something much shorter, see below.}
-
-The central idea of this way to implement VMs is that the interpreter
-implementation in RPython should be as free as possible of low-level
-implementation details, such as memory management strategy, threading model or
-object layout. Instead, these details are inserted into the VM during the
-translation process by the translation toolchain. This makes it possible to
-change these details later, if that becomes necessary. This is something that is
-hard to do with a traditional VM written in a low-level language such as C,
-since the low-level details need to be fixed early in the development-process.
-XXX is this paragraph really needed?
-
-In the following we will describe some details of the translation process, since
-they are needed in Section \ref{sect:implementation}. The first step is to produce
-control flow graphs of all functions of the RPython program. Afterwards, type
-inference is performed to gain type information about all the variables in the
-flow graphs. Afterwards, the abstraction level of the operations in the graphs
-is lowered in a stepwise fashion. At the end of this process, all operations in
-the graphs correspond rather directly to a simple operation in C. The variables
-are annotated with a C-like type system containing primitive types (like
-\texttt{Signed}, \texttt{Bool}, etc.) or pointer types pointing to Structs,
-Arrays or Functions.
-
-XXX example. reuse the one of the tracing jit?
-
-The translation process usually just turns these graphs into C code so that they
-can be compiled into an executable. However, they can also be interpreted in
-various ways. This is useful for testing and debugging the translation toolchain
-because the produced error messages in case of a crash are a lot more helpful
-than what would be produced after compilation to C. These low-level graphs are
-also what the tracing JIT takes as input, as we will see later.
-
-\anto{By writing VMs in a high-level language, we keep the implementation of
-  the language free of low-level details such as memory management strategy,
-  threading model or object layout.  These features are automatically added
-  during the translation process which consists in a series of steps, each
-  step transforming the representation of the program produced by the previous
-  one until we get the final executable.  As we will see later, this internal
-  low-level representation of the program is also used as an input for the
-  tracing JIT.}
+By writing VMs in a high-level language, we keep the implementation of the
+language free of low-level details such as memory management strategy,
+threading model or object layout.  These features are automatically added
+during the translation process which consists in a series of steps, each step
+transforming the representation of the program produced by the previous one
+until we get the final executable.  As we will see later, this internal
+low-level representation of the program is also used as an input for the
+tracing JIT.
 
 
 %- original goal: Python interpreter in Python
@@ -233,15 +198,14 @@ code paths of commonly executed loops and to interpret the rest of the program.
 The code for those common loops however should be highly optimized, including
 aggressive inlining.
 
-\sout{The generation of loops works as follows: at first, everything is interpreted.}
-\anto{At first, when the program starts, everything is interpreted.}
+At first, when the program starts, everything is interpreted.
 The interpreter does a bit of lightweight profiling to figure out which loops
 are run often. This lightweight profiling is usually done by having a counter on
 each backward jump instruction that counts how often this particular backward jump
 was executed. Since loops need a backward jump somewhere, this method finds
 loops in the user program.
 
-When a \sout{common}\anto{hot} loop is identified, the interpreter enters a
+When a hot loop is identified, the interpreter enters a
 special mode, called \emph{tracing mode}. When in tracing mode, the interpreter
 records a history (the \emph{trace}) of all the operations it executes, in addition
 to actually performing the operations. During tracing, the trace is repeatedly
