@@ -356,7 +356,7 @@ the other hand, \emph{user loops} are loops in the user program.
 A tracing JIT compiler finds the hot loops of the program it is compiling. In
 our case, this program is the language interpreter. The hot loop of the language
 interpreter is its bytecode dispatch loop. Usually that is is also the only hot
-loop of the language interpreter.  Tracing one iteration of this loop means that
+loop of the language interpreter \arigo{Uh?}.  Tracing one iteration of this loop means that
 the recorded trace corresponds to execution of one opcode. This means that the
 assumption that the tracing JIT makes -- that several iterations of a hot loop
 take the same or similar code paths -- is just wrong in this case. It is very
@@ -695,8 +695,8 @@ processor and 1GiB RAM, using Linux 2.6.27.
 
 \section{Related Work}
 
-Applying a trace-based optimizer to an interpreter, adding hints to help the
-tracer produce better results been tried before in the context of the DynamoRIO
+Applying a trace-based optimizer to an interpreter and adding hints to help the
+tracer produce better results has been tried before in the context of the DynamoRIO
 project \cite{sullivan_dynamic_2003}. This work is conceptually very close to
 ours. They achieve the same unrolling of the interpreter loop so that the
 unrolled version corresponds to the loops in the user program. However the
