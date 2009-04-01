@@ -218,9 +218,27 @@ was executed. Since loops need a backward jump somewhere, this method finds
 loops in the user program.
 
 When a hot loop is identified, the interpreter enters a
-special mode, called \emph{tracing mode}. When in tracing mode, the interpreter
+special mode, called \emph{tracing mode}. \sout{When in tracing mode, the interpreter
 records a history (the \emph{trace}) of all the operations it executes, in addition
-to actually performing the operations. During tracing, the trace is repeatedly
+to actually performing the operations.
+} \anto{During tracing, the interpreter records a history of all the
+  operations it executes.}
+
+\anto{
+Such a history is called a \emph{trace}: it is a sequential list of
+operations, togheter with their actual operands and results.  By examining the
+trace, it is possible to produce highly efficient machine code by emitting
+only the operations needed.  Being sequential, the trace represents only one
+of the many possible paths through the code: to ensure correctness, the trace
+contains a \emph{guard} at every possible point where the path could have
+followed another direction, for example \texttt{if}s or indirect/virtual
+calls.  When emitting the machine code, we turn every guard into a quick check
+to guarantee that the path we are executing is still valid.  If a guard fails,
+we immediately quit from the machine code and continue the execution in other
+ways.  
+}
+
+During tracing, the trace is repeatedly
 (XXX make this more precise: when does the check happen?)
 checked whether the interpreter is at a position in the program that it had seen
 earlier in the trace. If this happens, the trace recorded corresponds to a loop
