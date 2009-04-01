@@ -375,12 +375,11 @@ opcodes, thus effectively unrolling the bytecode dispatch loop. Ideally, the
 bytecode dispatch loop should be unrolled exactly so much, that the unrolled version
 corresponds to \emph{user loop}. User loops
 occur when the program counter of the language interpreter has the
-same value many times. This program counter is typically stored in one or several
+same value several times. This program counter is typically stored in one or several
 variables in the language interpreter, for example the bytecode object of the
 currently executed function of the user program and the position of the current
 bytecode within that.  In the example above, the program counter is represented by 
 the \texttt{bytecode} and \texttt{pair} variables.
-\anto{XXX: why ``many times''? Twice is enough to have a loop, though is not hot}
 
 Since the tracing JIT cannot know which parts of the language interpreter are
 the program counter, the author of the language interpreter needs to mark the
@@ -388,18 +387,17 @@ relevant variables of the language interpreter with the help of a \emph{hint}.
 The tracing interpreter will then effectively add the values of these variables
 to the position key. This means that the loop will only be considered to be
 closed if these variables that are making up program counter at the language
-interpreter level are the same a second time. \sout{Such a loop is a loop of the user
-program.} \anto{Loops found in this way are, by definition, user loops}.
+interpreter level are the same a second time.  Loops found in this way are, by
+definition, user loops.
 
 The program counter of the language interpreter can only be the same a
 second time after an instruction in the user program sets it to an earlier
 value. This happens only at backward jumps in the language interpreter. That
 means that the tracing interpreter needs to check for a closed loop only when it
 encounters a backward jump in the language interpreter. Again the tracing JIT
-cannot known where the backward branch is located, so it needs to be told with
-the help of a hint by the author of the language interpreter.
-\anto{XXX: the backward jumps are in the user program, not in the language
-  interprer. Am I missing something?}
+cannot known which part of the language interpreter implements backward jumps,
+so it needs to be told with the help of a hint by the author of the language
+interpreter.
 
 The condition for reusing already existing machine code needs to be adapted to
 this new situation. In a classical tracing JIT there is at most one piece of
@@ -414,26 +412,9 @@ the pieces of assembler code, then this assembler code can be entered. This
 check again only needs to be performed at the backward branches of the language
 interpreter.
 
-\sout{
-There is a similar conceptual problem about the point where tracing is started.
-Tracing starts when the tracing interpreter sees one particular loop often
-enough. This loop is always going to be the bytecode dispatch loop of the
-language interpreter, so the tracing interpreter will start tracing all the
-time. This is not sensible. It makes more sense to start tracing only if a
-particular loop in the user program would be seen often enough. Thus we
-need to change the lightweight profiling to identify the loops of the user
-program. Therefore profiling is also done at the backward branches of the
-language interpreter, using one counter per seen program counter of the language
-interpreter.
-}
-
-\anto{I find the previous para a bit confusing. What about something more
-  lightweight, like the following?}
-
-\anto{Similarly, the interpreter uses the same techniques to detect \emph{hot
-    user loops}: the profiling is done at the backward branches of the user
-  program, using one counter per seen program counter of the language
-  interpreter.}
+The language interpreter uses a similar techniques to detect \emph{hot user
+loops}: the profiling is done at the backward branches of the user program,
+using one counter per seen program counter of the language interpreter.
 
 \begin{figure}
 \input{code/tlr-paper-full.py}
@@ -451,9 +432,6 @@ example, the \texttt{pc} variable is obviously part of the program counter.
 However, the \texttt{bytecode} variable is also counted as green, since the
 \texttt{pc} variable is meaningless without the knowledge of which bytecode
 string is currently being interpreted. All other variables are red.
-
-\anto{XXX: they driver does not list \emph{all} the variables; e.g. \texttt{n}
-  is not listed.  But maybe we can just ignore this issue}
 
 In addition to the classification of the variables, there are two methods of
 \texttt{JitDriver} that need to be called. Both of them get as arguments the
@@ -524,9 +502,12 @@ could be removed by some other optimization, but is maybe not really all that
 bad anyway (in fact we have an experimental optimization that does exactly that,
 but it is not finished).
 
-\anto{I propose to show also the trace with the malloc removal enabled, as it
+\anto{XXX I propose to show also the trace with the malloc removal enabled, as it
   is much nicer to see. Maybe we can say that the experimental optimization we
-  are working on would generate this and that}
+  are working on would generate this and that} \cfbolz{This example is not about
+  mallocs! There are no allocations in the loop. The fix would be to use
+  maciek's lazy list stuff (or whatever it's called) which is disabled at the
+  moment}
 
 \begin{figure}
 \input{code/full.txt}
@@ -536,9 +517,8 @@ on green variables is enabled.}
 \label{fig:trace-full}
 \end{figure}
 
-\anto{Once we get the highly optimized trace, we can pass it to the \emph{JIT
-    backend}, which generates the correspondent machine code. XXX: do we want
-  to say something more about backends?}
+Once we get this highly optimized trace, we can pass it to the \emph{JIT
+backend}, which generates the correspondent machine code.
 
 %- problem: typical bytecode loops don't follow the general assumption of tracing
 %- needs to unroll bytecode loop
@@ -550,7 +530,6 @@ on green variables is enabled.}
 %- constant-folding of operations on green things
 %    - similarities to BTA of partial evaluation
 
-% YYY (anto)
 
 \section{Implementation Issues}
 \label{sect:implementation}
@@ -635,15 +614,9 @@ Intel-x86 backend.
 \textbf{Trace Trees:} This paper ignored the problem of guards that fail in a
 large percentage of cases because there are several equally likely paths through
 a loop. Just falling back to interpretation in this case is not practicable.
-\sout{
-Therefore we also start tracing from guards that failed many times and produce
-machine code for that path, instead of always falling back to interpretation. 
-}
-\anto{
 Therefore, if we find a guard that fails often enough, we start tracing from
 there and produce efficient machine code for that case, instead of alwayas
 falling back to interpretation.
-}
 
 \textbf{Allocation Removal:} A key optimization for making the approach
 produce good code for more complex dynamic language is to perform escape
@@ -665,7 +638,8 @@ the code generated by the JIT.
 
 \anto{XXX: should we say that virtualizables are very cool, that nobody else
   does that and that they are vital to get good performaces with python
-  without sacrificing compatibility?}
+  without sacrificing compatibility?} \cfbolz{no: feels a bit dishonest to not
+  describe them properly and then say that they are very cool and vital}
 
 \section{Evaluation}
 \label{sect:evaluation}
