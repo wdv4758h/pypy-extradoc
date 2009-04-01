@@ -4,6 +4,7 @@
 \usepackage{fancyvrb}
 \usepackage{color}
 \usepackage{ulem}
+\usepackage[utf8]{inputenc}
 
 \newboolean{showcomments}
 \setboolean{showcomments}{true}
@@ -31,16 +32,16 @@
 
 \begin{document}
 
-\title{Tracing the Meta-Level: PyPy's JIT Compiler}
+\title{Tracing the Meta-Level: PyPy's Tracing JIT Compiler}
 
 \numberofauthors{3}
 \author{
 \alignauthor Carl Friedrich Bolz\\
-       \affaddr{Heinrich-Heine-Universität Düsseldorf}\\
+       \affaddr{Heinrich-Heine-UniversitÃ¤t DÃ¼sseldorf}\\
        \affaddr{Softwaretechnik und Programmiersprachen}\\
-       \affaddr{Institut für Informatik}\\ 
-       \affaddr{Universitätsstra{\ss}e 1}\\
-       \affaddr{D-40225 Düsseldorf}\\
+       \affaddr{Institut fÃ¼r Informatik}\\ 
+       \affaddr{UniversitÃ¤tsstra{\ss}e 1}\\
+       \affaddr{D-40225 DÃ¼sseldorf}\\
        \affaddr{Deutschland}\\
        \email{cfbolz@gmx.de}
 \alignauthor Antonio Cuni\\
@@ -118,6 +119,8 @@ integrates into the rest of PyPy will be explained in Section
 \ref{sect:implementation}. This work is not finished, but already produces some
 promising results, which we will discuss in Section \ref{sect:evaluation}.
 
+XXX contributions of this paper include:
+
 
 %- dynamic languages important
 %- notoriously difficult to achieve good performance
@@ -187,7 +190,7 @@ I think the introduction should really be written from the point of view of
 someone that has read already some papers for JavaScript.}
 
 
-Tracing JITs are an idea explored by the Dynamo project
+Tracing JITs are an idea initially explored by the Dynamo project
 \cite{bala_dynamo:transparent_2000} in the context of dynamic optimization of
 machine code at runtime. The techniques were then successfully applied to Java
 VMs \cite{gal_hotpathvm:effective_2006}. It also turned out that they are a
@@ -228,40 +231,28 @@ was executed. Since loops need a backward jump somewhere, this method finds
 loops in the user program.
 
 When a hot loop is identified, the interpreter enters a
-special mode, called \emph{tracing mode}. \sout{When in tracing mode, the interpreter
-records a history (the \emph{trace}) of all the operations it executes, in addition
-to actually performing the operations.
-} \anto{During tracing, the interpreter records a history of all the
-  operations it executes.}
+special mode, called \emph{tracing mode}. During tracing, the interpreter
+records a history of all the operations it executes.
 
-\anto{
 Such a history is called a \emph{trace}: it is a sequential list of
 operations, together with their actual operands and results.  By examining the
 trace, it is possible to produce highly efficient machine code by emitting
 only the operations needed.  Being sequential, the trace represents only one
-of the many possible paths through the code: to ensure correctness, the trace
+of the many possible paths through the code. To ensure correctness, the trace
 contains a \emph{guard} at every possible point where the path could have
-followed another direction, for example \texttt{if}s or indirect/virtual
-calls.  When emitting the machine code, we turn every guard into a quick check
+followed another direction, for example conditions or indirect/virtual
+calls.  When emitting the machine code, every guard is turned into a quick check
 to guarantee that the path we are executing is still valid.  If a guard fails,
-we immediately quit from the machine code and continue the execution in other
+we immediately quit from the machine code and continue the execution by falling
 ways.  
-}
 
 During tracing, the trace is repeatedly
-(XXX make this more precise: when does the check happen?)
 checked whether the interpreter is at a position in the program that it had seen
 earlier in the trace. If this happens, the trace recorded corresponds to a loop
 in the program that the tracing interpreter is running. At this point, this loop
 is turned into machine code by taking the trace and making machine code versions
 of all the operations in it. The machine code can then be immediately executed,
 as it represents exactly the loop that was being interpreted so far.
-
-\anto{XXX I think it's worth spending one more paragraph to explain what a
-  trace really is, i.e. that it's a list of \textbf{sequential} operations,
-  intermixed to guards which guarantee that this particular sequence is still
-  valid.  At the moment, the definition of trace is not given explicitly and
-  it's mixed with the details of how the JIT work}
 
 This process assumes that the path through the loop that was traced is a
 "typical" example of possible paths (which is statistically likely). Of course
