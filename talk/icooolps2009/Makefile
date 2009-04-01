@@ -8,3 +8,6 @@ pypy-jit.pdf: paper.tex paper.bib
 
 view: pypy-jit.pdf
 	evince pypy-jit.pdf &
+
+xpdf: pypy-jit.pdf
+	xpdf pypy-jit.pdf &
