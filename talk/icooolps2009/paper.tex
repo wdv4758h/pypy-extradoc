@@ -177,12 +177,22 @@ tracing JIT.
 \section{Tracing JIT Compilers}
 \label{sect:tracing}
 
+\arigo{We should not start from scratch and insert as little details what
+differs in our approach when compared to others; instead we should give a
+higher-level overview and then focus on these details, and a couple of
+references for more info about the "common" part.
+%
+In general there are many things that are never said at all.
+I think the introduction should really be written from the point of view of
+someone that has read already some papers for JavaScript.}
+
+
 Tracing JITs are an idea explored by the Dynamo project
 \cite{bala_dynamo:transparent_2000} in the context of dynamic optimization of
 machine code at runtime. The techniques were then successfully applied to Java
 VMs \cite{gal_hotpathvm:effective_2006}. It also turned out that they are a
 relatively simple way to implement a JIT compiler for a dynamic language
-\cite{mason_chang_efficient_2007}. The technique is now used by both and are now
+\cite{mason_chang_efficient_2007}. The technique is now
 being used by both Mozilla's TraceMonkey JavaScript VM \cite{XXX} and Adobe's
 Tamarin ActionScript VM \cite{XXX}.
 
@@ -226,7 +236,7 @@ to actually performing the operations.
 
 \anto{
 Such a history is called a \emph{trace}: it is a sequential list of
-operations, togheter with their actual operands and results.  By examining the
+operations, together with their actual operands and results.  By examining the
 trace, it is possible to produce highly efficient machine code by emitting
 only the operations needed.  Being sequential, the trace represents only one
 of the many possible paths through the code: to ensure correctness, the trace
@@ -245,7 +255,7 @@ earlier in the trace. If this happens, the trace recorded corresponds to a loop
 in the program that the tracing interpreter is running. At this point, this loop
 is turned into machine code by taking the trace and making machine code versions
 of all the operations in it. The machine code can then be immediately executed,
-as it represents exactly the loop that is being interpreted at the moment anyway.
+as it represents exactly the loop that was being interpreted so far.
 
 \anto{XXX I think it's worth spending one more paragraph to explain what a
   trace really is, i.e. that it's a list of \textbf{sequential} operations,
