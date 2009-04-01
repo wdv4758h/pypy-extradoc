@@ -186,7 +186,17 @@ relatively simple way to implement a JIT compiler for a dynamic language
 being used by both Mozilla's TraceMonkey JavaScript VM \cite{XXX} and Adobe's
 Tamarin ActionScript VM \cite{XXX}.
 
-Tracing JITs are built on the following basic assumptions:
+Typically, programs executed by a tracing VMs goes through various phases:
+
+\begin{itemize}
+\item Interpretation/profiling
+\item Tracing
+\item Code generation
+\item Execution of the generated code
+\end{itemize}
+
+The \emph{code generation} phase takes as input the trace generated during
+\emph{tracing}.  Tracing JITs are built on the following basic assumptions:
 
 \begin{itemize}
  \item programs spend most of their runtime in loops
