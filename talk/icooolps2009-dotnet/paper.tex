@@ -1,0 +1,117 @@
+\documentclass{acm_proc_article-sp}
+
+\usepackage{ifthen}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage{listings}
+
+
+\newboolean{showcomments}
+\setboolean{showcomments}{true}
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\nb}[2]{
+    \fbox{\bfseries\sffamily\scriptsize#1}
+    {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+   }
+   \newcommand{\version}{\emph{\scriptsize$-$Id: main.tex 19055 2008-06-05 11:20:31Z cfbolz $-$}}
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{}
+  }
+
+\newcommand\davide[1]{\nb{DAV}{#1}}
+\newcommand\cfbolz[1]{\nb{CFB}{#1}}
+\newcommand\anto[1]{\nb{ANTO}{#1}}
+\newcommand\arigo[1]{\nb{AR}{#1}}
+\newcommand{\commentout}[1]{}
+
+\normalem
+
+\let\oldcite=\cite
+
+\renewcommand\cite[1]{\ifthenelse{\equal{#1}{XXX}}{[citation~needed]}{\oldcite{#1}}}
+
+\begin{document}
+
+
+%% \title{Automatic generation of JIT compilers for dynamic languages in
+%%   .NET\thanks{This work has been partially supported by MIUR EOS DUE -
+%%     Extensible Object Systems for Dynamic and Unpredictable Environments and
+%%     by the EU-funded project: IST 004779 PyPy (PyPy: Implementing Python in
+%%     Python).}}
+
+\title{Faster than C\#: efficient implementation of dynamic languages on
+  .NET\thanks{This work has been partially supported by MIUR EOS DUE -
+    Extensible Object Systems for Dynamic and Unpredictable Environments and
+    by the EU-funded project: IST 004779 PyPy (PyPy: Implementing Python in
+    Python).}}
+
+%% Alternative title: Faster than C\#: the future of dynamic languages on .NET
+
+
+\numberofauthors{3}
+\author{
+\alignauthor Antonio Cuni\\
+       \affaddr{DISI, University of Genova}\\
+       \affaddr{Italy}\\
+       \email{cuni@disi.unige.it}
+\alignauthor Davide Ancona\\
+       \affaddr{DISI, University of Genova}\\
+       \affaddr{Italy}\\
+       \email{davide@disi.unige.it}
+\alignauthor Armin Rigo\\
+       \email{arigo@tunes.org}
+}
+\maketitle
+
+\begin{abstract}
+The CLI, i.e. the virtual machine at the core of the .NET environment, is a
+statically typed virtual machine.  Although it is being used as a target for
+many different languages, it is hard to provide higly efficient implementation
+of languages whose model is too different than the one of the VM.  In
+particular, dynamically typed languages are typically order of magnitude
+slower than, e.g., C\#.
+
+\anto{XXX: should we cite the DLR? How to prove that DLR programs are much
+  slower than C\#?}
+
+Recent developments show that JIT compilers can exploit runtime type
+information to generate quite efficient code.  Unfortunately, writing a JIT
+compiler is far from being simple.  In this paper we report our positive
+experience with automatic generation of JIT compilers as supported by the PyPy
+infrastructure, by focusing on JIT compilation for .NET.
+
+JIT compilation for .NET means to generate .NET bytecode at runtime, which
+will further compiled down to machine code by .NET's own JIT compiler.  The
+main and novel contribution of this paper is to show that this
+\emph{two-layers JIT} technique is effective, and can give very high speedups,
+up to make dynamic languages faster than C\# itself under certain
+circumstances.
+
+The practicality of the approach is demonstrated by showing some promising
+experiments done with benchmarks written in a simple dynamic language.
+\end{abstract}
+
+\section{Introduction}
+XXX
+\cite{PyPyJIT09}
+
+\section{PyPy and automatic JIT compiler generation}
+XXX
+
+\include{clibackend}
+\input{benchmarks}
+\input{conclusion}
+
+
+
+
+\bigskip
+
+\bibliographystyle{abbrv}
+\bibliography{paper}
+
+\end{document}
+
+% LocalWords:  JIT PyPy
