@@ -22,6 +22,7 @@
 \newcommand\cfbolz[1]{\nb{CFB}{#1}}
 \newcommand\anto[1]{\nb{ANTO}{#1}}
 \newcommand\arigo[1]{\nb{AR}{#1}}
+\newcommand\fijal[1]{\nb{FIJAL}{#1}}
 \newcommand{\commentout}[1]{}
 
 \normalem
@@ -92,7 +93,7 @@ dynamic features of a language.
 writing an interpreter has many advantages... XXX
 
 A recent approach to getting better performance for dynamic languages is that of
-tracing JIT compilers. XXX
+tracing JIT compilers. XXX [fijal] cite andreas gal paper?
 
 The PyPy project is trying to find approaches to generally ease the
 implementation of dynamic languages. It started as a Python implementation in
@@ -249,9 +250,10 @@ ways.
 During tracing, the trace is repeatedly
 checked whether the interpreter is at a position in the program that it had seen
 earlier in the trace. If this happens, the trace recorded corresponds to a loop
-in the program that the tracing interpreter is running. At this point, this loop
+in the interpreted program that the tracing interpreter is running. At this point, this loop
 is turned into machine code by taking the trace and making machine code versions
 of all the operations in it. The machine code can then be immediately executed,
+starting from the second iteration of the loop,
 as it represents exactly the loop that was being interpreted so far.
 
 This process assumes that the path through the loop that was traced is a
@@ -276,7 +278,10 @@ interpretation they are the place where the profiling is performed and where
 tracing is started or already existing assembler code entered; during tracing
 they are the place where the check for a closed loop is performed.
 
-XXX write somewhere here on which level the RPython tracer operates
+\fijal{RPython tracer operates on a level which is slightly higher level than
+of the underlaying C. To be more precise: it operates on exception-transformed,
+non-gc-transformed graphs with an extra bit of abstraction inversion that
+finds out operations on loops and dicts, not sure how to express this}
 
 Let's look at a small example. Take the following (slightly contrived) RPython
 code:
@@ -312,6 +317,15 @@ jump(result1, n1)
 
 XXX add a note about the SSA-ness of the trace
 
+
+\fijal{Following paragraph is more confusing than helpful. The trace contains
+all operations performed, including full inlining of functions called.
+The loop will loop over the path in the interpreter, which corresponds to
+path taken when tracing (which we assume is a common case).
+Later, which is outside of the scope of this paper, less common cases
+might be turned into assembler
+code as well, producing bridges, if they're common enough. Note that this
+loop is infinite, which means the only way to exit it is via guard failure}
 This trace will then be turned into machine code. Note that the machine code
 loop is by itself infinite and can only be left via a guard failure. Also note
 \texttt{f} was inlined into the loop and how the common \texttt{else} case was
@@ -344,6 +358,7 @@ Similarly, we need to distinguish loops at two different levels:
 \emph{interpreter loops} are loops \emph{inside} the language interpreter. On
 the other hand, \emph{user loops} are loops in the user program.
 
+\fijal{I'm lost, will continue later}
 A tracing JIT compiler finds the hot loops of the program it is compiling. In
 our case, this program is the language interpreter. The hot loop of the language
 interpreter is its bytecode dispatch loop. Usually that is is also the only hot
