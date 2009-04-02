@@ -86,14 +86,15 @@ used as one would expect. Many dynamic language implementations use completely
 straightforward bytecode-interpreters without any advanced implementation
 techniques like just-in-time compilation. There are a number of reasons for
 this. Most of them boil down to the inherent complexities of using compilation.
-Interpreters are simple to understand and to implement whereas writing a
-just-in-time compiler is an error-prone task that is even made harder by the
+Interpreters are simple to implement, understand, extend and port whereas writing a
+just-in-time compiler is an error-prone task that is made even harder by the
 dynamic features of a language.
 
-writing an interpreter has many advantages... XXX
-
 A recent approach to getting better performance for dynamic languages is that of
-tracing JIT compilers. XXX [fijal] cite andreas gal paper?
+tracing JIT compilers \cite{XXX}. Writing a tracing JIT compiler is relatively
+simple, because it can be added to an existing interpreter for a language,
+because the interpreter takes over some of the functionality of the compiler and
+the machine code generation part can be simplified.
 
 The PyPy project is trying to find approaches to generally ease the
 implementation of dynamic languages. It started as a Python implementation in
@@ -120,7 +121,12 @@ integrates into the rest of PyPy will be explained in Section
 \ref{sect:implementation}. This work is not finished, but already produces some
 promising results, which we will discuss in Section \ref{sect:evaluation}.
 
-XXX contributions of this paper include:
+The contributions of this paper are:
+\begin{itemize}
+\item Techniques for improving the generated code when applying a tracing JIT to
+an interpreter
+\item 
+\end{itemize}
 
 
 %- dynamic languages important
@@ -160,11 +166,14 @@ of PyPy called the \emph{translation toolchain}.
 By writing VMs in a high-level language, we keep the implementation of the
 language free of low-level details such as memory management strategy,
 threading model or object layout.  These features are automatically added
-during the translation process which consists in a series of steps, each step
-transforming the representation of the program produced by the previous one
-until we get the final executable.  As we will see later, this internal
-low-level representation of the program is also used as an input for the
-tracing JIT.
+during the translation process. The process starts by performing control flow
+graph construction and type inferences, then followed by a series of steps, each step
+transforming the intermediate representation of the program produced by the
+previous one until we get the final executable.  The first transformation step
+makes details of the Python object model explicit in the intermediate
+representation, later steps introducing garbage collection and other low-level
+details. As we will see later, this internal representation of the program is
+also used as an input for the tracing JIT.
 
 
 %- original goal: Python interpreter in Python
@@ -299,9 +308,13 @@ def strange_sum(n):
     return result
 \end{verbatim}
 
-At first those functions will be interpreted, but after a while, profiling shows
+To trace this, a bytecode form of these functions needs to be introduced that
+the tracer understands. The tracer interprets a bytecode that is an encoding of
+the intermediate representation of PyPy's translation toolchain after type
+inference has been performed and Python-specifics have been made explicit. At
+first those functions will be interpreted, but after a while, profiling shows
 that the \texttt{while} loop in \texttt{strange\_sum} is executed often.  The
-tracing JIT will then start trace the execution of that loop.  The trace would
+tracing JIT will then start to trace the execution of that loop.  The trace would
 look as follows:
 \begin{verbatim}
 loop_header(result0, n0)
@@ -311,27 +324,21 @@ guard_false(i1)
 result1 = int_add(result0, n0)
 n1 = int_sub(n0, Const(1))
 i2 = int_ge(n1, Const(0))
-guard_true(i2) [result1]
+guard_true(i2)
 jump(result1, n1)
 \end{verbatim}
 
-XXX add a note about the SSA-ness of the trace
+The operations in this sequence are operations of the mentioned intermediate
+representation (e.g. note that the generic modulo and equality operations in the
+function above have been recognized to always work on integers and are thus
+rendered as \texttt{int\_mod} and \texttt{int\_eq}). The trace contains all the
+operations that were executed, is in SSA-form \cite{XXX} and ends with a jump
+to its own beginning, forming an endless loop that can only be left via a guard
+failure. The call to \texttt{f} was inlined into the trace. Of the condition in
+\texttt{f} the much more common \texttt{else} case was traced. The other case is
+implemented via a guard failure. This trace can then be turned into machine code
+and executed.
 
-
-\fijal{Following paragraph is more confusing than helpful. The trace contains
-all operations performed, including full inlining of functions called.
-The loop will loop over the path in the interpreter, which corresponds to
-path taken when tracing (which we assume is a common case).
-Later, which is outside of the scope of this paper, less common cases
-might be turned into assembler
-code as well, producing bridges, if they're common enough. Note that this
-loop is infinite, which means the only way to exit it is via guard failure}
-This trace will then be turned into machine code. Note that the machine code
-loop is by itself infinite and can only be left via a guard failure. Also note
-\texttt{f} was inlined into the loop and how the common \texttt{else} case was
-turned into machine code, while the other one is implemented via a guard
-failure. The variables in square brackets after the guards are the state that
-the interpreter will get when the guard fails.
 
 %- general introduction to tracing
 %- assumptions
@@ -364,9 +371,10 @@ why we do that. Completely ignore aspect of an interpreter loop I suppose,
 because everything previously keeps talking about can\_enter\_jit that closes
 loop being available at jump back bytecodes}
 A tracing JIT compiler finds the hot loops of the program it is compiling. In
-our case, this program is the language interpreter. The hot loop of the language
-interpreter is its bytecode dispatch loop. Usually that is is also the only hot
-loop of the language interpreter \arigo{Uh?}.  Tracing one iteration of this loop means that
+our case, this program is the language interpreter. The most important hot loop
+of the language interpreter is its bytecode dispatch loop (for many simple
+interpreters it is also the only hot loops).  Tracing one iteration of this
+loop means that
 the recorded trace corresponds to execution of one opcode. This means that the
 assumption that the tracing JIT makes -- that several iterations of a hot loop
 take the same or similar code paths -- is just wrong in this case. It is very
@@ -598,7 +606,7 @@ each other.
   somewhere in the introduction}
 
 The first integration problem is how to \emph{not} integrate the tracing JIT at
-all. It should be possible to choose when the interpreter is translated to C
+all. It should be possible to choose when the language interpreter is translated to C
 whether the JIT should be built in or not. If the JIT is not enabled, all the
 hints that are possibly in the interpreter source are just ignored by the
 translation process. In this way, the result of the translation is identical to
@@ -740,7 +748,7 @@ done to do partial evaluation at runtime. One of the earliest works on runtime
 specialisation is Tempo for C \cite{XXX}. However, it is essentially a normal
 partial evaluator ``packaged as a library''; decisions about what can be
 specialised and how are pre-determined. Another work in this direction is DyC
-\cite{grant_dyc_2000}, another runtime specialiser for C. Both of these projects
+\cite{grant_dyc_2000}, another runtime specializer for C. Both of these projects
 have a similar problem as DynamoRIO.  Targeting the C language makes
 higher-level specialisation difficult (e.g.\ \texttt{malloc} can not be
 optimized).
