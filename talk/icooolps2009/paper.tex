@@ -289,11 +289,6 @@ interpretation they are the place where the profiling is performed and where
 tracing is started or already existing assembler code entered; during tracing
 they are the place where the check for a closed loop is performed.
 
-\fijal{RPython tracer operates on a level which is slightly higher level than
-of the underlaying C. To be more precise: it operates on exception-transformed,
-non-gc-transformed graphs with an extra bit of abstraction inversion that
-finds out operations on loops and dicts, not sure how to express this}
-
 Let's look at a small example. Take the following (slightly contrived) RPython
 code:
 \begin{verbatim}
@@ -464,9 +459,6 @@ cannot known which part of the language interpreter implements backward jumps,
 so it needs to be told with the help of a hint by the author of the language
 interpreter.
 
-\fijal{This is wrong. Without virtuals there is also at most one assembler
-loop per user loop. If it has more branches, we enter the loop as usual and
-then we create a bridge for a new situation}
 The condition for reusing already existing machine code needs to be adapted to
 this new situation. In a classical tracing JIT there is at most one piece of
 assembler code per loop of the jitted program, which in our case is the language
