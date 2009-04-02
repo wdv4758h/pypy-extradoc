@@ -6,6 +6,15 @@
 \usepackage{ulem}
 \usepackage{listings}
 
+\lstset{language=Python,
+        basicstyle=\scriptsize\ttfamily,
+        keywordstyle=\color{blue}, % I couldn't find a way to make chars both bold and tt
+        frame=none,
+        stringstyle=\color{blue},
+        fancyvrb=true,
+        xleftmargin=20pt,xrightmargin=20pt,
+        showstringspaces=false}
+
 
 \newboolean{showcomments}
 \setboolean{showcomments}{true}
@@ -93,14 +102,8 @@ The practicality of the approach is demonstrated by showing some promising
 experiments done with benchmarks written in a simple dynamic language.
 \end{abstract}
 
-\section{Introduction}
-XXX
-\cite{PyPyJIT09}
-
-\section{PyPy and automatic JIT compiler generation}
-XXX
-
-\include{clibackend}
+\input{intro}
+\input{clibackend}
 \input{benchmarks}
 \input{conclusion}
 
