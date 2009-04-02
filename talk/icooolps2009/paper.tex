@@ -159,7 +159,7 @@ The PyPy project\footnote{http://codespeak.net/pypy}
 new Python interpreter in Python but has now extended its goals to be an
 environment where flexible implementation of dynamic languages can be written.
 To implement a dynamic language with PyPy, an interpreter for that language has
-to be written in RPython \cite{AACM-DLS07}. RPython ("Restricted Python") is a subset of Python
+to be written in RPython \cite{ancona_rpython:step_2007}. RPython ("Restricted Python") is a subset of Python
 chosen in such a way that type inference can be performed on it. The language
 interpreter can then be translated with the help of PyPy into various target
 environments, such as C/Posix, the CLI and the JVM. This is done by a component
@@ -749,7 +749,7 @@ done to do partial evaluation at runtime. One of the earliest works on runtime
 specialisation is Tempo for C \cite{XXX}. However, it is essentially a normal
 partial evaluator ``packaged as a library''; decisions about what can be
 specialised and how are pre-determined. Another work in this direction is DyC
-\cite{grant_dyc_2000}, another runtime specializer for C. Both of these projects
+\cite{grant_dyc:expressive_2000}, another runtime specializer for C. Both of these projects
 have a similar problem as DynamoRIO.  Targeting the C language makes
 higher-level specialisation difficult (e.g.\ \texttt{malloc} can not be
 optimized).
