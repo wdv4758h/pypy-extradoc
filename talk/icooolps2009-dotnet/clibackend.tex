@@ -52,8 +52,8 @@ dynamically added whenever new cases are needed.
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[height=5cm]{flexswitch1}
-\includegraphics[height=5cm]{flexswitch2}
+\includegraphics[height=4.5cm]{flexswitch1}
+\includegraphics[height=4.5cm]{flexswitch2}
 \caption{An example of a flexswitch evolution: in the picture on the
   right a new block has been dynamically added.}\label{flexswitch-fig}
 \end{center}
@@ -258,11 +258,13 @@ Finally, we can have a look at the implementation of flexswitches.
 The following snippet shows the special case of integer flexswitches.
 \begin{small}
 \begin{lstlisting}[language={[Sharp]C}] 
-public class IntLowLevelFlexSwitch:BaseLowLevelFlexSwitch {
+public class IntLowLevelFlexSwitch: 
+                        BaseLowLevelFlexSwitch {
   public uint default_blockid = 0xFFFFFFFF;
   public int numcases = 0;
   public int[] values = new int[4];
-  public FlexSwitchCase[] cases = new FlexSwitchCase[4];
+  public FlexSwitchCase[] cases = 
+                          new FlexSwitchCase[4];
 
   public void add_case(int value, FlexSwitchCase c) {
     ...
