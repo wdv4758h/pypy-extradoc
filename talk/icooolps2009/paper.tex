@@ -95,6 +95,8 @@ tracing JIT compilers \cite{XXX}. Writing a tracing JIT compiler is relatively
 simple, because it can be added to an existing interpreter for a language,
 because the interpreter takes over some of the functionality of the compiler and
 the machine code generation part can be simplified.
+\anto{XXX small english issue: I don't like the two consecutive ``because'',
+  I'm not even sure what is the right way to interpret the sentence}
 
 The PyPy project is trying to find approaches to generally ease the
 implementation of dynamic languages. It started as a Python implementation in
@@ -334,11 +336,15 @@ function above have been recognized to always work on integers and are thus
 rendered as \texttt{int\_mod} and \texttt{int\_eq}). The trace contains all the
 operations that were executed, is in SSA-form \cite{XXX} and ends with a jump
 to its own beginning, forming an endless loop that can only be left via a guard
-failure. The call to \texttt{f} was inlined into the trace. Of the condition in
+failure. The call to \texttt{f} was inlined into the trace. \sout{Of the condition in
 \texttt{f} the much more common \texttt{else} case was traced. The other case is
 implemented via a guard failure. This trace can then be turned into machine code
-and executed.
-
+and executed.}
+\anto{
+Note that the trace contains only the hot \texttt{else} case of the
+\texttt{if} test in \texttt{f}, while the other branch is implemented via a
+guard failure. This trace can then be turned into machine code and executed.
+}
 
 %- general introduction to tracing
 %- assumptions
