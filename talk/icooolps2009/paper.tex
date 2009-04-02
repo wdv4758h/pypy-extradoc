@@ -92,11 +92,9 @@ dynamic features of a language.
 
 A recent approach to getting better performance for dynamic languages is that of
 tracing JIT compilers \cite{XXX}. Writing a tracing JIT compiler is relatively
-simple, because it can be added to an existing interpreter for a language,
-because the interpreter takes over some of the functionality of the compiler and
+simple. It can be added to an existing interpreter for a language,
+the interpreter takes over some of the functionality of the compiler and
 the machine code generation part can be simplified.
-\anto{XXX small english issue: I don't like the two consecutive ``because'',
-  I'm not even sure what is the right way to interpret the sentence}
 
 The PyPy project is trying to find approaches to generally ease the
 implementation of dynamic languages. It started as a Python implementation in
@@ -331,15 +329,11 @@ function above have been recognized to always work on integers and are thus
 rendered as \texttt{int\_mod} and \texttt{int\_eq}). The trace contains all the
 operations that were executed, is in SSA-form \cite{XXX} and ends with a jump
 to its own beginning, forming an endless loop that can only be left via a guard
-failure. The call to \texttt{f} was inlined into the trace. \sout{Of the condition in
-\texttt{f} the much more common \texttt{else} case was traced. The other case is
-implemented via a guard failure. This trace can then be turned into machine code
-and executed.}
-\anto{
-Note that the trace contains only the hot \texttt{else} case of the
-\texttt{if} test in \texttt{f}, while the other branch is implemented via a
-guard failure. This trace can then be turned into machine code and executed.
-}
+failure. The call to \texttt{f} was inlined into the trace. Note that the trace
+contains only the hot \texttt{else} case of the \texttt{if} test in \texttt{f},
+while the other branch is implemented via a guard failure. This trace can then
+be turned into machine code and executed.
+
 
 %- general introduction to tracing
 %- assumptions
@@ -738,7 +732,8 @@ much the same reasons why ahead-of-time compilers cannot compile them to
 efficient code. If the partial evaluator knows only the program it simply does
 not have enough information to produce good code. Therefore some work has been
 done to do partial evaluation at runtime. One of the earliest works on runtime
-specialisation is Tempo for C \cite{XXX}. However, it is essentially a normal
+specialisation is Tempo for C \cite{consel_general_1996, consel_uniform_1996}.
+However, it is essentially a normal
 partial evaluator ``packaged as a library''; decisions about what can be
 specialised and how are pre-determined. Another work in this direction is DyC
 \cite{grant_dyc:expressive_2000}, another runtime specializer for C. Both of these projects
@@ -751,7 +746,8 @@ partial evaluation that defers partial evaluation completely to runtime
 to make partial evaluation more useful for dynamic languages. This concept was
 introduced by Sullivan \cite{sullivan_dynamic_2001} who implemented it for a
 small dynamic language based on lambda-calculus. There is some work by one of
-the authors to implement a dynamic partial evaluator for Prolog \cite{XXX}.
+the authors to implement a dynamic partial evaluator for Prolog
+\cite{carl_friedrich_bolz_automatic_2008}.
 
 XXX what else?
 
