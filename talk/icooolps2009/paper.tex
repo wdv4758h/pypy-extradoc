@@ -753,6 +753,13 @@ have a similar problem as DynamoRIO.  Targeting the C language makes
 higher-level specialisation difficult (e.g.\ \texttt{malloc} can not be
 optimized).
 
+There has been some attempts to do \emph{dynamic partial evaluation}, which is
+partial evaluation that defers partial evaluation completely to runtime
+to make partial evaluation more useful for dynamic languages. This concept was
+introduced by Sullivan \cite{sullivan_dynamic_2001} who implemented it for a
+small dynamic language based on lambda-calculus. There is some work by one of
+the authors to implement a dynamic partial evaluator for Prolog \cite{XXX}.
+
 XXX what else?
 
 \anto{I would cite ourselves (maybe the JIT technical report?) and maybe
