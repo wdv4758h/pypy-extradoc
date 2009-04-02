@@ -358,7 +358,11 @@ Similarly, we need to distinguish loops at two different levels:
 \emph{interpreter loops} are loops \emph{inside} the language interpreter. On
 the other hand, \emph{user loops} are loops in the user program.
 
-\fijal{I'm lost, will continue later}
+\fijal{I find following paragraph out of scope and completely confusing, we
+should instead simply state that we unroll the loop, how we do that and
+why we do that. Completely ignore aspect of an interpreter loop I suppose,
+because everything previously keeps talking about can\_enter\_jit that closes
+loop being available at jump back bytecodes}
 A tracing JIT compiler finds the hot loops of the program it is compiling. In
 our case, this program is the language interpreter. The hot loop of the language
 interpreter is its bytecode dispatch loop. Usually that is is also the only hot
@@ -398,6 +402,7 @@ unlikely that the same particular opcode is executed many times in a row.
 \label{fig:square}
 \end{figure}
 
+\fijal{This paragraph should go away as well}
 Let's look at an example. Figure \ref{fig:tlr-basic} shows the code of a very
 simple bytecode interpreter with 256 registers and an accumulator. The
 \texttt{bytecode} argument is a string of bytes and all register and the
@@ -445,6 +450,9 @@ cannot known which part of the language interpreter implements backward jumps,
 so it needs to be told with the help of a hint by the author of the language
 interpreter.
 
+\fijal{This is wrong. Without virtuals there is also at most one assembler
+loop per user loop. If it has more branches, we enter the loop as usual and
+then we create a bridge for a new situation}
 The condition for reusing already existing machine code needs to be adapted to
 this new situation. In a classical tracing JIT there is at most one piece of
 assembler code per loop of the jitted program, which in our case is the language
@@ -468,6 +476,7 @@ using one counter per seen program counter of the language interpreter.
 \label{fig:tlr-full}
 \end{figure}
 
+\fijal{Stopped reading at that point}
 Let's look at which hints would need to be applied to the example interpreter
 from Figure \ref{fig:tlr-basic}. The basic thing needed to apply hints is a
 subclass of \texttt{JitDriver} that lists all the variables of the bytecode
