@@ -1,12 +1,41 @@
 \section{Benchmarks}
 \label{sec:benchmarks}
 
-\anto{XXX: we need to give an overview of TLC}
+To measure the performances of the CLI JIT backend, we wrote a simple virtual
+machine for a dynamic toy languaged, called \emph{TLC}.
 
-In section \ref{sec:tlc-properties}, we saw that TLC provides most of the
-features that usually make dynamically typed language so slow, such as
-\emph{stack-based interpreter}, \emph{boxed arithmetic} and \emph{dynamic lookup} of
-methods and attributes.
+The design goal of the language is to be very simple (the interpreter of the
+full language consists of about 600 lines of RPython code) but to still have
+the typical properties of dynamic languages that make them hard to
+compile. TLC is implemented with a small interpreter that interprets a custom
+bytecode instruction set. Since our main interest is in the runtime
+performance of the interpreter, we did not implement the parser nor the
+bytecode compiler, but only the interpreter itself.
+
+Despite being very simple and minimalistic, \lstinline{TLC} is a good
+candidate as a language to test our JIT generator, as it has some of the
+properties that makes most of current dynamic languages (e.g. Python) so slow:
+
+\begin{itemize}
+
+\item \textbf{Stack based interpreter}: this kind of interpreter requires all the operands to be
+  on top of the evaluation stack.  As a consequence programs spend a lot of
+  time pushing and popping values to/from the stack, or doing other stack
+  related operations.  However, thanks to its simplicity this is still the
+  most common and preferred way to implement interpreters.
+
+\item \textbf{Boxed integers}: integer objects are internally represented as
+  an instance of the \lstinline{IntObj} class, whose field \lstinline{value}
+  contains the real value.  By having boxed integers, common arithmetic
+  operations are made very slow, because each time we want to load/store their
+  value we need to go through an extra level of indirection.  Moreover, in
+  case of a complex expression, it is necessary to create many temporary
+  objects to hold intermediate results.
+
+\item \textbf{Dynamic lookup}: attributes and methods are looked up at
+  runtime, because there is no way to know in advance if and where an object
+  have that particular attribute or method.
+\end{itemize}
 
 In the following sections, we present some benchmarks that show how our
 generated JIT can handle all these features very well.
@@ -14,11 +43,11 @@ generated JIT can handle all these features very well.
 To measure the speedup we get with the JIT, we run each program three times:
 
 \begin{enumerate}
-\item By plain interpretation, without any jitting.
+\item By plain interpretation, without any jitting (\emph{Interp}).
 \item With the JIT enabled: this run includes the time spent by doing the
-  compilation itself, plus the time spent by running the produced code.
+  compilation itself, plus the time spent by running the produced code (\emph{JIT}).
 \item Again with the JIT enabled, but this time the compilation has already
-  been done, so we are actually measuring how good is the code we produced.
+  been done, so we are actually measuring how good is the code we produced (\emph{JIT 2}).
 \end{enumerate}
 
 Moreover, for each benchmark we also show the time taken by running the
