@@ -52,6 +52,8 @@
        \email{cuni@disi.unige.it}
 \alignauthor Armin Rigo\\
        \email{arigo@tunes.org}
+\alignauthor Maciej Fijalkowski\\
+       \email{fijal@merlinux.eu}
 }
 \maketitle
 
@@ -476,7 +478,6 @@ using one counter per seen program counter of the language interpreter.
 \label{fig:tlr-full}
 \end{figure}
 
-\fijal{Stopped reading at that point}
 Let's look at which hints would need to be applied to the example interpreter
 from Figure \ref{fig:tlr-basic}. The basic thing needed to apply hints is a
 subclass of \texttt{JitDriver} that lists all the variables of the bytecode
@@ -546,7 +547,8 @@ corresponding to the square function and that the \texttt{pc} variable is
 \texttt{4}. Therefore it is possible to constant-fold computations on them away,
 as long as the operations are side-effect free. Since strings are immutable in
 Python, it is possible to constant-fold the \texttt{strgetitem} operation. The
-\texttt{int\_add} operations can be folded anyway.
+\texttt{int\_add} are additions of constant \texttt{pc} and a true constant,
+so they can be folded away.
 
 With this optimization enabled, the trace looks as in Figure
 \ref{fig:trace-full}. Now a lot of the language interpreter is actually gone
