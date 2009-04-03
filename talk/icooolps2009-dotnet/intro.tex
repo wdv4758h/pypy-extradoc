@@ -69,6 +69,7 @@ RPython.
 }
 
 \subsection{PyPy and JIT-Generation}
+\label{sec:jitgen}
 
 One of the most important aspects that PyPy's translation toolchain can weave
 in is the \emph{automatic generation of a JIT compiler}.  This section will
@@ -134,6 +135,19 @@ generated code, so that the next time the JIT compiler will not be invoked
 again.  As a result, \textbf{runtime and compile-time are continuously
 interleaved}. 
 
+Implementing such a behavior requires a tight coupling between compile-time
+and run-time: a \emph{callback} is put in the generated code, which can invoke
+the compiler again.  When the callback is actually reached at run-time, and
+only then, the compiler resumes and uses the knowledge of the actual run-time
+value to generate more code.
+
+The new generated code is potentially different for each run-time value seen.
+This implies that the generated code needs to contain some sort of updatable
+switch, or \emph{flexswitch}, which can pick the right code path based on the
+run-time value.  Typically, the value we switch on is the runtime dynamc type
+of a value, so that the JIT compiler has all information needed to produce
+very good code for that specific case.
+
 \commentout{
 The primitive to do this sort of interleaving is called promotion,
 it is described in Section \ref{sec:promotion}.
@@ -145,5 +159,3 @@ unnecessary allocations. This is described in Section \ref{sec:virtuals}
 Modifying the old code to link to the newly generated one is very challenging on
 .NET, as the framework does not offer any primitive to do this.  Section
 \ref{sec:clibackend} explains how it is possible to simulate this behaviour.
-
-\anto{XXX: we need to explain what is a flexswitch!}
