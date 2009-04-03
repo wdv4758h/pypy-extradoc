@@ -52,19 +52,19 @@ dynamically added whenever new cases are needed.
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[height=4.5cm]{flexswitch1}
-\includegraphics[height=4.5cm]{flexswitch2}
+\includegraphics[height=5cm]{flexswitch1}
+\includegraphics[height=5cm]{flexswitch2}
 \caption{An example of a flexswitch evolution: in the picture on the
   right a new block has been dynamically added.}\label{flexswitch-fig}
 \end{center}
 \end{figure}
 
-In the pictures of Figure~\ref{flexswitch-fig}, the cyan block
+In the pictures of Figure~\ref{flexswitch-fig}, block 5 (highlighted in grey)
 corresponds to a flexswitch; initially (picture on the left) 
-only the block containing the code to restart the JIT compilation
+only block 5, containing the code to restart the JIT compilation,
 is connected to the flexswitch; the picture on the right
 shows the graph after the first case has been dynamically added to the flexswitch,
-by linking the cyan block with a freshly created new block.
+by linking block 5 with the freshly created block number 7..
 
 
 \subsection{Implementing flexswitches in CLI}

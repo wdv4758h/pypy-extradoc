@@ -1,5 +1,5 @@
 
-cli-jit.pdf: *.tex paper.bib
+cli-jit.pdf: *.tex paper.bib *.png
 	pdflatex paper
 	bibtex paper
 	pdflatex paper
