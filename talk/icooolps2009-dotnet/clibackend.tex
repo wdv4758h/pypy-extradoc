@@ -61,10 +61,10 @@ dynamically added whenever new cases are needed.
 
 In the pictures of Figure~\ref{flexswitch-fig}, block 5 (highlighted in grey)
 corresponds to a flexswitch; initially (picture on the left) 
-only block 5, containing the code to restart the JIT compilation,
+only block 6, containing the code to restart the JIT compilation,
 is connected to the flexswitch; the picture on the right
 shows the graph after the first case has been dynamically added to the flexswitch,
-by linking block 5 with the freshly created block number 7..
+by linking block 5 with the freshly created block number 7.
 
 
 \subsection{Implementing flexswitches in CLI}
@@ -123,8 +123,7 @@ Following an external link whose target is an initial block could also
 be easily implemented, by just invoking the corresponding method.
 What cannot be easily implemented in CLI is following an external link
 whose target is not an initial block; consider, for instance, the
-outgoing link of the block dynamically added in the right-hand side
-picture of Figure~\ref{flexswitch-fig}. How is it possible to jump into
+outgoing link from block 7 to block 3 in Figure~\ref{flexswitch-fig}. How is it possible to jump into
 the middle of a method?
 
 To solve this problem every method contains a special code, called
@@ -272,9 +271,8 @@ public class IntLowLevelFlexSwitch:
 
   public uint execute(int value, InputArgs args) {
     for(int i=0; i<numcases; i++)
-    if (values[i] == value) {
-      return cases[i](0, args);
-    }
+      if (values[i] == value)
+        return cases[i](0, args);
     return default_blockid;
   }
 }
