@@ -50,7 +50,7 @@ The different kinds of intermediate codes  which are refined
 during the translation process are all represented by a collection of control flow graphs,
 at several levels of abstractions.
 
-Finally, the low-level control flow-graphs produced by the toolchain
+Finally, the low-level control flow graphs produced by the toolchain
 can be translated to executable code for a specific platform by a
 corresponding backend.
 Currently, three fully developed backends are available to produce
@@ -144,7 +144,7 @@ value to generate more code.
 The new generated code is potentially different for each run-time value seen.
 This implies that the generated code needs to contain some sort of updatable
 switch, or \emph{flexswitch}, which can pick the right code path based on the
-run-time value.  Typically, the value we switch on is the runtime dynamc type
+run-time value.  Typically, the value we switch on is the runtime dynamic type
 of a value, so that the JIT compiler has all information needed to produce
 very good code for that specific case.
 
