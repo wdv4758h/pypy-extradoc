@@ -31,6 +31,14 @@
 
 \renewcommand\cite[1]{\ifthenelse{\equal{#1}{XXX}}{[citation~needed]}{\oldcite{#1}}}
 
+% compressing itemize env, in case we need it
+\newenvironment{zitemize}% zero - line spacing itemize environment
+   {\begin{list}{--}{
+   \setlength{\itemsep}{0 pt}
+   \setlength{\parsep}{0 pt}
+   \setlength{\topsep} {0 pt} }}% the end stuff
+   {\end{list}}
+
 \begin{document}
 
 \title{Tracing the Meta-Level: PyPy's Tracing JIT Compiler}
@@ -39,10 +47,7 @@
 \author{
 \alignauthor Carl Friedrich Bolz\\
        \affaddr{Heinrich-Heine-Universität Düsseldorf}\\
-       \affaddr{Softwaretechnik und Programmiersprachen}\\
-       \affaddr{Institut für Informatik}\\ 
-       \affaddr{Universitätsstra{\ss}e 1}\\
-       \affaddr{D-40225 Düsseldorf}\\
+       \affaddr{STUPS Group}\\
        \affaddr{Deutschland}\\
        \email{cfbolz@gmx.de}
 \alignauthor Antonio Cuni\\
@@ -293,6 +298,7 @@ they are the place where the check for a closed loop is performed.
 
 Let's look at a small example. Take the following (slightly contrived) RPython
 code:
+{\small
 \begin{verbatim}
 def f(a, b):
     if b % 46 == 41:
@@ -306,7 +312,7 @@ def strange_sum(n):
         n -= 1
     return result
 \end{verbatim}
-
+}
 To trace this, a bytecode form of these functions needs to be introduced that
 the tracer understands. The tracer interprets a bytecode that is an encoding of
 the intermediate representation of PyPy's translation toolchain after type
@@ -315,6 +321,7 @@ first those functions will be interpreted, but after a while, profiling shows
 that the \texttt{while} loop in \texttt{strange\_sum} is executed often.  The
 tracing JIT will then start to trace the execution of that loop.  The trace would
 look as follows:
+{\small
 \begin{verbatim}
 loop_header(result0, n0)
 i0 = int_mod(n0, Const(46))
@@ -326,7 +333,7 @@ i2 = int_ge(n1, Const(0))
 guard_true(i2)
 jump(result1, n1)
 \end{verbatim}
-
+}
 The operations in this sequence are operations of the mentioned intermediate
 representation (e.g. note that the generic modulo and equality operations in the
 function above have been recognized to always work on integers and are thus
@@ -378,14 +385,13 @@ the recorded trace corresponds to execution of one opcode. This means that the
 assumption that the tracing JIT makes -- that several iterations of a hot loop
 take the same or similar code paths -- is just wrong in this case. It is very
 unlikely that the same particular opcode is executed many times in a row.
-
 \begin{figure}
 \input{code/tlr-paper.py}
 \caption{A very simple bytecode interpreter with registers and an accumulator.}
 \label{fig:tlr-basic}
 \end{figure}
-
 \begin{figure}
+{\small
 \begin{verbatim}
     MOV_A_R     0   # i = a
     MOV_A_R     1   # copy of 'a'
@@ -405,6 +411,7 @@ unlikely that the same particular opcode is executed many times in a row.
     MOV_R_A     2   # return res
     RETURN_A
 \end{verbatim}
+}
 \caption{Example bytecode: Compute the square of the accumulator}
 \label{fig:square}
 \end{figure}
@@ -548,9 +555,9 @@ would be that the \texttt{bytecode} variable is the bytecode string
 corresponding to the square function and that the \texttt{pc} variable is
 \texttt{4}. Therefore it is possible to constant-fold computations on them away,
 as long as the operations are side-effect free. Since strings are immutable in
-Python, it is possible to constant-fold the \texttt{strgetitem} operation. The
-\texttt{int\_add} are additions of constant \texttt{pc} and a true constant,
-so they can be folded away.
+RPython, it is possible to constant-fold the \texttt{strgetitem} operation. The
+\texttt{int\_add} are additions of the green variable \texttt{pc} and a true
+constant, so they can be folded away as well.
 
 With this optimization enabled, the trace looks as in Figure
 \ref{fig:trace-full}. Now a lot of the language interpreter is actually gone
@@ -725,7 +732,7 @@ trace in Figure \ref{fig:trace-full}. This speeds up the square function nicely,
 making it about six times faster than the pure interpreter.
 \item Same as before, but with the threshold set so high that the tracer is
 never invoked. This measures the overhead of the profiling. For this interpreter
-the overhead seems rather large, with 50\% slowdown du to profiling. This is
+the overhead seems rather large, with 50\% slowdown due to profiling. This is
 because the example interpreter needs to do one hash table lookup per loop
 iteration. For larger interpreters (e.g. the Python one) it seems likely that
 the overhead is less significant, given that many operations in Python need
@@ -817,6 +824,20 @@ XXX what else?
 
 \section{Conclusion and Next Steps}
 
+We have shown techniques for improving the results when applying a tracing
+JIT to an interpreter. Our first benchmarks indicate that these techniques work
+and first experiments with PyPy's Python interpreter make it seems likely that
+they can be scaled up to realistic examples.
+
+Of course there is a lot of work still left to do. Various optimizations are not
+quite finished. Both tracing and leaving machine code is very slow due to a
+double interpretation overhead and we might need techniques for improving those.
+Furthermore we need to apply the JIT to the various interpreters that are
+written with PyPy (like the SPy-VM, a Smalltalk implementation \cite{XXX} or
+PyGirl, a Gameboy emulator \cite{XXX}) to evaluate how widely applicable the
+described techniques are.
+
+XXX would like a nice last sentence
 %\begin{verbatim}
 %- next steps:
 %  - Apply to other things, like smalltalk

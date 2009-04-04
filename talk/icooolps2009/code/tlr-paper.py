@@ -1,3 +1,4 @@
+{\small
 \begin{verbatim}
 def interpret(bytecode, a):
     regs = [0] * 256
@@ -27,3 +28,4 @@ def interpret(bytecode, a):
         elif opcode == RETURN_A:
             return a
 \end{verbatim}
+}

@@ -1,3 +1,4 @@
+{\small
 \begin{verbatim}
 class TLRJitDriver(JitDriver):
     greens = ['pc', 'bytecode']
@@ -30,3 +31,4 @@ def interpret(bytecode, a):
         elif opcode == MOV_R_A:
             ... # rest unmodified
 \end{verbatim}
+}
