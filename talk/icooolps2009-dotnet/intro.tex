@@ -1,9 +1,8 @@
 \section{Introduction}
-The easiest way to implement a dynamic language such as Python is to write an
-interpreter; however, interpreters are slow.
+Implementing a dynamic language such as Python with a compiler rather than with an interpreter improves performances at the cost of
+an increasing complexity. Furthermore, generating code for high level virtual machines like CLI or JVM enhances portability and inter-operability.
 
-The alternative is to write a compiler; writing a compiler that targets a high
-level virtual machine like CLI or JVM is easier than targeting a real CPU, but
+Writing a compiler that targets a high CLI or JVM is easier than targeting a real CPU, but
 it still requires a lot of work, as
 IronPython\footnote{http://www.codeplex.com/IronPython},
 Jython\footnote{http://www.jython.org/}
