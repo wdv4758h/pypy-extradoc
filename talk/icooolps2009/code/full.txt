@@ -1,3 +1,4 @@
+{\small
 \begin{verbatim}
 loop_start(a0, regs0)
 # MOV_R_A 0
@@ -20,3 +21,4 @@ i1 = int_is_true(a5)
 guard_true(i1)
 jump(a5, regs0)
 \end{verbatim}
+}
