@@ -75,28 +75,27 @@
 \maketitle
 
 \begin{abstract}
-The CLI, i.e. the virtual machine at the core of the .NET environment, is a
-statically typed virtual machine.  Although it is being used as a target for
-many different languages, it is hard to provide highly efficient implementation
-of languages whose model is too different than the one of the VM.  In
-particular, dynamically typed languages are typically order of magnitude
-slower than, e.g., C\#.
+The Common Language Infrastructure (CLI) is a virtual machine expressly
+designed for implementing statically typed languages as C\#, therefore
+programs written in dynamically typed languages are typically much slower than C\# when executed on .NET.
 
 \anto{XXX: should we cite the DLR? How to prove that DLR programs are much
   slower than C\#?}
+\davide{We can try writing something in the conclusion}
 
 Recent developments show that JIT compilers can exploit runtime type
 information to generate quite efficient code.  Unfortunately, writing a JIT
-compiler is far from being simple.  In this paper we report our positive
+compiler is far from being simple.  
+
+In this paper we report our positive
 experience with automatic generation of JIT compilers as supported by the PyPy
 infrastructure, by focusing on JIT compilation for .NET.
+Following this approach, we have in fact added a second layer of JIT compilation, by allowing dynamic generation of more efficient .NET bytecode, which
+in turn can be compiled to machine code by the .NET JIT compiler.   
 
-JIT compilation for .NET means to generate .NET bytecode at runtime, which
-will be further compiled down to machine code by .NET's own JIT compiler.  The
-main and novel contribution of this paper is to show that this
-\emph{two-layers JIT} technique is effective, and can give very high speedups,
-up to making dynamic languages faster than C\# itself under certain
-circumstances.
+The main and novel contribution of this paper is to show that this
+\emph{two-layers JIT} technique is effective, since programs written in dynamic languages 
+can run on .NET as fast as (and in some cases even faster than) the equivalent C\# programs.
 
 The practicality of the approach is demonstrated by showing some promising
 experiments done with benchmarks written in a simple dynamic language.
