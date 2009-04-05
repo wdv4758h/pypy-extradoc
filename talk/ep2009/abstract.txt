@@ -15,9 +15,7 @@ Thus -- even before the JIT work -- we could assert that PyPy
 now provides a complete, flexible and reasonably fast Python
 interpreter, itself implemented in Python.  "Complete" means
 it is fully compliant but misses a lot of third-party
-extension modules; "reasonably fast" still means that without
-the JIT we are about 1.5 to 2 times slower than CPython; and
-we will give some examples of "flexible".
+extension modules.
 
 This section of the talk is mostly intended for people who are already
 familiar with the PyPy project, and want an update as to how we are doing.
@@ -41,15 +39,15 @@ our JIT, with speed measures.
 We will then describe how it all works.  No familiarity with tracing
 or specialising compilers required.
 
-Due to the architecture of PyPy, one can generate such a tracing compiler for 
+Due to our architecture we can generate code for C but also for the
+JVM and .NET; it is possible to generate a JIT for these platforms too,
+running on top of the platform's native JIT.
+
+Also, as usual in PyPy, one can generate such a tracing compiler for 
 *any* computer language, only by writing an interpreter for it.  We already
 have ones for Squeak, Prolog and GameBoy, and experimental ones for
 JavaScript, Scheme, etc. so people wishing
 to speed up other languages now have a clear and simple path to follow.
-
-Also due to our architecture we can generate code for C but also for the
-JVM and .NET; it is possible to generate a JIT for these platforms too,
-running on top of the platform's native JIT.
 
 
 Authors: antocuni, cfbolz, arigo
