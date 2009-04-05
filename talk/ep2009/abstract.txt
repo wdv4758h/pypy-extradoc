@@ -13,9 +13,9 @@ the last year in PyPy, which made this possible.
 
 Thus -- even before the JIT work -- we could assert that PyPy
 now provides a complete, flexible and reasonably fast Python
-interpreter, itself implemented in Python.  "Complete" means
+interpreter, itself implemented in Python.  ("Complete" means
 it is fully compliant but misses a lot of third-party
-extension modules.
+extension modules.)
 
 This section of the talk is mostly intended for people who are already
 familiar with the PyPy project, and want an update as to how we are doing.
