@@ -1,31 +1,57 @@
 We will give an update on the state of PyPy, the Python
 implementation in Python.
 
-Part 1
-======
+Part 1  - becoming complete - 30 minutes of the projected 1 hour
+===============================================================
 
-PyPy has come a long way.  It's gone from being purely a
-research project to providing a flexible and reasonably fast
-Python Interpreter, itself implemented in Python.  PyPy is
-able to run sophisticated python applications like Django and
-Twisted.  We will focus on improvements that happened during
-the last year in PyPy.  This talk will also explain the
-motivations driving current PyPy developement and its targets
-for the future.
+PyPy has come a long way.  No longer merely a research project and
+proof of concept, PyPy now is
+able to run sophisticated python applications such as Django and
+Twisted.  We will focus on the improvements that happened during
+the last year in PyPy, which made this possible.
 
-Part 2
-======
+Thus, even before the JIT work we could assert that PyPy now provides
+a complete, flexible and reasonably fast XXX can we say how fastXXX
+Python Interpreter, itself implemented in Python.  
 
-The PyPy Just-in-Time compiler generator is finally ready for
-prime time.  It can generate from our Python interpreter a JIT
-compiler that is following the lead of JavaScript's
-TraceMonkey: it is a tracing compiler (as recently included in
-FireFox).  We will give the status of the implementation of
+XXX do we need to mention how we are not complete?  what odd things need
+to be done?  If there are few of them, no, if there are many, yes XXX
+
+This section of the talk is mostly intended for people who are already
+familiar with the PyPy project, and want an update as to how we are doing.
+We won't be going over old ground, i.e. what is a specialising compiler,
+what is Just-In-Time compilation, and what problems plague those researchers
+attempting to develop a JIT for dynamic languages XXX or blah blah blah more
+stuff you would rather not talk about)
+
+
+Part 2  - becoming fast  30 minutes of the projected 1 hour
+===========================================================
+
+As we write this abstract we are finally integrating our Just-in-Time 
+compiler generator into PyPy.  Preliminary results look *great*.
+XXX can we put in any sort of metrics here? XXX
+
+The PyPy JIT compiler, in addition to being a *specialising* compiler,
+is a *tracing* compiler.  Another example of a tracing compiler is
+JavaScript's TraceMonkey, recently included in
+FireFox.  We will give the status of the implementation of
 our JIT, with speed measures.
 
-We will then describe how it all works.  In particular, as
-usual in PyPy, we can generate such a tracing compiler for any
-language for which we have written an interpreter.
+We will then describe how it all works.  No familiarity with tracing
+or specialising compilers required.
 
+Due to the architecture of PyPy, one can generate such a tracing compiler for 
+*any* computer language, only by writing an interpreter for it.  We already
+have ones for Squeak, Prolog, and XXX am I lying here?? ***  People wishing
+to speed up other languages now have a clear and simple path to follow.
+
+Also due to our architecture we can generate code for the JVM, .NET  and
+XXX do we have a C version working now?? ***. 
+
+
+This talk will also explain the
+motivations driving current PyPy developement and its targets
+for the future.
 
 Authors: antocuni, cfbolz, arigo
