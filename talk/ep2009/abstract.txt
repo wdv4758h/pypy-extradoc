@@ -15,9 +15,9 @@ Thus -- even before the JIT work -- we could assert that PyPy
 now provides a complete, flexible and reasonably fast Python
 interpreter, itself implemented in Python.  "Complete" means
 it is fully compliant but misses a lot of third-party
-extension modules; "reasonably fast" still means about 1.5
-to 2 times slower than CPython; and we will give some examples
-of "flexible".
+extension modules; "reasonably fast" still means that without
+the JIT we are about 1.5 to 2 times slower than CPython; and
+we will give some examples of "flexible".
 
 This section of the talk is mostly intended for people who are already
 familiar with the PyPy project, and want an update as to how we are doing.
