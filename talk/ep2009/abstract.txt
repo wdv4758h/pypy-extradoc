@@ -19,7 +19,7 @@ extension modules.)
 
 This section of the talk is mostly intended for people who are already
 familiar with the PyPy project, and want an update as to how we are doing.
-We will also explain the motivations driving current PyPy developement
+We will also explain the motivations driving current PyPy development
 and its targets for the future.
 
 
