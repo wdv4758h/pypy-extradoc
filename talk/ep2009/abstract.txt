@@ -1,0 +1,29 @@
+We will give an update on the state of PyPy, the Python
+implementation in Python.
+
+Part 1
+======
+
+PyPy has come a long way.  It's gone from being purely a research project to
+providing a flexible and reasonably fast Python Interpreter, itself implemented
+in Python.  Although PyPy is not yet a viable CPython replacement, PyPy is able
+to run sophisticated python applications like Django and Twisted.
+We will focus on improvements that happened during the last year in PyPy.
+This talk will also explain the motivations driving current PyPy
+developement and its targets for the future.
+
+Part 2
+======
+
+The PyPy Just-in-Time compiler generator is finally ready for
+prime time.  It can generate from an interpreter (e.g. Python)
+a JIT compiler that is following the lead of JavaScript's
+TraceMonkey: it is a tracing compiler.  However, like PyPy
+technology and unlike TraceMonkey, it can generate such a
+tracing compiler for any language for which we have written an
+interpreter.  We will give the status of the implementation of
+our JIT generator, and then talk in some more detail about how
+it all works.
+
+
+Authors: cfbolz, arigo
