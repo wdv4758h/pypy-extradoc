@@ -50,4 +50,4 @@ JavaScript, Scheme, etc. so people wishing
 to speed up other languages now have a clear and simple path to follow.
 
 
-Authors: antocuni, cfbolz, arigo
+Authors: antocuni, cfbolz, pedronis, arigo
