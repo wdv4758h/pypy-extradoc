@@ -42,9 +42,8 @@ to be separated from lower-level implementation details.
 The abstract semantics of Python is defined by an interpreter written
 in a high-level language, called RPython \cite{AACM-DLS07}, which is in fact a subset of
 Python where some dynamic features have been sacrificed to allow an
-efficient translation of the interpreter to low-level code.
-\arigo{But note that it's a full Python interpreter; RPython is only the
-language in which this interpreter is written.}
+efficient translation of the interpreter to low-level code\footnote{But note that it's a full Python interpreter; RPython is only the
+language in which this interpreter is written.}.
 
 Compilation of the interpreter is implemented as a stepwise
 refinement by means of a translation toolchain which performs type
