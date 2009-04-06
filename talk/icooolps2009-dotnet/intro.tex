@@ -91,45 +91,16 @@ When using PyPy, the first step is to write an interpreter for the chosen langua
 must be fed to the translation toolchain, the interpreter has to be written in
 RPython.  Then, to guide the process, we need to add few manual
 annotations to the interpreter, in order to teach the JIT generator which
-information is important to know at compile-time.  Annotations are inserted
-as \emph{hints}, as described in section \ref{sec:hints}.
-From these hints, PyPy will statically generate an interpreter and a JIT
+information is important to know at compile-time.  
+From these annotations, PyPy will statically generate an interpreter and a JIT
 compiler in a single executable (here a .NET executable).
-
-\anto{maybe we can avoid to talk about hints?}
-
-\commentout{
-It is important to distinguish between three distinct phases of execution:
-
-\begin{enumerate}
-\item \textbf{Translation-time}: when the translation toolchain runs and the
-  JIT compiler is automatically generated from the interpreter.  The result is
-  an executable that can be used to run programs written in the chosen
-  language.
-\item \textbf{Compile-time}: when the JIT compiler runs, generating executable
-  code on the fly.
-\item \textbf{Runtime}: when the code generated at compile-time is executed.
-\end{enumerate}
-
-Note that in this schema translation-time happens only once, on the
-developer's machine.  By contrast, compile-time and runtime happens every time
-the user wants to run some program.
-}
-
-\commentout{
-By emitting code at runtime, JIT compilers can exploit extra
-knowledge compared to traditional static compilers -- more than just the
-type of the function arguments.  However, special care is needed to
-choose a strategy for JIT compilation that lets the compiler take the
-best of this advantage.
-}
 
 The interesting property of the generated JIT compiler is to delay the
 compilation until it knows all the information needed to generate
 efficient code.  In other words, at runtime, when the interpreter notice
 that it is useful to compile a given piece of code, it sends it to the
 JIT compiler; however, if at some point the JIT compiler does not know
-about something it needs, it generates a callback into itself and stops
+about something it needs, it generates a \emph{callback} into itself and stops
 execution.
 
 Later, when the generated code is executed, the callback might be hit and the JIT
@@ -140,29 +111,14 @@ generated code, so that the next time the JIT compiler will not be invoked
 again.  As a result, \textbf{runtime and compile-time are continuously
 interleaved}. 
 
-Implementing such a behavior requires a tight coupling between compile-time
-and run-time: a \emph{callback} is put in the generated code, which can invoke
-the compiler again.  When the callback is actually reached at run-time, and
-only then, the compiler resumes and uses the knowledge of the actual run-time
-value to generate more code.
-
-The new generated code is potentially different for each run-time value seen.
+Potentially, the JIT compiler generates new code for each different run-time
+value seen in variables it is interested in.
 This implies that the generated code needs to contain some sort of updatable
 switch, or \emph{flexswitch}, which can pick the right code path based on the
 run-time value.  Typically, the value we switch on is the runtime dynamic type
 of a value, so that the JIT compiler has all information needed to produce
 very good code for that specific case.
 
-\commentout{
-The primitive to do this sort of interleaving is called promotion,
-it is described in Section \ref{sec:promotion}.
-
-One of the most important optimizations that the generated JIT does is removing
-unnecessary allocations. This is described in Section \ref{sec:virtuals}
-}
-
 Modifying the old code to link to the newly generated one is very challenging on
 .NET, as the framework does not offer any primitive to do this.  Section
 \ref{sec:clibackend} explains how it is possible to simulate this behaviour.
-
-\anto{XXX: mention virtuals/escape analysis?}
