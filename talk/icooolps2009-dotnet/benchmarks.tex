@@ -204,7 +204,7 @@ knows enough informations to generate highly efficient code.  In particular,
 at the time it emits the code for the inner loop it exactly knows the
 type of \lstinline{obj}, thus it can remove the overhead of dynamic dispatch
 and inline the method call.  Moreover, since \lstinline{obj} never escapes the
-function, it is \emph{virtualized} and its field \lstinline{value} is stored
+function, the allocation is avoided and its field \lstinline{value} is stored
 as a local variable.  As a result, the generated code turns out to be a simple loop
 doing additions in-place.
 
