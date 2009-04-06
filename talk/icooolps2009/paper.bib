@@ -1,4 +1,18 @@
 ﻿
+@inproceedings{chang_tracing_2009,
+	address = {Washington, {DC,} {USA}},
+	title = {Tracing for web 3.0: trace compilation for the next generation web applications},
+	isbn = {978-1-60558-375-4},
+	url = {http://portal.acm.org/citation.cfm?id=1508293.1508304},
+	doi = {10.1145/1508293.1508304},
+	abstract = {Today's web applications are pushing the limits of modern web browsers. The emergence of the browser as the platform of choice for rich client-side applications has shifted the use of in-browser {JavaScript} from small scripting programs to large computationally intensive application logic. For many web applications, {JavaScript} performance has become one of the bottlenecks preventing the development of even more interactive client side applications. While traditional just-in-time compilation is successful for statically typed virtual machine based languages like Java, compiling {JavaScript} turns out to be a challenging task. Many {JavaScript} programs and scripts are short-lived, and users expect a responsive browser during page loading. This leaves little time for compilation of {JavaScript} to generate machine code.},
+	booktitle = {Proceedings of the 2009 {ACM} {SIGPLAN/SIGOPS} international conference on Virtual execution environments},
+	publisher = {{ACM}},
+	author = {Mason Chang and Edwin Smith and Rick Reitmaier and Michael Bebenita and Andreas Gal and Christian Wimmer and Brendan Eich and Michael Franz},
+	year = {2009},
+	pages = {71--80}
+},
+
 @phdthesis{carl_friedrich_bolz_automatic_2008,
 	type = {Master Thesis},
 	title = {Automatic {JIT} Compiler Generation with Runtime Partial Evaluation
@@ -56,6 +70,17 @@
 	author = {Armin Rigo and Samuele Pedroni},
 	year = {2006},
 	pages = {944--953}
+},
+
+@article{cytron_efficiently_1991,
+	title = {Efficiently Computing Static Single Assignment Form and the Control Dependence Graph},
+	volume = {13},
+	number = {4},
+	journal = {{ACM} Transactions on Programming Languages and Systems},
+	author = {Ron Cytron and Jeanne Ferrante and Barry K. Rosen and Mark N. Wegman and F. Kenneth Zadeck},
+	month = oct,
+	year = {1991},
+	pages = {451–490}
 },
 
 @techreport{miranda_context_1999,
@@ -256,16 +281,13 @@ which still run slower than in Squeak itself. Spy was built from scratch over th
 	pages = {145--156}
 },
 
-@inproceedings{chang_tracing_2009,
-	address = {Washington, {DC,} {USA}},
-	title = {Tracing for web 3.0: trace compilation for the next generation web applications},
-	isbn = {978-1-60558-375-4},
-	url = {http://portal.acm.org/citation.cfm?id=1508293.1508304},
-	doi = {10.1145/1508293.1508304},
-	abstract = {Today's web applications are pushing the limits of modern web browsers. The emergence of the browser as the platform of choice for rich client-side applications has shifted the use of in-browser {JavaScript} from small scripting programs to large computationally intensive application logic. For many web applications, {JavaScript} performance has become one of the bottlenecks preventing the development of even more interactive client side applications. While traditional just-in-time compilation is successful for statically typed virtual machine based languages like Java, compiling {JavaScript} turns out to be a challenging task. Many {JavaScript} programs and scripts are short-lived, and users expect a responsive browser during page loading. This leaves little time for compilation of {JavaScript} to generate machine code.},
-	booktitle = {Proceedings of the 2009 {ACM} {SIGPLAN/SIGOPS} international conference on Virtual execution environments},
-	publisher = {{ACM}},
-	author = {Mason Chang and Edwin Smith and Rick Reitmaier and Michael Bebenita and Andreas Gal and Christian Wimmer and Brendan Eich and Michael Franz},
-	year = {2009},
-	pages = {71--80}
+@techreport{armin_rigo_jit_2007,
+	title = {{JIT} Compiler Architecture},
+	url = {http://codespeak.net/pypy/dist/pypy/doc/index-report.html},
+	abstract = {{PyPy’s} translation tool-chain – from the interpreter written in {RPython} to generated {VMs} for low-level platforms – is now able to extend those {VMs} with an automatically generated dynamic compiler, derived from the interpreter. This is achieved by a pragmatic application of partial evaluation techniques guided by a few hints added to the source of the interpreter. Crucial for the effectiveness of dynamic compilation is the use of run-time information to improve compilation results: in our approach, a novel powerful primitive called “promotion” that “promotes” run-time values to compile-time is used to that effect. In this report, we describe it along with other novel techniques that allow the approach to scale to something as large as {PyPy’s} Python interpreter.},
+	number = {D08.2},
+	institution = {{PyPy}},
+	author = {Armin Rigo and Samuele Pedroni},
+	month = may,
+	year = {2007}
 }

@@ -25,10 +25,6 @@ def interpret(bytecode, a):
                         a=a, regs=regs)
                 pc = target
         elif opcode == MOV_A_R:
-            n = ord(bytecode[pc])
-            pc += 1
-            regs[n] = a
-        elif opcode == MOV_R_A:
             ... # rest unmodified
 \end{verbatim}
 }
