@@ -2,17 +2,17 @@
 Implementing a dynamic language such as Python with a compiler rather than with an interpreter improves performances at the cost of
 an increasing complexity. Furthermore, generating code for high level virtual machines like CLI or JVM enhances portability and inter-operability.
 
-Writing a compiler that targets a high CLI or JVM is easier than targeting a real CPU, but
+Writing a compiler that targets the CLI or JVM is easier than targeting a real CPU, but
 it still requires a lot of work, as
 IronPython\footnote{http://www.codeplex.com/IronPython},
 Jython\footnote{http://www.jython.org/}
 and JRuby\footnote{http://jruby.codehaus.org/} demonstrate.
 
 Moreover, writing a static compiler is often not enough to get high
-performance.  IronPython and JRuby are going in the direction of
-compiling just-in-time (JIT) specialized versions of the code depending
-on the actual values/types seen at runtime; this approach seems to work,
-but writing it manually requires an enormous effort.
+performance.  IronPython and Jython compile code lazily to save memory, but
+since they do not exploit the extra information potentially available at
+runtime, it is more a delayed static compilation than a true JIT one.
+\anto{XXX: someone review the english of the last paragraph, please :-)}
 
 PyPy's approach \cite{RiBo07_223} is to automatize the generation of 
 specializing JIT compilers in order
@@ -30,10 +30,6 @@ emitted code is eventually compiled again by .NET's own JIT compiler.
 The main contribution of this paper is to demonstrate that the idea of
 \emph{JIT layering} can give good results, as dynamic languages can be even
 faster than their static counterparts.
-
-\anto{XXX: we first say that IronPython\&co. does JIT compilation, then we say
-  we are the first to do JIT layering.  This seems a bit strange, though at
-  the moment I can't think of any better way to word this concept}
 
 \subsection{Overview of PyPy}
 
