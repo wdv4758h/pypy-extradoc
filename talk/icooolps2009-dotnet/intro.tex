@@ -4,9 +4,9 @@ an increasing complexity. Furthermore, generating code for high level virtual ma
 
 Writing a compiler that targets the CLI or JVM is easier than targeting a real CPU, but
 it still requires a lot of work, as
-IronPython\footnote{http://www.codeplex.com/IronPython},
-Jython\footnote{http://www.jython.org/}
-and JRuby\footnote{http://jruby.codehaus.org/} demonstrate.
+IronPython\footnote{\texttt{http://www.codeplex.com/IronPython}},
+Jython\footnote{\texttt{http://www.jython.org/}}
+and JRuby\footnote{\texttt{http://jruby.codehaus.org/}} demonstrate.
 
 Moreover, writing a static compiler is often not enough to get high
 performance.  IronPython and Jython compile code lazily to save memory, but
@@ -43,6 +43,8 @@ The abstract semantics of Python is defined by an interpreter written
 in a high-level language, called RPython \cite{AACM-DLS07}, which is in fact a subset of
 Python where some dynamic features have been sacrificed to allow an
 efficient translation of the interpreter to low-level code.
+\arigo{But note that it's a full Python interpreter; RPython is only the
+language in which this interpreter is written.}
 
 Compilation of the interpreter is implemented as a stepwise
 refinement by means of a translation toolchain which performs type
