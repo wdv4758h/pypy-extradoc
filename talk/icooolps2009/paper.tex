@@ -273,12 +273,12 @@ starting from the next iteration of the loop, as the machine code represents
 exactly the loop that was being interpreted so far.
 
 This process assumes that the path through the loop that was traced is a
-``typical'' example of possible paths (which is statistically likely). Of course
+``typical'' example of possible paths. Of course
 it is possible that later another path through the loop is taken, in which case
-one of the guards that were put into the machine code will fail. There are more
+one of the guards that were put into the machine code will fail.\footnote{There are more
 complex mechanisms in place to still produce more code for the cases of guard
 failures \cite{XXX}, but they are independent of the issues discussed in this
-paper.
+paper.}
 
 It is important to understand how the tracer recognizes that the trace it
 recorded so far corresponds to a loop.
@@ -291,7 +291,7 @@ earlier, but only at instructions that are able to change the position key
 to an earlier value, e.g. a backward branch instruction. Note that this is
 already the second place where backward branches are treated specially: during
 interpretation they are the place where the profiling is performed and where
-tracing is started or already existing assembler code entered; during tracing
+tracing is started or already existing assembler code executed; during tracing
 they are the place where the check for a closed loop is performed.
 
 Let's look at a small example. Take the following (slightly contrived) RPython
@@ -338,9 +338,9 @@ The operations in this sequence are operations of the above-mentioned intermedia
 representation (e.g. note that the generic modulo and equality operations in the
 function above have been recognized to always take integers as arguments and are thus
 rendered as \texttt{int\_mod} and \texttt{int\_eq}). The trace contains all the
-operations that were executed, is in SSA-form \cite{cytron_efficiently_1991} and ends with a jump
-to its own beginning, forming an endless loop that can only be left via a guard
-failure. The call to \texttt{f} was inlined into the trace. Note that the trace
+operations that were executed in SSA-form \cite{cytron_efficiently_1991} and ends with a jump
+to its beginning, forming an endless loop that can only be left via a guard
+failure. The call to \texttt{f} is inlined into the trace. Note that the trace
 contains only the hot \texttt{else} case of the \texttt{if} test in \texttt{f},
 while the other branch is implemented via a guard failure. This trace can then
 be converted into machine code and executed.
@@ -378,7 +378,7 @@ interpreters it is also the only hot loop).  Tracing one iteration of this
 loop means that
 the recorded trace corresponds to execution of one opcode. This means that the
 assumption that the tracing JIT makes -- that several iterations of a hot loop
-take the same or similar code paths -- is just wrong in this case. It is very
+take the same or similar code paths -- is wrong in this case. It is very
 unlikely that the same particular opcode is executed many times in a row.
 \begin{figure}
 \input{code/tlr-paper.py}
@@ -470,7 +470,7 @@ dispatch loop of the language interpreter. However, they correspond to different
 paths through the loop and different ways to unroll it. To ascertain which of them to use
 when trying to enter assembler code again, the program counter of the language
 interpreter needs to be checked. If it corresponds to the position key of one of
-the pieces of assembler code, then this assembler code can be entered. This
+the pieces of assembler code, then this assembler code can be executed. This
 check again only needs to be performed at the backward branches of the language
 interpreter.
 
@@ -486,7 +486,7 @@ using one counter per seen program counter of the language interpreter.
 \end{figure}
 
 Let's look at how hints would need to be applied to the example interpreter
-from Figure \ref{fig:tlr-basic}. The basic thing needed to apply hints is a
+from Figure \ref{fig:tlr-basic}. To apply hints one generally needs a
 subclass of \texttt{JitDriver} that lists all the variables of the bytecode
 loop. The variables are classified into two groups, red variables and green
 variables. The green variables are those that the tracing JIT should consider to
@@ -534,18 +534,19 @@ with the corresponding bytecodes as comments.}
 
 The critical problem of tracing the execution of just one opcode has been
 solved, the loop corresponds exactly to the loop in the square function.
-However, the resulting trace is a bit too long. Most of its operations are not
+However, the resulting trace is not optimized enough. Most of its operations are not
 actually doing any computation that is part of the square function. Instead,
 they manipulate the data structures of the language interpreter. While this is
 to be expected, given that the tracing interpreter looks at the execution of the
 language interpreter, it would still be an improvement if some of these operations could
 be removed.
 
-The simple insight how to greatly improve the situation is that most of the
+The simple insight how to improve the situation is that most of the
 operations in the trace are actually concerned with manipulating the
 bytecode and the program counter. Those are stored in variables that are part of
 the position key (they are ``green''), that means that the tracer checks that they
-are some fixed value at the beginning of the loop. In the example the check
+are some fixed value at the beginning of the loop (they may well change over the
+course of the loop, though). In the example the check
 would be that the \texttt{bytecode} variable is the bytecode string
 corresponding to the square function and that the \texttt{pc} variable is
 \texttt{4}. Therefore it is possible to constant-fold computations on them away,
@@ -730,7 +731,7 @@ making it about six times faster than the pure interpreter.
 
 \textbf{Benchmark 5:} Same as before, but with the threshold set so high that the tracer is
 never invoked to measure the overhead of the profiling. For this interpreter
-it to be rather large, with 50\% slowdown due to profiling. This is because the interpreter 
+it seems to be rather large, with 50\% slowdown due to profiling. This is because the interpreter 
 is small and the opcodes simple. For larger interpreters (e.g. the Python one) it seems 
 likely that the overhead is less significant.
 
