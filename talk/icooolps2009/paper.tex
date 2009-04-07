@@ -372,8 +372,8 @@ Similarly, we need to distinguish loops at two different levels:
 the other hand, \emph{user loops} are loops in the user program.
 
 A tracing JIT compiler finds the hot loops of the program it is compiling. In
-our case, this program is the language interpreter. The most important hot loop
-of the language interpreter is its bytecode dispatch loop (for many simple
+our case, this program is the language interpreter. The most important hot interpreter loop
+is the bytecode dispatch loop (for many simple
 interpreters it is also the only hot loop).  Tracing one iteration of this
 loop means that
 the recorded trace corresponds to execution of one opcode. This means that the
@@ -441,7 +441,7 @@ same value several times. This program counter is typically stored in one or sev
 variables in the language interpreter, for example the bytecode object of the
 currently executed function of the user program and the position of the current
 bytecode within that.  In the example above, the program counter is represented by 
-the \texttt{bytecode} and \texttt{pair} variables.
+the \texttt{bytecode} and \texttt{pc} variables.
 
 Since the tracing JIT cannot know which parts of the language interpreter are
 the program counter, the author of the language interpreter needs to mark the
@@ -504,8 +504,8 @@ of the body of the bytecode dispatch loop. The other, more interesting one, is
 \texttt{can\_enter\_jit}. This method needs to be called at the end of any
 instruction that can set the program counter of the language interpreter to an
 earlier value. For the example this is only the \texttt{JUMP\_IF\_A}
-instruction, and only if it is actually a backward jump. The place where this
-method is called is where the language interpreter performs profiling to decide
+instruction, and only if it is actually a backward jump. Here is
+where the language interpreter performs profiling to decide
 when to start tracing. It is also the place where the tracing JIT checks
 whether a loop is closed. This is considered to be the case when the values of
 the ``green'' variables are the same as at an earlier call to the
@@ -597,7 +597,7 @@ each other.
   somewhere in the introduction}
 
 The first integration problem is how to \emph{not} integrate the tracing JIT at
-all. It should be possible to choose when the language interpreter is translated to C
+all. It is possible to choose when the language interpreter is translated to C
 whether the JIT should be built in or not. If the JIT is not enabled, all the
 hints that are possibly in the interpreter source are just ignored by the
 translation process. In this way, the result of the translation is identical to
@@ -705,7 +705,7 @@ costly those are.
 
 The first round of benchmarks (Figure \ref{fig:bench1}) are timings of the
 example interpreter (Figure \ref{fig:tlr-basic}) used in this paper computing
-the square of 46340 (the smallest number whose square still fits into a 32
+the square of 46340 (the largest number whose square still fits into a 32
 bit word) using the bytecode of Figure \ref{fig:square}. The results for various
 constellations are as follows:
 
@@ -730,11 +730,9 @@ making it about six times faster than the pure interpreter.
 
 \textbf{Benchmark 5:} Same as before, but with the threshold set so high that the tracer is
 never invoked to measure the overhead of the profiling. For this interpreter
-it to be rather large, with 50\% slowdown due to profiling. This is
-because the example interpreter needs to do one hash table lookup per loop
-iteration. For larger interpreters (e.g. the Python one) it seems likely that
-the overhead is less significant, given that many operations in Python need
-hash-table lookups themselves.
+it to be rather large, with 50\% slowdown due to profiling. This is because the interpreter 
+is small and the opcodes simple. For larger interpreters (e.g. the Python one) it seems 
+likely that the overhead is less significant.
 
 \textbf{Benchmark 6:} Runs the whole computation on the tracing interpreter for estimating the
 involved overheads of tracing. The trace is not actually recorded (which would be a
