@@ -1,4 +1,5 @@
-\documentclass{acm_proc_article-sp}
+%\documentclass{acm_proc_article-sp}
+\documentclass{sig-alternate}
 
 \usepackage{ifthen}
 \usepackage{fancyvrb}
@@ -57,6 +58,7 @@
        \affaddr{DISI}\\
        \affaddr{Italy}\\
        \email{cuni@disi.unige.it}
+\and
 \alignauthor Armin Rigo\\
        \email{arigo@tunes.org}
 \alignauthor Maciej Fijalkowski\\
@@ -136,11 +138,9 @@ integrates into the rest of PyPy will be explained in Section
 promising results, which we will discuss in Section \ref{sect:evaluation}.
 
 The contributions of this paper are:
-\vspace{-0.3cm}
 \begin{zitemize}
 \item Applying a tracing JIT compiler to an interpreter.
 \item Finding techniques for improving the generated code.
-\item Integrating
 \end{zitemize}
 
 
@@ -216,7 +216,6 @@ being used by both Mozilla's TraceMonkey JavaScript VM
 ActionScript VM \cite{chang_tracing_2009}.
 
 Tracing JITs are built on the following basic assumptions:
-\vspace{-0.3cm}
 \begin{zitemize}
  \item programs spend most of their runtime in loops
  \item several iterations of the same loop are likely to take similar code paths
@@ -228,7 +227,6 @@ The code for those common loops however should be highly optimized, including
 aggressive inlining.
 
 Typically, programs executed by a tracing VMs goes through various phases:
-\vspace{-0.3cm}
 \begin{zitemize}
 \item Interpretation/profiling
 \item Tracing
@@ -276,7 +274,7 @@ This process assumes that the path through the loop that was traced is a
 it is possible that later another path through the loop is taken, in which case
 one of the guards that were put into the machine code will fail.\footnote{There are more
 complex mechanisms in place to still produce more code for the cases of guard
-failures \cite{XXX}, but they are independent of the issues discussed in this
+failures \cite{andreas_gal_incremental_2006}, but they are independent of the issues discussed in this
 paper.}
 
 It is important to understand how the tracer recognizes that the trace it
@@ -310,7 +308,6 @@ def strange_sum(n):
     return result
 \end{verbatim}
 }
-\vspace{-0.4cm}
 To trace this, a bytecode form of these functions needs to be introduced that
 the tracer understands. The tracer interprets a bytecode that is an encoding of
 the intermediate representation of PyPy's translation toolchain after type
@@ -332,7 +329,6 @@ guard_true(i2)
 jump(result1, n1)
 \end{verbatim}
 }
-\vspace{-0.4cm}
 The operations in this sequence are operations of the above-mentioned intermediate
 representation (e.g. note that the generic modulo and equality operations in the
 function above have been recognized to always take integers as arguments and are thus
@@ -381,7 +377,6 @@ take the same or similar code paths -- is wrong in this case. It is very
 unlikely that the same particular opcode is executed many times in a row.
 \begin{figure}
 \input{code/tlr-paper.py}
-\vspace{-0.4cm}
 \caption{A very simple bytecode interpreter with registers and an accumulator.}
 \label{fig:tlr-basic}
 \end{figure}
@@ -407,7 +402,6 @@ unlikely that the same particular opcode is executed many times in a row.
     RETURN_A
 \end{verbatim}
 }
-\vspace{-0.4cm}
 \caption{Example bytecode: Compute the square of the accumulator}
 \label{fig:square}
 \end{figure}
@@ -426,7 +420,6 @@ probably not improved at all.
 
 \begin{figure}
 \input{code/normal-tracing.txt}
-\vspace{-0.4cm}
 \caption{Trace when executing the \texttt{DECR\_A} opcode}
 \label{fig:trace-normal}
 \end{figure}
@@ -479,7 +472,6 @@ using one counter per seen program counter of the language interpreter.
 
 \begin{figure}
 \input{code/tlr-paper-full.py}
-\vspace{-0.4cm}
 \caption{Simple bytecode interpreter with hints applied}
 \label{fig:tlr-full}
 \end{figure}
@@ -512,7 +504,7 @@ the ``green'' variables are the same as at an earlier call to the
 
 For the small example the hints look like a lot of work. However, the number of
 hints is essentially constant no matter how large the interpreter is, which
-makes it seem less significant for larger interpreters.
+makes it less significant for larger interpreters.
 
 When executing the Square function of Figure \ref{fig:square}, the profiling
 will identify the loop in the square function to be hot, and start tracing. It
@@ -523,7 +515,6 @@ interpreter eight times. The resulting trace can be seen in Figure
 
 \begin{figure}
 \input{code/no-green-folding.txt}
-\vspace{-0.4cm}
 \caption{Trace when executing the Square function of Figure \ref{fig:square},
 with the corresponding bytecodes as comments.}
 \label{fig:trace-no-green-folding}
@@ -566,7 +557,6 @@ the \emph{JIT backend}, which generates the correspondent machine code.
 
 \begin{figure}
 \input{code/full.txt}
-\vspace{-0.4cm}
 \caption{Trace when executing the Square function of Figure \ref{fig:square},
 with the corresponding opcodes as comments. The constant-folding of operations
 on green variables is enabled.}
