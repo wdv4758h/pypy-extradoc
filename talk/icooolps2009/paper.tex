@@ -314,10 +314,10 @@ def strange_sum(n):
 To trace this, a bytecode form of these functions needs to be introduced that
 the tracer understands. The tracer interprets a bytecode that is an encoding of
 the intermediate representation of PyPy's translation toolchain after type
-inference has been performed and Python-specifics have been made explicit. At
-first those functions will be interpreted, but after a while, profiling shows
-that the \texttt{while} loop in \texttt{strange\_sum} is executed often  The
-tracing JIT will then start to trace the execution of that loop.  The trace would
+inference has been performed.
+When the profiler shows
+that the \texttt{while} loop in \texttt{strange\_sum} is executed often the
+tracing JIT will start to trace the execution of that loop.  The trace would
 look as follows:
 {\small
 \begin{verbatim}
