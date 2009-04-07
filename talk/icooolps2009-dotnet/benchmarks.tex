@@ -9,8 +9,7 @@ full language consists of about 600 lines of RPython code) but to still have
 the typical properties of dynamic languages that make them hard to
 compile. TLC is implemented with a small interpreter that interprets a custom
 bytecode instruction set. Since our main interest is in the runtime
-performance of the interpreter, we did not implement the parser nor the
-bytecode compiler, but only the interpreter itself.
+performance of the interpreter, we did not implement the whole language, but just its virtual machine.
 
 Despite being very simple and minimalistic, \lstinline{TLC} is a good
 candidate as a language to test our JIT generator, as it has some of the
@@ -53,7 +52,6 @@ To measure the speedup we get with the JIT, we run each program three times:
 Moreover, for each benchmark we also show the time taken by running the
 equivalent program written in C\#.\footnote{The sources for both TLC and C\#
   programs are available at:
-
   \texttt{http://codespeak.net/~antocuni/tlc-benchmarks/}}
 
 The benchmarks have been run on a machine with an Intel Pentium 4 CPU running at
@@ -124,8 +122,8 @@ Table \ref{tab:factorial-fibo} shows the seconds spent to calculate
 the factorial and Fibonacci for various $n$.  As we can see, for small values
 of $n$ the time spent running the JIT compiler is much higher than the time
 spent to simply interpret the program.  This is an expected result
-which, however, can be improved once we will have time
-to optimize compilation and not only the generated code.
+which, however, can be improved, since so far no effort has been direct to
+enhance the performance of the compiler itself.
 
 On the other, for reasonably high values of $n$ we obtain very good
 results, which are valid despite the obvious overflow, since the 
@@ -200,7 +198,7 @@ implement this behaviour.
 
 As already discussed, our generated JIT does not compile the whole function at
 once. Instead, it compiles and executes code chunk by chunk, waiting until it
-knows enough informations to generate highly efficient code.  In particular,
+knows enough information to generate highly efficient code.  In particular,
 at the time it emits the code for the inner loop it exactly knows the
 type of \lstinline{obj}, thus it can remove the overhead of dynamic dispatch
 and inline the method call.  Moreover, since \lstinline{obj} never escapes the
