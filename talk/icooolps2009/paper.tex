@@ -50,7 +50,7 @@
 \alignauthor Carl Friedrich Bolz\\
        \affaddr{Heinrich-Heine-Universität Düsseldorf}\\
        \affaddr{STUPS Group}\\
-       \affaddr{Deutschland}\\
+       \affaddr{Germany}\\
        \email{cfbolz@gmx.de}
 \alignauthor Antonio Cuni\\
        \affaddr{University of Genova}\\
@@ -72,10 +72,10 @@
 
 \begin{abstract}
 We present techniques for improving the results when a tracing JIT compiler is
-applied to an interpreter. An unmodified tracing JIT performs not as well as one
+applied to an interpreter.XXXAbrupt start - is the relevanz really immediately clear?XXX An unmodified tracing JIT performs not as well as one
 would hope when the compiled program is itself a bytecode interpreter. We
-examine why that is the case, and how matters can be improved by adding markers to
-the interpreter, that help the tracing JIT to improve the results. We evaluate
+examine the reasons for that, and how matters can be improved by adding markers to
+the interpreter that help the tracing JIT to improve the results. We evaluate
 the techniques by using them both on a small example as well as on a full Python
 interpreter. This work has been done in the context of the PyPy project.
 
@@ -117,7 +117,7 @@ other dynamic languages as well. The general approach is to implement an
 interpreter for the language in a subset of Python. This subset is chosen in
 such a way that programs in it can be compiled into various target environments,
 such as C/Posix, the CLI or the JVM. The PyPy project is described in more
-details in Section \ref{sect:pypy}.
+detail in Section \ref{sect:pypy}.
 
 In this paper we discuss ongoing work in the PyPy project to improve the
 performance of interpreters written with the help of the PyPy toolchain. The
@@ -168,8 +168,7 @@ The contributions of this paper are:
 \label{sect:pypy}
 
 The PyPy project\footnote{http://codespeak.net/pypy}
-\cite{rigo_pypys_2006,carl_friedrich_bolz_to_2007} was started to implement a
-new Python interpreter in Python but has now extended its goals to be an
+\cite{rigo_pypys_2006,carl_friedrich_bolz_to_2007} is an
 environment where flexible implementation of dynamic languages can be written.
 To implement a dynamic language with PyPy, an interpreter for that language has
 to be written in RPython \cite{ancona_rpython:step_2007}. RPython (``Restricted
@@ -377,7 +376,7 @@ is the bytecode dispatch loop (for many simple
 interpreters it is also the only hot loop).  Tracing one iteration of this
 loop means that
 the recorded trace corresponds to execution of one opcode. This means that the
-assumption that the tracing JIT makes -- that several iterations of a hot loop
+assumption made by the tracing JIT -- that several iterations of a hot loop
 take the same or similar code paths -- is wrong in this case. It is very
 unlikely that the same particular opcode is executed many times in a row.
 \begin{figure}
@@ -413,7 +412,7 @@ unlikely that the same particular opcode is executed many times in a row.
 \label{fig:square}
 \end{figure}
 
-Let's look at an example. Figure \ref{fig:tlr-basic} shows the code of a very
+An example is given in Figure \ref{fig:tlr-basic}. It shows the code of a very
 simple bytecode interpreter with 256 registers and an accumulator. The
 \texttt{bytecode} argument is a string of bytes, all register and the
 accumulator are integers. A program for this interpreter that computes
@@ -434,7 +433,7 @@ probably not improved at all.
 
 To improve this situation, the tracing JIT could trace the execution of several
 opcodes, thus effectively unrolling the bytecode dispatch loop. Ideally, the
-bytecode dispatch loop should be unrolled exactly so much, that the unrolled version
+bytecode dispatch loop should be unrolled exactly so much that the unrolled version
 corresponds to a \emph{user loop}. User loops
 occur when the program counter of the \emph{language interpreter} has the
 same value several times. This program counter is typically stored in one or several
@@ -474,7 +473,7 @@ the pieces of assembler code, then this assembler code can be executed. This
 check again only needs to be performed at the backward branches of the language
 interpreter.
 
-The language interpreter uses a similar techniques to detect \emph{hot user
+The language interpreter uses a similar technique to detect \emph{hot user
 loops}: the profiling is done at the backward branches of the user program,
 using one counter per seen program counter of the language interpreter.
 
@@ -826,14 +825,14 @@ really well on small interpreters and first experiments with PyPy's Python
 interpreter make it appear likely that they can be scaled up to realistic
 examples.
 
-Of course there is a lot of work still left to do. Various optimizations are not
-quite finished. Both tracing and leaving machine code is very slow due to a
+Of course there is a lot of work still left to do XXX fix this phrase. Various optimizations are not
+quite finished. Both tracing and leaving machine code are very slow due to a
 double interpretation overhead and we might need techniques for improving those.
 Furthermore we need to apply the JIT to the various interpreters that are
 written in RPython to evaluate how widely applicable the described techniques
 are. Possible targets for such an evaluation would be the SPy-VM, a Smalltalk
 implementation \cite{bolz_back_2008}, a Prolog interpreter or PyGirl, a Gameboy
-emulator \cite{XXX}; but also less immediately obvious ones, like Python's
+emulator \cite{XXX}; but also not immediately obvious ones, like Python's
 regular expression engine. 
 
 If these experiments are successful we hope that we can reach a point where it
