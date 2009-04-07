@@ -16,9 +16,12 @@ Antonio Cuni         15th-21st      Ermina
 Samuele Pedroni      14th-22nd      Ermina
 Anders Hammarquist   14th-22nd      Ermina
 Christian Tismer     14th-22nd      Ermina
+Niko Matsakis        14th-19th      Ermina
 ==================== ============== =======================
 
 Samuele and Anders Hammarquist would like to share a two persons room.
+
+Niko plans to share a room with Carl.
 
 Antonio would like to share a room with someone, volunteers are welcome :-)
 
@@ -46,7 +49,6 @@ Beatrice Duering     ?              ?
 Richard Emslie       ?              ?
 Johan Hahn           ?              ?
 Stephan Diehl        ?              ?
-Niko Matsakis        ?              ?
 Alexander Schremmer  ?              ?
 Anders Chrigstroem   ?              ?
 Samuele Pedroni      ?              ?
