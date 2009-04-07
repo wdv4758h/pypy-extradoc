@@ -17,7 +17,7 @@ code for a real CPU it emits code for a virtual machine\footnote{By using the
 before being executed, the generated code will be compiled again by the .NET JIT
 compiler.
 
-Thus, when using the CLI backend, we actually have two JIT compilers at two different levels
+Thus, when using the CLI backend, we actually have two JIT compilers at two different
 layers, each one specialized in different kinds of optimization.
 By operating at a higher level, our JIT can potentially do a better job 
 in some contexts, as our benchmarks demonstrate (see
@@ -56,16 +56,16 @@ dynamically added whenever new cases are needed.
 \includegraphics[height=5cm]{flexswitch1}
 \includegraphics[height=5cm]{flexswitch2}
 \caption{An example of a flexswitch evolution: in the picture on the
-  right block 7 has been dynamically added.}\label{flexswitch-fig}
+  right block D has been dynamically added.}\label{flexswitch-fig}
 \end{center}
 \end{figure}
 
-In the pictures of Figure~\ref{flexswitch-fig}, block 5 (highlighted in grey)
+In the pictures of Figure~\ref{flexswitch-fig}, block B (highlighted in grey)
 corresponds to a flexswitch; initially (picture on the left) 
-only block 6, containing the code to restart the JIT compilation,
+only block C, containing the code to restart the JIT compilation,
 is connected to the flexswitch; the picture on the right
 shows the graph after the first case has been dynamically added to the flexswitch,
-by linking block 5 with the freshly created block number 7.
+by linking block B with the freshly created block D.
 
 
 \subsection{Implementing flexswitches in CLI}
@@ -100,9 +100,6 @@ following way:
 
 \item Each either primary or secondary method implements a certain
   number of blocks, all belonging to the same flow graph.
-
-\item The parameters of a method correspond to the arguments of what we call the \emph{initial block} of the method.
-
 \end{itemize} 
 
 When a new case is added to a flexswitch, the backend generates the new blocks
@@ -126,7 +123,7 @@ Following an external link whose target is an initial block could also
 be easily implemented, by just invoking the corresponding method.
 What cannot be easily implemented in CLI is following an external link
 whose target is not an initial block; consider, for instance, the
-outgoing link from block 7 to block 3 in Figure~\ref{flexswitch-fig}. How is it possible to jump into
+outgoing link from block D to block A in Figure~\ref{flexswitch-fig}. How is it possible to jump into
 the middle of a method?
 
 To solve this problem every method contains a special code, called
@@ -273,6 +270,11 @@ public class IntLowLevelFlexSwitch:
   }
 }
 \end{lstlisting}
+
+XXX: add note to explain why we use a for loop instead of an hashtable
+
+XXX: add note to explain who calls execute()
+
 The mapping from integers values to delegates (pointing to secondary
 methods) is just implemented by the two arrays \lstinline{values} and
 \lstinline{cases}. Method \lstinline{add_case} extends the mapping
