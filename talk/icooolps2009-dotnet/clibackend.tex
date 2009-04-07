@@ -247,7 +247,14 @@ instead, a unique object is created at the beginning of the execution
 of the primary method. 
 
 \subsubsection{Implementation of flexswitches}
-Finally, we can have a look at the implementation of flexswitches.
+
+To implement each flexswitch, the CLI backend creates an instace of a subclass
+of \lstinline{BaseLowLevelFlexSwitch}: such an instance stores the mapping
+between each value and the corresponding method we want to invoke.  Then, the
+generated code contains a call to the method \lstinline{execute}, which
+selects and invoke the right method depending on the actual value we are
+switching on.
+
 The following snippet shows the special case of integer flexswitches.
 \begin{lstlisting}[language={[Sharp]C}] 
 public class IntLowLevelFlexSwitch: 
@@ -271,10 +278,6 @@ public class IntLowLevelFlexSwitch:
 }
 \end{lstlisting}
 
-XXX: add note to explain why we use a for loop instead of an hashtable
-
-XXX: add note to explain who calls execute()
-
 The mapping from integers values to delegates (pointing to secondary
 methods) is just implemented by the two arrays \lstinline{values} and
 \lstinline{cases}. Method \lstinline{add_case} extends the mapping
@@ -283,7 +286,9 @@ whenever a new case is added to the flexswitch.
 The most interesting part is the body of method \lstinline{execute},
 which takes a value and a set of input arguments to be passed across
 the link and jumps to the right block by performing a linear search in
-array \lstinline{values}.
+array \lstinline{values}\footnote{Our microbenchmarks indicate that a linear
+search is the fastest way to find the right method to call, since typically
+each flexswitch contains only a very small number of cases.}.
 
 Recall that the first argument of delegate \lstinline{FlexSwitchCase} is the
 block id to jump to. By construction, the target block of a flexswitch is
