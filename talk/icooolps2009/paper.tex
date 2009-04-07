@@ -122,7 +122,7 @@ details in Section \ref{sect:pypy}.
 In this paper we discuss ongoing work in the PyPy project to improve the
 performance of interpreters written with the help of the PyPy toolchain. The
 approach is that of a tracing JIT compiler. Contrary to the tracing JITs for dynamic
-languages that currently exist, PyPy's tracing JIT operates "one level down",
+languages that currently exist, PyPy's tracing JIT operates ``one level down'',
 e.g. it traces the execution of the interpreter, as opposed to the execution
 of the user program. The fact that the program the tracing JIT compiles is
 in our case always an interpreter brings its own set of problems. We describe
@@ -158,7 +158,7 @@ The contributions of this paper are:
 %- explore general ways to improve on the speed of dynamic languages with reduced
 %effort
 %- approach: write a tracing JIT that is applicable to many different languages,
-%by tracing "one level done"
+%by tracing ``one level done''
 %- needs some hints by the interpreter-writer + slightly different optimizations
 %- paper will describe the problems of applying a tracing jit to an interpreter
 %- different integration needed than a typical tracing jit
@@ -172,7 +172,8 @@ The PyPy project\footnote{http://codespeak.net/pypy}
 new Python interpreter in Python but has now extended its goals to be an
 environment where flexible implementation of dynamic languages can be written.
 To implement a dynamic language with PyPy, an interpreter for that language has
-to be written in RPython \cite{ancona_rpython:step_2007}. RPython ("Restricted Python") is a subset of Python
+to be written in RPython \cite{ancona_rpython:step_2007}. RPython (``Restricted
+Python'') is a subset of Python
 chosen in such a way that type inference can be performed on it. The language
 interpreter can then be translated with the help of PyPy into various target
 environments, such as C/Posix, the CLI and the JVM. This is done by a component
@@ -272,7 +273,7 @@ starting from the next iteration of the loop, as the machine code represents
 exactly the loop that was being interpreted so far.
 
 This process assumes that the path through the loop that was traced is a
-"typical" example of possible paths (which is statistically likely). Of course
+``typical'' example of possible paths (which is statistically likely). Of course
 it is possible that later another path through the loop is taken, in which case
 one of the guards that were put into the machine code will fail. There are more
 complex mechanisms in place to still produce more code for the cases of guard
@@ -363,7 +364,7 @@ interpreter}. On the other hand, there is the interpreter that runs the
 user's programs, which we will call the \emph{language interpreter}. In the
 following, we will assume that the language interpreter is bytecode-based. The
 program that the language interpreter executes we will call the \emph{user
-program} (from the point of view of a VM author, the "user" is a programmer
+program} (from the point of view of a VM author, the ``user'' is a programmer
 using the VM).
 
 Similarly, we need to distinguish loops at two different levels:
@@ -507,7 +508,7 @@ instruction, and only if it is actually a backward jump. The place where this
 method is called is where the language interpreter performs profiling to decide
 when to start tracing. It is also the place where the tracing JIT checks
 whether a loop is closed. This is considered to be the case when the values of
-the "green" variables are the same as at an earlier call to the
+the ``green'' variables are the same as at an earlier call to the
 \texttt{can\_enter\_jit} method.
 
 For the small example the hints look like a lot of work. However, the number of
@@ -543,7 +544,7 @@ be removed.
 The simple insight how to greatly improve the situation is that most of the
 operations in the trace are actually concerned with manipulating the
 bytecode and the program counter. Those are stored in variables that are part of
-the position key (they are "green"), that means that the tracer checks that they
+the position key (they are ``green''), that means that the tracer checks that they
 are some fixed value at the beginning of the loop. In the example the check
 would be that the \texttt{bytecode} variable is the bytecode string
 corresponding to the square function and that the \texttt{pc} variable is
@@ -627,7 +628,7 @@ running the user program. Of course the tracing interpreter cannot actually
 trace the execution of the C representation of the language interpreter. Instead
 it takes the state of the execution of the language interpreter and starts
 tracing using a bytecode representation of the language interpreter. That means
-there are two "versions" of the language interpreter embedded in the final
+there are two ``versions'' of the language interpreter embedded in the final
 executable of the VM: on the one hand it is there as executable machine code, on
 the other hand as bytecode for the tracing interpreter. It also means that
 tracing is costly as it incurs a double interpretation overhead.
