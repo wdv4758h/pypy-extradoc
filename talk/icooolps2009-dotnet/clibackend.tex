@@ -14,30 +14,31 @@ At the moment of writing, three backends have been implemented: one for Intel
 \emph{CLI Virtual Machine}.  The latter is special because instead of emitting
 code for a real CPU it emits code for a virtual machine\footnote{By using the 
 \lstinline{Reflection.Emit} namespace and creating \lstinline{DynamicMethod}s.}: 
-before being
-executed, the generated code will be compiled again by .NET's own JIT
+before being executed, the generated code will be compiled again by the .NET JIT
 compiler.
 
-Thus, when using the CLI backend, we actually have two layers of
-JIT-compilation, each layer removing away different kinds of overhead.  By
-operating at a higher level, our JIT can potentially do a better job than the
-.NET one in some contexts, as our benchmarks demonstrate (see
+Thus, when using the CLI backend, we actually have two JIT compilers at two different levels
+layers, each one specialized in different kinds of optimization.
+By operating at a higher level, our JIT can potentially do a better job 
+in some contexts, as our benchmarks demonstrate (see
 Section~\ref{sec:benchmarks}).  On the other hand, the lower-level .NET JIT is
 very good at producing machine code, much more than PyPy's own \emph{x86}
-backend for example.  By combining the strengths of both we can get highly
+backend, for example.  By combining the strengths of both we can get highly
 efficient machine code.
 
 As usual, the drawback is that programs that runs for a very short period of
 time could run slower with JIT than without, due to the time spent doing the
-initial (double) compilation.  It is important to underline that so far we
-mostly focused making the JIT able to produce very fast code, without trying
-to optimze the compilation phase itself.
+initial (double) compilation.  
+Finally, it is important to underline that while we have directed our efforts 
+to generate a JIT compiler able to emit very efficient code,
+the performance of the compiler itself has been neglected so far, but  
+it is certainly an issue which will have to be considered in our future research.
 
 \subsection{Flexswitches}
 
 For a large part, implementing the CLI backend is easy and straightforward, as
 there is a close correspondence between most of the operations used by
-frontend's flowgraphs and the CLI instructions.  Thus, we will not dig into
+frontend's flowgraphs and the CLI instructions.  Thus, we will not go into
 details for this part.
 
 However the concept of \emph{flexswitch}, as described in
@@ -55,7 +56,7 @@ dynamically added whenever new cases are needed.
 \includegraphics[height=5cm]{flexswitch1}
 \includegraphics[height=5cm]{flexswitch2}
 \caption{An example of a flexswitch evolution: in the picture on the
-  right a new block has been dynamically added.}\label{flexswitch-fig}
+  right block 7 has been dynamically added.}\label{flexswitch-fig}
 \end{center}
 \end{figure}
 
@@ -74,7 +75,7 @@ Implementing flexswitches for backends generating machine code is
 not too complex: basically, a new jump has to be inserted in the
 existing code to point to the newly generated code fragment.
 
-Unfortunately, the CLI VM does not allow modification of code which
+Unfortunately, CLI does not allow modification of code which
 has been already loaded and linked, therefore the simplest approach
 taken for low level architectures does not work.
 
@@ -99,6 +100,9 @@ following way:
 
 \item Each either primary or secondary method implements a certain
   number of blocks, all belonging to the same flow graph.
+
+\item The parameters of a method correspond to the arguments of what we call the \emph{initial block} of the method.
+
 \end{itemize} 
 
 When a new case is added to a flexswitch, the backend generates the new blocks
@@ -109,8 +113,8 @@ needed.
 
 \subsubsection{Internal and external links}
 
-A link is called \emph{internal} if it connects two blocks contained
-in the same method,
+A link is called \emph{internal} if it connects two blocks implemented
+by the same method,
 \emph{external} otherwise.
 
 Following an internal link is easy in IL bytecode: a jump to
@@ -152,7 +156,6 @@ connects two blocks implemented by different methods.
 The code\footnote{For simplicity we write C\# code instead of
 the actual IL bytecode.} generated for the dispatcher of methods
 is similar to the following fragment: 
-\begin{small}
 \begin{lstlisting}[language={[Sharp]C}]
 // dispatch block
 int methodid = (blockid && 0xFFFF0000) >> 16; 
@@ -167,9 +170,8 @@ switch(blocknum) {
   default: throw new Exception("Invalid block id");
 }
 \end{lstlisting}
-\end{small}
 If the next block to be executed is implemented in the same method
-({\small\lstinline{methodid == MY_METHOD_ID}}), then the appropriate
+(\lstinline{methodid == MY_METHOD_ID}), then the appropriate
 jump to the corresponding code is executed.
 Otherwise, the \lstinline{jump_to_ext}
 part of the dispatcher has to be executed, which is implemented differently 
@@ -181,14 +183,12 @@ simply implemented with an array mapping method id of secondary methods
 to the corresponding delegate. Therefore, the primary methods contain
 the following \lstinline{jump_to_ext} code (where
 \lstinline{FlexSwitchCase} is the type of delegates for secondary methods):
-\begin{small}
 \begin{lstlisting}[language={[Sharp]C}] 
 // jump_to_ext
 FlexSwitchCase meth = method_map[methodid];
 blockid = meth(blockid, ...); // execute the method
 goto dispatch_block;
 \end{lstlisting}
-\end{small}
 Each secondary method returns the block id of the next block to be
 executed; therefore, after the secondary method has returned, the
 dispatcher of the primary method will be executed again to jump
@@ -224,7 +224,6 @@ methods for the following reasons:
 Therefore, the solution we came up with is defining a class
 \lstinline{InputArgs} for passing sequences of arguments whose length
 and type is variable.
-\begin{small}
 \begin{lstlisting}[language={[Sharp]C}] 
 public class InputArgs {
   public int[] ints;
@@ -233,7 +232,6 @@ public class InputArgs {
   ...
 }
 \end{lstlisting}
-\end{small}
 Unfortunately, with this solution passing arguments to external links
 becomes quite slow:
 \begin{itemize}
@@ -254,7 +252,6 @@ of the primary method.
 \subsubsection{Implementation of flexswitches}
 Finally, we can have a look at the implementation of flexswitches.
 The following snippet shows the special case of integer flexswitches.
-\begin{small}
 \begin{lstlisting}[language={[Sharp]C}] 
 public class IntLowLevelFlexSwitch: 
                         BaseLowLevelFlexSwitch {
@@ -276,7 +273,6 @@ public class IntLowLevelFlexSwitch:
   }
 }
 \end{lstlisting}
-\end{small}
 The mapping from integers values to delegates (pointing to secondary
 methods) is just implemented by the two arrays \lstinline{values} and
 \lstinline{cases}. Method \lstinline{add_case} extends the mapping

@@ -7,7 +7,7 @@ a run-time specialiser for Python that uses promotion (called ``unlift'' in
 \cite{DBLP:conf/pepm/Rigo04}). However, Psyco is a manually written JIT, is
 not applicable to other languages and cannot be retargetted.
 
-Moreover, the idea of promotion is a generalization of \emph{Polymorphic
+The idea of promotion is a generalization of \emph{Polymorphic
   Inline Caches} \cite{hoelzle_optimizing_1991}, as well as the idea of using
 runtime feedback to produce more efficient code
 \cite{hoelzle_type_feedback_1994}.
@@ -56,7 +56,7 @@ languages.
 
 In this paper we gave an overview of PyPy's JIT compiler generator,
 which can automatically turn an interpreter into a JIT
-compiler, requiring the language developers to only add few \texttt{hint}s to
+compiler, requiring the language developers to only add few hints to
 guide the generation process.
 
 Then, we presented the CLI backend for PyPy's JIT compiler generator, whose
@@ -65,22 +65,22 @@ circumvent intrinsic limitations of the virtual machine to implement
 flexswitches.  As a result, we proved that the idea of \emph{JIT layering} is
 worth of further exploration, as it makes possible for dynamically typed
 languages to be even faster than their statically typed counterpart in some
-circumstances.
+cases.
 
 As a future work, we want to explore different strategies to make the frontend
 producing less code, maintaining comparable or better performances.  In
 particular, we are working on a way to automatically detect loops in the user
-code, as tracing JITs do \cite{gal_hotpathvm_2006}.  By compilining whole
-loops at once, the backends should be able to produce better code than today.
+code, as tracing JITs do \cite{gal_hotpathvm_2006}.  By compiling whole
+loops at once, the backends should be able to produce better code.
 
 At the moment, some bugs and minor missing features prevent the CLI JIT
 backend to handle more complex languages such as Python and Smalltalk.  We are
 confident that once these problems will be fixed, we will get performance
 results comparable to TLC, as the other backends already demonstrate
-\cite{PyPyJIT}.  Moreover, if the current implementation of flexswitches will
-prove to be too slow for some purposes, we want to explore alternative
-implementation strategies, also considering the new features that might be
-integrated into virtual machines.
+\cite{PyPyJIT}.  However, if the current implementation of flexswitches will
+turn out to be too slow for some purposes, alternative
+implementation strategies could be explored by considering the novel features 
+offered the new generation of virtual machines.
 
 In particular, the \emph{Da Vinci Machine
   Project} \footnote{\texttt{http://openjdk.java.net/projects/mlvm/}} is exploring and
