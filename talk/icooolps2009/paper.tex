@@ -722,9 +722,13 @@ CPython\footnote{\texttt{http://python.org}} 2.5.4 (the reference implementation
 Python). 
 
 The results show that the tracing JIT speeds up the execution of this Python
-function significantly, even outperforming CPython by a bit. The tracer needs to
+function significantly, even outperforming CPython. \sout{by a bit. The tracer needs to
 trace through quite a bit of dispatching machinery of the Python interpreter to
-achieve this, XXX.
+achieve this, XXX.}
+\anto{
+To achieve this, the tracer traces through the whole Python dispatching
+machinery, automatically inlining only the relevant fast paths.
+}
 
 \begin{figure}
 \label{fig:bench-example}
