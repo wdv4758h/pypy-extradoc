@@ -77,21 +77,22 @@
 %Languages}[program analysis]
 
 \begin{abstract}
-XXX the first paragraph is a bit too long, the second too strange, but I think
-it is a step in the right direction.
 
-Tracing JIT compilers can greatly speed up programs that spend most of their time
-in loops in which they take similar code paths.  Applying an unmodified tracing
-JIT to an application that is itself a bytecode interpreter results in very
-limited or no speedup. While bytecode interpreters spend most of their time in a
-loop, \ie the bytecode dispatch, the code paths taken depend fully on the input
-bytecode which the interpreter evaluates and thus changes all the time.
+We attempt to use the technique of Tracing JIT Compilers
+(see e.g.\ \cite{andreas_gal_incremental_2006}) in the context
+of the PyPy project, \ie on programs that are interpreters for some
+dynamic language (including Python).  Tracing JIT compilers can greatly
+speed up programs that spend most of their time in loops in which they
+take similar code paths.  However, applying an unmodified tracing JIT to
+a program that is itself a bytecode interpreter results in very limited
+or no speedup.  One of the reasons is that their main loop, \ie the
+bytecode dispatch, always executes different bytecodes and so follows
+different paths.
 
-In this paper we show how to guide tracing JIT compilers to greatly improve
-the speed of bytecode interpreters towards input bytecode. We evaluate our
-technique by applying it to both a small example as well as to a full Python 
-interpreter. This research has been conducted in the context of the PyPy 
-project.
+In this paper we show how to guide tracing JIT compilers to greatly
+improve the speed of bytecode interpreters. We evaluate our technique by
+applying it to two PyPy interpreters: one is a small example, and the
+other one is the full Python interpreter.
 
 \end{abstract}
 
@@ -831,7 +832,7 @@ Python.  There is some work by one of
 the authors to implement a dynamic partial evaluator for Prolog
 \cite{carl_friedrich_bolz_automatic_2008}. There are also experiments within the
 PyPy project to use dynamic partial evaluation for automatically generating JIT
-compilers out of interpreters \cite{armin_rigo_jit_2007}\cite{antocuni_2009}.
+compilers out of interpreters \cite{armin_rigo_jit_2007, antocuni_2009}.
 So far those have not been as
 successful as we would like and it seems likely that they will be supplanted
 with the work on tracing JITs described here.
