@@ -5,6 +5,7 @@
 \usepackage{fancyvrb}
 \usepackage{color}
 \usepackage{ulem}
+\usepackage{xspace}
 \usepackage[utf8]{inputenc}
 
 \newboolean{showcomments}
@@ -26,6 +27,9 @@
 \newcommand\arigo[1]{\nb{AR}{#1}}
 \newcommand\fijal[1]{\nb{FIJAL}{#1}}
 \newcommand{\commentout}[1]{}
+
+\newcommand\ie{i.e.,\xspace}
+\newcommand\eg{e.g.,\xspace}
 
 \normalem
 
@@ -125,7 +129,7 @@ In this paper we discuss ongoing work in the PyPy project to improve the
 performance of interpreters written with the help of the PyPy toolchain. The
 approach is that of a tracing JIT compiler. Contrary to the tracing JITs for dynamic
 languages that currently exist, PyPy's tracing JIT operates ``one level down'',
-e.g. it traces the execution of the interpreter, as opposed to the execution
+\ie it traces the execution of the interpreter, as opposed to the execution
 of the user program. The fact that the program the tracing JIT compiles is
 in our case always an interpreter brings its own set of problems. We describe
 tracing JITs and their application to interpreters in Section
@@ -283,11 +287,11 @@ It is important to understand how the tracer recognizes that the trace it
 recorded so far corresponds to a loop.
 This happens when the \emph{position key} is the same as at an earlier
 point. The position key describes the position of the execution of the program,
-e.g. usually contains things like the function currently being executed and the
+\ie usually contains things like the function currently being executed and the
 program counter position of the tracing interpreter. The tracing interpreter
 does not need to check all the time whether the position key already occurred
 earlier, but only at instructions that are able to change the position key
-to an earlier value, e.g. a backward branch instruction. Note that this is
+to an earlier value, \eg a backward branch instruction. Note that this is
 already the second place where backward branches are treated specially: during
 interpretation they are the place where the profiling is performed and where
 tracing is started or already existing assembler code executed; during tracing
@@ -332,7 +336,7 @@ jump(result1, n1)
 \end{verbatim}
 }
 The operations in this sequence are operations of the above-mentioned intermediate
-representation (e.g. the generic modulo and equality operations in the
+representation (\eg the generic modulo and equality operations in the
 function above have been recognized to always take integers as arguments and are thus
 rendered as \texttt{int\_mod} and \texttt{int\_eq}). The trace contains all the
 operations that were executed in SSA-form \cite{cytron_efficiently_1991} and ends with a jump
@@ -541,7 +545,7 @@ be removed.
 
 The simple insight how to improve the situation is that most of the operations
 in the trace are actually concerned with manipulating the bytecode string and
-the program counter. Those are stored in variables that are ``green'' (e.g. they
+the program counter. Those are stored in variables that are ``green'' (\ie they
 are part of the position key).  This means that the tracer checks that those
 variables have some fixed value at the beginning of the loop (they may well
 change over the course of the loop, though). In the example of Figure
@@ -639,7 +643,7 @@ execution should fall back to normal interpretation by the language interpreter.
 This falling back is possibly a complex process, since the guard failure can
 have occurred arbitrarily deep in a helper function of the language interpreter,
 which would make it hard to rebuild the state of the language interpreter and
-let it run from that point (e.g. this would involve building a potentially deep
+let it run from that point (\eg this would involve building a potentially deep
 C stack). Instead the falling back is achieved by a special \emph{fallback
 interpreter} which runs the language interpreter and the user program from the
 point of the guard failure. The fallback interpreter is essentially a variant of
@@ -693,12 +697,12 @@ previous case.
 
 \textbf{Benchmark 4:} Same as before, but with constant folding enabled. This corresponds to the
 trace in Figure \ref{fig:trace-full}. This speeds up the square function considerably,
-making it about six times faster than the pure interpreter.
+making it nearly three times faster than the pure interpreter.
 
 \textbf{Benchmark 5:} Same as before, but with the threshold set so high that the tracer is
 never invoked. In this way the overhead of the profiling is measured. For this interpreter
 it seems to be rather large, with about 20\% slowdown due to profiling. This is because the interpreter 
-is small and the opcodes simple. For larger interpreters (e.g. the Python one) it seems 
+is small and the opcodes simple. For larger interpreters (\eg the Python one) it seems 
 likely that the overhead is less significant.
 
 \begin{figure}
@@ -714,15 +718,15 @@ likely that the overhead is less significant.
 5 &Profile Overhead &515.0 $\pm$ 7.2 &0.86\\
 \hline
 \end{tabular}
-\label{fig:bench1}
 \caption{Benchmark results of example interpreter computing the square of
+\label{fig:bench1}
 10000000}
 \end{figure}
 
 Furthermore, to test the technique on a more realistic example, we did some
 preliminary benchmarks with PyPy's Python interpreter. The function we
 benchmarked as well as the results can be seen in Figure
-\ref{fig:bench-example}. The function is a bit arbitrary but executing it is
+\ref{fig:bench-python}. The function is a bit arbitrary but executing it is
 still non-trivial, as a normal Python interpreter needs to dynamically dispatch
 nearly all of the involved operations (like indexing into the tuple, addition
 and comparison of \texttt{i}). We benchmarked PyPy's Python interpreter with the
@@ -758,8 +762,9 @@ def f(a):
 3 &CPython 2.5.4 &4.96 $\pm$ 0.05 &4.73\\
 \hline
 \end{tabular}
+
 \caption{Benchmarked function and results for the Python interpreter running
-\texttt{f(10000000)}}
+\texttt{f(10000000)} \label{fig:bench-python}}
 \end{figure}
 
 \section{Related Work}
@@ -772,7 +777,7 @@ unrolled version corresponds to the loops in the user program. However the
 approach is greatly hindered by the fact that they trace on the machine code
 level and thus have no high-level information available about the interpreter.
 This makes it necessary to add quite a large number of hints, because at the
-assembler level it is not really visible anymore that e.g. a bytecode string is
+assembler level it is not really visible anymore that \eg a bytecode string is
 immutable. Also more advanced optimizations like allocation removal would
 not be possible with that approach.
 
@@ -835,7 +840,7 @@ very costly.
 \textbf{Optimizing Frame Objects:} One problem with the removal of allocations
 is that many dynamic languages are so reflective that they allow the
 introspection of the frame object that the interpreter uses to store local
-variables (e.g. SmallTalk, Python). This means that intermediate results always
+variables (\eg SmallTalk, Python). This means that intermediate results always
 escape because they are stored into the frame object, rendering the allocation
 removal optimization ineffective. To remedy this problem we make it possible to
 update the frame object lazily only when it is actually accessed from outside of
