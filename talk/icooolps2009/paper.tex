@@ -693,8 +693,9 @@ non-optimal generated machine code.
 \ref{fig:tlr-full} are applied. This means that the interpreter loop is unrolled
 so that it corresponds to the loop in the square function. However, constant folding of green
 variables is disabled, therefore the resulting machine code corresponds to the
-trace in Figure \ref{fig:trace-no-green-folding}. This alone brings no
-improvement over the previous case.
+trace in Figure \ref{fig:trace-no-green-folding}. This alone brings an
+improvement over the previous case, but is still slower than pure
+interpretation.
 
 \textbf{Benchmark 4:} Same as before, but with constant folding enabled. This corresponds to the
 trace in Figure \ref{fig:trace-full}. This speeds up the square function considerably,
