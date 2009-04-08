@@ -746,8 +746,8 @@ def f(a):
 \hline
 1 &Compiled to C, no JIT &23.44 $\pm$ 0.07 &1.00\\
 2 &Compiled to C, with JIT &3.58 $\pm$ 0.05 &6.54\\
-3 &CPython 2.5.4 &4.96 $\pm$ 0.05 &4.73\\
-\hline
+3 &CPython 2.5.2 &4.96 $\pm$ 0.05 &4.73\\
+4 &CPython 2.5.2 + Psyco 1.6 &1.51 $\pm$ 0.05 &15.57\\\hline
 \end{tabular}
 
 \caption{Benchmarked function and results for the Python interpreter running
@@ -762,13 +762,15 @@ still non-trivial, as a normal Python interpreter needs to dynamically dispatch
 nearly all of the involved operations, like indexing into the tuple, addition
 and comparison of \texttt{i}. We benchmarked PyPy's Python interpreter with the
 JIT disabled, with the JIT enabled and
-CPython\footnote{\texttt{http://python.org}} 2.5.4 (the reference implementation of
-Python). 
+CPython\footnote{\texttt{http://python.org}} 2.5.2 (the reference implementation of
+Python). In addition we benchmarked CPython using Psyco 1.6
+\cite{rigo_representation-based_2004}, a specializing JIT compiler for Python.
 
 The results show that the tracing JIT speeds up the execution of this Python
 function significantly, even outperforming CPython. To achieve this, the tracer
 traces through the whole Python dispatching machinery, automatically inlining
-the relevant fast paths.
+the relevant fast paths. However, the manually tuned Psyco still performs a lot
+better than our prototype.
 
 \section{Related Work}
 
