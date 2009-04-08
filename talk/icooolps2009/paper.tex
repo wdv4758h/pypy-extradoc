@@ -422,9 +422,9 @@ An example is given in Figure \ref{fig:tlr-basic}. It shows the code of a very
 simple bytecode interpreter with 256 registers and an accumulator.  The
 \texttt{bytecode} argument is a string of bytes, all register and the
 accumulator are integers.\footnote{The
-chain of \texttt{if}, \texttt{elif}, ... instructions that check the various
-opcodes is transformed into a \texttt{switch} statement by one of PyPy's
-optimizations. Python does not have a \texttt{switch} statement}
+chain of \texttt{if}, \texttt{elif}, ... instructions checking the various
+opcodes is turned into a \texttt{switch} statement by one of PyPy's
+optimizations. Python does not have a \texttt{switch} statement.}
 A program for this interpreter that computes
 the square of the accumulator is shown in Figure \ref{fig:square}. If the
 tracing interpreter traces the execution of the \texttt{DECR\_A} opcode (whose
@@ -657,7 +657,7 @@ interpreter and then falls back to the C version of the language interpreter.
 After this, the whole process of profiling may start again.
 
 Machine code production is done via a well-defined interface to an assembler
-backend. This makes it possible to easily port the tracing JIT to various
+backend. This allows easy porting of the tracing JIT to various
 architectures (including, we hope, to virtual machines such as the JVM where
 our backend could generate JVM bytecode at runtime). At the moment the only
 implemented backend is a 32-bit Intel-x86 backend.
@@ -667,7 +667,7 @@ implemented backend is a 32-bit Intel-x86 backend.
 \label{sect:evaluation}
 
 In this section we evaluate the work done so far by looking at some
-benchmark numbers. Since the work is not finished, these benchmarks can only be
+benchmarks. Since the work is not finished, these can only be
 preliminary. Benchmarking was done on an otherwise idle machine with a 1.4
 GHz Pentium M processor and 1 GB RAM, using Linux 2.6.27. All benchmarks where
 run 50 times, each in a newly started process. The first run was ignored. The
@@ -694,7 +694,7 @@ non-optimal generated machine code.
 
 \textbf{Benchmark 3:} The tracing JIT is enabled and hints as in Figure
 \ref{fig:tlr-full} are applied. This means that the interpreter loop is unrolled
-so that it corresponds to the loop in the square function. However, constant folding of green
+so that it corresponds to the loop in the square function. Constant folding of green
 variables is disabled, therefore the resulting machine code corresponds to the
 trace in Figure \ref{fig:trace-no-green-folding}. This alone brings an
 improvement over the previous case, but is still slower than pure
