@@ -107,6 +107,26 @@ Via Code Specialization Using Precise Runtime Type Inference},
 	year = {2007},
 },
 
+@techreport{armin_rigo_jit_2007,
+	title = {{JIT} Compiler Architecture},
+	url = {http://codespeak.net/pypy/dist/pypy/doc/index-report.html},
+	abstract = {{PyPy’s} translation tool-chain – from the interpreter written in {RPython} to generated {VMs} for low-level platforms – is now able to extend those {VMs} with an automatically generated dynamic compiler, derived from the interpreter. This is achieved by a pragmatic application of partial evaluation techniques guided by a few hints added to the source of the interpreter. Crucial for the effectiveness of dynamic compilation is the use of run-time information to improve compilation results: in our approach, a novel powerful primitive called “promotion” that “promotes” run-time values to compile-time is used to that effect. In this report, we describe it along with other novel techniques that allow the approach to scale to something as large as {PyPy’s} Python interpreter.},
+	number = {D08.2},
+	institution = {{PyPy}},
+	author = {Armin Rigo and Samuele Pedroni},
+	month = may,
+	year = {2007}
+},
+
+@techreport{hlzle_adaptive_1994,
+	title = {Adaptive Optimization for {SELF:} Reconciling High Performance with Exploratory Programming},
+	url = {http://portal.acm.org/citation.cfm?id=891759#},
+	abstract = {Crossing abstraction boundaries often incurs a substantial run-time overhead in the form of frequent procedure calls. Thus, pervasive use of abstraction, while desirable from a design standpoint, may lead to very inefficient programs. Aggressively optimizing compilers can reduce this overhead but conflict with interactive programming environments because they introduce long compilation pauses and often preclude source-level debugging. Thus, programmers are caught on the horns of two dilemmas: they have to choose between abstraction and efficiency, and between responsive programming environments and efficiency. This dissertation shows how to reconcile these seemingly contradictory goals. Four new techniques work together to achieve this: - Type feedback achieves high performance by allowing the compiler to inline message sends based on information extracted from the runtime system. - Adaptive optimization achieves high responsiveness without sacrificing performance by using a fast compiler to generate initial code while automatically recompiling heavily used program parts with an optimizing compiler. - Dynamic deoptimization allows source-level debugging of optimized code by transparently recreating non-optimized code as needed. - Polymorphic inline caching speeds up message dispatch and, more significantly, collects concrete type information for the compiler. With better performance yet good interactive behavior, these techniques reconcile exploratory programming, ubiquitous abstraction, and high performance.},
+	institution = {Stanford University},
+	author = {Urs Hölzle},
+	year = {1994}
+},
+
 @article{grant_dyc:expressive_2000,
 	title = {{DyC:} an expressive annotation-directed dynamic compiler for C},
 	volume = {248},
@@ -281,13 +301,9 @@ which still run slower than in Squeak itself. Spy was built from scratch over th
 	pages = {145--156}
 },
 
-@techreport{armin_rigo_jit_2007,
-	title = {{JIT} Compiler Architecture},
-	url = {http://codespeak.net/pypy/dist/pypy/doc/index-report.html},
-	abstract = {{PyPy’s} translation tool-chain – from the interpreter written in {RPython} to generated {VMs} for low-level platforms – is now able to extend those {VMs} with an automatically generated dynamic compiler, derived from the interpreter. This is achieved by a pragmatic application of partial evaluation techniques guided by a few hints added to the source of the interpreter. Crucial for the effectiveness of dynamic compilation is the use of run-time information to improve compilation results: in our approach, a novel powerful primitive called “promotion” that “promotes” run-time values to compile-time is used to that effect. In this report, we describe it along with other novel techniques that allow the approach to scale to something as large as {PyPy’s} Python interpreter.},
-	number = {D08.2},
-	institution = {{PyPy}},
-	author = {Armin Rigo and Samuele Pedroni},
-	month = may,
-	year = {2007}
+@inproceedings{camillo_bruni_pygirl:_2009,
+	title = {{PyGirl:} Generating {Whole-System} {VMs} from {High-Level} Prototypes using {PyPy}},
+	booktitle = {Tools, accepted for publication},
+	author = {Camillo Bruni and Toon Verwaest},
+	year = {2009}
 }
