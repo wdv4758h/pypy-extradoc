@@ -459,7 +459,11 @@ cannot know which part of the language interpreter implements backward jumps,
 so the author of the language interpreter needs to indicate this with the help
 of a hint.
 
-The condition for reusing already existing machine code needs to be adapted to
+The language interpreter uses a similar technique to detect \emph{hot user
+loops}: the profiling is done at the backward branches of the user program,
+using one counter per seen program counter of the language interpreter.
+
+The condition for reusing already existing machine code also needs to be adapted to
 this new situation. In a classical tracing JIT there is at most one piece of
 assembler code per loop of the jitted program, which in our case is the language
 interpreter. When applying the tracing JIT to the language interpreter as
@@ -471,10 +475,6 @@ interpreter needs to be checked. If it corresponds to the position key of one of
 the pieces of assembler code, then this assembler code can be executed. This
 check again only needs to be performed at the backward branches of the language
 interpreter.
-
-The language interpreter uses a similar technique to detect \emph{hot user
-loops}: the profiling is done at the backward branches of the user program,
-using one counter per seen program counter of the language interpreter.
 
 \begin{figure}
 \input{code/tlr-paper-full.py}
