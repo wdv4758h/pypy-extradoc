@@ -258,7 +258,7 @@ trace, it is possible to produce highly efficient machine code by generating
 only the operations needed.  Being sequential, the trace represents only one
 of the many possible paths through the code. To ensure correctness, the trace
 contains a \emph{guard} at every possible point where the path could have
-followed another direction, for example conditions or indirect/virtual
+followed another direction, for example conditions and indirect or virtual
 calls.  When generating the machine code, every guard is turned into a quick check
 to guarantee that the path we are executing is still valid.  If a guard fails,
 we immediately quit the machine code and continue the execution by falling
