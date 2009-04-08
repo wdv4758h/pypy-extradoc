@@ -1,10 +1,7 @@
 {\small
 \begin{verbatim}
-class TLRJitDriver(JitDriver):
-    greens = ['pc', 'bytecode']
-    reds   = ['a', 'regs']
-
-tlrjitdriver = TLRJitDriver()
+tlrjitdriver = JitDriver(greens = ['pc', 'bytecode'],
+                         reds   = ['a', 'regs'])
 
 def interpret(bytecode, a):
     regs = [0] * 256
