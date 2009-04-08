@@ -247,9 +247,6 @@ Typically, programs executed by a tracing VM go through various phases:
 \item Execution of the generated code
 \end{itemize}
 
-The \emph{code generation} phase takes as input the trace generated during
-\emph{tracing}.
-
 At first, when the program starts, everything is interpreted.
 The interpreter does a small amount of lightweight profiling to establish which loops
 are run most frequently. This lightweight profiling is usually done by having a counter on
@@ -257,40 +254,31 @@ each backward jump instruction that counts how often this particular backward ju
 was executed. Since loops need a backward jump somewhere, this method looks for
 loops in the user program.
 
-When a hot loop is identified, the interpreter enters a
-special mode, called \emph{tracing mode}. During tracing, the interpreter
-records a history of all the operations it executes.
+When a hot loop is identified, the interpreter enters a special mode, called
+\emph{tracing mode}. During tracing, the interpreter records a history of all
+the operations it executes. It traces until it has recorded the execution of one
+iteration of the hot loop. To decide when this is the case, the trace is
+repeatedly checked during tracing as to whether the interpreter is at a position
+in the program where it had been earlier.
 
-Such a history is called a \emph{trace}: it is a sequential list of
+The history recorded by the tracer is called a \emph{trace}: it is a sequential list of
 operations, together with their actual operands and results.  By examining the
-trace, it is possible to produce highly efficient machine code by generating
-only the operations needed.  Being sequential, the trace represents only one
+trace, it is possible to produce efficient machine code by generating
+code from the operations in it.  The machine code can then be executed immediately,
+starting from the next iteration of the loop, as the machine code represents
+exactly the loop that was being interpreted so far.
+
+Being sequential, the trace represents only one
 of the many possible paths through the code. To ensure correctness, the trace
 contains a \emph{guard} at every possible point where the path could have
 followed another direction, for example conditions and indirect or virtual
 calls.  When generating the machine code, every guard is turned into a quick check
 to guarantee that the path we are executing is still valid.  If a guard fails,
 we immediately quit the machine code and continue the execution by falling
-back to interpretation.
-
-\toon{that part seems a bit out of place, it jumps back to a point in the story
-before what you explained right before it. (as far as I can tell)}
-During tracing, the trace is repeatedly
-checked as to whether the interpreter is at a position in the program where it had been
-earlier. If this happens, the trace recorded corresponds to a loop
-in the interpreted program. At this point, this loop
-is turned into machine code by taking the trace and making machine code versions
-of all the operations in it. The machine code can then be executed immediately,
-starting from the next iteration of the loop, as the machine code represents
-exactly the loop that was being interpreted so far.
-
-This process assumes that the path through the loop that was traced is a
-``typical'' example of possible paths. Of course
-it is possible that later another path through the loop is taken, in which case
-one of the guards that were put into the machine code will fail.\footnote{There are more
-complex mechanisms in place to still produce more code for the cases of guard
-failures \cite{andreas_gal_incremental_2006}, but they are independent of the issues discussed in this
-paper.}
+back to interpretation.\footnote{There are more complex mechanisms in place to
+still produce more code for the cases of guard failures
+\cite{andreas_gal_incremental_2006}, but they are independent of the issues
+discussed in this paper.}
 
 It is important to understand how the tracer recognizes that the trace it
 recorded so far corresponds to a loop.
