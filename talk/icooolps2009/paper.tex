@@ -21,6 +21,7 @@
   }
 
 \newcommand\cfbolz[1]{\nb{CFB}{#1}}
+\newcommand\toon[1]{\nb{TOON}{#1}}
 \newcommand\anto[1]{\nb{ANTO}{#1}}
 \newcommand\arigo[1]{\nb{AR}{#1}}
 \newcommand\fijal[1]{\nb{FIJAL}{#1}}
@@ -259,6 +260,8 @@ to guarantee that the path we are executing is still valid.  If a guard fails,
 we immediately quit the machine code and continue the execution by falling
 back to interpretation.
 
+\toon{that part seems a bit out of place, it jumps back to a point in the story
+before what you explained right before it. (as far as I can tell)}
 During tracing, the trace is repeatedly
 checked as to whether the interpreter is at a position in the program where it had been
 earlier. If this happens, the trace recorded corresponds to a loop
@@ -307,11 +310,11 @@ def strange_sum(n):
     return result
 \end{verbatim}
 }
-To trace this, a bytecode form of these functions needs to be introduced that
+\toon{next sentence is strange} To trace this, a bytecode form of these functions needs to be introduced that
 the tracer understands. The tracer interprets a bytecode that is an encoding of
 the intermediate representation of PyPy's translation toolchain after type
 inference has been performed.
-When the profiler shows
+When the profiler discovers
 that the \texttt{while} loop in \texttt{strange\_sum} is executed often the
 tracing JIT will start to trace the execution of that loop.  The trace would
 look as follows:
@@ -329,12 +332,12 @@ jump(result1, n1)
 \end{verbatim}
 }
 The operations in this sequence are operations of the above-mentioned intermediate
-representation (e.g. note that the generic modulo and equality operations in the
+representation (e.g. the generic modulo and equality operations in the
 function above have been recognized to always take integers as arguments and are thus
 rendered as \texttt{int\_mod} and \texttt{int\_eq}). The trace contains all the
 operations that were executed in SSA-form \cite{cytron_efficiently_1991} and ends with a jump
 to its beginning, forming an endless loop that can only be left via a guard
-failure. The call to \texttt{f} is inlined into the trace. Note that the trace
+failure. The call to \texttt{f} is inlined into the trace. The trace
 contains only the hot \texttt{else} case of the \texttt{if} test in \texttt{f},
 while the other branch is implemented via a guard failure. This trace can then
 be converted into machine code and executed.
@@ -476,7 +479,7 @@ using one counter per seen program counter of the language interpreter.
 \end{figure}
 
 Let's look at how hints would need to be applied to the example interpreter
-from Figure \ref{fig:tlr-basic}. To apply hints one generally needs a
+from Figure \ref{fig:tlr-basic}. To apply hints one needs a
 subclass of \texttt{JitDriver} that lists all the variables of the bytecode
 loop. The variables are classified into two groups, red variables and green
 variables. The green variables are those that the tracing JIT should consider to
@@ -484,7 +487,9 @@ be part of the program counter of the language interpreter. In the case of the
 example, the \texttt{pc} variable is obviously part of the program counter.
 However, the \texttt{bytecode} variable is also counted as green, since the
 \texttt{pc} variable is meaningless without the knowledge of which bytecode
-string is currently being interpreted. All other variables are red.
+string is currently being interpreted. All other variables are red (the fact
+that red variables need to be listed explicitly too is an implementation
+detail).
 
 In addition to the classification of the variables, there are two methods of
 \texttt{JitDriver} that need to be called. Both of them receive as arguments the
@@ -530,6 +535,7 @@ to be expected, given that the tracing interpreter looks at the execution of the
 language interpreter, it would still be an improvement if some of these operations could
 be removed.
 
+\toon{very difficult to read (actually so is the whole paragraph; rephrase)}
 The simple insight how to improve the situation is that most of the
 operations in the trace are actually concerned with manipulating the
 bytecode and the program counter. Those are stored in variables that are part of
@@ -552,7 +558,7 @@ the register list is still used to store the state of the computation. This
 could be removed by some other optimization, but is maybe not really all that
 bad anyway (in fact we have an experimental optimization that does exactly that,
 but it is not yet finished).  Once we get this optimized trace, we can pass it to
-the \emph{JIT backend}, which generates the correspondent machine code.
+the \emph{JIT backend}, which generates the corresponding machine code.
 
 \begin{figure}
 \input{code/full.txt}
@@ -590,7 +596,8 @@ all. It is possible to choose when the language interpreter is translated to C
 whether the JIT should be built in or not. If the JIT is not enabled, all the
 hints that are possibly in the interpreter source are just ignored by the
 translation process. In this way, the result of the translation is identical to
-that when no hints were present in the interpreter at all.
+that when no hints were present in the interpreter at all. \toon{strange
+sentence}
 
 If the JIT is enabled, things are more interesting. At the moment the JIT can
 only be enabled when translating the interpreter to C, but we hope to lift that
@@ -667,7 +674,7 @@ running time is not long enough to sensibly measure it)
 using the bytecode of Figure \ref{fig:square}. The results for various
 constellations are as follows:
 
-\textbf{Benchmark 1:} The interpreter translated to C without any JIT inserted at all.
+\textbf{Benchmark 1:} The interpreter translated to C without the JIT.
 
 \textbf{Benchmark 2:} The tracing JIT is enabled, but no inter\-preter-specific
 hints are applied. This corresponds to the trace in Figure
