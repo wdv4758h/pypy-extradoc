@@ -63,10 +63,10 @@
        \affaddr{Italy}\\
        \email{cuni@disi.unige.it}
 \and
-\alignauthor Armin Rigo\\
-       \email{arigo@tunes.org}
 \alignauthor Maciej Fijalkowski\\
        \email{fijal@merlinux.eu}
+\alignauthor Armin Rigo\\
+       \email{arigo@tunes.org}
 }
 \maketitle
 
@@ -77,13 +77,21 @@
 %Languages}[program analysis]
 
 \begin{abstract}
-We present techniques for improving the results when a tracing JIT compiler is
-applied to an interpreter.XXXAbrupt start - is the relevanz really immediately clear?XXX An unmodified tracing JIT performs not as well as one
-would hope when the compiled program is itself a bytecode interpreter. We
-examine the reasons for that, and how matters can be improved by adding markers to
-the interpreter that help the tracing JIT to improve the results. We evaluate
-the techniques by using them both on a small example as well as on a full Python
-interpreter. This work has been done in the context of the PyPy project.
+XXX the first paragraph is a bit too long, the second too strange, but I think
+it is a step in the right direction.
+
+Tracing JIT compilers can greatly speed up programs that spend most of their time
+in loops in which they take similar code paths.  Applying an unmodified tracing
+JIT to an application that is itself a bytecode interpreter results in very
+limited or no speedup. While bytecode interpreters spend most of their time in a
+loop, \ie the bytecode dispatch, the code paths taken depend fully on the input
+bytecode which the interpreter evaluates and thus changes all the time.
+
+In this paper we show how to guide tracing JIT compilers to greatly improve
+the speed of bytecode interpreters towards input bytecode. We evaluate our
+technique by applying it to both a small example as well as to a full Python 
+interpreter. This research has been conducted in the context of the PyPy 
+project.
 
 \end{abstract}
 
