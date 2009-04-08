@@ -53,7 +53,7 @@
 \numberofauthors{4}
 \author{
 \alignauthor Carl Friedrich Bolz\\
-       \affaddr{Heinrich-Heine-Universität Düsseldorf}\\
+       \affaddr{University of Düsseldorf}\\
        \affaddr{STUPS Group}\\
        \affaddr{Germany}\\
        \email{cfbolz@gmx.de}
@@ -80,8 +80,7 @@
 \begin{abstract}
 
 We attempt to use the technique of Tracing JIT Compilers
-\cite{gal_hotpathvm:effective_2006, andreas_gal_incremental_2006,
-mason_chang_efficient_2007} in the context
+in the context
 of the PyPy project, \ie on programs that are interpreters for some
 dynamic languages, including Python.  Tracing JIT compilers can greatly
 speed up programs that spend most of their time in loops in which they
@@ -219,11 +218,13 @@ also used as an input for the tracing JIT.
 \section{Tracing JIT Compilers}
 \label{sect:tracing}
 
-Tracing JITs are an idea initially explored by the Dynamo project
-\cite{bala_dynamo:transparent_2000} in the context of dynamic optimization of
-machine code at runtime. The techniques were then successfully applied to Java
-VMs \cite{gal_hotpathvm:effective_2006, andreas_gal_incremental_2006}. It also turned out that they are a
-relatively simple way to implement a JIT compiler for a dynamic language
+Tracing optimizations were initially explored by the Dynamo project
+\cite{bala_dynamo:transparent_2000} to dynamically optimize
+machine code at runtime. Its techniques were then successfully used to implement
+a JIT compiler for a Java
+VM \cite{gal_hotpathvm:effective_2006, andreas_gal_incremental_2006}.
+Subsequently these tracing JITs were discovered to be a
+relatively simple way to implement JIT compilers for dynamic languages
 \cite{mason_chang_efficient_2007}. The technique is now
 being used by both Mozilla's TraceMonkey JavaScript VM
 \cite{andreas_gal_trace-based_2009} and has been tried for Adobe's Tamarin
@@ -240,7 +241,7 @@ code paths of commonly executed loops and to interpret the rest of the program.
 The code for those common loops however is highly optimized, including
 aggressive inlining.
 
-Typically, programs executed by a tracing VM go through various phases:
+Typically tracing VMs go through various phases when they execute a program:
 \begin{itemize}
 \item Interpretation/profiling
 \item Tracing
@@ -252,7 +253,7 @@ At first, when the program starts, everything is interpreted.
 The interpreter does a small amount of lightweight profiling to establish which loops
 are run most frequently. This lightweight profiling is usually done by having a counter on
 each backward jump instruction that counts how often this particular backward jump
-was executed. Since loops need a backward jump somewhere, this method looks for
+is executed. Since loops need a backward jump somewhere, this method looks for
 loops in the user program.
 
 When a hot loop is identified, the interpreter enters a special mode, called
@@ -263,21 +264,19 @@ repeatedly checked during tracing as to whether the interpreter is at a position
 in the program where it had been earlier.
 
 The history recorded by the tracer is called a \emph{trace}: it is a sequential list of
-operations, together with their actual operands and results.  By examining the
-trace, it is possible to produce efficient machine code by generating
-code from the operations in it.  The machine code can then be executed immediately,
-starting from the next iteration of the loop, as the machine code represents
-exactly the loop that was being interpreted so far.
+operations, together with their actual operands and results. Such a trace can be
+used to generate efficient machine code. This generated machine code is
+immediately executable, and can be used in the next iteration of the loop.
 
 Being sequential, the trace represents only one
 of the many possible paths through the code. To ensure correctness, the trace
 contains a \emph{guard} at every possible point where the path could have
-followed another direction, for example conditions and indirect or virtual
+followed another direction, for example at conditions and indirect or virtual
 calls.  When generating the machine code, every guard is turned into a quick check
 to guarantee that the path we are executing is still valid.  If a guard fails,
 we immediately quit the machine code and continue the execution by falling
 back to interpretation.\footnote{There are more complex mechanisms in place to
-still produce more code for the cases of guard failures
+still produce extra code for the cases of guard failures
 \cite{andreas_gal_incremental_2006}, but they are independent of the issues
 discussed in this paper.}
 
@@ -295,8 +294,7 @@ interpretation they are the place where the profiling is performed and where
 tracing is started or already existing assembler code executed; during tracing
 they are the place where the check for a closed loop is performed.
 
-Let's look at a small example. Take the following (slightly contrived) RPython
-code:
+\begin{figure}
 {\small
 \begin{verbatim}
 def f(a, b):
@@ -310,18 +308,8 @@ def strange_sum(n):
         result = f(result, n)
         n -= 1
     return result
-\end{verbatim}
-}
 
-The tracer interprets these functions in a bytecode that is an encoding of
-the intermediate representation of PyPy's translation toolchain after type
-inference has been performed.
-When the profiler discovers
-that the \texttt{while} loop in \texttt{strange\_sum} is executed often the
-tracing JIT will start to trace the execution of that loop.  The trace would
-look as follows:
-{\small
-\begin{verbatim}
+# corresponding trace:
 loop_header(result0, n0)
 i0 = int_mod(n0, Const(46))
 i1 = int_eq(i0, Const(41))
@@ -333,6 +321,20 @@ guard_true(i2)
 jump(result1, n1)
 \end{verbatim}
 }
+\caption{A simple Python function and the recorded trace.}
+\label{fig:simple-trace}
+\end{figure}
+
+Let's look at a small example. Take the (slightly contrived) RPython code in
+Figure \ref{fig:simple-trace}.
+The tracer interprets these functions in a bytecode format that is an encoding of
+the intermediate representation of PyPy's translation tool\-chain after type
+inference has been performed.
+When the profiler discovers
+that the \texttt{while} loop in \texttt{strange\_sum} is executed often the
+tracing JIT will start to trace the execution of that loop.  The trace would
+look as in the lower half of Figure \ref{fig:simple-trace}.
+
 The operations in this sequence are operations of the above-mentioned intermediate
 representation (\eg the generic modulo and equality operations in the
 function above have been recognized to always take integers as arguments and are thus
@@ -675,9 +677,9 @@ include running the tracer and producing machine code.
 
 The first round of benchmarks (Figure \ref{fig:bench1}) are timings of the
 example interpreter given in Figure \ref{fig:tlr-basic} computing
-the square of 10000000\footnote{The result will overflow, but for smaller numbers the
+the square of 10000000 using the bytecode of Figure \ref{fig:square}.\footnote{The result will overflow, but for smaller numbers the
 running time is not long enough to sensibly measure it.}
-using the bytecode of Figure \ref{fig:square}. The results for various
+The results for various
 configurations are as follows:
 
 \textbf{Benchmark 1:} The interpreter translated to C without including a JIT
