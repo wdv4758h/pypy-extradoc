@@ -9,7 +9,7 @@
 \usepackage[utf8]{inputenc}
 
 \newboolean{showcomments}
-\setboolean{showcomments}{true}
+\setboolean{showcomments}{false}
 \ifthenelse{\boolean{showcomments}}
   {\newcommand{\nb}[2]{
     \fbox{\bfseries\sffamily\scriptsize#1}
@@ -412,6 +412,12 @@ unlikely that the same particular opcode is executed many times in a row.
 \label{fig:square}
 \end{figure}
 
+\begin{figure}
+\input{code/normal-tracing.txt}
+\caption{Trace when executing the \texttt{DECR\_A} opcode}
+\label{fig:trace-normal}
+\end{figure}
+
 An example is given in Figure \ref{fig:tlr-basic}. It shows the code of a very
 simple bytecode interpreter with 256 registers and an accumulator.  The
 \texttt{bytecode} argument is a string of bytes, all register and the
@@ -427,12 +433,6 @@ Because of the guard on \texttt{opcode0}, the code compiled from this trace will
 be useful only when executing a long series of \texttt{DECR\_A} opcodes. For all
 the other operations the guard will fail, which will mean that performance is
 probably not improved at all.
-
-\begin{figure}
-\input{code/normal-tracing.txt}
-\caption{Trace when executing the \texttt{DECR\_A} opcode}
-\label{fig:trace-normal}
-\end{figure}
 
 To improve this situation, the tracing JIT could trace the execution of several
 opcodes, thus effectively unrolling the bytecode dispatch loop. Ideally, the
@@ -487,7 +487,8 @@ interpreter.
 \end{figure}
 
 Let's look at how hints would need to be applied to the example interpreter
-from Figure \ref{fig:tlr-basic}. To apply hints one needs a
+from Figure \ref{fig:tlr-basic}. Figure \ref{fig:tlr-full} shows the relevant
+parts of the interpreter with hints applied. To apply hints one needs a
 subclass of \texttt{JitDriver} that lists all the variables of the bytecode
 loop. The variables are classified into two groups, red variables and green
 variables. The green variables are those that the tracing JIT should consider to
