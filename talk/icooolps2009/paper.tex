@@ -725,23 +725,7 @@ interpreter) the overhead will likely be less significant.
 10000000}
 \end{figure}
 
-To test the technique on a more realistic example, we did some
-preliminary benchmarks with PyPy's Python interpreter. The function we
-benchmarked as well as the results can be seen in Figure
-\ref{fig:bench-python}. The function is a bit arbitrary but executing it is
-still non-trivial, as a normal Python interpreter needs to dynamically dispatch
-nearly all of the involved operations (like indexing into the tuple, addition
-and comparison of \texttt{i}). We benchmarked PyPy's Python interpreter with the
-JIT disabled, with the JIT enabled and
-CPython\footnote{\texttt{http://python.org}} 2.5.4 (the reference implementation of
-Python). 
-
-The results show that the tracing JIT speeds up the execution of this Python
-function significantly, even outperforming CPython. To achieve this, the tracer
-traces through the whole Python dispatching machinery, automatically inlining
-the relevant fast paths.
-
-\begin{figure}
+\begin{figure}[h]
 \label{fig:bench-example}
 {\small
 \begin{verbatim}
@@ -768,6 +752,22 @@ def f(a):
 \caption{Benchmarked function and results for the Python interpreter running
 \texttt{f(10000000)} \label{fig:bench-python}}
 \end{figure}
+
+To test the technique on a more realistic example, we did some
+preliminary benchmarks with PyPy's Python interpreter. The function we
+benchmarked as well as the results can be seen in Figure
+\ref{fig:bench-python}. While the function may seem a bit arbitrary, executing it is
+still non-trivial, as a normal Python interpreter needs to dynamically dispatch
+nearly all of the involved operations, like indexing into the tuple, addition
+and comparison of \texttt{i}. We benchmarked PyPy's Python interpreter with the
+JIT disabled, with the JIT enabled and
+CPython\footnote{\texttt{http://python.org}} 2.5.4 (the reference implementation of
+Python). 
+
+The results show that the tracing JIT speeds up the execution of this Python
+function significantly, even outperforming CPython. To achieve this, the tracer
+traces through the whole Python dispatching machinery, automatically inlining
+the relevant fast paths.
 
 \section{Related Work}
 
