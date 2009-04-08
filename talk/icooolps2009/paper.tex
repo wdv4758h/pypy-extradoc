@@ -79,16 +79,14 @@
 \begin{abstract}
 
 We attempt to use the technique of Tracing JIT Compilers
-(see e.g.\ \cite{andreas_gal_incremental_2006}) in the context
+\cite{gal_hotpathvm:effective_2006, andreas_gal_incremental_2006,
+mason_chang_efficient_2007} in the context
 of the PyPy project, \ie on programs that are interpreters for some
-dynamic language (including Python).  Tracing JIT compilers can greatly
+dynamic languages, including Python.  Tracing JIT compilers can greatly
 speed up programs that spend most of their time in loops in which they
 take similar code paths.  However, applying an unmodified tracing JIT to
 a program that is itself a bytecode interpreter results in very limited
-or no speedup.  One of the reasons is that their main loop, \ie the
-bytecode dispatch, always executes different bytecodes and so follows
-different paths.
-
+or no speedup.
 In this paper we show how to guide tracing JIT compilers to greatly
 improve the speed of bytecode interpreters.  One crucial point is to
 unroll the bytecode dispatch loop, based on two hints provided by the
