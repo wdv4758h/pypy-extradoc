@@ -4,8 +4,7 @@ Leysin Sprint Planning
 release tasks:
  - fix stackless pickling with optimization NEARLY DONE, waiting for a
    translation, needs to be merged (Carl Friedrich, Samuele around)
- - nice to have: stackless recursion limit on the rpython level IN-PROGRESS,
-   some bugs left
+ - nice to have: stackless recursion limit on the rpython level DONE
  - fix stackless in conjunction with C callbacks PARTIALLY DONE: they don't
    explode any more (Carl Friedrich, Armin when he appears)
  - stackless and threads?!
