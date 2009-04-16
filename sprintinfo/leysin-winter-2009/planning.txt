@@ -2,9 +2,12 @@ Leysin Sprint Planning
 ======================
 
 release tasks:
- - fix stackless pickling with optimizations (Carl Friedrich, Samuele)
- - nice to have: stackless recursion limit on the rpython level (Armin, Niko)
- - fix stackless in conjunction with C callbacks
+ - fix stackless pickling with optimization NEARLY DONE, waiting for a
+   translation, needs to be merged (Carl Friedrich, Samuele around)
+ - nice to have: stackless recursion limit on the rpython level IN-PROGRESS,
+   some bugs left
+ - fix stackless in conjunction with C callbacks PARTIALLY DONE: they don't
+   explode any more (Carl Friedrich, Armin when he appears)
  - stackless and threads?!
 
  - decide what to do with:
@@ -12,10 +15,11 @@ release tasks:
     - js backend
     - lang
  - state of the windows build (get back to bigdog)
- - last lib-python failures (Iko, Christian)
+ - last lib-python failures IN-PROGRESS: two failures left
+ - fix tracing hook problems: (Christian, ...)
  - do we want to implement setting thread's stack size?
    see http://www.python.org/doc/2.5.4/lib/module-thread.html function
-   stack_size (Iko, Christian)
+   stack_size (Iko, Samuele)
 
  - documentation tasks:
     - entry points for users of our Python Interpreter (for install and use)
@@ -26,6 +30,7 @@ release tasks:
 
 non-release tasks:
  - JVM backend:
+    - translation broken (Niko, Anto)
     - performance sucks
     - no way to interface with anything
 
