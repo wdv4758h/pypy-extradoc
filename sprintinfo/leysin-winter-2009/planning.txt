@@ -10,12 +10,12 @@ release tasks:
  - stackless and threads?!
 
  - decide what to do with:
-    - llvm backend
-    - js backend
+    - llvm backend KILLED (check?)
+    - js backend KILLED (check?)
     - lang
  - state of the windows build (get back to bigdog)
- - last lib-python failures IN-PROGRESS: two failures left
- - fix tracing hook problems: (Christian, ...)
+ - last lib-python failures TESTING
+ - fix tracing hook problems: DONE
  - do we want to implement setting thread's stack size?
    see http://www.python.org/doc/2.5.4/lib/module-thread.html function
    stack_size DONE
