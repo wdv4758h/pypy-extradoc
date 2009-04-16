@@ -19,7 +19,7 @@ release tasks:
  - fix tracing hook problems: (Christian, ...)
  - do we want to implement setting thread's stack size?
    see http://www.python.org/doc/2.5.4/lib/module-thread.html function
-   stack_size (Iko, Samuele)
+   stack_size (TESTING)
 
  - documentation tasks:
     - entry points for users of our Python Interpreter (for install and use)
