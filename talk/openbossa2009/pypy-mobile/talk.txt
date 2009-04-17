@@ -42,14 +42,14 @@ In this talk mostly: PyPy = PyPy Python Interpreter
    :align: center
 
 
-PyPy - developer motivation
+PyPy - Motivation 
 =================================
 
-* **high level Python specification**! 
+* **high level Python specification** (in RPyhton) 
 
 * layer GCs, JIT, Stackless atop the spec 
 
-* **generate interpreters** for targets 
+* **generate** efficient interpreters for targets 
 
 
 .. image:: pypy-multitarget.png
