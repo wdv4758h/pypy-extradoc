@@ -23,12 +23,12 @@ release tasks:
        - cli-related stuff (Anto)
        - sandbox docs (Armin)
     - release announcement
-    - contributors list (Carl Friedrich)
+    - contributors list DONE
     - fix version numbers and links
  
  - sprint blog post (Carl Friedrich)
 
- - fixing the last test failures (Carl Friedrich, Iko)
+ - fixing the last test failures DONE
 
 non-release tasks:
  - JVM backend:
