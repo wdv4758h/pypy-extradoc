@@ -21,7 +21,7 @@ release tasks:
        - faq (Niko)
        - architecture
        - cli-related stuff (Anto)
-       - sandbox docs (Armin)
+       - sandbox docs DONE
     - release announcement
     - contributors list DONE
     - fix version numbers and links
