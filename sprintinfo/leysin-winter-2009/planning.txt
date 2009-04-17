@@ -24,7 +24,7 @@ release tasks:
        - sandbox docs DONE
     - release announcement
     - contributors list DONE
-    - fix version numbers and links
+    - fix version numbers and links, also in the code
  
  - sprint blog post (Carl Friedrich)
 
