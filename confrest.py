@@ -1,5 +1,5 @@
-from py.__.doc.confrest import *
 import py
+from confrest_oldpy import *
 
 class PyPyPage(Page): 
     def fill(self):
