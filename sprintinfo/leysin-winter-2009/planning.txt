@@ -2,38 +2,39 @@ Leysin Sprint Planning
 ======================
 
 release tasks:
- - fix stackless pickling with optimization NEARLY DONE, waiting for a
-   translation, needs to be merged (Carl Friedrich, Samuele around)
- - nice to have: stackless recursion limit on the rpython level DONE
- - fix stackless in conjunction with C callbacks PARTIALLY DONE: they don't
-   explode any more (Carl Friedrich, Armin when he appears)
  - stackless and threads?!
 
  - decide what to do with:
-    - llvm backend KILLED (check?)
-    - js backend KILLED (check?)
-    - lang
- - state of the windows build (get back to bigdog)
- - last lib-python failures TESTING
- - fix tracing hook problems: DONE
- - do we want to implement setting thread's stack size?
-   see http://www.python.org/doc/2.5.4/lib/module-thread.html function
-   stack_size DONE
+    - llvm backend KILLED: fix docs (Carl Friedrich)
+    - js backend KILLED: kill js only stuff in rpython/ (Samuele)
+    - jit directories on trunk?
+ - state of the windows build IN-PROGRESS (Iko)
 
  - documentation tasks:
     - entry points for users of our Python Interpreter (for install and use)
     - provide docs on differences to Cpython and the state of support for
-      extension modules and ctypes
+      extension modules and ctypes (file cpython_differences.txt) (Samuele,
+      Carl Friedrich)
     - go through examples to see whether  they still work
     - review old docs
+       - getting-started (Niko)
+       - faq (Niko)
+       - architecture
+       - cli-related stuff (Anto)
+       - sandbox docs (Armin)
+    - release announcement
+    - contributors list (Carl Friedrich)
+    - fix version numbers and links
+ 
+ - sprint blog post (Carl Friedrich)
+
+ - fixing the last test failures (Carl Friedrich, Iko)
 
 non-release tasks:
  - JVM backend:
-    - translation broken (Niko, Anto)
-    - performance sucks
+    - performance sucks (a bit less)
     - no way to interface with anything
 
 meetings:
- - Thursday 17.00 IRC meeting
  - JIT presentation (Armin, Carl Friedrich)
- 
+ - discuss Europython sprints 
