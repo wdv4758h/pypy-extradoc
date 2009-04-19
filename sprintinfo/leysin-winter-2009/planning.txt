@@ -16,6 +16,7 @@ release tasks:
     - make tarball and upload
     - copy to dist
     - regenerate codespeak docs
+    - try to download
     - send out announcement
     - blog post
 
