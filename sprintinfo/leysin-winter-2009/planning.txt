@@ -4,31 +4,19 @@ Leysin Sprint Planning
 release tasks:
  - stackless and threads?!
 
- - decide what to do with:
-    - llvm backend KILLED: fix docs (Carl Friedrich)
-    - js backend KILLED: kill js only stuff in rpython/ (Samuele)
-    - jit directories on trunk?
- - state of the windows build IN-PROGRESS (Iko)
+ - windows buildbot is running nightly
 
  - documentation tasks:
-    - entry points for users of our Python Interpreter (for install and use)
-    - provide docs on differences to Cpython and the state of support for
-      extension modules and ctypes (file cpython_differences.txt) (Samuele,
-      Carl Friedrich)
-    - go through examples to see whether  they still work
+    - review docs on differences to Cpython and the state of support for
+      extension modules and ctypes (file cpython_differences.txt)
     - review old docs
-       - getting-started (Niko)
-       - faq (Niko)
        - architecture
-       - cli-related stuff (Anto)
-       - sandbox docs DONE
-    - release announcement
-    - contributors list DONE
-    - fix version numbers and links, also in the code
+    - release announcement (look at PyCon talk) (Armin, Anto)
+    - review and finish version numbers and links, also in the code (Samuele)
  
  - sprint blog post (Carl Friedrich)
 
- - fixing the last test failures DONE
+ - fixing the really last test failures (Iko, Carl Friedrich)
 
 non-release tasks:
  - JVM backend:
