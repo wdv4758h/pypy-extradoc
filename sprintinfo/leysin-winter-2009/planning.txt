@@ -18,6 +18,14 @@ release tasks:
 
  - fixing the really last test failures (Iko, Carl Friedrich)
 
+ - release tasks:
+    - make branch
+    - copy to dist
+    - try out on a bare machine
+    - make tarball and upload
+    - regenerate codespeak docs
+    - send out announcement
+
 non-release tasks:
  - JVM backend:
     - performance sucks (a bit less)
