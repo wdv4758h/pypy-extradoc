@@ -21,6 +21,7 @@ release tasks:
  - release tasks:
     - make branch
     - copy to dist
+    - fix the revision of the py lib
     - try out on a bare machine
     - make tarball and upload
     - regenerate codespeak docs
