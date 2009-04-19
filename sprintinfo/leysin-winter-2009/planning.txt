@@ -8,23 +8,23 @@ release tasks:
 
  - documentation tasks:
     - review docs on differences to Cpython and the state of support for
-      extension modules and ctypes (file cpython_differences.txt)
+      extension modules and ctypes (file cpython_differences.txt) [DONE]
     - review old docs
-       - architecture
-    - release announcement (look at PyCon talk) (Armin, Anto)
-    - review and finish version numbers and links, also in the code (Samuele) DONE, download.txt needs to be updated
+       - architecture (Armin) [DONE]
+    - release announcement (look at PyCon talk) (Armin, Anto, Carl Friedrich [DONE]
+    - review and finish version numbers and links, also in the code (Samuele) DONE, download.txt needs to be updated [DONE]
  
  - sprint blog post (Carl Friedrich)
 
- - fixing the really last test failures (Iko, Carl Friedrich)
+ - fixing the really last test failures (Iko, Carl Friedrich) PROGRESS
 
  - release tasks:
-    - make branch
-    - copy to dist
+    - make branch [DONE]
     - fix the revision of the py lib
     - try out on a bare machine
     - make tarball and upload
     - update download.txt
+    - copy to dist
     - regenerate codespeak docs
     - send out announcement
 
