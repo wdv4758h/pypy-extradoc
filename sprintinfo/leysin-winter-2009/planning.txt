@@ -12,7 +12,7 @@ release tasks:
     - review old docs
        - architecture
     - release announcement (look at PyCon talk) (Armin, Anto)
-    - review and finish version numbers and links, also in the code (Samuele)
+    - review and finish version numbers and links, also in the code (Samuele) DONE, download.txt needs to be updated
  
  - sprint blog post (Carl Friedrich)
 
