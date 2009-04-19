@@ -24,6 +24,7 @@ release tasks:
     - fix the revision of the py lib
     - try out on a bare machine
     - make tarball and upload
+    - update download.txt
     - regenerate codespeak docs
     - send out announcement
 
