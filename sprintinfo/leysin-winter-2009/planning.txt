@@ -2,29 +2,21 @@ Leysin Sprint Planning
 ======================
 
 release tasks:
- - stackless and threads?!
-
- - windows buildbot is running nightly
-
  - sprint blog post (Carl Friedrich)
 
- - fixing the really last test failures (Iko, Carl Friedrich) PROGRESS
+ - fixing the trunk failures (Armin, Iko)
 
- - release tasks:
-    - try out on a bare machine
-    - make a tag
-    - make tarball and upload
-    - copy to dist
-    - regenerate codespeak docs
-    - try to download
-    - send out announcement
-    - blog post
+ - fix building on OS X (Chris, Samuele)
 
-non-release tasks:
- - JVM backend:
-    - performance sucks (a bit less)
-    - no way to interface with anything
+ - fix tuatara benchmarks (Anto)
+
+ - porting stackless to OOType (Carl Friedrich, Anto)
+
+ - JIT
 
 meetings:
  - JIT presentation (Armin, Carl Friedrich)
- - discuss Europython sprints 
+ - Europython sprints (http://wiki.europython.eu/Sprints) 
+    - there will be definitely a sprint before europython
+    - afterwards is not clear yet, because some people are going to ECOOP
+ - separate compilation?
