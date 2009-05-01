@@ -9,8 +9,8 @@ python ran faster.
 
 Creating a JIT has been one of the main objectives of the PyPy project for
 quite a while now.  As of `March 2009`_, we're able to speed up simple
-examples in Python t about 20-30x over the speed of CPython. Since PyPy's
-JIT is much more flexible than Pysco we expect even greater speedups in the
+examples in Python about 20-30x over the speed of CPython. Since PyPy's JIT
+is much more flexible than Pysco we expect even greater speedups in the
 future, as well as support for floats and 64bit architectures, which Psyco
 will not achieve in forseeable future.
 
