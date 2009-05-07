@@ -256,15 +256,89 @@ Speed - JIT generator (2)
 Speed - JIT for CLI/.NET
 =========================
 
-* Originally written for the 2nd JIT generation
+* originally written for the 2nd JIT generation
 
-* Can compile small dynamic languages - not full PyPy yet
+* can compile small dynamic languages - not full PyPy yet
 
-* Same speed as C# in numeric benchmarks
+* same speed as C# in numeric benchmarks
 
-* Up to 40% **faster** than C# for some OO benchmarks
+* up to 40% **faster** than C# for some OO benchmarks
 
-* Porting to 5th generation in-progress
+* porting to 5th generation in-progress
+
+
+Sandboxing - Definition
+=========================
+
+* ability to run untrusted Python code
+
+* no way to:
+
+  - interfere with the calling application
+
+  - access system resources (files, etc.)
+
+  - make a DoS by memory exhaustion
+
+  - make a DoS by using 100% CPU
+
+
+Sandboxing - Approaches
+=========================
+
+* bytecode/source verification
+
+* CPython source modification/monkey patching
+
+* platform-level security (GAE)
+
+* restrict python language to something harmless
+  (zope's restricted python)
+
+
+Sandboxing - Problems
+======================
+
+* Patchy approach - "*we fix all places that might be
+  potentially dangerous*"
+
+* Tradeoffs - either usability suffer or security is
+  hard to control
+
+* "Nobody cracked it so far" approach is not
+  "security by design"
+
+Sandboxing - PyPy approach
+============================
+
+.. image:: sandbox1.png 
+   :scale: 50
+   :align: center
+
+* C API implemented by parent process
+
+  - virtual file system
+
+* Memory limit
+
+* CPU time limit
+
+
+How to use it today?
+=======================
+
+* translate pypy with --sandbox (takes a while)
+
+* run using pypy_interact.py
+
+* demo
+
+* you win a beer if you break it :-)
+
+.. raw:: latex
+
+  \small{\url{http://codespeak.net/pypy/dist/pypy/doc/sandbox.html}}
+  \small{\url{http://codespeak.net/svn/user/getxsick/django-sandbox/}}
 
 
 Memory - comparison with CPython
