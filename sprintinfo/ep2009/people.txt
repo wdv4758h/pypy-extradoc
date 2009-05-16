@@ -1,5 +1,5 @@
         
-People coming to the EuroPython Sprints (Birmingham) 29-29 June/3-4 July 2009
+People coming to the EuroPython Sprints (Birmingham) 28-29 June/3-4 July 2009
 ===============================================================================
 
 People who have a ``?`` in their arrive/depart or accomodation
@@ -10,7 +10,7 @@ available yet from them.
 ==================== ============== ============================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== ============================
-?                    ?              ?
+Samuele Pedroni      28/5           ?
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
@@ -47,7 +47,6 @@ Niklaus Haldimann    ?              ?
 Niko Matsakis        ?              ?
 Paul deGrandis       ?              ?
 Richard Emslie       ?              ?
-Samuele Pedroni      ?              ?
 Stephan Diehl        ?              ?
 Sylvain Thénault     ?              ?
 Toby Watson          ?              ?
