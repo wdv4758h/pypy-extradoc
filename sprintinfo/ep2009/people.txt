@@ -1,0 +1,56 @@
+        
+People coming to the EuroPython Sprints (Birmingham) 29-29 June/3-4 July 2009
+===============================================================================
+
+People who have a ``?`` in their arrive/depart or accomodation
+column are known to be coming but there are no details 
+available yet from them.
+
+
+==================== ============== ============================
+    Name              Arrive/Depart     Accomodation 
+==================== ============== ============================
+?                    ?              ?
+==================== ============== ============================
+
+People on the following list were present at previous sprints: 
+
+==================== ============== =====================
+       Name          Arrive/Depart  Accomodation 
+==================== ============== =====================
+Alexander Schremmer  ?              ?
+Alexandre Fayolle    ?              ?
+Amaury Forgeot d'Arc ?              ?
+Anders Chrigstroem   ?              ?
+Anders Lehmann       ?              ?
+Andrew Thompson      ?              ?
+Antonio Cuni         ?              ?
+Armin Rigo           ?              ?
+Beatrice Duering     ?              ?
+Bert Freudenberg     ?              ?
+Boris Feigin	     ?              ?
+Camillo Bruni        ?              ?
+Carl Friedrich Bolz  ?              ?
+Christian Tismer     ?              ?
+Eric van Riet Paap   ?              ?
+Guido Wesdorp        ?              ?
+Holger Krekel        ?              ?
+Jacob Hallen         ?              ?
+Jakub Gustak         ?              ?
+Johan Hahn           ?              ?
+Laura Creighton      ?              ?
+Lene Wagner          ?              ?
+Leonardo Santagada   ?              ?
+Maciej Fijalkowski   ?              ?
+Michael Hudson       ?              ?
+Niklaus Haldimann    ?              ?
+Niko Matsakis        ?              ?
+Paul deGrandis       ?              ?
+Richard Emslie       ?              ?
+Samuele Pedroni      ?              ?
+Stephan Diehl        ?              ?
+Sylvain Thénault     ?              ?
+Toby Watson          ?              ?
+Toon Verwaest        ?              ?
+Valentino Volonghi   ?              ?
+==================== ============== =====================

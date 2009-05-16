@@ -1,0 +1,76 @@
+==================================================================
+Birmingham (UK) EuroPython PyPy Sprints 28-29 June/ 3-4 July 2009
+==================================================================
+
+The PyPy team is sprinting at EuroPython again. This year there are
+`sprint days`_ before (28-29 June) and after (3-4 July) the
+conference. Some PyPy core people should be present during both periods.
+
+.. _`sprint days`: http://wiki.europython.eu/Sprints
+
+If you plan to attend the sprints after the conference we recommend
+you to listen to the PyPy technical talk (`EuroPython schedule`_)
+during the conference since it will give you a good overview of the
+status of development.
+
+XXX When/if tutorial?
+On the morning of the first sprint day we will also have a
+tutorial session for those new to PyPy development.
+
+------------------------------
+Goals and topics of the sprint
+------------------------------
+
+There are many possible and interesting sprint topics to work on - here
+we list some possible task areas:
+
+XXX
+
+------------
+Registration
+------------
+
+If you'd like to come, please subscribe to the `pypy-sprint mailing list`_
+and drop a note about your interests and post any questions.  More
+organisational information will be sent to that list.
+
+Please register by adding yourself on the following list (via svn):
+
+  http://codespeak.net/svn/pypy/extradoc/sprintinfo/ep2009/people.txt
+
+or on the pypy-sprint mailing list if you do not yet have check-in rights:
+
+  http://codespeak.net/mailman/listinfo/pypy-sprint
+
+---------------------------------------
+Preparation (if you feel it is needed):
+---------------------------------------
+
+* read the `getting-started`_ pages on http://codespeak.net/pypy,
+  especially also the `development of PyPy itself part`_ .
+
+* for inspiration, overview and technical status you are welcome to
+  read `the technical reports available and other relevant documentation`_
+
+* please direct any technical and/or development oriented questions to
+  pypy-dev at codespeak.net and any sprint organizing/logistical
+  questions to pypy-sprint at codespeak.net
+
+* if you need information about the conference, potential hotels,
+  directions etc we recommend to look at http://www.europython.eu.
+
+
+We are looking forward to meet you at the EuroPython PyPy sprints!
+
+The PyPy team 
+
+
+.. See also ..
+
+.. _getting-started: http://codespeak.net/pypy/dist/pypy/doc/getting-started.html
+.. _`development of PyPy itself part`: http://codespeak.net/pypy/dist/pypy/doc/getting-started-dev.html
+
+.. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
+.. _`the technical reports available and other relevant documentation`: http://codespeak.net/pypy/dist/pypy/doc/docindex.html
+
+.. _`EuroPython schedule`: http://europython.eu/XXX
