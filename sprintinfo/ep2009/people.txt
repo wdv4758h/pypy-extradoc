@@ -11,6 +11,7 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== ============================
 Samuele Pedroni      28/5           ?
+Antonio Cuni         28/4           ETAPS Hotel (shared with cfbolz)
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
