@@ -12,6 +12,7 @@ available yet from them.
 ==================== ============== ============================
 Samuele Pedroni      28/5           ?
 Antonio Cuni         28/4           ETAPS Hotel (shared with cfbolz)
+Carl Friedrich Bolz  28/4           ETAPS Hotel
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
@@ -31,7 +32,6 @@ Beatrice Duering     ?              ?
 Bert Freudenberg     ?              ?
 Boris Feigin	     ?              ?
 Camillo Bruni        ?              ?
-Carl Friedrich Bolz  ?              ?
 Christian Tismer     ?              ?
 Eric van Riet Paap   ?              ?
 Guido Wesdorp        ?              ?
