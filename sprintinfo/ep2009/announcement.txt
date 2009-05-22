@@ -13,7 +13,7 @@ you to listen to the PyPy technical talk (`EuroPython schedule`_)
 during the conference since it will give you a good overview of the
 status of development.
 
-XXX When/if tutorial?
+.. xxx When/if tutorial?
 On the morning of the first sprint day we will also have a
 tutorial session for those new to PyPy development.
 
@@ -24,7 +24,7 @@ Goals and topics of the sprint
 There are many possible and interesting sprint topics to work on - here
 we list some possible task areas:
 
-XXX
+TBA
 
 ------------
 Registration
@@ -73,4 +73,4 @@ The PyPy team
 .. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 .. _`the technical reports available and other relevant documentation`: http://codespeak.net/pypy/dist/pypy/doc/docindex.html
 
-.. _`EuroPython schedule`: http://europython.eu/XXX
+.. _`EuroPython schedule`: http://europython.eu/xxx
