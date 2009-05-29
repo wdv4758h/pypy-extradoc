@@ -23,9 +23,9 @@ we list some possible task areas:
    the CPython test suite is not all that complete, therefore the fact that we
    pass most tests is no real indication of bug-freeness. We have tried and
    know that frameworks like Django and Twisted work with PyPy. Therefore we would
-   like to try running more "real application" on top of the Python interpreter
+   like to try running more "real applications" on top of the Python interpreter
    (ideally ones that have a good test suite themselves and that don't need
-   unusual extension modules). Running things on windows is also interesting,
+   unusual extension modules). Running things on Windows is also interesting,
    we know our coverage there is not as good as on Linux.
 
  - check and improve Mac OS X support
