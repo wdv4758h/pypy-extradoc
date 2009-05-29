@@ -13,18 +13,30 @@ you to listen to the PyPy technical talk (`EuroPython schedule`_)
 during the conference since it will give you a good overview of the
 status of development.
 
-.. xxx When/if tutorial?
-On the morning of the first sprint day we will also have a
-tutorial session for those new to PyPy development.
-
-------------------------------
 Goals and topics of the sprint
 ------------------------------
 
 There are many possible and interesting sprint topics to work on - here
 we list some possible task areas:
 
-TBA
+ - trying out software on PyPy's Python interpreter:
+   the CPython test suite is not all that complete, therefore the fact that we
+   pass most tests is no real indication of bug-freeness. We have tried and
+   know that frameworks like Django and Twisted work with PyPy. Therefore we would
+   like to try running more "real application" on top of the Python interpreter
+   (ideally ones that have a good test suite themselves and that don't need
+   unusual extension modules). Running things on windows is also interesting,
+   we know our coverage there is not as good as on Linux.
+
+ - check and improve Mac OS X support
+
+ - starting to work on porting 2.6 features to PyPy's Python interpreter
+
+ - ongoing JIT generator work
+
+ - of course we are open to other ideas for what to work on. Examples could
+   be working on other language interpreters, sandboxing, ...
+
 
 ------------
 Registration
