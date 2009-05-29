@@ -73,4 +73,4 @@ The PyPy team
 .. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
 .. _`the technical reports available and other relevant documentation`: http://codespeak.net/pypy/dist/pypy/doc/docindex.html
 
-.. _`EuroPython schedule`: http://europython.eu/xxx
+.. _`EuroPython schedule`: http://europython.eu/talks/timetable
