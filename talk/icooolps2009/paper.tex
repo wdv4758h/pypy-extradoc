@@ -791,6 +791,21 @@ assembler level it is not really visible anymore that \eg a bytecode string is
 immutable. Also more advanced optimizations like allocation removal would
 not be possible with that approach.
 
+There are quite an number of approaches that try to minimally enhance
+interpreters to generate code at runtime without actually writing a native
+compiler by hand. The goal of these is to get rid of dispatch overhead of
+typical interpreters while retaining ease of implementation. Piumarta and
+Riccardi \cite{piumarta_optimizing_1998} propose to copy fragments of the
+interpreter together for commonly occurring bytecode sequences to reduce
+dispatch overhead. However, dispatching is still needed to jump between such
+sequences and also when non-copyable bytecodes occur. Ertl and Gregg
+\cite{ertl_retargeting_2004} go further and stitch together the concatenated
+sequences by patching the copied machine code. Thus they get rid of all dispatch
+overhead. Both techniques can speed up interpreters which large dispatch
+overhead a lot. However they will help less if the bytecodes themselves do a
+lot of work (as is the case with Python), whereas our tracing technique can
+trace into the implementation of those bytecodes.
+
 The standard approach for automatically producing a compiler for a programming
 language given an interpreter for it is that of partial evaluation
 \cite{futamura_partial_1999, jones_partial_1993}. Conceptually there are some
