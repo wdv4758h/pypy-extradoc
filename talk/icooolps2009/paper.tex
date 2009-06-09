@@ -89,7 +89,7 @@ a program that is itself a bytecode interpreter results in very limited
 or no speedup.
 In this paper we show how to guide tracing JIT compilers to greatly
 improve the speed of bytecode interpreters.  One crucial point is to
-unroll the bytecode dispatch loop, based on two hints provided by the
+unroll the bytecode dispatch loop, based on two kinds of hints provided by the
 implementer of the bytecode interpreter.  We evaluate our technique by
 applying it to two PyPy interpreters: one is a small example, and the
 other one is the full Python interpreter.
@@ -182,7 +182,7 @@ The contributions of this paper are:
 
 The PyPy project\footnote{http://codespeak.net/pypy}
 \cite{rigo_pypys_2006,carl_friedrich_bolz_to_2007} is an
-environment where flexible implementation of dynamic languages can be written.
+environment where flexible implementations of dynamic languages can be written.
 To implement a dynamic language with PyPy, an interpreter for that language has
 to be written in RPython \cite{ancona_rpython:step_2007}. RPython (``Restricted
 Python'') is a subset of Python
@@ -432,7 +432,7 @@ integer value is 7), the trace would look as in Figure \ref{fig:trace-normal}.
 Because of the guard on \texttt{opcode0}, the code compiled from this trace will
 be useful only when executing a long series of \texttt{DECR\_A} opcodes. For all
 the other operations the guard will fail, which will mean that performance is
-probably not improved at all.
+not improved at all.
 
 To improve this situation, the tracing JIT could trace the execution of several
 opcodes, thus effectively unrolling the bytecode dispatch loop. Ideally, the
@@ -516,7 +516,7 @@ the ``green'' variables are the same as at an earlier call to the
 \texttt{can\_enter\_jit} method.
 
 For the small example the hints look like a lot of work. However, the number of
-hints is essentially constant no matter how large the interpreter is, which
+hints that need to be put into the interpreter source remains small, which
 makes the extra work negligible for larger interpreters.
 
 When executing the Square function of Figure \ref{fig:square}, the profiling
@@ -759,7 +759,7 @@ def f(a):
 To test the technique on a more realistic example, we did some
 preliminary benchmarks with PyPy's Python interpreter. The function we
 benchmarked as well as the results can be seen in Figure
-\ref{fig:bench-python}. While the function may seem a bit arbitrary, executing it is
+\ref{fig:bench-python}. While the function may seem a bit constructed, executing it is
 still non-trivial, as a normal Python interpreter needs to dynamically dispatch
 nearly all of the involved operations, like indexing into the tuple, addition
 and comparison of \texttt{i}. We benchmarked PyPy's Python interpreter with the
