@@ -5,12 +5,15 @@ described by \cite{PyPyJIT}, \cite{PyPyJIT09}.
 Psyco is
 a run-time specialiser for Python that uses promotion (called ``unlift'' in
 \cite{DBLP:conf/pepm/Rigo04}). However, Psyco is a manually written JIT, is
-not applicable to other languages and cannot be retargetted.
+not applicable to other languages and cannot be retargetted.  Psyco is a 
+good example of how to implement flexswitches for targets that don't have the
+limitations of the CLI.
 
 The idea of promotion is a generalization of \emph{Polymorphic
   Inline Caches} \cite{hoelzle_optimizing_1991}, as well as the idea of using
 runtime feedback to produce more efficient code
-\cite{hoelzle_type_feedback_1994}.
+\cite{hoelzle_type_feedback_1994}.  The main difference between the two is 
+that PICs only works on types, whereas promotion can work on every kind of value.
 
 PyPy-style JIT compilers are hard to write manually, thus we chose to write a
 JIT generator.  Tracing JIT compilers \cite{gal_hotpathvm_2006} also give

@@ -83,7 +83,7 @@ Since in .NET methods are the basic units of compilation, a possible
 solution consists in creating a new method 
 any time a new case has to be added to a flexswitch.
 
-It is important to underline the difference between flow graphs and a methods:
+It is important to underline the difference between flow graphs and methods:
 the first are the logical unit of code as seen by the JIT compiler, each of
 them being concretely implemented by \emph{one or more} methods.
 
@@ -248,7 +248,7 @@ of the primary method.
 
 \subsubsection{Implementation of flexswitches}
 
-To implement each flexswitch, the CLI backend creates an instace of a subclass
+To implement each flexswitch, the CLI backend creates an instance of a subclass
 of \lstinline{BaseLowLevelFlexSwitch}: such an instance stores the mapping
 between each value and the corresponding method we want to invoke.  Then, the
 generated code contains a call to the method \lstinline{execute}, which
