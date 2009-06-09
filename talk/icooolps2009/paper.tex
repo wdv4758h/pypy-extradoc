@@ -501,13 +501,14 @@ that red variables need to be listed explicitly too is an implementation
 detail).
 
 In addition to the classification of the variables, there are two methods of
-\texttt{JitDriver} that need to be called. Both of them receive as arguments the
-current values of the variables listed in the definition of the driver. The
+\texttt{JitDriver} that need to be called. The
 first one is \texttt{jit\_merge\_point} which needs to be put at the beginning
 of the body of the bytecode dispatch loop. The other, more interesting one, is
 \texttt{can\_enter\_jit}. This method needs to be called at the end of any
 instruction that can set the program counter of the language interpreter to an
-earlier value. For the example this is only the \texttt{JUMP\_IF\_A}
+earlier value.\footnote{The hints need to be written a bit differently in the
+actual implementation for purely technical reasons.} For the example this is
+only the \texttt{JUMP\_IF\_A}
 instruction, and only if it is actually a backward jump. Here is
 where the language interpreter performs profiling to decide
 when to start tracing. It is also the place where the tracing JIT checks
