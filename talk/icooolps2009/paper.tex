@@ -791,7 +791,7 @@ assembler level it is not really visible anymore that \eg a bytecode string is
 immutable. Also more advanced optimizations like allocation removal would
 not be possible with that approach.
 
-There are quite an number of approaches that try to minimally enhance
+There are quite a number of approaches that try to minimally enhance
 interpreters to generate code at runtime without actually writing a native
 compiler by hand. The goal of these is to get rid of dispatch overhead of
 typical interpreters while retaining ease of implementation. Piumarta and
@@ -803,8 +803,9 @@ sequences and also when non-copyable bytecodes occur. Ertl and Gregg
 sequences by patching the copied machine code. Thus they get rid of all dispatch
 overhead. Both techniques can speed up interpreters which large dispatch
 overhead a lot. However they will help less if the bytecodes themselves do a
-lot of work (as is the case with Python), whereas our tracing technique can
-trace into the implementation of those bytecodes.
+lot of work (as is the case with Python) and the dispatch overhead is lower. On
+the other hand, our technique can do a better job by tracing inside the
+implementation of those bytecode and inlining common paths.
 
 The standard approach for automatically producing a compiler for a programming
 language given an interpreter for it is that of partial evaluation
