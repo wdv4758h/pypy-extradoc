@@ -243,15 +243,9 @@ The code for those common loops however is highly optimized, including
 aggressive inlining.
 
 Typically tracing VMs go through various phases when they execute a program:
-\begin{itemize}
-\item Interpretation/profiling
-\item Tracing
-\item Code generation
-\item Execution of the generated code
-\end{itemize}
-
-At first, when the program starts, everything is interpreted.
-The interpreter does a small amount of lightweight profiling to establish which loops
+Interpretation/profiling, tracing, code generation and execution of the
+generated code. When the program starts, everything is interpreted.
+The interpreter does lightweight profiling to establish which loops
 are run most frequently. This lightweight profiling is usually done by having a counter on
 each backward jump instruction that counts how often this particular backward jump
 is executed. Since loops need a backward jump somewhere, this method looks for
@@ -261,10 +255,10 @@ When a hot loop is identified, the interpreter enters a special mode, called
 \emph{tracing mode}. During tracing, the interpreter records a history of all
 the operations it executes. It traces until it has recorded the execution of one
 iteration of the hot loop. To decide when this is the case, the trace is
-repeatedly checked during tracing as to whether the interpreter is at a position
+repeatedly checked as to whether the interpreter is at a position
 in the program where it had been earlier.
 
-The history recorded by the tracer is called a \emph{trace}: it is a sequential list of
+The history recorded by the tracer is called a \emph{trace}: it is a list of
 operations, together with their actual operands and results. Such a trace can be
 used to generate efficient machine code. This generated machine code is
 immediately executable, and can be used in the next iteration of the loop.
@@ -326,7 +320,7 @@ jump(result1, n1)
 \label{fig:simple-trace}
 \end{figure}
 
-Let's look at a small example. Take the (slightly contrived) RPython code in
+As a small example, take the (slightly contrived) RPython code in
 Figure \ref{fig:simple-trace}.
 The tracer interprets these functions in a bytecode format that is an encoding of
 the intermediate representation of PyPy's translation tool\-chain after type
@@ -367,18 +361,15 @@ user's programs, which we will call the \emph{language interpreter}. In the
 following, we will assume that the language interpreter is bytecode-based. The
 program that the language interpreter executes we will call the \emph{user
 program} (from the point of view of a VM author, the ``user'' is a programmer
-using the VM).
-
-Similarly, we need to distinguish loops at two different levels:
+using the VM). Similarly, we need to distinguish loops at two different levels:
 \emph{interpreter loops} are loops \emph{inside} the language interpreter. On
 the other hand, \emph{user loops} are loops in the user program.
 
 A tracing JIT compiler finds the hot loops of the program it is compiling. In
-our case, this program is the language interpreter. The most important hot interpreter loop
+our case, this is the language interpreter. The most important hot interpreter loop
 is the bytecode dispatch loop (for many simple
-interpreters it is also the only hot loop).  Tracing one iteration of this
-loop means that
-the recorded trace corresponds to execution of one opcode. This means that the
+interpreters it is also the only hot loop).  One iteration of this loop
+corresponds to the execution of one opcode. This means that the
 assumption made by the tracing JIT -- that several iterations of a hot loop
 take the same or similar code paths -- is wrong in this case. It is very
 unlikely that the same particular opcode is executed many times in a row.
@@ -468,8 +459,8 @@ The language interpreter uses a similar technique to detect \emph{hot user
 loops}: the profiling is done at the backward branches of the user program,
 using one counter per seen program counter of the language interpreter.
 
-The condition for reusing already existing machine code also needs to be adapted to
-this new situation. In a classical tracing JIT there is at most one piece of
+The condition for reusing existing machine code also needs to be adapted to
+this new situation. In a classical tracing JIT there is no or one piece of
 assembler code per loop of the jitted program, which in our case is the language
 interpreter. When applying the tracing JIT to the language interpreter as
 described so far, \emph{all} pieces of assembler code correspond to the bytecode
@@ -497,9 +488,7 @@ be part of the program counter of the language interpreter. In the case of the
 example, the \texttt{pc} variable is obviously part of the program counter;
 however, the \texttt{bytecode} variable is also counted as green, since the
 \texttt{pc} variable is meaningless without the knowledge of which bytecode
-string is currently being interpreted. All other variables are red (the fact
-that red variables need to be listed explicitly too is an implementation
-detail).
+string is currently being interpreted. All other variables are red.
 
 In addition to the classification of the variables, there are two methods of
 \texttt{JitDriver} that need to be called. The
@@ -528,7 +517,7 @@ for one iteration, thus unrolling the interpreter loop of the example
 interpreter eight times. The resulting trace can be seen in Figure 
 \ref{fig:trace-no-green-folding}.
 
-\begin{figure}
+\begin{figure}[t]
 \input{code/no-green-folding.txt}
 \caption{Trace when executing the Square function of Figure \ref{fig:square},
 with the corresponding bytecodes as comments.}
@@ -800,9 +789,10 @@ Riccardi \cite{piumarta_optimizing_1998} propose to copy fragments of the
 interpreter together for commonly occurring bytecode sequences to reduce
 dispatch overhead. However, dispatching is still needed to jump between such
 sequences and also when non-copyable bytecodes occur. Ertl and Gregg
-\cite{ertl_retargeting_2004} go further and stitch together the concatenated
-sequences by patching the copied machine code. Thus they get rid of all dispatch
-overhead. Both techniques can speed up interpreters which large dispatch
+\cite{ertl_retargeting_2004} go further and get rid of all dispatch overhead by
+stitching together the concatenated
+sequences by patching the copied machine code. 
+Both techniques can speed up interpreters which large dispatch
 overhead a lot. However they will help less if the bytecodes themselves do a
 lot of work (as is the case with Python
 \cite{stefan_brunthaler_virtual-machine_2009}) and the dispatch overhead is lower. On
@@ -876,9 +866,6 @@ escape because they are stored into the frame object, rendering the allocation
 removal optimization ineffective. To remedy this problem we make it possible to
 update the frame object lazily only when it is actually accessed from outside of
 the code generated by the JIT.
-
-Furthermore both tracing and leaving machine code are very slow due to a
-double interpretation overhead and we might need techniques for improving those.
 
 Eventually we will need to apply the JIT to the various interpreters that are
 written in RPython to evaluate how widely applicable the described techniques
