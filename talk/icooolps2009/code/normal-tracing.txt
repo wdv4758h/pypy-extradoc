@@ -1,4 +1,4 @@
-{
+{\small
 \begin{verbatim}
 loop_start(a0, regs0, bytecode0, pc0)
 opcode0 = strgetitem(bytecode0, pc0)

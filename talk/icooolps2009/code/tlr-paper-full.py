@@ -1,4 +1,4 @@
-{
+{\small
 \begin{verbatim}
 tlrjitdriver = JitDriver(greens = ['pc', 'bytecode'],
                          reds   = ['a', 'regs'])
