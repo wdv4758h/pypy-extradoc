@@ -296,7 +296,7 @@ tracing is started or already existing assembler code executed; during tracing
 they are the place where the check for a closed loop is performed.
 
 \begin{figure}
-{\small
+{
 \begin{verbatim}
 def f(a, b):
     if b % 46 == 41:
@@ -388,7 +388,7 @@ unlikely that the same particular opcode is executed many times in a row.
 \label{fig:tlr-basic}
 \end{figure}
 \begin{figure}
-{\small
+{
 \begin{verbatim}
     MOV_A_R     0   # i = a
     MOV_A_R     1   # copy of 'a'
@@ -732,7 +732,7 @@ interpreter) the overhead will likely be less significant.
 
 \begin{figure}[h]
 \label{fig:bench-example}
-{\small
+{
 \begin{verbatim}
 def f(a):
     t = (1, 2, 3)
@@ -804,7 +804,8 @@ sequences and also when non-copyable bytecodes occur. Ertl and Gregg
 sequences by patching the copied machine code. Thus they get rid of all dispatch
 overhead. Both techniques can speed up interpreters which large dispatch
 overhead a lot. However they will help less if the bytecodes themselves do a
-lot of work (as is the case with Python) and the dispatch overhead is lower. On
+lot of work (as is the case with Python
+\cite{stefan_brunthaler_virtual-machine_2009}) and the dispatch overhead is lower. On
 the other hand, our technique can do a better job by tracing inside the
 implementation of those bytecode and inlining common paths.
 

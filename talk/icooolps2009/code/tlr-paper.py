@@ -1,4 +1,4 @@
-{\small
+{
 \begin{verbatim}
 def interpret(bytecode, a):
     regs = [0] * 256
