@@ -13,6 +13,7 @@ available yet from them.
 Samuele Pedroni      28/5           ?
 Antonio Cuni         28/4           ETAPS Hotel (shared with cfbolz)
 Carl Friedrich Bolz  28/4           ETAPS Hotel
+Bea During           30/4           ?
 ==================== ============== ============================
 
 People on the following list were present at previous sprints: 
