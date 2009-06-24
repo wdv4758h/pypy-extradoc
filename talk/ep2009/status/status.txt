@@ -89,16 +89,32 @@ PyPy 1.1 - more supported packages
 
 * ``ctypes``
 
-|pause|
+PyPy 1.1 - more supported packages
+==================================
+
+* ``ctypes``
 
 * ``sqlite``
 
-|pause|
+PyPy 1.1 - more supported packages
+==================================
+
+* ``ctypes``
+
+* ``sqlite``
 
 * ``array``, ``cPickle``, ``cStringIO``, ``cmath``, ``dbm``,
   ``datetime``, ``binascii``...
 
-|pause|
+PyPy 1.1 - more supported packages
+==================================
+
+* ``ctypes``
+
+* ``sqlite``
+
+* ``array``, ``cPickle``, ``cStringIO``, ``cmath``, ``dbm``,
+  ``datetime``, ``binascii``...
 
 * ``__builtin__``, ``__pypy__``, ``_codecs``, ``_lsprof``,
   ``_minimal_curses``, ``_random``, ``_rawffi``, ``_socket``,
@@ -288,8 +304,15 @@ Other software
 
 * Anything written in pure Python should just work :-)
 
-* BitTorrent, PyPy translation toolchain,
-  py lib, SymPy, Pinax...
+* BitTorrent
+
+* PyPy translation toolchain
+
+* py lib
+
+* SymPy
+
+* Pinax
 
 * Various smaller things, templating engines...
 
