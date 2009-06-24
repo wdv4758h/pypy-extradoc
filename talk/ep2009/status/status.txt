@@ -1,3 +1,5 @@
+.. include:: beamerdefs.txt
+
 ================================
 PyPy's Python Interpreter status 
 ================================
@@ -66,7 +68,7 @@ Brief history of PyPy
 
 * Sponsoring from Google, Nokia
 
-* Soon JIT work funded by Germany and Sweden
+* Soon JIT work cofunded by Germany and Sweden
 
 
 PyPy 1.1
@@ -87,35 +89,16 @@ PyPy 1.1 - more supported packages
 
 * ``ctypes``
 
-
-PyPy 1.1 - more supported packages
-==================================
-
-* ``ctypes``
+|pause|
 
 * ``sqlite``
 
-
-PyPy 1.1 - more supported packages
-==================================
-
-* ``ctypes``
-
-* ``sqlite``
+|pause|
 
 * ``array``, ``cPickle``, ``cStringIO``, ``cmath``, ``dbm``,
   ``datetime``, ``binascii``...
 
-
-PyPy 1.1 - more supported packages
-==================================
-
-* ``ctypes``
-
-* ``sqlite``
-
-* ``array``, ``cPickle``, ``cStringIO``, ``cmath``, ``dbm``,
-  ``datetime``, ``binascii``...
+|pause|
 
 * ``__builtin__``, ``__pypy__``, ``_codecs``, ``_lsprof``,
   ``_minimal_curses``, ``_random``, ``_rawffi``, ``_socket``,
