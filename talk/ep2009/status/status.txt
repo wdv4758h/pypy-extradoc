@@ -68,7 +68,7 @@ Brief history of PyPy
 
 * Sponsoring from Google, Nokia
 
-* Soon JIT work cofunded by Germany and Sweden
+* Soon: cofunding for JIT work
 
 
 PyPy 1.1
