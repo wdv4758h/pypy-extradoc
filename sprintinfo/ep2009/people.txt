@@ -11,8 +11,8 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== ============================
 Samuele Pedroni      28*/5          conference hotel
-Antonio Cuni         29?/4*         ETAPS Hotel (shared with cfbolz)
-Carl Friedrich Bolz  28/4           ETAPS Hotel
+Antonio Cuni         28*/4*         ETAPS Hotel (shared with cfbolz)
+Carl Friedrich Bolz  29?/4           ETAPS Hotel
 Bea During           30/4           ?
 Armin Rigo           28*/4*         conference hotel
 ==================== ============== ============================
