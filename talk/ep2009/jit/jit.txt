@@ -13,9 +13,11 @@ Current status
 
 - tracing JIT (like Mozilla TraceMonkey)
 
-- up to 12x faster on trivial benchmarks (XXX checkme)
+- up to Nx faster on trivial benchmarks
 
-- will be much faster in the (near) future
+  * N = 10, 20, 30, 60 depending on the moon phase
+
+- PyPy evil plan: be consistently faster than CPython in the near future
 
 
 Main ideas (1)
@@ -202,7 +204,9 @@ Code generation
 
 - Theory != pratice
 
-- The current x86 backend produces sub-optimal code
+- The current x86 backend produces suboptimal code
+
+  * but not too bad :-)
 
 - x86-64: not yet, but relatively low effort
 
@@ -210,3 +214,26 @@ Code generation
 
 - Contributors welcome :-)
 
+
+CLI JIT backend
+================
+
+- JIT-over-JIT
+
+  * emit .NET bytecode
+
+  * which is then compiled by .NET's own JIT
+
+- current status: as fast as IronPython on trivial benchmarks
+
+- will be faster than IP in the future
+
+|pause|
+
+- extremely good results in JIT v2
+
+- it makes a dynamic toy language:
+
+  * as fast as C# for numerical benchmarks
+
+  * faster than C# for some OO benchmarks
