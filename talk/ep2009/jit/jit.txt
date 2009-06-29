@@ -194,7 +194,7 @@ Optimization phase
 
 - Constant folding
 
-- ...
+- Escape analysis: remove unneeded allocations
 
 
 Code generation
