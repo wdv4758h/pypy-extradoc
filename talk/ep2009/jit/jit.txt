@@ -149,6 +149,14 @@ Tracing example
    :scale: 60
 
 
+Tracing example
+================
+
+.. image:: step6.pdf
+   :align: center
+   :scale: 60
+
+
 Post-tracing phase
 ===================
 
@@ -174,4 +182,18 @@ Perfect specialization
 
 - **specialized**: it works only with ``int`` (and not e.g. ``float``)
 
-- **general**: it works with **all** ``int`` :-)
+- **general**: it works with *all* ``int`` :-)
+
+
+Optimization phase
+===================
+
+- Remove superflous operations
+
+- Constant folding
+
+- ...
+
+
+Code generation
+================
