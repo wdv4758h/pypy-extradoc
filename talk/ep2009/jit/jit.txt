@@ -237,3 +237,17 @@ CLI JIT backend
   * as fast as C# for numerical benchmarks
 
   * faster than C# for some OO benchmarks
+
+
+Contact / Q&A 
+==========================
+
+PyPy: http://codespeak.net/pypy
+
+Blog: http://morepypy.blogspot.com
+
+.. raw:: latex
+
+    \begin{figure}
+    \includegraphics[width=80px]{../../img/py-web.png}
+    \end{figure}
