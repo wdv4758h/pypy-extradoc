@@ -13,7 +13,7 @@ Current status
 
 - tracing JIT (like Mozilla TraceMonkey)
 
-- XXX% faster than CPython
+- up to 12x faster on trivial benchmarks (XXX checkme)
 
 - will be much faster in the (near) future
 
@@ -197,3 +197,16 @@ Optimization phase
 
 Code generation
 ================
+
+- In theory: the easy part
+
+- Theory != pratice
+
+- The current x86 backend produces sub-optimal code
+
+- x86-64: not yet, but relatively low effort
+
+- super-experimental CLI/.NET backend
+
+- Contributors welcome :-)
+
