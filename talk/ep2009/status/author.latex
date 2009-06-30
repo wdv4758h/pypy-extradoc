@@ -1,8 +1,8 @@
 \definecolor{rrblitbackground}{rgb}{0.0, 0.0, 0.0}
 
 \title[PyPy status talk]{PyPy status talk}
-\author[antocuni, pedronis, arigo]
-{Samuele Pedroni\\ Armin Rigo\\ Antonio Cuni}
+\author[cfbolz, antocuni, pedronis]
+{Carl Friedrich Bolz\\ Antonio Cuni\\ Samuele Pedroni}
 
 \institute{EuroPython 2009}
 \date{June 30 2009}
