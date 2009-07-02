@@ -118,39 +118,9 @@
     \item lightweight profiling to discover hot loops
     \item code generation only for common paths of hot loops
     \item when a hot loop is discovered, start to produce a trace
+    \item when a full loop is traced, the trace is converted to machine code
     \end{itemize}
 \end{frame}
-
-\begin{frame}
-    \frametitle{Tracing}
-    \begin{itemize}
-    \item a \emph{trace} is a sequential list of operations
-    \item a trace is produced by recording every operation the interpreter executes
-    \item tracing ends when the tracer sees a position in the program it has seen before
-    \item to identify these places, the \emph{position key} is used
-    \item the position key encodes the current point of execution
-    \item a trace thus corresponds to exactly one loop
-    \item that means it ends with a jump to its beginning
-    \end{itemize}
-    \pause
-    \begin{block}{Guards}
-        \begin{itemize}
-        \item the trace is only one of the possible code paths through the loop
-        \item at places where the path \emph{could} diverge, a guard is placed
-        \end{itemize}
-    \end{block}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Code Generation and Execution}
-    \begin{itemize}
-    \item being linear, the trace can easily be turned into machine code
-    \item the machine code can be immediately executed
-    \item execution stops when a guard fails
-    \item after a guard failure, go back to interpreting program
-    \end{itemize}
-\end{frame}
-
 
 \frame[containsverbatim, plain, shrink=10]{
   \frametitle{Example}
@@ -213,10 +183,11 @@ def f(a, b):
     \begin{block}{Good Points of the Approach}
         \begin{itemize}
         \item easy and fast machine code generation: needs so support only one path
+        \item (things are more complex, but let's ignore that for now)
         \item interpreter does a lot of the work
         \item can be added to an existing interpreter unobtrusively
         \item automatic inlining
-        \item produces very little code
+        \item produces comparatively little code
         \end{itemize}
     \end{block}
     \pause
@@ -232,7 +203,7 @@ def f(a, b):
     \frametitle{Applying a Tracing JIT to an Interpreter}
     \begin{itemize}
     \item Question: What happens if the program is itself a bytecode interpreter?
-    \item the (usually only) hot loop of a bytecode interpreter is the bytecode dispatch loop
+    \item the (most important) hot loop of a bytecode interpreter is the bytecode dispatch loop
     \item Assumption violated: two iterations of the dispatch loop will usually take very different code paths
     \end{itemize}
     \pause
@@ -376,7 +347,7 @@ pc1 = int_add(pc0, Const(1))
 guard_value(opcode0, Const(2))
 n1 = strgetitem(bytecode0, pc1)
 pc2 = int_add(pc1, Const(1))
-a1 = call(Const(<* fn list_getitem>), regs0, n1)
+a1 = list_getitem(regs0, n1)
 # DECR_A
 ...
 # MOV_A_R 0
@@ -417,20 +388,20 @@ jump(a5, regs0, bytecode0, target0)
 \begin{verbatim}
 loop_start(a0, regs0)
 # MOV_R_A 0
-a1 = call(Const(<* fn list_getitem>), regs0, Const(0))
+a1 = list_getitem(regs0, Const(0))
 # DECR_A
 a2 = int_sub(a1, Const(1))
 # MOV_A_R 0    
-call(Const(<* fn list_setitem>), regs0, Const(0), a2)
+list_setitem(regs0, Const(0), a2)
 # MOV_R_A 2
-a3 = call(Const(<* fn list_getitem>), regs0, Const(2))
+list_getitem(regs0, Const(2))
 # ADD_R_TO_A  1
-i0 = call(Const(<* fn list_getitem>), regs0, Const(1))
+i0 = list_getitem(regs0, Const(1))
 a4 = int_add(a3, i0)
 # MOV_A_R 2
-call(Const(<* fn list_setitem>), regs0, Const(2), a4)
+list_setitem(regs0, Const(2), a4)
 # MOV_R_A 0
-a5 = call(Const(<* fn list_getitem>), regs0, Const(0))
+a5 = list_getitem(regs0, Const(0))
 # JUMP_IF_A 4
 i1 = int_is_true(a5)
 guard_true(i1)
