@@ -7,6 +7,6 @@ viewtalk: talk.pdf
 clean:
 	rm talk.pdf
 
-talk.pdf: talk.tex beamerouterthememy.sty beamerthemeWarsaw.sty interp.pdf
+talk.pdf: talk.tex beamerouterthememy.sty beamerthemeWarsaw.sty
 	pdflatex talk
 
