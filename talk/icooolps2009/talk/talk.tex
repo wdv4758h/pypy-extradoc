@@ -204,13 +204,13 @@ def f(a, b):
     \begin{itemize}
     \item Question: What happens if the program is itself a bytecode interpreter?
     \item the (most important) hot loop of a bytecode interpreter is the bytecode dispatch loop
-    \item Assumption violated: two iterations of the dispatch loop will usually take very different code paths
+    \item Assumption violated: consecutive iterations of the dispatch loop will usually take very different code paths
     \end{itemize}
     \pause
     \begin{block}{Terminology}
         \begin{itemize}
         \item \emph{tracing interpreter:} the interpreter that originally runs the program and produces traces
-        \item \emph{language interpreter:} the bytecode interpreter runs on top
+        \item \emph{language interpreter:} the bytecode interpreter run on top
         \item \emph{user program:} the program run by the language interpreter
         \end{itemize}
     \end{block}
@@ -298,10 +298,10 @@ jump(a1, regs0, bytecode0, pc1)
 \begin{frame}
     \frametitle{Idea for a Solution}
     \begin{itemize}
-    \item key idea: try to trace the loops in the user program
-    \item approach: add things to the position key of the tracer
+    \item goal: try to trace the loops \emph{in the user program,}
+          and not just one iteration of the bytecode dispatch loop
     \item tracing interpreter needs information about the language interpreter
-    \item provided by adding \emph{hints} to the language interpreter
+    \item provided by adding \emph{three hints} to the language interpreter
     \end{itemize}
     \pause
     \begin{block}{Hints Give Information About:}
@@ -376,7 +376,7 @@ jump(a5, regs0, bytecode0, target0)
     \frametitle{What Have We Won?}
     \begin{itemize}
     \item trace corresponds to one loop of the user program
-    \item however, most operations concerned with manipulating bytecode and program counter
+    \item however, most operations are concerned with manipulating bytecode and program counter
     \item bytecode and program counter are part of the position key
     \item thus they are constant at the beginning of the loop
     \item therefore they can and should be constant-folded
@@ -422,8 +422,8 @@ jump(a5, regs0)
 & &Time (ms) &speedup\\
 \hline
 1 &No JIT &442.7 $\pm$ 3.4 &1.00\\
-2 &Normal Trace Compilation &1518.7 $\pm$ 7.2 &0.29\\
-3 &Unrolling of Interp. Loop &737.6 $\pm$ 7.9 &0.60\\
+2 &JIT, Normal Trace Compilation &1518.7 $\pm$ 7.2 &0.29\\
+3 &JIT, Unrolling of Interp. Loop &737.6 $\pm$ 7.9 &0.60\\
 4 &JIT, Full Optimizations &156.2 $\pm$ 3.8 &2.83\\
 \hline
 \end{tabular}
