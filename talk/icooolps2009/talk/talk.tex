@@ -40,7 +40,7 @@
     merlinux GmbH
 }
 
-\date{ICOOOLPS 2009 XXX}
+\date{6th of July 2009, ICOOOLPS '09, Genova}
 
 
 % Delete this, if you do not want the table of contents to pop up at
@@ -98,8 +98,7 @@
     \begin{itemize}
     \item idea from Dynamo project: dynamic rewriting of machine code
     \item later used for a lightweight Java JIT
-    \item seems to also work for dynamic languages
-    \item incorporated into Mozilla's JavaScript VM ("TraceMonkey")
+    \item seems to also work for dynamic languages (see TraceMonkey)
     \end{itemize}
     \pause
     \begin{block}{Basic Assumption of a Tracing JIT}
@@ -187,7 +186,7 @@ def f(a, b):
         \item interpreter does a lot of the work
         \item can be added to an existing interpreter unobtrusively
         \item automatic inlining
-        \item produces comparatively little code
+        \item produces comparatively little machine code
         \end{itemize}
     \end{block}
     \pause
@@ -205,6 +204,7 @@ def f(a, b):
     \item Question: What happens if the program is itself a bytecode interpreter?
     \item the (most important) hot loop of a bytecode interpreter is the bytecode dispatch loop
     \item Assumption violated: consecutive iterations of the dispatch loop will usually take very different code paths
+    \item what can we do?
     \end{itemize}
     \pause
     \begin{block}{Terminology}
@@ -229,54 +229,52 @@ def interpret(bytecode, a):
             pc += 1
             if a:
                 pc = target
-        elif opcode == MOV_A_R:
-            n = ord(bytecode[pc])
-            pc += 1
-            regs[n] = a
         elif opcode == MOV_R_A:
             n = ord(bytecode[pc])
             pc += 1
             a = regs[n]
+        elif opcode == MOV_A_R:
+            ...
         elif opcode == ADD_R_TO_A:
-            n = ord(bytecode[pc])
-            pc += 1
-            a += regs[n]
+            ...
         elif opcode == DECR_A:
             a -= 1
         elif opcode == RETURN_A:
             return a
+
+
+
   \end{verbatim}
 }
 
 \frame[containsverbatim, plain, shrink=10]{
   \begin{verbatim}
-def interpret(bytecode, a):             |
-    regs = [0] * 256                    |  # Example bytecode
-    pc = 0                              |  # Square the accumulator:
-    while True:                         |
-        opcode = ord(bytecode[pc])      |  MOV_A_R     0   # i = a
-        pc += 1                         |  MOV_A_R     1   # copy of 'a'
-        if opcode == JUMP_IF_A:         |
-            target = ord(bytecode[pc])  |  # 4:
-            pc += 1                     |  MOV_R_A     0   # i--
-            if a:                       |  DECR_A
-                pc = target             |  MOV_A_R     0
-        elif opcode == MOV_A_R:         |
-            n = ord(bytecode[pc])       |  MOV_R_A     2   # res += a
-            pc += 1                     |  ADD_R_TO_A  1
-            regs[n] = a                 |  MOV_A_R     2
-        elif opcode == MOV_R_A:         |
-            n = ord(bytecode[pc])       |  MOV_R_A     0   # if i!=0:
-            pc += 1                     |  JUMP_IF_A   4   #    goto 4
-            a = regs[n]                 |
-        elif opcode == ADD_R_TO_A:      |  MOV_R_A     2   # return res
-            n = ord(bytecode[pc])       |  RETURN_A
-            pc += 1                     |
-            a += regs[n]                |
+def interpret(bytecode, a):
+    regs = [0] * 256                    |
+    pc = 0                              |  # Example bytecode
+    while True:                         |  # Square the accumulator:
+        opcode = ord(bytecode[pc])      |
+        pc += 1                         |  MOV_A_R     0  # i = a
+        if opcode == JUMP_IF_A:         |  MOV_A_R     1  # copy of 'a'
+            target = ord(bytecode[pc])  |
+            pc += 1                     |  # 4:
+            if a:                       |  MOV_R_A     0  # i--
+                pc = target             |  DECR_A
+        elif opcode == MOV_R_A:         |  MOV_A_R     0
+            n = ord(bytecode[pc])       |
+            pc += 1                     |  MOV_R_A     2  # res += a
+            a = regs[n]                 |  ADD_R_TO_A  1
+        elif opcode == MOV_A_R:         |  MOV_A_R     2
+            ...                         |
+        elif opcode == ADD_R_TO_A:      |  MOV_R_A     0  # if i!=0:
+            ...                         |  JUMP_IF_A   4  #    goto 4
         elif opcode == DECR_A:          |
-            a -= 1                      |
-        elif opcode == RETURN_A:        |
+            a -= 1                      |  MOV_R_A     2  # return res
+        elif opcode == RETURN_A:        |  RETURN_A                     
             return a                    |
+
+
+
   \end{verbatim}
 }
 
@@ -306,7 +304,7 @@ jump(a1, regs0, bytecode0, pc1)
     \pause
     \begin{block}{Hints Give Information About:}
     \begin{itemize}
-    \item which variables make up the program counter of the language interpreter
+    \item which variables make up the program counter of the language interpreter (together those are called \emph{position key})
     \item where the bytecode dispatch loop is
     \item which bytecodes can correspond to backward jumps
     \end{itemize}
@@ -337,6 +335,19 @@ def interpret(bytecode, a):
 \end{verbatim}
 }
 
+\begin{frame}
+    \frametitle{Modifying Tracing}
+    \begin{itemize}
+    \item goal: try to trace the loops \emph{in the user program,}
+          and not just one iteration of the bytecode dispatch loop
+    \item tracing interpreter stops tracing only when:
+        \begin{itemize}
+        \item it sees a backward jump in the language interpreter
+        \item the position key of the language interpreter matches an ealier value
+        \end{itemize}
+    \item in this way, full user loops are traced
+    \end{itemize}
+\end{frame}
 \frame[containsverbatim, plain, shrink=20]{
     \frametitle{Result When Tracing \texttt{SQUARE}}
 \begin{verbatim}
@@ -349,15 +360,10 @@ n1 = strgetitem(bytecode0, pc1)
 pc2 = int_add(pc1, Const(1))
 a1 = list_getitem(regs0, n1)
 # DECR_A
-...
 # MOV_A_R 0
-...
 # MOV_R_A 2
-...
 # ADD_R_TO_A 1
-...
 # MOV_A_R 2
-...
 # MOV_R_A 0
 ...
 # JUMP_IF_A 4
@@ -434,10 +440,34 @@ jump(a5, regs0)
     \frametitle{Scaling to Large Interpreters?}
     \begin{itemize}
     \item we can apply this approach to PyPy's Python interpreter (70 KLOC)
-    \item speed-ups promising: factor of 6 faster for simple loops with arithmetic
+    \item speed-ups promising (see next slide)
     \item no Python-specific bugs!
     \end{itemize}
 \end{frame}
+
+\frame[containsverbatim, plain, shrink=10]{
+    \frametitle{Timings for Python Interpreter}
+\begin{verbatim}
+def f(a):
+    t = (1, 2, 3)
+    i = 0
+    while i < a:
+        t = (t[1], t[2], t[0])
+        i += t[0]
+    return i
+\end{verbatim}
+\begin{block}{Timings of \texttt{f(10000000)}}
+\begin{tabular}{|l|l|r|r|}
+\hline
+& &Time (ms) &speedup\\
+\hline
+1 &PyPy compiled to C, no JIT &1793 $\pm$ 11 &1.00\\
+2 &PyPy comp'd to C, with JIT &483 $\pm$ 6 &3.71\\
+3 &CPython 2.6 &1869 $\pm$ 11 & 0.96\\
+4 &CPython 2.6 + Psyco 1.6 & 511 $\pm$ 7 &3.51\\\hline
+\end{tabular}
+\end{block}
+}
 
 
 \begin{frame}
@@ -478,33 +508,5 @@ jump(a5, regs0)
         \end{itemize}
     \end{block}
 \end{frame}
-
-\begin{frame}
-    \frametitle{Backup Slides}
-\end{frame}
-
-\frame[containsverbatim, plain, shrink=10]{
-    \frametitle{Timings for Python Interpreter}
-\begin{verbatim}
-def f(a):
-    t = (1, 2, 3)
-    i = 0
-    while i < a:
-        t = (t[1], t[2], t[0])
-        i += t[0]
-    return i
-\end{verbatim}
-\begin{block}{Timings}
-\begin{tabular}{|l|l|r|r|}
-\hline
-& &Time (s) &speedup\\
-\hline
-1 &PyPy compiled to C, no JIT &23.44 $\pm$ 0.07 &1.00\\
-2 &PyPy comp'd to C, with JIT &3.58 $\pm$ 0.05 &6.54\\
-3 &CPython 2.5.2 &4.96 $\pm$ 0.05 &4.73\\
-4 &CPython 2.5.2 + Psyco 1.6 &1.51 $\pm$ 0.05 &15.57\\\hline
-\end{tabular}
-\end{block}
-}
 
 \end{document}
