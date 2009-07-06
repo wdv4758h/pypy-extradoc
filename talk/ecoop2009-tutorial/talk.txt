@@ -32,7 +32,7 @@ fixing of early design decisions:
 
 - when writing a VM in C, some things have to be decided up front
 - examples are things like memory model, GC, threading model, etc.
-- desicions manifest throughout the source code
+- decisions manifest throughout the source code
 - extremely hard to change later
 
 |pause|
