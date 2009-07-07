@@ -52,7 +52,7 @@ Goal: achieve flexibility, simplicity and performance together
   of the language
 - high-level description: an interpreter written in a high-level
   language
-- ... which we translate (i.e. compile) to a VM running in
+- ... which we translate (i.e. compile) to VMs running in
   various target environments, like C/Posix, CLR, JVM
 
 |pause|
@@ -71,7 +71,7 @@ Receipe for a PyPy-based VM
  #. write an interpreter for your language in RPython
  #. test it in pure Python until it works and is bug-free
  #. try to compile it to C and fix the type-bugs that this finds
- #. apply the JIT (optional and experimental step)
+ #. apply the JIT generator (optional and experimental step)
 
 What is RPython
 ===============
