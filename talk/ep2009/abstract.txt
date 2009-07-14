@@ -4,7 +4,7 @@ implementation in Python.
 Slides:
 
 1. http://codespeak.net/svn/pypy/extradoc/talk/ep2009/status/pypy-status.pdf
-2. not ready
+2. http://codespeak.net/svn/pypy/extradoc/talk/ep2009/jit/pypy-jit.pdf
 
 
 Part 1 - becoming complete - 30 minutes of the projected 1 hour
