@@ -1,0 +1,87 @@
+
+=============================================
+PyPy's JIT for scientific python computations
+=============================================
+
+Contents
+========
+
+* Introduction to PyPy
+
+* Introduction to JIT
+
+* A bit about EULAG model
+
+* JIT & numpy integration
+
+* Future
+
+PyPy - what's that?
+===================
+
+xxx
+
+Motivation behind the project
+=============================
+
+xxx
+
+Status of PyPy today
+====================
+
+xxx
+
+Python's performance
+====================
+
+* Python as a language (not CPython)
+
+* Highly dynamic
+
+* Impossible to efficiently optimize statically
+
+* Dynamic compilation to the rescue
+
+JIT - motivation
+================
+
+* Psyco hard to maintain and extend
+
+xxx
+
+JIT - status
+============
+
+* JIT compiler generator, not JIT compiler
+
+
+XXXX
+EULAG slides
+XXXX
+
+Data postprocessing
+===================
+
+* Short programs (~200 python LOC)
+
+* Relatively simple logic
+
+* Numpy for operations, matplotlib for output
+
+* Massive datasets
+
+* Sometimes require walking array elements
+
+* Sometimes slow .....
+
+Data postprocessing - solution
+==============================
+
+* Implement minimal version of numeric for PyPy
+
+* Reuse the JIT for speedups
+
+* ~10x speedups over CPython version
+
+* Still about 4x slower than C or matrix operations
+
