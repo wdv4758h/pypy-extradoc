@@ -19,17 +19,41 @@ Contents
 PyPy - what's that?
 ===================
 
-xxx
+* A Python interpreter written in Python
+
+* A flexible compiler compiling restricted version
+  of Python to lower level platform
+
+* An open source project (MIT license)
 
 Motivation behind the project
 =============================
 
-xxx
+* CPython is not flexible enough
+
+* Python is so much better to write in than C
+
+* Let compiler do the hard work
+
+* Psyco/stackless hard to maintain/extend
+
+* "Psyco consumes one brain per inch of progress"
+
+Motivation - user perspective
+==============================
+
+* Noone should be ever forced to write in C for performance
 
 Status of PyPy today
 ====================
 
-xxx
+* Very compliant python interpreter (passes CPython test suite)
+
+* Can run complex python applications (Django, twisted, ctypes)
+
+* Pretty good garbage collector
+
+* JIT - in progress (more later)
 
 Python's performance
 ====================
@@ -47,17 +71,36 @@ JIT - motivation
 
 * Psyco hard to maintain and extend
 
+* Python, contrary to popular belief, is a very complex language
+
+* We want to generate JIT out of interpreter's description
+
+* ... instead of writing it by hand
+
+JIT details
+===========
+
+* Interpreter + JIT generated from the interpreter
+
 xxx
 
 JIT - status
 ============
 
-* JIT compiler generator, not JIT compiler
+xxx
 
+xxx
 
-XXXX
-EULAG slides
-XXXX
+EULAG
+=====
+
+Cloud processes cover tremendous range of scales, from thousands of
+kilometers to a fraction of a cm...
+
++----------------------+------------------------+---------------------+
+| .. image:: earth.png | .. image:: clouds.png  | .. image:: flow.png |
+|     :width: 100px    |      :width: 100px     |      :width: 100px  |
++----------------------+------------------------+---------------------+
 
 Data postprocessing
 ===================
@@ -84,4 +127,17 @@ Data postprocessing - solution
 * ~10x speedups over CPython version
 
 * Still about 4x slower than C or matrix operations
+
+JIT & Numpy
+===========
+
+xxx
+
+Future directions
+=================
+
+xxx
+
+Thank you! Questions?
+=====================
 
