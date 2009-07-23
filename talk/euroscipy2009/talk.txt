@@ -80,12 +80,22 @@ JIT - motivation
 JIT details
 ===========
 
-* Interpreter + JIT generated from the interpreter
+* Interpreter + JIT automatically generated from the interpreter
 
-xxx
+* Tracing JIT (a-la tracemonkey)
+
+* XXX
 
 JIT - status
 ============
+
+* Simple numeric stuff - 20-30x performance boost
+
+* C-like speed for simple stuff
+
+* only x86 backend so far
+
+* More work needed
 
 xxx
 
@@ -99,8 +109,13 @@ kilometers to a fraction of a cm...
 
 +----------------------+------------------------+---------------------+
 | .. image:: earth.png | .. image:: clouds.png  | .. image:: flow.png |
-|     :width: 100px    |      :width: 100px     |      :width: 100px  |
+|     :width: 90px     |      :width: 100px     |      :width: 100px  |
 +----------------------+------------------------+---------------------+
+
+EULAG
+=====
+
+XXX
 
 Data postprocessing
 ===================
@@ -131,7 +146,13 @@ Data postprocessing - solution
 JIT & Numpy
 ===========
 
-xxx
+* Just started really
+
+* Specifically tailored programs see good speedups
+
+* Ongoing jit refactoring XXX
+
+* More work needed XXX
 
 Future directions
 =================
