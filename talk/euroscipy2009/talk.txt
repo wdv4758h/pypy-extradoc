@@ -25,7 +25,7 @@ PyPy - what's that?
     :width: 50px
     :align: right
 
-* A Python interpreter written in Python
+* A Python interpreter written in (a restricted subset of) Python
 
 * A flexible compiler compiling restricted version
   of Python to lower level platform
@@ -100,6 +100,31 @@ JIT details
 
 * Written in a high-level language
 
+Tracing JIT
+===========
+
+* Modeled after dynamo VM by Michael Franz et al
+
+* Looks at the single loop of a program while its executed
+
+* Assumes the same path is commonly taken (a bit more complex than that)
+
+* Compiles relatively little assembler
+
+Tracing the interpreter
+=======================
+
+* Follows interpretation of each bytecode via internal interpreter
+  calls
+
+* Automatically inlines everything
+
+* Creates assembler corresponding to a real interpreter path
+
+* ... plus a couple of guards
+
+* Works for any interpreter
+
 JIT - status
 ============
 
@@ -139,7 +164,9 @@ kilometers to a fraction of a cm...
 Global climate model
 ====================
 
-Horizontal grid size of Global Climate Models is ~ 100km 
+.. raw:: latex
+   
+   Horizontal grid size of Global Climate Models is $\sim$ 100km
 
 .. image:: world.png
      :width: 300px
@@ -152,15 +179,15 @@ Large Eddy Simulation (LES) Models
 
 * processes, which scales are range of 100m could be calculated explicitly
 
-* processes of smaller spatial scale, (e.g. turbulent mixing)
-  have to be still parametrized
+* processes of smaller spatial scale, (e.g. turbulent mixing of a cloud
+  with air from the environment) have to be still parametrized
 
 .. image:: dump.png
     :width: 300px
     :align: center
 
-EULAG
-=====
+EULAG - numerical solver for all-scale geophysical flows
+========================================================
 
 * developed in National Center for Atmospheric Science (NCAR),
   Boulder, Colorado, since '80
@@ -171,13 +198,7 @@ EULAG
 
 * lack of version control, good documentation and bug tracking system
 
-EULAG - data size
-=================
-
-* model time step - 3s, total time of simulations - 6h
-
-* horizontal/vertical grid size 25m/25m
-  number of horizontal/vertical points - 128/121
+* http://www.mmm.ucar.edu/eulag
 
 Analyzing model data
 ====================
@@ -206,7 +227,7 @@ Data used for analyzis
 Data postprocessing
 ===================
 
-* Short programs (~200 python LOC)
+* Short programs (about 200 lines of code each)
 
 * Relatively simple logic
 
@@ -228,7 +249,7 @@ Data postprocessing - solution
 Results
 =======
 
-* ~10x speedups over pure-python version on top of CPython
+* roughly 10x speedups over pure-python version on top of CPython
 
 * Still about 4x slower than C or matrix operations
 
@@ -261,7 +282,7 @@ JIT & Numpy - future
 
 * Possible to optimize beyond C implementation
 
-* Matrix operations like: a + b + c should not allocate immediate results
+* Matrix operations like: a + b + c should not allocate immediate values
 
 * Use of SSE operations can yield even bigger speedups
   (or whatever architecture permits)
