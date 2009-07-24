@@ -1,3 +1,4 @@
+
 .. include:: beamerdefs.txt
 
 =============================================
@@ -122,10 +123,18 @@ Cloud modelling
 Cloud processes cover tremendous range of scales, from thousands of
 kilometers to a fraction of a cm...
 
-+----------------------+------------------------+---------------------+
-| .. image:: earth.png | .. image:: clouds.png  | .. image:: flow.png |
-|     :width: 90px     |      :width: 100px     |      :width: 100px  |
-+----------------------+------------------------+---------------------+
+.. +----------------------+------------------------+---------------------+
+.. | .. image:: earth.png | .. image:: clouds.png  | .. image:: flow.png |
+.. |     :width: 90px     |      :width: 100px     |      :width: 100px  |
+.. +----------------------+------------------------+---------------------+
+
+.. raw:: latex
+
+   \begin{figure}[!h]
+   \subfigure{\includegraphics[width=90px]{earth.png}}
+   \subfigure{\includegraphics[width=100px]{clouds.png}}
+   \subfigure{\includegraphics[width=100px]{flow.png}}
+   \end{figure}
 
 Global climate model
 ====================
@@ -137,9 +146,6 @@ Horizontal grid size of Global Climate Models is ~ 100km
      :align: center
 
 Clouds have to be parametrized
-
-XXX
-===
 
 Large Eddy Simulation (LES) Models
 ==================================
@@ -177,7 +183,8 @@ Analyzing model data
 ====================
 
 .. image:: output.png
-    :width: 200px
+   :width: 170px
+   :align: center
 
 * checkin amount of liquid water in each box
 
@@ -300,4 +307,4 @@ pypy-dev@codespeak.net
 
 * **Cloud modelling**:
 
-XXX
+dorota@igf.fuw.edu.pl

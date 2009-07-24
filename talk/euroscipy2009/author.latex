@@ -1,7 +1,7 @@
 \definecolor{rrblitbackground}{rgb}{0.0, 0.0, 0.0}
 
 \title[PyPy status talk]{PyPy status talk}
-\author[Maciej Fijalkowski, Dorota Jarecka]{Maciej Fijalkowski \and
-Dorota Jarecka}
+\author[Maciej Fijalkowski, Dorota Jarecka]{Maciej Fijalkowski (merlinux GmbH) \and \\
+Dorota Jarecka (University of Warsaw)}
 \institute[EuroSciPy 2009]{EuroSciPy 2009}
 \date{July 25, 2009}
