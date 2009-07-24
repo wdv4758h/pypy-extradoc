@@ -177,7 +177,7 @@ Clouds have to be parametrized
 Large Eddy Simulation (LES) Models
 ==================================
 
-* processes, which scales are range of 100m could be calculated explicitly
+* processes, which scales are in a range of 100m could be calculated explicitly
 
 * processes of smaller spatial scale, (e.g. turbulent mixing of a cloud
   with air from the environment) have to be still parametrized
@@ -189,7 +189,7 @@ Large Eddy Simulation (LES) Models
 EULAG - numerical solver for all-scale geophysical flows
 ========================================================
 
-* developed in National Center for Atmospheric Science (NCAR),
+* developed in National Center for Atmospheric Research (NCAR),
   Boulder, Colorado, since '80
 
 * written in Fortran 77
@@ -200,19 +200,6 @@ EULAG - numerical solver for all-scale geophysical flows
 
 * http://www.mmm.ucar.edu/eulag
 
-Analyzing model data
-====================
-
-.. image:: output.png
-   :width: 170px
-   :align: center
-
-* checkin amount of liquid water in each box
-
-* checkin for each "dry" box, distance to the cloud edge
-
-* calculating relative humidity in each "dry"
-
 Data used for analyzis
 ======================
 
@@ -222,7 +209,20 @@ Data used for analyzis
 
 * around 8 basic variables, e.g. velocities, temperature 
 
-* For each variable: 60*121*128*128 values
+* For each variable: 60*121*128*128=100M values
+
+Analyzing model data
+====================
+
+.. image:: output.png
+   :width: 170px
+   :align: center
+
+* checkin amount of liquid water in each box
+
+* checkin for each "dry" grid box, distance to the cloud edge
+
+* calculating relative humidity in each "dry" grid box
 
 Data postprocessing
 ===================
@@ -233,7 +233,7 @@ Data postprocessing
 
 * Numpy for operations, matplotlib for output
 
-* Massive datasets
+* Massive datasets (about 100M values)
 
 * Sometimes require walking array elements
 
