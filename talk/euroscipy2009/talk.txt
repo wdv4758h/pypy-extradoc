@@ -1,3 +1,4 @@
+.. include:: beamerdefs.txt
 
 =============================================
 PyPy's JIT for scientific python computations
@@ -10,7 +11,7 @@ Contents
 
 * Introduction to JIT
 
-* A bit about EULAG model
+* A bit about cloud modelling & EULAG
 
 * JIT & numpy integration
 
@@ -18,6 +19,10 @@ Contents
 
 PyPy - what's that?
 ===================
+
+.. image:: pypy-logo.png
+    :width: 50px
+    :align: right
 
 * A Python interpreter written in Python
 
@@ -37,12 +42,18 @@ Motivation behind the project
 
 * Psyco/stackless hard to maintain/extend
 
+|pause|
+
 * "Psyco consumes one brain per inch of progress"
 
 Motivation - user perspective
 ==============================
 
 * Noone should be ever forced to write in C for performance
+
+|pause|
+
+* ... with maybe some exceptions
 
 Status of PyPy today
 ====================
@@ -75,6 +86,8 @@ JIT - motivation
 
 * We want to generate JIT out of interpreter's description
 
+|pause|
+
 * ... instead of writing it by hand
 
 JIT details
@@ -84,25 +97,27 @@ JIT details
 
 * Tracing JIT (a-la tracemonkey)
 
-* XXX
+* Written in a high-level language
 
 JIT - status
 ============
 
 * Simple numeric stuff - 20-30x performance boost
 
-* C-like speed for simple stuff
+|pause|
 
-* only x86 backend so far
+* ... which is similar to unoptimized C (gcc -O0)
+
+|pause|
+
+* only x86 backend so far (ie no x87)
 
 * More work needed
 
-xxx
+* Only about 2 man-year put so far
 
-xxx
-
-EULAG
-=====
+Cloud modelling
+===============
 
 Cloud processes cover tremendous range of scales, from thousands of
 kilometers to a fraction of a cm...
@@ -112,10 +127,74 @@ kilometers to a fraction of a cm...
 |     :width: 90px     |      :width: 100px     |      :width: 100px  |
 +----------------------+------------------------+---------------------+
 
+Global climate model
+====================
+
+Horizontal grid size of Global Climate Models is ~ 100km 
+
+.. image:: world.png
+     :width: 300px
+     :align: center
+
+Clouds have to be parametrized
+
+XXX
+===
+
+Large Eddy Simulation (LES) Models
+==================================
+
+* processes, which scales are range of 100m could be calculated explicitly
+
+* processes of smaller spatial scale, (e.g. turbulent mixing)
+  have to be still parametrized
+
+.. image:: dump.png
+    :width: 300px
+    :align: center
+
 EULAG
 =====
 
-XXX
+* developed in National Center for Atmospheric Science (NCAR),
+  Boulder, Colorado, since '80
+
+* written in Fortran 77
+
+* many different developers and users
+
+* lack of version control, good documentation and bug tracking system
+
+EULAG - data size
+=================
+
+* model time step - 3s, total time of simulations - 6h
+
+* horizontal/vertical grid size 25m/25m
+  number of horizontal/vertical points - 128/121
+
+Analyzing model data
+====================
+
+.. image:: output.png
+    :width: 200px
+
+* checkin amount of liquid water in each box
+
+* checkin for each "dry" box, distance to the cloud edge
+
+* calculating relative humidity in each "dry"
+
+Data used for analyzis
+======================
+
+* written every 4 minutes
+
+* last 4 hours of the simulation
+
+* around 8 basic variables, e.g. velocities, temperature 
+
+* For each variable: 60*121*128*128 values
 
 Data postprocessing
 ===================
@@ -137,28 +216,88 @@ Data postprocessing - solution
 
 * Implement minimal version of numeric for PyPy
 
-* Reuse the JIT for speedups
+* Use the JIT for speedups
 
-* ~10x speedups over CPython version
+Results
+=======
+
+* ~10x speedups over pure-python version on top of CPython
 
 * Still about 4x slower than C or matrix operations
+
+|pause|
+
+* ... but not everything can be expressed using matrix operations
+
+* Due to limitations, programs needs to be carefully crafted
 
 JIT & Numpy
 ===========
 
 * Just started really
 
-* Specifically tailored programs see good speedups
+* 138 LOC
 
-* Ongoing jit refactoring XXX
+* only ints and simple operations
 
-* More work needed XXX
+JIT & Numpy status
+==================
+
+* No support from JIT **at all**
+
+* General JIT progress gives speedups with numpy
+
+* More work on numpy needed, but it's all very simple
+
+JIT & Numpy - future
+====================
+
+* Possible to optimize beyond C implementation
+
+* Matrix operations like: a + b + c should not allocate immediate results
+
+* Use of SSE operations can yield even bigger speedups
+  (or whatever architecture permits)
+
+* Make sure that unmodified programs run faster
+
+* Future looking pretty good
 
 Future directions
 =================
 
-xxx
+* Work more on JIT in general (inlining, x86_64 backend, etc.)
+
+* Produce a release by the end of the year
+
+* Release should speed up real-world program
+
+* Work on numpy as time permits
+
+* Seek more funding
+
+How you can help?
+=================
+
+* PyPy is open source after all
+
+* Very friendly to newcomers
+
+* A lot of promising fields to work on
+
+* We also seek funding or research grants
 
 Thank you! Questions?
 =====================
 
+* **PyPy**:
+
+http://codespeak.net/pypy
+
+http://morepypy.blogspot.com
+
+pypy-dev@codespeak.net
+
+* **Cloud modelling**:
+
+XXX
