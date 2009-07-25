@@ -307,6 +307,8 @@ Future directions
 How you can help?
 =================
 
+* take over or fund numpy-on-PyPy work
+
 * contribute extension modules
 
 * contribute JIT backend
