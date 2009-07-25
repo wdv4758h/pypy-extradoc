@@ -307,13 +307,14 @@ Future directions
 How you can help?
 =================
 
-* PyPy is open source after all
+* contribute extension modules
 
-* Very friendly to newcomers
+* organise a PyPy sprint, travel funding a plus
 
-* A lot of promising fields to work on
+* fund feature or ext module development
 
-* We also seek funding or research grants
+* PyPy is open source, newcomer friendly!
+
 
 Thank you! Questions?
 =====================
