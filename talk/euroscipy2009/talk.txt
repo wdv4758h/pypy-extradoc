@@ -309,6 +309,8 @@ How you can help?
 
 * contribute extension modules
 
+* contribute JIT backend
+
 * organise a PyPy sprint, travel funding a plus
 
 * fund feature or ext module development
