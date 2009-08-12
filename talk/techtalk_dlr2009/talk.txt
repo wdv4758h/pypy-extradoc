@@ -7,11 +7,12 @@ PyPy Talk
 What is PyPy
 ===================================
 
-- An alternate Python virtual machine for C/Posix,
-  for .NET and for Java
+- An alternate Python implementation
+  
+- running both in C/Posix, on top of .NET and the JVM
 
-- More generally, a way to implement interpreters
-  for various languages
+- More generally, an environment to implement interpreters for various
+  (dynamic) languages
 
 Talk Outline
 ===============
@@ -30,6 +31,8 @@ Common Approaches to Language Implementation
   - Ruby
   - Most JavaScript VMs (V8, TraceMonkey, Squirrelfish)
   - but also: Scheme48, Squeak
+
+|pause|
 
 - Building on top of a general-purpose OO VM
 
@@ -168,7 +171,7 @@ What is RPython
 Auto-generating VMs
 ===================
 
-- we need a custom \emph{translation toolchain} to compile the interpreter
+- we need a custom **translation toolchain** to compile the interpreter
   to a full VM
 - many aspects of the final VM are orthogonal from the interpreter source:
   they are inserted during translation
@@ -223,7 +226,7 @@ Drawbacks / Open Issues / Further Work
 ======================================
 
 - writing the translation toolchain in the first place takes lots of effort
-    (but it can be reused)
+  (but it can be reused)
 - writing a good GC is still necessary. The current one's are ok, but not great.
 - generating a dynamic compiler is hard (working on this since quite a while)
 
@@ -232,12 +235,13 @@ Status of Python Interpreter
 =============================
 
 - 1.1 release
-- more than two years of work
+- more than two years of work over 1.0
 - compatible to Python 2.5.2 (even most the obscure bits)
 - supporting ctypes, SQLite
 - well tested on Win/Linux 32 bit (but OS X and 64 bit should work as well)
 - running major packages unmodified 
 - easy_install/distutils working 
+- runs on Nokia's Maemo devices
 
 Software PyPy Can Run
 ======================
@@ -245,7 +249,7 @@ Software PyPy Can Run
 - Django
 - Pylons
 - Twisted & Nevow
-- pure python should just work 
+- pure Python should just work 
 - BitTorrent
 - PyPy translation toolchain
 - py lib 
@@ -255,7 +259,7 @@ Software PyPy Can Run
 Obscure details that people rely on
 =======================================
 
-- non-string keys in __dict__ of types
+- non-string keys in ``__dict__`` of types
 - exact naming of a list comprehension variable
 - relying on untested and undocumented private stuff
 - exact message matching in exception catching
@@ -275,6 +279,15 @@ Conclusion on Compatibility
 
 - main blocker for running apps will be missing external modules
 
+Extra Features
+===============
+
+features that CPython doesn't have:
+
+ - stackless support, including pickling of threadlets
+ - lazy evaluation
+ - transparent proxies
+ - ...
 
 Speed
 ========
@@ -301,6 +314,7 @@ Speed - JIT generator
 Main ideas (1)
 ===============
 
+- tracing JIT compiler (like Mozilla's TraceMonkey)
 - 80/20 rule
 - 80% of the time is spent in 20% of the code
 - Optimize only that 20%
@@ -321,7 +335,7 @@ Speed - Current Status
 - 20-30x faster on micro-benchmarks
 - nice proof of concept
 - completely separated from the interpreter
-- a bit of time (and funding) needed to speed up large python programs
+- a bit of time (and funding) needed to speed up large Python programs
 - hope to get a release with "a JIT" out beginning next year
   
 
@@ -332,15 +346,35 @@ Conclusion
 - Python implementation fairly complete, covers CPython 2.5 features
 - JIT generator is getting somewhere, slowly
 
+.. raw:: latex
 
-Contact / Q&A
+    \begin{figure}[h]
+    \scalebox{0.8}{\includegraphics[width=80px]{../img/py-web.png}}
+    \end{figure}
+
+Contact
 ==========================
 
-Carl Friedrich Bolz at Heinrich-Heine-Universität Düsseldorf
+Carl Friedrich Bolz at the Heinrich-Heine-Universität Düsseldorf: http://codespeak.net/~cfbolz
 
 PyPy: http://codespeak.net/pypy
 
 Blog: http://morepypy.blogspot.com
+
+.. raw:: latex
+
+    \begin{figure}[h]
+    \scalebox{0.8}{\includegraphics[width=80px]{../img/py-web.png}}
+    \end{figure}
+
+
+Questions?
+============
+
+- PyPy is a general environment to implement dynamic languages
+- Python implementation fairly complete, covers CPython 2.5 features
+- JIT generator is getting somewhere, slowly
+
 
 .. raw:: latex
 
