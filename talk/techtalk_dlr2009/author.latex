@@ -1,6 +1,6 @@
 \definecolor{rrblitbackground}{rgb}{0.0, 0.0, 0.0}
 
-\title[PyPy: A Flexible Virtual Machine for Python and Other Dynamic Languages]{PyPy: A Flexible VM for Python}
+\title[PyPy: A Flexible VM for Python]{PyPy: A Flexible Virtual Machine for Python and Other Dynamic Languages}
 \author[cfbolz]
 {Carl Friedrich Bolz}
 
