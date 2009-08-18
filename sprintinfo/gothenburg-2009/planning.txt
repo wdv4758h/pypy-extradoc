@@ -1,0 +1,90 @@
+
+People present:
+    - Armin
+    - Samuele
+    - Maciek
+    - Carl Friedrich
+    - Mikael
+
+later:
+    - Benjamin
+    - Anto
+
+discussions to be had:
+    - what goals/benchmarks do we want for the prototype
+    - things we know are missing
+    - state of the tests
+
+    - what to do with ootype
+    - how will Eurostars work, how will work be organized
+
+
+Goals/Benchmarks
+-----------------
+
+Goal: be somehow faster than CPython in real programs
+
+Benchmarks:
+    - Richards
+    - Pystone
+    - mako, gadfly, templess
+    - port some of the JS benchmarks?
+    - look at unladden-swallow benchmarks
+    - Sympy
+    - Simpy?
+    - Pyrolog
+    
+later:
+    - translate.py
+
+- there should be a unified way to run these benchmark
+- benchmarks should be run nightly
+- we might need a benchmarking server
+
+
+State of Tests
+---------------
+
+- coverage holes in metainterp/optimizer
+- coverage of x86 backend needs many random runs – check this!
+- need more direct tests of the x86 backend
+- some funniness in test_ll2ctypes.py
+- run random tests for x86 nightly
+- we need tests for pypy-jit behaviour that explicitely check whether the loops
+  make sense
+
+things we know are missing
+---------------------------
+
+metainterp/frontend:
+- virtualizables are not finished
+- there is no restriction on the length of the trace
+- proper inlining logic
+- loop nesting (across calls)
+- we need to do something about constantness
+- we need to do somethign about assert isinstance(x, Class)
+- more backendopt before jitting, assert removal
+- many ooisnull guards in a row
+
+- speed of tracing and fallbacks?
+
+backend:
+- recompilation after every bridge is bad
+- jump backward in x86 backend is inefficient
+- memory management for the code
+- speed of backend?
+
+Python interpreter:
+- lookups of various kinds
+- calls‽
+
+
+TASKS for the morning
+---------------------
+
+look at tests
+
+team 1: metainterp Armin, Carl Friedrich, Mikael
+team 2: x86-backend Maciek, Samuele
+
+
