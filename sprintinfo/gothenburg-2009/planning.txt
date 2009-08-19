@@ -98,8 +98,8 @@ look at tests
  - make x86 not recompile everything
     - write more tests that cover recompilation (Samuele, Maciek)
     - think about code memory management
- - optimize chains of ooisnull/oononnull (Mikael, Carl Friedrich)
- - discuss constantness improvements (everybody)
+ - optimize chains of ooisnull/oononnull DONE
+ - discuss constantness improvements DONE
  - don't trace into action flag stuff (Benjamin, Armin)
- - bit of inlining before bytecode production
+ - bit of inlining before bytecode production (Carl Friedrich, Mikael)
  - inlining on the Python level
