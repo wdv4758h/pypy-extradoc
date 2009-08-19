@@ -4,16 +4,16 @@ People present:
     - Samuele
     - Maciek
     - Carl Friedrich
+    - Benjamin
     - Mikael
 
 later:
-    - Benjamin
     - Anto
 
 discussions to be had:
-    - what goals/benchmarks do we want for the prototype
-    - things we know are missing
-    - state of the tests
+    - what goals/benchmarks do we want for the prototype DONE
+    - things we know are missing DONE
+    - state of the tests DONE
 
     - what to do with ootype
     - how will Eurostars work, how will work be organized
@@ -85,7 +85,19 @@ TASKS for the morning
 
 look at tests
 
-team 1: metainterp Armin, Carl Friedrich, Mikael
-team 2: x86-backend Maciek, Samuele
+ - more or less full coverage for optimize*.py
+ - remove asserts before bytecode production DONE
+ - make pypyjit.py work again DONE
+ - add tests for x86 backend IN-PROGRESS
+ - make test_ll_random.py a bit better than before
+ - set up test_ll_random to run nightly
 
-
+ - optimize generator closing DONE
+ - make x86 not recompile everything
+    - write more tests that cover recompilation (Samuele, Maciek)
+    - think about code memory management
+ - optimize chains of ooisnull/oononnull (Mikael, Carl Friedrich)
+ - discuss constantness improvements (everybody)
+ - don't trace into action flag stuff (Benjamin, Armin)
+ - bit of inlining before bytecode production
+ - inlining on the Python level
