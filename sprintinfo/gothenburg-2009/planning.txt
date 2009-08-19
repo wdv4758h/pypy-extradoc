@@ -82,8 +82,8 @@ Python interpreter:
 - calls‽
 
 
-TASKS for the morning
----------------------
+TASKS
+-----
 
 look at tests
 
@@ -103,3 +103,4 @@ look at tests
  - don't trace into action flag stuff (Benjamin, Armin)
  - bit of inlining before bytecode production (Carl Friedrich, Mikael)
  - inlining on the Python level
+ - storage sinking (removing consecutive getfields/setfields)
