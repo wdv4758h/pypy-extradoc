@@ -66,6 +66,8 @@ metainterp/frontend:
 - we need to do something about assert isinstance(x, Class)
 - more backendopt before jitting, assert removal
 - many ooisnull guards in a row
+- remove the numerous checks for frame.vable_rti in the
+  interpreter (non-JITting) part
 
 - speed of tracing and fallbacks?
 
