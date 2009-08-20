@@ -1,6 +1,5 @@
 
 People present:
-    - Armin
     - Samuele
     - Maciek
     - Carl Friedrich
@@ -9,6 +8,9 @@ People present:
 
 later:
     - Anto
+    - Armin
+    - Iko
+    - Bea
 
 discussions to be had:
     - what goals/benchmarks do we want for the prototype DONE
@@ -88,19 +90,25 @@ TASKS
 look at tests
 
  - more or less full coverage for optimize*.py
- - remove asserts before bytecode production DONE
- - make pypyjit.py work again DONE
- - add tests for x86 backend IN-PROGRESS
+ - add tests for x86 backend DONE
  - make test_ll_random.py a bit better than before
- - set up test_ll_random to run nightly
+ - set up test_ll_random to run nightly with x86 backend
+ - fix test_ll_random with llgraph backend
+ - fix x86 nightly failure (Maciek, Benjamin)
+ - fix the generator test on trunk (Maciek, Benjamin)
+ - look at the codewriter problems (Mikael, Carl Friedrich)
 
- - optimize generator closing DONE
  - make x86 not recompile everything
-    - write more tests that cover recompilation (Samuele, Maciek)
     - think about code memory management
- - optimize chains of ooisnull/oononnull DONE
- - discuss constantness improvements DONE
- - don't trace into action flag stuff (Benjamin, Armin)
- - bit of inlining before bytecode production (Carl Friedrich, Mikael)
+ - don't trace into action flag stuff DONE
+ - bit of inlining before bytecode production DONE
  - inlining on the Python level
  - storage sinking (removing consecutive getfields/setfields)
+ - build a pypy-c-jit from before the sprint for comparison
+
+ - green virtualizable fields
+ - remove the numerous checks for frame.vable_rti in the
+   interpreter (non-JITting) part
+ - test the loops that pypy-c-jit produces
+
+ - what to do with the minimal backend?
