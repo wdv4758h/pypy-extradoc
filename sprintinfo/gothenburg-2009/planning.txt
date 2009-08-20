@@ -90,13 +90,13 @@ TASKS
 look at tests
 
  - more or less full coverage for optimize*.py
- - add tests for x86 backend DONE
- - make test_ll_random.py a bit better than before
+ - add GC tests for x86 backend (Armin and Maciek around)
+ - make test_ll_random.py a bit better than before SORT-OF-DONE
  - set up test_ll_random to run nightly with x86 backend
- - fix test_ll_random with llgraph backend
- - fix x86 nightly failure (Maciek, Benjamin)
- - fix the generator test on trunk (Maciek, Benjamin)
- - look at the codewriter problems (Mikael, Carl Friedrich)
+ - fix test_ll_random with llgraph backend DONE
+ - fix x86 nightly failure DONE
+ - fix the generator test on trunk DONE
+ - look at the codewriter problems DONE
 
  - make x86 not recompile everything
     - think about code memory management
@@ -104,11 +104,12 @@ look at tests
  - bit of inlining before bytecode production DONE
  - inlining on the Python level
  - storage sinking (removing consecutive getfields/setfields)
- - build a pypy-c-jit from before the sprint for comparison
+ - build a pypy-c-jit from before the sprint for comparison IN-PROGRESS
 
- - green virtualizable fields
+ - green virtualizable fields (Armin, Iko)
  - remove the numerous checks for frame.vable_rti in the
-   interpreter (non-JITting) part
- - test the loops that pypy-c-jit produces
+   interpreter (non-JITting) part (Samuele, Carl Friedrich, Armin around)
+ - test the loops that pypy-c-jit produces IN-PROGRESS (Benjamin, Mikke,
+   Macie(k/j) around)
 
- - what to do with the minimal backend?
+ - kill the minimal backend (Armin, Iko)
