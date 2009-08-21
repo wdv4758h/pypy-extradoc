@@ -54,7 +54,7 @@ State of Tests
 - run random tests for x86 nightly
 - we need tests for pypy-jit behaviour that explicitely check whether the loops
   make sense
-- the tragedy of the skipped tests (like test_pypy_c.py)
+- the tragedy of the skipped tests
 
 things we know are missing
 ---------------------------
