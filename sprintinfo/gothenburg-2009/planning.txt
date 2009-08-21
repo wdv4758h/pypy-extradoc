@@ -94,6 +94,7 @@ look at tests
  - find bug in x86 backend related to GC (Maciek, Armin around)
  - make test_ll_random.py a bit better than before SORT-OF-DONE
  - set up test_ll_random to run nightly with x86 backend
+ - update things in metainterp/doc
 
  - make x86 not recompile everything
     - think about code memory management
