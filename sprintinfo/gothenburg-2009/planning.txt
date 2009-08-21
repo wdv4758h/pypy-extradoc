@@ -113,3 +113,13 @@ look at tests
  - fix config tests (Armin, Carl Friedrich around)
  - merge the compiler branch
  - general wizardry (Maciek, Bea)
+
+
+Ater the Sprint
+----------------
+
+- merge the jit branch to trunk
+- upgrade python on wyvern
+- improve test running, compile only once
+- can we have a buildbot download button for pypy-cs?
+- sort out a benchmark server (Open End?)
