@@ -96,6 +96,7 @@ look at tests
  - set up test_ll_random to run nightly with x86 backend
  - update things in metainterp/doc
 
+ - compare backend vs gcc quality
  - make x86 not recompile everything
     - think about code memory management
  - inlining on the Python level
