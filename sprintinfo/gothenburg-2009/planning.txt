@@ -91,8 +91,7 @@ look at tests
 
  - more or less full coverage for optimize*.py
  - add GC tests for x86 backend DONE
- - find bug in x86 backend related to GC (Maciek, Armin around)
- - make test_ll_random.py a bit better than before SORT-OF-DONE
+ - find bug in x86 backend related to GC DONE
  - set up test_ll_random to run nightly with x86 backend
  - update things in metainterp/doc
 
@@ -100,21 +99,28 @@ look at tests
  - make x86 not recompile everything
     - think about code memory management
  - inlining on the Python level
- - store sinking (removing consecutive getfields/setfields) STARTED (Armin, Iko)
+ - store sinking (removing consecutive getfields/setfields) (Iko, Anto)
  - build a pypy-c-jit from before the sprint for comparison IN-PROGRESS
 
  - green virtualizable fields ABANDONED
  - remove the numerous checks for frame.vable_rti in the
-   interpreter (non-JITting) part IN-PROGRESS (Carl Friedrich, Samuele)
+   interpreter (non-JITting) part DONE
  - parser for the ops files that pypy-c-jit produces DONE
- - test the loops that pypy-c-jit produces (Mikke, Benjamin)
+ - add infrastructure to test the loops that pypy-c-jit produces DONE
 
  - kill the minimal backend DONE
  - getting confused IN-PROGRESS
- - fix the CLI backend (Anto)
- - fix config tests (Armin, Carl Friedrich around)
+ - fix the CLI backend DONE
+ - fix config tests DONE
  - merge the compiler branch
- - general wizardry (Maciek, Bea)
+ - general wizardry
+ - change x86 backend to utilize more registers DONE
+ - look at calls performance‽ (Samuele, Carl Friedrich)
+ - fix virtualizable tests (Samuele, Carl Friedrich)
+ - fix the backend tests (Maciek, Armin, Wyvern around)
+ - write sprint blog post (Maciek, Carl Friedrich)
+ - get rid of pups and poshes at the end of the loop in x86 backend (Benjamin, Armin)
+
 
 
 Ater the Sprint
