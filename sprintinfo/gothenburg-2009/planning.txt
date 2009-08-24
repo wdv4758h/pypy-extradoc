@@ -99,27 +99,27 @@ look at tests
  - make x86 not recompile everything
     - think about code memory management
  - inlining on the Python level
- - store sinking (removing consecutive getfields/setfields) (Iko, Anto)
+ - store sinking (removing consecutive getfields/setfields) DONE
  - build a pypy-c-jit from before the sprint for comparison IN-PROGRESS
 
  - green virtualizable fields ABANDONED
- - remove the numerous checks for frame.vable_rti in the
-   interpreter (non-JITting) part DONE
- - parser for the ops files that pypy-c-jit produces DONE
  - add infrastructure to test the loops that pypy-c-jit produces DONE
 
- - kill the minimal backend DONE
- - getting confused IN-PROGRESS
- - fix the CLI backend DONE
- - fix config tests DONE
+ - constant specnode support (Iko, Anto, Armin around)
+
+ - getting confused MOSTLY DONE
  - merge the compiler branch
  - general wizardry
- - change x86 backend to utilize more registers DONE
- - look at calls performance‽ (Samuele, Carl Friedrich)
- - fix virtualizable tests (Samuele, Carl Friedrich)
- - fix the backend tests (Maciek, Armin, Wyvern around)
+ - look at calls performance‽ PROGRESS EXISTS
+ - fix virtualizable tests DONE
+ - fix the GC backend tests
  - write sprint blog post (Maciek, Carl Friedrich)
- - get rid of pups and poshes at the end of the loop in x86 backend (Benjamin, Armin)
+ - get rid of pups and poshes at the end of the loop in x86 backend DONE
+ - investigate lib-python tests (Carl Friedrich, Samuele)
+ - decide on benchmarks that represent calls (Benjamin)
+ - decide what to do with resizable lists (Maciek, Armin)
+
+ - find out what's really going on with richards
 
 
 
