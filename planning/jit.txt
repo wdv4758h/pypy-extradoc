@@ -5,8 +5,6 @@ TASKS
 - streamline calls
 - stability!
 
-- merge the jit branch to trunk
-
 - upgrade python on wyvern
 - improve test running, compile only once
 - sort out a benchmark infrastructure. graphs!!!
