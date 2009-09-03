@@ -7,7 +7,9 @@ TASKS
 
 - upgrade python on wyvern
 - improve test running, compile only once
-- sort out a benchmark infrastructure. graphs!!!
+
+- sort out a benchmark infrastructure. graphs!!! (iko is going to do
+   some sorting)
 
 - nightly run of checks on output of pypy-c-jit: we need tests for
   pypy-jit behaviour that explicitely check whether the loops make
