@@ -58,9 +58,6 @@ metainterp/frontend:
 - speed of tracing and fallbacks?
 - save space on all the guard operations (see resume.py)
 
-backend:
-- speed of backend?
-
 - support threads again!
 
 Python interpreter:
