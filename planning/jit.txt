@@ -18,8 +18,7 @@ TASKS
 - the tragedy of the skipped tests
 - keep test coverage in check
 
-- make x86 not recompile everything
-   - think about code memory management
+- think about code memory management
 
 - compare backend vs gcc quality
 
