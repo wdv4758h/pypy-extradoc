@@ -24,6 +24,8 @@ TASKS
 
 - asmgcc: support callbacks (threads?)
 
+- jit should inline the fast path of mallocs
+
 - update things in metainterp/doc
 
 Python interpreter:
