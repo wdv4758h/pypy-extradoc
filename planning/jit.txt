@@ -15,6 +15,12 @@ TASKS
   pypy-jit behaviour that explicitely check whether the loops make
   sense
 
+- objectmodel.instantiate is currently not seen by the JIT. This makes all
+  instance allocation in the Python interpreter escape
+
+- store sinking also for get/setarrayitem
+- lose less information across residual calls
+
 - the tragedy of the skipped tests
 - keep test coverage in check
 
@@ -30,23 +36,19 @@ TASKS
 
 Python interpreter:
 - make shared dicts support shadowtracking
-- make shared dicts revert to string dicts less often
 - don't look for the global-lookup-cache when a function contains no
   LOAD_GLOBAL
+- it's a bit silly that it's possible to change the code objects of builtin
+  functions
+- the lookup annotation optimization interferes with the JIT
 
 inlining discussion
 --------------------
 
-- need to trace aggressively
-- give up when trace becomes too long
 - need to remember when we gave up
-- need to reset counters
 - tracing aggressively will put pressure on the speed of tracing
 - what should we do about recursive calls?
 - connecting compiled loops accross a call?
-- problem: when we inline one function, and then hit something non-inlinable,
-  how do we make the inlined function's frame not escape via the
-  non-inlinable's f_back?
 
 things we know are missing
 ---------------------------
