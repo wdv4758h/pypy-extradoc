@@ -2,7 +2,7 @@ DÃ¼sseldorf PyPy sprint November 6 - November 13 2009
 =====================================================
 
 The next PyPy sprint will be held in the Computer Science department of
-Heinrich-Heine UniversitÃa ¤tDÃ¼sseldorf from the 6th to the 13th of
+Heinrich-Heine Universität Düsseldorf from the 6th to the 13th of
 November 2009. This is a fully public sprint, everyone is welcome to join us.
 
 Topics and goals
