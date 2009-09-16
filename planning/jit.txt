@@ -40,7 +40,7 @@ Python interpreter:
   LOAD_GLOBAL
 - it's a bit silly that it's possible to change the code objects of builtin
   functions
-- the lookup annotation optimization interferes with the JIT
+- raising an exception tends to escape frames, due to the traceback capturing
 
 inlining discussion
 --------------------
