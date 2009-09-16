@@ -9,6 +9,7 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =====================
 Carl Friedrich Bolz  always there   private
+Antonio Cuni         6/11 - 13/11   ???
 ==================== ============== =====================
 ==================== ============== =====================
 
@@ -19,7 +20,6 @@ Carl Friedrich Bolz  always there   private
 ==================== ============== =====================
 Armin Rigo                                
 Michael Hudson                             
-Antonio Cuni                               
 Samuele Pedroni                                     
 Anders Chrigstroem                                  
 Maciej Fijalkowski                                   
