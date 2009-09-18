@@ -28,7 +28,7 @@ TASKS
 
 - compare backend vs gcc quality
 
-- asmgcc: support callbacks (threads?)
+- jit/asmgcc + threads?
 
 - jit should inline the fast path of mallocs
 
@@ -64,8 +64,6 @@ metainterp/frontend:
 
 backend:
 - speed of backend?
-
-- support threads again!
 
 Python interpreter:
 - lookups of various kinds
