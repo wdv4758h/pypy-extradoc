@@ -5,7 +5,6 @@ TASKS
 - streamline calls
 - stability!
 
-- upgrade python on wyvern
 - improve test running, compile only once
 
 - sort out a benchmark infrastructure. graphs!!! (iko is going to do
@@ -59,7 +58,6 @@ metainterp/frontend:
 
 - float support
 
-- speed of tracing and fallbacks?
 - save space on all the guard operations (see resume.py)
 
 backend:
