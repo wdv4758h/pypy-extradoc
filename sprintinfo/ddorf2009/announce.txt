@@ -1,4 +1,4 @@
-DÃ¼sseldorf PyPy sprint November 6 - November 13 2009
+Düsseldorf PyPy sprint November 6 - November 13 2009
 =====================================================
 
 The next PyPy sprint will be held in the Computer Science department of
