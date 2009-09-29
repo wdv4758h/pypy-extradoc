@@ -3,10 +3,10 @@ The speed of PyPy
 
 Summary:
 
-First part of the talk will cover PyPy's speed achievements, especially
-connected to the last year's work on JIT. It'll present benchmarks together
-with compatibility comparison. Second part of the talk will cover
-basics of how the JIT work and what sort of programs it can greatly
+The first part of the talk will cover PyPy's speed achievements, especially
+connected to last year's work on the JIT.  It will present benchmarks together
+with compatibility comparison(?).  Second part of the talk will cover the
+basics of how the JIT works and what sort of programs it can greatly
 speedup (and which ones it can't).
 
 Description:
