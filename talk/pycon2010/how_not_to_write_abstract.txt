@@ -1,0 +1,15 @@
+How to write cross-interpreter Python programs
+==============================================
+
+Summary:
+
+This talk will cover basics about writing cross-interpreter
+python programs. What to do and most of all what not to do.
+This will help you if you want at some point in time to
+run program on for example Java platform or faster python
+interpreter, but also if you want to keep it running between
+CPython releases.
+
+Description:
+
+xXX
