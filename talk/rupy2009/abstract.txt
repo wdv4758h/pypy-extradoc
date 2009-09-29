@@ -7,3 +7,9 @@ new feature that allows to run (some so far) programs really
 fast. I'll also present details how to exploit JIT's possiblities
 and future directions.
 
+Bio:
+
+I'm a core developer of the PyPy project, involved in it for
+last couple years. In recent years I spent lot of time improving
+dynamic compilation features of PyPy as well as improving general
+PyPy compatibility.
