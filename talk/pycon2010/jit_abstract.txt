@@ -1,0 +1,16 @@
+The speed of PyPy
+=================
+
+Summary:
+
+First part of the talk will cover PyPy's speed achievements, especially
+connected to the last year's work on JIT. It'll present benchmarks together
+with compatibility comparison. Second part of the talk will cover
+basics of how the JIT work and what sort of programs it can greatly
+speedup (and which ones it can't).
+
+Description:
+
+PyPy's JIT has been in development for quite a while so far and recently
+it started showing some real benefits (being faster than psyco on
+medium sized benchmarks) (XXX link). XXX finish
