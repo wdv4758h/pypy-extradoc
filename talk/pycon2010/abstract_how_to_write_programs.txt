@@ -12,6 +12,9 @@ CPython releases.
 
 Description:
 
+The talk will consist mostly out of list of issues what to do and what
+not to do. Some examples are given below:
+
 Having good tests is the most important component to successful
 cross-interpreter programs.  This includes having the infrastructure set up to
 automatically run them on all supported platforms, runtimes, and versions.
@@ -22,7 +25,8 @@ if it's not Python code, is one of the hardest parts to port to other
 interpreters.  This also applies to libraries that are made available by the
 implementation by default but are not part of the stdlib like Java libraries
 from Jython and .NET in IronPython.  The preferred way to access libraries is
-ctypes, since CPython, PyPy, and IronPython support it.
+ctypes, since CPython and PyPy supports it, while Jython and IronPython are
+on the way.
 
 Mind your bytes and strings!  The usual rule is to always decode data as soon as
 possible from IO if you need to do processing on it, or always keep it as bytes.
@@ -34,3 +38,10 @@ layouts, so it's wrong to assume the CPython one.
 Use all new style classes.  Not only does this provide consistency, but it will
 avoid surprises in 3.x when all classes are new style and be useful for other
 implementations, where new style classes are optimized more.
+
+Never use exact string representation of exceptions, they might even
+change from one minor revision to other.
+
+Don't really on exact finalization, especially on files.
+
+In short: there is no feature obscure enough for people not to rely on.
