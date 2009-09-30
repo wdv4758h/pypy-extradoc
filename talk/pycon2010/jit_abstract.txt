@@ -27,7 +27,7 @@ Proposed talk agenda:
   like the tracemonkey JS interpreter, unlike Psyco or JVM JITs).
 
 * Tracing JITs focus on often executed loops. Which kind of programs
-  will the PyPy JIT speed-up , which constructs we know it is currently poor at.
+  will the PyPy JIT speed-up, which constructs we know it is currently poor at.
 
 * Future plans for PyPy, especially JIT-wise.
 
