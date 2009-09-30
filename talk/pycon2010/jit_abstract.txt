@@ -21,19 +21,14 @@ bit of the talk.
 
 Proposed talk agenda:
 
-* Show various benchmarking data and compare different
-  python interpreters (CPython, PyPy, Jython, IronPython, unladden swallow)
+* Show various benchmarking data and compare different Python interpreters
 
-* A bit of introduction into how PyPy's JIT work (it's tracing JIT,
-  like tracemonkey JS interpreter, unlike Psyco or JVM).
+* A bit of introduction into how PyPy's JIT work (it's a generated tracing JIT,
+  like the tracemonkey JS interpreter, unlike Psyco or JVM JITs).
 
-* What sorts of programs JITs in general can speed up. What sorts of
-  programs PyPy's JIT is better at. What similiar python constructs
-  can yield different performance characteristics while JITting.
+* Tracing JITs focus on often executed loops. Which kind of programs
+  will the PyPy JIT speed-up , which constructs we know it is currently poor at.
 
 * Future plans for PyPy, especially JIT-wise.
-
-The main wieght would be put on the point 3 (how can I write my program
-so JIT will make it fast).
 
 .. _`faster than Psyco`: http://morepypy.blogspot.com/2009/09/first-results-of-jit.html
