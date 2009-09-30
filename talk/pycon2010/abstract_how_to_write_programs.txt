@@ -25,8 +25,8 @@ if it's not Python code, is one of the hardest parts to port to other
 interpreters.  This also applies to libraries that are made available by the
 implementation by default but are not part of the stdlib like Java libraries
 from Jython and .NET in IronPython.  The preferred way to access libraries is
-ctypes, since CPython and PyPy supports it, while Jython and IronPython are
-on the way.
+ctypes, since CPython, PyPy and IronPython supports it,
+while Jython is on the way.
 
 Mind your bytes and strings!  The usual rule is to always decode data as soon as
 possible from IO if you need to do processing on it, or always keep it as bytes.
