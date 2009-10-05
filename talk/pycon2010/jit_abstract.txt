@@ -21,14 +21,28 @@ bit of the talk.
 
 Proposed talk agenda:
 
-* Show various benchmarking data and compare different Python interpreters
+* Show various benchmarking data for comparison of different
+  Python interpreters (5 minutes)
+
+* Describe what is JIT with some examples (10 minutes)
 
 * A bit of introduction into how PyPy's JIT work (it's a generated tracing JIT,
-  like the tracemonkey JS interpreter, unlike Psyco or JVM JITs).
+  like the tracemonkey JS interpreter, unlike Psyco or JVM JITs). (5 minutes)
 
 * Tracing JITs focus on often executed loops. Which kind of programs
   will the PyPy JIT speed-up, which constructs we know it is currently poor at.
+  (15 minutes)
 
 * Future plans for PyPy, especially JIT-wise.
+  (5 minutes)
+
+* Q&A (5 minutes)
 
 .. _`faster than Psyco`: http://morepypy.blogspot.com/2009/09/first-results-of-jit.html
+
+The main part of the talk would focus on a detailed explanation what
+information JIT can use (at the time of talk) or at all and what
+constructs it'll be poor at.
+
+Also, the talk will be focused on intermediate audience, hence prolonged
+timeline for explanation of what is JIT and how it works.
