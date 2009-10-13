@@ -7,24 +7,17 @@ TASKS
 
 - improve test running, compile only once
 
-- sort out a benchmark infrastructure. graphs!!! (iko is going to do
-   some sorting)
+- sort out a benchmark infrastructure. graphs!
 
 - nightly run of checks on output of pypy-c-jit: we need tests for
   pypy-jit behaviour that explicitely check whether the loops make
   sense
 
-- store sinking also for get/setarrayitem WIP
 - lose less information across residual calls
 
-- the tragedy of the skipped tests
 - keep test coverage in check
 
-- think about code memory management
-
-- compare backend vs gcc quality
-
-- jit/asmgcc + threads?
+- prevent too much method and fields demoting in the jit
 
 - jit should inline the fast path of mallocs
 
@@ -32,6 +25,14 @@ TASKS
 
 - we should think about merging several consecutive guards, to make the
   assembler smaller and to save resume data space
+
+- jit/asmgcc + threads?
+
+- think about code memory management
+
+- compare backend vs gcc quality
+
+- the tragedy of the skipped tests
 
 - update things in metainterp/doc
 
@@ -68,7 +69,6 @@ metainterp/frontend:
   fix 'test_external_read_sometimes'
 
 - save space on all the guard operations (see resume.py):
-  - share more between the guards of a loop
   - think of ways to share information about virtuals
 
 
