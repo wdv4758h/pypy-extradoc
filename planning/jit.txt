@@ -13,13 +13,13 @@ TASKS
   pypy-jit behaviour that explicitely check whether the loops make
   sense
 
+
 - lose less information across residual calls
+
 
 - keep test coverage in check
 
 - prevent too much method and fields demoting in the jit
-
-- jit should inline the fast path of mallocs
 
 - improve on predictability: delegate the caching, don't trace into signals ... but produce just a conditional call
 
