@@ -1,27 +1,20 @@
 TASKS
 -----
 
-- inlining on the Python level (see discussion)
-- streamline calls
-- stability!
-
-- improve test running, compile only once
-
 - sort out a benchmark infrastructure. graphs!
 
 - nightly run of checks on output of pypy-c-jit: we need tests for
   pypy-jit behaviour that explicitely check whether the loops make
   sense
 
-
 - lose less information across residual calls
 
-
-- keep test coverage in check
-
-- prevent too much method and fields demoting in the jit
-
 - improve on predictability: delegate the caching, don't trace into signals ... but produce just a conditional call
+
+- we need to be able to not inline when the traces are too long, this would
+  need being able to start tracing from function starts, the latter
+  should probably not be done unconditionally but only for functions
+  seen along too long traces
 
 - we should think about merging several consecutive guards, to make the
   assembler smaller and to save resume data space
@@ -29,13 +22,6 @@ TASKS
 - jit/asmgcc + threads?
 
 - think about code memory management
-
-- compare backend vs gcc quality
-
-- the tragedy of the skipped tests
-
-- update things in metainterp/doc
-
 
 Python interpreter:
 
@@ -46,13 +32,29 @@ Python interpreter:
 - it's a bit silly that it's possible to change the code objects of builtin
   functions
 - raising an exception tends to escape frames, due to the traceback capturing
-- calls with keywords produce intractably huge traces
+- prevent jitting really general */** calls
+- sharing dict needs to cope with dels
 
+
+- improve test running, compile only once
+
+
+META
+-----
+
+- stability!
+
+- keep test coverage in check
+
+- prevent too much method and fields demoting in the jit
+
+- the tragedy of the skipped tests
+
+- update things in metainterp/doc
 
 inlining discussion
 --------------------
 
-- need to not always inline, but clever about which functions not to inline
 - at some point we need to merge the tails of loops, to avoid exponential
   explosion
 - need to remember when we gave up
