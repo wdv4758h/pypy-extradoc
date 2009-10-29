@@ -11,6 +11,7 @@ available yet from them.
 Carl Friedrich Bolz  always there   private
 Antonio Cuni         6/11 - 13/11   Hotel Haus Hillesheim
 Armin Rigo           6/11 - 13/11   Hotel Haus Hillesheim
+Holger Krekel        9/11 - 13/11   ?
 ==================== ============== =====================
 ==================== ============== =====================
 
