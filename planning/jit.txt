@@ -38,6 +38,8 @@ Python interpreter:
 
 - improve test running, compile only once
 
+- module/__builtin__/app_inspect.py forces frames for globals() and locals().
+  It's a horrible idea, should be fixed (and rest reviewed).
 
 META
 -----
