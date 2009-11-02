@@ -3,13 +3,9 @@ TASKS
 
 - sort out a benchmark infrastructure. graphs!
 
-- nightly run of checks on output of pypy-c-jit: we need tests for
-  pypy-jit behaviour that explicitely check whether the loops make
-  sense
-
 - lose less information across residual calls
 
-- improve on predictability: delegate the caching, don't trace into signals ... but produce just a conditional call
+- improve on predictability: don't trace into signals ... but produce just a conditional call
 
 - we need to be able to not inline when the traces are too long, this would
   need being able to start tracing from function starts, the latter
