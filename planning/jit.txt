@@ -23,10 +23,6 @@ Python interpreter:
 
 - goal: on average <=5 guards per original bytecode
 
-- don't look for the global-lookup-cache when a function contains no
-  LOAD_GLOBAL
-- it's a bit silly that it's possible to change the code objects of builtin
-  functions
 - raising an exception tends to escape frames, due to the traceback capturing
 - prevent jitting really general */** calls
 - sharing dict needs to cope with dels
