@@ -25,7 +25,6 @@ Python interpreter:
 
 - raising an exception tends to escape frames, due to the traceback capturing
 - prevent jitting really general */** calls
-- sharing dict needs to cope with dels
 
 
 - improve test running, compile only once
