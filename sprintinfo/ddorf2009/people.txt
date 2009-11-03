@@ -12,6 +12,7 @@ Carl Friedrich Bolz  always there   private
 Antonio Cuni         6/11 - 13/11   Hotel Haus Hillesheim
 Armin Rigo           6/11 - 13/11   Hotel Haus Hillesheim
 Holger Krekel        9/11 - 13/11   ?
+Samuele Pedroni      5/11 - 13/11   Hotel Blaettler
 ==================== ============== =====================
 ==================== ============== =====================
 
@@ -22,7 +23,6 @@ Holger Krekel        9/11 - 13/11   ?
 ==================== ============== =====================
 Armin Rigo                                
 Michael Hudson                             
-Samuele Pedroni                                     
 Anders Chrigstroem                                  
 Maciej Fijalkowski                                   
 Andrew Thompson                      
