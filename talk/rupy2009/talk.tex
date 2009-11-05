@@ -67,7 +67,9 @@
   \begin{itemize}
     \item Python - a programming language
     \item CPython - main implementation of Python
-      xxx
+    \item JVM - Java Virtual Machine - VM used to run Java, among others
+    \item JIT - Just in time compiler
+    \item Psyco - JIT for Python
   \end{itemize}
 \end{frame}
 
@@ -106,7 +108,33 @@
   \pause
   \begin{itemize}
     \item So, it's CPython that is slow on this particular benchmark
+      \pause
+    \item Same example, using numpy and vectorization about 3x faster than JVM
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Python's speed}
+  \begin{itemize}
+    \item Instead of: ``Why is Python slow?''
+      \pause
+    \item Better: ``Why is Python hard to optimize?''
+      \pause
+    \item Even better: ``How are we going to fix it?''
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why is Python hard to optimize?}
+  \begin{itemize}
+    \item Duck typing (dynamic dispatch)
+    \item Frames
+    \item Object encapsulation
+    \item Dictionaries of instances
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
 \end{frame}
 
 \end{document}
