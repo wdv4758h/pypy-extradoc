@@ -289,7 +289,7 @@
     \pause
     \item Pretty well
       \pause
-    \item XXXX speedup over CPython
+    \item A reasonable speedup over CPython
   \end{itemize}
 \end{frame}
 
@@ -312,6 +312,15 @@
     \item Caching globals
     \item Caching builtins
     \item A lot of smaller ones
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bird's view of JIT}
+  \begin{itemize}
+    \item Mixed mode - interpreter \& JIT for hot paths
+    \item Tracing JIT (like TraceMonkey), not up-front
+    \item 
   \end{itemize}
 \end{frame}
 
@@ -384,7 +393,8 @@
   \frametitle{Profit tomorrow!}
   \begin{itemize}
     \item We plan to release JIT-ready version somewhere early 2010
-      xxx
+      \pause
+    \item It should be able to speed up real-world programs
   \end{itemize}
 \end{frame}
 
@@ -395,7 +405,7 @@
     \item Try running existing programs
     \item Profile, report bugs
       \pause
-    \item Talk to your boss (XXX)
+    \item Talk to your boss
   \end{itemize}
 \end{frame}
 
