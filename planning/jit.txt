@@ -106,3 +106,19 @@ ootype discussion
 - try to unify interfaces to make doing the right thing for ootype easier
 - different constraints for different groups of people
 - what to do with ootype jit support after Anto finished his PhD?
+
+
+memory usage
+------------
+
+- we use too much memory during jitting.  Notably of the following
+  types (in decreasing order of total size, for Pystone):
+    - rpy_string
+    - GcArray of AbstractValue (unknown if fixedsize or not)
+    - DoneWithThisFrameRef
+    - dict {AbstractValue: SHORT}
+    - GcArray of ResOperation
+    - resizable list of AbstractValue
+    - ResOperation
+    - ResumeGuardDescr
+    - ConstInt
