@@ -1,5 +1,10 @@
 
 
+
+
+
+
+
 [x, y]
 # LOAD_FAST
 frame.valuestack.push(frame.locals[0])
@@ -16,9 +21,41 @@ return frame.valuestack[-1]
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 [x, y]
 v0 = IntObject(x.value + y.value)
 return v0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
