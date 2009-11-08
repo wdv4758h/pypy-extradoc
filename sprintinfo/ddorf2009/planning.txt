@@ -9,15 +9,16 @@ people present:
 TASKS
 ======
 
-  - sanitize inlining IN-PROGRESS (Samuele, Carl Friedrich)
-  - directly call assembler for residual portal calls
+  - make the size of ResOperation instances less insane (Armin, Anto)
+  - set up the buildbot on the Mac Mini (Samuele, Carl Friedrich)
+  - directly call assembler for residual portal calls 
   - making the CLI backend working with logging
   - compress the virtuals part of resume data more
-  - understand the memory behaviour of pystone with the JIT (Armin, Anto)
-  - fix the guard_value(bool, 1) -> guard_true hack (Armin)
+  - understand the memory behaviour of pystone with the JIT DONE
+  - fix the guard_value(bool, 1) -> guard_true hack DONE
   - try to do something non-insane about Python-level exceptions
   - make the assembler produced by generate_failure smaller
-  - lose less information across residual calls (Samuele, Carl Friedrich)
+  - lose less information across residual calls IN-PROGRESS (Samuele, Carl Friedrich)
   - we should think about merging several consecutive guards in the
     optimizer, to make the assembler smaller and to save resume data space
   - put the class into the structure to get only one promote when using an
