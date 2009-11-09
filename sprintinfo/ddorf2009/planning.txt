@@ -9,21 +9,22 @@ people present:
 TASKS
 ======
 
-  - make the size of ResOperation instances less insane (Armin, Anto)
+  - make the size of ResOperation instances less insane SEMI-DONE
   - set up the buildbot on the Mac Mini (Samuele, Carl Friedrich)
-  - directly call assembler for residual portal calls 
+  - directly call assembler for residual portal calls
   - making the CLI backend working with logging
-  - compress the virtuals part of resume data more
+  - compress the virtuals part of resume data more (Samuele, Carl Friedrich)
   - understand the memory behaviour of pystone with the JIT DONE
   - fix the guard_value(bool, 1) -> guard_true hack DONE
-  - try to do something non-insane about Python-level exceptions
+  - try to do something non-insane about Python-level exceptions (Maciek, Armin)
   - make the assembler produced by generate_failure smaller
-  - lose less information across residual calls IN-PROGRESS (Samuele, Carl Friedrich)
-  - we should think about merging several consecutive guards in the
-    optimizer, to make the assembler smaller and to save resume data space
+  - lose less information across residual calls DONE
+  - merge guard_nonnull(x, ...), guard_class(x, ...) (Armin, Maciek)
+  - merge guard_class(x, ...), guard_value(x, ...) DONE
   - put the class into the structure to get only one promote when using an
     instance
   - look into failing pypy-c-jit apptests
+  - port writeanalyze to ootype (Anto, Carl Friedrich around)
 
 
 
