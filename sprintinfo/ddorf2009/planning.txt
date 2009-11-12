@@ -10,19 +10,21 @@ people present:
 TASKS
 ======
 
-  - make the size of ResOperation instances less insane SEMI-DONE
-  - set up the buildbot on the Mac Mini (Samuele, Carl Friedrich)
+  - set up the buildbot on the Mac Mini DONE
   - directly call assembler for residual portal calls
-  - making the CLI backend working with logging
+  - making the CLI backend working with logging DONE
+  - set up nightly run on Mac (Samuele, Carl Friedrich)
+  - debug CLI crashes (Anto)
   - compress the virtuals part of resume data more (Samuele, Carl Friedrich)
-  - try to do something non-insane about Python-level exceptions (Maciek, Armin)
+  - try to do something non-insane about Python-level exceptions IN-PROGRESS
+  - improve operations logging DONE?
+  - rewrite exceptions module to be a mixed module (Armin, Maciek)
   - make the assembler produced by generate_failure smaller
-  - merge guard_nonnull(x, ...), guard_class(x, ...) DONE, cli needs fixing
+  - merge guard_nonnull(x, ...), guard_class(x, ...) DONE
   - put the class into the structure to get only one promote when using an
     instance
   - look into failing pypy-c-jit apptests
-  - port writeanalyze to ootype DONE
-  - fix buildbot on py.test 1.1 branch (Holger, Samuele around)
+  - fix buildbot on py.test 1.1 branch BRANCH MERGED
 
 
 
