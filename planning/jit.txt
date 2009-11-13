@@ -19,13 +19,14 @@ TASKS
 
 - think about code memory management
 
+- forcing virtualizables should only force fields affected, not everything
+
 Python interpreter:
 
 - goal: on average <=5 guards per original bytecode
 
 - raising an exception tends to escape frames, due to the traceback capturing
 - prevent jitting really general */** calls
-
 
 - improve test running, compile only once
 
