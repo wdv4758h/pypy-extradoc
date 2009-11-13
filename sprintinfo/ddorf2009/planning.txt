@@ -13,18 +13,16 @@ TASKS
   - set up the buildbot on the Mac Mini DONE
   - directly call assembler for residual portal calls
   - making the CLI backend working with logging DONE
-  - set up nightly run on Mac (Samuele, Carl Friedrich)
+  - set up nightly run on Mac DONE
   - debug CLI crashes (Anto)
   - compress the virtuals part of resume data more (Samuele, Carl Friedrich)
   - try to do something non-insane about Python-level exceptions IN-PROGRESS
   - improve operations logging DONE?
-  - rewrite exceptions module to be a mixed module (Armin, Maciek)
+  - rewrite exceptions module to be a mixed module DONE
   - make the assembler produced by generate_failure smaller
-  - merge guard_nonnull(x, ...), guard_class(x, ...) DONE
   - put the class into the structure to get only one promote when using an
     instance
   - look into failing pypy-c-jit apptests
-  - fix buildbot on py.test 1.1 branch BRANCH MERGED
 
 
 
