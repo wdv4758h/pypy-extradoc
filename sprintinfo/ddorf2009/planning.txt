@@ -4,29 +4,21 @@ people present:
   - Samuele
   - Carl Friedrich
   - Maciek
-  - Holger
-
 
 TASKS
 ======
 
-  - set up the buildbot on the Mac Mini DONE
-  - directly call assembler for residual portal calls
-  - making the CLI backend working with logging DONE
-  - set up nightly run on Mac DONE
-  - debug CLI crashes (Anto)
-  - compress the virtuals part of resume data more (Samuele, Carl Friedrich)
-  - try to do something non-insane about Python-level exceptions IN-PROGRESS
-  - improve operations logging DONE?
-  - rewrite exceptions module to be a mixed module DONE
-  - make the assembler produced by generate_failure smaller
+  - directly call assembler for residual portal calls POSTPONED
+  - compress the virtuals part of resume data more (Samuele, Carl Friedrich) POSTPONED
+  - try to do something non-insane about Python-level exceptions IN-PROGRESS (Maciek, Armin)
+  - make the assembler produced by generate_failure smaller POSTPONED
   - put the class into the structure to get only one promote when using an
     instance
-  - look into failing pypy-c-jit apptests
+  - look into failing pypy-c-jit apptests, pypy-c-jit translate.py POSTPONED
 
+  - write blog post (Samuele, Carl Friedrich)
 
-
-  - at the end of the sprint, migrate tasks to jit.txt
+  - at the end of the sprint, migrate tasks to jit.txt (Carl Friedrich)
 
 Talks
 -----
