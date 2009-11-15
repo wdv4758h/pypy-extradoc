@@ -5,17 +5,11 @@ TASKS
 
 - sort out a benchmark infrastructure. graphs!
 
-- lose less information across residual calls
-
 - improve on predictability: don't trace into signals ... but produce just a conditional call
-
-- we should think about merging several consecutive guards, to make the
-  assembler smaller and to save resume data space
 
 - directly call assembler for residual portal calls
 
 - make the assembler produced by generate_failure smaller
-
 
 - jit/asmgcc + threads?
 
@@ -27,7 +21,6 @@ Python interpreter:
 
 - goal: on average <=5 guards per original bytecode
 
-- raising an exception tends to escape frames, due to the traceback capturing
 - prevent jitting really general */** calls
 
 - put the class into the structure to get only one promote when using an
@@ -55,7 +48,6 @@ inlining discussion
 
 - at some point we need to merge the tails of loops, to avoid exponential
   explosion
-- need to remember when we gave up
 - tracing aggressively will put pressure on the speed of tracing
 - what should we do about recursive calls?
 - connecting compiled loops accross a call?
