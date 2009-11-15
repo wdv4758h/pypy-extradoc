@@ -16,9 +16,9 @@ TASKS
     instance
   - look into failing pypy-c-jit apptests, pypy-c-jit translate.py POSTPONED
 
-  - write blog post (Samuele, Carl Friedrich)
+  - write blog post DONE
 
-  - at the end of the sprint, migrate tasks to jit.txt (Carl Friedrich)
+  - at the end of the sprint, migrate tasks to jit.txt DONE
 
 Talks
 -----
