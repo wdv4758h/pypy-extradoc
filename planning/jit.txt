@@ -17,6 +17,14 @@ TASKS
 
 - forcing virtualizables should only force fields affected, not everything
 
+- think out looking into functions or not, based on arguments,
+  for example contains__Tuple should be unrolled if tuple is of constant
+  length
+
+- look at example of storing small strings in large lists (any sane templating
+  engine would do it) and not spend all the time in
+  _trace_and_drag_out_of_nursery
+
 Python interpreter:
 
 - goal: on average <=5 guards per original bytecode
