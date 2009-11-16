@@ -33,6 +33,7 @@ Python interpreter:
 
 - put the class into the structure to get only one promote when using an
   instance
+
 - look into failing pypy-c-jit apptests, pypy-c-jit translate.py
 
 - improve test running, compile only once
@@ -67,10 +68,6 @@ things we know are missing
 metainterp/frontend:
 - virtualizables are not finished:
   fix 'test_external_read_sometimes'
-
-- save space on all the guard operations (see resume.py):
-  - think of ways to share information about virtuals
-
 
 backend:
 - speed of backend?
