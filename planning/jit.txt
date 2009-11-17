@@ -38,7 +38,7 @@ Python interpreter:
 
 - improve test running, compile only once
 
-- we would probably enabling tracing to leave the jit instead of just being ignored
+- we would like probably enabling tracing to leave the jit instead of just being ignored
 
 META
 -----
