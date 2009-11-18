@@ -11,7 +11,7 @@ TASKS
 
 - make the assembler produced by generate_failure smaller
 
-- jit/asmgcc + threads?
+- jit/asmgcc + threads? [DONE probably.  Needs a bit more testing.]
 
 - think about code memory management
 
@@ -38,7 +38,7 @@ Python interpreter:
 
 - improve test running, compile only once
 
-- we would like probably enabling tracing to leave the jit instead of just being ignored
+- we would like probably enabling sys.settrace() to leave the jit instead of just being ignored
 
 META
 -----
