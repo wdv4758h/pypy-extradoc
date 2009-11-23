@@ -144,6 +144,9 @@ Plan for killing the hacks in executioncontext.py
    virtuals.  Probably implemented by having them point to a
    stub object that contains the stack position and the index
    of the virtual in the list of virtuals.  If we need to
-   access its content, we force it as above.
+   access its content, we force it as above.  For this to work,
+   we must make sure that no reference to such a stub can live
+   longer than the residual call -- either we are sure that it
+   dies, or we have forced it.
 
 Open question: how can this be done on CLI?
