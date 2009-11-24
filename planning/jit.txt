@@ -1,21 +1,21 @@
 TASKS
 -----
 
-- compress the virtuals part of resume data more DONE
-
 - sort out a benchmark infrastructure. graphs!
 
 - improve on predictability: don't trace into signals ... but produce just a conditional call
 
 - directly call assembler for residual portal calls
 
-- make the assembler produced by generate_failure smaller DONE
-
 - jit/asmgcc + threads? [DONE probably.  Needs a bit more testing.]
 
 - think about code memory management
 
 - forcing virtualizables should only force fields affected, not everything
+
+- share lists of field descrs 
+
+- compress resume data (?)
 
 - think out looking into functions or not, based on arguments,
   for example contains__Tuple should be unrolled if tuple is of constant
@@ -24,6 +24,7 @@ TASKS
 - look at example of storing small strings in large lists (any sane templating
   engine would do it) and not spend all the time in
   _trace_and_drag_out_of_nursery
+
 
 Python interpreter:
 
