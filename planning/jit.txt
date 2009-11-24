@@ -41,6 +41,12 @@ Python interpreter:
 
 - we would like probably enabling sys.settrace() to leave the jit instead of just being ignored
 
+- list copy as ll operations, to avoid calling write barriers again and
+  again while growing lists (lists of pointers are extra slow on pypy)
+
+- improve ''.join and u''.join by using stringbuilder, enable realloc
+  for hybrid GC (on stringbuilder branch so far).
+
 META
 -----
 
