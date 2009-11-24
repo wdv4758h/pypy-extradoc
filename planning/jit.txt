@@ -1,7 +1,7 @@
 TASKS
 -----
 
-- compress the virtuals part of resume data more
+- compress the virtuals part of resume data more DONE
 
 - sort out a benchmark infrastructure. graphs!
 
@@ -9,7 +9,7 @@ TASKS
 
 - directly call assembler for residual portal calls
 
-- make the assembler produced by generate_failure smaller
+- make the assembler produced by generate_failure smaller DONE
 
 - jit/asmgcc + threads? [DONE probably.  Needs a bit more testing.]
 
