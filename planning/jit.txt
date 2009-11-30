@@ -13,8 +13,6 @@ TASKS
 
 - forcing virtualizables should only force fields affected, not everything
 
-- share lists of field descrs 
-
 - compress resume data (?)
 
 - think out looking into functions or not, based on arguments,
