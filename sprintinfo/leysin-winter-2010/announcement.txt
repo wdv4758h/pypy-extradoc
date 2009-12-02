@@ -1,7 +1,7 @@
 =====================================================================
          PyPy Leysin Winter Sprint (23-30th January 2010)
 =====================================================================
-..                             image:: http://www.ermina.ch/002.JPG
+..                             image:: http://www.ermina.ch/003.JPG
 
 The next PyPy sprint will be in Leysin, Switzerland, for the
 seventh time.  This is a fully public sprint: newcomers and topics
