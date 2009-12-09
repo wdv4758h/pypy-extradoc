@@ -69,10 +69,6 @@ inlining discussion
 things we know are missing
 ---------------------------
 
-metainterp/frontend:
-- virtualizables are not finished:
-  fix 'test_external_read_sometimes'
-
 backend:
 - speed of backend?
 
