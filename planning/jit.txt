@@ -9,6 +9,9 @@ TASKS
 
 - jit/asmgcc + threads? [DONE probably.  Needs a bit more testing.]
 
+- since threads are enabled with the JIT, getexecutioncontext cannot be folded
+  by the JIT anymore. we need to do something in that direction
+
 - think about code memory management
 
 - forcing virtualizables should only force fields affected, not everything
@@ -22,6 +25,7 @@ TASKS
 - look at example of storing small strings in large lists (any sane templating
   engine would do it) and not spend all the time in
   _trace_and_drag_out_of_nursery
+
 
 
 Python interpreter:
