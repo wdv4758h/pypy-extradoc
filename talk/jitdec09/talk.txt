@@ -63,7 +63,7 @@ Work Left
 - Further work on memory footprint
 - Correct and improved behavior in the presence of exceptions: work in progress
 - Better results for recursion, asm to asm calls
-- Bugs, correctness (sys.setrace for example)
+- Bugs, correctness (sys.settrace for example)
 
 Work Left (ii)
 ===============
