@@ -46,6 +46,8 @@ Example
 Status
 =======
 
+xxx weak
+
 - Intel x86-32
 - Small, medium examples run
 - Algorithmic code is sped up, see benchmarks
