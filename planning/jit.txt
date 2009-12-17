@@ -28,6 +28,9 @@ TASKS
 
 - improve tracing/blackholing speed (?)
 
+- some guards will always fail if they ever start failing
+  (e.g. the class version tag).  Do something more clever about it.
+
 
 Python interpreter:
 
