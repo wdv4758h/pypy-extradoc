@@ -3,14 +3,7 @@ TASKS
 
 - sort out a benchmark infrastructure. graphs!
 
-- improve on predictability: don't trace into signals ... but produce just a conditional call
-
-- directly call assembler for residual portal calls
-
 - jit/asmgcc + threads? [DONE probably.  Needs a bit more testing.]
-
-- since threads are enabled with the JIT, getexecutioncontext cannot be folded
-  by the JIT anymore. we need to do something in that direction
 
 - think about code memory management
 
@@ -43,13 +36,39 @@ Python interpreter:
 
 - look into failing pypy-c-jit apptests, pypy-c-jit translate.py
 
-- we would like probably enabling sys.settrace() to leave the jit instead of just being ignored
 
 - list copy as ll operations, to avoid calling write barriers again and
   again while growing lists (lists of pointers are extra slow on pypy)
 
 - improve ''.join and u''.join by using stringbuilder, enable realloc
   for hybrid GC (on stringbuilder branch so far).
+
+
+
+JIT-related Release Tasks
+---------------------------
+
+(there are other release tasks, specifically about packaging, documentation,
+website and stability that need sorting out too. Whoever, they are beyond the
+scope of this section)
+
+required:
+- merge the virtual-forcing branch (this might need implementing store sinking
+  to make the performance not suck)
+
+wishlist:
+- improve on predictability: don't trace into signals ... but produce just a
+  conditional call (or just abort the trace)
+- directly call assembler for residual portal calls
+- we would like probably enabling sys.settrace() to leave the jit instead of
+  just being ignored
+- maybe think again about the recursion limit checking, which slows down calls
+  quite a bit
+- since threads are enabled with the JIT, getexecutioncontext cannot be folded
+  by the JIT anymore. we need to do something in that direction
+
+
+
 
 META
 -----
