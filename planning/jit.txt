@@ -49,7 +49,7 @@ JIT-related Release Tasks
 ---------------------------
 
 (there are other release tasks, specifically about packaging, documentation,
-website and stability that need sorting out too. Whoever, they are beyond the
+website and stability that need sorting out too. However, they are beyond the
 scope of this section)
 
 required:
