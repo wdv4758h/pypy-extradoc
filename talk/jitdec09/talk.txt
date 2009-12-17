@@ -46,11 +46,9 @@ Example
 Status
 =======
 
-xxx weak
-
 - Intel x86-32
-- Small, medium examples run
-- Algorithmic code is sped up, see benchmarks
+- Small and some medium examples run
+- Good results for algorithmic code, see benchmarks
 - Reasonable heuristic when traces get too long
 
 Benchmarks
@@ -70,7 +68,7 @@ Work Left
 Work Left (ii)
 ===============
 
-- Machine code management, discard no longer valid  traces
-- Make the interpreter more JIT friendly
-- Interpreter level algorithmic improvements
+- Machine code management, discard no longer valid traces
+- Make the interpreter more JIT-friendly
+- Interpreter-level algorithmic improvements
 - Intel x86-64
