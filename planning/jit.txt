@@ -26,6 +26,7 @@ TASKS
   engine would do it) and not spend all the time in
   _trace_and_drag_out_of_nursery
 
+- improve tracing/blackholing speed (?)
 
 
 Python interpreter:
