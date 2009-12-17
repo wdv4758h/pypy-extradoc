@@ -72,3 +72,12 @@ Work Left (ii)
 - Make the interpreter more JIT-friendly
 - Interpreter-level algorithmic improvements
 - Intel x86-64
+
+Links
+============
+
+Status blog
+http://morepypy.blogspot.com
+
+Website
+http://codespeak.net/pypy
