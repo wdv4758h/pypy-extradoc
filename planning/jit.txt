@@ -61,6 +61,9 @@ wishlist:
 - since threads are enabled with the JIT, getexecutioncontext cannot be folded
   by the JIT anymore. we need to do something in that direction
 
+known bugs:
+- the trace-hook is not correctly called while blackholing, see
+  test_pyframe.py:AppTestJitTraceInteraction
 
 
 
