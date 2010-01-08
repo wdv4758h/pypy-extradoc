@@ -52,6 +52,8 @@ JIT-related Release Tasks
 website and stability that need sorting out too. However, they are beyond the
 scope of this section)
 
+consideration: if we plan to ship binaries the threads+JIT combination need to have a reasonable story (too confusing to pick one or the other)
+
 wishlist:
 - improve on predictability: don't trace into signals ... but produce just a
   conditional call (or just abort the trace)
