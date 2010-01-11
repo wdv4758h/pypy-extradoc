@@ -36,10 +36,6 @@ Python interpreter:
 
 - look into failing pypy-c-jit apptests, pypy-c-jit translate.py
 
-
-- list copy as ll operations, to avoid calling write barriers again and
-  again while growing lists (lists of pointers are extra slow on pypy)
-
 - improve ''.join and u''.join by using stringbuilder, enable realloc
   for hybrid GC (on stringbuilder branch so far).
 
