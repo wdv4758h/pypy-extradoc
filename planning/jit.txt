@@ -54,12 +54,9 @@ wishlist:
 - improve on predictability: don't trace into signals ... but produce just a
   conditional call (or just abort the trace)
 - directly call assembler for residual portal calls
-- since threads are enabled with the JIT, getexecutioncontext cannot be folded
-  by the JIT anymore. we need to do something in that direction
+- the checks that look whether profiling/tracing in the Python interpreter is
+  enabled look expensive. Do we want to do something about them?
 
-known bugs:
-- the trace-hook is not correctly called while blackholing, see
-  test_pyframe.py:AppTestJitTraceInteraction
 
 
 
