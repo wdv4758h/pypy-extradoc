@@ -54,8 +54,6 @@ wishlist:
 - improve on predictability: don't trace into signals ... but produce just a
   conditional call (or just abort the trace)
 - directly call assembler for residual portal calls
-- maybe think again about the recursion limit checking, which slows down calls
-  quite a bit
 - since threads are enabled with the JIT, getexecutioncontext cannot be folded
   by the JIT anymore. we need to do something in that direction
 
