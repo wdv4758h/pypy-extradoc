@@ -29,8 +29,6 @@ Python interpreter:
 
 - goal: on average <=5 guards per original bytecode
 
-- prevent jitting really general */** calls
-
 - put the class into the structure to get only one promote when using an
   instance
 
@@ -38,6 +36,27 @@ Python interpreter:
 
 - improve ''.join and u''.join by using stringbuilder, enable realloc
   for hybrid GC (on stringbuilder branch so far).
+
+
+Benchmark Notes
+----------------------------
+
+ - spitfire:
+   - spends most of its time in subclass-of-list.append
+   - does completely horrible hackish things that happen to be fast on CPython
+     (i.e. calling locals() all the time)
+   - see http://paste.pocoo.org/show/169366/ for the python code that spitfire
+     produces for the template used in the benchmark
+
+ - html5lib:
+   - slowness seems to be mostly the fault of PyUnicode_DecodeCharmap in
+     module/_codecs/app_codecs.py. Are such things not jitted?
+   - the tokenizer uses regular expressions and generators, which probably
+     doesn't help
+   - calls str.lower a lot
+
+ - spambayes
+   - uses regular expressions and generators a lot
 
 
 
