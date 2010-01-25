@@ -35,7 +35,7 @@ Python interpreter:
 - put the class into the structure to get only one promote when using an
   instance
 
-- look into failing pypy-c-jit apptests, pypy-c-jit translate.py
+- pypy-c-jit translate.py fails sometimes. Look into that
 
 - improve ''.join and u''.join by using stringbuilder, enable realloc
   for hybrid GC (on stringbuilder branch so far).
@@ -75,7 +75,6 @@ consideration: if we plan to ship binaries the threads+JIT combination need to h
 wishlist:
 - improve on predictability: don't trace into signals ... but produce just a
   conditional call (or just abort the trace)
-- directly call assembler for residual portal calls
 - the checks that look whether profiling/tracing in the Python interpreter is
   enabled look expensive. Do we want to do something about them?
 
@@ -124,22 +123,7 @@ Goals/Benchmarks
 Goal: be somehow faster than CPython in real programs
 
 Benchmarks:
-    - Richards
-    - Pystone
-    - mako, gadfly, templess
-    - port some of the JS benchmarks?
-    - look at unladden-swallow benchmarks
-    - Sympy
-    - Simpy?
-    - Pyrolog
-    
-later:
-    - translate.py
-
-- there should be a unified way to run these benchmark
-- benchmarks should be run nightly
-- we might need a benchmarking server
-
+    they live at svn+ssh://codespeak.net/svn/pypy/benchmarks
 
 ootype discussion
 ------------------
@@ -154,6 +138,7 @@ memory usage
 
 - we use too much memory during jitting.  Notably of the following
   types (in decreasing order of total size, for Pystone):
+  XXX is this still relevant?
     - rpy_string
     - GcArray of AbstractValue (unknown if fixedsize or not)
     - DoneWithThisFrameRef
