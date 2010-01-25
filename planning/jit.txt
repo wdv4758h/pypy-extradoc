@@ -24,6 +24,9 @@ TASKS
 - some guards will always fail if they ever start failing
   (e.g. the class version tag).  Do something more clever about it.
 
+- investigate the case of test_virtualizable.test_blackhole_should_not_reenter
+  and corresponding code in warmstate.maybe_compile_and_run about return/assert
+  when we enter the same frame which we are blackholing
 
 Python interpreter:
 
