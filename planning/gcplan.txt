@@ -1,0 +1,54 @@
+
+The problem:
+============
+
+given such algorithm:
+
+l = []
+for i in range(N):
+  l.append(i)
+
+the resulting time spent in the GC would be O(N^2).
+The reason for this is the following:
+
+During each C iterations, depending on size of nursery (hence
+C is a constant), we're going to collect the nursery. This requires
+O(C) copying (so far so good), but we're also going to look inside
+l (which is old from some point on, hence it's an old obj pointing to
+new objects) and iteratate over all it's elements. That requires O(N)
+operations, so in total we got O(N^2) operations.
+
+Solution:
+=========
+
+We use a card marking algorithm. This requires certain changes to
+how our gcs work and how they're tested. For now I'll concentrate
+on generation gc, completely ignoring hybrid (which has it's own
+quadratic problem marked by an XXX anyway). Let's suppose we have
+a semispace allocated in a contigous way such as:
+
+------------------------------------------------------------
+[obj 0][obj 1][array 0xxxxxxxxxxx][obj 2][array 1xxxxxxxxxx]
+------------------------------------------------------------
+
+Now we make cards, each of certain size, say PAGE.
+
+------------------------------------------------------------
+[obj 0][obj 1][array 0xxxxxxxxxxx][obj 2][array 1xxxxxxxxxx]
+------------------------------------------------------------
+^               ^               ^               ^
+
+At some place, we store a bitmap corresponding to cards, one bit per
+card. For a write barrier we simply mark a corresponding bit
+(can be done based on pointer arithmetics). We also store, in a list
+somewhere, an object which is the first one on a card (or overlaps from
+the left). For the example above, list would contain: [obj 0][array 0]
+[array 0][array 1].
+
+When we collect the nursery, we look in the bitmap for marked pages.
+For each marked page, we start looking at the first object. We can do
+simple arithmetics in case of objects on borders. After the end, we cleanup
+the whole bitmap. Lists are updated when copied to new semispace.
+
+This of course assume lack of hybrid GC.
+
