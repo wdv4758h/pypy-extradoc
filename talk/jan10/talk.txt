@@ -64,6 +64,15 @@ Footprint
 - smaller layout for many objects though (e.g. shared dicts for object
   instances)
 
+QA
+=====
+
+- writing tests first for new code
+- 10 thousands of tests
+- nightly run of tests, both own plus running tests with translated PyPy
+- running against CPython own test suite
+
+.. challenges: testing code generation, testing behavior vs. form
 
 Links
 ============
