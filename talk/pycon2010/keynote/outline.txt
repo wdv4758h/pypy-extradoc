@@ -1,0 +1,40 @@
+
+We present a timeline of events that happened during last year.
+
+Highlights:
+
+* February 2009 (a year ago!) - We manage to merge armin's experiments
+  into PyPy, having JITted Python.
+
+* March 2009 - speeding up the first example, function counting integers.
+
+  i = 0
+  while i < 10000000:
+   i = i + 1
+
+* June 2009 - solved problem with Python frames, how to avoid using them
+  in most common cases.
+
+* July 2009 - XXX [maybe] numeric experiments
+
+* August 2009 - Benjamin Peterson rewrites PyPy compiler, a lot of work,
+  little visibility outside.
+
+* September 2009 - We manage to speed up Richards, the first non-trivial
+  benchmark on top of PyPy JIT.
+
+* October 2009 - [XXX kill?] Improvements to the GC, float support
+
+* November 2009 - We publish results on computer language shootout
+  benchmarks, looking mostly good, with bad places.
+
+* December 2009 - Christmas :-)
+
+* January 2010 - Solved the issue of chaining frames, so exceptions can
+  be fast.
+
+* January 2010 - Nightly run of benchmarks, looking like this: xxx
+
+* ?March 2010 - 1.2 release - a release to try out JIT and gather feedback
+
+* ?later 2010 - a stable release of PyPy's JIT
