@@ -62,6 +62,9 @@ Benchmark Notes
  - spambayes
    - uses regular expressions and generators a lot
 
+ - ai
+   - the slowness is the fault of generators and generator expressions
+
 
 
 JIT-related Release Tasks
