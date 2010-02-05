@@ -64,6 +64,7 @@ Benchmark Notes
 
  - ai
    - the slowness is the fault of generators and generator expressions
+   - many of the generator expressions are a bit stupid (like tuple(<genexp>))
 
 
 
