@@ -1,0 +1,54 @@
+=============
+Speed of PyPy
+=============
+
+JIT - what's that about?
+========================
+
+* removing bytecode-dispatch overhead
+
+* removing frame overhead
+
+* other optimizations which can be derived
+  from the two above
+
+The main idea
+=============
+
+* python has advanced features (frame introspection,
+  arbitrary code execution, overloading globals)
+
+* with JIT, you don't pay for them if you don't use
+  them
+
+* however, you pay if you use them
+
+Tracing JIT - short intro
+=========================
+
+XXX too advanced?
+
+* the main idea being speeding up loops
+
+* only linear trace of code that was
+  actually executed
+
+* mostly can trace loops and to certain
+  extent recursion
+
+Removing frame overhead
+=======================
+
+XXX simple example
+
+Removing object boxing
+======================
+
+XXX example
+
+Local access costs nothing
+==========================
+
+xxx
+
+xxx
