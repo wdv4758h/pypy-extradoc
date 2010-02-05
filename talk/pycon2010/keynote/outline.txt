@@ -3,8 +3,8 @@ We present a timeline of events that happened during last year.
 
 Highlights:
 
-* February 2009 (a year ago!) - We manage to merge armin's experiments
-  into PyPy, having JITted Python.
+* February 2009 (a year ago!) - we merge a very experimental JIT approach
+  into PyPy.
 
 * March 2009 - speeding up the first example, function counting integers.
 
