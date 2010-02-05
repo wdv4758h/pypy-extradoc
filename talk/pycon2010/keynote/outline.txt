@@ -39,5 +39,3 @@ Highlights:
   (or baseline pypy???)
 
 * ?March 2010 - 1.2 release - a release to try out JIT and gather feedback
-
-* ?later 2010 - a stable release of PyPy's JIT
