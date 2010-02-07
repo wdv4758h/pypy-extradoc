@@ -40,4 +40,4 @@ Highlights:
 * February 2010 - JIT achieves a level of stability comparable to CPython.
   (or baseline pypy???)
 
-* ?March 2010 - 1.2 release - a release to try out JIT and gather feedback
+* March 2010 - 1.2 release - a release to try out JIT and gather feedback
