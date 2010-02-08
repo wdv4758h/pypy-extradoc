@@ -69,7 +69,7 @@
     };
   \end{tikzpicture}
   \begin{itemize}
-    \item We merge experiments into mailine PyPy
+    \item we merge experiments into mailine PyPy
     \item xxx
   \end{itemize}
 \end{frame}
@@ -99,7 +99,7 @@ while i < 1000000:
 \end{frame}
 
 \begin{frame}
-  \frametitle{June 2009}
+  \frametitle{September 2009}
   \begin{tikzpicture}[remember picture, overlay]
     \node [shift={(1cm, -4cm)}] at (current page.north west) {
       \begin{tikzpicture}[remember picture, overlay, font={\fontsize{8pt}{0pt} \ttfamily}]
@@ -109,17 +109,40 @@ while i < 1000000:
         \draw [fill=blue!20,very thin] (1.7cm, 2.5cm) circle (.06cm);
         \draw (1.7cm, 2.44cm) -- (1.7cm, 2.0cm);
         \draw (1.5cm, 1.5cm) node [rotate=45] {JIT merge};
-        \draw [fill=blue!20,very thin] (2.3cm, 2.5cm) circle (.06cm);
-        \draw (2.3cm, 2.44cm) -- (2.3cm, 2.0cm);
-        \draw (1.95cm, 1.5cm) node [rotate=45] {first example};  
+        \draw [fill=blue!20,very thin] (4.3cm, 2.5cm) circle (.06cm);
+        \draw (4.3cm, 2.44cm) -- (4.3cm, 2.0cm);
+        \draw (3.95cm, 1.5cm) node [rotate=45] {first example};  
       \end{tikzpicture}
     };
   \end{tikzpicture}
-  xxx
+  \begin{itemize}
+    \item we manage to speed first non-trivial benchmark
+    \item richards - a simple, object oriented code
+    \item a variety of optimizations involved
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Nice graphs}
+  \frametitle{February 2010 - now}
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [shift={(1cm, -4cm)}] at (current page.north west) {
+      \begin{tikzpicture}[remember picture, overlay, font={\fontsize{8pt}{0pt} \ttfamily}]
+        \node [shift={(-1cm, 1.4cm)}, above right] {
+          \includegraphics[width=.15\textwidth]{pypy-logo.png}};
+        \draw [thick, ->] (1.2cm, 2.5cm) -- (10cm, 2.5cm);
+        \draw [fill=blue!20,very thin] (1.7cm, 2.5cm) circle (.06cm);
+        \draw (1.7cm, 2.44cm) -- (1.7cm, 2.0cm);
+        \draw (1.5cm, 1.5cm) node [rotate=45] {JIT merge};
+        \draw [fill=blue!20,very thin] (4.3cm, 2.5cm) circle (.06cm);
+        \draw (4.3cm, 2.44cm) -- (4.3cm, 2.0cm);
+        \draw (3.95cm, 1.5cm) node [rotate=45] {first example};  
+        \draw [fill=blue!20,very thin] (7.3cm, 2.5cm) circle (.06cm);
+        \draw (7.3cm, 2.44cm) -- (7.3cm, 2.0cm);
+        \draw (6.95cm, 1.5cm) node [rotate=45] {richards};  
+      \end{tikzpicture}
+    };
+  \end{tikzpicture}
+  We run a variety of benchmarks nightly.
 \end{frame}
 
 \begin{frame}
@@ -128,14 +151,14 @@ while i < 1000000:
     \begin{itemize}
     \item JIT is fairly good
       \pause
-    \item sometimes can consume a lot of memory
+    \item can consume a lot of memory
       \pause
-    \item sometimes keep on compiling all the time
+    \item can recompile code too many times
       \pause
     \item GCs are pretty good
       \pause
-    \item VMs algorithms are not as polished as CPython
-      ones [xxx reword]
+    \item runtime algorithms are not as polished as CPython
+      ones (ie strings, regexes)
     \end{itemize}
   \end{block}
 \end{frame}
@@ -147,6 +170,27 @@ while i < 1000000:
       \pause
     \item first PyPy release to contain JIT!
     \item mostly to try it out
+      \pause
+    \item we just got a bit more {\bf EU funding}
+    \item we're actively looking for {\bf sponsoring} to continue PyPy development
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Come to my next talk!}
+  \begin{block}{speed of PyPy}
+    ... or how to write programs that play well with the JIT
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{That's all}
+  Thank you for your attention
+  \begin{itemize}
+    \item http://morepypy.blogspot.com
+    \item http://pypy.org
+    \item http://merlinux.de
+    \item these slides are already online
   \end{itemize}
 \end{frame}
 
