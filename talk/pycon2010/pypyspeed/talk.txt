@@ -23,10 +23,15 @@ The main idea
 
 * however, you pay if you use them
 
+So, the general advice
+======================
+
+* don't use advanced feature if you don't use them
+
+* don't try to outsmart your compiler
+
 Tracing JIT - short intro
 =========================
-
-XXX too advanced?
 
 * the main idea being speeding up loops
 
@@ -36,19 +41,96 @@ XXX too advanced?
 * mostly can trace loops and to certain
   extent recursion
 
+XXX example of tracing, maybe
+
 Removing frame overhead
 =======================
 
-XXX simple example
+* frames are costly
+
+* *x = y + z* has 5 frame accesses
+
+* it all can be removed!
 
 Removing object boxing
 ======================
 
-XXX example
+* intermediate values does not need to be allocated
+
+* integer can stay in the register
+
+XXX maybe demo assembler, maaaaybe
 
 Local access costs nothing
 ==========================
 
-xxx
+* local variables are not stored on the frame,
+  unless *sys._getframe()* is called
+
+* ... or *sys.exc_info()* or exception escapes
+
+XXX picture exception escaping
+
+Shared dicts (aka hidden classes)
+=================================
 
 xxx
+
+... only for newstyle classes
+=============================
+
+xxx
+
+Generators are tricky (for now)
+===============================
+
+xxxx
+
+Generator expressions are even trickier
+=======================================
+
+xxx
+
+Don't try to outsmart your compiler
+===================================
+
+xxx
+
+Solution: move back code to python
+==================================
+
+xxx
+
+Never use id(obj), unless you really have to
+============================================
+
+xxx
+
+Allocation patterns
+===================
+
+xxx
+
+Bad case for a moving GC
+========================
+
+xxx
+
+Problems
+========
+
+* long traces
+
+* megamorphic calls
+
+Future
+======
+
+* release
+
+* xxx
+
+Q&A
+===
+
+* xxx
