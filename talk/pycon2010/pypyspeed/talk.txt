@@ -83,7 +83,7 @@ Shared dicts (aka hidden classes)
 ... only for newstyle classes
 =============================
 
-* there are few minor, but annoying, differencies
+* there are few minor, but annoying, differences
 
 * while it can be done, we ask you to not use
   old style classes instead :-)
