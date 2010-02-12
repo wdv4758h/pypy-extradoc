@@ -160,3 +160,10 @@ Q&A
 
 * http://merlinux.eu
 
+XXX more:
+
+(versiontag stuff basically)
+
+- counters on classes are bad
+- we don't do well with metaclasses
+
