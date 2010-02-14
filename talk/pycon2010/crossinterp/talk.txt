@@ -37,8 +37,8 @@ Don't rely on refcounting
 __del__
 ==============================
 
-* CPython allows resurrection, not so other Pythons:
-  __del__ is called exactly once
+* in case of resurrection CPython will call __del__ multiple times,
+  other Pythons exactly once
 
 * cycles with __del__s are not collected by CPython,
   PyPy for example breaks them randomly instead
