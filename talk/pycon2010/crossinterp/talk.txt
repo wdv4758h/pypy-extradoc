@@ -1,0 +1,90 @@
+
+
+Have a way to verify compatibility
+===================================
+
+* extensive test suite
+
+* good coverage
+
+Exceptions
+===============
+
+* TypeError vs AttributeError change often between implementations,
+  even CPython versions
+
+* don't rely on exception string messages (they may differ)
+
+Access to 3rdy party libraries
+================================
+
+* ctypes based access is going to be supported by all Pythons
+
+* are there pure Python replacements/options?
+
+* separate out dependencies/especially optional ones
+
+Don't rely on refcounting
+===========================
+
+* example open('x', 'w').write('stuff')
+
+* on refcounting, flushes file immediately
+
+* on any other GC, it might be deferred for
+  a while
+
+__del__
+==============================
+
+* CPython allows resurrection, not so other Pythons:
+  __del__ is called exactly once
+
+* cycles with __del__s are not collected by CPython,
+  PyPy for example breaks them randomly instead
+
+Other GC issues
+==================
+
+* id() is not cheap on moving GCs
+
+sys.prefix
+============
+
+* Implementations may have different installation layouts
+
+* Open issue, at least for PyPy, has compatibility consequences with
+  setuptools for example
+
+IO bytes vs unicode
+=====================
+
+* convert/decode as soon as possible, keep text and bytes apart
+
+* for 2.x Pythons use str for bytes and unicode for text
+
+* the distinction is deeper in 3.x (str is unicode, bytes exist with
+  slightly different interface than old str)
+
+Use new-style classes
+=======================
+
+* 3.x ready
+
+* faster on PyPy for example
+
+Obscure corners
+=================
+
+* non-string keys in type dictionaries
+
+* introspection results, implementation objects (e.g. builtin methods etc),
+  may have different types
+
+
+
+
+
+
+
+
