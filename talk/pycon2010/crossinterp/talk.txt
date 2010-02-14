@@ -80,11 +80,3 @@ Obscure corners
 
 * introspection results, implementation objects (e.g. builtin methods etc),
   may have different types
-
-
-
-
-
-
-
-
