@@ -43,6 +43,8 @@ __del__
 * cycles with __del__s are not collected by CPython,
   PyPy for example breaks them randomly instead
 
+* for example in PyPy (xxx Jython?) __del__ cannot be attached to classes after creation
+
 Other GC issues
 ==================
 
