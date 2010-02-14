@@ -15,6 +15,17 @@ Exceptions
 
 * don't rely on exception string messages (they may differ)
 
+Subclasses of builtin types and overriding
+===========================================
+
+* in general overidden methods on subclassed builtin types are not 
+  invoked by preexisting other methods
+
+* there can be corner cases, for example when there are more than one object
+  involved
+
+* tests are your friend
+
 Access to 3rdy party libraries
 ================================
 
