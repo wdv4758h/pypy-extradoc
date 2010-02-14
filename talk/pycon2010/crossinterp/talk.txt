@@ -18,7 +18,7 @@ Exceptions
 Subclasses of builtin types and overriding
 ===========================================
 
-* in general overidden methods on subclassed builtin types are not 
+* in general overridden methods on subclassed builtin types are not 
   invoked by preexisting other methods
 
 * there can be corner cases, for example when there are more than one object
