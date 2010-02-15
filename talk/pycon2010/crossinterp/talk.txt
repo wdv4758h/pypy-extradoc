@@ -52,9 +52,9 @@ __del__
   other Pythons exactly once
 
 * cycles with __del__s are not collected by CPython,
-  PyPy for example breaks them randomly instead
+  PyPy breaks them randomly instead
 
-* for example in PyPy (xxx Jython?) __del__ cannot be attached to classes after creation
+* in PyPy (xxx Jython?) __del__ cannot be attached to classes after creation
 
 Other GC issues
 ==================
@@ -67,7 +67,7 @@ sys.prefix
 * Implementations may have different installation layouts
 
 * Open issue, at least for PyPy, has compatibility consequences with
-  setuptools for example
+  setuptools
 
 IO bytes vs unicode
 =====================
@@ -84,7 +84,7 @@ Use new-style classes
 
 * 3.x ready
 
-* faster on PyPy for example
+* faster on PyPy, too
 
 Obscure corners
 =================
