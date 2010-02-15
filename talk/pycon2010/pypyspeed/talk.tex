@@ -1,0 +1,75 @@
+
+\documentclass[utf8x, 14pt]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+}
+
+\usepackage[english]{babel}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+
+\title{The speed of PyPy}
+
+\author{Maciej Fijałkowski}
+
+\institute[merlinux GmbH]
+{ merlinux GmbH }
+
+\date{Pycon 2010, February 20th 2010, Atlanta}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \begin{figure}
+    \begin{tabular}{c c c}
+    \includegraphics[width=.30\textwidth]{../common/pypy-logo.png}
+    &
+    \hspace{2cm}
+    &
+    \includegraphics[width=.25\textwidth]{../common/merlinux-logo.png}
+    \end{tabular}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{JIT - what's that about?}
+  \begin{itemize}
+    \item {\bf JIT is not a magical device!}
+      \pause
+    \item removes bytecode overhead
+    \item removes frame overhead
+    \item can make runtime decisions
+    \item more classic optimization that can follow
+\end{frame}
+
+\begin{frame}
+  \frametitle{The main idea}
+  \begin{itemize}
+    \item python has advanced features (frame introspection,
+      arbitrary code execution, overloading globals)
+    \item with JIT, you don't pay for them if you don't use
+      them
+    \item however, you pay if you use them, but they work
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A piece of advice}
+  \begin{itemize}
+    \item Don't use advanced features if you don't have to
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{xxx}
+\end{frame}
+
+\end{document}
