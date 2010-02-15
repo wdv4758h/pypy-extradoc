@@ -88,6 +88,11 @@ Shared dicts (aka hidden classes)
 * while it can be done, we ask you to not use
   old style classes instead :-)
 
+Version tags
+============
+
+XXX
+
 Generators are tricky (for now)
 ===============================
 
@@ -146,12 +151,16 @@ Problems
 
 * megamorphic calls
 
+* metaclasses
+
+* class global state
+
 Future
 ======
 
 * release
 
-* xxx
+* try & see
 
 Q&A
 ===
