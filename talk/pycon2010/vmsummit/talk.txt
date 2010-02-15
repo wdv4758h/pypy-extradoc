@@ -4,7 +4,7 @@
 PyPy and Its Generated Tracing JIT
 =========================================================
 
-:Authors: Samuele Pedroni (Open End AB), Maciej Fijałkowski (xxx)
+:Authors: Samuele Pedroni (Open End AB), Maciej Fijałkowski (merlinux GmbH)
 :Date: VM Summit '10
 
 What is PyPy?
@@ -21,7 +21,7 @@ Generating a Tracing JIT
 ===========================
 
 - produce traces: (meta)interpreter through low-level operations
-                  that make up the language inter peter 
+                  that make up the language interpreter 
 - identify loops: hints for start of dispatch loop, backedges
 
 Optimisations
