@@ -48,6 +48,11 @@
     \item removes frame overhead
     \item can make runtime decisions
     \item more classic optimization that can follow
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{How well it works in practice?}
 \end{frame}
 
 \begin{frame}
@@ -64,12 +69,153 @@
 \begin{frame}
   \frametitle{A piece of advice}
   \begin{itemize}
-    \item Don't use advanced features if you don't have to
+    \item don't use advanced features if you don't have to
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{xxx}
+  \frametitle{Tracing JIT}
+  \begin{itemize}
+    \item compiler traces the actual execution of Python program
+    \item then compiles linear path to assembler
+    \item example
+    \item mostly for speeding up loops and to certain extent
+      recursion
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Removing frame overhead}
+  \begin{verbatim}
+x = y + z
+  \end{verbatim}
+  \begin{itemize}
+    \item above has 5 frame accesses
+    \item they can all be removed (faster!)
+      \pause
+    \item they prevent optimizations from happening
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Removing object boxing}
+  \begin{verbatim}
+i = 0
+while i < 100:
+  i += 1
+  \end{verbatim}
+  \begin{itemize}
+    \item for each iteration we do a comparison and addition
+    \item xxx integers on valuestack and xxx integers in locals
+    \item all of those can be removed
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Access costs}
+  \begin{itemize}
+    \item local access costs nothing
+    \item global access is cheap, if you don't change global {\ttfamily \_\_dict\_\_} too much XXX rephrase
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Frame escapes}
+  \begin{itemize}
+    \item calling {\ttfamily sys.\_getframe()}, {\ttfamily sys.exc\_info()}
+    \item exception escaping
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shared dicts (aka hidden classes)}
+  \begin{itemize}
+    \item instance {\ttfamily \_\_dict\_\_ } lookup becomes a list lookup
+    \item if you're evil, it'll bail back to dict lookup
+      \pause
+    \item only for newstyle classes!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Version tags}
+  \begin{itemize}
+    \item dicts on types are version-controlled
+    \item this means methods are usually in known places
+      \pause
+    \item ... if you don't modify them too often
+    \item counters on classes are bad
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Call costs}
+  \begin{itemize}
+    \item calls can be inlined
+    \item simple arguments are by far the best
+    \item avoid {\ttfamily *args} and {\ttfamily **kwds}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Allocation patterns}
+  \begin{itemize}
+    \item PyPy uses a moving GC (like JVM, .NET, etc.)
+    \item pretty efficient for usecases with a lot of
+      short-living objects
+    \item objects are smaller than on CPython
+    \item certain behaviors are different than on CPython
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Differencies}
+  \begin{itemize}
+    \item no refcounting semantics
+    \item {\ttfamily id(obj)} can be expensive as it's a complex
+      operation on a moving GC
+    \item a large list of new objects is a bad case behavior
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{General rules}
+  \begin{itemize}
+    \item don't try to outsmart your compiler
+    \item simple is better than complex
+    \item metaprogramming is your friend
+    \item measurment is the only meaningful way to check
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Problems}
+  \begin{itemize}
+    \item long traces - tracing is slow
+    \item megamorphic calls
+    \item metaclasses
+    \item class global state
+      \pause
+    \item years of optimizations against CPython
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Future}
+  \begin{itemize}
+    \item release end March
+    \item to try it out
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{That's all!}
+  \begin{itemize}
+    \item Q \& A
+    \item http://morepypy.blogspot.com
+    \item http://pypy.org
+    \item http://merlinux.eu
+  \end{itemize}
 \end{frame}
 
 \end{document}
