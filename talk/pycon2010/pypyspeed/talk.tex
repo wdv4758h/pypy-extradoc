@@ -40,8 +40,20 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{How fast is PyPy?}
+  \pause
+  \begin{itemize}
+    \item pretty fast, in places
+    \item slower than cpython in other places
+    \item overall, it depends
+    \item graphs
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{JIT - what's that about?}
   \begin{itemize}
+      \pause
     \item {\bf JIT is not a magical device!}
       \pause
     \item removes bytecode overhead
@@ -49,10 +61,6 @@
     \item can make runtime decisions
     \item more classic optimization that can follow
   \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{How well it works in practice?}
 \end{frame}
 
 \begin{frame}
@@ -133,7 +141,7 @@ while i < 100:
     \item instance {\ttfamily \_\_dict\_\_ } lookup becomes a list lookup
     \item if you're evil, it'll bail back to dict lookup
       \pause
-    \item only for newstyle classes!
+    \item {\bf only for newstyle classes}
   \end{itemize}
 \end{frame}
 
@@ -202,10 +210,13 @@ while i < 100:
 
 \begin{frame}
   \frametitle{Future}
-  \begin{itemize}
-    \item release end March
-    \item to try it out
-  \end{itemize}
+  \begin{block}{release end March}
+    \begin{itemize}
+      \item will contain a working JIT
+      \item will not speed up all cases
+      \item might eat all your memory
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}
