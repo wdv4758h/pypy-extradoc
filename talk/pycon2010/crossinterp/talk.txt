@@ -1,4 +1,14 @@
 
+This talk
+=========
+
+* most people only target CPython (or Jython or IronPython)
+
+* sometimes, you want your program to run on each
+
+* libraries are more often cross-interpreter
+
+* I won't talk about py3k
 
 Have a way to verify compatibility
 ===================================
@@ -93,3 +103,6 @@ Obscure corners
 
 * introspection results, implementation objects (e.g. builtin methods etc),
   may have different types
+
+* exact naming of things (like list-comprehension variable)
+
