@@ -67,7 +67,6 @@
     \item TypeError vs AttributeError change often between implementations,
       even CPython versions
     \item don't rely on exception string messages (they may differ)
-    \item also means - don't use doctests
   \end{itemize}
   \begin{verbatim}
 try:
@@ -76,10 +75,14 @@ except ImportError, ie:
   if str(ie) != '...':
     raise
   \end{verbatim}
+  \pause
+  \begin{itemize}
+    \item also means - don't use doctests
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Subclasses of builtin types and overriding}
+  \frametitle{Subclasses of builtin types}
   \begin{itemize}
     \item in general overridden methods on subclassed builtin types are not 
       invoked by preexisting other methods
@@ -89,8 +92,6 @@ class d(dict):
     ...
       \end{verbatim}
     \item would {\ttfamily keys()} go via this getitem?
-    \item there can be corner cases, for example when
-      there are more than one object involved
     \item tests are your friend
   \end{itemize}
 \end{frame}
@@ -105,10 +106,13 @@ class d(dict):
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Don't rely on refcounting}
   \begin{itemize}
-    \item example {\ttfamily open('x', 'w').write('stuff')}
+    \item example
+      \begin{verbatim}
+open('x', 'w').write('stuff')
+      \end{verbatim}
     \item on refcounting, flushes file immediately
     \item on any other GC, it might be deferred for
       a while
@@ -119,11 +123,11 @@ class d(dict):
 \begin{frame}
   \frametitle{\_\_del\_\_}
   \begin{itemize}
-    \item in case of resurrection CPython will call {\ttfamily \_\_del\_\_} multiple times,
+    \item resurrection on CPython will call {\ttfamily \_\_del\_\_} multiple times,
       other Pythons exactly once
     \item cycles with \_\_del\_\_s are not collected by CPython,
       PyPy breaks them randomly instead
-    \item in PyPy (xxx Jython?) \_\_del\_\_ cannot be attached to classes after creation
+    \item in PyPy and Jython \_\_del\_\_ cannot be attached to classes after creation
   \end{itemize}
 \end{frame}
 
@@ -161,6 +165,14 @@ class d(dict):
     \item introspection results, implementation objects (e.g. builtin methods
       etc), may have different types
     \item exact naming of things (like list-comprehension variable)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Questions?}
+  \begin{itemize}
+    \item http://morepypy.blogspot.com
+    \item http://pypy.org
   \end{itemize}
 \end{frame}
 
