@@ -54,6 +54,15 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{My background}
+  \begin{itemize}
+    \item worked a lot with PyPy compatibility issues
+    \item helped to port twisted, django and other projects to run on PyPy
+    \item a lot of cooperation with Jython people
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Have a way to verify compatibility}
   \begin{itemize}
     \item extensive test suite
@@ -116,7 +125,7 @@ open('x', 'w').write('stuff')
     \item on refcounting, flushes file immediately
     \item on any other GC, it might be deferred for
       a while
-    \item the single most-common problem when fixing twisted
+    \item the single most-common problem when porting twisted to PyPy
   \end{itemize}
 \end{frame}
 
@@ -125,9 +134,9 @@ open('x', 'w').write('stuff')
   \begin{itemize}
     \item resurrection on CPython will call {\ttfamily \_\_del\_\_} multiple times,
       other Pythons exactly once
-    \item cycles with \_\_del\_\_s are not collected by CPython,
+    \item cycles with {\ttfamily \_\_del\_\_}s are not collected by CPython,
       PyPy breaks them randomly instead
-    \item in PyPy and Jython \_\_del\_\_ cannot be attached to classes after creation
+    \item in PyPy and Jython {\ttfamily \_\_del\_\_} cannot be attached to classes after creation
   \end{itemize}
 \end{frame}
 
@@ -135,12 +144,13 @@ open('x', 'w').write('stuff')
   \frametitle{Use new-style classes}
   \begin{itemize}
     \item 3.x ready
-    \item faster on PyPy, too
+    \item much faster on PyPy, too
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{{\ttfamily sys.prefix}}
+  XXX think about
   \begin{itemize}
     \item implementations may have different installation layouts
     \item open issue, at least for PyPy, has compatibility consequences with
@@ -153,8 +163,16 @@ open('x', 'w').write('stuff')
   \begin{itemize}
     \item convert/decode as soon as possible, keep text and bytes apart
     \item for 2.x Pythons use str for bytes and unicode for text
-    \item the distinction is deeper in 3.x (str is unicode, bytes exist with
-  slightly different interface than old str)
+    \item the distinction is deeper in 3.x ({\ttfamily str} is {\ttfamily unicode}, {\ttfamily bytes} exist with
+  slightly different interface than old {\ttfamily str})
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Don't concatenate strings}
+  \begin{itemize}
+    \item use {\ttfamily "".join(...)}
+    \item if you care about performance, try this and {\ttfamily cStringIO}
   \end{itemize}
 \end{frame}
 
