@@ -115,12 +115,12 @@ while i < 100:
   \begin{itemize}
     \item for each iteration we do a comparison and addition
     \item xxx integers on valuestack and xxx integers in locals
-    \item all of those can be removed
+    \item all boxing can be removed
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Access costs}
+  \frametitle{Variable access costs}
   \begin{itemize}
     \item local access costs nothing
     \item global access is cheap, if you don't change global {\ttfamily \_\_dict\_\_} too much XXX rephrase
@@ -130,15 +130,17 @@ while i < 100:
 \begin{frame}
   \frametitle{Frame escapes}
   \begin{itemize}
+    \item {\bf JIT} normally removes frame overhead, but
     \item calling {\ttfamily sys.\_getframe()}, {\ttfamily sys.exc\_info()}
     \item exception escaping
+    \item prevents a lot of optimizations
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Shared dicts (aka hidden classes)}
   \begin{itemize}
-    \item instance {\ttfamily \_\_dict\_\_ } lookup becomes a list lookup
+    \item instance {\ttfamily \_\_dict\_\_ } lookup becomes an array lookup
     \item if you're evil, it'll bail back to dict lookup
       \pause
     \item {\bf only for newstyle classes}
@@ -149,7 +151,7 @@ while i < 100:
   \frametitle{Version tags}
   \begin{itemize}
     \item dicts on types are version-controlled
-    \item this means methods are usually in known places
+    \item this means method lookup can be removed
       \pause
     \item ... if you don't modify them too often
     \item counters on classes are bad
@@ -162,6 +164,7 @@ while i < 100:
     \item calls can be inlined
     \item simple arguments are by far the best
     \item avoid {\ttfamily *args} and {\ttfamily **kwds}
+    \item however, {\ttfamily f(a=3, b=c)} is fine
   \end{itemize}
 \end{frame}
 
