@@ -38,10 +38,6 @@ Python interpreter:
 - pypy-c-jit translate.py fails sometimes. Look into that
   [Check if there are no failing applevel tests also]
 
-- improve ''.join and u''.join by using stringbuilder, enable realloc
-  for hybrid GC (on stringbuilder branch so far).
-
-
 Benchmark Notes
 ----------------------------
 
