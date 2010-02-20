@@ -28,6 +28,8 @@ TASKS
   and corresponding code in warmstate.maybe_compile_and_run about return/assert
   when we enter the same frame which we are blackholing
 
+- actually use the operation COND_CALL_GC_MALLOC
+
 Python interpreter:
 
 - goal: on average <=5 guards per original bytecode
