@@ -29,6 +29,7 @@ TASKS
   when we enter the same frame which we are blackholing
 
 - actually use the operation COND_CALL_GC_MALLOC
+  update: _fastpath_malloc has the same purpose.  Kill COND_CALL_GC_MALLOC
 
 Python interpreter:
 
