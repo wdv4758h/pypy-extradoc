@@ -38,11 +38,10 @@ Python interpreter:
 - put the class into the structure to get only one promote when using an
   instance
 
+- look why module.x does two calls to _lookup_where
+
 - pypy-c-jit translate.py fails sometimes. Look into that
   [Check if there are no failing applevel tests also]
-
-- investigate what happens on getattr(x, prefix + variable)(args).
-  with globals() it explode in a degenerating chain of failing guards
 
 Benchmark Notes
 ----------------------------
