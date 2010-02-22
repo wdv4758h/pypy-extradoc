@@ -40,6 +40,10 @@ Python interpreter:
 
 - look why module.x does two calls to _lookup_where
 
+  Bigger problem: think about version_tag, where it's fine and where it's not.
+  we know exceptions don't use that. Also modules don't use this, I don't
+  know why.
+
 - pypy-c-jit translate.py fails sometimes. Look into that
   [Check if there are no failing applevel tests also]
 
