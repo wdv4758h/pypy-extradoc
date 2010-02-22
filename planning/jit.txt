@@ -44,6 +44,12 @@ Python interpreter:
   we know exceptions don't use that. Also modules don't use this, I don't
   know why.
 
+- this example: http://paste.pocoo.org/show/181319/
+  showcases a problem that works fine as long as you not present a
+  combination of oldstyle and newstyle classes. If you however present
+  a combination of old and newstyle classes (try modifying) things go
+  far slower and traces look bad.
+
 - pypy-c-jit translate.py fails sometimes. Look into that
   [Check if there are no failing applevel tests also]
 
