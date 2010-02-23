@@ -68,7 +68,6 @@ Benchmark Notes
      module/_codecs/app_codecs.py. Are such things not jitted?
    - the tokenizer uses regular expressions and generators, which probably
      doesn't help
-   - calls str.lower a lot
 
  - spambayes
    - uses regular expressions and generators a lot
