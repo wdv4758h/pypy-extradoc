@@ -46,9 +46,6 @@ Python interpreter:
   a combination of old and newstyle classes (try modifying) things go
   far slower and traces look bad.
 
-- pypy-c-jit translate.py fails sometimes. Look into that
-  [Check if there are no failing applevel tests also]
-
 Benchmark Notes
 ----------------------------
 
