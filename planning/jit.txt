@@ -40,10 +40,6 @@ Python interpreter:
 
 - look why module.x does two calls to _lookup_where
 
-  Bigger problem: think about version_tag, where it's fine and where it's not.
-  we know exceptions don't use that. Also modules don't use this, I don't
-  know why.
-
 - this example: http://paste.pocoo.org/show/181319/
   showcases a problem that works fine as long as you not present a
   combination of oldstyle and newstyle classes. If you however present
