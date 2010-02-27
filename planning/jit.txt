@@ -3,8 +3,6 @@ TASKS
 
 - sort out a benchmark infrastructure. graphs!
 
-- jit/asmgcc + threads? [DONE probably.  Needs a bit more testing.]
-
 - think about code memory management
 
 - forcing virtualizables should only force fields affected, not everything
@@ -23,13 +21,6 @@ TASKS
 
 - some guards will always fail if they ever start failing
   (e.g. the class version tag).  Do something more clever about it.
-
-- investigate the case of test_virtualizable.test_blackhole_should_not_reenter
-  and corresponding code in warmstate.maybe_compile_and_run about return/assert
-  when we enter the same frame which we are blackholing
-
-- actually use the operation COND_CALL_GC_MALLOC
-  update: _fastpath_malloc has the same purpose.  Kill COND_CALL_GC_MALLOC
 
 Python interpreter:
 
@@ -77,8 +68,6 @@ JIT-related Release Tasks
 (there are other release tasks, specifically about packaging, documentation,
 website and stability that need sorting out too. However, they are beyond the
 scope of this section)
-
-consideration: if we plan to ship binaries the threads+JIT combination need to have a reasonable story (too confusing to pick one or the other)
 
 wishlist:
 - improve on predictability: don't trace into signals ... but produce just a
