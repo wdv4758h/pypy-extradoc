@@ -11,43 +11,48 @@ TASKS
 
 - think out looking into functions or not, based on arguments,
   for example contains__Tuple should be unrolled if tuple is of constant
-  length
+  length. HARD, blocked by the fact that we don't know constants soon enough
 
 - look at example of storing small strings in large lists (any sane templating
   engine would do it) and not spend all the time in
-  _trace_and_drag_out_of_nursery
+  _trace_and_drag_out_of_nursery.
+  Requires thinking about card-marking GC, which is hard, postpone
 
 - improve tracing/blackholing speed (?)
+  Essential, especially blackholing in translate.py, as well as html5lib.
 
 - some guards will always fail if they ever start failing
   (e.g. the class version tag).  Do something more clever about it.
+  DONE?
 
 Python interpreter:
 
-- goal: on average <=5 guards per original bytecode
+- goal: on average <=5 guards per original bytecode.
+  Almost achieved :-) pypy/jit/tool/otherviewer.py can view where we're
+  failing (red boxes out of jit-log-opt logging)
 
 - put the class into the structure to get only one promote when using an
   instance
 
-- look why module.x does two calls to _lookup_where
+- look why module.x does two calls to _lookup_where FIXED?
 
 - this example: http://paste.pocoo.org/show/181319/
   showcases a problem that works fine as long as you not present a
   combination of oldstyle and newstyle classes. If you however present
   a combination of old and newstyle classes (try modifying) things go
   far slower and traces look bad.
+  DON'T DO THAT?
 
 Benchmark Notes
 ----------------------------
 
  - spitfire:
-   - spends most of its time in subclass-of-list.append
-   - does completely horrible hackish things that happen to be fast on CPython
-     (i.e. calling locals() all the time)
-   - see http://paste.pocoo.org/show/169366/ for the python code that spitfire
-     produces for the template used in the benchmark
+   - it's an issue with GC, that's probably won't fix. On spitfire's small
+     benchmarks we're either matching CPython or are faster (if using cStringIO)
 
  - html5lib:
+   - we're faster (a bit) than CPython on a long enough run. blackholing is
+     an issue there.
    - slowness seems to be mostly the fault of PyUnicode_DecodeCharmap in
      module/_codecs/app_codecs.py. Are such things not jitted?
    - the tokenizer uses regular expressions and generators, which probably
@@ -55,11 +60,12 @@ Benchmark Notes
 
  - spambayes
    - uses regular expressions and generators a lot
+   - regexes are 80% of runtime of long-enough run
 
  - ai
    - the slowness is the fault of generators and generator expressions
    - many of the generator expressions are a bit stupid (like tuple(<genexp>))
-
+     WON'T FIX, maybe?
 
 
 JIT-related Release Tasks
@@ -70,10 +76,8 @@ website and stability that need sorting out too. However, they are beyond the
 scope of this section)
 
 wishlist:
-- improve on predictability: don't trace into signals ... but produce just a
-  conditional call (or just abort the trace)
 - the checks that look whether profiling/tracing in the Python interpreter is
-  enabled look expensive. Do we want to do something about them?
+  enabled look expensive. Do we want to do something about them? DONE?
 
 
 
@@ -81,9 +85,9 @@ wishlist:
 META
 -----
 
-- stability!
+- stability! DONE?
 
-- keep test coverage in check
+- keep test coverage in check DONE?
 
 - prevent too much method and fields demoting in the jit
 
@@ -98,18 +102,10 @@ inlining discussion
   explosion
 - tracing aggressively will put pressure on the speed of tracing
 - what should we do about recursive calls?
-- connecting compiled loops accross a call?
 
 
 things we know are missing
 ---------------------------
-
-backend:
-- speed of backend?
-
-Python interpreter:
-- lookups of various kinds
-- calls
 
 tests:
 - find a test for r64742 (JitException capture)
@@ -118,6 +114,7 @@ Goals/Benchmarks
 -----------------
 
 Goal: be somehow faster than CPython in real programs
+      actually, DONE!
 
 Benchmarks:
     they live at svn+ssh://codespeak.net/svn/pypy/benchmarks
@@ -133,15 +130,4 @@ ootype discussion
 memory usage
 ------------
 
-- we use too much memory during jitting.  Notably of the following
-  types (in decreasing order of total size, for Pystone):
-  XXX is this still relevant?
-    - rpy_string
-    - GcArray of AbstractValue (unknown if fixedsize or not)
-    - DoneWithThisFrameRef
-    - dict {AbstractValue: SHORT}
-    - GcArray of ResOperation
-    - resizable list of AbstractValue
-    - ResOperation
-    - ResumeGuardDescr
-    - ConstInt
+part here was out of date a lot.
