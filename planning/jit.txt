@@ -23,6 +23,8 @@ TASKS
 
 - some guards will always fail if they ever start failing
   (e.g. the class version tag).  Do something more clever about it.
+  (already done a hack that helps: don't compile more guard_value's
+  if the value guarded for keeps changing fast enough: r71527)
 
 Python interpreter:
 
