@@ -2,23 +2,26 @@
 Introducing PyPy 1.2 release
 ============================
 
-We're pleased to announce PyPy 1.2 release. 1.2 is a major milestone and it's
+We're pleased to announce PyPy's 1.2 release. 1.2 is a major milestone and it's
 the first release to ship a `Just in time compiler`_ that is known to speed
-up some real-world python programs. The main theme for 1.2 release is **speed**.
+up some real-world python programs. The main theme for the 1.2 release is
+**speed**.
 
 While the JIT is stable and we don't observe crashes, we would recommend
-treating it as beta software and as a way to try the JIT how it works for you.
+treating it as beta software and as a way to try the JIT out to see how it
+works for you.
 
 Highlights:
 
 * JIT compiler.
 
 * Various interpreter optimizations that improve performance as well as help
-  to save memory. Read our `various`_ `blog`_ `posts`_ about achievments.
+  save memory. Read our `various`_ `blog`_ `posts`_ about achievments.
 
-* Introducing `new PyPy website`_ made by `tav`_ and improved by PyPy team.
+* Introducing a `new PyPy website`_ made by `tav`_ and improved by the PyPy
+  team.
 
-* Introducing `speed.pypy.org`_ a new service that monitors our performance
+* Introducing `speed.pypy.org`_, a new service that monitors our performance
   nightly.
 
 Known JIT problems (or why you should consider this beta software):
