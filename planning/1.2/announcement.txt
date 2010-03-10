@@ -24,6 +24,13 @@ Highlights:
 * Introducing `speed.pypy.org`_, a new service that monitors our performance
   nightly.
 
+* Introducing ubuntu packages on `PPA`_.
+
 Known JIT problems (or why you should consider this beta software):
 
-XXX
+* Only 32bit x86 for now, we're looking for help with other platforms.
+
+* There is no limit to amount of RAM assembler can consume, it's possible
+  (although unlikely) to consume your whole memory.
+
+XXX download it here and there
