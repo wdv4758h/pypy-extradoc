@@ -24,7 +24,7 @@ Highlights:
 * Introducing `speed.pypy.org`_, a new service that monitors our performance
   nightly.
 
-* Introducing ubuntu packages on `PPA`_.
+* Introducing ubuntu packages on `PPA`_, done by `Bartos Skowron`_.
 
 Known JIT problems (or why you should consider this beta software):
 
@@ -33,4 +33,9 @@ Known JIT problems (or why you should consider this beta software):
 * There is no limit to amount of RAM assembler can consume, it's possible
   (although unlikely) to consume your whole memory.
 
-XXX download it here and there
+If you want to try PyPy, go to `download page`_ on our excellent new site
+and find binary for your platform. If binary does not work (different so
+names) or your platform is not supported, you can `try building from source`_.
+
+PyPy release team,
+XXX folks
