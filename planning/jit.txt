@@ -26,6 +26,9 @@ TASKS
   (already done a hack that helps: don't compile more guard_value's
   if the value guarded for keeps changing fast enough: r71527)
 
+- int_add_ovf(x, 0) guard_overflow is 20% of all int_add_ovf, not much
+  overall, but probably worth attacking
+
 Python interpreter:
 
 - goal: on average <=5 guards per original bytecode.
