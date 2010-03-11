@@ -38,6 +38,11 @@ TASKS
   This is treated as a megamorphic call (promotion of w_self in typeobject.py)
   while in fact it is not.
 
+- a recurring theme: we allocate an array, fill it with items, allocate new
+  array, copy_items, forget about first one. Would be cool to know that for
+  this case and some other cases, the static refcount can only be 1, so we
+  can optimize away the copy.
+
 Python interpreter:
 
 - goal: on average <=5 guards per original bytecode.
