@@ -35,6 +35,8 @@ TASKS
 
   this will compile new assembler path for each new type, even though that's
   overspecialization since in this particular case it's not relevant.
+  This is treated as a megamorphic call (promotion of w_self in typeobject.py)
+  while in fact it is not.
 
 Python interpreter:
 
