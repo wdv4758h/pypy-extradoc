@@ -29,6 +29,13 @@ TASKS
 - int_add_ovf(x, 0) guard_overflow is 20% of all int_add_ovf, not much
   overall, but probably worth attacking
 
+- think about such example:
+
+  http://paste.pocoo.org/show/188520/
+
+  this will compile new assembler path for each new type, even though that's
+  overspecialization since in this particular case it's not relevant.
+
 Python interpreter:
 
 - goal: on average <=5 guards per original bytecode.
