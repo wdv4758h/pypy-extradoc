@@ -2,13 +2,15 @@
 Introducing PyPy 1.2 release
 ============================
 
-We're pleased to announce PyPy's 1.2 release. 1.2 is a major milestone and it's
+We are pleased to announce PyPy's 1.2 release.
+This 1.2 is a major milestone and it is
 the first release to ship a `Just in time compiler`_ that is known to speed
 up some real-world python programs. The main theme for the 1.2 release is
 **speed**.
 
-While the JIT is stable and we don't observe crashes, we would recommend
-treating it as beta software and as a way to try the JIT out to see how it
+The JIT is stable and we don't observe crashes.
+Nevertheless we would recommend you to
+treat it as beta software and as a way to try the JIT out to see how it
 works for you.
 
 Highlights:
@@ -16,7 +18,7 @@ Highlights:
 * JIT compiler.
 
 * Various interpreter optimizations that improve performance as well as help
-  save memory. Read our `various`_ `blog`_ `posts`_ about achievments.
+  save memory. Read our `various`_ `blog`_ `posts`_ about achievements.
 
 * Introducing a `new PyPy website`_ made by `tav`_ and improved by the PyPy
   team.
@@ -30,12 +32,14 @@ Known JIT problems (or why you should consider this beta software):
 
 * Only 32bit x86 for now, we're looking for help with other platforms.
 
-* There is no limit to amount of RAM assembler can consume, it's possible
-  (although unlikely) to consume your whole memory.
+* It is still memory-hungry.  There is no limit on the amount of RAM that
+  the assembler can consume; it is thus possible (although unlikely) that
+  the assembler ends up using unreasonable amounts of memory.
 
 If you want to try PyPy, go to `download page`_ on our excellent new site
-and find binary for your platform. If binary does not work (different so
-names) or your platform is not supported, you can `try building from source`_.
+and find the binary for your platform. If the binary does not work (e.g. on
+Linux, because of different versions of external .so dependencies), or if
+your platform is not supported, you can `try building from the source`_.
 
 PyPy release team,
 XXX folks
