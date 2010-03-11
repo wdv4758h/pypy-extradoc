@@ -3,9 +3,9 @@ Introducing PyPy 1.2 release
 ============================
 
 We are pleased to announce PyPy's 1.2 release.
-This 1.2 is a major milestone and it is
+This version 1.2 is a major milestone and it is
 the first release to ship a `Just in time compiler`_ that is known to speed
-up some real-world python programs. The main theme for the 1.2 release is
+up some real-world Python programs. The main theme for the 1.2 release is
 **speed**.
 
 The JIT is stable and we don't observe crashes.
@@ -15,7 +15,7 @@ works for you.
 
 Highlights:
 
-* JIT compiler.
+* The JIT compiler.
 
 * Various interpreter optimizations that improve performance as well as help
   save memory. Read our `various`_ `blog`_ `posts`_ about achievements.
@@ -28,9 +28,10 @@ Highlights:
 
 * Introducing Ubuntu packages on `PPA`_, done by `Bartosz Skowron`_.
 
-Known JIT problems (or why you should consider this beta software):
+Known JIT problems (or why you should consider this beta software) are:
 
-* Only 32bit x86 for now, we're looking for help with other platforms.
+* The only supported platform is 32bit x86 for now, we're looking for help with
+  other platforms.
 
 * It is still memory-hungry.  There is no limit on the amount of RAM that
   the assembler can consume; it is thus possible (although unlikely) that
