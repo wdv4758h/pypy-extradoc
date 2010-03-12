@@ -2,7 +2,7 @@
 Introducing PyPy 1.2 release
 ============================
 
-We are pleased to announce PyPy's 1.2 release.
+We are pleased to announce `PyPy's 1.2 release`_.
 This version 1.2 is a major milestone and it is the first release to ship
 a `Just in time compiler`_ that is known to be faster than CPython
 (and unladen swallow) on some real-world applications (or the best benchmarks
@@ -45,6 +45,7 @@ your platform is not supported, you can `try building from the source`_.
 PyPy release team,
 Armin Rigo, Maciej Fijalkowski and Amaury Forgeot d'Arc
 
+.. _`PyPy's 1.2 release`: http://pypy.org/
 .. _`Just in time compiler`: http://en.wikipedia.org/wiki/Just-in-time_compilation
 .. _`new PyPy website`: http://pypy.org
 .. _`various`: http://morepypy.blogspot.com/2010/03/hello.html
