@@ -3,17 +3,14 @@ Introducing PyPy 1.2 release
 ============================
 
 We are pleased to announce PyPy's 1.2 release.
-This version 1.2 is a major milestone and it is
-the first release to ship a `Just in time compiler`_ that is known to be faster
-than CPython (and unladen swallow) on some real-world applications (or the best
-benchmarks we could get for them).
-The main theme for the 1.2 release is
-**speed**.
+This version 1.2 is a major milestone and it is the first release to ship
+a `Just in time compiler`_ that is known to be faster than CPython
+(and unladen swallow) on some real-world applications (or the best benchmarks
+we could get for them). The main theme for the 1.2 release is **speed**.
 
-The JIT is stable and we don't observe crashes.
-Nevertheless we would recommend you to
-treat it as beta software and as a way to try the JIT out to see how it
-works for you.
+The JIT is stable and we don't observe crashes. Nevertheless we would
+recommend you to treat it as beta software and as a way to try the JIT out
+to see how it works for you.
 
 Highlights:
 
@@ -27,6 +24,9 @@ Highlights:
 
 * Introducing `speed.pypy.org`_, a new service that monitors our performance
   nightly.
+
+* There will be ubuntu packages on `PyPy's PPA`_ made by Bartosz Skowron,
+  however various troubles prevented us from having them as of now.
 
 Known JIT problems (or why you should consider this beta software) are:
 
@@ -43,4 +43,15 @@ Linux, because of different versions of external .so dependencies), or if
 your platform is not supported, you can `try building from the source`_.
 
 PyPy release team,
-XXX folks
+Armin Rigo, Maciej Fijalkowski and Amaury Forgeot d'Arc
+
+.. _`Just in time compiler`: http://en.wikipedia.org/wiki/Just-in-time_compilation
+.. _`new PyPy website`: http://pypy.org
+.. _`various`: http://morepypy.blogspot.com/2010/03/hello.html
+.. _`blog`: http://morepypy.blogspot.com/2010/01/nightly-graphs-of-pypys-performance.html
+.. _`posts`: http://morepypy.blogspot.com/2009/11/some-benchmarking.html
+.. _`tav`: http://tav.espians.com/
+.. _`download page`: http://pypy.org/download.html
+.. _`try building from the source`: http://pypy.org/download.html#building-from-source
+.. _`PyPy's PPA`: https://launchpad.net/~pypy/+archive/ppa
+.. _`speed.pypy.org`: http://speed.pypy.org
