@@ -19,8 +19,8 @@ Highlights:
 * Various interpreter optimizations that improve performance as well as help
   save memory. Read our `various`_ `blog`_ `posts`_ about achievements.
 
-* Introducing a `new PyPy website`_ made by `tav`_ and improved by the PyPy
-  team.
+* Introducing a `new PyPy website`_ at pypy.org made by `tav`_ and improved
+  by the PyPy team.
 
 * Introducing `speed.pypy.org`_, a new service that monitors our performance
   nightly.
