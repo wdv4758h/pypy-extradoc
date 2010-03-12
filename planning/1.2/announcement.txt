@@ -4,8 +4,10 @@ Introducing PyPy 1.2 release
 
 We are pleased to announce PyPy's 1.2 release.
 This version 1.2 is a major milestone and it is
-the first release to ship a `Just in time compiler`_ that is known to speed
-up some real-world Python programs. The main theme for the 1.2 release is
+the first release to ship a `Just in time compiler`_ that is known to be faster
+than CPython (and unladen swallow) on some real-world applications (or the best
+benchmarks we could get for them).
+The main theme for the 1.2 release is
 **speed**.
 
 The JIT is stable and we don't observe crashes.
