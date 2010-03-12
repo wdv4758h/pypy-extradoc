@@ -28,8 +28,6 @@ Highlights:
 * Introducing `speed.pypy.org`_, a new service that monitors our performance
   nightly.
 
-* Introducing Ubuntu packages on `PPA`_, done by `Bartosz Skowron`_.
-
 Known JIT problems (or why you should consider this beta software) are:
 
 * The only supported platform is 32bit x86 for now, we're looking for help with
