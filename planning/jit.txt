@@ -48,6 +48,17 @@ TASKS
   don't escape and call simplified version that does not allocate all
   frames. Sounds hard
 
+- if we move a promotion up the chain, some arguments don't get replaced
+  with constants (those between current and previous locations). So we get
+  like
+
+  guard_value(p3, ConstPtr(X))
+  getfield_gc(p3, descr)
+  getfield_gc(ConstPtr(X), descr)
+
+  maybe we should move promote even higher, before the first use and we
+  could possibly remove more stuff?
+
 Python interpreter:
 
 - goal: on average <=5 guards per original bytecode.
