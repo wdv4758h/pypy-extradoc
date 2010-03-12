@@ -42,9 +42,17 @@ and find the binary for your platform. If the binary does not work (e.g. on
 Linux, because of different versions of external .so dependencies), or if
 your platform is not supported, you can `try building from the source`_.
 
-The PyPy release team (working of course for the full PyPy team),
-Armin Rigo, Maciej Fijalkowski and Amaury Forgeot d'Arc
+The PyPy release team,
 
+    Armin Rigo, Maciej Fijalkowski and Amaury Forgeot d'Arc
+
+Together with
+
+    Antonio Cuni, Carl Friedrich Bolz, Holger Krekel and Samuele Pedroni
+
+and `many others`_.
+
+.. _`many others`: http://codespeak.net/pypy/dist/pypy/doc/contributor.html
 .. _`PyPy's 1.2 release`: http://pypy.org/
 .. _`new PyPy website`: http://pypy.org/
 .. _`various`: http://morepypy.blogspot.com/2010/03/hello.html
