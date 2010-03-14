@@ -38,15 +38,6 @@ TASKS
   This is treated as a megamorphic call (promotion of w_self in typeobject.py)
   while in fact it is not.
 
-- a recurring theme: we allocate an array, fill it with items, allocate new
-  array, copy_items, forget about first one. Would be cool to know that for
-  this case and some other cases, the static refcount can only be 1, so we
-  can optimize away the copy.
-
-  I think enough would be to make jit aware of ll_arraycopy, so it knows
-  a copy of a virtual array yields another virtual array and will optimize
-  everything away on it's own.
-
 - a suggestion - if we call some code via call_assembler that raises an
   exception, in theory we could do something smarter in case our frames
   don't escape and call simplified version that does not allocate all
