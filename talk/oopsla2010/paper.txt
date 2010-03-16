@@ -21,3 +21,17 @@ us to implement an efficient tracing JIT for interpreters, good enough
 to scale to python interpreter. In this paper we will discuss how do
 we deal with frame objects and how we chain frame objects in a way
 that removes most costs associated with them.
+
+We remove frame overhead in a two different ways, depending on the place
+in trace where function call happens:
+
+1. For the outermost function within the compiled loop (XXX trace, can be
+   something else as far as I remember), we use objects called *virtualizables*,
+   which are allocated, but who's fields are ... (XXX write down how they're
+   lazily accessed from the other places and not at all from the JIT)
+
+2. For inlined functions, the frames are known not to escape, which
+   means we don't need to allocate them at all, but ...
+
+3. We have to maintain a frame chain via special objects called virtualrefs
+   XXX explain
