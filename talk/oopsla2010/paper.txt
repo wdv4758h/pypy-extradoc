@@ -1,0 +1,23 @@
+Problem domain
+==============
+
+Python (and other dynamic languages, to varying extent) has a frame
+introspection capabilities built in language. This means that at any
+given point in time, python code can request the list of local variables
+or introspect what functions are on the stack. Due to the dynamic nature of
+python, such checks are usually impossible to detect statically. In Python
+you can overload all operations, so checking length of an object or decoding
+unicode or innocent addition can call a piece of arbitrary python code.
+
+XXX write down why we can't exactly keep the frame on the C stack and
+XXX use an API to manipulate that. I'm not sure if it's really the problem
+XXX since we do the same on assembler stack
+
+Approach
+========
+
+In the previous paper we discussed the tracing infrastructure that allows
+us to implement an efficient tracing JIT for interpreters, good enough
+to scale to python interpreter. In this paper we will discuss how do
+we deal with frame objects and how we chain frame objects in a way
+that removes most costs associated with them.
