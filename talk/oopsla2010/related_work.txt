@@ -9,7 +9,9 @@ c) we don't know how long we need to keep stuff alive
 Smalltalk
 =========
 
-I'm not aware of frame introspection capabilities in smalltalk
+Smalltalk has both frame introspection (everything is an object) and optimizes
+its frame objects heavily in some implementations:
+http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.42.6597
 
 Psyco
 =====
