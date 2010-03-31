@@ -48,4 +48,20 @@ language (RPython). Indeed, in order to present gains of our approach,
 we created a tiny language and wrote interpreter for it in RPython to showcase
 benefits of our that can also be applied on a large scale.
 
+As a result, we can remove the frame overhead costs almost completely
+from the running program. There are some corner-cases, require by python
+language specification, that make frame escape via traceback (if exception
+exits jitted part of the code). In that case we allocate the frame and
+put all elements there. However, this still avoids using frame for all
+operations, as the interpreter would do.
+
+Performance gains are significant (XXX actually measure how significant).
+XXX
+
+Related work
+============
+
+Technical background
+====================
+
 
