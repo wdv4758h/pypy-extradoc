@@ -1,39 +1,51 @@
-Problem domain
-==============
-
-Python (and other dynamic languages, to varying extent) has a frame
-introspection capabilities built in language. This means that at any
-given point in time, python code can request the list of local variables
-or introspect what functions are on the stack. Due to the dynamic nature of
-python, such checks are usually impossible to detect statically. In Python
-you can overload all operations, so checking length of an object or decoding
-unicode or innocent addition can call a piece of arbitrary python code.
-
-XXX write down why we can't exactly keep the frame on the C stack and
-XXX use an API to manipulate that. I'm not sure if it's really the problem
-XXX since we do the same on assembler stack
-
-
-
-Approach
+Abstract
 ========
 
-In the previous paper we discussed the tracing infrastructure that allows
-us to implement an efficient tracing JIT for interpreters, good enough
-to scale to python interpreter. In this paper we will discuss how do
-we deal with frame objects and how we chain frame objects in a way
-that removes most costs associated with them.
+XXX
 
-We remove frame overhead in a two different ways, depending on the place
-in trace where function call happens:
+Introduction
+============
 
-1. For the outermost function within the compiled loop (XXX trace, can be
-   something else as far as I remember), we use objects called *virtualizables*,
-   which are allocated, but who's fields are ... (XXX write down how they're
-   lazily accessed from the other places and not at all from the JIT)
+Python language presents a serious challenge for optimizations. The main
+complexity comes from the dynamism of Python (where you can overload virtually
+any operation to have effects unknown until runtime) as well as frame
+introspection capabilities achievable from within language. We implemented
+a flexible just in time compiler generation (XXX cite) as a first step
+to overcome problems presented by Python. In our approach, we automatically
+generate the just in time compiler from the interpreter specification written
+in a high level language (RPython - a static subset of Python). This language
+can also be directly run or, by compilation to lower level language such as C,
+run efficiently.
 
-2. For inlined functions, the frames are known not to escape, which
-   means we don't need to allocate them at all, but ...
+The idea of frame introspection is very useful for debugging, especially when
+building custom debuggers or traceback representation. An example of such
+idea is found with web frameworks written in python - they usually try to
+present more information than classic traceback representation.
 
-3. We have to maintain a frame chain via special objects called virtualrefs
-   XXX explain
+XXX example of django traceback
+
+In this paper we present the way we deal with frames in order to completely
+(or mostly) avoid costs associated with them. Our approach is giving
+us serious (XXX how serious) performance benefit on top of just in time
+compiler without the frame optimizations.
+
+The performance evaluation of our approach is based on a fact that if
+programmer doesn't use frame introspection, he's not interested in paying
+extra penalty for it. The performance of the introspection capabilities
+doesn't matter in practice, since by far the most common use case is debugging.
+At least in case of python, there is a requirement however, that debugging
+information is present and retrievable at any point of execution - there
+can't be a runtime option known prior to running the program if debugging
+will be used or not.
+
+The idea of avoiding frame objects, while still being able to create them
+if need arises is nothing new. It was tackled by (XXX smalltalk) and
+(XXX hotspot) for years. The novelty of our approach is that we only need
+a few hints in our interpreter (a couple lines of code, about 10) to instruct
+jit generator to create frame synchronization code. This allows the same
+techniques to be applied to any interpreter specified in description
+language (RPython). Indeed, in order to present gains of our approach,
+we created a tiny language and wrote interpreter for it in RPython to showcase
+benefits of our that can also be applied on a large scale.
+
+
