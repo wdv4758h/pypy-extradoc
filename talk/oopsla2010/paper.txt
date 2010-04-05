@@ -22,7 +22,24 @@ building custom debuggers or traceback representation. An example of such
 idea is found with web frameworks written in python - they usually try to
 present more information than classic traceback representation.
 
-XXX example of django traceback
+Example of a py.test traceback, using local variable introspection to find out
+what happened:
+
+=================================== FAILURES ===================================
+___________________________________ test_one ___________________________________
+
+    def test_one():
+>       f(0, 0)
+
+test_x.py:6: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+i = 0, j = 0
+
+    def f(i, j):
+>       return i / j
+E       ZeroDivisionError: integer division or modulo by zero
+
 
 In this paper we present the way we deal with frames in order to completely
 (or mostly) avoid costs associated with them. Our approach is giving
