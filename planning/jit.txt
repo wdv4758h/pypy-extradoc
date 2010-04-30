@@ -1,13 +1,26 @@
+NEW TASKS
+---------
+
+- look at assembler-assembler calls again: if the inner function is traced
+  after the outer one, the call is slow. other cases could be faster too,
+  probably.
+
+- have benchmarks for jit compile time and jit memory usage
+
+- trace into functions even if they have a loop. only if the loop is actually
+  hit, a residual portal call is produced
+
+- generators are not really fast – maybe add a JUMP_ABSOLUTE_GENERATOR that
+  does not call can_enter_jit after an iteration in which there was a yield.
+  obviously.
+
+
 TASKS
 -----
-
-- sort out a benchmark infrastructure. graphs!
 
 - think about code memory management
 
 - forcing virtualizables should only force fields affected, not everything
-
-- compress resume data (?)
 
 - think out looking into functions or not, based on arguments,
   for example contains__Tuple should be unrolled if tuple is of constant
