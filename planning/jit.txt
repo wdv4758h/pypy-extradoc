@@ -14,6 +14,15 @@ NEW TASKS
   does not call can_enter_jit after an iteration in which there was a yield.
   obviously.
 
+- think about handling hidden registers - mayb we can use couple of
+  first spots on the stack as registers
+
+- think again about perfect specialization. Check if we loose anything
+  if we turn it off. Another approach to specialization: specialize things
+  in locals even if they're not referenced (that will solve bridges using
+  new local variables, which I think is pretty common). Specialize things
+  that are never changed, but read from (an into which is a loop constant
+  will stay as a getfield).
 
 TASKS
 -----
@@ -30,6 +39,10 @@ TASKS
   engine would do it) and not spend all the time in
   _trace_and_drag_out_of_nursery.
   Requires thinking about card-marking GC, which is hard, postpone
+
+  Card marking GC is hard in our model. Think about solutions to chunked
+  list (a list that if big enough is a list of lists of stuff). Experiments
+  show that it helps a lot for some examples.
 
 - improve tracing/blackholing speed
   Essential, especially blackholing in translate.py, as well as html5lib.
