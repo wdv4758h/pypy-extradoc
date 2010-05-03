@@ -61,7 +61,14 @@ the talk we will see:
 Part 3 - cpyext, or how C extension modules can work in PyPy
 =============================================================
 
-This part of the talk is ...
+In this part, we will talk about the new cpyext module, that allow PyPy to use
+the extension modules of CPython written in C.  In particular:
+
+* How it works
+
+* What are the drawbacks, and the current status
+
+* What are the incompatibilities, and how to solve them
 
 
 Authors: Antonio Cuni, Amaury Forgeot d'Arc, Armin Rigo
