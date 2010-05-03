@@ -66,9 +66,29 @@ the extension modules of CPython written in C.  In particular:
 
 * How it works
 
+  - "normal" integration with distutils
+  - PyObjects are "shadows" of living interpreter objects
+    - reference counted
+  - Most of the API is written in RPython
+  - Some C functions are copied verbatim
+    - PyArg_ParseTuple, PyString_Format, the buffer object...
+  - Testable from interpreted PyPy
+
 * What are the drawbacks, and the current status
 
+  - built on top of another Python VM
+    - Concrete Layer built on top of the Abtract Layer
+      ex: PyDict_Size(x) calls len(x)
+    - Constant round-turns between PyObjects and the interpreter objects
+  - no threads yet
+  - extensions only, cannot embed PyPy yet
+  - PyPy still has a GIL...
+
 * What are the incompatibilities, and how to solve them
+
+  - No direct field access
+    - except for types
+  - Borrowed references are evil
 
 
 Authors: Antonio Cuni, Amaury Forgeot d'Arc, Armin Rigo
