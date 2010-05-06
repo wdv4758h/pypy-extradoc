@@ -14,3 +14,71 @@ Outline
 
 - Demo: how to use PyPy right now
 
+
+Part 1
+-------
+
+- What's new and status update
+
+- Mandelbrot demo
+
+
+What's new in PyPy 1.2
+-----------------------
+
+- Main theme: speed
+
+- JIT compiler
+
+- Memory savings
+
+- speed.pypy.org
+
+- ubuntu packages
+
+Speed
+-----
+
+XXX show the performance graphs
+(also with psyco)
+
+
+What works on PyPy
+-------------------
+
+XXX
+
+
+What does not work on PyPy
+--------------------------
+
+XXX :-)
+
+cpyext
+------
+
+XXX
+
+PyPy 1.2.1
+----------
+
+- Coming soon
+
+- Many bugfixes
+
+- beta version of cpyext
+
+
+bPart 2
+-------
+
+JIT
+
+
+
+
+Part 3
+------
+
+Demo explained
+
