@@ -69,12 +69,70 @@ PyPy 1.2.1
 - beta version of cpyext
 
 
-bPart 2
+Part 2
 -------
 
-JIT
+- the performance of Python:
+  how fast can Python code really be?
+  (and using how much memory?)
+ 
+Overview of implementations
+---------------------------
 
+(Discussing their performance)
 
+- CPython
+- Psyco
+- Jython, IronPython
+- (Stackless)
+- PyPy (without and with JIT)
+- Unladen Swallow
+
+What a JIT is
+-------------
+
+XXX
+
+What a tracing JIT is
+---------------------
+
+XXX e.g. the structure of TraceMonkey
+
+The architecture of PyPy
+------------------------
+
+XXX diagram showing where the JIT is
+
+XXX diagram detailling the JIT
+
+- it can be used for any interpreter, not just Python
+
+Speed of the PyPy JIT
+---------------------
+
+Python programs that are, or are not, nicely handled
+by the JIT:
+
+- loops, even across many calls, are nicely handled
+- interpreter-like constructs are not
+- bad support so far for generators and recursion
+
+The optimizations we get
+------------------------
+
+(Quick overview only, with examples of programs that benefit)
+
+- "virtuals", i.e. temporary objects are not constructed
+- removed frame handling
+
+Practical results
+-----------------------
+
+- so far, x86-32 only
+- mention again the performance shown by the graphs
+- a quick tour of other missing improvements
+- reminder: works for *any* Python code (even more
+  than Psyco)
 
 
 Part 3
