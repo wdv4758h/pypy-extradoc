@@ -15,6 +15,25 @@ Outline
 - Demo: how to use PyPy right now
 
 
+Part 0: What is PyPy? :-)
+--------------------------
+
+- Python interpreter written in Python
+
+- Framework for developing dynamic languages
+
+- etc. etc.
+
+|pause|
+
+- From the user point of view
+
+- An alternative to CPython
+
+- with more features!
+
+
+
 Part 1
 -------
 
@@ -26,38 +45,133 @@ Part 1
 What's new in PyPy 1.2
 -----------------------
 
+- Released on March 12th, 2010
+
 - Main theme: speed
 
 - JIT compiler
 
-- Memory savings
-
 - speed.pypy.org
 
-- ubuntu packages
+- Ubuntu packages
 
-Speed
------
 
-XXX show the performance graphs
-(also with psyco)
+Speed: PyPy vs CPython
+-----------------------
+
+.. image:: pypy-vs-cpython.png
+   :scale: 35
+
+
+Speed: PyPy vs Psyco
+-----------------------
+
+.. image:: pypy-vs-psyco.png
+   :scale: 35
 
 
 What works on PyPy
 -------------------
 
-XXX
+- Pure Python modules should Just Work (TM)
+
+  * django trunk
+
+  * twisted, nevow
+
+  * pylons
+
+  * bittorrent
+
+  * ...
+
+|pause|
+
+- lot of standard modules
+
+|scriptsize|
+
+  * __builtin__ __pypy__ _codecs _lsprof _minimal_curses _random _rawffi
+    _socket _sre _weakref bz2 cStringIO crypt errno exceptions fcntl gc
+    itertools marshal math md5 mmap operator parser posix pyexpat select sha
+    signal struct symbol sys termios thread time token unicodedata zipimport
+    zlib
+
+  * array binascii cPickle cmath collections ctypes datetime functools grp md5
+    pwd pyexpat sha sqlite3 syslog
+
+|end_scriptsize|
+
+  * **ctypes**
 
 
 What does not work on PyPy
 --------------------------
 
-XXX :-)
+- Pure Python modules should Just Work (TM) |pause|
+
+  * ... unless they don't :-)
+
+|pause|
+
+- Programs that rely on CPython-specific behavior
+
+  * refcounting: ``open('xxx', 'w').write('stuff')``
+
+  * non-string keys in dict of types (try it!)
+
+  * exact naming of a list comprehension variable
+
+  * exact message matching in exception catching code
+
+  * ...
+
+|pause|
+
+- Extension modules |pause|
+
+  * really?
+
+  * drum roll...
+
 
 cpyext
 ------
 
-XXX
+- CPython extension modules in PyPy
+
+- ``pypy-c setup.py build``
+
+- still beta
+
+- not 100% of CPython API is supported
+
+- not included in PyPy 1.2
+
+- Known to work:
+
+  * wxPython (after a patch)
+
+  * _sre
+
+  * PyCrypto
+
+  * PIL
+
+
+wxPython on PyPy (1)
+---------------------
+
+.. image:: wxpython1.png
+   :scale: 30
+
+wxPython on PyPy (2)
+---------------------
+
+
+.. image:: wxpython2.png
+   :scale: 30
+
 
 PyPy 1.2.1
 ----------
@@ -65,6 +179,8 @@ PyPy 1.2.1
 - Coming soon
 
 - Many bugfixes
+
+  * 26 issues reported after release of 1.2
 
 - beta version of cpyext
 
