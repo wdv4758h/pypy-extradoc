@@ -20,6 +20,15 @@
 
    }
 
+.. |scriptsize| raw:: latex
+
+   {\scriptsize
+
+.. |end_scriptsize| raw:: latex
+
+   }
+
+
 
 .. closed bracket
 .. ===========================
