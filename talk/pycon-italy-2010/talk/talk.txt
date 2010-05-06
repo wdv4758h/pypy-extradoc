@@ -1,0 +1,16 @@
+.. include:: beamerdefs.txt
+
+=======================================
+PyPy 1.2: snakes never crawled so fast
+=======================================
+
+
+Outline
+-------
+
+- PyPy 1.2: what's new and status update
+
+- Overview of the JIT
+
+- Demo: how to use PyPy right now
+
