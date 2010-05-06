@@ -10,7 +10,7 @@ from py_kohn_bmp import kohn_bmp
 
 # Changing the values below will change the resulting image
 
-def manderlbrot(image_width, image_height):
+def mandelbrot(image_width, image_height):
     start_real=-2.00
     start_imag=-1.00
     end_real=1.00
