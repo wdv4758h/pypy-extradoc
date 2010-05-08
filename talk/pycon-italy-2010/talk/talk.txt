@@ -192,7 +192,7 @@ PyPy 1.2.1
 
 - Many bugfixes
 
-  * 26 issues reported after release of 1.2
+  * 27 issues reported after release of 1.2
 
 - beta version of cpyext
 
