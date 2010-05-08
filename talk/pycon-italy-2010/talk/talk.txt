@@ -221,7 +221,7 @@ Features
 
 - it just works
 - it may give good speed-ups (better than Psyco)
-- may have a few bugs left (less than Psyco) |pause|
+- it may have a few bugs left (Psyco too) |pause|
 - *it is not a hack (unlike Psyco)*
 
 |pause|
