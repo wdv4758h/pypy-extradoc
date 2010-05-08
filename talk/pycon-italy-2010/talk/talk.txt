@@ -310,10 +310,14 @@ The optimizations we get
 - ``!=`` optimizations we *wrote* :-)
 
 - removed frame handling
+
   - local variables are in CPU registers or on the C stack
   - but ``sys._getframe()`` works correctly
 
 - "virtuals": temporary objects are not constructed
+
+  - ``e = a + b + c + d``
+  - and much more complex examples
 
 - attribute and method lookups, etc.
 
@@ -328,7 +332,7 @@ Example
 ::
     
     def g(a, b):
-      if a < 0:      # 2
+      if a < 5:      # 2
         return -1
       return a - b   # 3
 
@@ -377,7 +381,7 @@ Practical results
 
 - reminder: works transparently for *any* Python code
 
-  * or any language (Prolog JIT :-))
+  * or any language (Prolog JIT :-) at PPDP 2010)
 
 - viable alternative to CPython
 
