@@ -506,7 +506,7 @@ Contact / Q&A
 
 * Links:
 
-  -  PyPy: http://www.pypy.org
+  - PyPy: http://pypy.org/
 
   - PyPy speed center: http://speed.pypy.org/
 
