@@ -197,43 +197,96 @@ PyPy 1.2.1
 - beta version of cpyext
 
 
-Part 2
--------
+Part 2: Just-in-Time compilation
+---------------------------------
 
-- the performance of Python:
-  how fast can Python code really be?
-  (and using how much memory?)
- 
+  Snakes never crawled so fast
+
 Overview of implementations
 ---------------------------
 
-(Discussing their performance)
-
 - CPython
+- Stackless
 - Psyco
-- Jython, IronPython
-- (Stackless)
+- Jython
+- IronPython
 - PyPy (without and with JIT)
 - Unladen Swallow
 
-What a JIT is
+Demo
+----
+
+Features
+--------
+
+- it just works
+- it may give good speed-ups (better than Psyco)
+- may have a few bugs left (less than Psyco) |pause|
+- *it is not a hack (unlike Psyco)*
+
+|pause|
+
+- PyPy also has excellent memory usage
+
+  * half that of CPython for a program
+    using several hunderds MBs
+
+
+What is a JIT
 -------------
 
-XXX
+* CPython compiles the program source into *bytecodes*
 
-What a tracing JIT is
+* without a JIT, the bytecodes are then interpreted
+
+* with a JIT, the bytecodes are further translated to
+  machine code (assembler)
+
+
+What is a JIT (2)
+-----------------
+
+The translation can be:
+
+* syntactic: translate the whole functions into machine code
+
+  - "the obvious way"
+  - e.g. Pyrex/Cython, Unladen Swallow
+  - not good performance, or needs tricks |pause|
+
+* semantic: translate bits of the function just-in-time
+
+  - only used parts
+  - exploit runtime information (e.g. types)
+  - Psyco, PyPy
+
+
+What is a tracing JIT
 ---------------------
 
-XXX e.g. the structure of TraceMonkey
+* start by interpreting normally
+* find loops as they are executed
+* turn them into machine code
+* 80% of the time is spent in 20% of the code
+
+What is a tracing JIT (history)
+-------------------------------
+
+* tracing assembler (Dynamo, ~2000)
+* tracing Java (~2005)
+* tracing JavaScript (~2008)
+
+|pause|
+
+* PyPy is a "tracing JIT generator"
+
 
 The architecture of PyPy
 ------------------------
 
-XXX diagram showing where the JIT is
+.. image:: overview2.png
+   :scale: 60
 
-XXX diagram detailling the JIT
-
-- it can be used for any interpreter, not just Python
 
 Speed of the PyPy JIT
 ---------------------
@@ -242,25 +295,91 @@ Python programs that are, or are not, nicely handled
 by the JIT:
 
 - loops, even across many calls, are nicely handled
-- interpreter-like constructs are not
+
+- loops with very many taken paths are not
+
+  * e.g. Python programs that look like interpreters
+  * typical in tracing JITs
+
 - bad support so far for generators and recursion
+
 
 The optimizations we get
 ------------------------
 
-(Quick overview only, with examples of programs that benefit)
+- ``!=`` optimizations we *wrote* :-)
 
-- "virtuals", i.e. temporary objects are not constructed
 - removed frame handling
+  - local variables are in CPU registers or on the C stack
+  - but ``sys._getframe()`` works correctly
+
+- "virtuals": temporary objects are not constructed
+
+- attribute and method lookups, etc.
+
+
+Example
+-------------
+
+|column1|
+
+|example<| |>|
+
+::
+    
+    def g(a, b):
+      if a < 0:      # 2
+        return -1
+      return a - b   # 3
+
+    def f(x):
+      total = 0
+                     # 1
+      for i in range(x):
+        d = g(i, x)
+        total += d   # 4
+
+|end_example|
+
+|pause|
+
+|column2|
+
+|example<| |>|
+
+::
+
+    ADD EAX, 1
+    CMP EAX, EBX
+    JNL <guard 1>
+    CMP EAX, 0
+    JL <guard 2>
+    MOV ECX, EAX
+    SUB ECX, EBX
+    JO <guard 3>
+    ADD EDX, ECX
+    JO <guard 4>
+    JMP
+
+|end_example|
+
+|end_columns|
+
 
 Practical results
 -----------------------
 
+- fast :-)
+
 - so far, x86-32 only
-- mention again the performance shown by the graphs
-- a quick tour of other missing improvements
-- reminder: works for *any* Python code (even more
-  than Psyco)
+
+- relatively easy to maintain (or port to x86-64, etc.)
+
+- reminder: works transparently for *any* Python code
+
+  * or any language (Prolog JIT :-))
+
+- viable alternative to CPython
 
 
 Part 3
