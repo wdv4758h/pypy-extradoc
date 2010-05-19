@@ -9,21 +9,27 @@ Introduction
 Python language presents a serious challenge for optimizations. The main
 complexity comes from the dynamism of Python (where you can overload virtually
 any operation to have effects unknown until runtime) as well as frame
-introspection capabilities achievable from within language. We implemented
+introspection capabilities achievable from within the language. We implemented
 a flexible just in time compiler generation (XXX cite) as a first step
-to overcome problems presented by Python. In our approach, we automatically
-generate the just in time compiler from the interpreter specification written
-in a high level language (RPython - a static subset of Python). This language
-can also be directly run or, by compilation to lower level language such as C,
+to overcome performance problems presented by Python. In our approach,
+we automatically generate the just in time compiler from the interpreter
+specification written
+in a high level language. This language
+can also be directly run (it's a static subset of Python) or, by compilation
+to lower level language such as C,
 run efficiently.
 
-The idea of frame introspection is very useful for debugging, especially when
-building custom debuggers or traceback representation. An example of such
-idea is found with web frameworks written in python - they usually try to
-present more information than classic traceback representation.
+This paper treats about mitigating costs related to allocating and managing
+frames within the interpreter. Those frames are either necessary to preserve
+Python semantics (user program frame introspection) or need to be reconstructed
+on demand when asked. Our approach eliminates most of costs associated with
+frames and reconstructs them on demand, even though interpreter is written
+with frames in mind.
 
-Example of a py.test traceback, using local variable introspection to find out
-what happened:
+Let's look at the example how frame introspection is used to improve language
+debugging capabilities. In the example below, py.test, a testing tool is using
+frame introspection for accessing and listing local variables which are
+on the stack when exception happened.
 
 =================================== FAILURES ===================================
 ___________________________________ test_one ___________________________________
@@ -40,15 +46,8 @@ i = 0, j = 0
 >       return i / j
 E       ZeroDivisionError: integer division or modulo by zero
 
-In this example we can see that py.test (after the test failure) looked up
-the traceback for introspecting where in source the error has happened.
-It also printed out contents of local variables, which greatly improve
-the visibility of an error.
-
-In this paper we present the way we deal with frames in order to completely
-(or mostly) avoid costs associated with them. Our approach is giving
-us serious (XXX how serious) performance benefit on top of just in time
-compiler without the frame optimizations.
+After the exception was generated, the whole chain of frames was stored in
+a user accessible place, from which the testing tool read local variables.
 
 The performance evaluation of our approach is based on a fact that if
 programmer doesn't use frame introspection, he's not interested in paying
@@ -92,3 +91,26 @@ small bytecode-based language with frame introspection capabilities. The
 language itself is not of any use, but provides very similar problems
 to those encountered on a larger scale.
 
+Our small interpreter is a register based interpreter implementing nine
+bytecodes, most of them straightforward (XXX reference source).
+The important addition here is the INTROSPECT bytecode which takes
+a register as argument (holding integer) and will write a value of register
+named by a number in argument to the result register. So the code:
+
+LOAD 0 => r3
+LOAD 1 => r2
+LOAD 2 => r1
+INTROSPECT r0 => r4
+PRINT r4
+
+assuming r0 is the argument of function, it'll print a value 2 (from
+register r1) if argument value is 1 etc. When creating an interpreter,
+the most obvious implementation would be to have a frame object with
+registers in an array, and this is exactly what our simple interpreter does.
+
+The problem here lays in details. XXX
+
+XXX Tracing JIT intro, maybe, depends on audience
+
+Solution
+========
