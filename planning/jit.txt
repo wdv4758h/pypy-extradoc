@@ -24,6 +24,10 @@ NEW TASKS
   that are never changed, but read from (an into which is a loop constant
   will stay as a getfield).
 
+- kill GUARD_(NO)_EXCEPTION; replace that by LAST_EXC_VALUE to load the
+  current exception from the struct in memory, followed by a regular
+  GUARD_CLASS.
+
 TASKS
 -----
 
