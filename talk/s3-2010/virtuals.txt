@@ -1,5 +1,15 @@
-Escape analysis in Pypy's JIT
+Escape analysis in PyPy's JIT
 =============================
+
+XXX
+
+- should probably start by describing the setting more: ie linear traces from
+  the tracing  interpreter, either a loop or a bridge
+- traces can have guards that leave the trace (so that the state reconstruction
+  explanation has context)
+- introduce the running example interpreter and probably show some traces
+  before optimizations
+
 
 One of the major problems of Python's performance is costs of allocating
 objects. Even though PyPy's garbage collector is pretty good, especially
