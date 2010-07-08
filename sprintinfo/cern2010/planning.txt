@@ -1,0 +1,9 @@
+
+ - nicer python interface (Carl Friedrich, Wim)
+ - fix Makefile generation (Armin, Anto)
+ - set up tests correctly, use ROOTSYS if it is there (Anto, Armin)
+ - genreflex whacking (Anto, Armin)
+ - data members
+ - passing and returning objects to C++ (Carl Friedrich, Wim)
+ - garbage collection?
+ - tons of details
