@@ -7,3 +7,7 @@
  - passing and returning objects to C++ (Carl Friedrich, Wim)
  - garbage collection?
  - tons of details
+
+Detailed TODO list:
+
+ - Deal with opened cpplibs: ownership and possible offloading 
