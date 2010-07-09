@@ -11,3 +11,6 @@
 Detailed TODO list:
 
  - Deal with opened cpplibs: ownership and possible offloading 
+ - Interacting of cache from a get_cppclass-like UI and gbl getattr
+ - Need a "counter" mixin baseclass for memory tracking
+ - Better error reporting when overloads fail
