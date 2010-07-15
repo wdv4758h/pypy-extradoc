@@ -194,7 +194,8 @@ Rendering (1)
 
 |example<| Mandelbrot |>|
 |small|
-::
+
+.. sourcecode:: python
 
     def render(request):
         w = int(request.GET.get('w', 320))
@@ -214,7 +215,8 @@ Rendering (2)
 
 |example<| Mandelbrot on PyPy |>|
 |small|
-::
+
+.. sourcecode:: python
 
     def pypy_render(request):
         w = int(request.GET.get('w', 320))
@@ -239,7 +241,8 @@ execnet setup
 
 |example<| At startup |>|
 |small|
-::
+
+.. sourcecode:: python
 
     import execnet
     mygroup = execnet.Group()
@@ -400,7 +403,7 @@ Example
 
 |example<| |>|
 
-::
+.. sourcecode:: python
     
     def g(a, b):
       if a < 5:      # 2
@@ -408,7 +411,7 @@ Example
       return a - b   # 3
 
     def f(x):
-      total = 0
+      total = 0      
                      # 1
       for i in range(x):
         d = g(i, x)
@@ -416,13 +419,11 @@ Example
 
 |end_example|
 
-|pause|
-
 |column2|
 
 |example<| |>|
 
-::
+.. sourcecode:: nasm
 
     ADD EAX, 1
     CMP EAX, EBX
