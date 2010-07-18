@@ -508,13 +508,36 @@ implementation
 
 - *not* faster than python code!
 
+- PyObject contains ob_type and ob_refcnt
+
+  * The "abstract object interface" is used.
+
+- Some objects contain more:
+
+  * PyString_AsString() must keep the buffer alive at a fixed location
+
+  * PyTypeObject exposes all its fields
+
+
 The Reference Counting Issue
 ----------------------------
 
-- pypy uses a moving garbage collector
+- pypy uses a moving garbage collector, starts with static roots to
+  find objects.
 
-- 
+- CPython objects don't move, and PyObject* can point to deallocated
+  memory.
 
+- cpyext builds PyObject as proxies to the "real" interpreter objects
+
+- one dictionary lookup each time the boundary is crossed
+
+- More tricks needed for borrowing references
+
+  * The object lifetime is tied to its container.
+
+  * "out of nothing" borrowed references are kept until the end of the
+    current pypy->C call.
 
 suppported modules
 ------------------
