@@ -470,21 +470,66 @@ cpyext
 
 - ``pypy-c setup.py build``
 
+- included in PyPy 1.3
+
 - still beta
 
-- not 100% of CPython API is supported
+- 50% of the CPython API is supported
 
-- not included in PyPy 1.2
+  * enough for 90% of extension modules
 
-- Known to work:
+features
+--------
 
-  * wxPython (after a patch)
+- C API written in Python!
+
+- Testable on top of an interpreted py.py
+
+- Source compatibility
+
+  * PyString_AS_STRING is actually a function call
+
+implementation
+--------------
+
+- Was not supposed to work
+
+  * different garbage collector
+
+  * no "borrowed reference"
+
+  * all the PyTypeObject slots
+
+- Written on top of the object space::
+
+    @cpython_api([PyObject], Py_ssize_t, error=-1)
+    def PyDict_Size(space, w_obj):
+        return space.int_w(space.len(w_obj))
+
+- *not* faster than python code!
+
+The Reference Counting Issue
+----------------------------
+
+- pypy uses a moving garbage collector
+
+- 
+
+
+suppported modules
+------------------
+
+- Known to work (after small patches):
+
+  * wxPython
 
   * _sre
 
   * PyCrypto
 
   * PIL
+
+  * cx_Oracle
 
 
 wxPython on PyPy (1)
@@ -496,12 +541,55 @@ wxPython on PyPy (1)
 wxPython on PyPy (2)
 ---------------------
 
-
 .. image:: wxpython2.png
    :scale: 30
 
+performance
+-----------
+
+Test script::
+
+    from cx_Oracle import connect
+    c = connect('scott/tiger@db')
+    cur = c.cursor()
+    var = cur.var(STRING)
+
+    def f():
+        for i in range(10000):
+            var.setvalue(0, str(i))
+            var.getvalue(0)
+
+Time it::
+
+    python -m timeit -s "from test_oracle import f" "f()"
+    cpython2.6:   8.25 msec per loop
+    pypy-c:     161    msec per loop
+    pypy-c-jit: 121    msec per loop
+
+Compare with::
+
+    def f():
+        for i in range(10000):
+            x = str(i)
+            y = int(x)
+    cpython2.6:   8.18 msec per loop
+    pypy-c-jit:   1.22 msec per loop
 
 
+Future developments
+-------------------
+
+- Some care about speed
+
+- Fill missing API functions
+
+- Better suppport of the PyTypeObject slots
+
+  * don't try to call the base class' slot!
+
+- Think about threads and the GIL
+
+- Think about reference cycles
 
 
 Contact / Q&A 
@@ -510,6 +598,10 @@ Contact / Q&A
 * Antonio Cuni: at http://merlinux.eu
 
 * Armin Rigo: arigo (at) tunes.org
+
+* Amaury Forgeot d'Arc: amauryfa (at) gmail
+
+* And the #pypy channel!
 
 * Links:
 
