@@ -492,26 +492,32 @@ features
 
 - Testable on top of an interpreted py.py
 
+- Written on top of the object space
+
 - Source compatibility
 
-  * PyString_AS_STRING is actually a function call
+  * PyString_AS_STRING is actually a function call (instead of a macro)
+
+|small|
+
+.. sourcecode:: python
+
+    @cpython_api([PyObject], Py_ssize_t, error=-1)
+    def PyDict_Size(space, w_obj):
+        return space.int_w(space.len(w_obj))
+
+|end_small|
 
 implementation
 --------------
 
-- Was not supposed to work
+- It was not supposed to work!
 
   * different garbage collector
 
   * no "borrowed reference"
 
   * all the PyTypeObject slots
-
-- Written on top of the object space::
-
-    @cpython_api([PyObject], Py_ssize_t, error=-1)
-    def PyDict_Size(space, w_obj):
-        return space.int_w(space.len(w_obj))
 
 - *not* faster than python code!
 
@@ -546,7 +552,10 @@ The Reference Counting Issue
   * "out of nothing" borrowed references are kept until the end of the
     current pypy->C call.
 
-suppported modules
+
+
+
+supported modules
 ------------------
 
 - Known to work (after small patches):
@@ -561,6 +570,32 @@ suppported modules
 
   * cx_Oracle
 
+  * MySQLdb
+
+  * sqlite
+
+
+Why your module will crash
+---------------------------
+
+Likely:
+
+|small|
+
+.. sourcecode:: c
+
+     static PyObject *myException;
+
+     void init_foo() {
+         myException = PyException_New(...);
+         Py_AddModule(m, myException); // steals a reference
+     }
+
+     {
+         PyErr_SetString(myException, "message"); // crash
+     }
+
+|end_small|
 
 wxPython on PyPy (1)
 ---------------------
@@ -574,12 +609,14 @@ wxPython on PyPy (2)
 .. image:: wxpython2.png
    :scale: 30
 
-performance
------------
+performance (1)
+---------------
 
-Test script::
+|small|
 
-    from cx_Oracle import connect
+.. sourcecode:: python
+
+    from cx_Oracle import connect, STRING
     c = connect('scott/tiger@db')
     cur = c.cursor()
     var = cur.var(STRING)
@@ -589,33 +626,48 @@ Test script::
             var.setvalue(0, str(i))
             var.getvalue(0)
 
-Time it::
+
+.. sourcecode:: bash
 
     python -m timeit -s "from test_oracle import f" "f()"
-    cpython2.6:   8.25 msec per loop
+    python2.6:    8.25 msec per loop
     pypy-c:     161    msec per loop
     pypy-c-jit: 121    msec per loop
 
-Compare with::
+|end_small|
+
+performance (2)
+---------------
+
+
+Compare with:
+
+|small|
+
+.. sourcecode:: python
 
     def f():
         for i in range(10000):
             x = str(i)
             y = int(x)
-    cpython2.6:   8.18 msec per loop
+
+.. sourcecode:: bash
+
+    python2.6:    8.18 msec per loop
     pypy-c-jit:   1.22 msec per loop
 
+|end_small|
 
 Future developments
 -------------------
 
 - Some care about speed
 
-- Fill missing API functions
+  * The JIT can help to remove (some of) the overhead
+
+- Fill missing API functions (when needed)
 
 - Better suppport of the PyTypeObject slots
-
-  * don't try to call the base class' slot!
 
 - Think about threads and the GIL
 
@@ -631,7 +683,7 @@ Contact / Q&A
 
 * Amaury Forgeot d'Arc: amauryfa (at) gmail
 
-* And the #pypy channel!
+* And the #pypy IRC channel on freenode.net!
 
 * Links:
 
