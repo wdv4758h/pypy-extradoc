@@ -362,6 +362,13 @@ The architecture of PyPy
    :scale: 60
 
 
+The architecture of PyPy (2)
+----------------------------
+
+.. image:: overview3.png
+   :scale: 60
+
+
 Speed of the PyPy JIT
 ---------------------
 
