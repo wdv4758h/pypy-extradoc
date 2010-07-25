@@ -2,14 +2,17 @@
 
 from django.http import HttpResponse
 
+WIDTH=640
+HEIGHT=480
+
 # only for benchmarking purposes
 def empty(request):
     return HttpResponse('')
 
 # render a mandelbrot image
 def render(request):
-    w = int(request.GET.get('w', 320))
-    h = int(request.GET.get('h', 240))
+    w = int(request.GET.get('w', WIDTH))
+    h = int(request.GET.get('h', HEIGHT))
 
     from py_mandel import mandelbrot
     img = mandelbrot(w, h)
@@ -19,8 +22,8 @@ def render(request):
 # render a mandelbrot image through the execnet pypy child, which is set up
 # below
 def pypy_render(request):
-    w = int(request.GET.get('w', 320))
-    h = int(request.GET.get('h', 240))
+    w = int(request.GET.get('w', WIDTH))
+    h = int(request.GET.get('h', HEIGHT))
 
     channel = pypy.remote_exec("""
         from py_mandel import mandelbrot
@@ -48,5 +51,3 @@ pypy.remote_exec("""
     os.chdir("mandelbrot")
     sys.path.insert(0, '')
 """)
-
-
