@@ -33,6 +33,10 @@ NEW TASKS
   is only used as a livevar in a guard should be removed and encoded in
   the guard recovert code.
 
+- think about strings more. since string are immutable, unnecessary copies
+  does not make any sense (sometimes people construct strings through
+  arrays, which is harder to track and then not use the result)
+
 TASKS
 -----
 
