@@ -28,6 +28,11 @@ NEW TASKS
   current exception from the struct in memory, followed by a regular
   GUARD_CLASS.
 
+- getfields which result is never used never get removed (probably cause -
+  they used to be as livevars in removed guards). also getfields which result
+  is only used as a livevar in a guard should be removed and encoded in
+  the guard recovert code.
+
 TASKS
 -----
 
