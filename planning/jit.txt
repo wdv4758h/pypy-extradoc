@@ -95,8 +95,11 @@ TASKS
 
 Python interpreter:
 
+- CALL_METHOD optimization only works for calls with no keyword args. This
+  is silly and slows down things quite a bit.
+
 - goal: on average <=5 guards per original bytecode.
-  Almost achieved :-) pypy/jit/tool/otherviewer.py can view where we're
+  Almost achieved :-) pypy/jit/tool/traceviewer.py can view where we're
   failing (red boxes out of jit-log-opt logging)
 
 - put the class into the structure to get only one promote when using an
