@@ -1,21 +1,20 @@
 NEW TASKS
 ---------
 
-- look at assembler-assembler calls again: if the inner function is traced
-  after the outer one, the call is slow. other cases could be faster too,
-  probably.
+- look at assembler-assembler calls again: if the inner function is
+  traced after the outer one, the call is slow.  Might be solved
+  easily if we implement full out-of-line guards (e.g. by invalidating
+  the outer function when the inner one gets compiled)
 
 - have benchmarks for jit compile time and jit memory usage
 
 - trace into functions even if they have a loop. only if the loop is actually
-  hit, a residual portal call is produced
+  hit, a residual portal call is produced (status: kill-caninline branch,
+  buggy)
 
 - generators are not really fast – maybe add a JUMP_ABSOLUTE_GENERATOR that
   does not call can_enter_jit after an iteration in which there was a yield.
-  obviously.
-
-- think about handling hidden registers - mayb we can use couple of
-  first spots on the stack as registers
+  obviously. (status: kill-caninline branch)
 
 - think again about perfect specialization. Check if we loose anything
   if we turn it off. Another approach to specialization: specialize things
@@ -28,59 +27,24 @@ NEW TASKS
   current exception from the struct in memory, followed by a regular
   GUARD_CLASS.
 
+- write a document that says what you cannot expect the jit to optimize.
+  E.g. http://paste.pocoo.org/show/181319/ with B being old-style and
+  C being new-style, or vice-versa.
+
+
+OPTIMIZATIONS
+-------------
+
+Things we can do mostly by editing optimizeopt.py:
+
 - getfields which result is never used never get removed (probably cause -
   they used to be as livevars in removed guards). also getfields which result
   is only used as a livevar in a guard should be removed and encoded in
-  the guard recovert code.
-
-- think about strings more. since string are immutable, unnecessary copies
-  does not make any sense (sometimes people construct strings through
-  arrays, which is harder to track and then not use the result)
-
-TASKS
------
-
-- think about code memory management
-
-- forcing virtualizables should only force fields affected, not everything
-
-- think out looking into functions or not, based on arguments,
-  for example contains__Tuple should be unrolled if tuple is of constant
-  length. HARD, blocked by the fact that we don't know constants soon enough
-
-- look at example of storing small strings in large lists (any sane templating
-  engine would do it) and not spend all the time in
-  _trace_and_drag_out_of_nursery.
-  Requires thinking about card-marking GC, which is hard, postpone
-
-  Card marking GC is hard in our model. Think about solutions to chunked
-  list (a list that if big enough is a list of lists of stuff). Experiments
-  show that it helps a lot for some examples.
-
-- improve tracing/blackholing speed
-  Essential, especially blackholing in translate.py, as well as html5lib.
-
-- some guards will always fail if they ever start failing
-  (e.g. the class version tag).  Do something more clever about it.
-  (already done a hack that helps: don't compile more guard_value's
-  if the value guarded for keeps changing fast enough: r71527)
+  the guard recovert code (only if we are sure that the stored field cannot
+  change)
 
 - int_add_ovf(x, 0) guard_overflow is 20% of all int_add_ovf, not much
   overall, but probably worth attacking
-
-- think about such example:
-
-  http://paste.pocoo.org/show/188520/
-
-  this will compile new assembler path for each new type, even though that's
-  overspecialization since in this particular case it's not relevant.
-  This is treated as a megamorphic call (promotion of w_self in typeobject.py)
-  while in fact it is not.
-
-- a suggestion - if we call some code via call_assembler that raises an
-  exception, in theory we could do something smarter in case our frames
-  don't escape and call simplified version that does not allocate all
-  frames. Sounds hard
 
 - if we move a promotion up the chain, some arguments don't get replaced
   with constants (those between current and previous locations). So we get
@@ -93,102 +57,38 @@ TASKS
   maybe we should move promote even higher, before the first use and we
   could possibly remove more stuff?
 
-Python interpreter:
 
-- goal: on average <=5 guards per original bytecode.
-  Almost achieved :-) pypy/jit/tool/traceviewer.py can view where we're
-  failing (red boxes out of jit-log-opt logging)
+PYTHON EXAMPLES
+---------------
 
-- put the class into the structure to get only one promote when using an
-  instance
+Extracted from some real-life Python programs, examples that don't give
+nice code at all so far:
 
-- this example: http://paste.pocoo.org/show/181319/
-  showcases a problem that works fine as long as you not present a
-  combination of oldstyle and newstyle classes. If you however present
-  a combination of old and newstyle classes (try modifying) things go
-  far slower and traces look bad.
-  DON'T DO THAT?
+- http://paste.pocoo.org/show/188520/
+  this will compile new assembler path for each new type, even though that's
+  overspecialization since in this particular case it's not relevant.
+  This is treated as a megamorphic call (promotion of w_self in typeobject.py)
+  while in fact it is not.
 
-Benchmark Notes
-----------------------------
+- pypy/objspace/std/inlinedict: put the class into the structure to get
+  only one promote when using an instance, instead of two: the promotion
+  of the '.w__class__' and the promotion of the '.structure'
 
- - spitfire:
-   - it's an issue with GC, that's probably won't fix. On spitfire's small
-     benchmarks we're either matching CPython or are faster (if using cStringIO)
+- guard_true(frame.is_being_profiled) all over the place
 
- - html5lib:
-   - we're faster (a bit) than CPython on a long enough run. blackholing is
-     an issue there.
-   - slowness seems to be mostly the fault of PyUnicode_DecodeCharmap in
-     module/_codecs/app_codecs.py. Are such things not jitted?
-   - the tokenizer uses regular expressions and generators, which probably
-     doesn't help
-
- - spambayes
-   - uses regular expressions and generators a lot
-   - regexes are 80% of runtime of long-enough run
-
- - ai
-   - the slowness is the fault of generators and generator expressions
-   - many of the generator expressions are a bit stupid (like tuple(<genexp>))
-     WON'T FIX, maybe?
+- xxx (find more examples :-)
 
 
-JIT-related Release Tasks
----------------------------
+LATER (maybe) TASKS
+-------------------
 
-(there are other release tasks, specifically about packaging, documentation,
-website and stability that need sorting out too. However, they are beyond the
-scope of this section)
+- think about code memory management
 
-wishlist:
-- the checks that look whether profiling/tracing in the Python interpreter is
-  enabled look expensive. Do we want to do something about them?
+- think out looking into functions or not, based on arguments,
+  for example contains__Tuple should be unrolled if tuple is of constant
+  length. HARD, blocked by the fact that we don't know constants soon enough
 
+- out-of-line guards (when an external change would invalidate existing
+  pieces of assembler)
 
-
-
-META
------
-
-- stability!
-
-- keep test coverage in check
-
-- prevent too much method and fields demoting in the jit
-
-- the tragedy of the skipped tests
-
-- update things in metainterp/doc
-
-inlining discussion
---------------------
-
-- at some point we need to merge the tails of loops, to avoid exponential
-  explosion
-- tracing aggressively will put pressure on the speed of tracing
-- what should we do about recursive calls?
-
-
-things we know are missing
----------------------------
-
-tests:
-- find a test for r64742 (JitException capture)
-
-Goals/Benchmarks
------------------
-
-Goal: be somehow faster than CPython in real programs
-      actually, DONE!
-
-Benchmarks:
-    they live at svn+ssh://codespeak.net/svn/pypy/benchmarks
-
-
-ootype discussion
-------------------
-
-- try to unify interfaces to make doing the right thing for ootype easier
-- different constraints for different groups of people
-- what to do with ootype jit support after Anto finished his PhD?
+- merge tails of loops-and-bridges?
