@@ -31,6 +31,9 @@ NEW TASKS
   E.g. http://paste.pocoo.org/show/181319/ with B being old-style and
   C being new-style, or vice-versa.
 
+- maybe refactor a bit the x86 backend, particularly the register
+  allocation
+
 
 OPTIMIZATIONS
 -------------
