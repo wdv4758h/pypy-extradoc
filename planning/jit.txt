@@ -10,11 +10,13 @@ NEW TASKS
 
 - trace into functions even if they have a loop. only if the loop is actually
   hit, a residual portal call is produced (status: kill-caninline branch,
-  buggy)
+  DONE)
 
 - generators are not really fast – maybe add a JUMP_ABSOLUTE_GENERATOR that
   does not call can_enter_jit after an iteration in which there was a yield.
-  obviously. (status: kill-caninline branch)
+  obviously. (status: unclear -- the frame of the generator cannot be a
+  virtual, so should we somehow make it a virtualizable? e.g. by never inlining
+  generators?)
 
 - think again about perfect specialization. Check if we loose anything
   if we turn it off. Another approach to specialization: specialize things
