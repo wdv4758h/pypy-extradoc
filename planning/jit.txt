@@ -5,6 +5,10 @@ NEW TASKS
   traced after the outer one, the call is slow.  Might be solved
   easily if we implement full out-of-line guards (e.g. by invalidating
   the outer function when the inner one gets compiled)
+  ---
+  More thoughts (antonio, arigo): by the way we detect traces too long,
+  we can always immediately compile the subfunction.  If we do that then
+  there is no risk of generating a slow call.
 
 - have benchmarks for jit compile time and jit memory usage
 
