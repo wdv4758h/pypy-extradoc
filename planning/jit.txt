@@ -82,6 +82,7 @@ nice code at all so far:
 - pypy/objspace/std/inlinedict: put the class into the structure to get
   only one promote when using an instance, instead of two: the promotion
   of the '.w__class__' and the promotion of the '.structure'
+  DONE on the better-map-instances branch
 
 - guard_true(frame.is_being_profiled) all over the place
 
