@@ -2,25 +2,12 @@ NEW TASKS
 ---------
 
 - look at assembler-assembler calls again: if the inner function is
-  traced after the outer one, the call is slow.  Might be solved
-  easily if we implement full out-of-line guards (e.g. by invalidating
-  the outer function when the inner one gets compiled)
-  ---
-  More thoughts (antonio, arigo): by the way we detect traces too long,
-  we can always immediately compile the subfunction.  If we do that then
-  there is no risk of generating a slow call.
+  traced after the outer one, the call is slow.  DONE
 
 - have benchmarks for jit compile time and jit memory usage
 
-- trace into functions even if they have a loop. only if the loop is actually
-  hit, a residual portal call is produced (status: kill-caninline branch,
-  DONE)
-
-- generators are not really fast – maybe add a JUMP_ABSOLUTE_GENERATOR that
-  does not call can_enter_jit after an iteration in which there was a yield.
-  obviously. (status: unclear -- the frame of the generator cannot be a
-  virtual, so should we somehow make it a virtualizable? e.g. by never inlining
-  generators?)
+- generators are not really fast.  DONE, with the only restriction
+  that the code in generators is never inlined into some caller.
 
 - think again about perfect specialization. Check if we loose anything
   if we turn it off. Another approach to specialization: specialize things
@@ -31,7 +18,7 @@ NEW TASKS
 
 - kill GUARD_(NO)_EXCEPTION; replace that by LAST_EXC_VALUE to load the
   current exception from the struct in memory, followed by a regular
-  GUARD_CLASS.
+  GUARD_CLASS.  (Armin: Look like a simplification, but it's a bit messy too)
 
 - write a document that says what you cannot expect the jit to optimize.
   E.g. http://paste.pocoo.org/show/181319/ with B being old-style and
