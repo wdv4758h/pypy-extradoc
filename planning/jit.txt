@@ -60,6 +60,10 @@ PYTHON EXAMPLES
 Extracted from some real-life Python programs, examples that don't give
 nice code at all so far:
 
+- string manipulation: s[n], s[-n], s[i:j], most operations on single
+  chars, building a big string with repeated "s += t", "a,b=s.split()",
+  etc.
+
 - http://paste.pocoo.org/show/188520/
   this will compile new assembler path for each new type, even though that's
   overspecialization since in this particular case it's not relevant.
