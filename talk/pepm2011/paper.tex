@@ -1,0 +1,118 @@
+\documentclass{sigplanconf}
+
+\usepackage{ifthen}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage{xspace}
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+
+\newboolean{showcomments}
+\setboolean{showcomments}{false}
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\nb}[2]{
+    \fbox{\bfseries\sffamily\scriptsize#1}
+    {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+   }
+   \newcommand{\version}{\emph{\scriptsize$-$Id: main.tex 19055 2008-06-05 11:20:31Z cfbolz $-$}}
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{}
+  }
+
+\newcommand\cfbolz[1]{\nb{CFB}{#1}}
+\newcommand\arigo[1]{\nb{AR}{#1}}
+\newcommand\fijal[1]{\nb{FIJAL}{#1}}
+\newcommand\david[1]{\nb{DAVID}{#1}}
+\newcommand\reva[1]{\nb{Reviewer 1}{#1}}
+\newcommand\revb[1]{\nb{Reviewer 2}{#1}}
+\newcommand\revc[1]{\nb{Reviewer 3}{#1}}
+\newcommand{\commentout}[1]{}
+
+\newcommand\ie{i.e.,\xspace}
+\newcommand\eg{e.g.,\xspace}
+
+\normalem
+
+\let\oldcite=\cite
+
+\renewcommand\cite[1]{\ifthenelse{\equal{#1}{XXX}}{[citation~needed]}{\oldcite{#1}}}
+
+%
+\def\sharedaffiliation{%
+\end{tabular}
+\begin{tabular}{c}}
+%
+\begin{document}
+\conferenceinfo{PEPM'11,} {XXX}
+\CopyrightYear{XXX}
+\copyrightdata{XXX}
+
+\title{Escape Analysis and Specialization in a Tracing JIT}
+
+\authorinfo{Carl Friedrich Bolz \and Armin Rigo \and Antion Cuni \and Maciek Fijałkowski}
+           {Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany}
+           {cfbolz@gmx.de}
+
+%\numberofauthors{3}
+%\author{
+%\alignauthor Carl Friedrich Bolz\\
+%       \email{cfbolz@gmx.de}
+%\alignauthor Michael Leuschel\\
+%       \email{leuschel@cs.uni-duesseldorf.de}
+%\alignauthor David Schneider\\
+%      \email{david.schneider@uni-duesseldorf.de}
+%      \sharedaffiliation
+%      \affaddr{Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany}\\
+%}
+
+\maketitle
+\begin{abstract}
+\footnote{This research is partially supported by the BMBF funded project PyJIT (nr. 01QE0913B;
+Eureka Eurostars).}
+\end{abstract}
+
+% A category with the (minimum) three required fields
+%\category{H.4}{Information Systems Applications}{Miscellaneous}
+%A category including the fourth, optional field follows...
+%\category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
+
+\category{D.3.4}{Programming Languages}{Processors}[code generation,
+interpreters, run-time environments]
+
+\terms
+Languages, Performance, Experimentation
+
+\keywords{XXX}%
+
+\section{Introduction}
+
+\section{Background}
+\label{sec:Background}
+
+\subsection{PyPy}
+\label{sub:PyPy}
+
+\subsection{Tracing JIT Compilers}
+\label{sub:JIT_background}
+
+
+
+\section{Evaluation}
+\label{sec:Evaluation}
+
+
+\section{Related Work}
+\label{sec:related}
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+\bibliographystyle{abbrv}
+\bibliography{paper,michael}
+
+\end{document}
