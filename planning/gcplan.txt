@@ -1,4 +1,9 @@
 
+
+UPDATE: partially done in the minimark GC: large arrays are
+allocated with a few extra bytes containing card marker bits.
+
+
 The problem:
 ============
 
