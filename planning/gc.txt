@@ -1,6 +1,12 @@
 Card marking GC for PyPy
 ========================
 
+
+UPDATE: partially done in the minimark GC: large arrays are
+allocated with a few extra bytes containing card marker bits.
+
+
+
 With a generational GC one needs to keep track of references from the old
 generation to the young one using a write barrier.  Currently this is
 implemented with a list of old objects that contain pointers to young objects.
