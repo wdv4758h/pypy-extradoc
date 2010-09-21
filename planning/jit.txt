@@ -39,9 +39,6 @@ Things we can do mostly by editing optimizeopt.py:
   the guard recovert code (only if we are sure that the stored field cannot
   change)
 
-- int_add_ovf(x, 0) guard_overflow is 20% of all int_add_ovf, not much
-  overall, but probably worth attacking
-
 - if we move a promotion up the chain, some arguments don't get replaced
   with constants (those between current and previous locations). So we get
   like
