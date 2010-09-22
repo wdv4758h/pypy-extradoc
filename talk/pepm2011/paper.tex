@@ -107,9 +107,9 @@ instances. Thus those primitive types are usually \emph{boxed}, i.e. a small
 heap-structure is allocated for them, that contains the actual value.
 
 Type dispatching is the process of finding the concrete implementation that is
-applicable to the objects at hand when doing a generic operation at hand. An
+applicable to the objects at hand when doing a generic operation on them. An
 example would be the addition of two objects: The addition needs to check what
-the concrete objects are that should be added are, and choose the implementation
+the concrete objects that should be added are, and choose the implementation
 that is fitting for them.
 
 Last year, we wrote a paper \cite{XXX} about how PyPy's meta-JIT
