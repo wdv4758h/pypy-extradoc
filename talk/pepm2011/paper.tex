@@ -140,6 +140,49 @@ getting from the interpreter to traces
 \subsection{PyPy}
 \label{sub:PyPy}
 
+\section{Object Lifetimes in a Tracing JIT}
+\label{sec:lifetimes}
+
+% section Object Lifetimes in a Tracing JIT (end)
+
+To understand the problems that this paper is trying to solve some more, we
+first need to understand various cases of object lifetimes that can occur in a
+tracing JIT compiler.
+
+\begin{figure}
+\includegraphics{figures/obj-lifetime.pdf}
+
+\caption{Object Lifetimes in a Trace}
+\label{fig:lifetimes}
+\end{figure}
+
+The figure shows a trace before optimization, together with the lifetime of
+various kinds of objects created in the trace. It is executed from top to
+bottom. At the bottom, a jump is used to execute the same loop another time.
+For clarity, the figure shows two iterations of the loop.
+The loop is executed until one of the guards in the trace fails, and the
+execution is aborted.
+
+Some of the operations within this trace are \texttt{new} operations, which each create a
+new instance of some class. These instances are used for a while, e.g. by
+calling methods on them, reading and writing their fields. Some of these
+instances escape, which means that they are stored in some globally accessible
+place or are passed into a function.
+
+Together with the \texttt{new} operations, the figure shows the lifetimes of the
+created objects. Objects in category 1 live for a while, and are then just not
+used any more. The creation of these objects is removed by the
+optimization described in the last section.
+
+Objects in category 2 live for a while and then escape. The optimization of the
+last section deals with them too: the \texttt{new} that creates them and
+the field accesses are deferred, until the point where the object escapes.
+
+The objects in category 3 and 4 are in principle like the objects in category 1
+and 2. They are created, live for a while, but are then passed as an argument
+to the \texttt{jump} operation. In the next iteration they can either die (category
+3) or escape (category 4).
+
 \section{Escape Analysis in a Tracing JIT}
 \label{sec:Escape Analysis in a Tracing JIT}
 
@@ -426,48 +469,10 @@ optimization can be improved further.
 \section{Escape Analysis Across Loop Boundaries}
 \label{sec:crossloop}
 
-This section is a bit
-science-fictiony. The algorithm that PyPy currently uses is significantly more
-complex and much harder than the one that is described here. The resulting
-behaviour is very similar, however, so we will use the simpler version (and we
-might switch to that at some point in the actual implementation).
-
 In the last section we described how escape analysis can be used to remove
 many of the allocations of short-lived objects and many of the type dispatches
 that are present in a non-optimized trace. In this section we will improve the
 optimization to also handle more cases.
-
-To understand some more what the optimization described in the last section
-can achieve, look at the following figure:
-
-\includegraphics{figures/obj-lifetime.pdf}
-
-The figure shows a trace before optimization, together with the lifetime of
-various kinds of objects created in the trace. It is executed from top to
-bottom. At the bottom, a jump is used to execute the same loop another time.
-For clarity, the figure shows two iterations of the loop.
-The loop is executed until one of the guards in the trace fails, and the
-execution is aborted.
-
-Some of the operations within this trace are \texttt{new} operations, which each create a
-new instance of some class. These instances are used for a while, e.g. by
-calling methods on them, reading and writing their fields. Some of these
-instances escape, which means that they are stored in some globally accessible
-place or are passed into a function.
-
-Together with the \texttt{new} operations, the figure shows the lifetimes of the
-created objects. Objects in category 1 live for a while, and are then just not
-used any more. The creation of these objects is removed by the
-optimization described in the last section.
-
-Objects in category 2 live for a while and then escape. The optimization of the
-last section deals with them too: the \texttt{new} that creates them and
-the field accesses are deferred, until the point where the object escapes.
-
-The objects in category 3 and 4 are in principle like the objects in category 1
-and 2. They are created, live for a while, but are then passed as an argument
-to the \texttt{jump} operation. In the next iteration they can either die (category
-3) or escape (category 4).
 
 The optimization of the last section considered the passing of an object along a
 jump to be equivalent to escaping. It was thus treating objects in category 3
@@ -482,6 +487,12 @@ good). As a side-effect of this, the traces will also be type-specialized.
 %___________________________________________________________________________
 
 \subsection{Optimizing Across the Jump}
+
+\footnote{This section is a bit
+science-fictiony. The algorithm that PyPy currently uses is significantly more
+complex and much harder than the one that is described here. The resulting
+behaviour is very similar, however, so we will use the simpler version (and we
+might switch to that at some point in the actual implementation).}
 
 Let's look at the final trace obtained in the last section for the example loop.
 The final trace was much better than the original one, because many allocations
