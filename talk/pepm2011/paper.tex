@@ -89,6 +89,8 @@ Languages, Performance, Experimentation
 
 \keywords{XXX}%
 
+XXX drop the word "allocation removal" somewhere
+
 \section{Introduction}
 
 The goal of a just-in-time compiler for a dynamic language is obviously to
@@ -124,11 +126,19 @@ explained via an example.
 \section{Background}
 \label{sec:Background}
 
-\subsection{PyPy}
-\label{sub:PyPy}
-
 \subsection{Tracing JIT Compilers}
 \label{sub:JIT_background}
+
+XXX object model and its reflection in traces (e.g. guard\_class before each method call)
+
+traces and bridges
+
+arguments to traces
+
+getting from the interpreter to traces
+
+\subsection{PyPy}
+\label{sub:PyPy}
 
 \section{Escape Analysis in a Tracing JIT}
 \label{sec:Escape Analysis in a Tracing JIT}
@@ -143,16 +153,19 @@ than zero. The implementation of \texttt{add} uses classical Smalltalk-like
 double-dispatching. These classes could be part of the implementation of a very
 simple interpreter written in RPython.
 
+\begin{figure}
 \begin{verbatim}
 class Base(object):
     def add(self, other):
         """ add self to other """
         raise NotImplementedError("abstract base")
     def add__int(self, intother):
-        """ add intother to self, where intother is a Python integer """
+        """ add intother to self,
+            where intother is an integer """
         raise NotImplementedError("abstract base")
     def add__float(self, floatother):
-        """ add floatother to self, where floatother is a Python float """
+        """ add floatother to self,
+            where floatother is a float """
         raise NotImplementedError("abstract base")
     def is_positive(self):
         """ returns whether self is positive """
@@ -166,7 +179,8 @@ class BoxedInteger(Base):
     def add__int(self, intother):
         return BoxedInteger(intother + self.intval)
     def add__float(self, floatother):
-        return BoxedFloat(floatother + float(self.intval))
+        floatvalue = floatother + float(self.intval)
+        return BoxedFloat(floatvalue)
     def is_positive(self):
         return self.intval > 0
 
@@ -176,12 +190,15 @@ class BoxedFloat(Base):
     def add(self, other):
         return other.add__float(self.floatval)
     def add__int(self, intother):
-        return BoxedFloat(float(intother) + self.floatval)
+        floatvalue = float(intother) + self.floatval
+        return BoxedFloat(floatvalue)
     def add__float(self, floatother):
         return BoxedFloat(floatother + self.floatval)
     def is_positive(self):
         return self.floatval > 0.0
 \end{verbatim}
+\caption{A simple object model}
+\end{figure}
 
 Using these classes to implement arithmetic shows the basic problem that a
 dynamic language implementation has. All the numbers are instances of either
@@ -206,64 +223,67 @@ def f(y):
 The loop iterates \texttt{y} times, and computes something in the process. To
 understand the reason why executing this function is slow, here is the trace
 that is produced by the tracing JIT when executing the function with \texttt{y}
-being a \texttt{BoxedInteger}:
+being a \texttt{BoxedInteger}: XXX make it clear that this is really a trace specific for BoxedInteger
 
+\begin{figure}
 \begin{verbatim}
-# arguments to the trace: p0, p1
-# inside f: res.add(y)
-guard_class(p1, BoxedInteger)
-    # inside BoxedInteger.add
-    i2 = getfield_gc(p1, intval)
+    # arguments to the trace: p0, p1
+    # inside f: res.add(y)
+    guard_class(p1, BoxedInteger)
+        # inside BoxedInteger.add
+        i2 = getfield_gc(p1, intval)
+        guard_class(p0, BoxedInteger)
+            # inside BoxedInteger.add__int
+            i3 = getfield_gc(p0, intval)
+            i4 = int_add(i2, i3)
+            p5 = new(BoxedInteger)
+                # inside BoxedInteger.__init__
+                setfield_gc(p5, i4, intval)
+    # inside f: BoxedInteger(-100) 
+    p6 = new(BoxedInteger)
+        # inside BoxedInteger.__init__
+        setfield_gc(p6, -100, intval)
+
+    # inside f: .add(BoxedInteger(-100))
+    guard_class(p5, BoxedInteger)
+        # inside BoxedInteger.add
+        i7 = getfield_gc(p5, intval)
+        guard_class(p6, BoxedInteger)
+            # inside BoxedInteger.add__int
+            i8 = getfield_gc(p6, intval)
+            i9 = int_add(i7, i8)
+            p10 = new(BoxedInteger)
+                # inside BoxedInteger.__init__
+                setfield_gc(p10, i9, intval)
+
+    # inside f: BoxedInteger(-1)
+    p11 = new(BoxedInteger)
+        # inside BoxedInteger.__init__
+        setfield_gc(p11, -1, intval)
+
+    # inside f: y.add(BoxedInteger(-1))
     guard_class(p0, BoxedInteger)
-        # inside BoxedInteger.add__int
-        i3 = getfield_gc(p0, intval)
-        i4 = int_add(i2, i3)
-        p5 = new(BoxedInteger)
-            # inside BoxedInteger.__init__
-            setfield_gc(p5, i4, intval)
-# inside f: BoxedInteger(-100) 
-p6 = new(BoxedInteger)
-    # inside BoxedInteger.__init__
-    setfield_gc(p6, -100, intval)
+        # inside BoxedInteger.add
+        i12 = getfield_gc(p0, intval)
+        guard_class(p11, BoxedInteger)
+            # inside BoxedInteger.add__int
+            i13 = getfield_gc(p11, intval)
+            i14 = int_add(i12, i13)
+            p15 = new(BoxedInteger)
+                # inside BoxedInteger.__init__
+                setfield_gc(p15, i14, intval)
 
-# inside f: .add(BoxedInteger(-100))
-guard_class(p5, BoxedInteger)
-    # inside BoxedInteger.add
-    i7 = getfield_gc(p5, intval)
-    guard_class(p6, BoxedInteger)
-        # inside BoxedInteger.add__int
-        i8 = getfield_gc(p6, intval)
-        i9 = int_add(i7, i8)
-        p10 = new(BoxedInteger)
-            # inside BoxedInteger.__init__
-            setfield_gc(p10, i9, intval)
-
-# inside f: BoxedInteger(-1)
-p11 = new(BoxedInteger)
-    # inside BoxedInteger.__init__
-    setfield_gc(p11, -1, intval)
-
-# inside f: y.add(BoxedInteger(-1))
-guard_class(p0, BoxedInteger)
-    # inside BoxedInteger.add
-    i12 = getfield_gc(p0, intval)
-    guard_class(p11, BoxedInteger)
-        # inside BoxedInteger.add__int
-        i13 = getfield_gc(p11, intval)
-        i14 = int_add(i12, i13)
-        p15 = new(BoxedInteger)
-            # inside BoxedInteger.__init__
-            setfield_gc(p15, i14, intval)
-
-# inside f: y.is_positive()
-guard_class(p15, BoxedInteger)
-    # inside BoxedInteger.is_positive
-    i16 = getfield_gc(p15, intval)
-    i17 = int_gt(i16, 0)
-# inside f
-guard_true(i17)
-jump(p15, p10)
+    # inside f: y.is_positive()
+    guard_class(p15, BoxedInteger)
+        # inside BoxedInteger.is_positive
+        i16 = getfield_gc(p15, intval)
+        i17 = int_gt(i16, 0)
+    # inside f
+    guard_true(i17)
+    jump(p15, p10)
 \end{verbatim}
+\caption{unoptimized trace for the simple object model}
+\end{figure}
 
 (indentation corresponds to the stack level of the traced functions).
 
@@ -403,6 +423,158 @@ optimization can be improved further.
 
 % section Escape Analysis in a Tracing JIT (end)
 
+\section{Escape Analysis Across Loop Boundaries}
+\label{sec:crossloop}
+
+This section is a bit
+science-fictiony. The algorithm that PyPy currently uses is significantly more
+complex and much harder than the one that is described here. The resulting
+behaviour is very similar, however, so we will use the simpler version (and we
+might switch to that at some point in the actual implementation).
+
+In the last section we described how escape analysis can be used to remove
+many of the allocations of short-lived objects and many of the type dispatches
+that are present in a non-optimized trace. In this section we will improve the
+optimization to also handle more cases.
+
+To understand some more what the optimization described in the last section
+can achieve, look at the following figure:
+
+\includegraphics{figures/obj-lifetime.pdf}
+
+The figure shows a trace before optimization, together with the lifetime of
+various kinds of objects created in the trace. It is executed from top to
+bottom. At the bottom, a jump is used to execute the same loop another time.
+For clarity, the figure shows two iterations of the loop.
+The loop is executed until one of the guards in the trace fails, and the
+execution is aborted.
+
+Some of the operations within this trace are \texttt{new} operations, which each create a
+new instance of some class. These instances are used for a while, e.g. by
+calling methods on them, reading and writing their fields. Some of these
+instances escape, which means that they are stored in some globally accessible
+place or are passed into a function.
+
+Together with the \texttt{new} operations, the figure shows the lifetimes of the
+created objects. Objects in category 1 live for a while, and are then just not
+used any more. The creation of these objects is removed by the
+optimization described in the last section.
+
+Objects in category 2 live for a while and then escape. The optimization of the
+last section deals with them too: the \texttt{new} that creates them and
+the field accesses are deferred, until the point where the object escapes.
+
+The objects in category 3 and 4 are in principle like the objects in category 1
+and 2. They are created, live for a while, but are then passed as an argument
+to the \texttt{jump} operation. In the next iteration they can either die (category
+3) or escape (category 4).
+
+The optimization of the last section considered the passing of an object along a
+jump to be equivalent to escaping. It was thus treating objects in category 3
+and 4 like those in category 2.
+
+The improved optimization described in this section will make it possible to deal
+better with objects in category 3 and 4. This will have two consequences: on
+the one hand, more allocations are removed from the trace (which is clearly
+good). As a side-effect of this, the traces will also be type-specialized.
+
+
+%___________________________________________________________________________
+
+\subsection{Optimizing Across the Jump}
+
+Let's look at the final trace obtained in the last section for the example loop.
+The final trace was much better than the original one, because many allocations
+were removed from it. However, it also still contained allocations:
+
+\begin{figure}
+\includegraphics{figures/step1.pdf}
+\end{figure}
+
+The two new \texttt{BoxedIntegers} stored in \texttt{p15} and \texttt{p10} are passed into
+the next iteration of the loop. The next iteration will check that they are
+indeed \texttt{BoxedIntegers}, read their \texttt{intval} fields and then not use them
+any more. Thus those instances are in category 3.
+
+In its current state the loop
+allocates two \texttt{BoxedIntegers} at the end of every iteration, that then die
+very quickly in the next iteration. In addition, the type checks at the start
+of the loop are superfluous, at least after the first iteration.
+
+The reason why we cannot optimize the remaining allocations away is because
+their lifetime crosses the jump. To improve the situation, a little trick is
+needed. The trace above represents a loop, i.e. the jump at the end jumps to
+the beginning. Where in the loop the jump occurs is arbitrary, since the loop
+can only be left via failing guards anyway. Therefore it does not change the
+semantics of the loop to put the jump at another point into the trace and we
+can move the \texttt{jump} operation just above the allocation of the objects that
+appear in the current \texttt{jump}. This needs some care, because the arguments to
+\texttt{jump} are all currently live variables, thus they need to be adapted.
+
+If we do that for our example trace above, the trace looks like this:
+\begin{figure}
+\includegraphics{figures/step2.pdf}
+\end{figure}
+
+Now the lifetime of the remaining allocations no longer crosses the jump, and
+we can run our escape analysis a second time, to get the following trace:
+\begin{figure}
+\includegraphics{figures/step3.pdf}
+\end{figure}
+
+This result is now really good. The code performs the same operations than
+the original code, but using direct CPU arithmetic and no boxing, as opposed to
+the original version which used dynamic dispatching and boxing.
+
+Looking at the final trace it is also completely clear that specialization has
+happened. The trace corresponds to the situation in which the trace was
+originally recorded, which happened to be a loop where \texttt{BoxedIntegers} were
+used. The now resulting loop does not refer to the \texttt{BoxedInteger} class at
+all any more, but it still has the same behaviour. If the original loop had
+used \texttt{BoxedFloats}, the final loop would use \texttt{float\_*} operations
+everywhere instead (or even be very different, if the object model had
+user-defined classes).
+
+
+%___________________________________________________________________________
+
+\subsection{Entering the Loop}
+
+The approach of placing the \texttt{jump} at some other point in the loop leads to
+one additional complication that we glossed over so far. The beginning of the
+original loop corresponds to a point in the original program, namely the
+\texttt{while} loop in the function \texttt{f} from the last section.
+
+Now recall that in a VM that uses a tracing JIT, all programs start by being
+interpreted. This means that when \texttt{f} is executed by the interpreter, it is
+easy to go from the interpreter to the first version of the compiled loop.
+After the \texttt{jump} is moved and the escape analysis optimization is applied a
+second time, this is no longer easily possible.  In particular, the new loop
+expects two integers as input arguments, while the old one expected two
+instances.
+
+To make it possible to enter the loop directly from the intepreter, there
+needs to be some additional code that enters the loop by taking as input
+arguments what is available to the interpreter, i.e. two instances. This
+additional code corresponds to one iteration of the loop, which is thus
+peeled off \cite{XXX}:
+
+\begin{figure}
+\includegraphics{figures/step4.pdf}
+\end{figure}
+
+
+%___________________________________________________________________________
+
+\subsection{Summary}
+
+The optimization described in this section can be used to optimize away
+allocations in category 3 and improve allocations in category 4, by deferring
+them until they are no longer avoidable. A side-effect of these optimizations
+is also that the optimized loops are specialized for the types of the variables
+that are used inside them.
+
+% section Escape Analysis Across Loop Boundaries (end)
 
 \section{Evaluation}
 \label{sec:Evaluation}
