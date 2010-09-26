@@ -1,1 +1,124 @@
 ﻿
+@article{choi_escape_1999,
+	title = {Escape analysis for Java},
+	volume = {34},
+	url = {http://portal.acm.org/citation.cfm?id=320386},
+	doi = {10.1145/320385.320386},
+	abstract = {This paper presents a simple and efficient data flow algorithm for escape analysis of objects in Java programs to determine (i) if an object can be allocated on the stack; (ii) if an object is accessed only by a single thread during its lifetime, so that synchronization operations on that object can be removed. We introduce a new program abstraction for escape analysis, the connection graph, that is used to establish reachability relationships between objects and object references. We show that the connection graph can be summarized for each method such that the same summary information may be used effectively in different calling contexts. We present an interprocedural algorithm that uses the above property to efficiently compute the connection graph and identify the non-escaping objects for methods and threads. The experimental results, from a prototype implementation of our framework in the {IBM} High Performance Compiler for Java, are very promising. The percentage of objects that may be allocated on the stack exceeds 70\% of all dynamically created objects in three out of the ten benchmarks (with a median of 19\%), 11\% to 92\% of all lock operations are eliminated in those ten programs (with a median of 51\%), and the overall execution time reduction ranges from 2\% to 23\% (with a median of 7\%) on a 333 {MHz} {PowerPC} workstation with 128 {MB} memory.},
+	number = {10},
+	journal = {{SIGPLAN} Not.},
+	author = {{Jong-Deok} Choi and Manish Gupta and Mauricio Serrano and Vugranam C. Sreedhar and Sam Midkiff},
+	year = {1999},
+	pages = {1--19}
+},
+
+@article{park_escape_1992,
+	title = {Escape analysis on lists},
+	volume = {27},
+	url = {http://portal.acm.org/citation.cfm?id=143125},
+	doi = {10.1145/143103.143125},
+	abstract = {Higher order functional programs constantly allocate objects dynamically. These objects are typically cons cells, closures, and records and are generally allocated in the heap and reclaimed later by some garbage collection process. This paper describes a compile time analysis, called escape analysis, for determining the lifetime of dynamically created objects in higher order functional programs, and describes optimizations that can be performed, based on the analysis, to improve storage allocation and reclamation of such objects. In particular, our analysis can be applied to programs manipulating lists, in which case optimizations can be performed to allow cons cells in spines of lists to be either reclaimed immediately or reused without incurring any garbage collection overhead. In a previous paper on escape analysis [10], we had left open the problem of performing escape analysis on lists. Escape analysis simply determines when the argument (or some part of the argument) to a function call is returned by that call. This simple piece of information turns out to be sufficiently powerful to allow stack allocation of objects, compile-time garbage collection, reduction of run-time storage reclamation overhead, and other optimizations that are possible when the lifetimes of objects can be computed statically. Our approach is to define a high-level non-standard semantics that, in many ways, is similar to the standard semantics and captures the escape behavior caused by the constructs in a functional language. The advantage of our analysis lies in its conceptual simplicity and portability (i.e. no assumption is made about an underlying abstract machine).},
+	number = {7},
+	journal = {{SIGPLAN} Not.},
+	author = {Young Gil Park and Benjamin Goldberg},
+	year = {1992},
+	pages = {116--127}
+},
+
+@inproceedings{goldberg_higher_1990,
+	address = {Copenhagen, Denmark},
+	title = {Higher order escape analysis: optimizing stack allocation in functional program implementations},
+	isbn = {0-387-52592-0},
+	shorttitle = {Higher order escape analysis},
+	url = {http://portal.acm.org/citation.cfm?id=92025},
+	booktitle = {Proceedings of the third European symposium on programming on {ESOP} '90},
+	publisher = {{Springer-Verlag} New York, Inc.},
+	author = {B. Goldberg and Y. G. Park},
+	year = {1990},
+	pages = {152--160}
+},
+
+@inproceedings{carl_friedrich_bolz_towards_2010,
+	address = {Hagenberg, Austria},
+	title = {Towards a Jitting {VM} for Prolog Execution},
+	abstract = {Most Prolog implementations are implemented in low-level languages such as C and are based on a variation of the {WAM} instruction set, which enhances their performance but makes them hard to write. In addition, many of the more dynamic features of Prolog (like assert), despite their popularity, are not well supported. We present a high-level continuation-based Prolog interpreter based on the {PyPy} project. The {PyPy} project makes it possible to easily and efficiently implement dynamic languages. It provides tools that automatically generate a just-in-time compiler for a given interpreter of the target language, by using partial evaluation techniques. The resulting Prolog implementation is surprisingly efficient: it clearly outperforms existing interpreters of Prolog in high-level languages such as Java. Moreover, on some benchmarks, our system outperforms state-of-the-art {WAM-based} Prolog implementations. Our paper aims to show that declarative languages such as Prolog can indeed benefit from having a just-in-time compiler and that {PyPy} can form the basis for implementing programming languages other than Python.},
+	author = {Carl Friedrich Bolz and Michael Leuschel and David Schneider},
+	year = {2010},
+	note = {accepted for publication}
+},
+
+@misc{_property_????,
+	title = {Property cache - {MDC}},
+	url = {https://developer.mozilla.org/en/SpiderMonkey/Internals/Property_cache},
+	howpublished = {{https://developer.mozilla.org/en/SpiderMonkey/Internals/Property\_cache}}
+},
+
+@inproceedings{armin_rigo_pypys_2006,
+	address = {Portland, Oregon, {USA}},
+	title = {{PyPy's} approach to virtual machine construction},
+	isbn = {{1-59593-491-X}},
+	url = {http://portal.acm.org/citation.cfm?id=1176753},
+	doi = {10.1145/1176617.1176753},
+	abstract = {The {PyPy} project seeks to prove both on a research and a practical level the feasibility of constructing a virtual machine {(VM)} for a dynamic language in a dynamic language - in this case, Python. The aim is to translate (i.e. compile) the {VM} to arbitrary target environments, ranging in level from {C/Posix} to {Smalltalk/Squeak} via Java and {CLI/.NET,} while still being of reasonable efficiency within these {environments.A} key tool to achieve this goal is the systematic reuse of the Python language as a system programming language at various levels of our architecture and translation process. For each level, we design a corresponding type system and apply a generic type inference engine - for example, the garbage collector is written in a style that manipulates simulated pointer and address objects, and when translated to C these operations become C-level pointer and address instructions.},
+	booktitle = {Companion to the 21st {ACM} {SIGPLAN} conference on Object-oriented programming systems, languages, and applications},
+	publisher = {{ACM}},
+	author = {Armin Rigo and Samuele Pedroni},
+	year = {2006},
+	keywords = {metacircularity, Python, retargettable code generation, type inference, {VM}},
+	pages = {944--953}
+},
+
+@article{blanchet_escape_1999,
+	title = {Escape Analysis for Object Oriented Languages. Application to Java},
+	url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.47.2277},
+	doi = {10.1.1.47.2277},
+	journal = {In Proceedings of the 14th Annual Conference on {Object-Oriented} Programming Systems, Languages and Applications},
+	author = {Bruno Blanchet},
+	year = {1999},
+	pages = {20---34}
+},
+
+@inproceedings{bolz_tracing_2009,
+	address = {Genova, Italy},
+	title = {Tracing the meta-level: {PyPy's} tracing {JIT} compiler},
+	isbn = {978-1-60558-541-3},
+	shorttitle = {Tracing the meta-level},
+	url = {http://portal.acm.org/citation.cfm?id=1565827},
+	doi = {10.1145/1565824.1565827},
+	abstract = {We attempt to apply the technique of Tracing {JIT} Compilers in the context of the {PyPy} project, i.e., to programs that are interpreters for some dynamic languages, including Python. Tracing {JIT} compilers can greatly speed up programs that spend most of their time in loops in which they take similar code paths. However, applying an unmodified tracing {JIT} to a program that is itself a bytecode interpreter results in very limited or no speedup. In this paper we show how to guide tracing {JIT} compilers to greatly improve the speed of bytecode interpreters. One crucial point is to unroll the bytecode dispatch loop, based on two kinds of hints provided by the implementer of the bytecode interpreter. We evaluate our technique by applying it to two {PyPy} interpreters: one is a small example, and the other one is the full Python interpreter.},
+	booktitle = {Proceedings of the 4th workshop on the Implementation, Compilation, Optimization of {Object-Oriented} Languages and Programming Systems},
+	publisher = {{ACM}},
+	author = {Carl Friedrich Bolz and Antonio Cuni and Maciej Fijałkowski and Armin Rigo},
+	year = {2009},
+	pages = {18--25}
+},
+
+@inproceedings{rigo_representation-based_2004,
+	address = {Verona, Italy},
+	title = {Representation-based just-in-time specialization and the psyco prototype for python},
+	isbn = {1-58113-835-0},
+	url = {http://portal.acm.org/citation.cfm?id=1014010},
+	doi = {10.1145/1014007.1014010},
+	abstract = {A powerful application of specialization is to remove interpretative overhead: a language can be implemented with an interpreter, whose performance is then improved by specializing it for a given program source. This approach is only moderately successful with very high level languages, where the operation of each single step can be highly dependent on run-time data and context. In the present paper, the Psyco prototype for the Python language is presented. It introduces two novel techniques. The first is just-in-time specialization, or specialization by need, which introduces the "unlifting" ability for a value to be promoted from run-time to compile-time during specialization -- the inverse of the lift operator of partial evaluation. Its presence gives an unusual and powerful perspective on the specialization process. The second technique is representations, a theory of data-oriented specialization generalizing the traditional specialization domains (i.e. the compile-time/run-time dichotomy).},
+	booktitle = {Proceedings of the 2004 {ACM} {SIGPLAN} symposium on Partial evaluation and semantics-based program manipulation},
+	publisher = {{ACM}},
+	author = {Armin Rigo},
+	year = {2004},
+	keywords = {{JIT,} Python},
+	pages = {15--26}
+},
+
+@incollection{carl_friedrich_bolz_back_2008,
+	title = {Back to the Future in One Week — Implementing a Smalltalk {VM} in {PyPy}},
+	url = {http://dx.doi.org/10.1007/978-3-540-89275-5_7},
+	abstract = {We report on our experiences with the Spy project, including implementation details and benchmark results. Spy is a re-implementation of the Squeak (i.e. Smalltalk-80) {VM} using the {PyPy} toolchain. The {PyPy} project allows code written in {RPython,} a subset of Python, to be translated
+to a multitude of different backends and architectures. During the translation, many aspects of the implementation can be
+independently tuned, such as the garbage collection algorithm or threading implementation. In this way, a whole host of interpreters
+can be derived from one abstract interpreter definition. Spy aims to bring these benefits to Squeak, allowing for greater portability and, eventually, improved performance. The current
+Spy codebase is able to run a small set of benchmarks that demonstrate performance superior to many similar Smalltalk {VMs,} but
+which still run slower than in Squeak itself. Spy was built from scratch over the course of a week during a joint {Squeak-PyPy} Sprint in Bern last autumn.},
+	booktitle = {{Self-Sustaining} Systems},
+	author = {Carl Friedrich Bolz and Adrian Kuhn and Adrian Lienhard and Nicholas Matsakis and Oscar Nierstrasz and Lukas Renggli and Armin Rigo and Toon Verwaest},
+	year = {2008},
+	pages = {123--139}
+}
