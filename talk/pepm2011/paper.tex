@@ -54,9 +54,9 @@
 
 \title{Escape Analysis and Specialization in a Tracing JIT}
 
-\authorinfo{Carl Friedrich Bolz \and Armin Rigo \and Antion Cuni \and Maciek Fijałkowski}
-           {Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany}
-           {cfbolz@gmx.de}
+\authorinfo{Carl Friedrich Bolz \and Antion Cuni \and Maciek Fijałkowski \and Samuele Pedroni \and Armin Rigo}
+           {Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany XXX}
+           {cfbolz@gmx.de XXX}
 
 %\numberofauthors{3}
 %\author{
@@ -129,7 +129,7 @@ to-be-implemented language, and then use powerful tools to turn the interpreter
 into an efficient VM that also contains a just-in-time compiler. This compiler
 is automatically generated from the interpreter using partial-evaluation-like
 techniques \cite{bolz_tracing_2009}. The PyPy project and its approach to
-tracing JIT compilers is described in Section~\ref{sec:Background}
+tracing JIT compilers is described in Section~\ref{sec:Background}.
 
 The tracing JIT approach that the PyPy project is taking removes the overhead
 of bytecode dispatch. In this paper we want to explain how the traces that are
@@ -173,20 +173,65 @@ PyPy's tools into a VM on the C level. Because the interpreter is written at a
 relatively high level, the language implementation is kept free of low-level
 details, such as object layout, garbage collection or memory model. Those
 aspects of the final VM are woven into the generated code during the translation
-to C.
+to C. XXX languages that are done using PyPy
 
 The feature that makes PyPy more than a compiler with a runtime system is it's
 support for automated JIT compiler generation \cite{bolz_tracing_2009}. During
 the translation to C, PyPy's tools can generate a just-in-time compiler for the
 language that the interpreter is implementing. This process is not fully
 automatic, but needs to be guided by the language implementer by some
-source-code hints.
+source-code hints. Semi-automatically generating a JIT compiler has many advantages
+over writing one manually, which is an error-prone and tedious process. The
+generated JIT has the same semantics as the interpreter by construction, and all
+languages implemented using PyPy benefit from improvements to the JIT generator.
+The JIT that is produced by PyPy's JIT generator is a \emph{tracing JIT
+compiler}, a concept which will be explained in more detail in the next section.
 
 \subsection{Tracing JIT Compilers}
 \label{sub:JIT_background}
 
+Tracing JITs are a recently more popular approach to write just-in-time
+compilers for dynamic languages \cite{XXX}. Their origins lie in the Dynamo
+project, that used a tracing approach to optimize machine code using execution
+traces \cite{XXX}. They were then adapted to be used for a very light-weight
+Java VM \cite{XXX} and afterwards used in several implementations of dynamic
+languages, such as JavaScript \cite{XXX}, Lua \cite{XXX} and now Python via
+PyPy.
 
-traces and bridges
+The core idea of tracing JITs is to focus the optimization effort of the JIT
+compiler on the hot paths of the core loops of the program and to just use an
+interpreter for the less commonly executed parts. VMs that use a tracing JIT are
+thus mixed-mode execution environments, they contain both an interpreter and a
+JIT compiler. By default the interpreter is used to execute the program, doing
+some light-weight profiling at the same time. This profiling is used to identify
+the hot loops of the program. If a hot loop is found in that way, the
+interpreter enters a special \emph{tracing mode}. In this tracing mode, the
+interpreter records all operations that it is executing while running one
+iteration of the hot loop. This history of executed operations of one loop is
+called a \emph{trace}. Because the trace corresponds to one iteration of a loop,
+it always ends with a jump to its own beginning.
+
+This trace of operations is then the basis of the generated code. The trace is
+optimized in some ways, and then turned into machine code. Generating machine
+code is simple, because the traces are linear and the operations are very close
+to machine level. The trace corresponds to one concrete execution of a loop,
+therefore the code generated from it is only one possible path through the loop.
+To make sure that the trace is maintaining the correct semantics, it contains a
+\emph{guard} at all places where the execution could have diverged from the
+path. Those guards check the assumptions under which execution can stay on the
+trace. As an example, if a loop contains an \texttt{if} statement, the trace
+will contain the execution of one of the paths only, which is the path that was
+taken during the production of the trace. The trace will also contain a guard
+that checks that the condition of the \texttt{if} statement is true, because if
+it isn't, the rest of the trace is not valid.
+
+When generating machine code, every guard is be turned into a quick check to
+see whether the assumption still holds. When such a guard is hit during the
+execution of the machine code and the assumption does not hold, the execution of
+the machine code is stopped, and interpreter continues to run from that point
+on. These guards are the only mechanism to stop the execution of a trace, the
+loop end condition also takes the form of a guard.
+
 
 arguments to traces
 
