@@ -107,7 +107,10 @@ Boxing of primitive types means that dynamic languages need to be able to handle
 all objects, even integers, floats, bools etc. in the same way as user-defined
 instances. Thus those primitive types are usually \emph{boxed}, i.e. a small
 heap-structure is allocated for them, that contains the actual value. Boxing
-primitive types can be very costly, because XXX
+primitive types can be very costly, because a lot of common operations,
+particularly all arithmetic operations, have to produce a new box, in addition
+to the actual computation they do. Because the boxes are allocated on the heap,
+producing a lot of them puts pressure on the garbage collector.
 
 Type dispatching is the process of finding the concrete implementation that is
 applicable to the objects at hand when doing a generic operation on them. An
@@ -156,13 +159,14 @@ The contributions of this paper are:
 \subsection{Tracing JIT Compilers}
 \label{sub:JIT_background}
 
-XXX object model and its reflection in traces (e.g. guard\_class before each method call)
 
 traces and bridges
 
 arguments to traces
 
 getting from the interpreter to traces
+
+XXX object model and its reflection in traces (e.g. guard\_class before each method call)
 
 \subsection{PyPy}
 \label{sub:PyPy}
@@ -601,6 +605,7 @@ peeled off \cite{XXX}:
 \includegraphics{figures/step4.pdf}
 \end{figure}
 
+XXX optimization particularly effective for chains of operations
 
 %___________________________________________________________________________
 
