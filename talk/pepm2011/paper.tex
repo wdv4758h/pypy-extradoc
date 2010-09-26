@@ -100,28 +100,55 @@ interpretation overhead, i.e. the overhead of bytecode (or AST) dispatch and the
 overhead of the interpreter's data structures, such as operand stack etc. The
 second important problem that any JIT for a dynamic language needs to solve is
 how to deal with the overhead of boxing of primitive types and of type
-dispatching. Those are problems that are usually not present in statically typed
-languages.
+dispatching. Those are problems that are usually not present or at least less
+severe in statically typed languages.
 
 Boxing of primitive types means that dynamic languages need to be able to handle
-all objects, even integers, floats, etc. in the same way as user-defined
+all objects, even integers, floats, bools etc. in the same way as user-defined
 instances. Thus those primitive types are usually \emph{boxed}, i.e. a small
-heap-structure is allocated for them, that contains the actual value.
+heap-structure is allocated for them, that contains the actual value. Boxing
+primitive types can be very costly, because XXX
 
 Type dispatching is the process of finding the concrete implementation that is
 applicable to the objects at hand when doing a generic operation on them. An
 example would be the addition of two objects: The addition needs to check what
 the concrete objects that should be added are, and choose the implementation
-that is fitting for them.
+that is fitting for them. Type dispatching is a very common operation in a
+dynamic language because no types are known at compile time, so all operations
+need it.
 
-Last year, we wrote a paper \cite{XXX} about how PyPy's meta-JIT
-approach works. These explain how the meta-tracing JIT can remove the overhead
+A recently popular approach to implementing just-in-time compilers for dynamic
+languages is that of a tracing JIT. A tracing JIT often takes the form of an
+extension to an existing interpreter, which can be sped up that way. The PyPy
+project is an environment for implementing dynamic programming languages. It's
+approach to doing so is to straightforwardly implement an interpreter for the
+to-be-implemented language, and then use powerful tools to turn the interpreter
+into an efficient VM that also contains a just-in-time compiler. This compiler
+is automatically generated from the interpreter using partial-evaluation-like
+techniques \cite{bolz_tracing_2009}. The PyPy project and its approach to
+tracing JIT compilers is described in Section~\ref{sec:Background}
+
+The tracing JIT approach that the PyPy project is taking removes the overhead
 of bytecode dispatch. In this paper we want to explain how the traces that are
-produced by our meta-tracing JIT are then optimized to also remove some of the
+produced by our meta-tracing JIT can be optimized to also remove some of the
 overhead more closely associated to dynamic languages, such as boxing overhead
-and type dispatching. The most important technique to achieve this is a form of
-escape analysis \cite{XXX} that we call \emph{virtual objects}. This is best
-explained via an example.
+and type dispatching. To understand the problem more closely, we analyze the
+occurring object lifetimes in Section~\ref{sec:lifetimes}. The most important
+technique to achieve this is a form of escape analysis \cite{XXX} that we call
+\emph{virtual objects}, which is described in Section~\ref{sec:virtuals}. The
+basic approach of virtual objects can then be extended to also be used for
+type-specializing the traces that are produced by the tracing JIT
+(Section~\ref{sec:crossloop}). In Section~\ref{sec:XXX} we describe some
+supporting techniques that are not central to the approach, but are needed to
+improve the results. The introduced techniques are evaluated in
+Section~\ref{sec:Evaluation}.
+
+The contributions of this paper are:
+
+\begin{enumerate}
+    \item An efficient and effective escape analysis for a tracing JIT
+    \item XXX
+\end{enumerate}
 
 \section{Background}
 \label{sec:Background}
@@ -184,7 +211,7 @@ to the \texttt{jump} operation. In the next iteration they can either die (categ
 3) or escape (category 4).
 
 \section{Escape Analysis in a Tracing JIT}
-\label{sec:Escape Analysis in a Tracing JIT}
+\label{sec:virtuals}
 
 \subsection{Running Example}
 
