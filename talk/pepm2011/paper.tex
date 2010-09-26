@@ -133,28 +133,54 @@ tracing JIT compilers is described in Section~\ref{sec:Background}
 
 The tracing JIT approach that the PyPy project is taking removes the overhead
 of bytecode dispatch. In this paper we want to explain how the traces that are
-produced by our meta-tracing JIT can be optimized to also remove some of the
+produced by PyPy's tracing JIT can be optimized to also remove some of the
 overhead more closely associated to dynamic languages, such as boxing overhead
 and type dispatching. To understand the problem more closely, we analyze the
 occurring object lifetimes in Section~\ref{sec:lifetimes}. The most important
 technique to achieve this is a form of escape analysis \cite{XXX} that we call
 \emph{virtual objects}, which is described in Section~\ref{sec:virtuals}. The
-basic approach of virtual objects can then be extended to also be used for
+goal of virtual objects is to remove allocations of temporary objects that have
+a predictable lifetime and to optimize type dispatching in the process.
+
+The basic approach of virtual objects can then be extended to also be used for
 type-specializing the traces that are produced by the tracing JIT
 (Section~\ref{sec:crossloop}). In Section~\ref{sec:XXX} we describe some
 supporting techniques that are not central to the approach, but are needed to
 improve the results. The introduced techniques are evaluated in
-Section~\ref{sec:Evaluation}.
+Section~\ref{sec:Evaluation} using PyPy's Python interpreter as a case study.
 
 The contributions of this paper are:
 
 \begin{enumerate}
-    \item An efficient and effective escape analysis for a tracing JIT
+    \item An efficient and effective algorithm for removing objects allocations in a tracing JIT.
     \item XXX
 \end{enumerate}
 
 \section{Background}
 \label{sec:Background}
+
+\subsection{PyPy}
+\label{sub:PyPy}
+
+The work described in this paper was done in the context of the PyPy project
+\cite{armin_rigo_pypys_2006}. PyPy is an environment where dynamic languages can
+be implemented in a simple yet efficient way. The approach taken when
+implementing a language with PyPy is to write an interpreter for the language in
+\emph{RPython} \cite{davide_ancona_rpython:_2007}. RPython ("restricted Python")
+is a subset of Python chosen in such a way, that type inference becomes
+possible. The language interpreter can thus be translated with the help of
+PyPy's tools into a VM on the C level. Because the interpreter is written at a
+relatively high level, the language implementation is kept free of low-level
+details, such as object layout, garbage collection or memory model. Those
+aspects of the final VM are woven into the generated code during the translation
+to C.
+
+The feature that makes PyPy more than a compiler with a runtime system is it's
+support for automated JIT compiler generation \cite{bolz_tracing_2009}. During
+the translation to C, PyPy's tools can generate a just-in-time compiler for the
+language that the interpreter is implementing. This process is not fully
+automatic, but needs to be guided by the language implementer by some
+source-code hints.
 
 \subsection{Tracing JIT Compilers}
 \label{sub:JIT_background}
@@ -167,55 +193,6 @@ arguments to traces
 getting from the interpreter to traces
 
 XXX object model and its reflection in traces (e.g. guard\_class before each method call)
-
-\subsection{PyPy}
-\label{sub:PyPy}
-
-\section{Object Lifetimes in a Tracing JIT}
-\label{sec:lifetimes}
-
-% section Object Lifetimes in a Tracing JIT (end)
-
-To understand the problems that this paper is trying to solve some more, we
-first need to understand various cases of object lifetimes that can occur in a
-tracing JIT compiler.
-
-\begin{figure}
-\includegraphics{figures/obj-lifetime.pdf}
-
-\caption{Object Lifetimes in a Trace}
-\label{fig:lifetimes}
-\end{figure}
-
-The figure shows a trace before optimization, together with the lifetime of
-various kinds of objects created in the trace. It is executed from top to
-bottom. At the bottom, a jump is used to execute the same loop another time.
-For clarity, the figure shows two iterations of the loop.
-The loop is executed until one of the guards in the trace fails, and the
-execution is aborted.
-
-Some of the operations within this trace are \texttt{new} operations, which each create a
-new instance of some class. These instances are used for a while, e.g. by
-calling methods on them, reading and writing their fields. Some of these
-instances escape, which means that they are stored in some globally accessible
-place or are passed into a function.
-
-Together with the \texttt{new} operations, the figure shows the lifetimes of the
-created objects. Objects in category 1 live for a while, and are then just not
-used any more. The creation of these objects is removed by the
-optimization described in the last section.
-
-Objects in category 2 live for a while and then escape. The optimization of the
-last section deals with them too: the \texttt{new} that creates them and
-the field accesses are deferred, until the point where the object escapes.
-
-The objects in category 3 and 4 are in principle like the objects in category 1
-and 2. They are created, live for a while, but are then passed as an argument
-to the \texttt{jump} operation. In the next iteration they can either die (category
-3) or escape (category 4).
-
-\section{Escape Analysis in a Tracing JIT}
-\label{sec:virtuals}
 
 \subsection{Running Example}
 
@@ -367,6 +344,53 @@ repeatedly and redundantly for the class of the objects around, using a
 constructed using the \texttt{new} operation, only to be used once and then forgotten
 a bit later. In the next section, we will see how this can be improved upon,
 using escape analysis.
+
+\section{Object Lifetimes in a Tracing JIT}
+\label{sec:lifetimes}
+
+% section Object Lifetimes in a Tracing JIT (end)
+
+To understand the problems that this paper is trying to solve some more, we
+first need to understand various cases of object lifetimes that can occur in a
+tracing JIT compiler.
+
+\begin{figure}
+\includegraphics{figures/obj-lifetime.pdf}
+
+\caption{Object Lifetimes in a Trace}
+\label{fig:lifetimes}
+\end{figure}
+
+The figure shows a trace before optimization, together with the lifetime of
+various kinds of objects created in the trace. It is executed from top to
+bottom. At the bottom, a jump is used to execute the same loop another time.
+For clarity, the figure shows two iterations of the loop.
+The loop is executed until one of the guards in the trace fails, and the
+execution is aborted.
+
+Some of the operations within this trace are \texttt{new} operations, which each create a
+new instance of some class. These instances are used for a while, e.g. by
+calling methods on them, reading and writing their fields. Some of these
+instances escape, which means that they are stored in some globally accessible
+place or are passed into a function.
+
+Together with the \texttt{new} operations, the figure shows the lifetimes of the
+created objects. Objects in category 1 live for a while, and are then just not
+used any more. The creation of these objects is removed by the
+optimization described in the last section.
+
+Objects in category 2 live for a while and then escape. The optimization of the
+last section deals with them too: the \texttt{new} that creates them and
+the field accesses are deferred, until the point where the object escapes.
+
+The objects in category 3 and 4 are in principle like the objects in category 1
+and 2. They are created, live for a while, but are then passed as an argument
+to the \texttt{jump} operation. In the next iteration they can either die (category
+3) or escape (category 4).
+
+\section{Escape Analysis in a Tracing JIT}
+\label{sec:virtuals}
+
 
 \subsection{Virtual Objects}
 
