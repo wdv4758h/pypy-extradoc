@@ -92,6 +92,8 @@ LATER (maybe) TASKS
 - think out looking into functions or not, based on arguments,
   for example contains__Tuple should be unrolled if tuple is of constant
   length. HARD, blocked by the fact that we don't know constants soon enough
+  Also, an unrolled loop means several copies of the guards, which may
+  fail independently, leading to an exponential number of bridges
 
 - out-of-line guards (when an external change would invalidate existing
   pieces of assembler)
