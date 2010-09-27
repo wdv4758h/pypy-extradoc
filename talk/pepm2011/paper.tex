@@ -143,7 +143,8 @@ overhead more closely associated to dynamic languages, such as boxing overhead
 and type dispatching. To understand the problem more closely, we analyze the
 occurring object lifetimes in Section~\ref{sec:lifetimes}. The most important
 technique to achieve this is a form of escape analysis \cite{XXX} that we call
-\emph{virtual objects}, which is described in Section~\ref{sec:virtuals}. The
+\emph{virtual objects},\footnote{The terminology comes from \cite{Psyco}}
+which is described in Section~\ref{sec:virtuals}. The
 goal of virtual objects is to remove allocations of temporary objects that have
 a predictable lifetime and to optimize type dispatching in the process.
 
@@ -313,6 +314,11 @@ which is costly due to the method dispatch.
 To understand the problems more directly, let us consider a simple function
 that uses the object model:
 
+XXX this is not an RPython interpreter; put a reference to the previous
+paper to show how we deal with an interpreted piece of code and remove
+the interpretation overhead, turning it into basically something
+equivalent to the example here, which is the start of the present paper.
+
 \begin{verbatim}
 def f(y):
     res = BoxedInteger(0)
@@ -395,7 +401,7 @@ float or integer additions.
 
 If the function is executed using the tracing JIT, with \texttt{y} being a
 \texttt{BoxedInteger}, the produced trace looks like
-Figure~\ref{fig:unopt-trace}. The operations in the trace are indented to
+Figure~\ref{fig:unopt-trace}. The operations in the trace are shown indented to
 correspond to the stack level of the function that contains the traced
 operation. The trace also shows the inefficiencies of \texttt{f} clearly, if one
 looks at the number of \texttt{new}, \texttt{set/getfield\_gc} and
@@ -445,7 +451,8 @@ Some of the operations within this trace are \texttt{new} operations, which each
 create a new instance of some class. These instances are used for a while, e.g.
 by calling methods on them (which are inlined into the trace), reading and
 writing their fields. Some of these instances \emph{escape}, which means that
-they are stored in some globally accessible place or are passed into a function.
+they are stored in some globally accessible place or are passed into a
+non-inlined function via a residual call.
 
 Together with the \texttt{new} operations, the figure shows the lifetimes of the
 created objects. The objects that are created within a trace using \texttt{new}
@@ -462,7 +469,7 @@ fall into one of several categories:
 
     \item Category 4: Objects that live for a while, survive across the jump,
     and then escape. To these we also count the objects that live across several
-    jumps and then either escape or stop being used\footnote{In theory, the
+    jumps and then either escape or stop being used.\footnote{In theory, the
     approach of Section~\ref{sec:XXX} works also for objects that live for
     exactly $n>1$ iterations and then don't escape, but we expect this to be a
     very rare case, so we do not handle it.}
@@ -483,10 +490,9 @@ in Section~\ref{sec:virtuals}. XXX
 \subsection{Virtual Objects}
 
 The main insight to improve the code shown in the last section is that objects
-in category 1 don't survive very long and are collected by the garbage collector
-soon after their allocation. Moreover, they are used only inside the loop and
+in category 1 don't survive very long -- they are used only inside the loop and
 nobody else in the program stores a reference to them. The idea for improving
-the code is thus to analyze which objects fall in category 1 and which may thus
+the code is thus to analyze which objects fall in category 1 and may thus
 not be allocated at all.
 
 XXX is "symbolic execution" the right word to drop?
@@ -494,7 +500,11 @@ XXX is "symbolic execution" the right word to drop?
 This process is called \emph{escape analysis}. The escape analysis of
 our tracing JIT works by using \emph{virtual objects}: The trace is walked from
 beginning to end and whenever a \texttt{new} operation is seen, the operation is
-removed and a virtual object is constructed. The virtual object summarizes the
+removed and a virtual object\footnote{XXX what I have in mind when I talk
+of ``virtual object'' is the run-time behavior -- i.e. a real object that
+would exist at run-time, except that it has be virtual-ized.  Here you seem
+to mean rather ``virtual object description'' or something.}
+is constructed. The virtual object summarizes the
 shape of the object that is allocated at this position in the original trace,
 and is used by the optimization to improve the trace. The shapes describe
 where the values that would be stored in the fields of the allocated objects
@@ -550,12 +560,16 @@ any other operation, it cannot stay virtual. For example, when a virtual object
 is stored in a globally accessible place, the object needs to actually be
 allocated, as it will live longer than one iteration of the loop.
 
+XXX ``the trace above'' is dangerous; should mention all figures by numbers
+
 This is what happens at the end of the trace above, when the \texttt{jump} operation
 is hit. The arguments of the jump are at this point virtual objects. Before the
 jump is emitted, they are \emph{forced}. This means that the optimizers produces code
 that allocates a new object of the right type and sets its fields to the field
 values that the virtual object has. This means that instead of the jump, the
 following operations are emitted:
+
+XXX should the variables be written in $math-style$ everywhere?
 
 \texttt{
 \begin{tabular}{l} 
@@ -666,11 +680,15 @@ If we do that for our example trace above, the trace looks like this:
 \includegraphics{figures/step2.pdf}
 \end{figure}
 
+XXX the figure is moved elsewhere by latex
+
 Now the lifetime of the remaining allocations no longer crosses the jump, and
 we can run our escape analysis a second time, to get the following trace:
 \begin{figure}
 \includegraphics{figures/step3.pdf}
 \end{figure}
+
+XXX the figure is moved elsewhere by latex
 
 This result is now really good. The code performs the same operations than
 the original code, but using direct CPU arithmetic and no boxing, as opposed to
@@ -683,7 +701,7 @@ used. The now resulting loop does not refer to the \texttt{BoxedInteger} class a
 all any more, but it still has the same behaviour. If the original loop had
 used \texttt{BoxedFloats}, the final loop would use \texttt{float\_*} operations
 everywhere instead (or even be very different, if the object model had
-user-defined classes).
+more different classes).
 
 
 %___________________________________________________________________________
@@ -712,6 +730,8 @@ peeled off \cite{XXX}:
 \begin{figure}
 \includegraphics{figures/step4.pdf}
 \end{figure}
+
+XXX the figure is moved elsewhere by latex
 
 XXX optimization particularly effective for chains of operations
 
