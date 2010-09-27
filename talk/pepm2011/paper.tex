@@ -97,7 +97,7 @@ XXX define "escape analysis"
 
 XXX need to re-target introduction a bit to fit PEPMs focus
 
-The goal of a just-in-time compiler for a dynamic language is obviously to
+The goal of a just-in-time (JIT) compiler for a dynamic language is obviously to
 improve the speed of the language over an implementation of the language that
 uses interpretation. The first goal of a JIT is thus to remove the
 interpretation overhead, i.e. the overhead of bytecode (or AST) dispatch and the
@@ -131,7 +131,8 @@ approach is also the one taken by the PyPy project, which is an environment for
 implementing dynamic programming languages. PyPy's
 approach to doing so is to straightforwardly implement an interpreter for the
 to-be-implemented language, and then use powerful tools to turn the interpreter
-into an efficient VM that also contains a just-in-time compiler. This compiler
+into an efficient virtual machine (VM) that also contains a just-in-time compiler.
+This compiler
 is automatically generated from the interpreter using partial-evaluation-like
 techniques \cite{bolz_tracing_2009}. The PyPy project and its approach to
 tracing JIT compilers is described in Section~\ref{sec:Background}.
@@ -171,10 +172,11 @@ The contributions of this paper are:
 The work described in this paper was done in the context of the PyPy project
 \cite{armin_rigo_pypys_2006}. PyPy is an environment where dynamic languages can
 be implemented in a simple yet efficient way. The approach taken when
-implementing a language with PyPy is to write an interpreter for the language in
+implementing a language with PyPy is to write an \emph{interpreter}
+for the language in
 \emph{RPython} \cite{davide_ancona_rpython:_2007}. RPython ("restricted Python")
-is a subset of Python chosen in such a way, that type inference becomes
-possible. The language interpreter can thus be translated with the help of
+is a subset of Python chosen in such a way that type inference becomes
+possible. The language interpreter can then be compiled (``translated'') with
 PyPy's tools into a VM on the C level. Because the interpreter is written at a
 relatively high level, the language implementation is kept free of low-level
 details, such as object layout, garbage collection or memory model. Those
@@ -184,22 +186,22 @@ to C. XXX languages that are done using PyPy
 The feature that makes PyPy more than a compiler with a runtime system is it's
 support for automated JIT compiler generation \cite{bolz_tracing_2009}. During
 the translation to C, PyPy's tools can generate a just-in-time compiler for the
-language that the interpreter is implementing. This process is not fully
-automatic, but needs to be guided by the language implementer by some
-source-code hints. Semi-automatically generating a JIT compiler has many advantages
-over writing one manually, which is an error-prone and tedious process. The
-generated JIT has the same semantics as the interpreter by construction, and all
-languages implemented using PyPy benefit from improvements to the JIT generator.
+language that the interpreter is implementing. This process is mostly
+automatic; it only needs to be guided by the language implementer by a small number of
+source-code hints. Mostly-automatically generating a JIT compiler has many advantages
+over writing one manually, which is an error-prone and tedious process.
+By construction, the generated JIT has the same semantics as the interpreter, and
+the process benefits all languages implemented as an interpreter in RPython.
 The JIT that is produced by PyPy's JIT generator is a \emph{tracing JIT
-compiler}, a concept which will be explained in more detail in the next section.
+compiler}, a concept which we now explain in more details.
 
 \subsection{Tracing JIT Compilers}
 \label{sub:JIT_background}
 
-Tracing JITs are a recently more popular approach to write just-in-time
+Tracing JITs are a recently popular approach to write just-in-time
 compilers for dynamic languages \cite{XXX}. Their origins lie in the Dynamo
-project, that used a tracing approach to optimize machine code using execution
-traces \cite{XXX}. They were then adapted to be used for a very light-weight
+project, which used a tracing approach to optimize machine code using execution
+traces \cite{XXX}. Tracing JITs have then be adapted to be used for a very light-weight
 Java VM \cite{XXX} and afterwards used in several implementations of dynamic
 languages, such as JavaScript \cite{XXX}, Lua \cite{XXX} and now Python via
 PyPy.
@@ -434,7 +436,9 @@ first need to understand various cases of object lifetimes that can occur in a
 tracing JIT compiler.
 
 \begin{figure}
+\begin{center}
 \includegraphics[scale=0.7]{figures/obj-lifetime.pdf}
+\end{center}
 
 \caption{Object Lifetimes in a Trace}
 \label{fig:lifetimes}
