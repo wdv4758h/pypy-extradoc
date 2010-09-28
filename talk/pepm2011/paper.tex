@@ -247,8 +247,6 @@ arguments to traces
 
 getting from the interpreter to traces
 
-XXX object model and its reflection in traces (e.g. guard\_class before each method call)
-
 \subsection{Running Example}
 
 For the purpose of this paper, we are going to use a very simple object
@@ -409,8 +407,9 @@ If the function is executed using the tracing JIT, with \texttt{y} being a
 Figure~\ref{fig:unopt-trace}. The operations in the trace are shown indented to
 correspond to the stack level of the function that contains the traced
 operation. The trace also shows the inefficiencies of \texttt{f} clearly, if one
-looks at the number of \texttt{new}, \texttt{set/getfield} and
-\texttt{guard\_class} operations.
+looks at the number of \texttt{new} (corresponding to object creation),
+\texttt{set/getfield} (corresponding to attribute reads/writes) and
+\texttt{guard\_class} operations (corresponding to method calls).
 
 Note how the functions that are called by \texttt{f} are automatically inlined
 into the trace. The method calls are always preceded by a \texttt{guard\_class}
