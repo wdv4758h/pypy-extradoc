@@ -761,7 +761,32 @@ that are used inside them.
 \section{Supporting Techniques}
 \label{sec:support}
 
-XXX virtualizables, store sinking
+\subsection{Virtualizables}
+\label{sub:Virtualizables}
+
+\cfbolz{probably can be cut in case of space problems}
+
+One problem to the successful application of the allocation removal techniques
+described in the previous sections is the presence of frame-introspection
+features in many dynamic languages. Languages such as Python and Smalltalk allow
+the programmer to get access to the frames object that the interpreter uses to
+store local variables. This is a useful feature, as makes the implementation of
+a debugger possible in Python without needing much support from the VM level. On
+the other hand, it severely hinders the effectiveness of allocation removal,
+because every time an object is stored into a local variable, it is stored into
+the frame-object, which makes it escape.
+
+This problem is solved by making it possible to the interpreter author to add
+some hints into the source code to declare instances of one class as frame
+objects. The JIT will then fill these objects only lazily when they are actually
+accessed (\eg because a debugger is used). Therefore in the common case, nothing
+is stored into the frame objects, making the problem of too much escaping go
+away. This is a common approach in VM implementations \cite{XXX}, the only
+novelty in our approach lays in its generality, because most other JITs are just
+specifically written for one particular language.
+
+% subsection Virtualizables (end)
+XXX store sinking
 
 do we need this?
 
