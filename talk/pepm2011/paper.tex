@@ -56,7 +56,8 @@
 
 \authorinfo{Carl Friedrich Bolz \and Antonio Cuni \and Maciej Fijałkowski \and Samuele Pedroni \and Armin Rigo}
            {Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany XXX}
-           {cfbolz@gmx.de XXX}
+           {cfbolz@gmx.de, antocuni@gmail.com, fijal@merlinux.eu,
+           samuele.pedroni@gmail.com, arigo@tunes.org}
 
 %\numberofauthors{3}
 %\author{
@@ -108,7 +109,7 @@ dispatching. Those are problems that are usually not present or at least less
 severe in statically typed languages.
 
 Boxing of primitive types means that dynamic languages need to be able to handle
-all objects, even integers, floats, bools etc. in the same way as user-defined
+all objects, even integers, floats, booleans etc. in the same way as user-defined
 instances. Thus those primitive types are usually \emph{boxed}, i.e. a small
 heap-structure is allocated for them, that contains the actual value. Boxing
 primitive types can be very costly, because a lot of common operations,
@@ -812,6 +813,8 @@ benchmark\footnote{\texttt{http://speleotrove.com/decimal/telco.html}}, using a 
 Python decimal floating point implementation.
 \textbf{twisted\_names}: A DNS server benchmark using the Twisted networking
 framework\footnote{\texttt{http://twistedmatrix.com/trac/}}.
+
+
 
 \section{Related Work}
 \label{sec:related}
