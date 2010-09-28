@@ -682,20 +682,24 @@ can move the \texttt{jump} operation just above the allocation of the objects th
 appear in the current \texttt{jump}. This needs some care, because the arguments to
 \texttt{jump} are all currently live variables, thus they need to be adapted.
 
-If we do that for our example trace, the trace looks like this:
+If we do that for our example trace, the trace looks like in Figure~\ref{fig:step2}.
+
 \begin{figure}
 \includegraphics{figures/step2.pdf}
+\label{fig:step2}
+\caption{Shifting the Jump}
 \end{figure}
 
-XXX the figure is moved elsewhere by latex
 
 Now the lifetime of the remaining allocations no longer crosses the jump, and
-we can run our escape analysis a second time, to get the following trace:
+we can run our escape analysis a second time, to get the trace in
+Figure~\ref{fig:step3}.
+
 \begin{figure}
 \includegraphics{figures/step3.pdf}
+\label{fig:step3}
+\caption{Removing Allocations a Second Time}
 \end{figure}
-
-XXX the figure is moved elsewhere by latex
 
 This result is now really good. The code performs the same operations than
 the original code, but using direct CPU arithmetic and no boxing, as opposed to
@@ -732,13 +736,13 @@ To make it possible to enter the loop directly from the intepreter, there
 needs to be some additional code that enters the loop by taking as input
 arguments what is available to the interpreter, i.e. two instances. This
 additional code corresponds to one iteration of the loop, which is thus
-peeled off \cite{XXX}:
+peeled off \cite{XXX}, see Figure~\ref{fig:step3}.
 
 \begin{figure}
 \includegraphics{figures/step4.pdf}
+\label{fig:step3}
+\caption{A Way to Enter the Loop From the Interpreter}
 \end{figure}
-
-XXX the figure is moved elsewhere by latex
 
 XXX optimization particularly effective for chains of operations
 
