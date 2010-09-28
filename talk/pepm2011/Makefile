@@ -1,5 +1,5 @@
 
-escape-tracing.pdf: paper.tex paper.bib
+escape-tracing.pdf: paper.tex paper.bib figures/step1.pdf figures/step2.pdf figures/step3.pdf figures/step4.pdf
 	pdflatex paper
 	bibtex paper
 	pdflatex paper
@@ -21,3 +21,6 @@ xpdf: escape-tracing.pdf
 
 %.pdf: %.eps
 	epstopdf $<
+
+%.pdf: %.tikz
+	tikz2pdf -s $<
