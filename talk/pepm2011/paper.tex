@@ -198,13 +198,14 @@ compiler}, a concept which we now explain in more details.
 \subsection{Tracing JIT Compilers}
 \label{sub:JIT_background}
 
-Tracing JITs are a recently popular approach to write just-in-time
-compilers for dynamic languages \cite{XXX}. Their origins lie in the Dynamo
-project, which used a tracing approach to optimize machine code using execution
-traces \cite{XXX}. Tracing JITs have then be adapted to be used for a very light-weight
-Java VM \cite{XXX} and afterwards used in several implementations of dynamic
-languages, such as JavaScript \cite{XXX}, Lua \cite{XXX} and now Python via
-PyPy.
+Tracing JITs are a recently popular approach to write just-in-time compilers for
+dynamic languages. Their origins lie in the Dynamo project, which used a tracing
+approach to optimize machine code using execution traces
+\cite{bala_dynamo:_2000}. Tracing JITs have then be adapted to be used for a
+very light-weight Java VM \cite{gal_hotpathvm:_2006} and afterwards used in
+several implementations of dynamic languages, such as JavaScript
+\cite{andreas_gal_trace-based_2009}, Lua \cite{XXX} and now Python (and other
+languages) via PyPy.
 
 The core idea of tracing JITs is to focus the optimization effort of the JIT
 compiler on the hot paths of the core loops of the program and to just use an
