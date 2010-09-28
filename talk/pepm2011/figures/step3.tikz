@@ -21,7 +21,7 @@
 
   % plain nodes
 
-  \node[enter, name=start2, node distance=5em] {loop($i_0$, $i_1$)} ;
+  \node[enter, name=start2, node distance=5em] {loop[$i_0$, $i_1$]:} ;
   \node[guard, name=block4, below of=start2, node distance=5em] {
     \begin{tabular}{l} 
       $i_4$ = int\_add($i_1$, $i_0$) \\
