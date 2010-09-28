@@ -354,11 +354,11 @@ guard\_class($p_{1}$, BoxedInteger) \\
 ~~~~~~~~$i_{4}$ = int\_add($i_{2}$, $i_{3}$) \\
 ~~~~~~~~$p_{5}$ = new(BoxedInteger) \\
 ~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~~~~~~~~~setfield($p_{5}$, $i_{4}$, intval) \\
+~~~~~~~~~~~~setfield($p_{5}$, intval, $i_{4}$) \\
 \# inside f: BoxedInteger(-100)  \\
 $p_{6}$ = new(BoxedInteger) \\
 ~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~setfield($p_{6}$, -100, intval) \\
+~~~~setfield($p_{6}$, intval, -100) \\
 ~\\
 \# inside f: .add(BoxedInteger(-100)) \\
 guard\_class($p_{5}$, BoxedInteger) \\
@@ -370,12 +370,12 @@ guard\_class($p_{5}$, BoxedInteger) \\
 ~~~~~~~~$i_{9}$ = int\_add($i_{7}$, $i_{8}$) \\
 ~~~~~~~~$p_{10}$ = new(BoxedInteger) \\
 ~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~~~~~~~~~setfield($p_{10}$, $i_{9}$, intval) \\
+~~~~~~~~~~~~setfield($p_{10}$, intval, $i_{9}$) \\
 ~\\
 \# inside f: BoxedInteger(-1) \\
 $p_{11}$ = new(BoxedInteger) \\
 ~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~setfield($p_{11}$, -1, intval) \\
+~~~~setfield($p_{11}$, intval, -1) \\
 ~\\
 \# inside f: y.add(BoxedInteger(-1)) \\
 guard\_class($p_{0}$, BoxedInteger) \\
@@ -387,7 +387,7 @@ guard\_class($p_{0}$, BoxedInteger) \\
 ~~~~~~~~$i_{14}$ = int\_add($i_{12}$, $i_{13}$) \\
 ~~~~~~~~$p_{15}$ = new(BoxedInteger) \\
 ~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~~~~~~~~~setfield($p_{15}$, $i_{14}$, intval) \\
+~~~~~~~~~~~~setfield($p_{15}$, intval, $i_{14}$) \\
 ~\\
 \# inside f: y.is\_positive() \\
 guard\_class($p_{15}$, BoxedInteger) \\
@@ -526,9 +526,9 @@ virtual objects, and be completely removed from the optimized trace:
 \texttt{
 \begin{tabular}{l} 
 $p_{5}$ = new(BoxedInteger) \\
-setfield($p_{5}$, $i_{4}$, intval) \\
+setfield($p_{5}$, intval, $i_{4}$) \\
 $p_{6}$ = new(BoxedInteger) \\
-setfield($p_{6}$, -100, intval) \\
+setfield($p_{6}$, intval, -100) \\
 \end{tabular}
 }
 
@@ -583,9 +583,9 @@ following operations are emitted:
 \texttt{
 \begin{tabular}{l} 
 $p_{15}$ = new(BoxedInteger) \\
-setfield($p_{15}$, $i_{14}$, intval) \\
+setfield($p_{15}$, intval, $i_{14}$) \\
 $p_{10}$ = new(BoxedInteger) \\
-setfield($p_{10}$, $i_{9}$, intval) \\
+setfield($p_{10}$, intval, $i_{9}$) \\
 jump($p_{15}$, $p_{10}$) \\
 \end{tabular}
 }

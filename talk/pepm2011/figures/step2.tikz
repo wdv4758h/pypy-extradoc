@@ -25,9 +25,9 @@
   \node[newguard, name=block4, below of=start, node distance=4.2em] {
     \begin{tabular}{l} 
       $p_{0}$ = new(BoxedInteger) \\
-      setfield($p_{0}$, $i_{0}$, intval) \\
+      setfield($p_{0}$, intval, $i_{0}$) \\
       $p_{1}$ = new(BoxedInteger) \\
-      setfield($p_{1}$, $i_1$, intval) \\
+      setfield($p_{1}$, intval, $i_1$) \\
     \end{tabular}
   };
 
