@@ -65,8 +65,28 @@
 	publisher = {{ACM}},
 	author = {Davide Ancona and Massimo Ancona and Antonio Cuni and Nicholas D. Matsakis},
 	year = {2007},
-	keywords = {{JVM,} .net, Python},
 	pages = {53--64}
+},
+
+@article{futamura_partial_1999,
+	title = {Partial Evaluation of Computation Process - An Approach to a {Compiler-Compiler}},
+	volume = {12},
+	url = {http://citeseer.ist.psu.edu/futamura99partial.html},
+	number = {4},
+	journal = {{Higher-Order} and Symbolic Computation},
+	author = {Yoshihiko Futamura},
+	year = {1999},
+	pages = {381--391},
+},
+
+@book{jones_partial_1993,
+	title = {Partial evaluation and automatic program generation},
+	isbn = {0-13-020249-5},
+	url = {http://portal.acm.org/citation.cfm?id=153676},
+	abstract = {This book is out of print. For copies, Please refer to the following online page},
+	publisher = {{Prentice-Hall,} Inc.},
+	author = {Neil D. Jones and Carsten K. Gomard and Peter Sestoft},
+	year = {1993}
 },
 
 @inproceedings{armin_rigo_pypys_2006,
@@ -80,7 +100,6 @@
 	publisher = {{ACM}},
 	author = {Armin Rigo and Samuele Pedroni},
 	year = {2006},
-	keywords = {metacircularity, Python, retargettable code generation, type inference, {VM}},
 	pages = {944--953}
 },
 
@@ -92,6 +111,21 @@
 	author = {Bruno Blanchet},
 	year = {1999},
 	pages = {20---34}
+},
+
+@techreport{miranda_context_1999,
+	title = {Context Management in {VisualWorks} 5i},
+	abstract = {Smalltalk-80 provides a reification of execution state in the form of context objects which represent procedure activation records. Smalltalk-80 also provides full closures with indefinite extent. These features pose interesting implementation challenges because a naïve implementation entails instantiating context objects on every method activation, but typical Smalltalk-80 programs obey stack discipline for the vast majority of activations. Both software and hardware implementations of Smalltalk-80 have mapped contexts and closure activations to stack frames but not without overhead when compared to traditional stack-based activation and return in “conventional” languages. We present a new design for contexts and closures that significantly reduces the overall overhead of these features and imposes overhead only in code that actually manipulates execution state in the form of contexts.},
+	institution = {{ParcPlace} Division, {CINCOM,} Inc.},
+	author = {Eliot Miranda},
+	year = {1999},
+},
+
+@inproceedings{andreas_gal_trace-based_2009,
+	title = {Trace-based {Just-in-Time} Type Specialization for Dynamic Languages},
+	booktitle = {{PLDI}},
+	author = {Andreas Gal and Brendan Eich and Mike Shaver and David Anderson and Blake Kaplan and Graydon Hoare and David Mandelin and Boris Zbarsky and Jason Orendorff and Michael Bebenita and Mason Chang and Michael Franz and Edwin Smith and Rick Reitmaier and Mohammad Haghighat},
+	year = {2009},
 },
 
 @inproceedings{bolz_tracing_2009,
@@ -109,9 +143,57 @@
 	pages = {18--25}
 },
 
+@techreport{mason_chang_efficient_2007,
+	title = {Efficient {Just-In-Time} Execution of Dynamically Typed Languages
+Via Code Specialization Using Precise Runtime Type Inference},
+	abstract = {Dynamically typed languages such as {JavaScript} present a challenge to just-in-time compilers. In contrast to statically typed languages such as {JVML,} in which there are specific opcodes for common operations on primitive types (such as iadd for integer addition), all operations in dynamically typed language such as {JavaScript} are late-bound. Often enough, types cannot be inferred with certainty ahead of execution. As a result, just-in-time compilers for dynamically typed languages have tended to perform worse than their statically-typed counterparts. We present a new approach to compiling dynamically typed languages in which code traces observed during execution are dynamically specialized for each actually observed run-time type. For most benchmark programs, our prototype {JavaScript} virtual machine outperforms every other {JavaScript} platform known to us.},
+	number = {{ICS-TR-07-10}},
+	institution = {Donald Bren School of Information and Computer Science, University of California, Irvine},
+	author = {Mason Chang and Michael Bebenita and Alexander Yermolovich and Andreas Gal and Michael Franz},
+	year = {2007},
+},
+
+@article{bala_dynamo:_2000,
+	title = {Dynamo: a transparent dynamic optimization system},
+	volume = {35},
+	shorttitle = {Dynamo},
+	url = {http://citeseer.ist.psu.edu/bala00dynamo.html},
+	number = {5},
+	journal = {{ACM} {SIGPLAN} Notices},
+	author = {Vasanth Bala and Evelyn Duesterwald and Sanjeev Banerjia},
+	year = {2000},
+	pages = {1--12}
+},
+
+@techreport{andreas_gal_incremental_2006,
+	title = {Incremental Dynamic Code Generation with Trace Trees},
+	abstract = {The unit of compilation for traditional just-in-time compilers is the method. We have explored trace-based compilation, in which the unit of compilation is a loop, potentially spanning multiple methods and even library code. Using a new intermediate representation that is discovered and updated lazily on-demand while the program is being executed, our compiler generates code that is competitive with traditional dynamic compilers, but that uses only a fraction of the compile time and memory footprint.},
+	number = {{ICS-TR-06-16}},
+	institution = {Donald Bren School of Information and Computer Science, University of California, Irvine},
+	author = {Andreas Gal and Michael Franz},
+	month = nov,
+	year = {2006},
+	pages = {11}
+},
+
+@inproceedings{gal_hotpathvm:_2006,
+	address = {Ottawa, Ontario, Canada},
+	title = {{HotpathVM:} an effective {JIT} compiler for resource-constrained devices},
+	isbn = {1-59593-332-6},
+	shorttitle = {{HotpathVM}},
+	url = {http://portal.acm.org/citation.cfm?doid=1134760.1134780},
+	doi = {10.1145/1134760.1134780},
+	abstract = {We present a just-in-time compiler for a Java {VM} that is small enough to fit on resource-constrained devices, yet is surprisingly effective. Our system dynamically identifies traces of frequently executed bytecode instructions (which may span several basic blocks across several methods) and compiles them via Static Single Assignment {(SSA)} construction. Our novel use of {SSA} form in this context allows to hoist instructions across trace side-exits without necessitating expensive compensation code in off-trace paths. The overall memory consumption (code and data) of our system is only 150 {kBytes,} yet benchmarks show a speedup that in some cases rivals heavy-weight just-in-time compilers.},
+	booktitle = {Proceedings of the 2nd international conference on Virtual execution environments},
+	publisher = {{ACM}},
+	author = {Andreas Gal and Christian W. Probst and Michael Franz},
+	year = {2006},
+	pages = {144--153}
+},
+
 @inproceedings{rigo_representation-based_2004,
 	address = {Verona, Italy},
-	title = {Representation-based just-in-time specialization and the psyco prototype for python},
+	title = {Representation-based just-in-time specialization and the Psyco prototype for Python},
 	isbn = {1-58113-835-0},
 	url = {http://portal.acm.org/citation.cfm?id=1014010},
 	doi = {10.1145/1014007.1014010},
@@ -120,7 +202,6 @@
 	publisher = {{ACM}},
 	author = {Armin Rigo},
 	year = {2004},
-	keywords = {{JIT,} Python},
 	pages = {15--26}
 },
 
