@@ -12,7 +12,7 @@
 \usepackage[utf8]{inputenc}
 
 \newboolean{showcomments}
-\setboolean{showcomments}{false}
+\setboolean{showcomments}{true}
 \ifthenelse{\boolean{showcomments}}
   {\newcommand{\nb}[2]{
     \fbox{\bfseries\sffamily\scriptsize#1}
@@ -151,7 +151,7 @@ a predictable lifetime and to optimize type dispatching in the process.
 
 The basic approach of virtual objects can then be extended to also be used for
 type-specializing the traces that are produced by the tracing JIT
-(Section~\ref{sec:crossloop}). In Section~\ref{sec:XXX} we describe some
+(Section~\ref{sec:crossloop}). In Section~\ref{sec:support} we describe some
 supporting techniques that are not central to the approach, but are needed to
 improve the results. The introduced techniques are evaluated in
 Section~\ref{sec:Evaluation} using PyPy's Python interpreter as a case study.
@@ -475,7 +475,7 @@ fall into one of several categories:
     \item Category 4: Objects that live for a while, survive across the jump,
     and then escape. To these we also count the objects that live across several
     jumps and then either escape or stop being used.\footnote{In theory, the
-    approach of Section~\ref{sec:XXX} works also for objects that live for
+    approach of Section~\ref{sec:crossloop} works also for objects that live for
     exactly $n>1$ iterations and then don't escape, but we expect this to be a
     very rare case, so we do not handle it.}
 \end{itemize}
@@ -505,7 +505,7 @@ XXX is "symbolic execution" the right word to drop?
 This process is called \emph{escape analysis}. The escape analysis of
 our tracing JIT works by using \emph{virtual objects}: The trace is walked from
 beginning to end and whenever a \texttt{new} operation is seen, the operation is
-removed and a virtual object\footnote{XXX what I have in mind when I talk
+removed and a virtual object\arigo{XXX what I have in mind when I talk
 of ``virtual object'' is the run-time behavior -- i.e. a real object that
 would exist at run-time, except that it has be virtual-ized.  Here you seem
 to mean rather ``virtual object description'' or something.}
@@ -570,9 +570,7 @@ any other operation, it cannot stay virtual. For example, when a virtual object
 is stored in a globally accessible place, the object needs to actually be
 allocated, as it will live longer than one iteration of the loop.
 
-XXX ``the trace above'' is dangerous; should mention all figures by numbers
-
-This is what happens at the end of the trace above, when the \texttt{jump} operation
+This is what happens at the end of the trace in Figure~\ref{fig:unopt-trace}, when the \texttt{jump} operation
 is hit. The arguments of the jump are at this point virtual objects. Before the
 jump is emitted, they are \emph{forced}. This means that the optimizers produces code
 that allocates a new object of the right type and sets its fields to the field
@@ -676,7 +674,7 @@ of the loop are superfluous, at least after the first iteration.
 
 The reason why we cannot optimize the remaining allocations away is because
 their lifetime crosses the jump. To improve the situation, a little trick is
-needed. The trace above represents a loop, i.e. the jump at the end jumps to
+needed. The trace in Figure~\ref{fig:step1} represents a loop, i.e. the jump at the end jumps to
 the beginning. Where in the loop the jump occurs is arbitrary, since the loop
 can only be left via failing guards anyway. Therefore it does not change the
 semantics of the loop to put the jump at another point into the trace and we
@@ -684,7 +682,7 @@ can move the \texttt{jump} operation just above the allocation of the objects th
 appear in the current \texttt{jump}. This needs some care, because the arguments to
 \texttt{jump} are all currently live variables, thus they need to be adapted.
 
-If we do that for our example trace above, the trace looks like this:
+If we do that for our example trace, the trace looks like this:
 \begin{figure}
 \includegraphics{figures/step2.pdf}
 \end{figure}
@@ -755,6 +753,15 @@ is also that the optimized loops are specialized for the types of the variables
 that are used inside them.
 
 % section Escape Analysis Across Loop Boundaries (end)
+
+\section{Supporting Techniques}
+\label{sec:support}
+
+XXX virtualizables, store sinking
+
+do we need this?
+
+% section Supporting Techniques (end)
 
 \section{Evaluation}
 \label{sec:Evaluation}
