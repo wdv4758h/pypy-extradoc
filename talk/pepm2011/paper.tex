@@ -144,7 +144,7 @@ overhead more closely associated to dynamic languages, such as boxing overhead
 and type dispatching. To understand the problem more closely, we analyze the
 occurring object lifetimes in Section~\ref{sec:lifetimes}. The most important
 technique to achieve this is a form of escape analysis \cite{XXX} that we call
-\emph{virtual objects},\footnote{The terminology comes from \cite{Psyco}}
+\emph{virtual objects}\footnote{The terminology comes from \cite{rigo_representation-based_2004}},
 which is described in Section~\ref{sec:virtuals}. The
 goal of virtual objects is to remove allocations of temporary objects that have
 a predictable lifetime and to optimize type dispatching in the process.
