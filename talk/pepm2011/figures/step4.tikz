@@ -1,7 +1,7 @@
 % -*- mode: latex; auto-revert-interval: 0.5 -*-
 
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto, node distance=4em,
-                   very thin,font={\scriptsize\bf}]
+                   very thin,font={\scriptsize\tt}]
 
   \pgfdeclarelayer{background}
   \pgfdeclarelayer{foreground}
@@ -22,26 +22,26 @@
   % plain nodes
   \node[enter, name=start] {entry($p_0$, $p_1$)} ;
   \node[guard, name=block1, below of=start, node distance=5em] {
-    \begin{tabular}{c} 
+    \begin{tabular}{l} 
       guard\_class($p_1$, BoxedInteger) \\
-      $i_2$ = getfield\_gc($p_1$, intval) \\
+      $i_2$ = getfield($p_1$, intval) \\
       guard\_class($p_0$, BoxedInteger) \\
-      $i_3$ = getfield\_gc($p_0$, intval) \\
+      $i_3$ = getfield($p_0$, intval) \\
       $i_5$ = int\_add($i_2$, $i_3$) \\
       $i_6$ = int\_add($i_5$, -100) \\
     \end{tabular}
   };
 
   \node[guard, name=block2, below of=block1, node distance=6em] {
-    \begin{tabular}{c} 
+    \begin{tabular}{l} 
       guard\_class($p_0$, BoxedInteger) \\
-      $i_{12}$ = getfield\_gc($p_0$, intval) \\
+      $i_{12}$ = getfield($p_0$, intval) \\
       $i_{7}$ = int\_add($i_{12}$, -1) \\
     \end{tabular}
   };
 
   \node[guard, name=block3, below of=block2, node distance=4.5em] {
-    \begin{tabular}{c} 
+    \begin{tabular}{l} 
       $i_{8}$ = int\_gt($i_{7}$, 0) \\
       guard\_true($i_{8}$) \\
     \end{tabular}
@@ -49,9 +49,9 @@
 
   \node[guard, name=block3a, below of=block3, node distance=3em] { jump($i_{7}$, $i_6$) \\ } ;
 
-  \node[enter, name=start2, below of=block3a, node distance=5em] {loop($i_0$, $i_1$)} ;
+  \node[enter, name=start2, below of=block3a, node distance=5em] {loop[$i_0$, $i_1$]:} ;
   \node[guard, name=block4, below of=start2, node distance=5em] {
-    \begin{tabular}{c} 
+    \begin{tabular}{l} 
       $i_4$ = int\_add($i_1$, $i_0$) \\
       $i_9$ = int\_add($i_4$, -100) \\
       $i_{14}$ = int\_add($i_0$, -1) \\

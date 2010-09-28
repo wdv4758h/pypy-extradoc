@@ -341,62 +341,64 @@ float or integer additions.
 
 
 \begin{figure}
-\begin{verbatim}
-    # arguments to the trace: p0, p1
-    # inside f: res.add(y)
-    guard_class(p1, BoxedInteger)
-        # inside BoxedInteger.add
-        i2 = getfield_gc(p1, intval)
-        guard_class(p0, BoxedInteger)
-            # inside BoxedInteger.add__int
-            i3 = getfield_gc(p0, intval)
-            i4 = int_add(i2, i3)
-            p5 = new(BoxedInteger)
-                # inside BoxedInteger.__init__
-                setfield_gc(p5, i4, intval)
-    # inside f: BoxedInteger(-100) 
-    p6 = new(BoxedInteger)
-        # inside BoxedInteger.__init__
-        setfield_gc(p6, -100, intval)
-
-    # inside f: .add(BoxedInteger(-100))
-    guard_class(p5, BoxedInteger)
-        # inside BoxedInteger.add
-        i7 = getfield_gc(p5, intval)
-        guard_class(p6, BoxedInteger)
-            # inside BoxedInteger.add__int
-            i8 = getfield_gc(p6, intval)
-            i9 = int_add(i7, i8)
-            p10 = new(BoxedInteger)
-                # inside BoxedInteger.__init__
-                setfield_gc(p10, i9, intval)
-
-    # inside f: BoxedInteger(-1)
-    p11 = new(BoxedInteger)
-        # inside BoxedInteger.__init__
-        setfield_gc(p11, -1, intval)
-
-    # inside f: y.add(BoxedInteger(-1))
-    guard_class(p0, BoxedInteger)
-        # inside BoxedInteger.add
-        i12 = getfield_gc(p0, intval)
-        guard_class(p11, BoxedInteger)
-            # inside BoxedInteger.add__int
-            i13 = getfield_gc(p11, intval)
-            i14 = int_add(i12, i13)
-            p15 = new(BoxedInteger)
-                # inside BoxedInteger.__init__
-                setfield_gc(p15, i14, intval)
-
-    # inside f: y.is_positive()
-    guard_class(p15, BoxedInteger)
-        # inside BoxedInteger.is_positive
-        i16 = getfield_gc(p15, intval)
-        i17 = int_gt(i16, 0)
-    # inside f
-    guard_true(i17)
-    jump(p15, p10)
-\end{verbatim}
+\texttt{
+\begin{tabular}{l} 
+\# arguments to the trace: $p_{0}$, $p_{1}$ \\
+\# inside f: res.add(y) \\
+guard\_class($p_{1}$, BoxedInteger) \\
+~~~~\# inside BoxedInteger.add \\
+~~~~$i_{2}$ = getfield($p_{1}$, intval) \\
+~~~~guard\_class($p_{0}$, BoxedInteger) \\
+~~~~~~~~\# inside BoxedInteger.add\_\_int \\
+~~~~~~~~$i_{3}$ = getfield($p_{0}$, intval) \\
+~~~~~~~~$i_{4}$ = int\_add($i_{2}$, $i_{3}$) \\
+~~~~~~~~$p_{5}$ = new(BoxedInteger) \\
+~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
+~~~~~~~~~~~~setfield($p_{5}$, $i_{4}$, intval) \\
+\# inside f: BoxedInteger(-100)  \\
+$p_{6}$ = new(BoxedInteger) \\
+~~~~\# inside BoxedInteger.\_\_init\_\_ \\
+~~~~setfield($p_{6}$, -100, intval) \\
+~\\
+\# inside f: .add(BoxedInteger(-100)) \\
+guard\_class($p_{5}$, BoxedInteger) \\
+~~~~\# inside BoxedInteger.add \\
+~~~~$i_{7}$ = getfield($p_{5}$, intval) \\
+~~~~guard\_class($p_{6}$, BoxedInteger) \\
+~~~~~~~~\# inside BoxedInteger.add\_\_int \\
+~~~~~~~~$i_{8}$ = getfield($p_{6}$, intval) \\
+~~~~~~~~$i_{9}$ = int\_add($i_{7}$, $i_{8}$) \\
+~~~~~~~~$p_{10}$ = new(BoxedInteger) \\
+~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
+~~~~~~~~~~~~setfield($p_{10}$, $i_{9}$, intval) \\
+~\\
+\# inside f: BoxedInteger(-1) \\
+$p_{11}$ = new(BoxedInteger) \\
+~~~~\# inside BoxedInteger.\_\_init\_\_ \\
+~~~~setfield($p_{11}$, -1, intval) \\
+~\\
+\# inside f: y.add(BoxedInteger(-1)) \\
+guard\_class($p_{0}$, BoxedInteger) \\
+~~~~\# inside BoxedInteger.add \\
+~~~~$i_{12}$ = getfield($p_{0}$, intval) \\
+~~~~guard\_class($p_{11}$, BoxedInteger) \\
+~~~~~~~~\# inside BoxedInteger.add\_\_int \\
+~~~~~~~~$i_{13}$ = getfield($p_{11}$, intval) \\
+~~~~~~~~$i_{14}$ = int\_add($i_{12}$, $i_{13}$) \\
+~~~~~~~~$p_{15}$ = new(BoxedInteger) \\
+~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
+~~~~~~~~~~~~setfield($p_{15}$, $i_{14}$, intval) \\
+~\\
+\# inside f: y.is\_positive() \\
+guard\_class($p_{15}$, BoxedInteger) \\
+~~~~\# inside BoxedInteger.is\_positive \\
+~~~~$i_{16}$ = getfield($p_{15}$, intval) \\
+~~~~$i_{17}$ = int\_gt($i_{16}$, 0) \\
+\# inside f \\
+guard\_true($i_{17}$) \\
+jump($p_{15}$, $p_{10}$) \\
+\end{tabular}
+}
 \label{fig:unopt-trace}
 \caption{Unoptimized Trace for the Simple Object Model}
 \end{figure}
@@ -406,7 +408,7 @@ If the function is executed using the tracing JIT, with \texttt{y} being a
 Figure~\ref{fig:unopt-trace}. The operations in the trace are shown indented to
 correspond to the stack level of the function that contains the traced
 operation. The trace also shows the inefficiencies of \texttt{f} clearly, if one
-looks at the number of \texttt{new}, \texttt{set/getfield\_gc} and
+looks at the number of \texttt{new}, \texttt{set/getfield} and
 \texttt{guard\_class} operations.
 
 Note how the functions that are called by \texttt{f} are automatically inlined
@@ -421,7 +423,6 @@ first \texttt{guard\_class} instruction will fail and execution will continue
 using the interpreter.
 
 XXX simplify traces a bit more
-get rid of \_gc suffix in set/getfield\_gc
 
 In the next section, we will see how this can be improved upon, using escape
 analysis. XXX
@@ -481,7 +482,7 @@ fall into one of several categories:
 
 The objects that are allocated in the example trace in
 Figure~\ref{fig:unopt-trace} fall into categories 1 and 3. Objects stored in
-\texttt{p5, p6, p11 XXX} are in category 1, objects in \texttt{p10, p15} are in
+$p_{5}$, $p_{6}$, $p_{11}$ are in category 1, objects in $p_{10}$, $p_{15}$ are in
 category 3.
 
 The creation of objects in category 1 is removed by the optimization described
@@ -522,39 +523,44 @@ XXX what happens on a guard\_class?
 In the example from last section, the following operations would produce two
 virtual objects, and be completely removed from the optimized trace:
 
-\begin{verbatim}
-p5 = new(BoxedInteger)
-setfield_gc(p5, i4, intval)
-p6 = new(BoxedInteger)
-setfield_gc(p6, -100, intval)
-\end{verbatim}
+\texttt{
+\begin{tabular}{l} 
+$p_{5}$ = new(BoxedInteger) \\
+setfield($p_{5}$, $i_{4}$, intval) \\
+$p_{6}$ = new(BoxedInteger) \\
+setfield($p_{6}$, -100, intval) \\
+\end{tabular}
+}
 
-
-The virtual object stored in \texttt{p5} would know that it is an \texttt{BoxedInteger}, and that
-the \texttt{intval} field contains \texttt{i4}, the one stored in \texttt{p6} would know that
+The virtual object stored in $p_{5}$ would know that it is an \texttt{BoxedInteger}, and that
+the \texttt{intval} field contains $i_{4}$, the one stored in $p_{6}$ would know that
 its \texttt{intval} field contains the constant -100.
 
-The following operations, that use \texttt{p5} and \texttt{p6} could then be
+The following operations, that use $p_{5}$ and $p_{6}$ could then be
 optimized using that knowledge:
 
-\begin{verbatim}
-guard_class(p5, BoxedInteger)
-i7 = getfield_gc(p5, intval)
-# inside BoxedInteger.add
-guard_class(p6, BoxedInteger)
-# inside BoxedInteger.add__int
-i8 = getfield_gc(p6, intval)
-i9 = int_add(i7, i8)
-\end{verbatim}
+\texttt{
+\begin{tabular}{l} 
+guard\_class($p_{5}$, BoxedInteger) \\
+$i_{7}$ = getfield($p_{5}$, intval) \\
+\# inside BoxedInteger.add \\
+guard\_class($p_{6}$, BoxedInteger) \\
+\# inside BoxedInteger.add\_\_int \\
+$i_{8}$ = getfield($p_{6}$, intval) \\
+$i_{9}$ = int\_add($i_{7}$, $i_{8}$) \\
+\end{tabular}
+}
 
-The \texttt{guard\_class} operations can be removed, because the classes of \texttt{p5} and
-\texttt{p6} are known to be \texttt{BoxedInteger}. The \texttt{getfield\_gc} operations can be removed
-and \texttt{i7} and \texttt{i8} are just replaced by \texttt{i4} and -100. Thus the only
+The \texttt{guard\_class} operations can be removed, because the classes of $p_{5}$ and
+$p_{6}$ are known to be \texttt{BoxedInteger}. The \texttt{getfield} operations can be removed
+and $i_{7}$ and $i_{8}$ are just replaced by $i_{4}$ and -100. Thus the only
 remaining operation in the optimized trace would be:
 
-\begin{verbatim}
-i9 = int_add(i4, -100)
-\end{verbatim}
+\texttt{
+\begin{tabular}{l} 
+$i_{9}$ = int\_add($i_{4}$, -100) \\
+\end{tabular}
+}
     
 The rest of the trace is optimized similarly.
 
@@ -573,14 +579,13 @@ that allocates a new object of the right type and sets its fields to the field
 values that the virtual object has. This means that instead of the jump, the
 following operations are emitted:
 
-XXX should the variables be written in $math-style$ everywhere?
 
 \texttt{
 \begin{tabular}{l} 
 $p_{15}$ = new(BoxedInteger) \\
-setfield\_gc($p_{15}$, $i_{14}$, intval) \\
+setfield($p_{15}$, $i_{14}$, intval) \\
 $p_{10}$ = new(BoxedInteger) \\
-setfield\_gc($p_{10}$, $i_{9}$, intval) \\
+setfield($p_{10}$, $i_{9}$, intval) \\
 jump($p_{15}$, $p_{10}$) \\
 \end{tabular}
 }
@@ -589,7 +594,7 @@ Note how the operations for creating these two instances have been moved down th
 trace. It looks like for these operations we actually didn't win much, because
 the objects are still allocated at the end. However, the optimization was still
 worthwhile even in this case, because some operations that have been performed
-on the forced virtual objects have been removed (some \texttt{getfield\_gc} operations
+on the forced virtual objects have been removed (some \texttt{getfield} operations
 and \texttt{guard\_class} operations).
 
 \begin{figure}
@@ -659,7 +664,7 @@ Let's look at the final trace obtained in the last section for the example loop.
 The final trace was much better than the original one, because many allocations
 were removed from it. However, it also still contained allocations:
 
-The two new \texttt{BoxedIntegers} stored in \texttt{p15} and \texttt{p10} are passed into
+The two new \texttt{BoxedIntegers} stored in $p_{15}$ and $p_{10}$ are passed into
 the next iteration of the loop. The next iteration will check that they are
 indeed \texttt{BoxedIntegers}, read their \texttt{intval} fields and then not use them
 any more. Thus those instances are in category 3.
