@@ -50,9 +50,9 @@
   \node[newguard, name=block4, below of=block3, node distance=5em] {
     \begin{tabular}{l} 
       $p_{15}$ = new(BoxedInteger) \\
-      setfield($p_{15}$, $i_{14}$, intval) \\
+      setfield($p_{15}$, intval, $i_{14}$) \\
       $p_{10}$ = new(BoxedInteger) \\
-      setfield($p_{10}$, $i_9$, intval) \\
+      setfield($p_{10}$, intval, $i_9$) \\
     \end{tabular}
   };
 
