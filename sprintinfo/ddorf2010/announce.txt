@@ -30,4 +30,4 @@ list of `people`_ which we'll update (which you can do so yourself if
 you have codespeak commit rights). 
 
 .. _`pypy-sprint mailing list`: http://codespeak.net/mailman/listinfo/pypy-sprint
-.. _`people`: http://codespeak.net/pypy/extradoc/sprintinfo/ddorf2010/people.txt
+.. _`people`: http://codespeak.net/svn/pypy/extradoc/sprintinfo/ddorf2010/people.txt
