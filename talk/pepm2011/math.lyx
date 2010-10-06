@@ -504,7 +504,7 @@ guard
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula ${\displaystyle \frac{E(v)\in\mathrm{dom}(S),\,\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathrm{guard}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$
+\begin_inset Formula ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\vee\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathrm{guard}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$
 \end_inset
 
 
@@ -527,9 +527,6 @@ guard
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathrm{guard}(E\left(v\right),T)\right\rangle ,E,S}}$
-\end_inset
-
 
 \end_layout
 
