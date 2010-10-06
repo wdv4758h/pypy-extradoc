@@ -438,7 +438,7 @@ tracing JIT compiler.
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.7]{figures/obj-lifetime.pdf}
+\includegraphics[scale=0.6]{figures/obj-lifetime.pdf}
 \end{center}
 
 \caption{Object Lifetimes in a Trace}
@@ -612,7 +612,124 @@ and only three \texttt{guard\_class} operations, from the original seven.
 \section{Formal Description of the Algorithm}
 \label{sec:Algorithm}
 
-XXX want some sort of pseudo-code
+
+\begin{figure*}
+\begin{center}
+\begin{tabular}{lcccc}
+\emph{new} & ${\displaystyle \frac{l\,\mathrm{fresh}}{v=\mathrm{new}(T),E,H\overset{\mathrm{run}}{\Longrightarrow}E\left[v\mapsto l\right],H\left[l\mapsto\left(T,\mathrm{null},\mathrm{null}\right)\right]}}$ & ~~~ &
+\emph{guard} & ${\displaystyle \frac{\mathrm{type}(H(E(v))=T}{\mathrm{guard}(v,T),E,H\overset{\mathrm{run}}{\Longrightarrow}E,H}}$\tabularnewline[3em]
+\emph{get} & ${\displaystyle \frac{\,}{v=\mathrm{get}(u,F),E,H\overset{\mathrm{run}}{\Longrightarrow}E\left[v\mapsto H\left(E\left(u\right)\right)_{F}\right],H}}$ & ~~~ &
+& ${\displaystyle \frac{\mathrm{type}(H(E(v))\neq T}{\mathrm{guard}(v,T),E,H\overset{\mathrm{run}}{\Longrightarrow}\bot,\bot}}$\tabularnewline[3em]
+\emph{set} & ${\displaystyle \frac{\,}{\mathrm{set}\left(v,F,u\right),E,H\overset{\mathrm{run}}{\Longrightarrow}E,H\left[E\left(v\right)\mapsto\left(H\left(E\left(v\right)\right)!_{F}E(u)\right)\right]}}$ & ~~~ &
+& \tabularnewline[4em]
+\end{tabular}
+
+\begin{minipage}[b]{7 cm}
+\emph{Object Domains:}
+$$\setlength\arraycolsep{0.1em}
+ \begin{array}{rcll}
+    u,v,w & \in & V & \mathrm{\ variables\ in\ trace}\\
+    T & \in & \mathfrak{T} & \mathrm{\ runtime\ types}\\
+    F & \in & \left\{ L,R\right\} & \mathrm{\ fields\ of\ objects}\\
+    l & \in & L & \mathrm{\ locations\ on\ heap}
+ \end{array}
+$$
+\end{minipage}
+\begin{minipage}[b]{5 cm}
+\emph{Semantic Values:}
+$$\setlength\arraycolsep{0.1em}
+ \begin{array}{rcll}
+    E & \in & V\rightharpoonup L & \mathrm{\ Environment}\\
+    H & \in & L\rightharpoonup\mathfrak{T}\times(L\cup \{ \mathrm{null} \})\times (L\cup \{ \mathrm{null}\} ) & \mathrm{\ Heap}\\
+    \\
+    \\
+ \end{array}
+$$
+\end{minipage}
+\end{center}
+\label{fig:semantics}
+\caption{The Operational Semantics of Simplified Traces}
+\end{figure*}
+
+In this section we want to give a formal description of the semantics of the
+traces and of the optimizer and liken the optimization to partial evaluation.
+We concentrate on the operations for manipulating dynamically allocated objects,
+as those are the only ones that are actually optimized. Without loss of
+generality we also consider only objects with two fields in this section.
+
+Traces are lists of operations. The operations considered here are new (to make
+a new object), get (to read a field out of an object), set (to write a field
+into an object) and guard (to check the type of an object). The values of all
+variables are locations (i.e.~pointers). Locations are mapped to objects, which
+are represented by triples of a type $T$, and two locations that represent the
+fields of the object. When a new object is created, the fields are initialized
+to null, but we require that they are immediately initialized to a real
+location, otherwise the trace is malformed.
+
+We use some abbreviations when dealing with object triples. To read the type of
+an object, $\mathrm{type}((T,l_1,l_2))=T$ is used. Reading a field $F$ from an
+object is written $(T,l_1,l_2)_F$ which either returns $l_1$ if $F=L$ or $l_2$
+if $F=R$. To set field $F$ to a new location $l$, we use the notation
+$(T,l_1,l_2)!_Fl$, which yields a new triple $(T,l,l_2)$ if $F=L$ or a new
+triple $(T,l_1,l)$ if $F=R$.
+
+Figure~\ref{fig:semantics} shows the operational semantics for traces. The
+interpreter formalized there executes one operation at a time. Its state is
+represented by an environment and a heap, which are potentially changed by the
+execution of an operation. The environment is a partial function from variables
+to locations and the heap is a partial function from locations to objects. Note
+that a variable can never be null in the environment, otherwise the trace would
+be malformed. We use some syntax for changing partial functions: $E[v\mapsto l]$
+denotes the environment which is just like $E$, but maps $v$ to $l$.
+
+The new operation creates a new object $(T,\mathrm{null},\mathrm{null})$, on the
+heap under a fresh location $l$ and adds the result variable to the environment,
+mapping to the new location $l$.
+
+The get operation reads a field $F$ out of an object and adds the result
+variable to the environment, mapping to the read location. The heap is
+unchanged.
+
+The set operation changes field $F$ of an object stored at the location that
+variable $v$ maps to. The new value of the field is the location in variable
+$u$. The environment is unchanged.
+
+The guard operation is used to check whether the object stored at the location
+that variable $v$ maps to is of type $T$. If that is the case, then execution
+continues without changing heap and environment. Otherwise, execution is
+stopped.
+
+\subsection{Optimizing Traces}
+\label{sub:formalopt}
+
+
+
+% subsection Optimizing Traces (end)
+
+
+
+\begin{figure*}
+\begin{center}
+\fbox{
+\begin{tabular}{lc}
+\emph{new} & ${\displaystyle \frac{v^{*}\,\mathrm{fresh}}{v=\mathrm{new}(T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto v^{*}\right],S\left[v^{*}\mapsto\left(T,\mathrm{null,null}\right)\right]}}$\tabularnewline[3em]
+\emph{get} & ${\displaystyle \frac{E(u)\in\mathrm{dom}(S)}{v=\mathrm{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto S(E(u))_{F}\right],S}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(u)\notin\mathrm{dom}(S)\, v^{*}\,\mathrm{fresh}}{v=\mathrm{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle v^{*}=\mathrm{get}(E(u),F)\right\rangle ,E\left[v\mapsto v^{*}\right],S}}$\tabularnewline[3em]
+\emph{set} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S)}{\mathrm{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S\left[E\left(v\right)\mapsto\left(S(E(v))!_{F}E(u)\right)\right]}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\notin\mathrm{dom}\left(S\right),\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathrm{set}\left(E(v),F,E(u)\right)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
+\emph{guard} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S),\,\mathrm{type}(S(E(v)))=T}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S),\,\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathrm{guard}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathrm{guard}(E\left(v\right),T)\right\rangle ,E,S}}$\tabularnewline[3em]
+\emph{lifting} & ${\displaystyle \frac{v^{*}\notin\mathrm{dom}(S)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle \,\right\rangle ,S}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{v^{*}\in\mathrm{dom}(S),\,\left(v^{*},S\setminus\left\{ v^{*}\mapsto S\left(v^{*}\right)\right\} \right)\overset{\mathrm{liftfields}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle v^{*}=\mathrm{new}\left(T\right)\right\rangle ::ops,S^{\prime}}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{\left(S\left(v^{*}\right)_{L},S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{L},S^{\prime}\right),\,\left(S\left(v^{*}\right)_{R},S^{\prime}\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{R},S^{\prime\prime}\right)}{v^{*},S\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\mathrm{ops}_{L}::ops_{R}::\left\langle \mathrm{set}\left(v^{*},L,S\left(v^{*}\right)_{L}\right),\,\mathrm{set}\left(v^{*},R,S\left(v^{*}\right)_{R}\right)\right\rangle ,S^{\prime}}}$\tabularnewline
+\end{tabular}
+}
+\end{center}
+\label{fig:optimization}
+\caption{Optimization Rules}
+\end{figure*}
+
 
 % section Formal Description of the Algorithm (end)
 
