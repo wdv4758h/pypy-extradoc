@@ -340,7 +340,7 @@ Optimizations
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="2">
+<lyxtabular version="3" rows="10" columns="2">
 <features>
 <column alignment="left" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -519,26 +519,6 @@ guard
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row bottomspace="3em">
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \emph on
 lifting
 \end_layout
@@ -581,7 +561,7 @@ lifting
 \end_inset
 </cell>
 </row>
-<row>
+<row bottomspace="3em">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
