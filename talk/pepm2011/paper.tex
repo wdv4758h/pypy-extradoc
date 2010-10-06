@@ -780,8 +780,9 @@ When the optimizer sees a new operation, it optimistically removes it and
 assumes that the resulting object can stay static. The optimization for all
 further operations is split into two cases. One case is for when the
 involved variables are in the static heap, which means that the operation can be
-removed. The other case is that nothing is known about the variables, which
-means the operation has to be residualized.
+performed at optimization time and removed from the trace. These rules mirror
+the execution semantics closely. The other case is that nothing is known about
+the variables, which means the operation has to be residualized.
 
 If the argument $u$ of a get operation is mapped to something in the static
 heap, the get can be performed at optimization time. Otherwise, the get
