@@ -500,7 +500,7 @@ nobody else in the program stores a reference to them. The idea for improving
 the code is thus to analyze which objects fall in category 1 and may thus
 not be allocated at all.
 
-XXX is "symbolic execution" the right word to drop?
+XXX rewrite to acknowledge the existence of the formal stuff
 
 This process is called \emph{escape analysis}. The escape analysis of
 our tracing JIT works by using \emph{virtual objects}: The trace is walked from
@@ -710,6 +710,50 @@ stopped.
 \subsection{Optimizing Traces}
 \label{sub:formalopt}
 
+
+
+\begin{figure*}
+\begin{center}
+\begin{tabular}{lc}
+\emph{new} & ${\displaystyle \frac{v^{*}\,\mathrm{fresh}}{v=\mathrm{new}(T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto v^{*}\right],S\left[v^{*}\mapsto\left(T,\mathrm{null,null}\right)\right]}}$\tabularnewline[3em]
+\emph{get} & ${\displaystyle \frac{E(u)\in\mathrm{dom}(S)}{v=\mathrm{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto S(E(u))_{F}\right],S}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(u)\notin\mathrm{dom}(S)\, v^{*}\,\mathrm{fresh}}{v=\mathrm{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle v^{*}=\mathrm{get}(E(u),F)\right\rangle ,E\left[v\mapsto v^{*}\right],S}}$\tabularnewline[3em]
+\emph{set} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S)}{\mathrm{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S\left[E\left(v\right)\mapsto\left(S(E(v))!_{F}E(u)\right)\right]}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\notin\mathrm{dom}\left(S\right),\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathrm{set}\left(E(v),F,E(u)\right)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
+\emph{guard} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S),\,\mathrm{type}(S(E(v)))=T}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\vee\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathrm{guard}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
+\emph{lifting} & ${\displaystyle \frac{v^{*}\notin\mathrm{dom}(S)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle \,\right\rangle ,S}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{v^{*}\in\mathrm{dom}(S),\,\left(v^{*},S\right)\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle v^{*}=\mathrm{new}\left(T\right)\right\rangle ::ops,S^{\prime}}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{\left(S\left(v^{*}\right)_{L},S\setminus\left\{ v^{*}\mapsto S\left(v^{*}\right)\right\} \right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{L},S^{\prime}\right),\,\left(S\left(v^{*}\right)_{R},S^{\prime}\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{R},S^{\prime\prime}\right)}{v^{*},S\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\mathrm{ops}_{L}::ops_{R}::\left\langle \mathrm{set}\left(v^{*},L,S\left(v^{*}\right)_{L}\right),\,\mathrm{set}\left(v^{*},R,S\left(v^{*}\right)_{R}\right)\right\rangle ,S^{\prime}}}$\tabularnewline[3em]
+\end{tabular}
+
+\begin{minipage}[b]{7 cm}
+\emph{Object Domains:}
+$$\setlength\arraycolsep{0.1em}
+ \begin{array}{rcll}
+    u,v,w & \in & V & \mathrm{\ variables\ in\ trace}\\
+    u^*,v^*,w^* & \in & V^* & \mathrm{\ variables\ in\ optimized\ trace}\\
+    T & \in & \mathfrak{T} & \mathrm{\ runtime\ types}\\
+    F & \in & \left\{ L,R\right\} & \mathrm{\ fields\ of\ objects}\\
+ \end{array}
+$$
+\end{minipage}
+\begin{minipage}[b]{5 cm}
+\emph{Semantic Values:}
+$$\setlength\arraycolsep{0.1em}
+ \begin{array}{rcll}
+    E & \in & V\rightharpoonup V^* & \mathrm{\ Environment}\\
+    S & \in & V^*\rightharpoonup\mathfrak{T}\times(V^*\cup \{ \mathrm{null} \})\times (V^*\cup \{ \mathrm{null}\} ) & \mathrm{\ Heap}\\
+    \\
+    \\
+ \end{array}
+$$
+\end{minipage}
+\end{center}
+\label{fig:optimization}
+\caption{Optimization Rules}
+\end{figure*}
+
 To optimize the simple traces from the last section, we use online partial
 evaluation. The partial evaluator optimizes one operation of the trace at a
 time. Every operation in the unoptimized trace is replaced by a list of
@@ -769,49 +813,12 @@ recursively lifting its fields.
 
 % subsection Optimizing Traces (end)
 
+\subsection{Analysis of the Algorithm}
+\label{sub:analysis}
 
+XXX algorithm is linear in the length of the trace
 
-\begin{figure*}
-\begin{center}
-\begin{tabular}{lc}
-\emph{new} & ${\displaystyle \frac{v^{*}\,\mathrm{fresh}}{v=\mathrm{new}(T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto v^{*}\right],S\left[v^{*}\mapsto\left(T,\mathrm{null,null}\right)\right]}}$\tabularnewline[3em]
-\emph{get} & ${\displaystyle \frac{E(u)\in\mathrm{dom}(S)}{v=\mathrm{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto S(E(u))_{F}\right],S}}$\tabularnewline[3em]
- & ${\displaystyle \frac{E(u)\notin\mathrm{dom}(S)\, v^{*}\,\mathrm{fresh}}{v=\mathrm{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle v^{*}=\mathrm{get}(E(u),F)\right\rangle ,E\left[v\mapsto v^{*}\right],S}}$\tabularnewline[3em]
-\emph{set} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S)}{\mathrm{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S\left[E\left(v\right)\mapsto\left(S(E(v))!_{F}E(u)\right)\right]}}$\tabularnewline[3em]
- & ${\displaystyle \frac{E(v)\notin\mathrm{dom}\left(S\right),\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathrm{set}\left(E(v),F,E(u)\right)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
-\emph{guard} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S),\,\mathrm{type}(S(E(v)))=T}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S}}$\tabularnewline[3em]
- & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\vee\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathrm{guard}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
-\emph{lifting} & ${\displaystyle \frac{v^{*}\notin\mathrm{dom}(S)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle \,\right\rangle ,S}}$\tabularnewline[3em]
- & ${\displaystyle \frac{v^{*}\in\mathrm{dom}(S),\,\left(v^{*},S\right)\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle v^{*}=\mathrm{new}\left(T\right)\right\rangle ::ops,S^{\prime}}}$\tabularnewline[3em]
- & ${\displaystyle \frac{\left(S\left(v^{*}\right)_{L},S\setminus\left\{ v^{*}\mapsto S\left(v^{*}\right)\right\} \right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{L},S^{\prime}\right),\,\left(S\left(v^{*}\right)_{R},S^{\prime}\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{R},S^{\prime\prime}\right)}{v^{*},S\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\mathrm{ops}_{L}::ops_{R}::\left\langle \mathrm{set}\left(v^{*},L,S\left(v^{*}\right)_{L}\right),\,\mathrm{set}\left(v^{*},R,S\left(v^{*}\right)_{R}\right)\right\rangle ,S^{\prime}}}$\tabularnewline[3em]
-\end{tabular}
-
-\begin{minipage}[b]{7 cm}
-\emph{Object Domains:}
-$$\setlength\arraycolsep{0.1em}
- \begin{array}{rcll}
-    u,v,w & \in & V & \mathrm{\ variables\ in\ trace}\\
-    u^*,v^*,w^* & \in & V^* & \mathrm{\ variables\ in\ optimized\ trace}\\
-    T & \in & \mathfrak{T} & \mathrm{\ runtime\ types}\\
-    F & \in & \left\{ L,R\right\} & \mathrm{\ fields\ of\ objects}\\
- \end{array}
-$$
-\end{minipage}
-\begin{minipage}[b]{5 cm}
-\emph{Semantic Values:}
-$$\setlength\arraycolsep{0.1em}
- \begin{array}{rcll}
-    E & \in & V\rightharpoonup V^* & \mathrm{\ Environment}\\
-    S & \in & V^*\rightharpoonup\mathfrak{T}\times(V^*\cup \{ \mathrm{null} \})\times (V^*\cup \{ \mathrm{null}\} ) & \mathrm{\ Heap}\\
-    \\
-    \\
- \end{array}
-$$
-\end{minipage}
-\end{center}
-\label{fig:optimization}
-\caption{Optimization Rules}
-\end{figure*}
+% subsection Analysis of the Algorithm (end)
 
 
 % section Formal Description of the Algorithm (end)
