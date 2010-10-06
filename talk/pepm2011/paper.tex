@@ -52,9 +52,9 @@
 \CopyrightYear{XXX}
 \copyrightdata{XXX}
 
-\title{Escape Analysis and Specialization in a Tracing JIT}
+\title{Allocation Removal by Partial Evaluation in a Tracing JIT}
 
-\authorinfo{Carl Friedrich Bolz \and Antonio Cuni \and Maciej Fijałkowski \and Samuele Pedroni \and Armin Rigo}
+\authorinfo{Carl Friedrich Bolz \and Antonio Cuni \and Maciej Fijałkowski \and Michael Leuschel \and Samuele Pedroni \and Armin Rigo}
            {Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany XXX}
            {cfbolz@gmx.de, anto.cuni@gmail.com, fijal@merlinux.eu,
            samuele.pedroni@gmail.com, arigo@tunes.org}
@@ -488,7 +488,7 @@ category 3.
 The creation of objects in category 1 is removed by the optimization described
 in Section~\ref{sec:virtuals}. XXX
 
-\section{Escape Analysis in a Tracing JIT}
+\section{Escape Analysis in a Tracing JIT} % XXX imprecise title
 \label{sec:virtuals}
 
 
@@ -505,23 +505,22 @@ XXX is "symbolic execution" the right word to drop?
 This process is called \emph{escape analysis}. The escape analysis of
 our tracing JIT works by using \emph{virtual objects}: The trace is walked from
 beginning to end and whenever a \texttt{new} operation is seen, the operation is
-removed and a virtual object\arigo{XXX what I have in mind when I talk
-of ``virtual object'' is the run-time behavior -- i.e. a real object that
-would exist at run-time, except that it has be virtual-ized.  Here you seem
-to mean rather ``virtual object description'' or something.}
-is constructed. The virtual object summarizes the
-shape of the object that is allocated at this position in the original trace,
-and is used by the optimization to improve the trace. The shapes describe
+removed and a shape description is constructed and associated with the variable
+that would have stored the result of \texttt{new}. This result, a newly
+allocated object, is called \emph{virtual}, because after the optimization is
+finished, it does not need to be allocated at all. The shape description summarizes
+the shape of this original object
+and is used by the optimization to improve the trace. The shape describes
 where the values that would be stored in the fields of the allocated objects
-come from. Whenever the optimizer sees a \texttt{setfield} that writes into a virtual
-object, that shape summary is thus updated and the operation can be removed.
-When the optimizer encounters a \texttt{getfield} from a virtual, the result is read
-from the virtual object, and the operation is also removed.
-Equivalently, a \texttt{guard\_class} on a virtual object can be removed as
-well, because the virtual object has a fixed and known class.
+come from. Whenever the optimizer sees a \texttt{setfield} that writes into such
+an object, that shape description is updated and the operation can be removed.
+When the optimizer encounters a \texttt{getfield} from such an object, the result is read
+from the shape description, and the operation is also removed.
+Equivalently, a \texttt{guard\_class} on a variable that has a shape description can be removed as
+well, because the shape description stores the class.
 
 In the example from last section, the following operations would produce two
-virtual objects, and be completely removed from the optimized trace:
+shape descriptions, and be completely removed from the optimized trace:
 
 \texttt{
 \begin{tabular}{l} 
@@ -532,9 +531,10 @@ setfield($p_{6}$, intval, -100) \\
 \end{tabular}
 }
 
-The virtual object stored in $p_{5}$ would know that it is an \texttt{BoxedInteger}, and that
-the \texttt{intval} field contains $i_{4}$, the one stored in $p_{6}$ would know that
-its \texttt{intval} field contains the constant -100.
+The shape description associated with $p_{5}$ would know that it is an
+\texttt{BoxedInteger}, and that the \texttt{intval} field contains $i_{4}$, the
+associated with $p_{6}$ would know that its \texttt{intval} field contains the
+constant -100.
 
 The following operations, that use $p_{5}$ and $p_{6}$ could then be
 optimized using that knowledge:
@@ -569,7 +569,9 @@ operations that read and write their fields and in guards. When the virtual
 object is used in
 any other operation, it cannot stay virtual. For example, when a virtual object
 is stored in a globally accessible place, the object needs to actually be
-allocated, as it might live longer than one iteration of the loop.
+allocated, as it might live longer than one iteration of the loop. The actual
+allocation is inserted just before the operation that requires the object to be
+non-virtual.
 
 This is what happens at the end of the trace in Figure~\ref{fig:unopt-trace}, when the \texttt{jump} operation
 is hit. The arguments of the jump are at this point virtual objects. Before the
@@ -607,12 +609,12 @@ Figure~\ref{fig:step1}.
 The optimized trace contains only two allocations, instead of the original five,
 and only three \texttt{guard\_class} operations, from the original seven.
 
-\subsection{Algorithm}
-\label{sub:Algorithm}
+\section{Formal Description of the Algorithm}
+\label{sec:Algorithm}
 
 XXX want some sort of pseudo-code
 
-% subsection Algorithm (end)
+% section Formal Description of the Algorithm (end)
 
 %___________________________________________________________________________
 
