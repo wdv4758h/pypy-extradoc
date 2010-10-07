@@ -760,7 +760,7 @@ $$
 $$\setlength\arraycolsep{0.1em}
  \begin{array}{rcll}
     E & \in & V\rightharpoonup V^* & \mathrm{\ Environment}\\
-    S & \in & V^*\rightharpoonup\mathfrak{T}\times(V^*\cup \{ \mathrm{null} \})\times (V^*\cup \{ \mathrm{null}\} ) & \mathrm{\ Heap}\\
+    S & \in & V^*\rightharpoonup\mathfrak{T}\times(V^*\cup \{ \mathrm{null} \})\times (V^*\cup \{ \mathrm{null}\} ) & \mathrm{\ Static\ Heap}\\
     \\
     \\
  \end{array}
@@ -836,31 +836,23 @@ recursively lifting its fields.
 
 XXX algorithm is linear in the length of the trace
 
-% subsection Analysis of the Algorithm (end)
+XXX Category 2 The optimization of
+Section~\ref{sec:statics} deals with them too: the \texttt{new} that creates them and
+the field accesses are deferred, until the point where the object escapes.
 
+
+% subsection Analysis of the Algorithm (end)
 
 % section Formal Description of the Algorithm (end)
 
 %___________________________________________________________________________
 
-\subsection{Summary}
-
-In this section we described how simple escape analysis within the scope of one
-loop works. This optimizations reduces the allocation of many intermediate data
-structures that become garbage quickly in an interpreter. It also removes a lot
-of the type dispatching overhead. In the next section, we will explain how this
-optimization can be improved further.
-
-XXX Category 2 The optimization of
-Section~\ref{sec:statics} deals with them too: the \texttt{new} that creates them and
-the field accesses are deferred, until the point where the object escapes.
-
 % section Escape Analysis in a Tracing JIT (end)
 
-\section{Escape Analysis Across Loop Boundaries}
+\section{Allocation Removal Across Loop Boundaries}
 \label{sec:crossloop}
 
-In the last section we described how escape analysis can be used to remove
+In the last sections we described how partial evaluation can be used to remove
 many of the allocations of short-lived objects and many of the type dispatches
 that are present in a non-optimized trace. In this section we will improve the
 optimization to also handle more cases.
@@ -885,9 +877,10 @@ complex and much harder than the one that is described here. The resulting
 behaviour is very similar, however, so we will use the simpler version (and we
 might switch to that at some point in the actual implementation).}
 
-Let's look at the final trace obtained in the last section for the example loop.
-The final trace was much better than the original one, because many allocations
-were removed from it. However, it also still contained allocations:
+Let's look at the final trace obtained in Section~\ref{sec:statics} for the
+example loop. The final trace (Figure~\ref{fig:step1}) was much better than the
+original one, because many allocations were removed from it. However, it also
+still contained allocations.
 
 The two new \texttt{BoxedIntegers} stored in $p_{15}$ and $p_{10}$ are passed into
 the next iteration of the loop. The next iteration will check that they are
@@ -919,7 +912,7 @@ If we do that for our example trace, the trace looks like in Figure~\ref{fig:ste
 
 
 Now the lifetime of the remaining allocations no longer crosses the jump, and
-we can run our escape analysis a second time, to get the trace in
+we can run our partial evaluation a second time, to get the trace in
 Figure~\ref{fig:step3}.
 
 \begin{figure}
@@ -983,7 +976,7 @@ them until they are no longer avoidable. A side-effect of these optimizations
 is also that the optimized loops are specialized for the types of the variables
 that are used inside them.
 
-% section Escape Analysis Across Loop Boundaries (end)
+% section Allocation Removal Across Loop Boundaries (end)
 
 \section{Supporting Techniques}
 \label{sec:support}
