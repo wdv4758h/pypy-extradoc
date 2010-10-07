@@ -187,7 +187,15 @@ PyPy's tools into a VM on the C level. Because the interpreter is written at a
 relatively high level, the language implementation is kept free of low-level
 details, such as object layout, garbage collection or memory model. Those
 aspects of the final VM are woven into the generated code during the translation
-to C. XXX languages that are done using PyPy
+to C.
+
+A number of languages have been implemented with PyPy. The project was started
+to get a better Python implementation, which inspired the name of the project
+and is still the main focus of development. In addition a number of other
+languages were implemented, among them a Prolog interpreter
+\cite{carl_friedrich_bolz_towards_2010}, a Smalltalk VM
+\cite{carl_friedrich_bolz_back_2008} and a GameBoy emulator
+\cite{bruni_pygirl:_2009}.
 
 The feature that makes PyPy more than a compiler with a runtime system is it's
 support for automated JIT compiler generation \cite{bolz_tracing_2009}. During
@@ -196,8 +204,8 @@ language that the interpreter is implementing. This process is mostly
 automatic; it only needs to be guided by the language implementer by a small number of
 source-code hints. Mostly-automatically generating a JIT compiler has many advantages
 over writing one manually, which is an error-prone and tedious process.
-By construction, the generated JIT has the same semantics as the interpreter, and
-the process benefits all languages implemented as an interpreter in RPython.
+By construction, the generated JIT has the same semantics as the interpreter.
+Many optimizations can benefit all languages implemented as an interpreter in RPython.
 The JIT that is produced by PyPy's JIT generator is a \emph{tracing JIT
 compiler}, a concept which we now explain in more details.
 
@@ -224,13 +232,18 @@ interpreter enters a special \emph{tracing mode}. In this tracing mode, the
 interpreter records all operations that it is executing while running one
 iteration of the hot loop. This history of executed operations of one loop is
 called a \emph{trace}. Because the trace corresponds to one iteration of a loop,
-it always ends with a jump to its own beginning.
+it always ends with a jump to its own beginning. The trace also contains all
+operations that are performed in functions that were called in the loop, thus a
+tracing JIT automatically performs inlining.
 
 This trace of operations is then the basis of the generated code. The trace is
-optimized in some ways, and then turned into machine code. Generating machine
-code is simple, because the traces are linear and the operations are very close
-to machine level. The trace corresponds to one concrete execution of a loop,
-therefore the code generated from it is only one possible path through the loop.
+optimized in some ways, and then turned into machine code. Both optimizations
+and machine code generation is simple, because the traces are linear. This
+linearity makes many optimizations a lot more tractable, and the inlining that
+happens gives the optimizations automatically more context to work with.
+
+Since the trace corresponds to one concrete execution of a loop,
+the code generated from it is only one possible path through it.
 To make sure that the trace is maintaining the correct semantics, it contains a
 \emph{guard} at all places where the execution could have diverged from the
 path. Those guards check the assumptions under which execution can stay on the
@@ -491,11 +504,11 @@ $p_{5}$, $p_{6}$, $p_{11}$ are in category 1, objects in $p_{10}$, $p_{15}$ are 
 category 3.
 
 The creation of objects in category 1 is removed by the optimization described
-in Section~\ref{sec:statics}. XXX
+in Sections~\ref{sec:statics} and \ref{sec:formal}. We will look at objects in
+category 3 in Section~\ref{sec:crossloop}.
 
 \section{Allocation Removal in Traces}
 \label{sec:statics}
-
 
 \subsection{Static Objects}
 
