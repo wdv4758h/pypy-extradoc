@@ -108,7 +108,7 @@ how to deal with the overhead of boxing of primitive types and of type
 dispatching. Those are problems that are usually not present or at least less
 severe in statically typed languages.
 
-Boxing of primitive types means that dynamic languages need to be able to handle
+Boxing of primitive types is necessary because dynamic languages need to be able to handle
 all objects, even integers, floats, booleans etc. in the same way as user-defined
 instances. Thus those primitive types are usually \emph{boxed}, i.e. a small
 heap-structure is allocated for them, that contains the actual value. Boxing
@@ -126,31 +126,34 @@ dynamic language because no types are known at compile time, so all operations
 need it.
 
 A recently popular approach to implementing just-in-time compilers for dynamic
-languages is that of a tracing JIT. A tracing JIT often takes the form of an
-extension to an existing interpreter, which can be sped up that way. This
-approach is also the one taken by the PyPy project, which is an environment for
-implementing dynamic programming languages. PyPy's
-approach to doing so is to straightforwardly implement an interpreter for the
-to-be-implemented language, and then use powerful tools to turn the interpreter
-into an efficient virtual machine (VM) that also contains a just-in-time compiler.
-This compiler
-is automatically generated from the interpreter using partial-evaluation-like
-techniques \cite{bolz_tracing_2009}. The PyPy project and its approach to
-tracing JIT compilers is described in Section~\ref{sec:Background}.
+languages is that of a tracing JIT. A tracing JIT works by observing the running
+program and recording linear execution traces, which are then turned into
+machine code. One reason for the popularity of tracing JITs is their relative
+simplicity. They can often be added to an interpreter and a lot of the
+infrastructure of an interpreter can be reused. They give some important
+optimizations like inlining and constant-folding for free. A tracing JIT always
+produces linear pieces of code, which makes many optimizations that are usually
+hard in a compiler simpler, such as register allocation.
 
-The tracing JIT approach that the PyPy project is taking removes the overhead
-of bytecode dispatch. In this paper we want to explain how the traces that are
-produced by PyPy's tracing JIT can be optimized to also remove some of the
+The usage of a tracing JIT can remove the overhead of bytecode dispatch and that
+of the interpreter data structures. In this paper we want to present an approach
+how an optimization can be added to a tracing JIT that also removes some of the
 overhead more closely associated to dynamic languages, such as boxing overhead
-and type dispatching. To understand the problem more closely, we analyze the
-occurring object lifetimes in Section~\ref{sec:lifetimes}. The most important
-technique to achieve this is a form of escape analysis \cite{XXX} that we call
-\emph{virtual objects}\footnote{The terminology comes from \cite{rigo_representation-based_2004}},
-which is described in Section~\ref{sec:virtuals}. The
-goal of virtual objects is to remove allocations of temporary objects that have
-a predictable lifetime and to optimize type dispatching in the process.
+and type dispatching. Our experimental platform is the PyPy project, which is an
+environment for implementing dynamic programming languages. PyPy and tracing
+JITs are described in more detail in Section~\ref{sec:Background}.
+Section~\ref{sec:lifetimes} analyzes the problem to be solved more closely.
 
-The basic approach of virtual objects can then be extended to also be used for
+The most important technique we use to achieve to optimize traces is a
+straightforward application of partial evaluation. The partial evaluation
+performs a form of escape analysis \cite{XXX} on the traces and make some
+objects that are allocated in the trace \emph{static}\footnote{These objects are
+called \emph{virtual} in Psyco \cite{rigo_representation-based_2004}.} which
+means that they do not occur any more in the optimized trace. This technique is
+informally described in Section~\ref{sec:virtuals}, a more formal description is
+given in Section~\ref{sec:formal}.
+
+The basic approach of static objects can then be extended to also be used for
 type-specializing the traces that are produced by the tracing JIT
 (Section~\ref{sec:crossloop}). In Section~\ref{sec:support} we describe some
 supporting techniques that are not central to the approach, but are needed to
@@ -161,8 +164,10 @@ The contributions of this paper are:
 
 \begin{enumerate}
     \item An efficient and effective algorithm for removing object allocations in a tracing JIT.
-    \item XXX
+    \item A characterization of this algorithm as partial evaluation.
+    \item A rigorous evaluation of this algorithm.
 \end{enumerate}
+
 
 \section{Background}
 \label{sec:Background}
@@ -610,7 +615,7 @@ The optimized trace contains only two allocations, instead of the original five,
 and only three \texttt{guard\_class} operations, from the original seven.
 
 \section{Formal Description of the Algorithm}
-\label{sec:Algorithm}
+\label{sec:formal}
 
 
 \begin{figure*}
