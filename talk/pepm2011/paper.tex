@@ -364,52 +364,52 @@ float or integer additions.
 \# inside f: res.add(y) \\
 guard\_class($p_{1}$, BoxedInteger) \\
 ~~~~\# inside BoxedInteger.add \\
-~~~~$i_{2}$ = getfield($p_{1}$, intval) \\
+~~~~$i_{2}$ = get($p_{1}$, intval) \\
 ~~~~guard\_class($p_{0}$, BoxedInteger) \\
 ~~~~~~~~\# inside BoxedInteger.add\_\_int \\
-~~~~~~~~$i_{3}$ = getfield($p_{0}$, intval) \\
+~~~~~~~~$i_{3}$ = get($p_{0}$, intval) \\
 ~~~~~~~~$i_{4}$ = int\_add($i_{2}$, $i_{3}$) \\
 ~~~~~~~~$p_{5}$ = new(BoxedInteger) \\
 ~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~~~~~~~~~setfield($p_{5}$, intval, $i_{4}$) \\
+~~~~~~~~~~~~set($p_{5}$, intval, $i_{4}$) \\
 \# inside f: BoxedInteger(-100)  \\
 $p_{6}$ = new(BoxedInteger) \\
 ~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~setfield($p_{6}$, intval, -100) \\
+~~~~set($p_{6}$, intval, -100) \\
 ~\\
 \# inside f: .add(BoxedInteger(-100)) \\
 guard\_class($p_{5}$, BoxedInteger) \\
 ~~~~\# inside BoxedInteger.add \\
-~~~~$i_{7}$ = getfield($p_{5}$, intval) \\
+~~~~$i_{7}$ = get($p_{5}$, intval) \\
 ~~~~guard\_class($p_{6}$, BoxedInteger) \\
 ~~~~~~~~\# inside BoxedInteger.add\_\_int \\
-~~~~~~~~$i_{8}$ = getfield($p_{6}$, intval) \\
+~~~~~~~~$i_{8}$ = get($p_{6}$, intval) \\
 ~~~~~~~~$i_{9}$ = int\_add($i_{7}$, $i_{8}$) \\
 ~~~~~~~~$p_{10}$ = new(BoxedInteger) \\
 ~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~~~~~~~~~setfield($p_{10}$, intval, $i_{9}$) \\
+~~~~~~~~~~~~set($p_{10}$, intval, $i_{9}$) \\
 ~\\
 \# inside f: BoxedInteger(-1) \\
 $p_{11}$ = new(BoxedInteger) \\
 ~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~setfield($p_{11}$, intval, -1) \\
+~~~~set($p_{11}$, intval, -1) \\
 ~\\
 \# inside f: y.add(BoxedInteger(-1)) \\
 guard\_class($p_{0}$, BoxedInteger) \\
 ~~~~\# inside BoxedInteger.add \\
-~~~~$i_{12}$ = getfield($p_{0}$, intval) \\
+~~~~$i_{12}$ = get($p_{0}$, intval) \\
 ~~~~guard\_class($p_{11}$, BoxedInteger) \\
 ~~~~~~~~\# inside BoxedInteger.add\_\_int \\
-~~~~~~~~$i_{13}$ = getfield($p_{11}$, intval) \\
+~~~~~~~~$i_{13}$ = get($p_{11}$, intval) \\
 ~~~~~~~~$i_{14}$ = int\_add($i_{12}$, $i_{13}$) \\
 ~~~~~~~~$p_{15}$ = new(BoxedInteger) \\
 ~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~~~~~~~~~setfield($p_{15}$, intval, $i_{14}$) \\
+~~~~~~~~~~~~set($p_{15}$, intval, $i_{14}$) \\
 ~\\
 \# inside f: y.is\_positive() \\
 guard\_class($p_{15}$, BoxedInteger) \\
 ~~~~\# inside BoxedInteger.is\_positive \\
-~~~~$i_{16}$ = getfield($p_{15}$, intval) \\
+~~~~$i_{16}$ = get($p_{15}$, intval) \\
 ~~~~$i_{17}$ = int\_gt($i_{16}$, 0) \\
 \# inside f \\
 guard\_true($i_{17}$) \\
@@ -426,7 +426,7 @@ Figure~\ref{fig:unopt-trace}. The operations in the trace are shown indented to
 correspond to the stack level of the function that contains the traced
 operation. The trace also shows the inefficiencies of \texttt{f} clearly, if one
 looks at the number of \texttt{new} (corresponding to object creation),
-\texttt{set/getfield} (corresponding to attribute reads/writes) and
+\texttt{set/get} (corresponding to attribute reads/writes) and
 \texttt{guard\_class} operations (corresponding to method calls).
 
 Note how the functions that are called by \texttt{f} are automatically inlined
@@ -529,10 +529,10 @@ object is constructed and associated with the variable that would have stored
 the result of \texttt{new}. The static object describes the shape of the
 original object, \eg where the values that would be stored in the fields of the
 allocated object come from, as well as the type of the object. Whenever the
-optimizer sees a \texttt{setfield} that writes into such an object, that shape
+optimizer sees a \texttt{set} that writes into such an object, that shape
 description is updated and the operation can be removed, which means that the
 operation was done at partial evaluation time. When the optimizer encounters a
-\texttt{getfield} from such an object, the result is read from the shape
+\texttt{get} from such an object, the result is read from the shape
 description, and the operation is also removed. Equivalently, a
 \texttt{guard\_class} on a variable that has a shape description can be removed
 as well, because the shape description stores the type.
@@ -543,9 +543,9 @@ static objects, and be completely removed from the optimized trace:
 \texttt{
 \begin{tabular}{l} 
 $p_{5}$ = new(BoxedInteger) \\
-setfield($p_{5}$, intval, $i_{4}$) \\
+set($p_{5}$, intval, $i_{4}$) \\
 $p_{6}$ = new(BoxedInteger) \\
-setfield($p_{6}$, intval, -100) \\
+set($p_{6}$, intval, -100) \\
 \end{tabular}
 }
 
@@ -560,17 +560,17 @@ optimized using that knowledge:
 \texttt{
 \begin{tabular}{l} 
 guard\_class($p_{5}$, BoxedInteger) \\
-$i_{7}$ = getfield($p_{5}$, intval) \\
+$i_{7}$ = get($p_{5}$, intval) \\
 \# inside BoxedInteger.add \\
 guard\_class($p_{6}$, BoxedInteger) \\
 \# inside BoxedInteger.add\_\_int \\
-$i_{8}$ = getfield($p_{6}$, intval) \\
+$i_{8}$ = get($p_{6}$, intval) \\
 $i_{9}$ = int\_add($i_{7}$, $i_{8}$) \\
 \end{tabular}
 }
 
 The \texttt{guard\_class} operations can be removed, because the classes of $p_{5}$ and
-$p_{6}$ are known to be \texttt{BoxedInteger}. The \texttt{getfield} operations can be removed
+$p_{6}$ are known to be \texttt{BoxedInteger}. The \texttt{get} operations can be removed
 and $i_{7}$ and $i_{8}$ are just replaced by $i_{4}$ and -100. Thus the only
 remaining operation in the optimized trace would be:
 
@@ -603,9 +603,9 @@ the following operations are emitted:
 \texttt{
 \begin{tabular}{l} 
 $p_{15}$ = new(BoxedInteger) \\
-setfield($p_{15}$, intval, $i_{14}$) \\
+set($p_{15}$, intval, $i_{14}$) \\
 $p_{10}$ = new(BoxedInteger) \\
-setfield($p_{10}$, intval, $i_{9}$) \\
+set($p_{10}$, intval, $i_{9}$) \\
 jump($p_{15}$, $p_{10}$) \\
 \end{tabular}
 }
@@ -614,7 +614,7 @@ Note how the operations for creating these two instances have been moved down th
 trace. It looks like for these operations we actually didn't win much, because
 the objects are still allocated at the end. However, the optimization was still
 worthwhile even in this case, because some operations that have been performed
-on the lifted static objects have been removed (some \texttt{getfield} operations
+on the lifted static objects have been removed (some \texttt{get} operations
 and \texttt{guard\_class} operations).
 
 \begin{figure}
@@ -671,18 +671,15 @@ $$
 \caption{The Operational Semantics of Simplified Traces}
 \end{figure*}
 
-XXX think of a way to format the operations to make them look distinct from
-normal text
-
 In this section we want to give a formal description of the semantics of the
 traces and of the optimizer and liken the optimization to partial evaluation.
 We concentrate on the operations for manipulating dynamically allocated objects,
 as those are the only ones that are actually optimized. Without loss of
 generality we also consider only objects with two fields in this section.
 
-Traces are lists of operations. The operations considered here are new (to make
-a new object), get (to read a field out of an object), set (to write a field
-into an object) and guard (to check the type of an object). The values of all
+Traces are lists of operations. The operations considered here are \texttt{new} (to make
+a new object), \texttt{get} (to read a field out of an object), \texttt{set} (to write a field
+into an object) and \texttt{guard\_class} (to check the type of an object). The values of all
 variables are locations (i.e.~pointers). Locations are mapped to objects, which
 are represented by triples of a type $T$, and two locations that represent the
 fields of the object. When a new object is created, the fields are initialized
@@ -714,15 +711,15 @@ The new operation creates a new object $(T,\mathrm{null},\mathrm{null})$, on the
 heap under a fresh location $l$ and adds the result variable to the environment,
 mapping to the new location $l$.
 
-The get operation reads a field $F$ out of an object and adds the result
+The \texttt{get} operation reads a field $F$ out of an object and adds the result
 variable to the environment, mapping to the read location. The heap is
 unchanged.
 
-The set operation changes field $F$ of an object stored at the location that
+The \texttt{set} operation changes field $F$ of an object stored at the location that
 variable $v$ maps to. The new value of the field is the location in variable
 $u$. The environment is unchanged.
 
-The guard operation is used to check whether the object stored at the location
+The \texttt{guard\_class} operation is used to check whether the object stored at the location
 that variable $v$ maps to is of type $T$. If that is the case, then execution
 continues without changing heap and environment. Otherwise, execution is
 stopped.
@@ -804,21 +801,21 @@ performed at optimization time and removed from the trace. These rules mirror
 the execution semantics closely. The other case is that nothing is known about
 the variables, which means the operation has to be residualized.
 
-If the argument $u$ of a get operation is mapped to something in the static
-heap, the get can be performed at optimization time. Otherwise, the get
+If the argument $u$ of a \texttt{get} operation is mapped to something in the static
+heap, the get can be performed at optimization time. Otherwise, the \texttt{get}
 operation needs to be emitted.
 
-If the first argument $v$ to a set operation is mapped to something in the
-static heap, then the set can performed at optimization time and the static heap
-is updated. Otherwise the set operation needs to be emitted. This needs to be
+If the first argument $v$ to a \texttt{set} operation is mapped to something in the
+static heap, then the \texttt{set} can performed at optimization time and the static heap
+is updated. Otherwise the \texttt{set} operation needs to be emitted. This needs to be
 done carefully, because the new value for the field stored in the variable $u$
 could itself be static, in which case it needs to be lifted first.
 
-I a guard is performed on a variable that is in the static heap, the type check
+I a \texttt{guard\_class} is performed on a variable that is in the static heap, the type check
 can be performed at optimization time, which means the operation can be removed
 if the types match. If the type check fails statically or if the object is not
-in the static heap, the guard is put into the residual trace. This also needs to
-lift the variable on which the guard is performed.
+in the static heap, the \texttt{guard\_class} is put into the residual trace. This also needs to
+lift the variable on which the \texttt{guard\_class} is performed.
 
 Lifting takes a variable that is potentially in the static heap and makes sure
 that it is turned into a dynamic variable. This means that operations are
