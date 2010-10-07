@@ -150,7 +150,7 @@ performs a form of escape analysis \cite{XXX} on the traces and make some
 objects that are allocated in the trace \emph{static}\footnote{These objects are
 called \emph{virtual} in Psyco \cite{rigo_representation-based_2004}.} which
 means that they do not occur any more in the optimized trace. This technique is
-informally described in Section~\ref{sec:virtuals}, a more formal description is
+informally described in Section~\ref{sec:statics}, a more formal description is
 given in Section~\ref{sec:formal}.
 
 The basic approach of static objects can then be extended to also be used for
@@ -429,8 +429,8 @@ using the interpreter.
 
 XXX simplify traces a bit more
 
-In the next section, we will see how this can be improved upon, using escape
-analysis. XXX
+In the next section, we will see how this can be improved upon, using partial
+evaluation. XXX
 
 \section{Object Lifetimes in a Tracing JIT}
 \label{sec:lifetimes}
@@ -491,13 +491,13 @@ $p_{5}$, $p_{6}$, $p_{11}$ are in category 1, objects in $p_{10}$, $p_{15}$ are 
 category 3.
 
 The creation of objects in category 1 is removed by the optimization described
-in Section~\ref{sec:virtuals}. XXX
+in Section~\ref{sec:statics}. XXX
 
-\section{Escape Analysis in a Tracing JIT} % XXX imprecise title
-\label{sec:virtuals}
+\section{Allocation Removal in Traces}
+\label{sec:statics}
 
 
-\subsection{Virtual Objects}
+\subsection{Static Objects}
 
 The main insight to improve the code shown in the last section is that objects
 in category 1 don't survive very long -- they are used only inside the loop and
@@ -505,27 +505,27 @@ nobody else in the program stores a reference to them. The idea for improving
 the code is thus to analyze which objects fall in category 1 and may thus
 not be allocated at all.
 
-XXX rewrite to acknowledge the existence of the formal stuff
+This is a process that is usually called \emph{escape analysis}. In this paper we will
+perform escape analysis by using partial evaluation. The partial evalution is a
+bit peculiar in that there are not actually any constant arguments to the trace,
+but it is only used to optimized operations within a trace. XXX mention Prolog.
 
-This process is called \emph{escape analysis}. The escape analysis of
-our tracing JIT works by using \emph{virtual objects}: The trace is walked from
-beginning to end and whenever a \texttt{new} operation is seen, the operation is
-removed and a shape description is constructed and associated with the variable
-that would have stored the result of \texttt{new}. This result, a newly
-allocated object, is called \emph{virtual}, because after the optimization is
-finished, it does not need to be allocated at all. The shape description summarizes
-the shape of this original object
-and is used by the optimization to improve the trace. The shape describes
-where the values that would be stored in the fields of the allocated objects
-come from. Whenever the optimizer sees a \texttt{setfield} that writes into such
-an object, that shape description is updated and the operation can be removed.
-When the optimizer encounters a \texttt{getfield} from such an object, the result is read
-from the shape description, and the operation is also removed.
-Equivalently, a \texttt{guard\_class} on a variable that has a shape description can be removed as
-well, because the shape description stores the class.
+The partial evaluation works by walking the trace from beginning to end.
+Whenever a \texttt{new} operation is seen, the operation is removed and a static
+object is constructed and associated with the variable that would have stored
+the result of \texttt{new}. The static object describes the shape of the
+original object, \eg where the values that would be stored in the fields of the
+allocated object come from, as well as the type of the object. Whenever the
+optimizer sees a \texttt{setfield} that writes into such an object, that shape
+description is updated and the operation can be removed, which means that the
+operation was done at partial evaluation time. When the optimizer encounters a
+\texttt{getfield} from such an object, the result is read from the shape
+description, and the operation is also removed. Equivalently, a
+\texttt{guard\_class} on a variable that has a shape description can be removed
+as well, because the shape description stores the type.
 
 In the example from last section, the following operations would produce two
-shape descriptions, and be completely removed from the optimized trace:
+static objects, and be completely removed from the optimized trace:
 
 \texttt{
 \begin{tabular}{l} 
@@ -536,10 +536,10 @@ setfield($p_{6}$, intval, -100) \\
 \end{tabular}
 }
 
-The shape description associated with $p_{5}$ would know that it is an
+The static object associated with $p_{5}$ would know that it is a
 \texttt{BoxedInteger}, and that the \texttt{intval} field contains $i_{4}$, the
-associated with $p_{6}$ would know that its \texttt{intval} field contains the
-constant -100.
+one associated with $p_{6}$ would know that its \texttt{intval} field contains
+the constant -100.
 
 The following operations, that use $p_{5}$ and $p_{6}$ could then be
 optimized using that knowledge:
@@ -569,21 +569,23 @@ $i_{9}$ = int\_add($i_{4}$, -100) \\
     
 The rest of the trace is optimized similarly.
 
-So far we have only described what happens when virtual objects are used in
-operations that read and write their fields and in guards. When the virtual
-object is used in
-any other operation, it cannot stay virtual. For example, when a virtual object
-is stored in a globally accessible place, the object needs to actually be
-allocated, as it might live longer than one iteration of the loop. The actual
-allocation is inserted just before the operation that requires the object to be
-non-virtual.
+So far we have only described what happens when static objects are used in
+operations that read and write their fields and in guards. When the static
+object is used in any other operation, it cannot stay static. For example, when
+a static object is stored in a globally accessible place, the object needs to
+actually be allocated, as it might live longer than one iteration of the loop
+and because the partial evaluator looses track of it. This means that the static
+objects needs to be turned into a dynamic one, \ie lifted. This makes it
+necessary to put operations into the residual code that actually allocate the
+static object at runtime.
 
 This is what happens at the end of the trace in Figure~\ref{fig:unopt-trace}, when the \texttt{jump} operation
-is hit. The arguments of the jump are at this point virtual objects. Before the
-jump is emitted, they are \emph{forced}. This means that the optimizers produces code
+is hit. The arguments of the jump are at this point static objects. Before the
+jump is emitted, they are \emph{lifted}. This means that the optimizers produces code
 that allocates a new object of the right type and sets its fields to the field
-values that the virtual object has. This means that instead of the jump, the
-following operations are emitted:
+values that the static object has (if the static object points to other static
+objects, those need to be lifted as well) This means that instead of the jump,
+the following operations are emitted:
 
 \texttt{
 \begin{tabular}{l} 
@@ -599,7 +601,7 @@ Note how the operations for creating these two instances have been moved down th
 trace. It looks like for these operations we actually didn't win much, because
 the objects are still allocated at the end. However, the optimization was still
 worthwhile even in this case, because some operations that have been performed
-on the forced virtual objects have been removed (some \texttt{getfield} operations
+on the lifted static objects have been removed (some \texttt{getfield} operations
 and \texttt{guard\_class} operations).
 
 \begin{figure}
@@ -840,7 +842,7 @@ of the type dispatching overhead. In the next section, we will explain how this
 optimization can be improved further.
 
 XXX Category 2 The optimization of
-Section~\ref{sec:virtuals} deals with them too: the \texttt{new} that creates them and
+Section~\ref{sec:statics} deals with them too: the \texttt{new} that creates them and
 the field accesses are deferred, until the point where the object escapes.
 
 % section Escape Analysis in a Tracing JIT (end)
