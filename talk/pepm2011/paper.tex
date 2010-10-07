@@ -57,7 +57,7 @@
 \authorinfo{Carl Friedrich Bolz \and Antonio Cuni \and Maciej Fijałkowski \and Michael Leuschel \and Samuele Pedroni \and Armin Rigo}
            {Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany XXX}
            {cfbolz@gmx.de, anto.cuni@gmail.com, fijal@merlinux.eu,
-           samuele.pedroni@gmail.com, arigo@tunes.org}
+           leuschel@cs.uni-duesseldorf.de, samuele.pedroni@gmail.com, arigo@tunes.org}
 
 %\numberofauthors{3}
 %\author{
@@ -422,6 +422,8 @@ operation. The trace also shows the inefficiencies of \texttt{f} clearly, if one
 looks at the number of \texttt{new} (corresponding to object creation),
 \texttt{set/get} (corresponding to attribute reads/writes) and
 \texttt{guard\_class} operations (corresponding to method calls).
+In the rest of the paper we will see how this trace can be optimized using
+partial evaluation.
 
 Note how the functions that are called by \texttt{f} are automatically inlined
 into the trace. The method calls are always preceded by a \texttt{guard\_class}
@@ -434,10 +436,6 @@ turned into machine code and then executed with \texttt{BoxedFloats}, the
 first \texttt{guard\_class} instruction will fail and execution will continue
 using the interpreter.
 
-XXX simplify traces a bit more
-
-In the next section, we will see how this can be improved upon, using partial
-evaluation. XXX
 
 \section{Object Lifetimes in a Tracing JIT}
 \label{sec:lifetimes}
@@ -865,11 +863,6 @@ good). As a side-effect of this, the traces will also be type-specialized.
 
 \subsection{Optimizing Across the Jump}
 
-\footnote{This section is a bit
-science-fictiony. The algorithm that PyPy currently uses is significantly more
-complex and much harder than the one that is described here. The resulting
-behaviour is very similar, however, so we will use the simpler version (and we
-might switch to that at some point in the actual implementation).}
 
 Let's look at the final trace obtained in Section~\ref{sec:statics} for the
 example loop. The final trace (Figure~\ref{fig:step1}) was much better than the
@@ -886,9 +879,14 @@ allocates two \texttt{BoxedIntegers} at the end of every iteration, that then di
 very quickly in the next iteration. In addition, the type checks at the start
 of the loop are superfluous, at least after the first iteration.
 
+
 The reason why we cannot optimize the remaining allocations away is because
 their lifetime crosses the jump. To improve the situation, a little trick is
-needed. The trace in Figure~\ref{fig:step1} represents a loop, i.e. the jump at the end jumps to
+needed.\footnote{The algorithm that PyPy currently uses is significantly more complex
+than the one that is described here. The resulting behaviour is nearly
+identical, however, so we will use the simpler version (and plan to switch to
+that at some point in the actual implementation).}
+The trace in Figure~\ref{fig:step1} represents a loop, i.e. the jump at the end jumps to
 the beginning. Where in the loop the jump occurs is arbitrary, since the loop
 can only be left via failing guards anyway. Therefore it does not change the
 semantics of the loop to put the jump at another point into the trace and we
@@ -896,15 +894,13 @@ can move the \texttt{jump} operation just above the allocation of the objects th
 appear in the current \texttt{jump}. This needs some care, because the arguments to
 \texttt{jump} are all currently live variables, thus they need to be adapted.
 
-If we do that for our example trace, the trace looks like in Figure~\ref{fig:step2}.
-
 \begin{figure}
 \includegraphics{figures/step2.pdf}
 \label{fig:step2}
 \caption{Shifting the Jump}
 \end{figure}
 
-
+If we do that for our example trace, the trace looks like in Figure~\ref{fig:step2}.
 Now the lifetime of the remaining allocations no longer crosses the jump, and
 we can run our partial evaluation a second time, to get the trace in
 Figure~\ref{fig:step3}.
