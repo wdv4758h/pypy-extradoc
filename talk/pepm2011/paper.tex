@@ -1021,6 +1021,28 @@ Python decimal floating point implementation.
 \textbf{twisted\_names}: A DNS server benchmark using the Twisted networking
 framework\footnote{\texttt{http://twistedmatrix.com/trac/}}.
 
+\begin{figure*}
+\begin{tabular}{lrrrr}
+		&CPython	&JIT no optimizations	&JIT allocation removal	&JIT full\\
+crypto\_pyaes	&1958.40 $\pm$ 0.32	&782.14 $\pm$ 3.08	&150.86 $\pm$ 3.62	&125.68 $\pm$ 3.02\\
+django		&630.91 $\pm$ 0.13	&365.90 $\pm$ 1.57	&124.41 $\pm$ 0.88	&117.36 $\pm$ 0.91\\
+fannkuch	&1344.15 $\pm$ 0.36	&378.18 $\pm$ 0.36	&309.04 $\pm$ 1.56	&299.12 $\pm$ 0.25\\
+go		&595.31 $\pm$ 0.51	&1067.26 $\pm$ 12.20	&121.76 $\pm$ 4.15	&125.57 $\pm$ 3.90\\
+html5lib	&8678.67 $\pm$ 23.37	&17665.16 $\pm$ 2695.45	&6739.95 $\pm$ 1225.25	&6699.24 $\pm$ 1295.92\\
+meteor-contest	&241.53 $\pm$ 0.09	&291.11 $\pm$ 0.86	&274.09 $\pm$ 0.37	&272.77 $\pm$ 0.30\\
+nbody\_modified	&396.55 $\pm$ 0.24	&84.77 $\pm$ 0.14	&69.01 $\pm$ 0.08	&68.71 $\pm$ 0.09\\
+pyflate-fast	&1991.33 $\pm$ 1.90	&1818.70 $\pm$ 4.30	&1062.03 $\pm$ 4.56	&1052.02 $\pm$ 3.24\\
+raytrace-simple	&1598.84 $\pm$ 1.07	&1126.93 $\pm$ 11.42	&93.45 $\pm$ 4.75	&92.17 $\pm$ 4.15\\
+richards	&216.47 $\pm$ 0.20	&169.84 $\pm$ 1.21	&11.81 $\pm$ 0.09	&11.90 $\pm$ 0.29\\
+spambayes	&193.30 $\pm$ 0.03	&331.37 $\pm$ 14.93	&238.83 $\pm$ 6.10	&237.23 $\pm$ 5.97\\
+spectral-norm	&375.91 $\pm$ 0.08	&221.24 $\pm$ 0.07	&31.96 $\pm$ 0.06	&28.79 $\pm$ 0.09\\
+telco		&789.67 $\pm$ 1.14	&622.67 $\pm$ 1.86	&155.33 $\pm$ 1.82	&154.67 $\pm$ 1.82\\
+twisted\_names	&6.61 $\pm$ 0.00	&8.85 $\pm$ 0.09	&4.35 $\pm$ 0.05 &4.35 $\pm$ 0.04\\
+\end{tabular}
+\caption{Benchmark Times}
+\label{fig:times}
+\end{figure*}
+
 
 
 \section{Related Work}
