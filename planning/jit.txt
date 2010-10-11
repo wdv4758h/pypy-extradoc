@@ -81,9 +81,8 @@ nice code at all so far:
 
 - guard_true(frame.is_being_profiled) all over the place
 
-- at the end of every loop there is on x86-64:
-    int_and(i49, Const(0x8000000000f00000))
-  which is not a constant that fits in 32-bits.  Optimize that.
+- 64-bit issues: in test_pypy_c, test_array_intimg, the STORE_SUBSCR turns
+  into strange code (truncate the int to 32 bits).
 
 - xxx (find more examples :-)
 
