@@ -68,6 +68,49 @@
 	pages = {328--347}
 },
 
+@techreport{michael_bebenita_spur:_2010,
+	title = {{SPUR:} A {Trace-Based} {JIT} Compiler for {CIL}},
+	abstract = {Tracing just-in-time compilers {(TJITs)} determine frequently executed traces (hot paths and loops) in running programs and focus their optimization effort by emitting optimized machine code specialized to these traces. Prior work has established this strategy to be especially beneficial for dynamic languages such as {JavaScript,} where the {TJIT} interfaces with the interpreter and produces machine code from the {JavaScript} trace.
+
+This direct coupling with a {JavaScript} interpreter makes it difficult to harness the power of a {TJIT} for other components that are not written in {JavaScript,} e.g., the {DOM} implementation or the layout engine inside a browser. Furthermore, if a {TJIT} is tied to a particular high-level language interpreter, it is difficult to reuse it for other input languages as the optimizations are likely targeted at specific idioms of the source language.
+
+To address these issues, we designed and implemented a {TJIT} for Microsoft’s Common Intermediate Language {CIL} (the target language of C\#, {VisualBasic,} F\#, and many other languages). Working on {CIL} enables {TJIT} optimizations for any program compiled to this platform. In addition, to validate that the performance gains of a {TJIT} for {JavaScript} do not depend on specific idioms of {JavaScript} that are lost in the translation to {CIL,} we provide a performance evaluation of our {JavaScript} runtime which translates {JavaScript} to {CIL} and then runs on top of our {CIL} {TJIT.}},
+	number = {{MSR-TR-2010-27}},
+	institution = {Microsoft Research},
+	author = {Michael Bebenita and Florian Brandner and Manuel Fahndrich and Francesco Logozzo and Wolfram Schulte and Nikolai Tillmann and Herman Venter},
+	month = mar,
+	year = {2010},
+},
+
+@article{bruno_blanchet_escape_2003,
+	title = {Escape analysis for Java: Theory and practice},
+	volume = {25},
+	shorttitle = {Escape analysis for {Java{\textless}sup{\textgreater}TM{\textless}/sup{\textgreater}}},
+	url = {http://portal.acm.org/citation.cfm?id=945885.945886},
+	doi = {10.1145/945885.945886},
+	abstract = {Escape analysis is a static analysis that determines whether the lifetime of data may exceed its static {scope.This} paper first presents the design and correctness proof of an escape analysis for {JavaTM.} This analysis is interprocedural, context sensitive, and as flow-sensitive as the static single assignment form. So, assignments to object fields are analyzed in a flow-insensitive manner. Since Java is an imperative language, the effect of assignments must be precisely determined. This goal is achieved thanks to our technique using two interdependent analyses, one forward, one backward. We introduce a new method to prove the correctness of this analysis, using aliases as an intermediate step. We use integers to represent the escaping parts of values, which leads to a fast and precise {analysis.Our} implementation {[Blanchet} 1999], which applies to the whole Java language, is then presented. Escape analysis is applied to stack allocation and synchronization elimination. In our benchmarks, we stack allocate 13\% to 95\% of data, eliminate more than 20\% of synchronizations on most programs (94\% and 99\% on two examples) and get up to 43\% runtime decrease (21\% on average). Our detailed experimental study on large programs shows that the improvement comes more from the decrease of the garbage collection and allocation times than from improvements on data locality, contrary to what happened for {ML.} This comes from the difference in the garbage collectors.},
+	number = {6},
+	journal = {{ACM} Trans. Program. Lang. Syst.},
+	author = {Bruno Blanchet},
+	year = {2003},
+	pages = {713--775}
+},
+
+@inproceedings{chang_tracing_2009,
+	address = {Washington, {DC,} {USA}},
+	title = {Tracing for Web 3.0: Trace Compilation for the Next Generation Web Applications},
+	isbn = {978-1-60558-375-4},
+	shorttitle = {Tracing for web 3.0},
+	url = {http://portal.acm.org/citation.cfm?id=1508293.1508304},
+	doi = {10.1145/1508293.1508304},
+	abstract = {Today's web applications are pushing the limits of modern web browsers. The emergence of the browser as the platform of choice for rich client-side applications has shifted the use of in-browser {JavaScript} from small scripting programs to large computationally intensive application logic. For many web applications, {JavaScript} performance has become one of the bottlenecks preventing the development of even more interactive client side applications. While traditional just-in-time compilation is successful for statically typed virtual machine based languages like Java, compiling {JavaScript} turns out to be a challenging task. Many {JavaScript} programs and scripts are short-lived, and users expect a responsive browser during page loading. This leaves little time for compilation of {JavaScript} to generate machine code.},
+	booktitle = {Proceedings of the 2009 {ACM} {SIGPLAN/SIGOPS} International Conference on Virtual Execution Environments},
+	publisher = {{ACM}},
+	author = {Mason Chang and Edwin Smith and Rick Reitmaier and Michael Bebenita and Andreas Gal and Christian Wimmer and Brendan Eich and Michael Franz},
+	year = {2009},
+	pages = {71--80}
+},
+
 @inproceedings{davide_ancona_rpython:_2007,
 	address = {Montreal, Quebec, Canada},
 	title = {{RPython:} a step towards reconciling dynamically and statically typed {OO} languages},
@@ -126,6 +169,19 @@
 	author = {Bruno Blanchet},
 	year = {1999},
 	pages = {20---34}
+},
+
+@article{georges_statistically_2007,
+	title = {Statistically rigorous java performance evaluation},
+	volume = {42},
+	url = {http://portal.acm.org/citation.cfm?id=1297105.1297033},
+	doi = {10.1145/1297105.1297033},
+	abstract = {Java performance is far from being trivial to benchmark because it is affected by various factors such as the Java application, its input, the virtual machine, the garbage collector, the heap size, etc. In addition, non-determinism at run-time causes the execution time of a Java program to differ from run to run. There are a number of sources of non-determinism such as {Just-In-Time} {(JIT)} compilation and optimization in the virtual machine {(VM)} driven by timer-based method sampling, thread scheduling, garbage collection, and various.},
+	number = {10},
+	journal = {{SIGPLAN} Not.},
+	author = {Andy Georges and Dries Buytaert and Lieven Eeckhout},
+	year = {2007},
+	pages = {57--76},
 },
 
 @techreport{miranda_context_1999,
