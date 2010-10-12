@@ -96,6 +96,32 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 	pages = {713--775}
 },
 
+@incollection{mazur_practical_2001,
+	series = {Lecture Notes in Computer Science},
+	title = {Practical Aspects for a Working Compile Time Garbage Collection System for Mercury},
+	volume = {2237},
+	url = {http://dx.doi.org/10.1007/3-540-45635-X_15},
+	abstract = {Compile-time garbage collection {(CTGC)} is still a very uncommon feature within compilers. In previous work we have developed a compile-time structure reuse system for Mercury, a logic programming language. This system indicates which datastructures can safely be reused at run-time. As preliminary experiments were promising, we have continued this work and have now a working and well performing near-to-ship {CTGC-system} built into the Melbourne Mercury Compiler {(MMC).} In this paper we present the multiple design decisions leading to this system, we report the results of using {CTGC} for a set of benchmarks, including a real-world program, and finally we discuss further possible improvements. Benchmarks show substantial memory savings and a noticeable reduction in execution time.},
+	booktitle = {Logic Programming},
+	publisher = {Springer Berlin / Heidelberg},
+	author = {Nancy Mazur and Peter Ross and Gerda Janssens and Maurice Bruynooghe},
+	editor = {Philippe Codognet},
+	year = {2001},
+	note = {{10.1007/3-540-45635-X\_15}},
+	pages = {105--119}
+},
+
+@article{lloyd_partial_1991,
+	title = {Partial evaluation in logic programming},
+	volume = {11},
+	url = {http://portal.acm.org/citation.cfm?id=118495},
+	number = {3-4},
+	journal = {J. Log. Program.},
+	author = {J. W. Lloyd and J. C. Shepherdson},
+	year = {1991},
+	pages = {217--242}
+},
+
 @inproceedings{chang_tracing_2009,
 	address = {Washington, {DC,} {USA}},
 	title = {Tracing for Web 3.0: Trace Compilation for the Next Generation Web Applications},
@@ -289,41 +315,4 @@ which still run slower than in Squeak itself. Spy was built from scratch over th
 	author = {Carl Friedrich Bolz and Adrian Kuhn and Adrian Lienhard and Nicholas Matsakis and Oscar Nierstrasz and Lukas Renggli and Armin Rigo and Toon Verwaest},
 	year = {2008},
 	pages = {123--139}
-}
-
-@inproceedings{DBLP:conf/iclp/MazurRJB01,
-  author    = {Nancy Mazur and
-               Peter Ross and
-               Gerda Janssens and
-               Maurice Bruynooghe},
-  title     = {Practical Aspects for a Working Compile Time Garbage Collection
-               System for Mercury},
-  booktitle = {ICLP},
-  year      = {2001},
-  pages     = {105-119},
-  ee        = {http://link.springer.de/link/service/series/0558/bibs/2237/22370105.htm},
-  crossref  = {DBLP:conf/iclp/2001},
-  bibsource = {DBLP, http://dblp.uni-trier.de}
-}
-@proceedings{DBLP:conf/iclp/2001,
-  editor    = {Philippe Codognet},
-  title     = {Logic Programming, 17th International Conference, ICLP 2001,
-               Paphos, Cyprus, November 26 - December 1, 2001, Proceedings},
-  booktitle = {ICLP},
-  publisher = {Springer},
-  series    = {Lecture Notes in Computer Science},
-  volume    = {2237},
-  year      = {2001},
-  isbn      = {3-540-42935-2},
-  bibsource = {DBLP, http://dblp.uni-trier.de}
-}
-
-@article{Lloyd:jlp91,
-   author =  {J. W. Lloyd and J. C. Shepherdson},
-   title =   {Partial Evaluation in Logic Programming},
-   journal = strjlp,
-   year =    1991,
-   volume =  11,
-   number =  {3\& 4},
-   pages =   {217--242},
 }
