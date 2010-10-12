@@ -148,12 +148,10 @@ means that they do not occur any more in the optimized trace. This technique is
 informally described in Section~\ref{sec:statics}, a more formal description is
 given in Section~\ref{sec:formal}.
 
-The basic approach of static objects can then be extended to also be used for
-type-specializing the traces that are produced by the tracing JIT
-(Section~\ref{sec:crossloop}). In Section~\ref{sec:support} we describe some
-supporting techniques that are not central to the approach, but are needed to
-improve the results. The introduced techniques are evaluated in
-Section~\ref{sec:Evaluation} using PyPy's Python interpreter as a case study.
+In Section~\ref{sec:support} we describe some supporting techniques that are not
+central to the approach, but are needed to improve the results. The introduced
+techniques are evaluated in Section~\ref{sec:Evaluation} using PyPy's Python
+interpreter as a case study.
 
 The contributions of this paper are:
 
@@ -485,10 +483,7 @@ fall into one of several categories:
 
     \item Category 4: Objects that live for a while, survive across the jump,
     and then escape. To these we also count the objects that live across several
-    jumps and then either escape or stop being used.\footnote{In theory, the
-    approach of Section~\ref{sec:crossloop} works also for objects that live for
-    exactly $n>1$ iterations and then don't escape, but we expect this to be a
-    very rare case, so we do not handle it.}
+    jumps and then either escape or stop being used.
 \end{itemize}
 
 The objects that are allocated in the example trace in
@@ -497,8 +492,8 @@ $p_{5}$, $p_{6}$, $p_{11}$ are in category 1, objects in $p_{10}$, $p_{15}$ are 
 category 3.
 
 The creation of objects in category 1 is removed by the optimization described
-in Sections~\ref{sec:statics} and \ref{sec:formal}. We will look at objects in
-category 3 in Section~\ref{sec:crossloop}.
+in Sections~\ref{sec:statics} and \ref{sec:formal}. Objects in the other
+categories are partially optimized by this approach as well.
 
 \section{Allocation Removal in Traces}
 \label{sec:statics}
@@ -863,132 +858,6 @@ corresponding to all calls that have been inlined in the trace.
 %___________________________________________________________________________
 
 % section Escape Analysis in a Tracing JIT (end)
-
-\section{Allocation Removal Across Loop Boundaries}
-\label{sec:crossloop}
-
-In the last sections we described how partial evaluation can be used to remove
-many of the allocations of short-lived objects and many of the type dispatches
-that are present in a non-optimized trace. In this section we will improve the
-optimization to also handle more cases.
-
-The optimization of the last section considered the passing of an object along a
-jump to be equivalent to escaping. It was thus treating objects in category 3
-and 4 like those in category 2.
-
-The improved optimization described in this section will make it possible to deal
-better with objects in category 3 and 4. This will have two consequences: on
-the one hand, more allocations are removed from the trace (which is clearly
-good). As a side-effect of this, the traces will also be type-specialized.
-
-
-%___________________________________________________________________________
-
-\subsection{Optimizing Across the Jump}
-
-
-Let's look at the final trace obtained in Section~\ref{sec:statics} for the
-example loop. The final trace (Figure~\ref{fig:step1}) was much better than the
-original one, because many allocations were removed from it. However, it also
-still contained allocations.
-
-The two new \texttt{BoxedIntegers} stored in $p_{15}$ and $p_{10}$ are passed into
-the next iteration of the loop. The next iteration will check that they are
-indeed \texttt{BoxedIntegers}, read their \texttt{intval} fields and then not use them
-any more. Thus those instances are in category 3.
-
-In its current state the loop
-allocates two \texttt{BoxedIntegers} at the end of every iteration, that then die
-very quickly in the next iteration. In addition, the type checks at the start
-of the loop are superfluous, at least after the first iteration.
-
-
-The reason why we cannot optimize the remaining allocations away is because
-their lifetime crosses the jump. To improve the situation, a little trick is
-needed.\footnote{The algorithm that PyPy currently uses is significantly more complex
-than the one that is described here. The resulting behaviour is nearly
-identical, however, so we will use the simpler version (and plan to switch to
-that at some point in the actual implementation).}
-The trace in Figure~\ref{fig:step1} represents a loop, i.e. the jump at the end jumps to
-the beginning. Where in the loop the jump occurs is arbitrary, since the loop
-can only be left via failing guards anyway. Therefore it does not change the
-semantics of the loop to put the jump at another point into the trace and we
-can move the \texttt{jump} operation just above the allocation of the objects that
-appear in the current \texttt{jump}. This needs some care, because the arguments to
-\texttt{jump} are all currently live variables, thus they need to be adapted.
-
-\begin{figure}
-\includegraphics{figures/step2.pdf}
-\label{fig:step2}
-\caption{Shifting the Jump}
-\end{figure}
-
-If we do that for our example trace, the trace looks like in Figure~\ref{fig:step2}.
-Now the lifetime of the remaining allocations no longer crosses the jump, and
-we can run our partial evaluation a second time, to get the trace in
-Figure~\ref{fig:step3}.
-
-\begin{figure}
-\includegraphics{figures/step3.pdf}
-\label{fig:step3}
-\caption{Removing Allocations a Second Time}
-\end{figure}
-
-This result is now really good. The code performs the same operations than
-the original code, but using direct CPU arithmetic and no boxing, as opposed to
-the original version which used dynamic dispatching and boxing.
-
-Looking at the final trace it is also completely clear that specialization has
-happened. The trace corresponds to the situation in which the trace was
-originally recorded, which happened to be a loop where \texttt{BoxedIntegers} were
-used. The now resulting loop does not refer to the \texttt{BoxedInteger} class at
-all any more, but it still has the same behaviour. If the original loop had
-used \texttt{BoxedFloats}, the final loop would use \texttt{float\_*} operations
-everywhere instead (or even be very different, if the object model had
-more different classes).
-
-
-%___________________________________________________________________________
-
-\subsection{Entering the Loop}
-
-The approach of placing the \texttt{jump} at some other point in the loop leads to
-one additional complication that we glossed over so far. The beginning of the
-original loop corresponds to a point in the original program, namely the
-\texttt{while} loop in the function \texttt{f} from the last section.
-
-Now recall that in a VM that uses a tracing JIT, all programs start by being
-interpreted. This means that when \texttt{f} is executed by the interpreter, it is
-easy to go from the interpreter to the first version of the compiled loop.
-After the \texttt{jump} is moved and the escape analysis optimization is applied a
-second time, this is no longer easily possible.  In particular, the new loop
-expects two integers as input arguments, while the old one expected two
-instances.
-
-To make it possible to enter the loop directly from the intepreter, there
-needs to be some additional code that enters the loop by taking as input
-arguments what is available to the interpreter, i.e. two instances. This
-additional code corresponds to one iteration of the loop, which is thus
-peeled off \cite{XXX}, see Figure~\ref{fig:step3}.
-
-\begin{figure}
-\includegraphics{figures/step4.pdf}
-\label{fig:step3}
-\caption{A Way to Enter the Loop From the Interpreter}
-\end{figure}
-
-
-%___________________________________________________________________________
-
-\subsection{Summary}
-
-The optimization described in this section can be used to optimize away
-allocations in category 3 and improve allocations in category 4, by deferring
-them until they are no longer avoidable. A side-effect of these optimizations
-is also that the optimized loops are specialized for the types of the variables
-that are used inside them.
-
-% section Allocation Removal Across Loop Boundaries (end)
 
 \section{Supporting Techniques}
 \label{sec:support}
