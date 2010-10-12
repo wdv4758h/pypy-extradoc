@@ -542,11 +542,11 @@ set($p_{6}$, intval, -100) \\
 }
 
 The static object associated with $p_{5}$ would know that it is a
-\texttt{BoxedInteger}, and that the \texttt{intval} field contains $i_{4}$, the
-one associated with $p_{6}$ would know that its \texttt{intval} field contains
-the constant -100.
+\texttt{BoxedInteger} whose \texttt{intval} field contains $i_{4}$; the
+one associated with $p_{6}$ would know that it is a \texttt{BoxedInteger}
+whose \texttt{intval} field contains the constant -100.
 
-The following operations, that use $p_{5}$ and $p_{6}$ could then be
+The following operations on $p_{5}$ and $p_{6}$ could then be
 optimized using that knowledge:
 
 \texttt{
@@ -580,13 +580,13 @@ object is used in any other operation, it cannot stay static. For example, when
 a static object is stored in a globally accessible place, the object needs to
 actually be allocated, as it might live longer than one iteration of the loop
 and because the partial evaluator looses track of it. This means that the static
-objects needs to be turned into a dynamic one, \ie lifted. This makes it
+object needs to be turned into a dynamic one, \ie lifted. This makes it
 necessary to put operations into the residual code that actually allocate the
 static object at runtime.
 
 This is what happens at the end of the trace in Figure~\ref{fig:unopt-trace}, when the \texttt{jump} operation
 is hit. The arguments of the jump are at this point static objects. Before the
-jump is emitted, they are \emph{lifted}. This means that the optimizers produces code
+jump is emitted, they are \emph{lifted}. This means that the optimizer produces code
 that allocates a new object of the right type and sets its fields to the field
 values that the static object has (if the static object points to other static
 objects, those need to be lifted as well) This means that instead of the jump,
@@ -617,6 +617,7 @@ and \texttt{guard\_class} operations).
 
 The final optimized trace of the example can be seen in
 Figure~\ref{fig:step1}.
+XXX why does it says ``Figure 4.1'' here but ``Figure 4'' in the label?
 
 The optimized trace contains only two allocations, instead of the original five,
 and only three \texttt{guard\_class} operations, from the original seven.
@@ -640,7 +641,7 @@ and only three \texttt{guard\_class} operations, from the original seven.
 \emph{Object Domains:}
 $$\setlength\arraycolsep{0.1em}
  \begin{array}{rcll}
-    u,v,w & \in & V & \mathrm{\ variables\ in\ trace}\\
+    u,v & \in & V & \mathrm{\ variables\ in\ trace}\\
     T & \in & \mathfrak{T} & \mathrm{\ runtime\ types}\\
     F & \in & \left\{ L,R\right\} & \mathrm{\ fields\ of\ objects}\\
     l & \in & L & \mathrm{\ locations\ on\ heap}
@@ -675,8 +676,8 @@ into an object) and \texttt{guard\_class} (to check the type of an object). The 
 variables are locations (i.e.~pointers). Locations are mapped to objects, which
 are represented by triples of a type $T$, and two locations that represent the
 fields of the object. When a new object is created, the fields are initialized
-to null, but we require that they are immediately initialized to a real
-location, otherwise the trace is malformed.
+to null, but we require that they are initialized to a real
+location before being read, otherwise the trace is malformed.
 
 We use some abbreviations when dealing with object triples. To read the type of
 an object, $\mathrm{type}((T,l_1,l_2))=T$ is used. Reading a field $F$ from an
@@ -687,7 +688,7 @@ triple $(T,l_1,l)$ if $F=R$.
 
 Figure~\ref{fig:semantics} shows the operational semantics for traces. The
 interpreter formalized there executes one operation at a time. Its state is
-represented by an environment and a heap, which are potentially changed by the
+represented by an environment $E$ and a heap $H$, which are potentially changed by the
 execution of an operation. The environment is a partial function from variables
 to locations and the heap is a partial function from locations to objects. Note
 that a variable can never be null in the environment, otherwise the trace would
@@ -699,12 +700,12 @@ We use the following notation for updating partial functions:
 $E[v\mapsto l]$ denotes the environment which is just like $E$, but maps $v$ to
 $l$.
 
-The new operation creates a new object $(T,\mathrm{null},\mathrm{null})$, on the
+The \texttt{new} operation creates a new object $(T,\mathrm{null},\mathrm{null})$ on the
 heap under a fresh location $l$ and adds the result variable to the environment,
-mapping to the new location $l$.
+mapping it to the new location $l$.
 
-The \texttt{get} operation reads a field $F$ out of an object and adds the result
-variable to the environment, mapping to the read location. The heap is
+The \texttt{get} operation reads a field $F$ out of an object, and adds the result
+variable to the environment, mapping it to the read location. The heap is
 unchanged.
 
 The \texttt{set} operation changes field $F$ of an object stored at the location that
@@ -771,53 +772,54 @@ can be optimized away (which hopefully happens often).
 
 The state of the optimizer is stored in an environment $E$ and a \emph{static
 heap} $S$. The environment is a partial function from variables in the
-unoptimized trace to variables in the optimized trace (which are written with a
+unoptimized trace $V$ to variables in the optimized trace $V^*$ (which are
+themselves written with a
 $\ ^*$ for clarity). The reason for introducing new variables in the optimized
 trace is that several variables that appear in the unoptimized trace can turn
 into the same variables in the optimized trace. Thus the environment of the
-optimizer serves a function similar to that of the environment in the semantics.
+optimizer serves a function similar to that of the environment in the semantics: sharing.
 
 The static heap is a partial function from $V^*$ into the
-set of static objects, which are triples of a type, and two elements of $V^*$.
-An variable $v^*$ is in the domain of the static heap $S$ as long as the
+set of static objects, which are triples of a type and two elements of $V^*$.
+A variable $v^*$ is in the domain of the static heap $S$ as long as the
 optimizer can fully keep track of the object. The image of $v^*$ is what is
 statically known about the object stored in it, \ie its type and its fields. The
 fields of objects in the static heap are also elements of $V^*$ (or null, for
 short periods of time).
 
-When the optimizer sees a new operation, it optimistically removes it and
+When the optimizer sees a \texttt{new} operation, it optimistically removes it and
 assumes that the resulting object can stay static. The optimization for all
 further operations is split into two cases. One case is for when the
 involved variables are in the static heap, which means that the operation can be
 performed at optimization time and removed from the trace. These rules mirror
-the execution semantics closely. The other case is that nothing is known about
-the variables, which means the operation has to be residualized.
+the execution semantics closely. The other case is for when not enough is known about
+the variables, and the operation has to be residualized.
 
-If the argument $u$ of a \texttt{get} operation is mapped to something in the static
+If the argument $v$ of a \texttt{get} operation is mapped to something in the static
 heap, the get can be performed at optimization time. Otherwise, the \texttt{get}
-operation needs to be emitted.
+operation needs to be residualized.
 
 If the first argument $v$ to a \texttt{set} operation is mapped to something in the
 static heap, then the \texttt{set} can performed at optimization time and the static heap
-is updated. Otherwise the \texttt{set} operation needs to be emitted. This needs to be
-done carefully, because the new value for the field stored in the variable $u$
+updated. Otherwise the \texttt{set} operation needs to be residualized. This needs to be
+done carefully, because the new value for the field, from the variable $u$,
 could itself be static, in which case it needs to be lifted first.
 
-I a \texttt{guard\_class} is performed on a variable that is in the static heap, the type check
+If a \texttt{guard\_class} is performed on a variable that is in the static heap, the type check
 can be performed at optimization time, which means the operation can be removed
 if the types match. If the type check fails statically or if the object is not
-in the static heap, the \texttt{guard\_class} is put into the residual trace. This also needs to
+in the static heap, the \texttt{guard\_class} is residualized. This also needs to
 lift the variable on which the \texttt{guard\_class} is performed.
 
 Lifting takes a variable that is potentially in the static heap and makes sure
 that it is turned into a dynamic variable. This means that operations are
-emitted that construct an object that looks like the shape described in the
+emitted that construct an object with the shape described in the
 static heap, and the variable is removed from the static heap.
 
 Lifting a static object needs to recursively lift its fields. Some care needs to
 be taken when lifting a static object, because the structures described by the
 static heap can be cyclic. To make sure that the same static object is not lifted
-twice, the liftfield operation removes it from the static heap \emph{before}
+twice, the \texttt{liftfield} operation removes it from the static heap \emph{before}
 recursively lifting its fields.
 
 
@@ -1120,7 +1122,7 @@ partially static data structures: kenichi asai's thesis?
 
 hint in first js paper by michael franz \cite{mason_chang_efficient_2007}
 
-SPUR, a tracing JIT for C# seems to be able to remove allocations in a similar
+SPUR, a tracing JIT for C\# seems to be able to remove allocations in a similar
 way to the approach described here, as hinted at in the technical report
 \cite{XXX}. However, no details for the approach and its implementation are
 given.
