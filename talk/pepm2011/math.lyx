@@ -60,7 +60,7 @@ u,v,w & \in & V & \mathrm{are\, Variables}\\
 
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray*}
-u,v,w & \in & V\mathrm{\,\, are\, Variables\, in\, the\, original\, trace}\\
+u,v & \in & V\mathrm{\,\, are\, Variables\, in\, the\, original\, trace}\\
 u^{*},v^{*},w^{*} & \in & V^{*}\,\mathrm{\, are\, Variables\, in\, the\, optimized\, trace}\\
 T & \in & \mathfrak{T}\mathrm{\,\, are\, runtime\, types}\\
 F & \in & \left\{ L,R\right\} \,\mathrm{\, are\, fields\, of\, objects}\\
@@ -78,7 +78,7 @@ Available Operations:
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray*}
  &  & v=\mathrm{new}(T)\,\,\mathrm{make\, a\, new\, object}\\
- &  & v=\mathrm{get}(u,F)\,\,\mathrm{read\, a\, field}\\
+ &  & u=\mathrm{get}(v,F)\,\,\mathrm{read\, a\, field}\\
  &  & \mathrm{set}\left(v,F,u\right)\,\,\mathrm{write\, a\, field}\\
  &  & \mathrm{guard}(v,T)\,\,\mathrm{check\, the\, type\, of\, an\, object}\end{eqnarray*}
 
@@ -206,7 +206,7 @@ get
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula ${\displaystyle \frac{\,}{v=\mathtt{get}(u,F),E,H\overset{\mathrm{run}}{\Longrightarrow}E\left[v\mapsto H\left(E\left(u\right)\right)_{F}\right],H}}$
+\begin_inset Formula ${\displaystyle \frac{\,}{u=\mathtt{get}(v,F),E,H\overset{\mathrm{run}}{\Longrightarrow}E\left[u\mapsto H\left(E\left(v\right)\right)_{F}\right],H}}$
 \end_inset
 
 
@@ -385,7 +385,7 @@ get
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula ${\displaystyle \frac{E(u)\in\mathrm{dom}(S)}{v=\mathtt{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto S(E(u))_{F}\right],S}}$
+\begin_inset Formula ${\displaystyle \frac{E(v)\in\mathrm{dom}(S)}{u=\mathtt{get}(v,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[u\mapsto S(E(v))_{F}\right],S}}$
 \end_inset
 
 
@@ -408,7 +408,7 @@ get
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula ${\displaystyle \frac{E(u)\notin\mathrm{dom}(S)\, v^{*}\,\mathrm{fresh}}{v=\mathtt{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle v^{*}=\mathtt{get}(E(u),F)\right\rangle ,E\left[v\mapsto v^{*}\right],S}}$
+\begin_inset Formula ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\, u^{*}\,\mathrm{fresh}}{u=\mathtt{get}(v,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle u^{*}=\mathtt{get}(E(v),F)\right\rangle ,E\left[u\mapsto u^{*}\right],S}}$
 \end_inset
 
 
