@@ -829,13 +829,32 @@ recursively lifting its fields.
 \subsection{Analysis of the Algorithm}
 \label{sub:analysis}
 
-XXX algorithm is linear in the length of the trace
+While we do not offer a formal proof of it, it should be relatively clear
+that the algorithm presented above is sound: it works by delaying (and
+often completely removing) some operations.  The algorithm runs in a
+single pass over the list of operations.  We can check that altough
+recursively lifting a static object is not a constant-time operation,
+the algorithm only takes a total time linear in the length of the trace.
+Moreover, it gives the ``best'' possible result within its constrains,
+e.g.\ in term of the number of residual operations.  The
+algorithm itself is not particularly complex or innovative; our focus is
+rather that \emph{in the context of tracing JITs} it is possible to find a
+simple enough algorithm that still gives the best results.
 
-XXX Category 2 The optimization of
-Section~\ref{sec:statics} deals with them too: the \texttt{new} that creates them and
-the field accesses are deferred, until the point where the object escapes.
+Note in particular that objects in category 1 (i.e.\ the ones that do
+not escape) are completely removed; moreover, objects in category 2
+(i.e.\ escaping) are still partially dealt with: if such an object
+escapes later than its creation point, all the operations inbetween that
+involve the object are removed.
 
-XXX optimization particularly effective for chains of operations
+The optimization is particularly effective for chains of operations.
+For example, it is typical for an interpreter to generate sequences of
+writes-followed-by-reads, where one interpreted opcode writes to some
+object's field and the next interpreted opcode reads it back, possibly
+dispatching on the type of the object created just before.  In the case
+of PyPy's Python interpreter, this optimization can even remove the
+allocation of all intermediate frames that occur in the interpreter,
+corresponding to all calls that have been inlined in the trace.
 
 % subsection Analysis of the Algorithm (end)
 
