@@ -141,7 +141,7 @@ Section~\ref{sec:lifetimes} analyzes the problem to be solved more closely.
 
 The most important technique we use to achieve to optimize traces is a
 straightforward application of partial evaluation. The partial evaluation
-performs a form of escape analysis \cite{XXX} on the traces and make some
+performs a form of escape analysis \cite{bruno_blanchet_escape_2003} on the traces and make some
 objects that are allocated in the trace \emph{static}\footnote{These objects are
 called \emph{virtual} in Psyco \cite{rigo_representation-based_2004}.} which
 means that they do not occur any more in the optimized trace. This technique is
@@ -213,8 +213,8 @@ approach to optimize machine code using execution traces
 \cite{bala_dynamo:_2000}. Tracing JITs have then be adapted to be used for a
 very light-weight Java VM \cite{gal_hotpathvm:_2006} and afterwards used in
 several implementations of dynamic languages, such as JavaScript
-\cite{andreas_gal_trace-based_2009}, Lua \cite{XXX} and now Python (and other
-languages) via PyPy.
+\cite{andreas_gal_trace-based_2009}, Lua\footnote{\texttt{http://luajit.org/}}
+and now Python (and other languages) via PyPy.
 
 The core idea of tracing JITs is to focus the optimization effort of the JIT
 compiler on the hot paths of the core loops of the program and to just use an
@@ -1013,7 +1013,7 @@ some hints into the source code to declare instances of one class as frame
 objects. The JIT will then fill these objects only lazily when they are actually
 accessed (\eg because a debugger is used). Therefore in the common case, nothing
 is stored into the frame objects, making the problem of too much escaping go
-away. This is a common approach in VM implementations \cite{XXX}, the only
+away. This is a common approach in VM implementations \cite{miranda_context_1999}, the only
 novelty in our approach lays in its generality, because most other JITs are just
 specifically written for one particular language.
 
@@ -1040,12 +1040,12 @@ Furthermore there are the following benchmarks:
     framework\footnote{\texttt{http://www.djangoproject.com/}}.
     \item \textbf{go}: A Monte-Carlo Go
     AI\footnote{\texttt{http://shed-skin.blogspot.com/2009/07/ disco-elegant-python-go-player.html}}.
-    \item \textbf{html5lib}: HTML5 parser
-    \item \textbf{pyflate-fast}: BZ2 decoder
-    \item \textbf{raytrace-simple}: ray tracer
-    \item \textbf{richards}: The Richards benchmark \cite{XXX}
+    \item \textbf{html5lib}: An HTML5 parser.
+    \item \textbf{pyflate-fast}: A BZ2 decoder.
+    \item \textbf{raytrace-simple}: A ray tracer.
+    \item \textbf{richards}: The Richards benchmark.
     \item \textbf{spambayes}: A Bayesian spam filter\footnote{\texttt{http://spambayes.sourceforge.net/}}.
-    \item \textbf{telco}: A Python version of the Telco decimal
+    \item \textbf{telco}: A Python version of the Telco decimal.
     benchmark\footnote{\texttt{http://speleotrove.com/decimal/telco.html}},
     using a pure Python decimal floating point implementation.
     \item \textbf{twisted\_names}: A DNS server benchmark using the Twisted networking
@@ -1090,7 +1090,7 @@ machine the benchmarks were run on is XXX. We compared the performance of
 various Python implementations on the benchmarks. As a baseline, we used the
 standard Python implementation in C, called
 CPython\footnote{\texttt{http://python.org}}, which uses a bytecode-based
-interpreter. Furthermore we compared against Psyco \cite{XXX}, an extension to
+interpreter. Furthermore we compared against Psyco \cite{rigo_representation-based_2004}, an extension to
 CPython which is a just-in-time compiler that produces machine code at run-time.
 It is not based on traces. Of PyPy's Python interpreter we used three versions,
 one without a JIT, one including the JIT but not using the allocation removal
@@ -1099,7 +1099,7 @@ optimization, and one using the allocation removal optimizations.
 All benchmarks were run 50 times in the same process, to give the JIT time to produce machine
 code. The arithmetic mean of the times of the last 30 runs were used as the
 result. The errors were computed using a confidence interval with a 95\%
-confidence level \cite{XXX}. The results are reported in Figure~\ref{fig:times}.
+confidence level \cite{georges_statistically_2007}. The results are reported in Figure~\ref{fig:times}.
 With the optimization turned on, PyPy's Python interpreter outperforms CPython
 in all benchmarks except spambayes (which heavily relies on regular expression
 performance). All benchmarks are improved by the allocation removal
@@ -1156,8 +1156,8 @@ reads and writes out of/into the object.
 
 SPUR, a tracing JIT for C\# seems to be able to remove allocations in a similar
 way to the approach described here, as hinted at in the technical report
-\cite{XXX}. However, no details for the approach and its implementation are
-given.
+\cite{michael_bebenita_spur:_2010}. However, no details for the approach and its
+implementation are given.
 
 partial evaluation:
 
