@@ -836,14 +836,14 @@ single pass over the list of operations.  We can check that altough
 recursively lifting a static object is not a constant-time operation,
 the algorithm only takes a total time linear in the length of the trace.
 Moreover, it gives the ``best'' possible result within its constrains,
-e.g.\ in term of the number of residual operations.  The
+\eg in term of the number of residual operations.  The
 algorithm itself is not particularly complex or innovative; our focus is
 rather that \emph{in the context of tracing JITs} it is possible to find a
 simple enough algorithm that still gives the best results.
 
-Note in particular that objects in category 1 (i.e.\ the ones that do
+Note in particular that objects in category 1 (\ie the ones that do
 not escape) are completely removed; moreover, objects in category 2
-(i.e.\ escaping) are still partially dealt with: if such an object
+(\ie escaping) are still partially dealt with: if such an object
 escapes later than its creation point, all the operations inbetween that
 involve the object are removed.
 
