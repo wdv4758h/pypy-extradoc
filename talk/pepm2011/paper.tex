@@ -1041,7 +1041,25 @@ xxx: relation to compile-time garbage collection \cite{mazur_practical_2001};  s
 
 
 \section{Conclusion}
-\label{sec:conclusions}
+\label{sec:conclusion}
+
+In this paper, we used a approach based on partial evaluation to
+optimize allocations in the traces of a tracing JIT.  In this context a
+simple approach to partial evaluation gives good results.  This is due
+to the fact that the tracing JIT itself is responsible for all control
+issues, which are usually the hardest part of partial evaluation: the
+tracing JIT selects the parts of the program that are worthwhile to
+optimize, and extracts linear paths through them, inlining functions as
+necessary.  What is left to optimize is only those linear paths.
+
+We expect a similar result for other optimizations that usually require
+a complex analysis phase and are thus normally too slow to use at
+runtime.  A tracing JIT selects interesting linear paths by itself;
+therefore, a naive version of many optimizations on such paths should
+give mostly the same results.  For example, we experimented with (and
+plan to write about) store-load propagation with a very simple alias
+analysis.
+
 
 \section*{Acknowledgements}
 
