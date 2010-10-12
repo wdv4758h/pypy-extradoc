@@ -763,7 +763,8 @@ To optimize the simple traces from the last section, we use online partial
 evaluation. The partial evaluator optimizes one operation of the trace at a
 time. Every operation in the unoptimized trace is replaced by a list of
 operations in the optimized trace. This list is empty if the operation
-can be optimized away (which hopefully happens often).
+can be optimized away (which hopefully happens often). The optimization rules
+can be seen in Figure~\ref{fig:optimization}.
 
 The state of the optimizer is stored in an environment $E$ and a \emph{static
 heap} $S$. The environment is a partial function from variables in the
