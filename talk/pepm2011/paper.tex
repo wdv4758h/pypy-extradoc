@@ -74,6 +74,14 @@
 
 \maketitle
 \begin{abstract}
+The performance of many dynamic language implementations suffers from
+high allocation rates and runtime type checks.  This makes dynamic
+languages less applicable to purely algorithmic problems, despite their
+growing popularity.  In this paper, we present a simple optimization
+based on online partial evaluation to remove object allocations and
+runtime type checks in the context of a tracing JIT.  We evaluate the
+optimization using a Python VM and find that it gives good results for
+all our (real-life) benchmarks.
 \footnote{This research is partially supported by the BMBF funded project PyJIT (nr. 01QE0913B;
 Eureka Eurostars).}
 \end{abstract}
@@ -1043,7 +1051,7 @@ xxx: relation to compile-time garbage collection \cite{mazur_practical_2001};  s
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this paper, we used a approach based on partial evaluation to
+In this paper, we used a approach based on online partial evaluation to
 optimize allocations in the traces of a tracing JIT.  In this context a
 simple approach to partial evaluation gives good results.  This is due
 to the fact that the tracing JIT itself is responsible for all control
