@@ -88,7 +88,7 @@ interpreters, run-time environments]
 \terms
 Languages, Performance, Experimentation
 
-\keywords{XXX}%
+\keywords{Tracing JIT, Partial Evaluation, Optimization}
 
 \section{Introduction}
 
@@ -832,6 +832,7 @@ XXX Category 2 The optimization of
 Section~\ref{sec:statics} deals with them too: the \texttt{new} that creates them and
 the field accesses are deferred, until the point where the object escapes.
 
+XXX optimization particularly effective for chains of operations
 
 % subsection Analysis of the Algorithm (end)
 
@@ -954,7 +955,6 @@ peeled off \cite{XXX}, see Figure~\ref{fig:step3}.
 \caption{A Way to Enter the Loop From the Interpreter}
 \end{figure}
 
-XXX optimization particularly effective for chains of operations
 
 %___________________________________________________________________________
 
@@ -1002,24 +1002,88 @@ specifically written for one particular language.
 \section{Evaluation}
 \label{sec:Evaluation}
 
-Benchmarks from the Computer Language Benchmark Game are: fannkuch, nbody,
-meteor-contest, spectral-norm.
+To evaluate the effectiveness of our allocation removal algorithm, we look at
+the effectiveness when used in the tracing JIT of PyPy's Python interpreter. The
+benchmarks we used are small-to-medium Python programs, some synthetic
+benchmarks, some real applications.
 
-\textbf{crypto\_pyaes}: AES implementation.
-\textbf{django}: The templating engine of the Django web
-framework\footnote{\texttt{http://www.djangoproject.com/}}.
-\textbf{go}: A Monte-Carlo Go
-AI\footnote{\texttt{http://shed-skin.blogspot.com/2009/07/disco-elegant-python-go-player.html}}.
-\textbf{html5lib}: HTML5 parser
-\textbf{pyflate-fast}: BZ2 decoder
-\textbf{raytrace-simple}: ray tracer
-\textbf{richards}: The Richards benchmark \cite{XXX}
-\textbf{spambayes}: A Bayesian spam filter\footnote{\texttt{http://spambayes.sourceforge.net/}}.
-\textbf{telco}: A Python version of the Telco decimal
-benchmark\footnote{\texttt{http://speleotrove.com/decimal/telco.html}}, using a pure
-Python decimal floating point implementation.
-\textbf{twisted\_names}: A DNS server benchmark using the Twisted networking
-framework\footnote{\texttt{http://twistedmatrix.com/trac/}}.
+Some of them are from the Computer Language Benchmark
+Game\footnote{\texttt{http://shootout.alioth.debian.org/}}: \textbf{fannkuch},
+\textbf{nbody}, \textbf{meteor-contest}, \textbf{spectral-norm}.
+
+Furthermore there are the following benchmarks:
+\begin{itemize}
+    \item \textbf{crypto\_pyaes}: AES implementation.
+    \item \textbf{django}: The templating engine of the Django web
+    framework\footnote{\texttt{http://www.djangoproject.com/}}.
+    \item \textbf{go}: A Monte-Carlo Go
+    AI\footnote{\texttt{http://shed-skin.blogspot.com/2009/07/ disco-elegant-python-go-player.html}}.
+    \item \textbf{html5lib}: HTML5 parser
+    \item \textbf{pyflate-fast}: BZ2 decoder
+    \item \textbf{raytrace-simple}: ray tracer
+    \item \textbf{richards}: The Richards benchmark \cite{XXX}
+    \item \textbf{spambayes}: A Bayesian spam filter\footnote{\texttt{http://spambayes.sourceforge.net/}}.
+    \item \textbf{telco}: A Python version of the Telco decimal
+    benchmark\footnote{\texttt{http://speleotrove.com/decimal/telco.html}},
+    using a pure Python decimal floating point implementation.
+    \item \textbf{twisted\_names}: A DNS server benchmark using the Twisted networking
+    framework\footnote{\texttt{http://twistedmatrix.com/}}.
+\end{itemize}
+
+We evaluate the allocation removal algorithm along two lines: First we want to
+know how many allocations could be optimized away. On the other hand, we want
+to know how much the run times of the benchmarks is improved.
+
+For the former we counted the occurring operations in all generated traces
+before and after the optimization phase for all benchmarks. The results can be
+seen in Figure~\ref{fig:numops}. The optimization removes as many as XXX and as
+little as XXX percent of allocation operations in the benchmarks. All benchmarks
+taken together, the optimization removes XXX percent of allocation operations.
+
+\begin{figure*}
+\begin{tabular}{lrrrrrrrrrrrrrrrrrrrrrrr}
+	&\#loops	&new	&	&	&get	&	&	&set	&	&	&guard	&	&	&rest	&	&	&	&	&	&total	&	&\\
+crypto\_pyaes	&75	&1663	&446	&27\%	&18842	&2127	&11\%	&14552	&2020	&14\%	&8952	&235	&3\%	&53339	&7794	&15\%	&44009	&4828	&11\%	&97348	&12622	&13\%\\
+django	&53	&453	&155	&34\%	&11970	&1457	&12\%	&8738	&991	&11\%	&4093	&275	&7\%	&33988	&4076	&12\%	&25254	&2878	&11\%	&59242	&6954	&12\%\\
+fannkuch	&40	&161	&76	&47\%	&574	&306	&53\%	&278	&139	&50\%	&1121	&202	&18\%	&2581	&1685	&65\%	&2134	&723	&34\%	&4715	&2408	&51\%\\
+go	&510	&5604	&1651	&29\%	&112403	&12612	&11\%	&88439	&11915	&13\%	&51621	&3194	&6\%	&300831	&30834	&10\%	&258067	&29372	&11\%	&558898	&60206	&11\%\\
+html5lib	&416	&5939	&1793	&30\%	&241402	&15863	&7\%	&178723	&13960	&8\%	&58486	&3037	&5\%	&682654	&40341	&6\%	&484550	&34653	&7\%	&1167204	&74994	&6\%\\
+meteor-contest	&56	&221	&141	&64\%	&2326	&606	&26\%	&2047	&645	&32\%	&1040	&169	&16\%	&7018	&2250	&32\%	&5634	&1561	&28\%	&12652	&3811	&30\%\\
+nbody	&10	&84	&48	&57\%	&287	&159	&55\%	&121	&74	&61\%	&411	&90	&22\%	&986	&737	&75\%	&903	&371	&41\%	&1889	&1108	&59\%\\
+pyflate-fast	&161	&1878	&723	&38\%	&22815	&2592	&11\%	&18415	&3690	&20\%	&8291	&628	&8\%	&64649	&11327	&18\%	&51399	&7633	&15\%	&116048	&18960	&16\%\\
+raytrace-simple	&117	&1906	&359	&19\%	&52995	&2202	&4\%	&39518	&1823	&5\%	&13451	&447	&3\%	&140723	&6533	&5\%	&107870	&4831	&4\%	&248593	&11364	&5\%\\
+richards	&79	&375	&191	&51\%	&27507	&2095	&8\%	&21217	&2004	&9\%	&3972	&332	&8\%	&76751	&6171	&8\%	&53071	&4622	&9\%	&129822	&10793	&8\%\\
+spambayes	&267	&2413	&505	&21\%	&53327	&3033	&6\%	&40938	&2428	&6\%	&19343	&718	&4\%	&143575	&10322	&7\%	&116021	&6684	&6\%	&259596	&17006	&7\%\\
+spectral-norm	&35	&266	&88	&33\%	&3004	&398	&13\%	&2544	&414	&16\%	&1084	&78	&7\%	&4803	&1184	&25\%	&6898	&978	&14\%	&11701	&2162	&18\%\\
+telco	&42	&660	&70	&11\%	&20716	&424	&2\%	&14444	&608	&4\%	&6574	&56	&1\%	&53674	&1224	&2\%	&42394	&1158	&3\%	&96068	&2382	&2\%\\
+twisted-names	&201	&2706	&317	&12\%	&64438	&2795	&4\%	&47960	&1968	&4\%	&24091	&555	&2\%	&171582	&6828	&4\%	&139195	&5635	&4\%	&310777	&12463	&4\%\\
+total	&2062	&24329	&6563	&27\%	&632606	&46669	&7\%	&477934	&42679	&9\%	&202530	&10016	&5\%	&1737154	&131306	&8\%	&1337399	&105927	&8\%	&3074553	&237233	&8\%\\
+\end{tabular}
+\caption{Number of Operations Before and After Optimization}
+\label{fig:numops}
+\end{figure*}
+
+In addition to the count of operations we also performed time measurements. The
+machine the benchmarks were run on is XXX. We compared the performance of
+various Python implementations on the benchmarks. As a baseline, we used the
+standard Python implementation in C, called
+CPython\footnote{\texttt{http://python.org}}, which uses a bytecode-based
+interpreter. Furthermore we compared against Psyco \cite{XXX}, an extension to
+CPython which is a just-in-time compiler that produces machine code at run-time.
+It is not based on traces. Of PyPy's Python interpreter we used three versions,
+one without a JIT, one including the JIT but not using the allocation removal
+optimization, and one using the allocation removal optimizations.
+
+All benchmarks were run 50 times in the same process, to give the JIT time to produce machine
+code. The arithmetic mean of the times of the last 30 runs were used as the
+result. The errors were computed using a confidence interval with a 95\%
+confidence level \cite{XXX}. The results are reported in Figure~\ref{fig:times}.
+With the optimization turned on, PyPy's Python interpreter outperforms CPython
+in all benchmarks except spambayes (which heavily relies on regular expression
+performance). All benchmarks are improved by the allocation removal
+optimization, some as much as XXX. XXX Psyco
+
+XXX runtimes of the algorithm somehow?
 
 \begin{figure*}
 \begin{tabular}{lrrrr}
@@ -1030,7 +1094,7 @@ fannkuch	&1344.15 $\pm$ 0.36	&378.18 $\pm$ 0.36	&309.04 $\pm$ 1.56	&299.12 $\pm$
 go		&595.31 $\pm$ 0.51	&1067.26 $\pm$ 12.20	&121.76 $\pm$ 4.15	&125.57 $\pm$ 3.90\\
 html5lib	&8678.67 $\pm$ 23.37	&17665.16 $\pm$ 2695.45	&6739.95 $\pm$ 1225.25	&6699.24 $\pm$ 1295.92\\
 meteor-contest	&241.53 $\pm$ 0.09	&291.11 $\pm$ 0.86	&274.09 $\pm$ 0.37	&272.77 $\pm$ 0.30\\
-nbody\_modified	&396.55 $\pm$ 0.24	&84.77 $\pm$ 0.14	&69.01 $\pm$ 0.08	&68.71 $\pm$ 0.09\\
+nbody		&396.55 $\pm$ 0.24	&84.77 $\pm$ 0.14	&69.01 $\pm$ 0.08	&68.71 $\pm$ 0.09\\
 pyflate-fast	&1991.33 $\pm$ 1.90	&1818.70 $\pm$ 4.30	&1062.03 $\pm$ 4.56	&1052.02 $\pm$ 3.24\\
 raytrace-simple	&1598.84 $\pm$ 1.07	&1126.93 $\pm$ 11.42	&93.45 $\pm$ 4.75	&92.17 $\pm$ 4.15\\
 richards	&216.47 $\pm$ 0.20	&169.84 $\pm$ 1.21	&11.81 $\pm$ 0.09	&11.90 $\pm$ 0.29\\
@@ -1043,13 +1107,31 @@ twisted\_names	&6.61 $\pm$ 0.00	&8.85 $\pm$ 0.09	&4.35 $\pm$ 0.05 &4.35 $\pm$ 0.
 \label{fig:times}
 \end{figure*}
 
-
-
 \section{Related Work}
 \label{sec:related}
 
+Escape analysis: XXX
+
+partial evaluation:
+
+Prolog
+
+partially static data structures: kenichi asai's thesis?
+
+hint in first js paper by michael franz \cite{mason_chang_efficient_2007}
+
+SPUR, a tracing JIT for C# seems to be able to remove allocations in a similar
+way to the approach described here, as hinted at in the technical report
+\cite{XXX}. However, no details for the approach and its implementation are
+given.
+
 \section{Conclusions}
 \label{sec:conclusions}
+
+\section*{Acknowledgements}
+
+The authors would like to thank Stefan Hallerstede and Thomas Stiehl for
+fruitful discussions during the writing of the paper.
 
 \bibliographystyle{abbrv}
 \bibliography{paper}
