@@ -61,7 +61,7 @@ u,v,w & \in & V & \mathrm{are\, Variables}\\
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray*}
 u,v & \in & V\mathrm{\,\, are\, Variables\, in\, the\, original\, trace}\\
-u^{*},v^{*},w^{*} & \in & V^{*}\,\mathrm{\, are\, Variables\, in\, the\, optimized\, trace}\\
+u^{*},v^{*} & \in & V^{*}\,\mathrm{\, are\, Variables\, in\, the\, optimized\, trace}\\
 T & \in & \mathfrak{T}\mathrm{\,\, are\, runtime\, types}\\
 F & \in & \left\{ L,R\right\} \,\mathrm{\, are\, fields\, of\, objects}\\
 l & \in & L\,\mathrm{\, are\, locations\, in\, the\, heap}\end{eqnarray*}

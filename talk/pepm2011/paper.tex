@@ -632,12 +632,9 @@ and only three \texttt{guard\_class} operations, from the original seven.
 \begin{figure*}
 \begin{center}
 \begin{tabular}{lcccc}
-\emph{new} & ${\displaystyle \frac{l\,\mathrm{fresh}}{v=\mathrm{new}(T),E,H\overset{\mathrm{run}}{\Longrightarrow}E\left[v\mapsto l\right],H\left[l\mapsto\left(T,\mathrm{null},\mathrm{null}\right)\right]}}$ & ~~~ &
-\emph{guard} & ${\displaystyle \frac{\mathrm{type}(H(E(v))=T}{\mathrm{guard}(v,T),E,H\overset{\mathrm{run}}{\Longrightarrow}E,H}}$\tabularnewline[3em]
-\emph{get} & ${\displaystyle \frac{\,}{v=\mathrm{get}(u,F),E,H\overset{\mathrm{run}}{\Longrightarrow}E\left[v\mapsto H\left(E\left(u\right)\right)_{F}\right],H}}$ & ~~~ &
-& ${\displaystyle \frac{\mathrm{type}(H(E(v))\neq T}{\mathrm{guard}(v,T),E,H\overset{\mathrm{run}}{\Longrightarrow}\bot,\bot}}$\tabularnewline[3em]
-\emph{set} & ${\displaystyle \frac{\,}{\mathrm{set}\left(v,F,u\right),E,H\overset{\mathrm{run}}{\Longrightarrow}E,H\left[E\left(v\right)\mapsto\left(H\left(E\left(v\right)\right)!_{F}E(u)\right)\right]}}$ & ~~~ &
-& \tabularnewline[4em]
+\emph{new} & ${\displaystyle \frac{l\,\mathrm{fresh}}{v=\mathtt{new}(T),E,H\overset{\mathrm{run}}{\Longrightarrow}E\left[v\mapsto l\right],H\left[l\mapsto\left(T,\mathrm{null},\mathrm{null}\right)\right]}}$ & ~~~ & \emph{guard} & ${\displaystyle \frac{\mathrm{type}(H(E(v))=T}{\mathtt{guard\_class}(v,T),E,H\overset{\mathrm{run}}{\Longrightarrow}E,H}}$\tabularnewline[3em]
+\emph{get} & ${\displaystyle \frac{\,}{u=\mathtt{get}(v,F),E,H\overset{\mathrm{run}}{\Longrightarrow}E\left[u\mapsto H\left(E\left(v\right)\right)_{F}\right],H}}$ & ~~~ &  & ${\displaystyle \frac{\mathrm{type}(H(E(v))\neq T}{\mathtt{guard\_class}(v,T),E,H\overset{\mathrm{run}}{\Longrightarrow}\bot,\bot}}$\tabularnewline[3em]
+\emph{set} & ${\displaystyle \frac{\,}{\mathtt{set}\left(v,F,u\right),E,H\overset{\mathrm{run}}{\Longrightarrow}E,H\left[E\left(v\right)\mapsto\left(H\left(E\left(v\right)\right)!_{F}E(u)\right)\right]}}$ & ~~~ &  & \tabularnewline[4em]
 \end{tabular}
 
 \begin{minipage}[b]{7 cm}
@@ -728,24 +725,24 @@ stopped.
 \begin{figure*}
 \begin{center}
 \begin{tabular}{lc}
-\emph{new} & ${\displaystyle \frac{v^{*}\,\mathrm{fresh}}{v=\mathrm{new}(T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto v^{*}\right],S\left[v^{*}\mapsto\left(T,\mathrm{null,null}\right)\right]}}$\tabularnewline[3em]
-\emph{get} & ${\displaystyle \frac{E(u)\in\mathrm{dom}(S)}{v=\mathrm{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto S(E(u))_{F}\right],S}}$\tabularnewline[3em]
- & ${\displaystyle \frac{E(u)\notin\mathrm{dom}(S)\, v^{*}\,\mathrm{fresh}}{v=\mathrm{get}(u,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle v^{*}=\mathrm{get}(E(u),F)\right\rangle ,E\left[v\mapsto v^{*}\right],S}}$\tabularnewline[3em]
-\emph{set} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S)}{\mathrm{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S\left[E\left(v\right)\mapsto\left(S(E(v))!_{F}E(u)\right)\right]}}$\tabularnewline[3em]
- & ${\displaystyle \frac{E(v)\notin\mathrm{dom}\left(S\right),\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathrm{set}\left(E(v),F,E(u)\right)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
-\emph{guard} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S),\,\mathrm{type}(S(E(v)))=T}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S}}$\tabularnewline[3em]
- & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\vee\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathrm{guard}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathrm{guard}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
+\emph{new} & ${\displaystyle \frac{v^{*}\,\mathrm{fresh}}{v=\mathtt{new}(T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto v^{*}\right],S\left[v^{*}\mapsto\left(T,\mathrm{null,null}\right)\right]}}$\tabularnewline[3em]
+\emph{get} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S)}{u=\mathtt{get}(v,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[u\mapsto S(E(v))_{F}\right],S}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\, u^{*}\,\mathrm{fresh}}{u=\mathtt{get}(v,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle u^{*}=\mathtt{get}(E(v),F)\right\rangle ,E\left[u\mapsto u^{*}\right],S}}$\tabularnewline[3em]
+\emph{set} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S)}{\mathtt{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S\left[E\left(v\right)\mapsto\left(S(E(v))!_{F}E(u)\right)\right]}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\notin\mathrm{dom}\left(S\right),\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathtt{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathtt{set}\left(E(v),F,E(u)\right)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
+\emph{guard} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S),\,\mathrm{type}(S(E(v)))=T}{\mathtt{guard\_class}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\vee\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathtt{guard\_class}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathtt{guard\_class}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
 \emph{lifting} & ${\displaystyle \frac{v^{*}\notin\mathrm{dom}(S)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle \,\right\rangle ,S}}$\tabularnewline[3em]
- & ${\displaystyle \frac{v^{*}\in\mathrm{dom}(S),\,\left(v^{*},S\right)\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle v^{*}=\mathrm{new}\left(T\right)\right\rangle ::ops,S^{\prime}}}$\tabularnewline[3em]
- & ${\displaystyle \frac{\left(S\left(v^{*}\right)_{L},S\setminus\left\{ v^{*}\mapsto S\left(v^{*}\right)\right\} \right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{L},S^{\prime}\right),\,\left(S\left(v^{*}\right)_{R},S^{\prime}\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{R},S^{\prime\prime}\right)}{v^{*},S\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\mathrm{ops}_{L}::ops_{R}::\left\langle \mathrm{set}\left(v^{*},L,S\left(v^{*}\right)_{L}\right),\,\mathrm{set}\left(v^{*},R,S\left(v^{*}\right)_{R}\right)\right\rangle ,S^{\prime}}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{v^{*}\in\mathrm{dom}(S),\,\left(v^{*},S\right)\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle v^{*}=\mathtt{new}\left(T\right)\right\rangle ::ops,S^{\prime}}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{\left(S\left(v^{*}\right)_{L},S\setminus\left\{ v^{*}\mapsto S\left(v^{*}\right)\right\} \right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{L},S^{\prime}\right),\,\left(S\left(v^{*}\right)_{R},S^{\prime}\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{R},S^{\prime\prime}\right)}{v^{*},S\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\mathrm{ops}_{L}::ops_{R}::\left\langle \mathtt{set}\left(v^{*},L,S\left(v^{*}\right)_{L}\right),\,\mathtt{set}\left(v^{*},R,S\left(v^{*}\right)_{R}\right)\right\rangle ,S^{\prime}}}$\tabularnewline[3em]
 \end{tabular}
 
 \begin{minipage}[b]{7 cm}
 \emph{Object Domains:}
 $$\setlength\arraycolsep{0.1em}
  \begin{array}{rcll}
-    u,v,w & \in & V & \mathrm{\ variables\ in\ trace}\\
-    u^*,v^*,w^* & \in & V^* & \mathrm{\ variables\ in\ optimized\ trace}\\
+    u,v & \in & V & \mathrm{\ variables\ in\ trace}\\
+    u^*,v^* & \in & V^* & \mathrm{\ variables\ in\ optimized\ trace}\\
     T & \in & \mathfrak{T} & \mathrm{\ runtime\ types}\\
     F & \in & \left\{ L,R\right\} & \mathrm{\ fields\ of\ objects}\\
  \end{array}
