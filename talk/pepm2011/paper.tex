@@ -266,7 +266,8 @@ two operations, \texttt{add}, which adds two objects (promoting ints to floats i
 mixed addition) and \texttt{is\_positive}, which returns whether the number is greater
 than zero. The implementation of \texttt{add} uses classical Smalltalk-like
 double-dispatching. These classes could be part of the implementation of a very
-simple interpreter written in RPython.
+simple interpreter written in RPython. The classes can be seen in
+Figure~\ref{fig:objmodel}.
 
 \begin{figure}
 \begin{verbatim}
@@ -313,6 +314,7 @@ class BoxedFloat(Base):
         return self.floatval > 0.0
 \end{verbatim}
 \caption{A simple object model}
+\label{fig:objmodel}
 \end{figure}
 
 Using these classes to implement arithmetic shows the basic problem that a
@@ -409,8 +411,8 @@ guard\_true($i_{17}$) \\
 jump($p_{15}$, $p_{10}$) \\
 \end{tabular}
 }
-\label{fig:unopt-trace}
 \caption{Unoptimized Trace for the Simple Object Model}
+\label{fig:unopt-trace}
 \end{figure}
 
 If the function is executed using the tracing JIT, with \texttt{y} being a
@@ -607,14 +609,11 @@ and \texttt{guard\_class} operations).
 
 \begin{figure}
 \includegraphics{figures/step1.pdf}
-\label{fig:step1}
 \caption{Resulting Trace After Allocation Removal}
+\label{fig:step1}
 \end{figure}
 
-The final optimized trace of the example can be seen in
-Figure~\ref{fig:step1}.
-XXX why does it says ``Figure 4.1'' here but ``Figure 4'' in the label?
-
+The final optimized trace of the example can be seen in Figure~\ref{fig:step1}.
 The optimized trace contains only two allocations, instead of the original five,
 and only three \texttt{guard\_class} operations, from the original seven.
 
@@ -656,8 +655,8 @@ $$\setlength\arraycolsep{0.1em}
 $$
 \end{minipage}
 \end{center}
-\label{fig:semantics}
 \caption{The Operational Semantics of Simplified Traces}
+\label{fig:semantics}
 \end{figure*}
 
 In this section we want to give a formal description of the semantics of the
@@ -756,8 +755,8 @@ $$\setlength\arraycolsep{0.1em}
 $$
 \end{minipage}
 \end{center}
-\label{fig:optimization}
 \caption{Optimization Rules}
+\label{fig:optimization}
 \end{figure*}
 
 To optimize the simple traces from the last section, we use online partial
