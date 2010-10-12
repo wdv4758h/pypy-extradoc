@@ -35,6 +35,7 @@
 
 \newcommand\ie{i.e.,\xspace}
 \newcommand\eg{e.g.,\xspace}
+\newcommand{\etal}{\emph{et al.}\xspace}
 
 \normalem
 
@@ -1112,20 +1113,38 @@ twisted\_names	&6.61 $\pm$ 0.00	&8.85 $\pm$ 0.09	&4.35 $\pm$ 0.05 &4.35 $\pm$ 0.
 \section{Related Work}
 \label{sec:related}
 
-Escape analysis: XXX
+There exists a large number of works on escape analysis, which is an program
+analysis that tries to find an upper bound for the lifetime of objects allocated
+at specific program points
+\cite{goldberg_higher_1990,park_escape_1992,choi_escape_1999,bruno_blanchet_escape_2003}.
+This information can then be used to decide that certain objects can be
+allocated on the stack, because their lifetime does not exceed that of the stack
+frame it is allocated in. The difference to our work is that escape analysis is
+split into an analysis and an optimization phase. The analysis can be a lot more
+complex than our simple one-pass optimization. Also, stack-allocation reduces
+garbage-collection pressure but does not optimize away the actual accesses to
+the stack-allocated object. In our case, an object is not needed at all any
+more.
+XXX more papers?
+
+Chang \etal describe a tracing JIT for JavaScript running on top of a JVM
+\cite{mason_chang_efficient_2007}. They mention in passing an approach to
+allocation removal that moves the allocation of an object of type 1 out of the
+loop to only allocate it once, instead of every iteration. No details are given
+for this optimization. The fact that the object is still allocated and needs to
+be written to means that only the allocations are optimized away, but not the
+reads and writes out of/into the object.
+
+SPUR, a tracing JIT for C\# seems to be able to remove allocations in a similar
+way to the approach described here, as hinted at in the technical report
+\cite{XXX}. However, no details for the approach and its implementation are
+given.
 
 partial evaluation:
 
 Prolog
 
 partially static data structures: kenichi asai's thesis?
-
-hint in first js paper by michael franz \cite{mason_chang_efficient_2007}
-
-SPUR, a tracing JIT for C\# seems to be able to remove allocations in a similar
-way to the approach described here, as hinted at in the technical report
-\cite{XXX}. However, no details for the approach and its implementation are
-given.
 
 \section{Conclusions}
 \label{sec:conclusions}
