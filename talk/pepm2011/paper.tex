@@ -54,6 +54,7 @@
 \newcommand\revb[1]{\nb{Reviewer 2}{#1}}
 \newcommand\revc[1]{\nb{Reviewer 3}{#1}}
 \newcommand{\commentout}[1]{}
+\newcommand{\ignore}[1]{} % {{\tt \small ignore(#1)}}
 
 \newcommand\ie{i.e.,\xspace}
 \newcommand\eg{e.g.,\xspace}
@@ -234,7 +235,7 @@ Moreover, thanks to the internal design of the JIT generator, it is very easy
 to add new \emph{backends} for producing the actual machine code, in addition
 to the original backend for the Intel \emph{x86} architecture.  Examples of
 additional JIT backends are the one for Intel \emph{x86-64} and an
-experimental one for the CLI .NET Virtual Machine \cite{cuni_python_cli_2010}.
+experimental one for the CLI .NET Virtual Machine \cite{cuni_high_2010}.
 PyPy's JIT generator generates a \emph{tracing JIT
 compiler}, a concept which we now explain in more details.
 
@@ -266,7 +267,7 @@ operations that are performed in functions that were called in the loop, thus a
 tracing JIT automatically performs inlining.
 
 This trace of operations is then the basis of the generated code. The trace is
-first optimized, and then turned into machine code. Both optimizations
+first optimized, and then turned into machine code. Both optimization
 and machine code generation is simple, because the traces are linear. This
 linearity makes many optimizations a lot more tractable, and the inlining that
 happens gives the optimizations automatically more context to work with.
@@ -310,28 +311,10 @@ double-dispatching.
 The classes can be seen in
 Figure~\ref{fig:objmodel} (written in RPython).
 
-\newcommand{\ignore}[1]{} % {{\tt \small ignore(#1)}}
-\ignore{
-class Base(object):
-    def add(self, other):
-        """ add self to other """
-        raise NotImplementedError("abstract base")
-    def add__int(self, intother):
-        """ add intother to self,
-            where intother is an integer """
-        raise NotImplementedError("abstract base")
-    def add__float(self, floatother):
-        """ add floatother to self,
-            where floatother is a float """
-        raise NotImplementedError("abstract base")
-    def is_positive(self):
-        """ returns whether self is positive """
-        raise NotImplementedError("abstract base")
-        }
 \begin{figure}
 \begin{lstlisting}[mathescape]
 class Base(object):
-      ...
+   pass
 
 class BoxedInteger(Base):
    def __init__(self, intval):
@@ -375,8 +358,7 @@ def f(y):
       y = y.add(BoxedInteger(-1))
    return res
 \end{lstlisting}
-\caption{An ``interpreter'' for a tiny Dynamic Language written in RPython}
-%\caption{A Simple Object Model and an Example Function Using it}
+\caption{An ``Interpreter'' for a Tiny Dynamic Language Written in RPython}
 \label{fig:objmodel}
 \end{figure}
 
@@ -389,14 +371,8 @@ implement the numeric tower needs two method calls per arithmetic operation,
 which is costly due to the method dispatch.
 
 To understand the problems more directly, let us consider the simple
-interpreter function
-\lstinline{f} that uses the object model (see the bottom of
+interpreter function \lstinline{f} that uses the object model (see the bottom of
 Figure~\ref{fig:objmodel}).
-
-XXX this is not an RPython interpreter; put a reference to the previous
-paper to show how we deal with an interpreted piece of code and remove
-the interpretation overhead, turning it into basically something
-equivalent to the example here, which is the start of the present paper.
 
 The loop in \lstinline{f} iterates \lstinline{y} times, and computes something in the process.
 Simply running this function is slow, because there are lots of virtual method
@@ -474,22 +450,24 @@ If the function is executed using the tracing JIT, with \lstinline{y} being a
 \lstinline{BoxedInteger}, the produced trace looks like
 Figure~\ref{fig:unopt-trace} (lines starting with the hash ``\#'' are comments).
 
-XXX in which language is the trace written in ? still RPython ?
-
 The operations in the trace are shown indented to
 correspond to the stack level of the function that contains the traced
 operation. The trace is in single-assignment form, meaning that each variable is
 assigned to exactly once. The arguments $p_0$ and $p_1$ of the loop correspond
 to the live variables \lstinline{y} and \lstinline{res} in the original function.
 
-XXX explain set and get + int\_add briefly
+The operations in the trace correspond to the operations in the RPython program
+in Figure~\ref{fig:objmodel}:
 
-The trace shows the inefficiencies of \lstinline{f} clearly, if one
-looks at the number of \lstinline{new} (corresponding to object creation),
-\lstinline{set/get} (corresponding to attribute reads/writes) and
-\lstinline{guard_class} operations (corresponding to method calls).
-In the rest of the paper we will see how this trace can be optimized using
-partial evaluation.
+\begin{itemize}
+    \item \lstinline{new} corresponds to object creation.
+    \item \lstinline{get} correspond to attribute reads.
+    \item \lstinline{set} correspond to attribute writes.
+    \item \lstinline{guard\_class} correspond to method calls and are followed by
+    the trace of the called method.
+    \item \lstinline{int\_add} and \lstinline{int\_get} are integer addition and
+    comparison (``greater than''), respectively.
+\end{itemize}
 
 Note how the functions that are called by \lstinline{f} are automatically inlined
 into the trace. The method calls are always preceded by a \lstinline{guard_class}
@@ -502,6 +480,10 @@ turned into machine code and then executed with \lstinline{BoxedFloats}, the
 first \lstinline{guard_class} instruction will fail and execution will continue
 using the interpreter.
 
+The trace shows the inefficiencies of \lstinline{f} clearly, if one looks at the
+number of \lstinline{new}, \lstinline{set/get} and \lstinline{guard\_class} operations.
+In the rest of the paper we will see how this trace can be optimized using
+partial evaluation.
 
 \section{Object Lifetimes in a Tracing JIT}
 \label{sec:lifetimes}
@@ -576,7 +558,7 @@ not be allocated at all.
 This is a process that is usually called \emph{escape analysis}. In this paper we will
 perform escape analysis by using partial evaluation. The partial evalution is a
 bit peculiar in that there are not actually any constant arguments to the trace,
-but it is only used to optimized operations within a trace. XXX mention Prolog.
+but it is only used to optimized operations within a trace.
 
 The partial evaluation works by walking the trace from beginning to end.
 Whenever a \lstinline{new} operation is seen, the operation is removed and a static
@@ -989,25 +971,29 @@ All benchmarks taken together, the optimization removes XXX percent of
 allocation operations.
 
 \begin{figure*}
-\begin{tabular}{lrrrrrrrrrrrrrrrrrrrrrrr}
-	&\#loops	&new	&	&	&get	&	&	&set	&	&	&guard	&	&	&rest	&	&	&	&	&	&total	&	&\\
-crypto\_pyaes	&75	&1663	&446	&27\%	&18842	&2127	&11\%	&14552	&2020	&14\%	&8952	&235	&3\%	&53339	&7794	&15\%	&44009	&4828	&11\%	&97348	&12622	&13\%\\
-django	&53	&453	&155	&34\%	&11970	&1457	&12\%	&8738	&991	&11\%	&4093	&275	&7\%	&33988	&4076	&12\%	&25254	&2878	&11\%	&59242	&6954	&12\%\\
-fannkuch	&40	&161	&76	&47\%	&574	&306	&53\%	&278	&139	&50\%	&1121	&202	&18\%	&2581	&1685	&65\%	&2134	&723	&34\%	&4715	&2408	&51\%\\
-go	&510	&5604	&1651	&29\%	&112403	&12612	&11\%	&88439	&11915	&13\%	&51621	&3194	&6\%	&300831	&30834	&10\%	&258067	&29372	&11\%	&558898	&60206	&11\%\\
-html5lib	&416	&5939	&1793	&30\%	&241402	&15863	&7\%	&178723	&13960	&8\%	&58486	&3037	&5\%	&682654	&40341	&6\%	&484550	&34653	&7\%	&1167204	&74994	&6\%\\
-meteor-contest	&56	&221	&141	&64\%	&2326	&606	&26\%	&2047	&645	&32\%	&1040	&169	&16\%	&7018	&2250	&32\%	&5634	&1561	&28\%	&12652	&3811	&30\%\\
-nbody	&10	&84	&48	&57\%	&287	&159	&55\%	&121	&74	&61\%	&411	&90	&22\%	&986	&737	&75\%	&903	&371	&41\%	&1889	&1108	&59\%\\
-pyflate-fast	&161	&1878	&723	&38\%	&22815	&2592	&11\%	&18415	&3690	&20\%	&8291	&628	&8\%	&64649	&11327	&18\%	&51399	&7633	&15\%	&116048	&18960	&16\%\\
-raytrace-simple	&117	&1906	&359	&19\%	&52995	&2202	&4\%	&39518	&1823	&5\%	&13451	&447	&3\%	&140723	&6533	&5\%	&107870	&4831	&4\%	&248593	&11364	&5\%\\
-richards	&79	&375	&191	&51\%	&27507	&2095	&8\%	&21217	&2004	&9\%	&3972	&332	&8\%	&76751	&6171	&8\%	&53071	&4622	&9\%	&129822	&10793	&8\%\\
-spambayes	&267	&2413	&505	&21\%	&53327	&3033	&6\%	&40938	&2428	&6\%	&19343	&718	&4\%	&143575	&10322	&7\%	&116021	&6684	&6\%	&259596	&17006	&7\%\\
-spectral-norm	&35	&266	&88	&33\%	&3004	&398	&13\%	&2544	&414	&16\%	&1084	&78	&7\%	&4803	&1184	&25\%	&6898	&978	&14\%	&11701	&2162	&18\%\\
-telco	&42	&660	&70	&11\%	&20716	&424	&2\%	&14444	&608	&4\%	&6574	&56	&1\%	&53674	&1224	&2\%	&42394	&1158	&3\%	&96068	&2382	&2\%\\
-twisted-names	&201	&2706	&317	&12\%	&64438	&2795	&4\%	&47960	&1968	&4\%	&24091	&555	&2\%	&171582	&6828	&4\%	&139195	&5635	&4\%	&310777	&12463	&4\%\\
-total	&2062	&24329	&6563	&27\%	&632606	&46669	&7\%	&477934	&42679	&9\%	&202530	&10016	&5\%	&1737154	&131306	&8\%	&1337399	&105927	&8\%	&3074553	&237233	&8\%\\
+\begin{tabular}{|l||r|rr|rr|rr|rr|}
+\hline
+	&num loops	&new	&removed	&get/set	&removed &guard &removed	&all ops	&removed\\
+\hline
+crypto\_pyaes	&78	&3088	&50\%	&57148	&25\%	&9055	&95\%	&137189	&80\%\\
+django	&51	&673	&54\%	&19318	&18\%	&3876	&93\%	&55682	&85\%\\
+fannkuch	&43	&171	&49\%	&886	&63\%	&1159	&81\%	&4935	&45\%\\
+go	&517	&12234	&76\%	&200842	&21\%	&53138	&90\%	&568542	&84\%\\
+html5lib	&498	&14432	&68\%	&503390	&11\%	&71592	&94\%	&1405780	&91\%\\
+meteor-contest	&59	&277	&36\%	&4402	&31\%	&1078	&83\%	&12862	&68\%\\
+nbody	&13	&96	&38\%	&443	&69\%	&449	&78\%	&2107	&38\%\\
+pyflate-fast	&162	&2278	&55\%	&39126	&20\%	&8194	&92\%	&112857	&80\%\\
+raytrace-simple	&120	&3118	&59\%	&91982	&15\%	&13572	&95\%	&247436	&89\%\\
+richards	&87	&844	&4\%	&49875	&22\%	&4130	&91\%	&133898	&83\%\\
+spambayes	&314	&5608	&79\%	&117002	&11\%	&25313	&94\%	&324125	&90\%\\
+spectral-norm	&38	&360	&64\%	&5553	&20\%	&1122	&92\%	&11878	&77\%\\
+telco	&46	&1257	&90\%	&37470	&3\%	&6644	&99\%	&98590	&97\%\\
+twisted-names	&214	&5273	&84\%	&100010	&10\%	&23247	&96\%	&279667	&92\%\\
+\hline
+total	&2240	&49709	&70\%	&1227447	&14\%	&222569	&93\%	&3395548	&89\%\\
+\hline
 \end{tabular}
-\caption{Number of Operations Before and After Optimization}
+\caption{Number of Operations and Percentage Removed By Optimization}
 \label{fig:numops}
 \end{figure*}
 
