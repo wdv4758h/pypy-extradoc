@@ -179,8 +179,8 @@ The contributions of this paper are:
 
 The work described in this paper was done in the context of the PyPy project
 \cite{armin_rigo_pypys_2006}. PyPy is an environment where dynamic languages can
-be implemented in a simple yet efficient way. The approach taken when
-implementing a language with PyPy is to write an \emph{interpreter}
+be implemented in a simple yet efficient way. 
+When implementing a language with PyPy one writes an \emph{interpreter}
 for the language in
 \emph{RPython} \cite{davide_ancona_rpython:_2007}. RPython ("restricted Python")
 is a subset of Python chosen in such a way that type inference becomes
@@ -191,7 +191,7 @@ details, such as object layout, garbage collection or memory model. Those
 aspects of the final VM are woven into the generated code during the translation
 to C.
 
-A number of languages have been implemented with PyPy. The project was started
+A number of languages have been implemented with PyPy. The project was initiated
 to get a better Python implementation, which inspired the name of the project
 and is still the main focus of development. In addition a number of other
 languages were implemented, among them a Prolog interpreter
@@ -203,7 +203,7 @@ The feature that makes PyPy more than a compiler with a runtime system is its
 support for automated JIT compiler generation \cite{bolz_tracing_2009}. During
 the translation to C, PyPy's tools can generate a just-in-time compiler for the
 language that the interpreter is implementing. This process is mostly
-automatic; it only needs to be guided by the language implementer by a small number of
+automatic; it only needs to be guided by the language implementer using a small number of
 source-code hints. Mostly-automatically generating a JIT compiler has many advantages
 over writing one manually, which is an error-prone and tedious process.
 By construction, the generated JIT has the same semantics as the interpreter.
@@ -214,7 +214,7 @@ to add new \emph{backends} for producing the actual machine code, in addition
 to the original backend for the Intel \emph{x86} architecture.  Examples of
 additional JIT backends are the one for Intel \emph{x86-64} and an
 experimental one for the CLI .NET Virtual Machine \cite{cuni_python_cli_2010}.
-The JIT that is produced by PyPy's JIT generator is a \emph{tracing JIT
+PyPy's JIT generator generates a \emph{tracing JIT
 compiler}, a concept which we now explain in more details.
 
 \subsection{Tracing JIT Compilers}
@@ -245,7 +245,7 @@ operations that are performed in functions that were called in the loop, thus a
 tracing JIT automatically performs inlining.
 
 This trace of operations is then the basis of the generated code. The trace is
-optimized in some ways, and then turned into machine code. Both optimizations
+first optimized, and then turned into machine code. Both optimizations
 and machine code generation is simple, because the traces are linear. This
 linearity makes many optimizations a lot more tractable, and the inlining that
 happens gives the optimizations automatically more context to work with.
@@ -277,17 +277,20 @@ code.
 
 \subsection{Running Example}
 
-For the purpose of this paper, we are going to use a very simple object
+For the purpose of this paper, we are going to use a tiny interpreter for a dynamic language with
+ a very simple object
 model, that just supports an integer and a float type. The objects support only
 two operations, \texttt{add}, which adds two objects (promoting ints to floats in a
 mixed addition) and \texttt{is\_positive}, which returns whether the number is greater
 than zero. The implementation of \texttt{add} uses classical Smalltalk-like
-double-dispatching. These classes could be part of the implementation of a very
-simple interpreter written in RPython. The classes can be seen in
-Figure~\ref{fig:objmodel}.
+double-dispatching.
+%These classes could be part of the implementation of a very
+%simple interpreter written in RPython.
+The classes can be seen in
+Figure~\ref{fig:objmodel} (written in RPython).
 
-\begin{figure}
-\begin{verbatim}
+\newcommand{\ignore}[1]{} % {{\tt \small ignore(#1)}}
+\ignore{
 class Base(object):
     def add(self, other):
         """ add self to other """
@@ -303,6 +306,10 @@ class Base(object):
     def is_positive(self):
         """ returns whether self is positive """
         raise NotImplementedError("abstract base")
+        }
+\begin{figure}
+\begin{verbatim}
+class Base(object):
 
 class BoxedInteger(Base):
     def __init__(self, intval):
@@ -338,7 +345,8 @@ def f(y):
         y = y.add(BoxedInteger(-1))
     return res
 \end{verbatim}
-\caption{A Simple Object Model and an Example Function Using it}
+\caption{An ``interpreter'' for a tiny Dynamic Language written in RPython}
+%\caption{A Simple Object Model and an Example Function Using it}
 \label{fig:objmodel}
 \end{figure}
 
@@ -350,7 +358,8 @@ thus putting pressure on the garbage collector. Using double dispatching to
 implement the numeric tower needs two method calls per arithmetic operation,
 which is costly due to the method dispatch.
 
-To understand the problems more directly, let us consider the simple function
+To understand the problems more directly, let us consider the simple
+interpreter function
 \texttt{f} that uses the object model (see the bottom of
 Figure~\ref{fig:objmodel}).
 
@@ -434,11 +443,17 @@ jump($p_{15}$, $p_{10}$) \\
 
 If the function is executed using the tracing JIT, with \texttt{y} being a
 \texttt{BoxedInteger}, the produced trace looks like
-Figure~\ref{fig:unopt-trace}. The operations in the trace are shown indented to
+Figure~\ref{fig:unopt-trace} (lines starting with the hash ``\#'' are comments).
+
+XXX in which language is the trace written in ? still RPython ?
+
+The operations in the trace are shown indented to
 correspond to the stack level of the function that contains the traced
 operation. The trace is in single-assignment form, meaning that each variable is
 assigned to exactly once. The arguments $p_0$ and $p_1$ of the loop correspond
 to the live variables \texttt{y} and \texttt{res} in the original function.
+
+XXX explain set and get + int_add briefly
 
 The trace shows the inefficiencies of \texttt{f} clearly, if one
 looks at the number of \texttt{new} (corresponding to object creation),
