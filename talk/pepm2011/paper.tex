@@ -989,6 +989,7 @@ however there is an additional optimization that removes guards, so not all the
 removed guards are an effect of the optimization described here.
 
 \begin{figure*}
+\begin{center}
 \begin{tabular}{|l||r|rr|rr|rr|rr|}
 \hline
 	&num loops	&new	&removed	&get/set	&removed &guard &removed	&all ops	&removed\\
@@ -1011,6 +1012,7 @@ twisted-names	&214	&5273	&84\%	&100010	&10\%	&23247	&96\%	&279667	&92\%\\
 total	&2240	&49709	&70\%	&1227447	&14\%	&222569	&93\%	&3395548	&89\%\\
 \hline
 \end{tabular}
+\end{center}
 \caption{Number of Operations and Percentage Removed By Optimization}
 \label{fig:numops}
 \end{figure*}
@@ -1022,29 +1024,35 @@ result. The errors were computed using a confidence interval with a 95\%
 confidence level \cite{georges_statistically_2007}. The results are reported in Figure~\ref{fig:times}.
 With the optimization turned on, PyPy's Python interpreter outperforms CPython
 in all benchmarks except spambayes (which heavily relies on regular expression
-performance XXX). All benchmarks are improved by the allocation removal
-optimization, some as much as XXX. XXX Psyco
+performance and thus is not helped much by our Python JIT) and meteor-contest.
+All benchmarks are improved by the allocation removal optimization, some as much
+as XXX. XXX Psyco
 
 XXX runtimes of the algorithm somehow?
 
 \begin{figure*}
-\begin{tabular}{lrrrr}
-		&CPython	&JIT no optimizations	&JIT allocation removal	&JIT full\\
-crypto\_pyaes	&1958.40 $\pm$ 0.32	&782.14 $\pm$ 3.08	&150.86 $\pm$ 3.62	&125.68 $\pm$ 3.02\\
-django		&630.91 $\pm$ 0.13	&365.90 $\pm$ 1.57	&124.41 $\pm$ 0.88	&117.36 $\pm$ 0.91\\
-fannkuch	&1344.15 $\pm$ 0.36	&378.18 $\pm$ 0.36	&309.04 $\pm$ 1.56	&299.12 $\pm$ 0.25\\
-go		&595.31 $\pm$ 0.51	&1067.26 $\pm$ 12.20	&121.76 $\pm$ 4.15	&125.57 $\pm$ 3.90\\
-html5lib	&8678.67 $\pm$ 23.37	&17665.16 $\pm$ 2695.45	&6739.95 $\pm$ 1225.25	&6699.24 $\pm$ 1295.92\\
-meteor-contest	&241.53 $\pm$ 0.09	&291.11 $\pm$ 0.86	&274.09 $\pm$ 0.37	&272.77 $\pm$ 0.30\\
-nbody		&396.55 $\pm$ 0.24	&84.77 $\pm$ 0.14	&69.01 $\pm$ 0.08	&68.71 $\pm$ 0.09\\
-pyflate-fast	&1991.33 $\pm$ 1.90	&1818.70 $\pm$ 4.30	&1062.03 $\pm$ 4.56	&1052.02 $\pm$ 3.24\\
-raytrace-simple	&1598.84 $\pm$ 1.07	&1126.93 $\pm$ 11.42	&93.45 $\pm$ 4.75	&92.17 $\pm$ 4.15\\
-richards	&216.47 $\pm$ 0.20	&169.84 $\pm$ 1.21	&11.81 $\pm$ 0.09	&11.90 $\pm$ 0.29\\
-spambayes	&193.30 $\pm$ 0.03	&331.37 $\pm$ 14.93	&238.83 $\pm$ 6.10	&237.23 $\pm$ 5.97\\
-spectral-norm	&375.91 $\pm$ 0.08	&221.24 $\pm$ 0.07	&31.96 $\pm$ 0.06	&28.79 $\pm$ 0.09\\
-telco		&789.67 $\pm$ 1.14	&622.67 $\pm$ 1.86	&155.33 $\pm$ 1.82	&154.67 $\pm$ 1.82\\
-twisted\_names	&6.61 $\pm$ 0.00	&8.85 $\pm$ 0.09	&4.35 $\pm$ 0.05 &4.35 $\pm$ 0.04\\
+\begin{center}
+\begin{tabular}{|l||r|r|r|r|}
+\hline
+	&Cpython	&Psyco	&PyPy w/o optimizations	&PyPy w/ optimizations \\
+\hline
+crypto\_pyaes	&2757.80 $\pm$ 0.98	&67.90 $\pm$ 0.47	&1652.00 $\pm$ 4.00 &266.86 $\pm$ 5.94 \\
+django	&993.19 $\pm$ 0.50	&913.51 $\pm$ 4.22	&694.73 $\pm$ 2.86 &259.53 $\pm$ 1.79 \\
+fannkuch	&1987.22 $\pm$ 2.02	&944.44 $\pm$ 0.61	&566.99 $\pm$ 1.06 &466.87 $\pm$ 1.85 \\
+go	&947.21 $\pm$ 1.58	&445.96 $\pm$ 0.68	&2197.71 $\pm$ 25.21 &316.15 $\pm$ 9.33 \\
+html5lib	&13987.12 $\pm$ 19.51	&17398.25 $\pm$ 36.50	&27194.45 $\pm$ 46.62	&10092.19 $\pm$ 23.50 \\
+meteor-contest	&346.98 $\pm$ 0.35	&215.66 $\pm$ 0.23	&433.04 $\pm$ 1.45 &392.85 $\pm$ 0.87 \\
+nbody\_modified	&637.90 $\pm$ 1.82	&256.78 $\pm$ 0.18	&135.55 $\pm$ 0.33 &103.93 $\pm$ 0.25 \\
+pyflate-fast	&3169.35 $\pm$ 1.89	&1278.16 $\pm$ 3.13	&3285.89 $\pm$ 8.51	&1822.36 $\pm$ 11.52 \\
+raytrace-simple	&2744.60 $\pm$ 51.72	&1072.66 $\pm$ 1.08	&2778.27 $\pm$ 15.13	&647.24 $\pm$ 5.44 \\
+richards	&354.06 $\pm$ 1.00	&63.48 $\pm$ 0.15	&383.93 $\pm$ 3.28 &88.32 $\pm$ 0.91 \\
+spambayes	&299.16 $\pm$ 0.35	&338.68 $\pm$ 3.14	&580.90 $\pm$ 24.68 &397.37 $\pm$ 10.60 \\
+spectral-norm	&478.63 $\pm$ 0.80	&139.83 $\pm$ 1.54	&353.51 $\pm$ 1.39 &112.10 $\pm$ 1.17 \\
+telco	&1207.67 $\pm$ 2.03	&730.00 $\pm$ 2.66	&1296.08 $\pm$ 4.37 &495.23 $\pm$ 2.14 \\
+twisted\_names	&9.58 $\pm$ 0.01	&10.43 $\pm$ 0.01	&17.99 $\pm$ 0.27	&7.13 $\pm$ 0.09 \\
+\hline
 \end{tabular}
+\end{center}
 \caption{Benchmark Times}
 \label{fig:times}
 \end{figure*}
