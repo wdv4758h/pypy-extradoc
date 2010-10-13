@@ -10,6 +10,27 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage[utf8]{inputenc}
+\usepackage{setspace}
+
+\usepackage{listings}
+
+\usepackage[T1]{fontenc}
+\usepackage{beramono}
+
+
+\definecolor{gray}{rgb}{0.3,0.3,0.3}
+
+\lstset{
+  basicstyle=\setstretch{1.1}\ttfamily\footnotesize,
+  language=Python,
+  keywordstyle=\bfseries,
+  stringstyle=\color{blue},
+  commentstyle=\color{gray}\textit,
+  fancyvrb=true,
+  showstringspaces=false,
+  keywords={def,while,if,elif,return,class,get,set,new,guard_class}
+}
+
 
 \newboolean{showcomments}
 \setboolean{showcomments}{true}
@@ -255,10 +276,10 @@ the code generated from it is only one possible path through it.
 To make sure that the trace is maintaining the correct semantics, it contains a
 \emph{guard} at all places where the execution could have diverged from the
 path. Those guards check the assumptions under which execution can stay on the
-trace. As an example, if a loop contains an \texttt{if} statement, the trace
+trace. As an example, if a loop contains an \lstinline{if} statement, the trace
 will contain the execution of one of the paths only, which is the path that was
 taken during the production of the trace. The trace will also contain a guard
-that checks that the condition of the \texttt{if} statement is true, because if
+that checks that the condition of the \lstinline{if} statement is true, because if
 it isn't, the rest of the trace is not valid.
 
 When generating machine code, every guard is be turned into a quick check to
@@ -280,9 +301,9 @@ code.
 For the purpose of this paper, we are going to use a tiny interpreter for a dynamic language with
  a very simple object
 model, that just supports an integer and a float type. The objects support only
-two operations, \texttt{add}, which adds two objects (promoting ints to floats in a
-mixed addition) and \texttt{is\_positive}, which returns whether the number is greater
-than zero. The implementation of \texttt{add} uses classical Smalltalk-like
+two operations, \lstinline{add}, which adds two objects (promoting ints to floats in a
+mixed addition) and \lstinline{is_positive}, which returns whether the number is greater
+than zero. The implementation of \lstinline{add} uses classical Smalltalk-like
 double-dispatching.
 %These classes could be part of the implementation of a very
 %simple interpreter written in RPython.
@@ -308,43 +329,52 @@ class Base(object):
         raise NotImplementedError("abstract base")
         }
 \begin{figure}
-\begin{verbatim}
+\begin{lstlisting}[mathescape]
 class Base(object):
+      ...
 
 class BoxedInteger(Base):
-    def __init__(self, intval):
-        self.intval = intval
-    def add(self, other):
-        return other.add__int(self.intval)
-    def add__int(self, intother):
-        return BoxedInteger(intother + self.intval)
-    def add__float(self, floatother):
-        floatvalue = floatother + float(self.intval)
-        return BoxedFloat(floatvalue)
-    def is_positive(self):
-        return self.intval > 0
+   def __init__(self, intval):
+      self.intval = intval
+
+   def add(self, other):
+      return other.add__int(self.intval)
+
+   def add__int(self, intother):
+      return BoxedInteger(intother + self.intval)
+
+   def add__float(self, floatother):
+      floatvalue = floatother + float(self.intval)
+      return BoxedFloat(floatvalue)
+
+   def is_positive(self):
+      return self.intval > 0
 
 class BoxedFloat(Base):
-    def __init__(self, floatval):
-        self.floatval = floatval
-    def add(self, other):
-        return other.add__float(self.floatval)
-    def add__int(self, intother):
-        floatvalue = float(intother) + self.floatval
-        return BoxedFloat(floatvalue)
-    def add__float(self, floatother):
-        return BoxedFloat(floatother + self.floatval)
-    def is_positive(self):
-        return self.floatval > 0.0
+   def __init__(self, floatval):
+      self.floatval = floatval
+
+   def add(self, other):
+      return other.add__float(self.floatval)
+
+   def add__int(self, intother):
+      floatvalue = float(intother) + self.floatval
+      return BoxedFloat(floatvalue)
+
+   def add__float(self, floatother):
+      return BoxedFloat(floatother + self.floatval)
+
+   def is_positive(self):
+      return self.floatval > 0.0
 
 
 def f(y):
-    res = BoxedInteger(0)
-    while y.is_positive():
-        res = res.add(y).add(BoxedInteger(-100))
-        y = y.add(BoxedInteger(-1))
-    return res
-\end{verbatim}
+   res = BoxedInteger(0)
+   while y.is_positive():
+      res = res.add(y).add(BoxedInteger(-100))
+      y = y.add(BoxedInteger(-1))
+   return res
+\end{lstlisting}
 \caption{An ``interpreter'' for a tiny Dynamic Language written in RPython}
 %\caption{A Simple Object Model and an Example Function Using it}
 \label{fig:objmodel}
@@ -352,7 +382,7 @@ def f(y):
 
 Using these classes to implement arithmetic shows the basic problem that a
 dynamic language implementation has. All the numbers are instances of either
-\texttt{BoxedInteger} or \texttt{BoxedFloat}, thus they consume space on the
+\lstinline{BoxedInteger} or \lstinline{BoxedFloat}, thus they consume space on the
 heap. Performing many arithmetic operations produces lots of garbage quickly,
 thus putting pressure on the garbage collector. Using double dispatching to
 implement the numeric tower needs two method calls per arithmetic operation,
@@ -360,7 +390,7 @@ which is costly due to the method dispatch.
 
 To understand the problems more directly, let us consider the simple
 interpreter function
-\texttt{f} that uses the object model (see the bottom of
+\lstinline{f} that uses the object model (see the bottom of
 Figure~\ref{fig:objmodel}).
 
 XXX this is not an RPython interpreter; put a reference to the previous
@@ -368,81 +398,80 @@ paper to show how we deal with an interpreted piece of code and remove
 the interpretation overhead, turning it into basically something
 equivalent to the example here, which is the start of the present paper.
 
-The loop in \texttt{f} iterates \texttt{y} times, and computes something in the process.
+The loop in \lstinline{f} iterates \lstinline{y} times, and computes something in the process.
 Simply running this function is slow, because there are lots of virtual method
-calls inside the loop, one for each \texttt{is\_positive} and even two for each
-call to \texttt{add}. These method calls need to check the type of the involved
+calls inside the loop, one for each \lstinline{is_positive} and even two for each
+call to \lstinline{add}. These method calls need to check the type of the involved
 objects repeatedly and redundantly. In addition, a lot of objects are created
 when executing that loop, many of these objects do not survive for very long.
-The actual computation that is performed by \texttt{f} is simply a sequence of
+The actual computation that is performed by \lstinline{f} is simply a sequence of
 float or integer additions.
 
 
 \begin{figure}
-\texttt{
-\begin{tabular}{l}
-\# arguments to the trace: $p_{0}$, $p_{1}$ \\
-\# inside f: res.add(y) \\
-guard\_class($p_{1}$, BoxedInteger) \\
-~~~~\# inside BoxedInteger.add \\
-~~~~$i_{2}$ = get($p_{1}$, intval) \\
-~~~~guard\_class($p_{0}$, BoxedInteger) \\
-~~~~~~~~\# inside BoxedInteger.add\_\_int \\
-~~~~~~~~$i_{3}$ = get($p_{0}$, intval) \\
-~~~~~~~~$i_{4}$ = int\_add($i_{2}$, $i_{3}$) \\
-~~~~~~~~$p_{5}$ = new(BoxedInteger) \\
-~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~~~~~~~~~set($p_{5}$, intval, $i_{4}$) \\
-\# inside f: BoxedInteger(-100)  \\
-$p_{6}$ = new(BoxedInteger) \\
-~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~set($p_{6}$, intval, -100) \\
-~\\
-\# inside f: .add(BoxedInteger(-100)) \\
-guard\_class($p_{5}$, BoxedInteger) \\
-~~~~\# inside BoxedInteger.add \\
-~~~~$i_{7}$ = get($p_{5}$, intval) \\
-~~~~guard\_class($p_{6}$, BoxedInteger) \\
-~~~~~~~~\# inside BoxedInteger.add\_\_int \\
-~~~~~~~~$i_{8}$ = get($p_{6}$, intval) \\
-~~~~~~~~$i_{9}$ = int\_add($i_{7}$, $i_{8}$) \\
-~~~~~~~~$p_{10}$ = new(BoxedInteger) \\
-~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~~~~~~~~~set($p_{10}$, intval, $i_{9}$) \\
-~\\
-\# inside f: BoxedInteger(-1) \\
-$p_{11}$ = new(BoxedInteger) \\
-~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~set($p_{11}$, intval, -1) \\
-~\\
-\# inside f: y.add(BoxedInteger(-1)) \\
-guard\_class($p_{0}$, BoxedInteger) \\
-~~~~\# inside BoxedInteger.add \\
-~~~~$i_{12}$ = get($p_{0}$, intval) \\
-~~~~guard\_class($p_{11}$, BoxedInteger) \\
-~~~~~~~~\# inside BoxedInteger.add\_\_int \\
-~~~~~~~~$i_{13}$ = get($p_{11}$, intval) \\
-~~~~~~~~$i_{14}$ = int\_add($i_{12}$, $i_{13}$) \\
-~~~~~~~~$p_{15}$ = new(BoxedInteger) \\
-~~~~~~~~~~~~\# inside BoxedInteger.\_\_init\_\_ \\
-~~~~~~~~~~~~set($p_{15}$, intval, $i_{14}$) \\
-~\\
-\# inside f: y.is\_positive() \\
-guard\_class($p_{15}$, BoxedInteger) \\
-~~~~\# inside BoxedInteger.is\_positive \\
-~~~~$i_{16}$ = get($p_{15}$, intval) \\
-~~~~$i_{17}$ = int\_gt($i_{16}$, 0) \\
-\# inside f \\
-guard\_true($i_{17}$) \\
-jump($p_{15}$, $p_{10}$) \\
-\end{tabular}
-}
+\begin{lstlisting}[mathescape]
+# arguments to the trace: $p_{0}$, $p_{1}$
+# inside f: res.add(y)
+guard_class($p_{1}$, BoxedInteger)
+    # inside BoxedInteger.add
+    $i_{2}$ = get($p_{1}$, intval)
+    guard_class($p_{0}$, BoxedInteger)
+        # inside BoxedInteger.add__int
+        $i_{3}$ = get($p_{0}$, intval)
+        $i_{4}$ = int_add($i_{2}$, $i_{3}$)
+        $p_{5}$ = new(BoxedInteger)
+            # inside BoxedInteger.__init__
+            set($p_{5}$, intval, $i_{4}$)
+
+# inside f: BoxedInteger(-100) 
+$p_{6}$ = new(BoxedInteger)
+    # inside BoxedInteger.__init__
+    set($p_{6}$, intval, -100)
+
+# inside f: .add(BoxedInteger(-100))
+guard_class($p_{5}$, BoxedInteger)
+    # inside BoxedInteger.add
+    $i_{7}$ = get($p_{5}$, intval)
+    guard_class($p_{6}$, BoxedInteger)
+        # inside BoxedInteger.add__int
+        $i_{8}$ = get($p_{6}$, intval)
+        $i_{9}$ = int_add($i_{7}$, $i_{8}$)
+        $p_{10}$ = new(BoxedInteger)
+            # inside BoxedInteger.__init__
+            set($p_{10}$, intval, $i_{9}$)
+
+# inside f: BoxedInteger(-1)
+$p_{11}$ = new(BoxedInteger)
+    # inside BoxedInteger.__init__
+    set($p_{11}$, intval, -1)
+
+# inside f: y.add(BoxedInteger(-1))
+guard_class($p_{0}$, BoxedInteger)
+    # inside BoxedInteger.add
+    $i_{12}$ = get($p_{0}$, intval)
+    guard_class($p_{11}$, BoxedInteger)
+        # inside BoxedInteger.add__int
+        $i_{13}$ = get($p_{11}$, intval)
+        $i_{14}$ = int_add($i_{12}$, $i_{13}$)
+        $p_{15}$ = new(BoxedInteger)
+            # inside BoxedInteger.__init__
+            set($p_{15}$, intval, $i_{14}$)
+
+# inside f: y.is_positive()
+guard_class($p_{15}$, BoxedInteger)
+    # inside BoxedInteger.is_positive
+    $i_{16}$ = get($p_{15}$, intval)
+    $i_{17}$ = int_gt($i_{16}$, 0)
+# inside f
+guard_true($i_{17}$)
+jump($p_{15}$, $p_{10}$)
+\end{lstlisting}
 \caption{Unoptimized Trace for the Simple Object Model}
 \label{fig:unopt-trace}
 \end{figure}
 
-If the function is executed using the tracing JIT, with \texttt{y} being a
-\texttt{BoxedInteger}, the produced trace looks like
+If the function is executed using the tracing JIT, with \lstinline{y} being a
+\lstinline{BoxedInteger}, the produced trace looks like
 Figure~\ref{fig:unopt-trace} (lines starting with the hash ``\#'' are comments).
 
 XXX in which language is the trace written in ? still RPython ?
@@ -451,26 +480,26 @@ The operations in the trace are shown indented to
 correspond to the stack level of the function that contains the traced
 operation. The trace is in single-assignment form, meaning that each variable is
 assigned to exactly once. The arguments $p_0$ and $p_1$ of the loop correspond
-to the live variables \texttt{y} and \texttt{res} in the original function.
+to the live variables \lstinline{y} and \lstinline{res} in the original function.
 
-XXX explain set and get + int_add briefly
+XXX explain set and get + int\_add briefly
 
-The trace shows the inefficiencies of \texttt{f} clearly, if one
-looks at the number of \texttt{new} (corresponding to object creation),
-\texttt{set/get} (corresponding to attribute reads/writes) and
-\texttt{guard\_class} operations (corresponding to method calls).
+The trace shows the inefficiencies of \lstinline{f} clearly, if one
+looks at the number of \lstinline{new} (corresponding to object creation),
+\lstinline{set/get} (corresponding to attribute reads/writes) and
+\lstinline{guard_class} operations (corresponding to method calls).
 In the rest of the paper we will see how this trace can be optimized using
 partial evaluation.
 
-Note how the functions that are called by \texttt{f} are automatically inlined
-into the trace. The method calls are always preceded by a \texttt{guard\_class}
+Note how the functions that are called by \lstinline{f} are automatically inlined
+into the trace. The method calls are always preceded by a \lstinline{guard_class}
 operation, to check that the class of the receiver is the same as the one that
-was observed during tracing.\footnote{\texttt{guard\_class} performs a precise
+was observed during tracing.\footnote{\lstinline{guard_class} performs a precise
 class check, not checking for subclasses.} These guards make the trace specific
-to the situation where \texttt{y} is really a \texttt{BoxedInteger}, it can
-already be said to be specialized for \texttt{BoxedIntegers}. When the trace is
-turned into machine code and then executed with \texttt{BoxedFloats}, the
-first \texttt{guard\_class} instruction will fail and execution will continue
+to the situation where \lstinline{y} is really a \lstinline{BoxedInteger}, it can
+already be said to be specialized for \lstinline{BoxedIntegers}. When the trace is
+turned into machine code and then executed with \lstinline{BoxedFloats}, the
+first \lstinline{guard_class} instruction will fail and execution will continue
 using the interpreter.
 
 
@@ -499,15 +528,15 @@ time (for clarity, the figure shows two iterations of the loop). The loop is
 executed until one of the guards in the trace fails, and the execution is
 aborted and interpretation resumes.
 
-Some of the operations within this trace are \texttt{new} operations, which each
+Some of the operations within this trace are \lstinline{new} operations, which each
 create a new instance of some class. These instances are used for a while, e.g.
 by calling methods on them (which are inlined into the trace), reading and
 writing their fields. Some of these instances \emph{escape}, which means that
 they are stored in some globally accessible place or are passed into a
 non-inlined function via a residual call.
 
-Together with the \texttt{new} operations, the figure shows the lifetimes of the
-created objects. The objects that are created within a trace using \texttt{new}
+Together with the \lstinline{new} operations, the figure shows the lifetimes of the
+created objects. The objects that are created within a trace using \lstinline{new}
 fall into one of several categories:
 
 \begin{itemize}
@@ -550,62 +579,57 @@ bit peculiar in that there are not actually any constant arguments to the trace,
 but it is only used to optimized operations within a trace. XXX mention Prolog.
 
 The partial evaluation works by walking the trace from beginning to end.
-Whenever a \texttt{new} operation is seen, the operation is removed and a static
+Whenever a \lstinline{new} operation is seen, the operation is removed and a static
 object is constructed and associated with the variable that would have stored
-the result of \texttt{new}. The static object describes the shape of the
+the result of \lstinline{new}. The static object describes the shape of the
 original object, \eg where the values that would be stored in the fields of the
 allocated object come from, as well as the type of the object. Whenever the
-optimizer sees a \texttt{set} that writes into such an object, that shape
+optimizer sees a \lstinline{set} that writes into such an object, that shape
 description is updated and the operation can be removed, which means that the
 operation was done at partial evaluation time. When the optimizer encounters a
-\texttt{get} from such an object, the result is read from the shape
+\lstinline{get} from such an object, the result is read from the shape
 description, and the operation is also removed. Equivalently, a
-\texttt{guard\_class} on a variable that has a shape description can be removed
+\lstinline{guard_class} on a variable that has a shape description can be removed
 as well, because the shape description stores the type and thus the outcome of
 the type check the guard does is statically known.
 
 In the example from last section, the following operations would produce two
 static objects, and be completely removed from the optimized trace:
 
-\texttt{
-\begin{tabular}{l}
-$p_{5}$ = new(BoxedInteger) \\
-set($p_{5}$, intval, $i_{4}$) \\
-$p_{6}$ = new(BoxedInteger) \\
-set($p_{6}$, intval, -100) \\
-\end{tabular}
-}
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+$p_{5}$ = new(BoxedInteger)
+set($p_{5}$, intval, $i_{4}$)
+$p_{6}$ = new(BoxedInteger)
+set($p_{6}$, intval, -100)
+\end{lstlisting}
+
 
 The static object associated with $p_{5}$ would know that it is a
-\texttt{BoxedInteger} whose \texttt{intval} field contains $i_{4}$; the
-one associated with $p_{6}$ would know that it is a \texttt{BoxedInteger}
-whose \texttt{intval} field contains the constant -100.
+\lstinline{BoxedInteger} whose \lstinline{intval} field contains $i_{4}$; the
+one associated with $p_{6}$ would know that it is a \lstinline{BoxedInteger}
+whose \lstinline{intval} field contains the constant -100.
 
 The following operations on $p_{5}$ and $p_{6}$ could then be
 optimized using that knowledge:
 
-\texttt{
-\begin{tabular}{l}
-guard\_class($p_{5}$, BoxedInteger) \\
-$i_{7}$ = get($p_{5}$, intval) \\
-\# inside BoxedInteger.add \\
-guard\_class($p_{6}$, BoxedInteger) \\
-\# inside BoxedInteger.add\_\_int \\
-$i_{8}$ = get($p_{6}$, intval) \\
-$i_{9}$ = int\_add($i_{7}$, $i_{8}$) \\
-\end{tabular}
-}
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+guard_class($p_{5}$, BoxedInteger)
+$i_{7}$ = get($p_{5}$, intval)
+# inside BoxedInteger.add
+guard_class($p_{6}$, BoxedInteger)
+# inside BoxedInteger.add__int
+$i_{8}$ = get($p_{6}$, intval)
+$i_{9}$ = int_add($i_{7}$, $i_{8}$)
+\end{lstlisting}
 
-The \texttt{guard\_class} operations can be removed, because the classes of $p_{5}$ and
-$p_{6}$ are known to be \texttt{BoxedInteger}. The \texttt{get} operations can be removed
+The \lstinline{guard_class} operations can be removed, because the classes of $p_{5}$ and
+$p_{6}$ are known to be \lstinline{BoxedInteger}. The \lstinline{get} operations can be removed
 and $i_{7}$ and $i_{8}$ are just replaced by $i_{4}$ and -100. Thus the only
 remaining operation in the optimized trace would be:
 
-\texttt{
-\begin{tabular}{l}
-$i_{9}$ = int\_add($i_{4}$, -100) \\
-\end{tabular}
-}
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+$i_{9}$ = int_add($i_{4}$, -100)
+\end{lstlisting}
 
 The rest of the trace is optimized similarly.
 
@@ -619,7 +643,7 @@ object needs to be turned into a dynamic one, \ie lifted. This makes it
 necessary to put operations into the residual code that actually allocate the
 static object at runtime.
 
-This is what happens at the end of the trace in Figure~\ref{fig:unopt-trace}, when the \texttt{jump} operation
+This is what happens at the end of the trace in Figure~\ref{fig:unopt-trace}, when the \lstinline{jump} operation
 is hit. The arguments of the jump are at this point static objects. Before the
 jump is emitted, they are \emph{lifted}. This means that the optimizer produces code
 that allocates a new object of the right type and sets its fields to the field
@@ -627,22 +651,20 @@ values that the static object has (if the static object points to other static
 objects, those need to be lifted as well, recursively) This means that instead of the jump,
 the following operations are emitted:
 
-\texttt{
-\begin{tabular}{l}
-$p_{15}$ = new(BoxedInteger) \\
-set($p_{15}$, intval, $i_{14}$) \\
-$p_{10}$ = new(BoxedInteger) \\
-set($p_{10}$, intval, $i_{9}$) \\
-jump($p_{15}$, $p_{10}$) \\
-\end{tabular}
-}
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+$p_{15}$ = new(BoxedInteger)
+set($p_{15}$, intval, $i_{14}$)
+$p_{10}$ = new(BoxedInteger)
+set($p_{10}$, intval, $i_{9}$)
+jump($p_{15}$, $p_{10}$)
+\end{lstlisting}
 
 Note how the operations for creating these two instances have been moved down the
 trace. It looks like for these operations we actually didn't win much, because
 the objects are still allocated at the end. However, the optimization was still
 worthwhile even in this case, because some operations that have been performed
-on the lifted static objects have been removed (some \texttt{get} operations
-and \texttt{guard\_class} operations).
+on the lifted static objects have been removed (some \lstinline{get} operations
+and \lstinline{guard_class} operations).
 
 \begin{figure}
 \includegraphics{figures/step1.pdf}
@@ -652,7 +674,7 @@ and \texttt{guard\_class} operations).
 
 The final optimized trace of the example can be seen in Figure~\ref{fig:step1}.
 The optimized trace contains only two allocations, instead of the original five,
-and only three \texttt{guard\_class} operations, from the original seven.
+and only three \lstinline{guard_class} operations, from the original seven.
 
 \section{Formal Description of the Algorithm}
 \label{sec:formal}
@@ -699,9 +721,9 @@ We concentrate on the operations for manipulating dynamically allocated objects,
 as those are the only ones that are actually optimized. Without loss of
 generality we also consider only objects with two fields in this section.
 
-Traces are lists of operations. The operations considered here are \texttt{new} (to make
-a new object), \texttt{get} (to read a field out of an object), \texttt{set} (to write a field
-into an object) and \texttt{guard\_class} (to check the type of an object). The values of all
+Traces are lists of operations. The operations considered here are \lstinline{new} (to make
+a new object), \lstinline{get} (to read a field out of an object), \lstinline{set} (to write a field
+into an object) and \lstinline{guard_class} (to check the type of an object). The values of all
 variables are locations (i.e.~pointers). Locations are mapped to objects, which
 are represented by triples of a type $T$, and two locations that represent the
 fields of the object. When a new object is created, the fields are initialized
@@ -729,19 +751,19 @@ We use the following notation for updating partial functions:
 $E[v\mapsto l]$ denotes the environment which is just like $E$, but maps $v$ to
 $l$.
 
-The \texttt{new} operation creates a new object $(T,\mathrm{null},\mathrm{null})$ on the
+The \lstinline{new} operation creates a new object $(T,\mathrm{null},\mathrm{null})$ on the
 heap under a fresh location $l$ and adds the result variable to the environment,
 mapping it to the new location $l$.
 
-The \texttt{get} operation reads a field $F$ out of an object, and adds the result
+The \lstinline{get} operation reads a field $F$ out of an object, and adds the result
 variable to the environment, mapping it to the read location. The heap is
 unchanged.
 
-The \texttt{set} operation changes field $F$ of an object stored at the location that
+The \lstinline{set} operation changes field $F$ of an object stored at the location that
 variable $v$ maps to. The new value of the field is the location in variable
 $u$. The environment is unchanged.
 
-The \texttt{guard\_class} operation is used to check whether the object stored at the location
+The \lstinline{guard_class} operation is used to check whether the object stored at the location
 that variable $v$ maps to is of type $T$. If that is the case, then execution
 continues without changing heap and environment. Otherwise, execution is
 stopped.
@@ -817,7 +839,7 @@ statically known about the object stored in it, \ie its type and its fields. The
 fields of objects in the static heap are also elements of $V^*$ (or null, for
 short periods of time).
 
-When the optimizer sees a \texttt{new} operation, it optimistically removes it and
+When the optimizer sees a \lstinline{new} operation, it optimistically removes it and
 assumes that the resulting object can stay static. The optimization for all
 further operations is split into two cases. One case is for when the
 involved variables are in the static heap, which means that the operation can be
@@ -825,21 +847,21 @@ performed at optimization time and removed from the trace. These rules mirror
 the execution semantics closely. The other case is for when not enough is known about
 the variables, and the operation has to be residualized.
 
-If the argument $v$ of a \texttt{get} operation is mapped to something in the static
-heap, the \texttt{get} can be performed at optimization time. Otherwise, the \texttt{get}
+If the argument $v$ of a \lstinline{get} operation is mapped to something in the static
+heap, the \lstinline{get} can be performed at optimization time. Otherwise, the \lstinline{get}
 operation needs to be residualized.
 
-If the first argument $v$ to a \texttt{set} operation is mapped to something in the
-static heap, then the \texttt{set} can performed at optimization time and the static heap
-updated. Otherwise the \texttt{set} operation needs to be residualized. This needs to be
+If the first argument $v$ to a \lstinline{set} operation is mapped to something in the
+static heap, then the \lstinline{set} can performed at optimization time and the static heap
+updated. Otherwise the \lstinline{set} operation needs to be residualized. This needs to be
 done carefully, because the new value for the field, from the variable $u$,
 could itself be static, in which case it needs to be lifted first.
 
-If a \texttt{guard\_class} is performed on a variable that is in the static heap, the type check
+If a \lstinline{guard_class} is performed on a variable that is in the static heap, the type check
 can be performed at optimization time, which means the operation can be removed
 if the types match. If the type check fails statically or if the object is not
-in the static heap, the \texttt{guard\_class} is residualized. This also needs to
-lift the variable on which the \texttt{guard\_class} is performed.
+in the static heap, the \lstinline{guard_class} is residualized. This also needs to
+lift the variable on which the \lstinline{guard_class} is performed.
 
 Lifting takes a variable that is potentially in the static heap and makes sure
 that it is turned into a dynamic variable. This means that operations are
@@ -849,7 +871,7 @@ static heap, and the variable is removed from the static heap.
 Lifting a static object needs to recursively lift its fields. Some care needs to
 be taken when lifting a static object, because the structures described by the
 static heap can be cyclic. To make sure that the same static object is not lifted
-twice, the \texttt{liftfield} operation removes it from the static heap \emph{before}
+twice, the \lstinline{liftfield} operation removes it from the static heap \emph{before}
 recursively lifting its fields.
 
 
