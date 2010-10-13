@@ -963,12 +963,30 @@ We evaluate the allocation removal algorithm along two lines: first we want to
 know how many allocations could be optimized away. On the other hand, we want
 to know how much the run times of the benchmarks is improved.
 
-For the former we counted the occurring operations in all generated traces
-before and after the optimization phase for all benchmarks. The results can be
-seen in Figure~\ref{fig:numops}. The optimization removes as many as XXX and as
-little as XXX percent of allocation operations in the traces of the benchmarks.
-All benchmarks taken together, the optimization removes XXX percent of
-allocation operations.
+The benchmarks were run on an otherwise idle Intel Core2 Duo P8400 processor
+with 2.26 GHz and 3072 KB of cache on a machine with 3GB RAM running Linux
+2.6.35. We compared the performance of various Python implementations on the
+benchmarks. As a baseline, we used the standard Python implementation in C,
+CPython 2.6.6\footnote{\texttt{http://python.org}}, which uses a bytecode-based
+interpreter. Furthermore we compared against Psyco 1.6
+\cite{rigo_representation-based_2004}, an extension to CPython which is a
+just-in-time compiler that produces machine code at run-time. It is not based
+on traces. Finally, we used two versions of PyPy's Python interpreter (revision
+77823 of SVN trunk\footnote{\texttt{https://codespeak.net/svn/pypy/trunk}}): one
+including the JIT but not optimizing the traces, and one using the allocation
+removal optimizations (as well as some minor other optimizations, such as
+constant folding).
+
+As the first step, we counted the occurring operations in all generated traces
+before and after the optimization phase for all benchmarks. The resulting
+numbers can be
+seen in Figure~\ref{fig:numops}. The optimization removes as many as 90\% and as
+little as 4\% percent of allocation operations in the traces of the benchmarks.
+All benchmarks taken together, the optimization removes 70\% percent of
+allocation operations. The numbers look similar for reading and writing of
+attributes. There are even more \lstinline{guard} operations that are removed,
+however there is an additional optimization that removes guards, so not all the
+removed guards are an effect of the optimization described here.
 
 \begin{figure*}
 \begin{tabular}{|l||r|rr|rr|rr|rr|}
@@ -997,24 +1015,14 @@ total	&2240	&49709	&70\%	&1227447	&14\%	&222569	&93\%	&3395548	&89\%\\
 \label{fig:numops}
 \end{figure*}
 
-In addition to the count of operations we also performed time measurements. The
-machine the benchmarks were run on is XXX. We compared the performance of
-various Python implementations on the benchmarks. As a baseline, we used the
-standard Python implementation in C, called
-CPython\footnote{\texttt{http://python.org}}, which uses a bytecode-based
-interpreter. Furthermore we compared against Psyco \cite{rigo_representation-based_2004}, an extension to
-CPython which is a just-in-time compiler that produces machine code at run-time.
-It is not based on traces. Finally, we used three versions of PyPy's Python interpreter:
-one without a JIT, one including the JIT but not using the allocation removal
-optimization, and one using the allocation removal optimizations.
-
+In addition to the count of operations we also performed time measurements.
 All benchmarks were run 50 times in the same process, to give the JIT time to produce machine
 code. The arithmetic mean of the times of the last 30 runs were used as the
 result. The errors were computed using a confidence interval with a 95\%
 confidence level \cite{georges_statistically_2007}. The results are reported in Figure~\ref{fig:times}.
 With the optimization turned on, PyPy's Python interpreter outperforms CPython
 in all benchmarks except spambayes (which heavily relies on regular expression
-performance). All benchmarks are improved by the allocation removal
+performance XXX). All benchmarks are improved by the allocation removal
 optimization, some as much as XXX. XXX Psyco
 
 XXX runtimes of the algorithm somehow?
