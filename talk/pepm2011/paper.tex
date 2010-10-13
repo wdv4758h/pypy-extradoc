@@ -207,7 +207,7 @@ automatic; it only needs to be guided by the language implementer by a small num
 source-code hints. Mostly-automatically generating a JIT compiler has many advantages
 over writing one manually, which is an error-prone and tedious process.
 By construction, the generated JIT has the same semantics as the interpreter.
-Many optimizations can benefit all languages implemented as an interpreter in RPython.  
+Many optimizations can benefit all languages implemented as an interpreter in RPython.
 
 Moreover, thanks to the internal design of the JIT generator, it is very easy
 to add new \emph{backends} for producing the actual machine code, in addition
@@ -240,7 +240,7 @@ interpreter enters a special \emph{tracing mode}. In this tracing mode, the
 interpreter records all operations that it is executing while running one
 iteration of the hot loop. This history of executed operations of one loop is
 called a \emph{trace}. Because the trace corresponds to one iteration of a loop,
-it always ends with a jump to its own beginning \anto{this is not true: what if we trace the last iteration?}. The trace also contains all
+it always ends with a jump to its own beginning. The trace also contains all
 operations that are performed in functions that were called in the loop, thus a
 tracing JIT automatically performs inlining.
 
@@ -371,8 +371,8 @@ float or integer additions.
 
 \begin{figure}
 \texttt{
-\begin{tabular}{l} 
-\# XXX: maybe we should specify that $p_{0}$, $p_{1}$ corresponds to y and res
+\begin{tabular}{l}
+\# XXX: maybe we should specify that $p_{0}$, $p_{1}$ corresponds to y and res \\
 \# arguments to the trace: $p_{0}$, $p_{1}$ \\
 \# inside f: res.add(y) \\
 guard\_class($p_{1}$, BoxedInteger) \\
@@ -437,7 +437,8 @@ If the function is executed using the tracing JIT, with \texttt{y} being a
 \texttt{BoxedInteger}, the produced trace looks like
 Figure~\ref{fig:unopt-trace}. The operations in the trace are shown indented to
 correspond to the stack level of the function that contains the traced
-operation. The trace also shows the inefficiencies of \texttt{f} clearly, if one
+operation. The trace is in single-assignment form, meaning that each variable is
+assigned to exactly once. The trace also shows the inefficiencies of \texttt{f} clearly, if one
 looks at the number of \texttt{new} (corresponding to object creation),
 \texttt{set/get} (corresponding to attribute reads/writes) and
 \texttt{guard\_class} operations (corresponding to method calls).
@@ -448,7 +449,7 @@ Note how the functions that are called by \texttt{f} are automatically inlined
 into the trace. The method calls are always preceded by a \texttt{guard\_class}
 operation, to check that the class of the receiver is the same as the one that
 was observed during tracing.\footnote{\texttt{guard\_class} performs a precise
-class check, not checking for subclasses} These guards make the trace specific
+class check, not checking for subclasses.} These guards make the trace specific
 to the situation where \texttt{y} is really a \texttt{BoxedInteger}, it can
 already be said to be specialized for \texttt{BoxedIntegers}. When the trace is
 turned into machine code and then executed with \texttt{BoxedFloats}, the
@@ -543,14 +544,14 @@ operation was done at partial evaluation time. When the optimizer encounters a
 \texttt{get} from such an object, the result is read from the shape
 description, and the operation is also removed. Equivalently, a
 \texttt{guard\_class} on a variable that has a shape description can be removed
-as well, because the shape description stores the type and thus the result of 
-the guard is statically known.
+as well, because the shape description stores the type and thus the outcome of
+the type check che guard does is statically known.
 
 In the example from last section, the following operations would produce two
 static objects, and be completely removed from the optimized trace:
 
 \texttt{
-\begin{tabular}{l} 
+\begin{tabular}{l}
 $p_{5}$ = new(BoxedInteger) \\
 set($p_{5}$, intval, $i_{4}$) \\
 $p_{6}$ = new(BoxedInteger) \\
@@ -562,14 +563,12 @@ The static object associated with $p_{5}$ would know that it is a
 \texttt{BoxedInteger} whose \texttt{intval} field contains $i_{4}$; the
 one associated with $p_{6}$ would know that it is a \texttt{BoxedInteger}
 whose \texttt{intval} field contains the constant -100.
-\anto{this works only because we use SSI and thus the value of $i_{4}$ never
-changes. However, SSI is not explained anywhere in the paper}
 
 The following operations on $p_{5}$ and $p_{6}$ could then be
 optimized using that knowledge:
 
 \texttt{
-\begin{tabular}{l} 
+\begin{tabular}{l}
 guard\_class($p_{5}$, BoxedInteger) \\
 $i_{7}$ = get($p_{5}$, intval) \\
 \# inside BoxedInteger.add \\
@@ -586,11 +585,11 @@ and $i_{7}$ and $i_{8}$ are just replaced by $i_{4}$ and -100. Thus the only
 remaining operation in the optimized trace would be:
 
 \texttt{
-\begin{tabular}{l} 
+\begin{tabular}{l}
 $i_{9}$ = int\_add($i_{4}$, -100) \\
 \end{tabular}
 }
-    
+
 The rest of the trace is optimized similarly.
 
 So far we have only described what happens when static objects are used in
@@ -612,7 +611,7 @@ objects, those need to be lifted as well, recursively) This means that instead o
 the following operations are emitted:
 
 \texttt{
-\begin{tabular}{l} 
+\begin{tabular}{l}
 $p_{15}$ = new(BoxedInteger) \\
 set($p_{15}$, intval, $i_{14}$) \\
 $p_{10}$ = new(BoxedInteger) \\
@@ -626,9 +625,7 @@ trace. It looks like for these operations we actually didn't win much, because
 the objects are still allocated at the end. However, the optimization was still
 worthwhile even in this case, because some operations that have been performed
 on the lifted static objects have been removed (some \texttt{get} operations
-and \texttt{guard\_class} operations).  Moreover, in real life example usually
-the loops are more complex and contain more objects of type 1, thus this
-technique is more effective.
+and \texttt{guard\_class} operations).
 
 \begin{figure}
 \includegraphics{figures/step1.pdf}
@@ -948,9 +945,9 @@ to know how much the run times of the benchmarks is improved.
 For the former we counted the occurring operations in all generated traces
 before and after the optimization phase for all benchmarks. The results can be
 seen in Figure~\ref{fig:numops}. The optimization removes as many as XXX and as
-little as XXX percent of allocation operations in the benchmarks. All benchmarks
-taken together, the optimization removes XXX percent of allocation operations.
-\anto{Actually, we can only know how many operations we removed from the traces, not from the actual execution}
+little as XXX percent of allocation operations in the traces of the benchmarks.
+All benchmarks taken together, the optimization removes XXX percent of
+allocation operations.
 
 \begin{figure*}
 \begin{tabular}{lrrrrrrrrrrrrrrrrrrrrrrr}
