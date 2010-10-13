@@ -237,7 +237,7 @@ JIT compiler. By default the interpreter is used to execute the program, doing
 some light-weight profiling at the same time. This profiling is used to identify
 the hot loops of the program. If a hot loop is found in that way, the
 interpreter enters a special \emph{tracing mode}. In this tracing mode, the
-interpreter records all operations that it is executing while running one
+interpreter tries to record all operations that it is executing while running one
 iteration of the hot loop. This history of executed operations of one loop is
 called a \emph{trace}. Because the trace corresponds to one iteration of a loop,
 it always ends with a jump to its own beginning. The trace also contains all
