@@ -131,7 +131,7 @@ need it.
 
 A recently popular approach to implementing just-in-time compilers for dynamic
 languages is that of a tracing JIT. A tracing JIT works by observing the running
-program and recording its hot parts into linear execution traces, which are then turned into
+program and recording its hot spots into linear execution traces, which are then turned into
 machine code. One reason for the popularity of tracing JITs is their relative
 simplicity. They can often be added to an interpreter and a lot of the
 infrastructure of an interpreter can be reused. They give some important
@@ -140,16 +140,16 @@ produces linear pieces of code, which simplifies many optimizations that are usu
 hard in a compiler, such as register allocation.
 
 The usage of a tracing JIT can remove the overhead of bytecode dispatch and that
-of the interpreter data structures. In this paper we want to present an approach
-how an optimization can be added to a tracing JIT that also removes some of the
+of the interpreter data structures. In this paper we want to present a new
+optimization that can be added to a tracing JIT that further removes some of the
 overhead more closely associated to dynamic languages, such as boxing overhead
 and type dispatching. Our experimental platform is the PyPy project, which is an
 environment for implementing dynamic programming languages. PyPy and tracing
 JITs are described in more detail in Section~\ref{sec:Background}.
 Section~\ref{sec:lifetimes} analyzes the problem to be solved more closely.
 
-The most important technique we use to achieve to optimize traces is a
-straightforward application of partial evaluation. The partial evaluation
+The core of our trace optimization technique can be
+viewed as partial evaluation: the partial evaluation
 performs a form of escape analysis \cite{bruno_blanchet_escape_2003} on the traces and make some
 objects that are allocated in the trace \emph{static}\footnote{These objects are
 called \emph{virtual} in Psyco \cite{rigo_representation-based_2004}.} which
