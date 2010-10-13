@@ -329,8 +329,16 @@ class BoxedFloat(Base):
         return BoxedFloat(floatother + self.floatval)
     def is_positive(self):
         return self.floatval > 0.0
+
+
+def f(y):
+    res = BoxedInteger(0)
+    while y.is_positive():
+        res = res.add(y).add(BoxedInteger(-100))
+        y = y.add(BoxedInteger(-1))
+    return res
 \end{verbatim}
-\caption{A simple object model}
+\caption{A Simple Object Model and an Example Function Using it}
 \label{fig:objmodel}
 \end{figure}
 
@@ -342,24 +350,16 @@ thus putting pressure on the garbage collector. Using double dispatching to
 implement the numeric tower needs two method calls per arithmetic operation,
 which is costly due to the method dispatch.
 
-To understand the problems more directly, let us consider a simple function
-that uses the object model:
+To understand the problems more directly, let us consider the simple function
+\texttt{f} that uses the object model (see the bottom of
+Figure~\ref{fig:objmodel}).
 
 XXX this is not an RPython interpreter; put a reference to the previous
 paper to show how we deal with an interpreted piece of code and remove
 the interpretation overhead, turning it into basically something
 equivalent to the example here, which is the start of the present paper.
 
-\begin{verbatim}
-def f(y):
-    res = BoxedInteger(0)
-    while y.is_positive():
-        res = res.add(y).add(BoxedInteger(-100))
-        y = y.add(BoxedInteger(-1))
-    return res
-\end{verbatim}
-
-The loop iterates \texttt{y} times, and computes something in the process.
+The loop in \texttt{f} iterates \texttt{y} times, and computes something in the process.
 Simply running this function is slow, because there are lots of virtual method
 calls inside the loop, one for each \texttt{is\_positive} and even two for each
 call to \texttt{add}. These method calls need to check the type of the involved
@@ -372,7 +372,6 @@ float or integer additions.
 \begin{figure}
 \texttt{
 \begin{tabular}{l}
-\# XXX: maybe we should specify that $p_{0}$, $p_{1}$ corresponds to y and res \\
 \# arguments to the trace: $p_{0}$, $p_{1}$ \\
 \# inside f: res.add(y) \\
 guard\_class($p_{1}$, BoxedInteger) \\
@@ -438,7 +437,10 @@ If the function is executed using the tracing JIT, with \texttt{y} being a
 Figure~\ref{fig:unopt-trace}. The operations in the trace are shown indented to
 correspond to the stack level of the function that contains the traced
 operation. The trace is in single-assignment form, meaning that each variable is
-assigned to exactly once. The trace also shows the inefficiencies of \texttt{f} clearly, if one
+assigned to exactly once. The arguments $p_0$ and $p_1$ of the loop correspond
+to the live variables \texttt{y} and \texttt{res} in the original function.
+
+The trace shows the inefficiencies of \texttt{f} clearly, if one
 looks at the number of \texttt{new} (corresponding to object creation),
 \texttt{set/get} (corresponding to attribute reads/writes) and
 \texttt{guard\_class} operations (corresponding to method calls).
