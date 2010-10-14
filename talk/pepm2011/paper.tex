@@ -930,15 +930,15 @@ corresponding to all calls that have been inlined in the trace.
 
 One problem to the successful application of the allocation removal
 techniques described in the previous sections is the presence of
-frame-introspection features in many dynamic languages. Languages such
-as Python and Smalltalk allow the programmer to get access to the
-frames object that the interpreter uses to store local variables. This
-is a useful feature, as it makes the implementation of a debugger
-possible in Python without needing much explicit support from the VM
-level. On the other hand, it severely hinders the effectiveness of
-allocation removal, because every time an object is stored into a
-local variable, it is stored into the frame-object, which makes it
-escape.
+frame-introspection features in many dynamic languages and the fact
+that frames are heap allocated. Languages such as Python and Smalltalk
+allow the programmer to get access to the frames object that the
+interpreter uses to store local variables. This is a useful feature,
+as it makes the implementation of a debugger possible in Python
+without needing much explicit support from the VM level. On the other
+hand, it severely hinders the effectiveness of allocation removal,
+because every time an object is stored into a local variable, it is
+stored into the frame-object, which makes it escape.
 
 This problem is solved by making it possible to the interpreter author
 to add some hints into the source code to declare instances of one
@@ -1147,14 +1147,15 @@ XXX cite SELF paper for the type propagation effects
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this paper, we used an approach based on online partial evaluation to
-optimize away allocations in the traces of a tracing JIT.  In this context a
-simple approach to partial evaluation gives good results.  This is due
-to the fact that the tracing JIT itself is responsible for all control
-issues, which are usually the hardest part of partial evaluation: the
-tracing JIT selects the parts of the program that are worthwhile to
-optimize, and extracts linear paths through them, inlining functions as
-necessary.  What is left to optimize is only those linear paths.
+In this paper, we used an approach based on online partial evaluation
+to optimize away allocations and type guards in the traces of a
+tracing JIT.  In this context a simple approach to partial evaluation
+gives good results.  This is due to the fact that the tracing JIT
+itself is responsible for all control issues, which are usually the
+hardest part of partial evaluation: the tracing JIT selects the parts
+of the program that are worthwhile to optimize, and extracts linear
+paths through them, inlining functions as necessary.  What is left to
+optimize is only those linear paths.
 
 We expect a similar result for other optimizations that usually require
 a complex analysis phase and are thus normally too slow to use at
