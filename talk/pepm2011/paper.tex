@@ -488,12 +488,16 @@ turned into machine code and then executed with \lstinline{BoxedFloats}, the
 first \lstinline{guard_class} instruction will fail and execution will continue
 using the interpreter.
 
-The trace shows the inefficiencies of \lstinline{f} clearly, if one looks at the
-number of \lstinline{new}, \lstinline{set/get} and \lstinline{guard_class} operations.
+The trace shows the inefficiencies of \lstinline{f} clearly, if one looks at
+the number of \lstinline{new}, \lstinline{set/get} and \lstinline{guard_class}
+operations. The number of \lstinline{guard_class} operation is particularly
+problematic, not only because of the time it takes to run them. All guards also
+have additional information attached that makes it possible to return to the
+interpreter, should the guard fail. This means that many guard operations also
+lead to a memory problem.
+
 In the rest of the paper we will see how this trace can be optimized using
 partial evaluation.
-
-XXX add comment that guards are not only slow, but also use lots of memory
 
 \section{Object Lifetimes in a Tracing JIT}
 \label{sec:lifetimes}
@@ -571,7 +575,7 @@ bit peculiar in that it receives no static input arguments for the trace,
 but it is only used to optimize operations within a trace.
 
 The partial evaluation works by traversing the trace from beginning to end.
-Whenever a \lstinline{new} operation is seen, the operation is removed and a \empth{static
+Whenever a \lstinline{new} operation is seen, the operation is removed and a \emph{static
 object}\footnote{Here ``static'' is meant in the sense of partial
 evaluation, \ie known at partial evaluation time, not in the sense of static
 allocation or static method.} is constructed and associated with the variable
