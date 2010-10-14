@@ -157,8 +157,11 @@ Type dispatching is the process of finding the concrete implementation that is
 applicable to the objects at hand when doing a generic operation on them. An
 example would be the addition of two objects: The addition needs to check what
 the concrete objects that should be added are, and choose the implementation
-that is fitting for them. Type dispatching is a very common operation in a
-dynamic language because no types are known at compile time, so all operations
+that is fitting for them. Type dispatching is a very common operation in
+modern\footnote{For languages in the LISP family, basic arithmetic operations
+are typically not overloaded; even in Smalltalk, type dispatching is much
+simpler than in Python or JavaScript.}
+dynamic languages because no types are known at compile time, so all operations
 need it.
 
 A recently popular approach to implementing just-in-time compilers for dynamic
