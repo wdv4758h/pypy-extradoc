@@ -38,15 +38,6 @@
 	pages = {152--160}
 },
 
-@inproceedings{carl_friedrich_bolz_towards_2010,
-	address = {Hagenberg, Austria},
-	title = {Towards a Jitting {VM} for Prolog Execution},
-	abstract = {Most Prolog implementations are implemented in low-level languages such as C and are based on a variation of the {WAM} instruction set, which enhances their performance but makes them hard to write. In addition, many of the more dynamic features of Prolog (like assert), despite their popularity, are not well supported. We present a high-level continuation-based Prolog interpreter based on the {PyPy} project. The {PyPy} project makes it possible to easily and efficiently implement dynamic languages. It provides tools that automatically generate a just-in-time compiler for a given interpreter of the target language, by using partial evaluation techniques. The resulting Prolog implementation is surprisingly efficient: it clearly outperforms existing interpreters of Prolog in high-level languages such as Java. Moreover, on some benchmarks, our system outperforms state-of-the-art {WAM-based} Prolog implementations. Our paper aims to show that declarative languages such as Prolog can indeed benefit from having a just-in-time compiler and that {PyPy} can form the basis for implementing programming languages other than Python.},
-	author = {Carl Friedrich Bolz and Michael Leuschel and David Schneider},
-	year = {2010},
-	note = {accepted for publication}
-},
-
 @misc{_property_????,
 	title = {Property cache - {MDC}},
 	url = {https://developer.mozilla.org/en/SpiderMonkey/Internals/Property_cache},
@@ -128,6 +119,20 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 	author = {Antonio Cuni},
 	year = {2010},
 	note = {Technical Report {DISI-TH-2010-05}}
+},
+
+@inproceedings{carl_friedrich_bolz_towards_2010,
+	address = {Hagenberg, Austria},
+	title = {Towards a Jitting {VM} for Prolog execution},
+	isbn = {978-1-4503-0132-9},
+	url = {http://portal.acm.org/citation.cfm?id=1836102},
+	doi = {10.1145/1836089.1836102},
+	abstract = {Most Prolog implementations are implemented in low-level languages such as C and are based on a variation of the {WAM} instruction set, which enhances their performance but makes them hard to write. In addition, many of the more dynamic features of Prolog (like assert), despite their popularity, are not well supported. We present a high-level continuation-based Prolog interpreter based on the {PyPy} project. The {PyPy} project makes it possible to easily and efficiently implement dynamic languages. It provides tools that automatically generate a just-in-time compiler for a given interpreter of the target language, by using partial evaluation techniques. The resulting Prolog implementation is surprisingly efficient: it clearly outperforms existing interpreters of Prolog in high-level languages such as Java. Moreover, on some benchmarks, our system outperforms state-of-the-art {WAM-based} Prolog implementations. Our paper aims to show that declarative languages such as Prolog can indeed benefit from having a just-in-time compiler and that {PyPy} can form the basis for implementing programming languages other than Python.},
+	booktitle = {Proceedings of the 12th international {ACM} {SIGPLAN} symposium on Principles and practice of declarative programming},
+	publisher = {{ACM}},
+	author = {Carl Friedrich Bolz and Michael Leuschel and David Schneider},
+	year = {2010},
+	pages = {99--108}
 },
 
 @inproceedings{chang_tracing_2009,
