@@ -1123,6 +1123,13 @@ in Psyco.  It is a hand-written extension module for CPython. Historically,
 PyPy's JIT can be seen as some successor of Psyco for a general context (one of
 the authors of this paper is the author of Psyco).
 
+The original SELF JIT compiler \cite{chambers_efficient_1989} used an algorithm for
+forward-propagating the types of variables as part of its optimizations. This
+makes it possible to remove all type checks on a variable but the first one.
+The optimization does not deal with removing the full object, if it is
+short-lived, but the type check removals are similar to what our optimization
+achieves.
+
 partial evaluation:
 
 Prolog:
@@ -1133,8 +1140,6 @@ evaluation from the beginning \cite{lloyd_partial_1991}.
 partially static data structures: kenichi asai's thesis?
 
 xxx: relation to compile-time garbage collection \cite{mazur_practical_2001};  separation logic; John Hughes: type specialization
-
-XXX cite SELF paper for the type propagation effects
 
 \section{Conclusion}
 \label{sec:conclusion}
