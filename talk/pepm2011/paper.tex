@@ -469,8 +469,7 @@ in Figure~\ref{fig:objmodel}:
     comparison (``greater than''), respectively.
 \end{itemize}
 
-Note how the functions that are called by \lstinline{f} are automatically inlined
-into the trace. The method calls are always preceded by a \lstinline{guard_class}
+The method calls in the trace are always preceded by a \lstinline{guard_class}
 operation, to check that the class of the receiver is the same as the one that
 was observed during tracing.\footnote{\lstinline{guard_class} performs a precise
 class check, not checking for subclasses.} These guards make the trace specific
@@ -548,6 +547,9 @@ categories are partially optimized by this approach as well.
 \label{sec:statics}
 
 \subsection{Static Objects}
+
+XXX add a footnote saying that "static" is meant in the sense of PE, not static
+allocation
 
 The main insight to improve the code shown in the last section is that objects
 in category 1 don't survive very long -- they are used only inside the loop and
