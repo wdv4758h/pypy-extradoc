@@ -1,4 +1,4 @@
-\documentclass{sigplanconf}
+\documentclass[preprint]{sigplanconf}
 
 \usepackage{ifthen}
 \usepackage{fancyvrb}
@@ -72,16 +72,23 @@
 \begin{tabular}{c}}
 %
 \begin{document}
-\conferenceinfo{PEPM'11,} {XXX}
-\CopyrightYear{XXX}
-\copyrightdata{XXX}
+\conferenceinfo{PEPM}{'11, Austin, USA}
+\CopyrightYear{2011}
+\copyrightdata{[to be supplied]}
 
 \title{Allocation Removal by Partial Evaluation in a Tracing JIT}
 
-\authorinfo{Carl Friedrich Bolz \and Antonio Cuni \and Maciej Fijałkowski \and Michael Leuschel \and Samuele Pedroni \and Armin Rigo}
-           {Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany XXX}
+\authorinfo{Carl Friedrich Bolz$^a$ \and Antonio Cuni$^a$ \and Maciej Fijałkowski$^b$ \and Michael Leuschel$^a$ \and \\
+            Samuele Pedroni$^c$ \and Armin Rigo$^a$}
+           {$^a$Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany
+
+            $^b$merlinux GmbH, Hildesheim, Germany
+
+            $^c$Open End, Göteborg, Sweden
+           }
            {cfbolz@gmx.de, anto.cuni@gmail.com, fijal@merlinux.eu,
            leuschel@cs.uni-duesseldorf.de, samuele.pedroni@gmail.com, arigo@tunes.org}
+%           {Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany} \and {merlinux GmbH, Hildesheim, Germany} \and {Open End, Göteborg, Sweden}
 
 %\numberofauthors{3}
 %\author{
@@ -1133,8 +1140,8 @@ analysis.
 
 \section*{Acknowledgements}
 
-The authors would like to thank Stefan Hallerstede and Thomas Stiehl for
-fruitful discussions during the writing of the paper.
+The authors would like to thank Stefan Hallerstede, David Schneider and Thomas
+Stiehl for fruitful discussions during the writing of the paper.
 
 \bibliographystyle{abbrv}
 \bibliography{paper}
