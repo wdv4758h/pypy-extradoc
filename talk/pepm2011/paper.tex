@@ -169,7 +169,7 @@ languages is that of a tracing JIT. A tracing JIT works by observing the running
 program and recording its hot spots into linear execution traces, which are then turned into
 machine code. One reason for the popularity of tracing JITs is their relative
 simplicity. They can often be added to an interpreter and a lot of the
-infrastructure of an interpreter can be reused. They give some important
+infrastructure of the interpreter can be reused. They give some important
 optimizations like inlining and constant-folding for free. A tracing JIT always
 produces linear pieces of code, which simplifies many optimizations that are usually
 hard in a compiler, such as register allocation.
@@ -186,9 +186,9 @@ Section~\ref{sec:lifetimes} analyzes the problem to be solved more closely.
 The core of our trace optimization technique can be
 viewed as partial evaluation: the partial evaluation
 performs a form of escape analysis \cite{bruno_blanchet_escape_2003} on the traces and make some
-objects that are allocated in the trace \emph{static} which
+objects that are allocated in the trace \emph{static,} which
 means that they do not occur any more in the optimized trace. This technique is
-informally described in Section~\ref{sec:statics}, a more formal description is
+informally described in Section~\ref{sec:statics}; a more formal description is
 given in Section~\ref{sec:formal}.
 
 In Section~\ref{sec:support} we describe some supporting techniques that are not
@@ -997,11 +997,12 @@ with 2.26 GHz and 3072 KB of cache on a machine with 3GB RAM running Linux
 2.6.35. We compared the performance of various Python implementations on the
 benchmarks. As a baseline, we used the standard Python implementation in C,
 CPython 2.6.6\footnote{\texttt{http://python.org}}, which uses a bytecode-based
-interpreter. Furthermore we compared against Psyco 1.6
-\cite{rigo_representation-based_2004}, an extension to CPython which is a
+interpreter. Furthermore we compared against
+Psyco\cite{rigo_representation-based_2004} 1.6,
+an extension to CPython which is a
 just-in-time compiler that produces machine code at run-time. It is not based
 on traces. Finally, we used two versions of PyPy's Python interpreter (revision
-77823 of SVN trunk\footnote{\texttt{https://codespeak.net/svn/pypy/trunk}}): one
+77823 of SVN trunk\footnote{\texttt{http://codespeak.net/svn/pypy/trunk}}): one
 including the JIT but not optimizing the traces, and one using the allocation
 removal optimizations (as well as some minor other optimizations, such as
 constant folding).
@@ -1063,7 +1064,7 @@ XXX runtimes of the algorithm somehow?
 \begin{center}
 \begin{tabular}{|l||r|r|r|r|}
 \hline
-	&Cpython	&Psyco	&PyPy w/o optimizations	&PyPy w/ optimizations \\
+	&CPython	&Psyco	&PyPy w/o optimizations	&PyPy w/ optimizations \\
 \hline
 crypto\_pyaes	&2757.80 $\pm$ 0.98	&67.90 $\pm$ 0.47	&1652.00 $\pm$ 4.00 &266.86 $\pm$ 5.94 \\
 django	&993.19 $\pm$ 0.50	&913.51 $\pm$ 4.22	&694.73 $\pm$ 2.86 &259.53 $\pm$ 1.79 \\
