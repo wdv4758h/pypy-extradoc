@@ -132,11 +132,11 @@ Languages, Performance, Experimentation
 
 The goal of a just-in-time (JIT) compiler for a dynamic language is obviously to
 improve the speed of the language over an implementation of the language that
-uses interpretation. The first goal of a JIT is thus to remove the
+uses interpretation. The first goal of a JIT is therefore to remove the
 interpretation overhead, i.e. the overhead of bytecode (or AST) dispatch and the
 overhead of the interpreter's data structures, such as operand stack etc. The
 second important problem that any JIT for a dynamic language needs to solve is
-how to deal with the overhead of boxing of primitive types and of type
+how to deal with the overhead of boxing primitive types and of type
 dispatching. Those are problems that are usually not present or at least less
 severe in statically typed languages.
 
@@ -167,7 +167,7 @@ machine code. One reason for the popularity of tracing JITs is their relative
 simplicity. They can often be added to an interpreter and a lot of the
 infrastructure of the interpreter can be reused. They give some important
 optimizations like inlining and constant-folding for free. A tracing JIT always
-produces linear pieces of code, which simplifies many optimizations that are usually
+produces linear pieces of code, which simplifies many algorithms that are usually
 hard in a compiler, such as register allocation.
 
 The usage of a tracing JIT can remove the overhead of bytecode dispatch and that
@@ -262,7 +262,7 @@ and now Python (and other languages) via PyPy.
 The core idea of tracing JITs is to focus the optimization effort of the JIT
 compiler on the hot paths of the core loops of the program and to just use an
 interpreter for the less commonly executed parts. VMs that use a tracing JIT are
-thus mixed-mode execution environments, they contain both an interpreter and a
+mostly mixed-mode execution environments, they contain both an interpreter and a
 JIT compiler. By default the interpreter is used to execute the program, doing
 some light-weight profiling at the same time. This profiling is used to identify
 the hot loops of the program. If a hot loop is found in that way, the
@@ -276,7 +276,7 @@ tracing JIT automatically performs inlining.
 
 This trace of operations is then the basis of the generated code. The trace is
 first optimized, and then turned into machine code. Both optimization
-and machine code generation is simple, because the traces are linear. This
+and machine code generation are simple, because the traces are linear. This
 linearity makes many optimizations a lot more tractable, and the inlining that
 happens gives the optimizations automatically more context to work with.
 
@@ -288,8 +288,9 @@ path. Those guards check the assumptions under which execution can stay on the
 trace. As an example, if a loop contains an \lstinline{if} statement, the trace
 will contain the execution of one of the paths only, which is the path that was
 taken during the production of the trace. The trace will also contain a guard
-that checks that the condition of the \lstinline{if} statement is true, because if
-it isn't, the rest of the trace is not valid.
+that checks that the condition of the \lstinline{if} statement is the same as
+during tracing, because if
+it isn't, the rest of the trace is not valid. \cfbolz{The "if" shouldn't be bold}
 
 When generating machine code, every guard is be turned into a quick check to
 see whether the assumption still holds. When such a guard is hit during the
@@ -565,7 +566,7 @@ categories are partially optimized by this approach as well.
 The main insight to improve the code shown in the last section is that objects
 in category 1 don't survive very long -- they are used only inside the loop and
 nobody else in the program stores a reference to them. The idea for improving
-the code is thus to analyze which objects fall in category 1 and thus do
+the code is to analyze which objects fall in category 1 and therefore do
 not have to be allocated at all.
 
 This is a process that is usually called \emph{escape analysis}. In this paper we will
@@ -835,7 +836,7 @@ optimizer serves a function similar to that of the environment in the semantics:
 The static heap is a partial function from $V^*$ into the
 set of static objects, which are triples of a type and two elements of $V^*$.
 A variable $v^*$ is in the domain of the static heap $S$ as long as the
-optimizer can fully keep track of the object. The image of $v^*$ is what is
+optimizer can fully keep track of the object. The object $S(v^*)$ is what is
 statically known about the object stored in it, \ie its type and its fields. The
 fields of objects in the static heap are also elements of $V^*$ (or null, for
 short periods of time).
@@ -1048,7 +1049,8 @@ code. The arithmetic mean of the times of the last 30 runs were used as the
 result. The errors were computed using a confidence interval with a 95\%
 confidence level \cite{georges_statistically_2007}. The results are reported in
 Figure~\ref{fig:times}. In addition to the run times the table also reports the
-speedup that PyPy with optimization turned on achieves.
+speedup that PyPy achieves when the optimization is turned on.
+
 With the optimization turned on, PyPy's Python interpreter outperforms CPython
 in all benchmarks except spambayes (which heavily relies on regular expression
 performance and thus is not helped much by our Python JIT) and meteor-contest.
@@ -1089,7 +1091,7 @@ twisted\_names	&9.58 $\pm$ 0.01	&1.34	&10.43 $\pm$ 0.01	&1.46	&17.99 $\pm$ 0.27	
 \section{Related Work}
 \label{sec:related}
 
-There exists a large number of works on escape analysis, which is an program
+There exists a large number of works on escape analysis, which is a program
 analysis that tries to find an upper bound for the lifetime of objects allocated
 at specific program points
 \cite{goldberg_higher_1990,park_escape_1992,choi_escape_1999,bruno_blanchet_escape_2003}.
@@ -1157,7 +1159,7 @@ itself is responsible for all control issues, which are usually the
 hardest part of partial evaluation: the tracing JIT selects the parts
 of the program that are worthwhile to optimize, and extracts linear
 paths through them, inlining functions as necessary.  What is left to
-optimize is only those linear paths.
+optimize are only those linear paths.
 
 We expect a similar result for other optimizations that usually require
 a complex analysis phase and are thus normally too slow to use at
