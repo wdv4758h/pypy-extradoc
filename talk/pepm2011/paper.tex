@@ -162,8 +162,11 @@ need it.
 
 A recently popular approach to implementing just-in-time compilers for dynamic
 languages is that of a tracing JIT. A tracing JIT works by observing the running
-program and recording its hot spots into linear execution traces, which are then turned into
-machine code. One reason for the popularity of tracing JITs is their relative
+program and recording its hot spots into linear execution traces. Working on
+traces is the central idea of a tracing JIT. Those traces are optimized and
+turned into machine code.
+
+One reason for the popularity of tracing JITs is their relative
 simplicity. They can often be added to an interpreter and a lot of the
 infrastructure of the interpreter can be reused. They give some important
 optimizations like inlining and constant-folding for free. A tracing JIT always
@@ -215,11 +218,10 @@ for the language in
 \emph{RPython} \cite{davide_ancona_rpython:_2007}. RPython ("restricted Python")
 is a subset of Python chosen in such a way that type inference becomes
 possible. The language interpreter can then be compiled (``translated'') with
-PyPy's tools into a VM on the C level. Because the interpreter is written at a
-relatively high level, the language implementation is kept free of low-level
-details, such as object layout, garbage collection or memory model. Those
-aspects of the final VM are woven into the generated code during the translation
-to C.
+PyPy's tools into a VM on the C level. During translation to C, many low-level
+aspects of the final VM, such as object layout, garbage collection and memory
+model, are woven into the generated code. Therefore the interpreter itself can
+remain at a relatively high level of abstraction.
 
 A number of languages have been implemented with PyPy. The project was initiated
 to get a better Python implementation, which inspired the name of the project
@@ -231,7 +233,7 @@ languages were implemented, among them a Prolog interpreter
 
 The feature that makes PyPy more than a compiler with a runtime system is its
 support for automated JIT compiler generation \cite{bolz_tracing_2009}. During
-the translation to C, PyPy's tools can generate a just-in-time compiler for the
+the translation to C, PyPy's tools can generate a tracing just-in-time compiler for the
 language that the interpreter is implementing. This process is mostly
 automatic; it only needs to be guided by the language implementer using a small number of
 source-code hints. Mostly-automatically generating a JIT compiler has many advantages
@@ -240,12 +242,9 @@ By construction, the generated JIT has the same semantics as the interpreter.
 Many optimizations can benefit all languages implemented as an interpreter in RPython.
 
 Moreover, thanks to the internal design of the JIT generator, it is very easy
-to add new \emph{backends} for producing the actual machine code, in addition
-to the original backend for the Intel \emph{x86} architecture.  Examples of
-additional JIT backends are the one for Intel \emph{x86-64} and an
+to add new \emph{backends} for producing the actual machine code.  Examples of
+JIT backends that are implemented are the one for Intel x86 and x86-64 and an
 experimental one for the CLI .NET Virtual Machine \cite{cuni_high_2010}.
-PyPy's JIT generator generates a \emph{tracing JIT
-compiler}, a concept which we now explain in more details.
 
 \subsection{Tracing JIT Compilers}
 \label{sub:JIT_background}
@@ -373,9 +372,9 @@ def f(y):
 
 Using these classes to implement arithmetic shows the basic problem that a
 dynamic language implementation has. All the numbers are instances of either
-\lstinline{BoxedInteger} or \lstinline{BoxedFloat}, thus they consume space on the
+\lstinline{BoxedInteger} or \lstinline{BoxedFloat}, therefore they consume space on the
 heap. Performing many arithmetic operations produces lots of garbage quickly,
-thus putting pressure on the garbage collector. Using double dispatching to
+which puts pressure on the garbage collector. Using double dispatching to
 implement the numeric tower needs two method calls per arithmetic operation,
 which is costly due to the method dispatch.
 
@@ -593,8 +592,8 @@ as well, because the shape description stores the type and thus the outcome of
 the type check the guard does is statically known.
 
 In the example from last section, the following operations in the upper half
-of Fig.~\ref{fig:unopt-trace} would produce two
-static objects, and would thus be completely removed from the optimized trace:
+of Fig.~\ref{fig:unopt-trace} produce two
+static objects, and can be completely removed from the optimized trace:
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt]
 $p_{5}$ = new(BoxedInteger)
@@ -625,7 +624,7 @@ $i_{9}$ = int_add($i_{7}$, $i_{8}$)
 
 First, the \lstinline{guard_class} operations can be removed, because the classes of $p_{5}$ and
 $p_{6}$ are known to be \lstinline{BoxedInteger}. Second, the \lstinline{get} operations can be removed
-and $i_{7}$ and $i_{8}$ are just replaced by $i_{4}$ and -100. Thus the only
+and $i_{7}$ and $i_{8}$ are just replaced by $i_{4}$ and -100. The only
 remaining operation in the optimized trace would be:
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt]
@@ -746,8 +745,8 @@ execution of an operation. The environment is a partial function from variables
 to locations and the heap is a partial function from locations to objects. Note
 that a variable can never be null in the environment, otherwise the trace would
 be malformed. The environment could not directly map variables to object,
-because several variables can contain a pointer to the \emph{same} object. Thus
-the "indirection" is needed to express sharing.
+because several variables can contain a pointer to the \emph{same} object. 
+The "indirection" is needed to express sharing.
 
 We use the following notation for updating partial functions:
 $E[v\mapsto l]$ denotes the environment which is just like $E$, but maps $v$ to
@@ -830,7 +829,7 @@ unoptimized trace $V$ to variables in the optimized trace $V^*$ (which are
 themselves written with a
 $\ ^*$ for clarity). The reason for introducing new variables in the optimized
 trace is that several variables that appear in the unoptimized trace can turn
-into the same variables in the optimized trace. Thus the environment of the
+into the same variables in the optimized trace. The environment of the
 optimizer serves a function similar to that of the environment in the semantics: sharing.
 
 The static heap is a partial function from $V^*$ into the
