@@ -467,9 +467,9 @@ in Figure~\ref{fig:objmodel}:
     \item \lstinline{new} corresponds to object creation.
     \item \lstinline{get} correspond to attribute reads.
     \item \lstinline{set} correspond to attribute writes.
-    \item \lstinline{guard\_class} correspond to method calls and are followed by
+    \item \lstinline{guard_class} correspond to method calls and are followed by
     the trace of the called method.
-    \item \lstinline{int\_add} and \lstinline{int\_get} are integer addition and
+    \item \lstinline{int_add} and \lstinline{int_get} are integer addition and
     comparison (``greater than''), respectively.
 \end{itemize}
 
@@ -484,7 +484,7 @@ first \lstinline{guard_class} instruction will fail and execution will continue
 using the interpreter.
 
 The trace shows the inefficiencies of \lstinline{f} clearly, if one looks at the
-number of \lstinline{new}, \lstinline{set/get} and \lstinline{guard\_class} operations.
+number of \lstinline{new}, \lstinline{set/get} and \lstinline{guard_class} operations.
 In the rest of the paper we will see how this trace can be optimized using
 partial evaluation.
 
