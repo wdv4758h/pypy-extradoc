@@ -1132,9 +1132,14 @@ achieves.
 
 partial evaluation:
 
-Prolog:
-partially static datastructures are already built-in to Prolog and was built-into partial
-evaluation from the beginning \cite{lloyd_partial_1991}.
+Partially known data structures are built directly into Prolog (via unbound
+logic variables) and thus the optimization of partially static data structures
+was part of partial evaluation of Prolog programs from the beginning
+\cite{lloyd_partial_1991}. One effect of unfolding in Prolog is that terms that
+are constructed and immediately matched again completely disappear in the
+residual program, which is equivalent to what our optimization does for an
+imperative language.
+
  FP
 
 partially static data structures: kenichi asai's thesis?
