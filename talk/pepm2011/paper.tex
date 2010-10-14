@@ -86,7 +86,7 @@
 
             $^c$Open End, Göteborg, Sweden
            }
-           {cfbolz@gmx.de \and anto.cuni@gmail.com \and fijal@merlinux.eu,
+           {cfbolz@gmx.de \and anto.cuni@gmail.com \and fijal@merlinux.eu \and
            leuschel@cs.uni-duesseldorf.de \and samuele.pedroni@gmail.com \and arigo@tunes.org}
 
 %\numberofauthors{3}
@@ -191,8 +191,8 @@ means that they do not occur any more in the optimized trace. This technique is
 informally described in Section~\ref{sec:statics}; a more formal description is
 given in Section~\ref{sec:formal}.
 
-In Section~\ref{sec:support} we describe some supporting techniques that are not
-central to the approach, but are needed to improve the results. The introduced
+In Section~\ref{sec:frames} we describe some supporting techniques that are not
+central to the approach, but are essential to improve the results. The introduced
 techniques are evaluated in Section~\ref{sec:Evaluation} using PyPy's Python
 interpreter as a case study.
 
@@ -920,11 +920,8 @@ corresponding to all calls that have been inlined in the trace.
 
 % section Escape Analysis in a Tracing JIT (end)
 
-\section{Supporting Techniques}
-\label{sec:support}
-
-\subsection{Virtualizables}
-\label{sub:Virtualizables}
+\section{Taming Frame Objects}
+\label{sec:frames}
 
 \cfbolz{probably can be cut in case of space problems}
 
@@ -955,9 +952,7 @@ language.
 
 XXX one of the JS tracing JITs does this as well
 
-% subsection Virtualizables (end)
-
-% section Supporting Techniques (end)
+% section Taming Frame Objects (end)
 
 \section{Evaluation}
 \label{sec:Evaluation}
@@ -1060,12 +1055,18 @@ In addition to the count of operations we also performed time measurements.
 All benchmarks were run 50 times in the same process, to give the JIT time to produce machine
 code. The arithmetic mean of the times of the last 30 runs were used as the
 result. The errors were computed using a confidence interval with a 95\%
-confidence level \cite{georges_statistically_2007}. The results are reported in Figure~\ref{fig:times}.
+confidence level \cite{georges_statistically_2007}. The results are reported in
+Figure~\ref{fig:times}. In addition to the run times the table also reports the
+speedup that PyPy with optimization turned on achieves.
 With the optimization turned on, PyPy's Python interpreter outperforms CPython
 in all benchmarks except spambayes (which heavily relies on regular expression
 performance and thus is not helped much by our Python JIT) and meteor-contest.
-All benchmarks are improved by the allocation removal optimization, some as much
-as XXX. XXX Psyco
+All benchmarks are improved by the allocation removal optimization, by at least
+20\% and by as much as a factor of 6.95.
+
+Psyco is able to outperform PyPy's JIT in five out of 14 benchmarks. We hope to
+overtake Psyco (which is no longer being actively developped) by adding some
+further optimizations.
 
 \begin{figure*}
 \begin{center}
