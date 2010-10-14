@@ -183,8 +183,7 @@ Section~\ref{sec:lifetimes} analyzes the problem to be solved more closely.
 The core of our trace optimization technique can be
 viewed as partial evaluation: the partial evaluation
 performs a form of escape analysis \cite{bruno_blanchet_escape_2003} on the traces and make some
-objects that are allocated in the trace \emph{static}\footnote{These objects are
-called \emph{virtual} in Psyco \cite{rigo_representation-based_2004}.} which
+objects that are allocated in the trace \emph{static} which
 means that they do not occur any more in the optimized trace. This technique is
 informally described in Section~\ref{sec:statics}, a more formal description is
 given in Section~\ref{sec:formal}.
@@ -560,9 +559,6 @@ categories are partially optimized by this approach as well.
 
 \subsection{Static Objects}
 
-XXX add a footnote saying that "static" is meant in the sense of PE, not static
-allocation
-
 The main insight to improve the code shown in the last section is that objects
 in category 1 don't survive very long -- they are used only inside the loop and
 nobody else in the program stores a reference to them. The idea for improving
@@ -575,8 +571,11 @@ bit peculiar in that it receives no static input arguments for the trace,
 but it is only used to optimize operations within a trace.
 
 The partial evaluation works by traversing the trace from beginning to end.
-Whenever a \lstinline{new} operation is seen, the operation is removed and a static
-object is constructed and associated with the variable that would have stored
+Whenever a \lstinline{new} operation is seen, the operation is removed and a \empth{static
+object}\footnote{Here ``static'' is meant in the sense of partial
+evaluation, \ie known at partial evaluation time, not in the sense of static
+allocation or static method.} is constructed and associated with the variable
+that would have stored
 the result of \lstinline{new}. The static object describes the shape of the
 original object, \eg where the values that would be stored in the fields of the
 allocated object come from, as well as the type of the object. Whenever the
@@ -1115,6 +1114,9 @@ partially static data structures: kenichi asai's thesis?
 
 xxx: relation to compile-time garbage collection \cite{mazur_practical_2001};  separation logic; John Hughes: type specialization
 
+XXX Psyco \cite{rigo_representation-based_2004}
+
+XXX cite SELF paper for the type propagation effects
 
 \section{Conclusion}
 \label{sec:conclusion}
