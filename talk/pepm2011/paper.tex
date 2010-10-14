@@ -140,10 +140,6 @@ how to deal with the overhead of boxing of primitive types and of type
 dispatching. Those are problems that are usually not present or at least less
 severe in statically typed languages.
 
-XXX [fijal] I would say that the other goal of the JIT in case of dynamic
-languages is to compile only a common scenario and leave a guard (instead
-of proving that something will never ever happen)
-
 Boxing of primitive types is necessary because dynamic languages need to be able to handle
 all objects, even integers, floats, booleans etc. in the same way as user-defined
 instances. Thus those primitive types are usually \emph{boxed}, i.e. a small
