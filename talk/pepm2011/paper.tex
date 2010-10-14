@@ -931,6 +931,9 @@ the other hand, it severely hinders the effectiveness of allocation removal,
 because every time an object is stored into a local variable, it is stored into
 the frame-object, which makes it escape.
 
+XXX [fijal] Well, in fact that's *a lot* of support for debugger from the VM.
+The support is just generic instead of specific.
+
 This problem is solved by making it possible to the interpreter author to add
 some hints into the source code to declare instances of one class as frame
 objects. The JIT will then fill these objects only lazily when they are actually
@@ -951,6 +954,9 @@ To evaluate the effectiveness of our allocation removal algorithm, we look at
 the effectiveness when used in the tracing JIT of PyPy's Python interpreter. The
 benchmarks we used are small-to-medium Python programs, some synthetic
 benchmarks, some real applications.
+
+XXX [fijal] note that some of those have cpython-specific hacks removed or
+old versions used (nbody mostly I think).
 
 Some of them are from the Computer Language Benchmark
 Game\footnote{\texttt{http://shootout.alioth.debian.org/}}: \textbf{fannkuch},
