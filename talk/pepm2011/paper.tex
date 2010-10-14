@@ -945,12 +945,10 @@ because a debugger is used) using values from JIT-emitted code runtime
 locations (typically the CPU stack). Therefore in the common case,
 nothing is stored into the frame objects, making the problem of too
 much escaping go away. This special handling of frame objects is a common approach in VM implementations
-\cite{miranda_context_1999}. The only novelty in our approach lays in
+\cite{miranda_context_1999,andreas_gal_trace-based_2009}. The only novelty in our approach lays in
 its generality: all the delicate support code for this is generated, as opposed to
 most other JITs, which are just specifically written for one particular
 language.
-
-XXX one of the JS tracing JITs does this as well
 
 % section Taming Frame Objects (end)
 
