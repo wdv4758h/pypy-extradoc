@@ -211,7 +211,7 @@ The contributions of this paper are:
 \subsection{PyPy}
 \label{sub:PyPy}
 
-The work described in this paper was done in the context of the PyPy project
+The work described in this paper was done in the context of the PyPy project\footnote{\texttt{http://pypy.org}}
 \cite{armin_rigo_pypys_2006}. PyPy is an environment where dynamic languages can
 be implemented in a simple yet efficient way. 
 When implementing a language with PyPy one writes an \emph{interpreter}
@@ -933,7 +933,7 @@ techniques described in the previous sections is the presence of
 frame-introspection features in many dynamic languages. Languages such
 as Python and Smalltalk allow the programmer to get access to the
 frames object that the interpreter uses to store local variables. This
-is a useful feature, as makes the implementation of a debugger
+is a useful feature, as it makes the implementation of a debugger
 possible in Python without needing much explicit support from the VM
 level. On the other hand, it severely hinders the effectiveness of
 allocation removal, because every time an object is stored into a
@@ -947,11 +947,13 @@ fill these objects only lazily when they are actually accessed (\eg
 because a debugger is used) using values from JIT-emitted code runtime
 locations (typically the CPU stack). Therefore in the common case,
 nothing is stored into the frame objects, making the problem of too
-much escaping go away. This is a common approach in VM implementations
-\cite{miranda_context_1999}, the only novelty in our approach lays in
-its generality, all the delicate support code for this is generated, because
-most other JITs are just specifically written for one particular
+much escaping go away. This special handling of frame objects is a common approach in VM implementations
+\cite{miranda_context_1999}. The only novelty in our approach lays in
+its generality: all the delicate support code for this is generated, as opposed to
+most other JITs, which are just specifically written for one particular
 language.
+
+XXX one of the JS tracing JITs does this as well
 
 % subsection Virtualizables (end)
 
@@ -963,7 +965,10 @@ language.
 To evaluate the effectiveness of our allocation removal algorithm, we look at
 the effectiveness when used in the tracing JIT of PyPy's Python interpreter. The
 benchmarks we used are small-to-medium Python programs, some synthetic
-benchmarks, some real applications.
+benchmarks, some real applications.\footnote{All the source code of the
+benchmarks can be found at \texttt{http://codespeak.net/svn/pypy/benchmarks/}.
+There is also a website that monitors PyPy's performance nightly at
+\texttt{http://speed.pypy.org/}.}
 
 XXX [fijal] note that some of those have cpython-specific hacks removed or
 old versions used (nbody mostly I think).
@@ -990,6 +995,7 @@ Furthermore there are the following benchmarks:
     \item \textbf{twisted\_names}: A DNS server benchmark using the Twisted networking
     framework\footnote{\texttt{http://twistedmatrix.com/}}.
 \end{itemize}
+
 
 We evaluate the allocation removal algorithm along two lines: first we want to
 know how many allocations could be optimized away. On the other hand, we want
@@ -1025,7 +1031,7 @@ removed guards are an effect of the optimization described here.
 \begin{center}
 \begin{tabular}{|l||r|rr|rr|rr|rr|}
 \hline
-	&num loops	&new	&removed	&get/set	&removed &guard &removed	&all ops	&removed\\
+	&num loops      &new    &removed        &get/set        &removed &guard &removed        &all ops        &removed\\
 \hline
 crypto\_pyaes	&78	&3088	&50\%	&57148	&25\%	&9055	&95\%	&137189	&80\%\\
 django	&51	&673	&54\%	&19318	&18\%	&3876	&93\%	&55682	&85\%\\
@@ -1061,32 +1067,30 @@ performance and thus is not helped much by our Python JIT) and meteor-contest.
 All benchmarks are improved by the allocation removal optimization, some as much
 as XXX. XXX Psyco
 
-XXX runtimes of the algorithm somehow?
-
 \begin{figure*}
 \begin{center}
-\begin{tabular}{|l||r|r|r|r|}
+\begin{tabular}{|l||r|r||r|r||r|r||r|r|}
 \hline
-	&CPython	&Psyco	&PyPy w/o optimizations	&PyPy w/ optimizations \\
+	&CPython [ms]	& $\times$ &Psyco [ms]	& $\times$ &PyPy w/o optim. [ms] & $\times$ &PyPy w/ optim. [ms]& $\times$ \\
 \hline
-crypto\_pyaes	&2757.80 $\pm$ 0.98	&67.90 $\pm$ 0.47	&1652.00 $\pm$ 4.00 &266.86 $\pm$ 5.94 \\
-django	&993.19 $\pm$ 0.50	&913.51 $\pm$ 4.22	&694.73 $\pm$ 2.86 &259.53 $\pm$ 1.79 \\
-fannkuch	&1987.22 $\pm$ 2.02	&944.44 $\pm$ 0.61	&566.99 $\pm$ 1.06 &466.87 $\pm$ 1.85 \\
-go	&947.21 $\pm$ 1.58	&445.96 $\pm$ 0.68	&2197.71 $\pm$ 25.21 &316.15 $\pm$ 9.33 \\
-html5lib	&13987.12 $\pm$ 19.51	&17398.25 $\pm$ 36.50	&27194.45 $\pm$ 46.62	&10092.19 $\pm$ 23.50 \\
-meteor-contest	&346.98 $\pm$ 0.35	&215.66 $\pm$ 0.23	&433.04 $\pm$ 1.45 &392.85 $\pm$ 0.87 \\
-nbody\_modified	&637.90 $\pm$ 1.82	&256.78 $\pm$ 0.18	&135.55 $\pm$ 0.33 &103.93 $\pm$ 0.25 \\
-pyflate-fast	&3169.35 $\pm$ 1.89	&1278.16 $\pm$ 3.13	&3285.89 $\pm$ 8.51	&1822.36 $\pm$ 11.52 \\
-raytrace-simple	&2744.60 $\pm$ 51.72	&1072.66 $\pm$ 1.08	&2778.27 $\pm$ 15.13	&647.24 $\pm$ 5.44 \\
-richards	&354.06 $\pm$ 1.00	&63.48 $\pm$ 0.15	&383.93 $\pm$ 3.28 &88.32 $\pm$ 0.91 \\
-spambayes	&299.16 $\pm$ 0.35	&338.68 $\pm$ 3.14	&580.90 $\pm$ 24.68 &397.37 $\pm$ 10.60 \\
-spectral-norm	&478.63 $\pm$ 0.80	&139.83 $\pm$ 1.54	&353.51 $\pm$ 1.39 &112.10 $\pm$ 1.17 \\
-telco	&1207.67 $\pm$ 2.03	&730.00 $\pm$ 2.66	&1296.08 $\pm$ 4.37 &495.23 $\pm$ 2.14 \\
-twisted\_names	&9.58 $\pm$ 0.01	&10.43 $\pm$ 0.01	&17.99 $\pm$ 0.27	&7.13 $\pm$ 0.09 \\
+crypto\_pyaes	&2757.80 $\pm$ 0.98	&10.33	&67.90 $\pm$ 0.47	&0.25	&1652.00 $\pm$ 4.00	&6.19	&266.86 $\pm$ 5.94	&1.00\\
+django	&993.19 $\pm$ 0.50	&3.83	&913.51 $\pm$ 4.22	&3.52	&694.73 $\pm$ 2.86	&2.68	&259.53 $\pm$ 1.79	&1.00\\
+fannkuch	&1987.22 $\pm$ 2.02	&4.26	&944.44 $\pm$ 0.61	&2.02	&566.99 $\pm$ 1.06	&1.21	&466.87 $\pm$ 1.85	&1.00\\
+go	&947.21 $\pm$ 1.58	&3.00	&445.96 $\pm$ 0.68	&1.41	&2197.71 $\pm$ 25.21	&6.95	&316.15 $\pm$ 9.33	&1.00\\
+html5lib	&13987.12 $\pm$ 19.51	&1.39	&17398.25 $\pm$ 36.50	&1.72	&27194.45 $\pm$ 46.62	&2.69	&10092.19 $\pm$ 23.50	&1.00\\
+meteor-contest	&346.98 $\pm$ 0.35	&0.88	&215.66 $\pm$ 0.23	&0.55	&433.04 $\pm$ 1.45	&1.10	&392.85 $\pm$ 0.87	&1.00\\
+nbody\_modified	&637.90 $\pm$ 1.82	&6.14	&256.78 $\pm$ 0.18	&2.47	&135.55 $\pm$ 0.33	&1.30	&103.93 $\pm$ 0.25	&1.00\\
+pyflate-fast	&3169.35 $\pm$ 1.89	&1.74	&1278.16 $\pm$ 3.13	&0.70	&3285.89 $\pm$ 8.51	&1.80	&1822.36 $\pm$ 11.52	&1.00\\
+raytrace-simple	&2744.60 $\pm$ 51.72	&4.24	&1072.66 $\pm$ 1.08	&1.66	&2778.27 $\pm$ 15.13	&4.29	&647.24 $\pm$ 5.44	&1.00\\
+richards	&354.06 $\pm$ 1.00	&4.01	&63.48 $\pm$ 0.15	&0.72	&383.93 $\pm$ 3.28	&4.35	&88.32 $\pm$ 0.91	&1.00\\
+spambayes	&299.16 $\pm$ 0.35	&0.75	&338.68 $\pm$ 3.14	&0.85	&580.90 $\pm$ 24.68	&1.46	&397.37 $\pm$ 10.60	&1.00\\
+spectral-norm	&478.63 $\pm$ 0.80	&4.27	&139.83 $\pm$ 1.54	&1.25	&353.51 $\pm$ 1.39	&3.15	&112.10 $\pm$ 1.17	&1.00\\
+telco	&1207.67 $\pm$ 2.03	&2.44	&730.00 $\pm$ 2.66	&1.47	&1296.08 $\pm$ 4.37	&2.62	&495.23 $\pm$ 2.14	&1.00\\
+twisted\_names	&9.58 $\pm$ 0.01	&1.34	&10.43 $\pm$ 0.01	&1.46	&17.99 $\pm$ 0.27	&2.52	&7.13 $\pm$ 0.09	&1.00\\
 \hline
 \end{tabular}
 \end{center}
-\caption{Benchmark Times in Milliseconds}
+\caption{Benchmark Times in Milliseconds, Together With Factor Over PyPy With Optimizations}
 \label{fig:times}
 \end{figure*}
 
@@ -1121,10 +1125,11 @@ way to the approach described here, as hinted at in the technical report
 implementation are given.
 
 Psyco \cite{rigo_representation-based_2004} is a (non-tracing) JIT for Python
-that fully implements allocation removal (the \emph{static} objects are called
-\emph{virtual} objects).  It is a hand-written extension module for CPython.
-Historically, PyPy's JIT can be seen as some successor of Psyco for a
-general context.
+that implements a more ad-hoc version of the allocation removal described here.
+Our static objects could be related to what are called \emph{virtual} objects
+in Psyco.  It is a hand-written extension module for CPython. Historically,
+PyPy's JIT can be seen as some successor of Psyco for a general context (one of
+the authors of this paper is the author of Psyco).
 
 partial evaluation:
 
