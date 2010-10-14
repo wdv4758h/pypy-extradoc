@@ -1117,6 +1117,12 @@ way to the approach described here, as hinted at in the technical report
 \cite{michael_bebenita_spur:_2010}. However, no details for the approach and its
 implementation are given.
 
+Psyco \cite{rigo_representation-based_2004} is a (non-tracing) JIT for Python
+that fully implements allocation removal (the \emph{static} objects are called
+\emph{virtual} objects).  It is a hand-written extension module for CPython.
+Historically, PyPy's JIT can be seen as some successor of Psyco for a
+general context.
+
 partial evaluation:
 
 Prolog:
@@ -1127,8 +1133,6 @@ evaluation from the beginning \cite{lloyd_partial_1991}.
 partially static data structures: kenichi asai's thesis?
 
 xxx: relation to compile-time garbage collection \cite{mazur_practical_2001};  separation logic; John Hughes: type specialization
-
-XXX Psyco \cite{rigo_representation-based_2004}
 
 XXX cite SELF paper for the type propagation effects
 
