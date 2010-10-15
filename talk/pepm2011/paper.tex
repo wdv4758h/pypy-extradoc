@@ -887,9 +887,8 @@ set($v^*$, $R$, $v^*$)
 
 After the lifting the static heap is the empty set, because both static objects
 were lifted.
-
-If from the same heap $w^*$ is lifted instead, the following operations are
-produced:
+If we had lifted $w^*$ instead of $v^*$, then the following operations would
+have been produced:
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt]
 $w^*$ = new($T_2$)
@@ -897,7 +896,8 @@ set($w^*$, $L$, $u^*$)
 set($w^*$, $R$, $u^*$)
 \end{lstlisting}
 
-The static heap afterwards is $\{v^* \mapsto (T_1, w^*, v^*)\}$.
+In this case, the static heap afterwards would be
+$\{v^* \mapsto (T_1, w^*, v^*)\}$.
 
 
 
