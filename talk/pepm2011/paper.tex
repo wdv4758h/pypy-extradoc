@@ -450,7 +450,7 @@ guard_class($p_{15}$, BoxedInteger)
 guard_true($i_{17}$)
 jump($p_{15}$, $p_{10}$)
 \end{lstlisting}
-\caption{Unoptimized Trace for the Simple Object Model}
+\caption{An Unoptimized Trace of the Example Interpreter}
 \label{fig:unopt-trace}
 \end{figure}
 
@@ -473,7 +473,7 @@ in Figure~\ref{fig:objmodel}:
     \item \lstinline{set} correspond to attribute writes.
     \item \lstinline{guard_class} correspond to method calls and are followed by
     the trace of the called method.
-    \item \lstinline{int_add} and \lstinline{int_get} are integer addition and
+    \item \lstinline{int_add} and \lstinline{int_gt} are integer addition and
     comparison (``greater than''), respectively.
 \end{itemize}
 
@@ -1134,18 +1134,20 @@ achieves.
 partial evaluation:
 
 Partially known data structures are built directly into Prolog (via unbound
-logic variables) and thus the optimization of partially static data structures
-was part of partial evaluation of Prolog programs from the beginning
+logic variables) and thus the treatment of partially static data structures
+was part of partial evaluation of Prolog programs from the early stages
 \cite{lloyd_partial_1991}. One effect of unfolding in Prolog is that terms that
-are constructed and immediately matched again completely disappear in the
-residual program, which is equivalent to what our optimization does for an
+are constructed and immediately matched again, completely disappear in the
+residual program. This is similar to what our optimization does for an
 imperative language.
 
- FP
-
+xxx:
 partially static data structures: kenichi asai's thesis?
 
-xxx: relation to compile-time garbage collection \cite{mazur_practical_2001};  separation logic; John Hughes: type specialization
+xxx: 
+Other related work is compile-time garbage collection \cite{mazur_practical_2001}, which
+tries to ....;
+  separation logic; John Hughes: type specialization
 
 \section{Conclusion}
 \label{sec:conclusion}
