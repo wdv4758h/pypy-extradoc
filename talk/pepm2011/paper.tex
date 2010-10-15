@@ -872,8 +872,21 @@ static heap can be cyclic. To make sure that the same static object is not lifte
 twice, the \lstinline{liftfield} operation removes it from the static heap \emph{before}
 recursively lifting its fields.
 
+As an example for lifting, consider the static heap $$\{v^* \mapsto (T_1, w^*,
+v^*), w^* \mapsto (T_2, u^*, u^*)\}$$ which contains two static objects. If $v^*$
+now needs to be lifted, the following residual operations are produced:
 
-XXX Apply the rules of the algorithm to parts of the sample trace
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+$v^*$ = new($T_1$)
+$w^*$ = new($T_2$)
+set($w^*$, $L$, $u^*$)
+set($w^*$, $R$, $u^*$)
+set($v^*$, $L$, $w^*$)
+set($v^*$, $R$, $v^*$)
+\end{lstlisting}
+
+After the lifting the static heap is the empty set, because both static objects
+were lifted.
 
 % subsection Optimizing Traces (end)
 
