@@ -188,10 +188,7 @@ performs a form of escape analysis \cite{bruno_blanchet_escape_2003} on the trac
 objects that are allocated in the trace \emph{static,} which
 means that they do not occur any more in the optimized trace. This technique is
 informally described in Section~\ref{sec:statics}; a more formal description is
-given in Section~\ref{sec:formal}.
-
-In Section~\ref{sec:frames} we describe some supporting techniques that are not
-central to the approach, but are essential to improve the results. The introduced
+given in Section~\ref{sec:formal}. The introduced
 techniques are evaluated in Section~\ref{sec:Evaluation} using PyPy's Python
 interpreter as a case study.
 
@@ -903,10 +900,8 @@ The optimization is particularly effective for chains of operations.
 For example, it is typical for an interpreter to generate sequences of
 writes-followed-by-reads, where one interpreted opcode writes to some
 object's field and the next interpreted opcode reads it back, possibly
-dispatching on the type of the object created just before.  In the case
-of PyPy's Python interpreter, this optimization can even remove the
-allocation of all intermediate frames that occur in the interpreter,
-corresponding to all calls that have been inlined in the trace.
+dispatching on the type of the object created just before.  A typical example
+would be chains of arithmetic operations.
 
 % subsection Analysis of the Algorithm (end)
 
@@ -916,43 +911,27 @@ corresponding to all calls that have been inlined in the trace.
 
 % section Escape Analysis in a Tracing JIT (end)
 
-\section{Taming Frame Objects}
-\label{sec:frames}
-
-\cfbolz{probably can be cut in case of space problems}
-
-XXX unclear what the relationship is to the technique; has it been used in the experiments??
-XXX Maybe move to discussion and related work section?
-
-One problem to the successful application of the allocation removal
-techniques described in the previous sections is the presence of
-frame-introspection features in many dynamic languages and the fact
-that frames are heap allocated. Languages such as Python and Smalltalk
-allow the programmer to get access to the frames object that the
-interpreter uses to store local variables. This is a useful feature,
-as it makes the implementation of a debugger possible in Python
-without extra support from the VM. On the other
-hand, it severely hinders the effectiveness of allocation removal,
-because every time an object is stored into a local variable, it is
-stored into the frame-object, which makes it escape.
-
-This problem is solved by making it possible to the interpreter author
-to add some hints into the source code to declare instances of one
-class as frame objects needing special treatment. The JIT will then
-fill these objects only lazily when they are actually accessed (\eg
-because a debugger is used) using values from JIT-emitted code runtime
-locations (typically the CPU stack). Therefore in the common case,
-nothing is stored into the frame objects, making the problem of too
-much escaping go away. This special handling of frame objects is a common approach in VM implementations
-\cite{miranda_context_1999,andreas_gal_trace-based_2009}. The only novelty in our approach lays in
-its generality: all the delicate support code for this is generated, as opposed to
-most other JITs, which are just specifically written for one particular
-language.
-
-% section Taming Frame Objects (end)
-
-\section{Evaluation}
+\section{Implementation and Evaluation}
 \label{sec:Evaluation}
+
+The allocation removal techniques described in this paper were implemented in
+the optimizer of PyPy's tracing JIT. The optimization is independent of which
+interpreter a JIT is generated for. There are some practical issues beyond the
+techniques described in this paper. The actual implementation needs to deal with
+more operations than described in Section~\ref{sec:formal}, for example to
+also support static arrays in addition to static objects. The implementation of
+this optimization is about 400 lines of RPython code.
+
+A further complication is that most interpreters written with PyPy use
+heap-allocated frame objects to store local variables. Those severely hinders
+the effectiveness of allocation removal, because every time an object is stored
+into a local variable, it is stored into the frame-object, which makes it
+escape. We implemented a general technique to treat such frames objects in a
+special way to solve this problem. This is a common approach in VM
+implementations \cite{miranda_context_1999,andreas_gal_trace-based_2009}. The
+only novelty in our approach lays in its generality: most other JITs, are just
+specifically written for one particular language instead of being generated from
+an interpreter.
 
 To evaluate the effectiveness of our allocation removal algorithm, we look at
 the effectiveness when used in the tracing JIT of PyPy's Python interpreter. The
