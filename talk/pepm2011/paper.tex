@@ -374,10 +374,8 @@ putthing pressure on the garbage collector. Using double dispatching to
 implement the numeric tower needs two method calls per arithmetic operation,
 which is costly due to the method dispatch.
 
-To understand the problems more directly, let us consider the simple
-interpreter function \lstinline{f} that uses the object model (see the bottom of
-Figure~\ref{fig:objmodel}).
-
+Let us now consider a simple interpreter function \lstinline{f} that uses the
+object model (see the bottom of Figure~\ref{fig:objmodel}).
 The loop in \lstinline{f} iterates \lstinline{y} times, and computes something in the process.
 Simply running this function is slow, because there are lots of virtual method
 calls inside the loop, one for each \lstinline{is_positive} and even two for each
@@ -451,24 +449,25 @@ jump($p_{15}$, $p_{10}$)
 \end{figure}
 
 If the function is executed using the tracing JIT, with \lstinline{y} being a
-\lstinline{BoxedInteger}, the produced trace looks like
-Figure~\ref{fig:unopt-trace} (lines starting with the hash ``\#'' are comments).
+\lstinline{BoxedInteger}, the produced trace looks like the one of
+Figure~\ref{fig:unopt-trace} (lines starting with a hash ``\#'' are comments).
+The trace corresponds to one iteration of the while-loop in \lstinline{f}.
 
-The operations in the trace are shown indented to
-correspond to the stack level of the function that contains the traced
+The operations in the trace are indented
+corresponding to the stack level of the function that contains the traced
 operation. The trace is in single-assignment form, meaning that each variable is
-assigned to exactly once. The arguments $p_0$ and $p_1$ of the loop correspond
+assigned a value exactly once. The arguments $p_0$ and $p_1$ of the loop correspond
 to the live variables \lstinline{y} and \lstinline{res} in the original function.
 
 The operations in the trace correspond to the operations in the RPython program
 in Figure~\ref{fig:objmodel}:
 
 \begin{itemize}
-    \item \lstinline{new} corresponds to object creation.
-    \item \lstinline{get} correspond to attribute reads.
-    \item \lstinline{set} correspond to attribute writes.
-    \item \lstinline{guard_class} correspond to method calls and are followed by
-    the trace of the called method.
+    \item \lstinline{new} creates a new object.
+    \item \lstinline{get} reads an attribute of an object.
+    \item \lstinline{set} writes to an attribute of an object.
+    \item \lstinline{guard_class} precedes an (inlined) method call and is
+    followed by the trace of the called method.
     \item \lstinline{int_add} and \lstinline{int_gt} are integer addition and
     comparison (``greater than''), respectively.
 \end{itemize}
@@ -477,9 +476,9 @@ The method calls in the trace are always preceded by a \lstinline{guard_class}
 operation, to check that the class of the receiver is the same as the one that
 was observed during tracing.\footnote{\lstinline{guard_class} performs a precise
 class check, not checking for subclasses.} These guards make the trace specific
-to the situation where \lstinline{y} is really a \lstinline{BoxedInteger}, it can
-already be said to be specialized for \lstinline{BoxedIntegers}. When the trace is
-turned into machine code and then executed with \lstinline{BoxedFloats}, the
+to the situation where \lstinline{y} is really a \lstinline{BoxedInteger}. When
+the trace is turned into machine code and afterwards executed with
+\lstinline{BoxedFloat}, the
 first \lstinline{guard_class} instruction will fail and execution will continue
 using the interpreter.
 
@@ -488,8 +487,8 @@ the number of \lstinline{new}, \lstinline{set/get} and \lstinline{guard_class}
 operations. The number of \lstinline{guard_class} operation is particularly
 problematic, not only because of the time it takes to run them. All guards also
 have additional information attached that makes it possible to return to the
-interpreter, should the guard fail. This means that many guard operations also
-lead to a memory problem.
+interpreter, should the guard fail. This means that too many guard operations also
+consume a lot of memory.
 
 In the rest of the paper we will see how this trace can be optimized using
 partial evaluation.
@@ -499,7 +498,7 @@ partial evaluation.
 
 % section Object Lifetimes in a Tracing JIT (end)
 
-To understand the problems that this paper is trying to solve some more, we
+To understand the problems that this paper is trying to solve in more detail, we
 first need to understand various cases of object lifetimes that can occur in a
 tracing JIT compiler.
 
@@ -520,7 +519,7 @@ executed until one of the guards in the trace fails, and the execution is
 aborted and interpretation resumes.
 
 Some of the operations within this trace are \lstinline{new} operations, which each
-create a new instance of some class. These instances are used for a while, e.g.
+create a new instance of some class. These instances are used for some time, \eg
 by calling methods on them (which are inlined into the trace), reading and
 writing their fields. Some of these instances \emph{escape}, which means that
 they are stored in some globally accessible place or are passed into a
@@ -530,19 +529,19 @@ Together with the \lstinline{new} operations, the figure shows the lifetimes of 
 created objects. The objects that are created within a trace using \lstinline{new}
 fall into one of several categories:
 
-\begin{itemize}
-    \item Category 1: Objects that live for a while, and are then just not
-    used any more.
+\begin{enumerate}
+    \item Objects that live for some time, and are then just not
+    used any more afterwards.
 
-    \item Category 2: Objects that live for a while and then escape.
+    \item Objects that live for some time and then escape.
 
-    \item Category 3: Objects that live for a while, survive across the jump to
+    \item Objects that live for some time, survive across the jump to
     the beginning of the loop, and are then not used any more.
 
-    \item Category 4: Objects that live for a while, survive across the jump,
+    \item Objects that live for some time, survive across the jump,
     and then escape. To these we also count the objects that live across several
     jumps and then either escape or stop being used.
-\end{itemize}
+\end{enumerate}
 
 The objects that are allocated in the example trace in
 Figure~\ref{fig:unopt-trace} fall into categories 1 and 3. Objects stored in
@@ -551,7 +550,9 @@ category 3.
 
 The creation of objects in category 1 is removed by the optimization described
 in Sections~\ref{sec:statics} and \ref{sec:formal}. Objects in the other
-categories are partially optimized by this approach as well.
+categories are partially optimized by this approach as well.\footnote{We also started to
+work on optimizing objects in category 3, which will be the subject of a later
+paper.}
 
 \section{Allocation Removal in Traces}
 \label{sec:statics}
@@ -895,8 +896,8 @@ set($w^*$, $L$, $u^*$)
 set($w^*$, $R$, $u^*$)
 \end{lstlisting}
 
-In this case, the static heap afterwards would be
-$$\{v^* \mapsto (T_1, w^*, v^*)\}$$.
+In this case, the static heap afterwards would be:
+$$\{v^* \mapsto (T_1, w^*, v^*)\}$$
 
 
 
