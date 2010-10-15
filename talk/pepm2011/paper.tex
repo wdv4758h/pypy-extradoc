@@ -1113,7 +1113,6 @@ complex than our simple one-pass optimization. Also, stack-allocation reduces
 garbage-collection pressure but does not optimize away the actual accesses to
 the stack-allocated object. In our case, an object is not needed at all any
 more.
-XXX more papers?
 
 Chang \etal describe a tracing JIT for JavaScript running on top of a JVM
 \cite{mason_chang_efficient_2007}. They mention in passing an approach to
@@ -1142,8 +1141,6 @@ The optimization does not deal with removing the full object, if it is
 short-lived, but the type check removals are similar to what our optimization
 achieves.
 
-partial evaluation:
-
 Partially known data structures are built directly into Prolog (via unbound
 logic variables) and thus the treatment of partially static data structures
 was part of partial evaluation of Prolog programs from the early stages
@@ -1152,15 +1149,15 @@ are constructed and immediately matched again, completely disappear in the
 residual program. This is similar to what our optimization does for an
 imperative language.
 In functional programming this idea was introduced as
- constructor specialisation by Mogensen \cite{Mogensen:PEPM93}.)
+ constructor specialisation by Mogensen \cite{Mogensen:PEPM93}.
 
 %xxx:
 %partially static data structures: kenichi asai's thesis?
 
-xxx: 
-Other related work is compile-time garbage collection \cite{mazur_practical_2001}, which
-tries to ....;
-  separation logic
+%xxx: 
+%Other related work is compile-time garbage collection \cite{mazur_practical_2001}, which
+%tries to ....;
+%  separation logic
   %; John Hughes: type specialization
 
 \section{Conclusion}
