@@ -888,6 +888,19 @@ set($v^*$, $R$, $v^*$)
 After the lifting the static heap is the empty set, because both static objects
 were lifted.
 
+If from the same heap $w^*$ is lifted instead, the following operations are
+produced:
+
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+$w^*$ = new($T_2$)
+set($w^*$, $L$, $u^*$)
+set($w^*$, $R$, $u^*$)
+\end{lstlisting}
+
+The static heap afterwards is $\{v^* \mapsto (T_1, w^*, v^*)\}$.
+
+
+
 % subsection Optimizing Traces (end)
 
 \subsection{Analysis of the Algorithm}
