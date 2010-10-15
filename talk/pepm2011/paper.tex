@@ -886,20 +886,17 @@ XXX Apply the rules of the algorithm to parts of the sample trace
 While we do not offer a formal proof of it, it should be relatively clear
 that the algorithm presented above is sound: it works by delaying (and
 often completely removing) some operations.  The algorithm runs in a
-single pass over the list of operations.  We can check that altough
+single pass over the list of operations.  We can check that although
 recursively lifting a static object is not a constant-time operation,
 the algorithm only takes a total time linear in the length of the trace.
-Moreover, it gives the ``best'' possible result within its constraints,
-\marginpar{Why? What are the constraints ? Justify}
-\eg in term of the number of residual operations.  The
-algorithm itself is not particularly complex; our focus is
+The algorithm itself is not particularly complex; our focus is
 rather that \emph{in the context of tracing JITs} it is possible to find a
-simple enough algorithm that still gives the best results.
+simple enough algorithm that still gives very good results.
 
 Note in particular that objects in category 1 (\ie the ones that do
 not escape) are completely removed; moreover, objects in category 2
 (\ie escaping) are still partially dealt with: if such an object
-escapes later than its creation point, all the operations inbetween that
+escapes later than its creation point, all the operations in between that
 involve the object are removed.
 
 The optimization is particularly effective for chains of operations.
