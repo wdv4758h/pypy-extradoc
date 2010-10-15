@@ -876,6 +876,8 @@ twice, the \lstinline{liftfield} operation removes it from the static heap \emph
 recursively lifting its fields.
 
 
+XXX Apply the rules of the algorithm to parts of the sample trace
+
 % subsection Optimizing Traces (end)
 
 \subsection{Analysis of the Algorithm}
@@ -887,9 +889,10 @@ often completely removing) some operations.  The algorithm runs in a
 single pass over the list of operations.  We can check that altough
 recursively lifting a static object is not a constant-time operation,
 the algorithm only takes a total time linear in the length of the trace.
-Moreover, it gives the ``best'' possible result within its constrains,
+Moreover, it gives the ``best'' possible result within its constraints,
+\marginpar{Why? What are the constraints ? Justify}
 \eg in term of the number of residual operations.  The
-algorithm itself is not particularly complex or innovative; our focus is
+algorithm itself is not particularly complex; our focus is
 rather that \emph{in the context of tracing JITs} it is possible to find a
 simple enough algorithm that still gives the best results.
 
@@ -921,6 +924,9 @@ corresponding to all calls that have been inlined in the trace.
 
 \cfbolz{probably can be cut in case of space problems}
 
+XXX unclear what the relationship is to the technique; has it been used in the experiments??
+XXX Maybe move to discussion and related work section?
+
 One problem to the successful application of the allocation removal
 techniques described in the previous sections is the presence of
 frame-introspection features in many dynamic languages and the fact
@@ -928,7 +934,7 @@ that frames are heap allocated. Languages such as Python and Smalltalk
 allow the programmer to get access to the frames object that the
 interpreter uses to store local variables. This is a useful feature,
 as it makes the implementation of a debugger possible in Python
-without needing much explicit support from the VM level. On the other
+without extra support from the VM. On the other
 hand, it severely hinders the effectiveness of allocation removal,
 because every time an object is stored into a local variable, it is
 stored into the frame-object, which makes it escape.
@@ -1143,13 +1149,14 @@ imperative language.
 In functional programming this idea was introduced as
  constructor specialisation by Mogensen \cite{Mogensen:PEPM93}.)
 
-xxx:
-partially static data structures: kenichi asai's thesis?
+%xxx:
+%partially static data structures: kenichi asai's thesis?
 
 xxx: 
 Other related work is compile-time garbage collection \cite{mazur_practical_2001}, which
 tries to ....;
-  separation logic; John Hughes: type specialization
+  separation logic
+  %; John Hughes: type specialization
 
 \section{Conclusion}
 \label{sec:conclusion}
