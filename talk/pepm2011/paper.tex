@@ -923,18 +923,21 @@ also support static arrays in addition to static objects. The implementation of
 this optimization is about 400 lines of RPython code.
 
 A further complication is that most interpreters written with PyPy use
-heap-allocated frame objects to store local variables. Those severely hinders
+heap-allocated frame objects to store local variables. Those severely hinder
 the effectiveness of allocation removal, because every time an object is stored
 into a local variable, it is stored into the frame-object, which makes it
-escape. We implemented a general technique to treat such frames objects in a
+escape. We implemented a technique to treat such frames objects in a
 special way to solve this problem. This is a common approach in VM
-implementations \cite{miranda_context_1999,andreas_gal_trace-based_2009}. The
-only novelty in our approach lays in its generality: most other JITs, are just
-specifically written for one particular language instead of being generated from
-an interpreter.
+implementations \cite{miranda_context_1999,andreas_gal_trace-based_2009}, the
+novelty of our approach is that we generalized it enough to be usable for
+different interpreter.
 
-To evaluate the effectiveness of our allocation removal algorithm, we look at
-the effectiveness when used in the tracing JIT of PyPy's Python interpreter. The
+To evaluate our allocation removal algorithm, we look at the effectiveness when
+used in the generated tracing JIT of PyPy's Python interpreter. This interpreter
+is a full implementation of Python 2.5 language semantics and is about 30'000
+lines of code.
+
+The
 benchmarks we used are small-to-medium Python programs, some synthetic
 benchmarks, some real applications.\footnote{All the source code of the
 benchmarks can be found at \texttt{http://codespeak.net/svn/pypy/benchmarks/}.
@@ -947,7 +950,7 @@ Game\footnote{\texttt{http://shootout.alioth.debian.org/}}: \textbf{fannkuch},
 
 Furthermore there are the following benchmarks:
 \begin{itemize}
-    \item \textbf{crypto\_pyaes}: AES implementation.
+    \item \textbf{crypto\_pyaes}: An AES implementation.
     \item \textbf{django}: The templating engine of the Django web
     framework\footnote{\texttt{http://www.djangoproject.com/}}.
     \item \textbf{go}: A Monte-Carlo Go
