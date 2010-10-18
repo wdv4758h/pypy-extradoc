@@ -664,7 +664,29 @@ on the lifted static objects have been removed (some \lstinline{get} operations
 and \lstinline{guard_class} operations).
 
 \begin{figure}
-\includegraphics{figures/step1.pdf}
+\begin{lstlisting}[mathescape]
+# arguments to the trace: $p_{0}$, $p_{1}$
+guard_class($p_1$, BoxedInteger)
+$i_2$ = getfield($p_1$, intval)
+guard_class($p_0$, BoxedInteger)
+$i_3$ = getfield($p_0$, intval)
+$i_4$ = int_add($i_2$, $i_3$)
+$i_9$ = int_add($i_4$, -100)
+
+guard_class($p_0$, BoxedInteger)
+$i_{12}$ = getfield($p_0$, intval)
+$i_{14}$ = int_add($i_{12}$, -1)
+
+$i_{17}$ = int_gt($i_{14}$, 0)
+guard_true($i_{17}$)
+
+$p_{15}$ = new(BoxedInteger)
+setfield($p_{15}$, intval, $i_{14}$)
+$p_{10}$ = new(BoxedInteger)
+setfield($p_{10}$, intval, $i_9$)
+
+jump($p_{15}$, $p_{10}$)
+\end{lstlisting}
 \caption{Resulting Trace After Allocation Removal}
 \label{fig:step1}
 \end{figure}
