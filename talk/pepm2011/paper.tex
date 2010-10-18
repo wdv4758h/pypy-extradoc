@@ -302,6 +302,7 @@ hot paths in the program will eventually be traced and compiled into efficient
 code.
 
 \subsection{Running Example}
+\label{sub:example}
 
 For the purpose of this paper, we are going to use a tiny interpreter for a dynamic language with
  a very simple object
@@ -387,6 +388,11 @@ float or integer additions.
 
 
 \begin{figure}
+\lstset{
+    numbers = right,
+    numberstyle = \tiny,
+    numbersep = 0pt
+}
 \begin{lstlisting}[mathescape]
 # arguments to the trace: $p_{0}$, $p_{1}$
 # inside f: res.add(y)
@@ -558,10 +564,10 @@ paper.}
 \label{sec:statics}
 
 The main insight to improve the code shown in the last section is that objects
-in category 1 do not survive very long -- they are used only inside the loop and
-there is no other outside reference to them. The idea for improving
-the code is to analyze which objects fall in category 1 and therefore do
-not have to be allocated at all.
+in category 1 do not survive very long -- they are used only inside the loop
+and there is no other outside reference to them. Therefore the optimizer
+identifies objects in category 1 and removes the allocation of these objects,
+and all operations manipulating them.
 
 This is a process that is usually called \emph{escape analysis}
 \cite{goldberg_higher_1990}. In this paper we will
@@ -587,7 +593,7 @@ description, and the operation is also removed. Equivalently, a
 as well, because the shape description stores the type and thus the outcome of
 the type check the guard does is statically known.
 
-In the example from last section, the following operations in the upper half
+In the example from Section~\ref{sub:example}, the following operations in the upper half
 of Figure~\ref{fig:unopt-trace} produce two
 static objects, and can be completely removed from the optimized trace:
 
@@ -737,8 +743,9 @@ $$
 In this section we want to give a formal description of the semantics of the
 traces and of the optimizer and liken the optimization to partial evaluation.
 We focus on the operations for manipulating dynamically allocated objects,
-as those are the only ones that are actually optimized. Without loss of
-generality we also consider only objects with two fields in this section.
+as those are the only ones that are actually optimized. We also consider only
+objects with two fields in this section, generalizing to arbitrary many fields
+is straightforward.
 
 Traces are lists of operations. The operations considered here are
 \lstinline{new}, \lstinline{get}, \lstinline{set} and \lstinline{guard_class}.
@@ -853,8 +860,8 @@ semantics: to express sharing.
 
 The static heap is a partial function from $V^*$ into the
 set of static objects, which are triples of a type and two elements of $V^*$.
-A variable $v^*$ is in the domain of the static heap $S$ as long as the
-optimizer does not need to become dynamic XXX. The object $S(v^*)$ describes
+The object referenced by a variable $v^*$ is static, if $v^*$ is in the domain
+of the static heap $S$. The object $S(v^*)$ describes
 what is statically known about the object, \ie its type and its fields. The
 fields of objects in the static heap are also elements of $V^*$ (or null, for
 short periods of time).
