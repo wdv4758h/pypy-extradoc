@@ -557,20 +557,19 @@ paper.}
 \section{Allocation Removal in Traces}
 \label{sec:statics}
 
-\subsection{Static Objects}
-
 The main insight to improve the code shown in the last section is that objects
-in category 1 don't survive very long -- they are used only inside the loop and
-nobody else in the program stores a reference to them. The idea for improving
+in category 1 do not survive very long -- they are used only inside the loop and
+there is no other outside reference to them. The idea for improving
 the code is to analyze which objects fall in category 1 and therefore do
 not have to be allocated at all.
 
-This is a process that is usually called \emph{escape analysis}. In this paper we will
-perform escape analysis by using partial evaluation. The partial evalution is a
+This is a process that is usually called \emph{escape analysis}
+\cite{goldberg_higher_1990}. In this paper we will
+perform escape analysis by using partial evaluation. The use of partial evaluation is a
 bit peculiar in that it receives no static input arguments for the trace,
-but it is only used to optimize operations within a trace.
+but it is only used to optimize operations within the trace.
 
-The partial evaluation works by traversing the trace from beginning to end.
+To optimize the trace, it is traversed from beginning to end.
 Whenever a \lstinline{new} operation is seen, the operation is removed and a \emph{static
 object}\footnote{Here ``static'' is meant in the sense of partial
 evaluation, \ie known at partial evaluation time, not in the sense of static
