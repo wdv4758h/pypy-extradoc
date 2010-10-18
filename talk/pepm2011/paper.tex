@@ -685,6 +685,7 @@ and only three \lstinline{guard_class} operations, from the original seven.
 \emph{get} & ${\displaystyle \frac{\,}{u=\mathtt{get}(v,F),E,H\overset{\mathrm{run}}{\Longrightarrow}E\left[u\mapsto H\left(E\left(v\right)\right)_{F}\right],H}}$ & ~~~ &  & ${\displaystyle \frac{\mathrm{type}(H(E(v))\neq T}{\mathtt{guard\_class}(v,T),E,H\overset{\mathrm{run}}{\Longrightarrow}\bot,\bot}}$\tabularnewline[3em]
 \emph{set} & ${\displaystyle \frac{\,}{\mathtt{set}\left(v,F,u\right),E,H\overset{\mathrm{run}}{\Longrightarrow}E,H\left[E\left(v\right)\mapsto\left(H\left(E\left(v\right)\right)!_{F}E(u)\right)\right]}}$ & ~~~ &  & \tabularnewline[4em]
 \end{tabular}
+\end{center}
 
 \begin{minipage}[b]{7 cm}
 \emph{Object Domains:}
@@ -708,25 +709,25 @@ $$\setlength\arraycolsep{0.1em}
  \end{array}
 $$
 \end{minipage}
-\end{center}
 \caption{The Operational Semantics of Simplified Traces}
 \label{fig:semantics}
 \end{figure*}
 
 In this section we want to give a formal description of the semantics of the
 traces and of the optimizer and liken the optimization to partial evaluation.
-We concentrate on the operations for manipulating dynamically allocated objects,
+We focus on the operations for manipulating dynamically allocated objects,
 as those are the only ones that are actually optimized. Without loss of
 generality we also consider only objects with two fields in this section.
 
-Traces are lists of operations. The operations considered here are \lstinline{new} (to make
-a new object), \lstinline{get} (to read a field out of an object), \lstinline{set} (to write a field
-into an object) and \lstinline{guard_class} (to check the type of an object). The values of all
-variables are locations (i.e.~pointers). Locations are mapped to objects, which
+Traces are lists of operations. The operations considered here are
+\lstinline{new}, \lstinline{get}, \lstinline{set} and \lstinline{guard_class}.
+The values of all
+variables are locations (\ie pointers). Locations are mapped to objects, which
 are represented by triples of a type $T$, and two locations that represent the
 fields of the object. When a new object is created, the fields are initialized
 to null, but we require that they are initialized to a real
-location before being read, otherwise the trace is malformed.
+location before being read, otherwise the trace is malformed (this condition is
+guaranteed by how the traces are generated in PyPy).
 
 We use some abbreviations when dealing with object triples. To read the type of
 an object, $\mathrm{type}((T,l_1,l_2))=T$ is used. Reading a field $F$ from an
@@ -737,13 +738,12 @@ triple $(T,l_1,l)$ if $F=R$.
 
 Figure~\ref{fig:semantics} shows the operational semantics for traces. The
 interpreter formalized there executes one operation at a time. Its state is
-represented by an environment $E$ and a heap $H$, which are potentially changed by the
+represented by an environment $E$ and a heap $H$, which may be changed by the
 execution of an operation. The environment is a partial function from variables
 to locations and the heap is a partial function from locations to objects. Note
-that a variable can never be null in the environment, otherwise the trace would
-be malformed. The environment could not directly map variables to object,
-because several variables can contain a pointer to the \emph{same} object. 
-The "indirection" is needed to express sharing.
+that a variable can never be null in the environment, otherwise the trace would have
+been malformed. The environment could not directly map variables to objects,
+because several variables can point to the \emph{same} object, because of aliasing. 
 
 We use the following notation for updating partial functions:
 $E[v\mapsto l]$ denotes the environment which is just like $E$, but maps $v$ to
@@ -776,15 +776,16 @@ stopped.
 \begin{tabular}{lc}
 \emph{new} & ${\displaystyle \frac{v^{*}\,\mathrm{fresh}}{v=\mathtt{new}(T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[v\mapsto v^{*}\right],S\left[v^{*}\mapsto\left(T,\mathrm{null,null}\right)\right]}}$\tabularnewline[3em]
 \emph{get} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S)}{u=\mathtt{get}(v,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E\left[u\mapsto S(E(v))_{F}\right],S}}$\tabularnewline[3em]
- & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\, u^{*}\,\mathrm{fresh}}{u=\mathtt{get}(v,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle u^{*}=\mathtt{get}(E(v),F)\right\rangle ,E\left[u\mapsto u^{*}\right],S}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S),\,\,\, u^{*}\,\mathrm{fresh}}{u=\mathtt{get}(v,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle u^{*}=\mathtt{get}(E(v),F)\right\rangle ,E\left[u\mapsto u^{*}\right],S}}$\tabularnewline[3em]
 \emph{set} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S)}{\mathtt{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S\left[E\left(v\right)\mapsto\left(S(E(v))!_{F}E(u)\right)\right]}}$\tabularnewline[3em]
  & ${\displaystyle \frac{E(v)\notin\mathrm{dom}\left(S\right),\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathtt{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathtt{set}\left(E(v),F,E(u)\right)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
 \emph{guard} & ${\displaystyle \frac{E(v)\in\mathrm{dom}(S),\,\mathrm{type}(S(E(v)))=T}{\mathtt{guard\_class}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \,\right\rangle ,E,S}}$\tabularnewline[3em]
- & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\vee\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathtt{guard\_class}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathtt{guard\_class}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
+ & ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\vee\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathtt{guard\_class}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathtt{guard\_class}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$\tabularnewline[3em]
 \emph{lifting} & ${\displaystyle \frac{v^{*}\notin\mathrm{dom}(S)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle \,\right\rangle ,S}}$\tabularnewline[3em]
  & ${\displaystyle \frac{v^{*}\in\mathrm{dom}(S),\,\left(v^{*},S\right)\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{v^{*},S\overset{\mathrm{lift}}{\Longrightarrow}\left\langle v^{*}=\mathtt{new}\left(T\right)\right\rangle ::ops,S^{\prime}}}$\tabularnewline[3em]
  & ${\displaystyle \frac{\left(S\left(v^{*}\right)_{L},S\setminus\left\{ v^{*}\mapsto S\left(v^{*}\right)\right\} \right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{L},S^{\prime}\right),\,\left(S\left(v^{*}\right)_{R},S^{\prime}\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops}_{R},S^{\prime\prime}\right)}{v^{*},S\overset{\mathrm{liftfields}}{=\!=\!\Longrightarrow}\mathrm{ops}_{L}::ops_{R}::\left\langle \mathtt{set}\left(v^{*},L,S\left(v^{*}\right)_{L}\right),\,\mathtt{set}\left(v^{*},R,S\left(v^{*}\right)_{R}\right)\right\rangle ,S^{\prime}}}$\tabularnewline[3em]
 \end{tabular}
+\end{center}
 
 \begin{minipage}[b]{7 cm}
 \emph{Object Domains:}
@@ -808,17 +809,16 @@ $$\setlength\arraycolsep{0.1em}
  \end{array}
 $$
 \end{minipage}
-\end{center}
 \caption{Optimization Rules}
 \label{fig:optimization}
 \end{figure*}
 
-To optimize the simple traces from the last section, we use online partial
-evaluation. The partial evaluator optimizes one operation of the trace at a
+To optimize the simple traces of the last section, we use online partial
+evaluation. The partial evaluator optimizes one operation of a trace at a
 time. Every operation in the unoptimized trace is replaced by a list of
 operations in the optimized trace. This list is empty if the operation
-can be optimized away (which hopefully happens often). The optimization rules
-can be seen in Figure~\ref{fig:optimization}.
+can be optimized away. The optimization rules can be seen in
+Figure~\ref{fig:optimization}.
 
 The state of the optimizer is stored in an environment $E$ and a \emph{static
 heap} $S$. The environment is a partial function from variables in the
@@ -827,13 +827,14 @@ themselves written with a
 $\ ^*$ for clarity). The reason for introducing new variables in the optimized
 trace is that several variables that appear in the unoptimized trace can turn
 into the same variables in the optimized trace. The environment of the
-optimizer serves a function similar to that of the environment in the semantics: sharing.
+optimizer serves a function similar to that of the environment in the
+semantics: to express sharing.
 
 The static heap is a partial function from $V^*$ into the
 set of static objects, which are triples of a type and two elements of $V^*$.
 A variable $v^*$ is in the domain of the static heap $S$ as long as the
-optimizer can fully keep track of the object. The object $S(v^*)$ is what is
-statically known about the object stored in it, \ie its type and its fields. The
+optimizer does not need to become dynamic XXX. The object $S(v^*)$ describes
+what is statically known about the object, \ie its type and its fields. The
 fields of objects in the static heap are also elements of $V^*$ (or null, for
 short periods of time).
 
@@ -841,7 +842,7 @@ When the optimizer sees a \lstinline{new} operation, it optimistically removes i
 assumes that the resulting object can stay static. The optimization for all
 further operations is split into two cases. One case is for when the
 involved variables are in the static heap, which means that the operation can be
-performed at optimization time and removed from the trace. These rules mirror
+performed at optimization time and can be removed from the trace. These rules mirror
 the execution semantics closely. The other case is for when not enough is known about
 the variables, and the operation has to be residualized.
 
@@ -850,8 +851,9 @@ heap, the \lstinline{get} can be performed at optimization time. Otherwise, the 
 operation needs to be residualized.
 
 If the first argument $v$ to a \lstinline{set} operation is mapped to something in the
-static heap, then the \lstinline{set} can performed at optimization time and the static heap
-updated. Otherwise the \lstinline{set} operation needs to be residualized. This needs to be
+static heap, then the \lstinline{set} can be performed at optimization time
+(which updates the static heap). Otherwise the \lstinline{set} operation needs
+to be residualized. This needs to be
 done carefully, because the new value for the field, from the variable $u$,
 could itself be static, in which case it needs to be lifted first.
 
@@ -861,10 +863,10 @@ if the types match. If the type check fails statically or if the object is not
 in the static heap, the \lstinline{guard_class} is residualized. This also needs to
 lift the variable on which the \lstinline{guard_class} is performed.
 
-Lifting takes a variable that is potentially in the static heap and makes sure
-that it is turned into a dynamic variable. This means that operations are
-emitted that construct an object with the shape described in the
-static heap, and the variable is removed from the static heap.
+Lifting takes a variable and turns it into a dynamic variable. If the variable
+is already dynamic, nothing needs to be done. If it is in the static heap,
+operations are emitted that construct an object with the shape described
+there, and the variable is removed from the static heap.
 
 Lifting a static object needs to recursively lift its fields. Some care needs to
 be taken when lifting a static object, because the structures described by the
@@ -874,7 +876,7 @@ recursively lifting its fields.
 
 As an example for lifting, consider the static heap $$\{v^* \mapsto (T_1, w^*,
 v^*), w^* \mapsto (T_2, u^*, u^*)\}$$ which contains two static objects. If $v^*$
-now needs to be lifted, the following residual operations are produced:
+needs to be lifted, the following residual operations are produced:
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt]
 $v^*$ = new($T_1$)
@@ -914,20 +916,20 @@ recursively lifting a static object is not a constant-time operation,
 the algorithm only takes a total time linear in the length of the trace.
 The algorithm itself is not particularly complex; our focus is
 rather that \emph{in the context of tracing JITs} it is possible to find a
-simple enough algorithm that still gives very good results.
+simple enough algorithm that performs well.
 
-Note in particular that objects in category 1 (\ie the ones that do
+Note in particular that objects in category 1 (\ie those that do
 not escape) are completely removed; moreover, objects in category 2
-(\ie escaping) are still partially dealt with: if such an object
-escapes later than its creation point, all the operations in between that
-involve the object are removed.
+(\ie escaping) are still partially optimized: all the operations in between the
+creation of the object and the point where it escapes that involve the object
+are removed.
 
 The optimization is particularly effective for chains of operations.
 For example, it is typical for an interpreter to generate sequences of
 writes-followed-by-reads, where one interpreted opcode writes to some
 object's field and the next interpreted opcode reads it back, possibly
 dispatching on the type of the object created just before.  A typical example
-would be chains of arithmetic operations.
+would be a chain of arithmetic operations.
 
 % subsection Analysis of the Algorithm (end)
 
@@ -944,7 +946,7 @@ The allocation removal techniques described in this paper were implemented in
 the optimizer of PyPy's tracing JIT. The optimization is independent of which
 interpreter a JIT is generated for. There are some practical issues beyond the
 techniques described in this paper. The actual implementation needs to deal with
-more operations than described in Section~\ref{sec:formal}, for example to
+more operations than described in Section~\ref{sec:formal}, \eg to
 also support static arrays in addition to static objects. The implementation of
 this optimization is about 400 lines of RPython code.
 
@@ -956,7 +958,7 @@ escape. We implemented a technique to treat such frames objects in a
 special way to solve this problem. This is a common approach in VM
 implementations \cite{miranda_context_1999,andreas_gal_trace-based_2009}; the
 novelty of our approach is that we generalized it enough to be usable for
-different interpreter.
+different interpreters.
 
 To evaluate our allocation removal algorithm, we look at the effectiveness when
 used in the generated tracing JIT of PyPy's Python interpreter. This interpreter
@@ -1016,15 +1018,17 @@ constant folding).
 As the first step, we counted the occurring operations in all generated traces
 before and after the optimization phase for all benchmarks. The resulting
 numbers can be
-seen in Figure~\ref{fig:numops}. The optimization removes as many as 90\% and as
-little as 4\% percent of allocation operations in the traces of the benchmarks.
+seen in Figure~\ref{fig:numops}. The optimization removes between 4\% and 90\%
+and of allocation operations in the traces of the benchmarks.
 All benchmarks taken together, the optimization removes 70\% percent of
 allocation operations. The numbers look similar for reading and writing of
 attributes. There are even more \lstinline{guard} operations that are removed,
 however there is an additional optimization that removes guards, so not all the
-removed guards are an effect of the optimization described here.
+removed guards are an effect of the optimization described here (for technical
+reasons, it would be very hard to separate the two effects).
 
 \begin{figure*}
+{\small
 \begin{center}
 \begin{tabular}{|l||r|rr|rr|rr|rr|}
 \hline
@@ -1049,6 +1053,7 @@ total	&2240	&49709	&70\%	&1227447	&14\%	&222569	&93\%	&3395548	&89\%\\
 \hline
 \end{tabular}
 \end{center}
+}
 \caption{Number of Operations and Percentage Removed By Optimization}
 \label{fig:numops}
 \end{figure*}
@@ -1072,6 +1077,7 @@ overtake Psyco (which is no longer being actively developped) by adding some
 further optimizations.
 
 \begin{figure*}
+{\small
 \begin{center}
 \begin{tabular}{|l||r|r||r|r||r|r||r|r|}
 \hline
@@ -1094,6 +1100,7 @@ twisted\_names	&9.58 $\pm$ 0.01	&1.34	&10.43 $\pm$ 0.01	&1.46	&17.99 $\pm$ 0.27	
 \hline
 \end{tabular}
 \end{center}
+}
 \caption{Benchmark Times in Milliseconds, Together With Factor Over PyPy With Optimizations}
 \label{fig:times}
 \end{figure*}
@@ -1160,12 +1167,12 @@ In functional programming this idea was introduced as
 %  separation logic
   %; John Hughes: type specialization
 
-\section{Conclusion}
+\section{Conclusion and Future Work}
 \label{sec:conclusion}
 
 In this paper, we used an approach based on online partial evaluation
 to optimize away allocations and type guards in the traces of a
-tracing JIT.  In this context a simple approach to partial evaluation
+tracing JIT.  In this context a simple approach based on partial evaluation
 gives good results.  This is due to the fact that the tracing JIT
 itself is responsible for all control issues, which are usually the
 hardest part of partial evaluation: the tracing JIT selects the parts
@@ -1185,7 +1192,8 @@ analysis.
 \section*{Acknowledgements}
 
 The authors would like to thank Stefan Hallerstede, David Schneider and Thomas
-Stiehl for fruitful discussions during the writing of the paper.
+Stiehl for fruitful discussions and detailed feedback during the writing of the
+paper.
 
 \bibliographystyle{abbrv}
 \bibliography{paper}
