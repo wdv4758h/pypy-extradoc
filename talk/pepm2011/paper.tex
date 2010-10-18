@@ -670,16 +670,16 @@ on the lifted static objects have been removed (some \lstinline{get} operations
 and \lstinline{guard_class} operations).
 
 \begin{figure}
-\begin{lstlisting}[mathescape]
-# arguments to the trace: $p_{0}$, $p_{1}$
+\begin{lstlisting}[mathescape,numbers=left,escapechar=|]
+# arguments to the trace: $p_{0}$, $p_{1}$ |\setcounter{lstnumber}{2}|
 guard_class($p_1$, BoxedInteger)
 $i_2$ = get($p_1$, intval)
 guard_class($p_0$, BoxedInteger)
 $i_3$ = get($p_0$, intval)
 $i_4$ = int_add($i_2$, $i_3$)
 $i_9$ = int_add($i_4$, -100)
-
-guard_class($p_0$, BoxedInteger)
+|\setcounter{lstnumber}{50}|
+guard_class($p_0$, BoxedInteger) 
 $i_{12}$ = get($p_0$, intval)
 $i_{14}$ = int_add($i_{12}$, -1)
 
