@@ -408,7 +408,7 @@ get
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\, u^{*}\,\mathrm{fresh}}{u=\mathtt{get}(v,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle u^{*}=\mathtt{get}(E(v),F)\right\rangle ,E\left[u\mapsto u^{*}\right],S}}$
+\begin_inset Formula ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S),\,\,\, u^{*}\,\mathrm{fresh}}{u=\mathtt{get}(v,F),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle u^{*}=\mathtt{get}(E(v),F)\right\rangle ,E\left[u\mapsto u^{*}\right],S}}$
 \end_inset
 
 
@@ -504,7 +504,7 @@ guard
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\vee\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathtt{guard\_class}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\left\langle \mathtt{guard\_class}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$
+\begin_inset Formula ${\displaystyle \frac{E(v)\notin\mathrm{dom}(S)\vee\mathrm{type}(S(E(v)))\neq T,\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathtt{guard\_class}(v,T),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathtt{guard\_class}(E\left(v\right),T)\right\rangle ,E,S^{\prime}}}$
 \end_inset
 
 
