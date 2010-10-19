@@ -576,7 +576,7 @@ bit peculiar in that it receives no static input arguments for the trace,
 but it is only used to optimize operations within the trace.
 
 To optimize the trace, it is traversed from beginning to end. Every
-optimization in the input trace is either removed, or new operations are
+operation in the input trace is either removed, or new operations are
 produced. Whenever a \lstinline{new} operation is seen, the operation it is
 removed optimistically and a \emph{static object}\footnote{Here ``static'' is
 meant in the sense of partial evaluation, \ie known at partial evaluation time,
@@ -593,7 +593,7 @@ from the shape description, and the operation is also removed. Equivalently, a
 \lstinline{guard_class} on a variable that has a shape description can be
 removed as well, because the shape description stores the type and thus the
 outcome of the type check the guard does is statically known. Operations that
-have dynamic (\ie all other) objects as arguments are just left untouched by
+have dynamic (\ie non-static) objects as arguments are just left untouched by
 the optimizer.
 
 In the example from Section~\ref{sub:example}, the following operations
