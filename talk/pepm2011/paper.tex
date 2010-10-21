@@ -611,7 +611,7 @@ stored in the fields of the allocated object come from.
 
 In the snippet above, the two \lstinline{new} operations are removed and two
 static objects are constructed. The \lstinline{set} operations manipulate a
-static object, therefore they can be removed as well and their effect is
+static object, therefore they can be removed as well; their effect is
 remembered in the static objects.
 
 The static object associated with $p_{5}$ would store the knowledge that it is a
@@ -663,7 +663,7 @@ Lifting a static object puts \lstinline{new} and \lstinline{set} operations into
 the output trace. Those operations produce an object at runtime that has the
 same shape that the static object describes. This process is a bit delicate,
 because the static objects could form an arbitrary graph structure. In our
-example is is simple, though:
+example it is simple, though:
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt,numbers=right,escapechar=|, firstnumber=44]
 $p_{15}$ = new(BoxedInteger)               |\setcounter{lstnumber}{45}|
