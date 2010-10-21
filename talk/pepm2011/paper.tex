@@ -573,22 +573,21 @@ that it receives no static input arguments for the trace, but it is only used to
 optimize operations within the trace. This section will give an informal account
 of this process by examining the example trace in Figure~\ref{fig:unopt-trace}.
 The final trace after optimization can be seen in Figure~\ref{fig:step1} (the
-line numbers are the lines of the unoptimized trace where the operation comes
-from).
+line numbers are the lines of the unoptimized trace where the operation originates).
 
-To optimize the trace, it is traversed from beginning to end and an output trace
-is produced at the same time. Every operation in the input trace is either
-removed, or put into the output trace. Sometimes new operations need to be
+To optimize the trace, it is traversed from beginning to end while an output
+trace is produced. Every operation in the input trace is either
+removed or put into the output trace. Sometimes new operations need to be
 produced as well. The optimizer can only remove operations that manipulate
 objects that have been allocated within the trace, while all other operations are copied to the
-output trace untouched.
+output trace unchanged.
 
 Looking at the example trace of Figure~\ref{fig:unopt-trace}, the operations
-in lines 1-9 are manipulating objects which existed before the trace and that
+in lines 1--9 are manipulating objects which existed before the trace and that
 are passed in as arguments: therefore the optimizer just puts them into the
 output trace.
 
-The following operations (lines 10-17) are more interesting:
+The following operations (lines 10--17) are more interesting:
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt,numbers=right,escapechar=|, firstnumber=10]
 $p_{5}$ = new(BoxedInteger)   |\setcounter{lstnumber}{11}|
@@ -618,7 +617,7 @@ The static object associated with $p_{5}$ would store the knowledge that it is a
 one associated with $p_{6}$ would store that it is a \lstinline{BoxedInteger}
 whose \lstinline{intval} field contains the constant -100.
 
-The subsequent operations (line 19-29) in Figure~\ref{fig:unopt-trace}, which
+The subsequent operations (line 20--26) in Figure~\ref{fig:unopt-trace}, which
 use $p_{5}$ and $p_{6}$, can then be optimized using that knowledge:
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt,numbers=right,escapechar=|, firstnumber=20]
@@ -634,7 +633,7 @@ static object with the matching type \lstinline{BoxedInteger}. The
 \lstinline{get} operations can be removed as well, because each of them reads a
 field out of a static object. The results of the get operation are replaced with
 what the static object stores in these fields: all the occurences of $i_{7}$ and $i_{8}$ in the trace are just
-replaced by $i_{4}$ and -100. The only operation put into the optimized trace
+replaced by $i_{4}$ and -100. The only operation copied into the optimized trace
 is the addition:
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt,numbers=right,escapechar=|, firstnumber=26]
@@ -642,25 +641,25 @@ $i_{9}$ = int_add($i_{4}$, -100)
 \end{lstlisting}
 
 The rest of the trace from Figure~\ref{fig:unopt-trace} is optimized in a
-similar vein. The operations in lines 27-35 produce two more static objects and
-are removed. Those in line 36-39 are just put into the output trace because they
-manipulate objects that are allocated before the trace. Lines 40-42 are removed
+similar vein. The operations in lines 27--35 produce two more static objects and
+are removed. Those in line 36--39 are just put into the output trace because they
+manipulate objects that are allocated before the trace. Lines 40--42 are removed
 because they operate on a static object. Line 43 is put into the output trace.
-Lines 44-46 produce a new static object and are removed, lines 48-51 manipulate
-that static object and are removed as well. Lines 52-54 are put into the output
+Lines 44--46 produce a new static object and are removed, lines 48--51 manipulate
+that static object and are removed as well. Lines 52--54 are put into the output
 trace.
 
 The last operation (line 55) is an interesting case. It is the \lstinline{jump}
 operation that passes control back to the beginning of the trace. The two
-arguments to this operation are at this point static objects. However, because
-they passed into the next iteration of the loop they live longer than the trace
-and therefore cannot remain static. They need to be turned into a dynamic
-(runtime) object before the actual \lstinline{jump} operation. This process of
+arguments to this operation at this point are static objects. However, because
+they are passed into the next iteration of the loop they live longer than the trace
+and therefore cannot remain static. They need to be turned into dynamic
+(runtime) objects before the actual \lstinline{jump} operation. This process of
 turning a static object into a dynamic one is called \emph{lifting}.
 
 Lifting a static object puts \lstinline{new} and \lstinline{set} operations into
 the output trace. Those operations produce an object at runtime that has the
-same shape that the static object describes. This process is a bit delicate,
+shape described by the static object. This process is a bit delicate,
 because the static objects could form an arbitrary graph structure. In our
 example it is simple, though:
 
@@ -679,14 +678,15 @@ allocated in the end because some \lstinline{get} operations and
 \lstinline{guard_class} operations on the lifted static objects could be
 removed.
 
-A bit more generally, lifting needs to occur if a static object is used in any
+More generally, lifting needs to occur if a static object is used in any
 operation apart from \lstinline{get}, \lstinline{set}, and \lstinline{guard}.
 It also needs to occur if \lstinline{set} is used to store a static object into
 a non-static one.
 
 The final optimized trace of the example can be seen in Figure~\ref{fig:step1}.
-The optimized trace contains only two allocations, instead of the original five,
-and only three \lstinline{guard_class} operations, from the original seven.
+The optimized trace contains only two allocations, instead of the original
+five, and only three \lstinline{guard_class} operations, compared to the
+original seven.
 
 \begin{figure}
 \begin{lstlisting}[mathescape,numbers=right,escapechar=|, numberblanklines=false]
@@ -866,10 +866,12 @@ optimized away. The optimization rules can be seen in
 Figure~\ref{fig:optimization}. Lists are written using angular brackets $<...>$,
 list concatenation is expressed using two colons: $l_1::l_2$.
 
-XXX input/output of optimizer
-
 The state of the optimizer is stored in an environment $E$ and a \emph{static
-heap} $S$. The environment is a partial function from variables in the
+heap} $S$. Each step of the optimizer takes an operation, an environment and a
+static heap and produces a list of operations, a new environment and a new
+static heap.
+
+The environment is a partial function from variables in the
 unoptimized trace $V$ to variables in the optimized trace $V^*$ (which are
 themselves written with a
 $\ ^*$ for clarity). The reason for introducing new variables in the optimized
@@ -1112,8 +1114,8 @@ All benchmarks were run 50 times in the same process, to give the JIT time to pr
 code. The arithmetic mean of the times of the last 30 runs were used as the
 result. The errors were computed using a confidence interval with a 95\%
 confidence level \cite{georges_statistically_2007}. The results are reported in
-Figure~\ref{fig:times}. In addition to the run times the table also reports the
-speedup that PyPy achieves when the optimization is turned on. XXX sounds sucky
+Figure~\ref{fig:times}. For each implementation the table also reports the
+speedup that PyPy with optimization achieves over it.
 
 With the optimization turned on, PyPy's Python interpreter outperforms CPython
 in all benchmarks except spambayes (which heavily relies on regular expression
