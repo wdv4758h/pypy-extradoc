@@ -560,7 +560,7 @@ paper.}
 \section{Allocation Removal in Traces}
 \label{sec:statics}
 
-The main insight to improve the code shown in the last section is that objects
+The main insight to improve the code shown in section \ref{sub:example} is that objects
 in category 1 do not survive very long -- they are used only inside the loop and
 there is no other outside reference to them. The optimizer identifies objects in
 category 1 and removes the allocation of these objects, and all operations
@@ -609,15 +609,16 @@ To optimize the trace, it is traversed from beginning to end and an output trace
 is produced at the same time. Every operation in the input trace is either
 removed, or put into the output trace. Sometimes new operations need to be
 produced as well. The optimizer can only remove operations that manipulate
-objects that have been allocated within the trace, all others are copied to the
+objects that have been allocated within the trace, while all other operations are copied to the
 output trace untouched.
 
-Looking at the example trace of Figure~\ref{fig:unopt-trace}, this is what
-happens with the operations in lines 1-9. They are manipulating objects that
-existed before the trace because they are passed in as arguments. Therefore the
-optimizer just puts them into the output trace.
+Looking at the example trace of Figure~\ref{fig:unopt-trace}, the operations
+in lines 1-9 are manipulating objects which existed before the trace and that
+are passed in as arguments: therefore the optimizer just puts them into the
+output trace.
 
 The following operations (lines 10-17) are more interesting:
+\anto{what about putting the line numbers also here? Moreover, figure 4 is put just after this listing, it could be confused}
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt]
 $p_{5}$ = new(BoxedInteger)
@@ -626,8 +627,9 @@ $p_{6}$ = new(BoxedInteger)
 set($p_{6}$, intval, -100)
 \end{lstlisting}
 
+\anto{I don't like ``how the object looks like''. I don't know what else to say, though :-(} 
 When the optimizer encounters a \lstinline{new}, it removes it optimistically,
-and assumes that the object is in category 1. When the object escapes later, it
+and assumes that the object is in category 1. If later the optimizer finds that the object escapes, it
 will be allocated at that point. The optimizer needs to keep track
 of how the object that the operation creates looks like at various points in
 the trace. This is done with the help of a \emph{static object}\footnote{Here
@@ -664,7 +666,7 @@ The \lstinline{guard_class} operations can be removed, since their argument is a
 static object with the matching type \lstinline{BoxedInteger}. The
 \lstinline{get} operations can be removed as well, because each of them reads a
 field out of a static object. The results of the get operation are replaced with
-what the static object stores in these fields: $i_{7}$ and $i_{8}$ are just
+what the static object stores in these fields: all the occurences of $i_{7}$ and $i_{8}$ in the trace are just
 replaced by $i_{4}$ and -100. The only operation put into the optimized trace
 is the addition:
 
