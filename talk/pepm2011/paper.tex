@@ -560,7 +560,7 @@ paper.}
 \section{Allocation Removal in Traces}
 \label{sec:statics}
 
-The main insight to improve the code shown in section \ref{sub:example} is that objects
+The main insight to improve the code shown in Section~\ref{sub:example} is that objects
 in category 1 do not survive very long -- they are used only inside the loop and
 there is no other outside reference to them. The optimizer identifies objects in
 category 1 and removes the allocation of these objects, and all operations
@@ -576,35 +576,6 @@ The final trace after optimization can be seen in Figure~\ref{fig:step1} (the
 line numbers are the lines of the unoptimized trace where the operation comes
 from).
 
-\begin{figure}
-\begin{lstlisting}[mathescape,numbers=right,escapechar=|,numberstyle = \tiny,numbersep=0pt, numberblanklines=false]
-# arguments to the trace: $p_{0}$, $p_{1}$ |\setcounter{lstnumber}{2}|
-guard_class($p_1$, BoxedInteger)           |\setcounter{lstnumber}{4}|
-$i_2$ = get($p_1$, intval)
-guard_class($p_0$, BoxedInteger)           |\setcounter{lstnumber}{7}|
-$i_3$ = get($p_0$, intval)
-$i_4$ = int_add($i_2$, $i_3$)              |\setcounter{lstnumber}{25}|
-$i_9$ = int_add($i_4$, -100)               |\setcounter{lstnumber}{35}|
-
-guard_class($p_0$, BoxedInteger)           |\setcounter{lstnumber}{38}|
-$i_{12}$ = get($p_0$, intval)              |\setcounter{lstnumber}{42}|
-$i_{14}$ = int_add($i_{12}$, -1)           |\setcounter{lstnumber}{50}|
-
-$i_{17}$ = int_gt($i_{14}$, 0)             |\setcounter{lstnumber}{53}|
-guard_true($i_{17}$)                       |\setcounter{lstnumber}{42}|
-
-$p_{15}$ = new(BoxedInteger)               |\setcounter{lstnumber}{45}|
-set($p_{15}$, intval, $i_{14}$)            |\setcounter{lstnumber}{26}|
-$p_{10}$ = new(BoxedInteger)               |\setcounter{lstnumber}{28}|
-set($p_{10}$, intval, $i_9$)               |\setcounter{lstnumber}{53}|
-
-jump($p_{15}$, $p_{10}$)
-\end{lstlisting}
-
-\caption{Resulting Trace After Allocation Removal}
-\label{fig:step1}
-\end{figure}
-
 To optimize the trace, it is traversed from beginning to end and an output trace
 is produced at the same time. Every operation in the input trace is either
 removed, or put into the output trace. Sometimes new operations need to be
@@ -618,7 +589,7 @@ are passed in as arguments: therefore the optimizer just puts them into the
 output trace.
 
 The following operations (lines 10-17) are more interesting:
-\anto{what about putting the line numbers also here? Moreover, figure 4 is put just after this listing, it could be confused}
+% XXX line numbers
 
 \begin{lstlisting}[mathescape,xleftmargin=20pt]
 $p_{5}$ = new(BoxedInteger)
@@ -627,12 +598,11 @@ $p_{6}$ = new(BoxedInteger)
 set($p_{6}$, intval, -100)
 \end{lstlisting}
 
-\anto{I don't like ``how the object looks like''. I don't know what else to say, though :-(} 
 When the optimizer encounters a \lstinline{new}, it removes it optimistically,
 and assumes that the object is in category 1. If later the optimizer finds that the object escapes, it
 will be allocated at that point. The optimizer needs to keep track
-of how the object that the operation creates looks like at various points in
-the trace. This is done with the help of a \emph{static object}\footnote{Here
+of the state of the object that the operation would have created.
+This is done with the help of a \emph{static object}\footnote{Here
 ``static'' is meant in the sense of partial evaluation, \ie known at partial
 evaluation time, not in the sense of ``static allocation'' or ``static
 method''.}. The static object describes the shape of the object that would have
@@ -720,6 +690,36 @@ a non-static one.
 The final optimized trace of the example can be seen in Figure~\ref{fig:step1}.
 The optimized trace contains only two allocations, instead of the original five,
 and only three \lstinline{guard_class} operations, from the original seven.
+
+\begin{figure}
+\begin{lstlisting}[mathescape,numbers=right,escapechar=|,numberstyle = \tiny,numbersep=0pt, numberblanklines=false]
+# arguments to the trace: $p_{0}$, $p_{1}$ |\setcounter{lstnumber}{2}|
+guard_class($p_1$, BoxedInteger)           |\setcounter{lstnumber}{4}|
+$i_2$ = get($p_1$, intval)
+guard_class($p_0$, BoxedInteger)           |\setcounter{lstnumber}{7}|
+$i_3$ = get($p_0$, intval)
+$i_4$ = int_add($i_2$, $i_3$)              |\setcounter{lstnumber}{25}|
+$i_9$ = int_add($i_4$, -100)               |\setcounter{lstnumber}{35}|
+
+guard_class($p_0$, BoxedInteger)           |\setcounter{lstnumber}{38}|
+$i_{12}$ = get($p_0$, intval)              |\setcounter{lstnumber}{42}|
+$i_{14}$ = int_add($i_{12}$, -1)           |\setcounter{lstnumber}{50}|
+
+$i_{17}$ = int_gt($i_{14}$, 0)             |\setcounter{lstnumber}{53}|
+guard_true($i_{17}$)                       |\setcounter{lstnumber}{42}|
+
+$p_{15}$ = new(BoxedInteger)               |\setcounter{lstnumber}{45}|
+set($p_{15}$, intval, $i_{14}$)            |\setcounter{lstnumber}{26}|
+$p_{10}$ = new(BoxedInteger)               |\setcounter{lstnumber}{28}|
+set($p_{10}$, intval, $i_9$)               |\setcounter{lstnumber}{53}|
+
+jump($p_{15}$, $p_{10}$)
+\end{lstlisting}
+
+\caption{Resulting Trace After Allocation Removal}
+\label{fig:step1}
+\end{figure}
+
 
 \section{Formal Description of the Algorithm}
 \label{sec:formal}
