@@ -29,6 +29,8 @@
   fancyvrb=true,
   showstringspaces=false,
   %keywords={def,while,if,elif,return,class,get,set,new,guard_class}
+  numberstyle = \tiny,
+  numbersep = 0pt,
 }
 
 
@@ -388,12 +390,7 @@ float or integer additions.
 
 
 \begin{figure}
-\lstset{
-    numbers = right,
-    numberstyle = \tiny,
-    numbersep = 0pt
-}
-\begin{lstlisting}[mathescape]
+\begin{lstlisting}[mathescape,numbers = right]
 # arguments to the trace: $p_{0}$, $p_{1}$
 # inside f: res.add(y)
 guard_class($p_{1}$, BoxedInteger)
@@ -472,8 +469,8 @@ in Figure~\ref{fig:objmodel}:
     \item \lstinline{new} creates a new object.
     \item \lstinline{get} reads an attribute of an object.
     \item \lstinline{set} writes to an attribute of an object.
-    \item \lstinline{guard_class} precedes an (inlined) method call and is
-    followed by the trace of the called method.
+    \item \lstinline{guard_class} is a precise type check and precedes an
+    (inlined) method call and is followed by the trace of the called method.
     \item \lstinline{int_add} and \lstinline{int_gt} are integer addition and
     comparison (``greater than''), respectively.
 \end{itemize}
@@ -564,113 +561,20 @@ paper.}
 \label{sec:statics}
 
 The main insight to improve the code shown in the last section is that objects
-in category 1 do not survive very long -- they are used only inside the loop
-and there is no other outside reference to them. Therefore the optimizer
-identifies objects in category 1 and removes the allocation of these objects,
-and all operations manipulating them.
+in category 1 do not survive very long -- they are used only inside the loop and
+there is no other outside reference to them. The optimizer identifies objects in
+category 1 and removes the allocation of these objects, and all operations
+manipulating them.
 
 This is a process that is usually called \emph{escape analysis}
-\cite{goldberg_higher_1990}. In this paper we will
-perform escape analysis by using partial evaluation. The use of partial evaluation is a
-bit peculiar in that it receives no static input arguments for the trace,
-but it is only used to optimize operations within the trace.
-
-To optimize the trace, it is traversed from beginning to end. Every
-operation in the input trace is either removed, or new operations are
-produced. Whenever a \lstinline{new} operation is seen, the operation it is
-removed optimistically and a \emph{static object}\footnote{Here ``static'' is
-meant in the sense of partial evaluation, \ie known at partial evaluation time,
-not in the sense of static allocation or static method.} is constructed and
-associated with the result variable. The static object describes the shape of
-the original object, \ie where the values that would be stored in the fields of
-the allocated object come from, as well as the type of the object.
-
-When a \lstinline{set} that writes into a static object is optimized, the
-corresponding shape description is updated and the operation is removed. This
-means that the operation was done at partial evaluation time. When the
-optimizer encounters a \lstinline{get} from a static object, the result is read
-from the shape description, and the operation is also removed. Equivalently, a
-\lstinline{guard_class} on a variable that has a shape description can be
-removed as well, because the shape description stores the type and thus the
-outcome of the type check the guard does is statically known. Operations that
-have dynamic (\ie non-static) objects as arguments are just left untouched by
-the optimizer.
-
-In the example from Section~\ref{sub:example}, the following operations
-of Figure~\ref{fig:unopt-trace} (lines 10-17) produce two
-static objects, and can be completely removed from the optimized trace:
-
-\begin{lstlisting}[mathescape,xleftmargin=20pt]
-$p_{5}$ = new(BoxedInteger)
-set($p_{5}$, intval, $i_{4}$)
-$p_{6}$ = new(BoxedInteger)
-set($p_{6}$, intval, -100)
-\end{lstlisting}
-
-The static object associated with $p_{5}$ would store the knowledge that it is a
-\lstinline{BoxedInteger} whose \lstinline{intval} field contains $i_{4}$; the
-one associated with $p_{6}$ would store that it is a \lstinline{BoxedInteger}
-whose \lstinline{intval} field contains the constant -100.
-
-The subsequent operations (line 19-29) in Figure~\ref{fig:unopt-trace}, which
-use $p_{5}$ and $p_{6}$, can then be optimized using that knowledge:
-
-\begin{lstlisting}[mathescape,xleftmargin=20pt]
-guard_class($p_{5}$, BoxedInteger)
-# inside BoxedInteger.add
-$i_{7}$ = get($p_{5}$, intval)
-guard_class($p_{6}$, BoxedInteger)
-# inside BoxedInteger.add__int
-$i_{8}$ = get($p_{6}$, intval)
-$i_{9}$ = int_add($i_{7}$, $i_{8}$)
-\end{lstlisting}
-
-First, the \lstinline{guard_class} operations can be removed, because the classes of $p_{5}$ and
-$p_{6}$ are known to be \lstinline{BoxedInteger}. Second, the \lstinline{get} operations can be removed
-and $i_{7}$ and $i_{8}$ are just replaced by $i_{4}$ and -100. The only
-remaining operation in the optimized trace would be:
-
-\begin{lstlisting}[mathescape,xleftmargin=20pt]
-$i_{9}$ = int_add($i_{4}$, -100)
-\end{lstlisting}
-
-The rest of the trace from Figure~\ref{fig:unopt-trace} is optimized similarly.
-
-
-So far we have only described what happens when static objects are used in guards and in
-operations that read and write fields. When the static
-object is used in any other operation, it cannot remain static. For example, when
-a static object is stored in a globally accessible place, the object has to
-be allocated, as it might live longer than one iteration of the loop and as
-arbitrary \lstinline{set} operations could change it due to aliasing. This
-means that the static
-object needs to be turned into a dynamic one, \ie lifted. This makes it
-necessary to put operations into the residual code that allocate the
-static object at runtime.
-
-This is what happens at the end of the trace in Figure~\ref{fig:unopt-trace}, when the \lstinline{jump} operation
-is optimized. The arguments of the jump are at this point static objects. Before the
-jump is emitted, they are \emph{lifted}. This means that the optimizer produces code
-that allocates a new object of the right type and sets its fields to the field
-values that the static object has (if the static object points to other static
-objects, those need to be lifted as well, recursively). This means that instead of a simple jump,
-the following operations are emitted:
-
-\begin{lstlisting}[mathescape,xleftmargin=20pt]
-$p_{15}$ = new(BoxedInteger)
-set($p_{15}$, intval, $i_{14}$)
-$p_{10}$ = new(BoxedInteger)
-set($p_{10}$, intval, $i_{9}$)
-jump($p_{15}$, $p_{10}$)
-\end{lstlisting}
-
-Observe how the operations for creating these two instances have been moved to later point in the
-trace. 
-At first sight, it may look like for these operations we didn't gain much, as
-the objects are still allocated in the end. However, our optimizations were still
-worthwhile, because some operations that have been performed
-on the lifted static objects have been removed (some \lstinline{get} operations
-and \lstinline{guard_class} operations).
+\cite{goldberg_higher_1990}. In this paper we will perform escape analysis by
+using partial evaluation. The use of partial evaluation is a bit peculiar in
+that it receives no static input arguments for the trace, but it is only used to
+optimize operations within the trace. This section will give an informal account
+of this process by examining the example trace in Figure~\ref{fig:unopt-trace}.
+The final trace after optimization can be seen in Figure~\ref{fig:step1} (the
+line numbers are the lines of the unoptimized trace where the operation comes
+from).
 
 \begin{figure}
 \begin{lstlisting}[mathescape,numbers=right,escapechar=|,numberstyle = \tiny,numbersep=0pt, numberblanklines=false]
@@ -696,15 +600,124 @@ set($p_{10}$, intval, $i_9$)               |\setcounter{lstnumber}{53}|
 
 jump($p_{15}$, $p_{10}$)
 \end{lstlisting}
+
 \caption{Resulting Trace After Allocation Removal}
 \label{fig:step1}
 \end{figure}
 
+To optimize the trace, it is traversed from beginning to end and an output trace
+is produced at the same time. Every operation in the input trace is either
+removed, or put into the output trace. Sometimes new operations need to be
+produced as well. The optimizer can only remove operations that manipulate
+objects that have been allocated within the trace, all others are copied to the
+output trace untouched.
+
+Looking at the example trace of Figure~\ref{fig:unopt-trace}, this is what
+happens with the operations in lines 1-9. They are manipulating objects that
+existed before the trace because they are passed in as arguments. Therefore the
+optimizer just puts them into the output trace.
+
+The following operations (lines 10-17) are more interesting:
+
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+$p_{5}$ = new(BoxedInteger)
+set($p_{5}$, intval, $i_{4}$)
+$p_{6}$ = new(BoxedInteger)
+set($p_{6}$, intval, -100)
+\end{lstlisting}
+
+When the optimizer encounters a \lstinline{new}, it removes it optimistically,
+and assumes that the object is in category 1. When the object escapes later, it
+will be allocated at that point. The optimizer needs to keep track
+of how the object that the operation creates looks like at various points in
+the trace. This is done with the help of a \emph{static object}\footnote{Here
+``static'' is meant in the sense of partial evaluation, \ie known at partial
+evaluation time, not in the sense of ``static allocation'' or ``static
+method''.}. The static object describes the shape of the object that would have
+been allocated, \ie the type of the object and where the values that would be
+stored in the fields of the allocated object come from.
+
+In the snippet above, the two \lstinline{new} operations are removed and two
+static objects are constructed. The \lstinline{set} operations manipulate a
+static object, therefore they can be removed as well and their effect is
+remembered in the static objects.
+
+The static object associated with $p_{5}$ would store the knowledge that it is a
+\lstinline{BoxedInteger} whose \lstinline{intval} field contains $i_{4}$; the
+one associated with $p_{6}$ would store that it is a \lstinline{BoxedInteger}
+whose \lstinline{intval} field contains the constant -100.
+
+The subsequent operations (line 19-29) in Figure~\ref{fig:unopt-trace}, which
+use $p_{5}$ and $p_{6}$, can then be optimized using that knowledge:
+
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+guard_class($p_{5}$, BoxedInteger)
+# inside BoxedInteger.add
+$i_{7}$ = get($p_{5}$, intval)
+guard_class($p_{6}$, BoxedInteger)
+# inside BoxedInteger.add__int
+$i_{8}$ = get($p_{6}$, intval)
+$i_{9}$ = int_add($i_{7}$, $i_{8}$)
+\end{lstlisting}
+
+The \lstinline{guard_class} operations can be removed, since their argument is a
+static object with the matching type \lstinline{BoxedInteger}. The
+\lstinline{get} operations can be removed as well, because each of them reads a
+field out of a static object. The results of the get operation are replaced with
+what the static object stores in these fields: $i_{7}$ and $i_{8}$ are just
+replaced by $i_{4}$ and -100. The only operation put into the optimized trace
+is the addition:
+
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+$i_{9}$ = int_add($i_{4}$, -100)
+\end{lstlisting}
+
+The rest of the trace from Figure~\ref{fig:unopt-trace} is optimized in a
+similar vein. The operations in lines 27-35 produce two more static objects and
+are removed. Those in line 36-39 are just put into the output trace because they
+manipulate objects that are allocated before the trace. Lines 40-42 are removed
+because they operate on a static object. Line 43 is put into the output trace.
+Lines 44-46 produce a new static object and are removed, lines 48-51 manipulate
+that static object and are removed as well. Lines 52-54 are put into the output
+trace.
+
+The last operation (line 55) is an interesting case. It is the \lstinline{jump}
+operation that passes control back to the beginning of the trace. The two
+arguments to this operation are at this point static objects. However, because
+they passed into the next iteration of the loop they live longer than the trace
+and therefore cannot remain static. They need to be turned into a dynamic
+(runtime) object before the actual \lstinline{jump} operation. This process of
+turning a static object into a dynamic one is called \emph{lifting}.
+
+Lifting a static object puts \lstinline{new} and \lstinline{set} operations into
+the output trace. Those operations produce an object at runtime that has the
+same shape that the static object describes. This process is a bit delicate,
+because the static objects could form an arbitrary graph structure. In our
+example is is simple, though:
+
+\begin{lstlisting}[mathescape,xleftmargin=20pt]
+$p_{15}$ = new(BoxedInteger)
+set($p_{15}$, intval, $i_{14}$)
+$p_{10}$ = new(BoxedInteger)
+set($p_{10}$, intval, $i_{9}$)
+jump($p_{15}$, $p_{10}$)
+\end{lstlisting}
+
+
+Observe how the operations for creating these two instances have been moved to a
+later point in the trace. This is worthwhile even though the objects have to be
+allocated in the end because some \lstinline{get} operations and
+\lstinline{guard_class} operations on the lifted static objects could be
+removed.
+
+A bit more generally, lifting needs to occur if a static object is used in any
+operation apart from \lstinline{get}, \lstinline{set}, and \lstinline{guard}.
+It also needs to occur if \lstinline{set} is used to store a static object into
+a non-static one.
+
 The final optimized trace of the example can be seen in Figure~\ref{fig:step1}.
 The optimized trace contains only two allocations, instead of the original five,
-and only three \lstinline{guard_class} operations, from the original seven. The
-line numbers are the lines where the operations occurred in the original trace
-in Figure~\ref{fig:unopt-trace}.
+and only three \lstinline{guard_class} operations, from the original seven.
 
 \section{Formal Description of the Algorithm}
 \label{sec:formal}
@@ -849,9 +862,12 @@ $$
 To optimize the simple traces of the last section, we use online partial
 evaluation. The partial evaluator optimizes one operation of a trace at a
 time. Every operation in the unoptimized trace is replaced by a list of
-operations in the optimized trace. This list is empty if the operation
-can be optimized away. The optimization rules can be seen in
-Figure~\ref{fig:optimization}.
+operations in the optimized trace. This list is empty if the operation can be
+optimized away. The optimization rules can be seen in
+Figure~\ref{fig:optimization}. Lists are written using angular brackets $<...>$,
+list concatenation is expressed using two colons: $l_1::l_2$.
+
+XXX input/output of optimizer
 
 The state of the optimizer is stored in an environment $E$ and a \emph{static
 heap} $S$. The environment is a partial function from variables in the
@@ -955,7 +971,8 @@ Note in particular that objects in category 1 (\ie those that do
 not escape) are completely removed; moreover, objects in category 2
 (\ie escaping) are still partially optimized: all the operations in between the
 creation of the object and the point where it escapes that involve the object
-are removed.
+are removed. Objects in category 3 and 4 are also partially optimized, their
+allocation is delayed till the end of the trace.
 
 The optimization is particularly effective for chains of operations.
 For example, it is typical for an interpreter to generate sequences of
@@ -1097,7 +1114,7 @@ code. The arithmetic mean of the times of the last 30 runs were used as the
 result. The errors were computed using a confidence interval with a 95\%
 confidence level \cite{georges_statistically_2007}. The results are reported in
 Figure~\ref{fig:times}. In addition to the run times the table also reports the
-speedup that PyPy achieves when the optimization is turned on.
+speedup that PyPy achieves when the optimization is turned on. XXX sounds sucky
 
 With the optimization turned on, PyPy's Python interpreter outperforms CPython
 in all benchmarks except spambayes (which heavily relies on regular expression
