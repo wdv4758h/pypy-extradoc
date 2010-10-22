@@ -1,6 +1,6 @@
 ﻿
 @article{choi_escape_1999,
-	title = {Escape analysis for Java},
+	title = {Escape analysis for {J}ava},
 	volume = {34},
 	url = {http://portal.acm.org/citation.cfm?id=320386},
 	doi = {10.1145/320385.320386},
@@ -59,22 +59,8 @@
 	pages = {328--347}
 },
 
-@techreport{michael_bebenita_spur:_2010,
-	title = {{SPUR:} A {Trace-Based} {JIT} Compiler for {CIL}},
-	abstract = {Tracing just-in-time compilers {(TJITs)} determine frequently executed traces (hot paths and loops) in running programs and focus their optimization effort by emitting optimized machine code specialized to these traces. Prior work has established this strategy to be especially beneficial for dynamic languages such as {JavaScript,} where the {TJIT} interfaces with the interpreter and produces machine code from the {JavaScript} trace.
-
-This direct coupling with a {JavaScript} interpreter makes it difficult to harness the power of a {TJIT} for other components that are not written in {JavaScript,} e.g., the {DOM} implementation or the layout engine inside a browser. Furthermore, if a {TJIT} is tied to a particular high-level language interpreter, it is difficult to reuse it for other input languages as the optimizations are likely targeted at specific idioms of the source language.
-
-To address these issues, we designed and implemented a {TJIT} for Microsoft’s Common Intermediate Language {CIL} (the target language of C\#, {VisualBasic,} F\#, and many other languages). Working on {CIL} enables {TJIT} optimizations for any program compiled to this platform. In addition, to validate that the performance gains of a {TJIT} for {JavaScript} do not depend on specific idioms of {JavaScript} that are lost in the translation to {CIL,} we provide a performance evaluation of our {JavaScript} runtime which translates {JavaScript} to {CIL} and then runs on top of our {CIL} {TJIT.}},
-	number = {{MSR-TR-2010-27}},
-	institution = {Microsoft Research},
-	author = {Michael Bebenita and Florian Brandner and Manuel Fahndrich and Francesco Logozzo and Wolfram Schulte and Nikolai Tillmann and Herman Venter},
-	month = mar,
-	year = {2010},
-},
-
 @article{bruno_blanchet_escape_2003,
-	title = {Escape analysis for Java: Theory and practice},
+	title = {Escape analysis for {J}ava: Theory and practice},
 	volume = {25},
 	shorttitle = {Escape analysis for {Java{\textless}sup{\textgreater}TM{\textless}/sup{\textgreater}}},
 	url = {http://portal.acm.org/citation.cfm?id=945885.945886},
@@ -89,7 +75,7 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 
 @incollection{mazur_practical_2001,
 	series = {Lecture Notes in Computer Science},
-	title = {Practical Aspects for a Working Compile Time Garbage Collection System for Mercury},
+	title = {Practical Aspects for a Working Compile Time Garbage Collection System for {M}ercury},
 	volume = {2237},
 	url = {http://dx.doi.org/10.1007/3-540-45635-X_15},
 	abstract = {Compile-time garbage collection {(CTGC)} is still a very uncommon feature within compilers. In previous work we have developed a compile-time structure reuse system for Mercury, a logic programming language. This system indicates which datastructures can safely be reused at run-time. As preliminary experiments were promising, we have continued this work and have now a working and well performing near-to-ship {CTGC-system} built into the Melbourne Mercury Compiler {(MMC).} In this paper we present the multiple design decisions leading to this system, we report the results of using {CTGC} for a set of benchmarks, including a real-world program, and finally we discuss further possible improvements. Benchmarks show substantial memory savings and a noticeable reduction in execution time.},
@@ -114,7 +100,7 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 },
 
 @phdthesis{cuni_high_2010,
-	title = {High performance implementation of Python for {CLI/.NET} with {JIT} compiler generation for dynamic languages.},
+	title = {High performance implementation of {P}ython for {CLI/.NET} with {JIT} compiler generation for dynamic languages.},
 	school = {Dipartimento di Informatica e Scienze {dell'Informazione,} University of Genova},
 	author = {Antonio Cuni},
 	year = {2010},
@@ -123,7 +109,7 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 
 @inproceedings{carl_friedrich_bolz_towards_2010,
 	address = {Hagenberg, Austria},
-	title = {Towards a Jitting {VM} for Prolog execution},
+	title = {Towards a Jitting {VM} for {P}rolog execution},
 	isbn = {978-1-4503-0132-9},
 	url = {http://portal.acm.org/citation.cfm?id=1836102},
 	doi = {10.1145/1836089.1836102},
@@ -133,6 +119,35 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 	author = {Carl Friedrich Bolz and Michael Leuschel and David Schneider},
 	year = {2010},
 	pages = {99--108}
+},
+
+@inproceedings{mogensen_constructor_1993,
+	address = {Copenhagen, Denmark},
+	title = {Constructor specialization},
+	isbn = {0-89791-594-1},
+	url = {http://portal.acm.org/citation.cfm?id=154633},
+	doi = {10.1145/154630.154633},
+	abstract = {In the section on “challenging problems” in the proceedings from the first international workshop on partial evaluation and mixed computation {[BEJ88]} a question is stated: {“Can} {PE} be used to generate new specialized data types, in a way analogous to generating specialized functions”. Since then little has been done to address this problem. In {[Lau89],} new types are indeed generated, but they are all simpler versions of the types in the original program. It is, e.g. not possible to have types with more constructors than the types in the original program. I propose to alleviate this by means of constructor specialization. Constructors are specialized with respect to the static parts of their arguments, just like residual functions. I show how this is done and argue that it makes it possible to get good results from partial evaluation in cases where the traditional methods fail to produce satisfactory results. The discussion is centered around a small subset of Standard {ML,} but the idea applies equally well to other languages having user defined constructors, e.g. Haskell and Prolog.},
+	booktitle = {Proceedings of the 1993 {ACM} {SIGPLAN} symposium on Partial evaluation and semantics-based program manipulation},
+	publisher = {{ACM}},
+	author = {Torben Æ Mogensen},
+	year = {1993},
+	pages = {22--32}
+},
+
+@inproceedings{bebenita_spur:_2010,
+	address = {{Reno/Tahoe,} Nevada, {USA}},
+	title = {{SPUR:} a trace-based {JIT} compiler for {CIL}},
+	isbn = {978-1-4503-0203-6},
+	shorttitle = {{SPUR}},
+	url = {http://portal.acm.org/citation.cfm?id=1869459.1869517&coll=GUIDE&dl=GUIDE&type=series&idx=SERIES318&part=series&WantType=Proceedings&title=OOPSLA%2FSPLASH&CFID=106280261&CFTOKEN=29377718},
+	doi = {10.1145/1869459.1869517},
+	abstract = {Tracing just-in-time compilers {(TJITs)} determine frequently executed traces (hot paths and loops) in running programs and focus their optimization effort by emitting optimized machine code specialized to these traces. Prior work has established this strategy to be especially beneficial for dynamic languages such as {JavaScript,} where the {TJIT} interfaces with the interpreter and produces machine code from the {JavaScript} trace.},
+	booktitle = {Proceedings of the {ACM} international conference on Object oriented programming systems languages and applications},
+	publisher = {{ACM}},
+	author = {Michael Bebenita and Florian Brandner and Manuel Fahndrich and Francesco Logozzo and Wolfram Schulte and Nikolai Tillmann and Herman Venter},
+	year = {2010},
+	pages = {708--725}
 },
 
 @inproceedings{chang_tracing_2009,
@@ -166,7 +181,7 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 },
 
 @article{futamura_partial_1999,
-	title = {Partial Evaluation of Computation Process - An Approach to a {Compiler-Compiler}},
+	title = {Partial Evaluation of Computation Process - An Approach to a Compiler-Compiler},
 	volume = {12},
 	url = {http://citeseer.ist.psu.edu/futamura99partial.html},
 	number = {4},
@@ -201,7 +216,7 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 },
 
 @article{blanchet_escape_1999,
-	title = {Escape Analysis for Object Oriented Languages. Application to Java},
+	title = {Escape Analysis for Object Oriented Languages. Application to {J}ava},
 	url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.47.2277},
 	doi = {10.1.1.47.2277},
 	journal = {In Proceedings of the 14th Annual Conference on {Object-Oriented} Programming Systems, Languages and Applications},
@@ -211,7 +226,7 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 },
 
 @article{georges_statistically_2007,
-	title = {Statistically rigorous java performance evaluation},
+	title = {Statistically rigorous {J}ava performance evaluation},
 	volume = {42},
 	url = {http://portal.acm.org/citation.cfm?id=1297105.1297033},
 	doi = {10.1145/1297105.1297033},
@@ -232,7 +247,7 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 },
 
 @inproceedings{andreas_gal_trace-based_2009,
-	title = {Trace-based {Just-in-Time} Type Specialization for Dynamic Languages},
+	title = {Trace-based Just-in-Time Type Specialization for Dynamic Languages},
 	booktitle = {{PLDI}},
 	author = {Andreas Gal and Brendan Eich and Mike Shaver and David Anderson and Blake Kaplan and Graydon Hoare and David Mandelin and Boris Zbarsky and Jason Orendorff and Michael Bebenita and Mason Chang and Michael Franz and Edwin Smith and Rick Reitmaier and Mohammad Haghighat},
 	year = {2009},
@@ -254,7 +269,7 @@ To address these issues, we designed and implemented a {TJIT} for Microsoft’s 
 },
 
 @techreport{mason_chang_efficient_2007,
-	title = {Efficient {Just-In-Time} Execution of Dynamically Typed Languages
+	title = {Efficient Just-In-Time Execution of Dynamically Typed Languages
 Via Code Specialization Using Precise Runtime Type Inference},
 	abstract = {Dynamically typed languages such as {JavaScript} present a challenge to just-in-time compilers. In contrast to statically typed languages such as {JVML,} in which there are specific opcodes for common operations on primitive types (such as iadd for integer addition), all operations in dynamically typed language such as {JavaScript} are late-bound. Often enough, types cannot be inferred with certainty ahead of execution. As a result, just-in-time compilers for dynamically typed languages have tended to perform worse than their statically-typed counterparts. We present a new approach to compiling dynamically typed languages in which code traces observed during execution are dynamically specialized for each actually observed run-time type. For most benchmark programs, our prototype {JavaScript} virtual machine outperforms every other {JavaScript} platform known to us.},
 	number = {{ICS-TR-07-10}},
@@ -316,7 +331,7 @@ Via Code Specialization Using Precise Runtime Type Inference},
 
 @inproceedings{rigo_representation-based_2004,
 	address = {Verona, Italy},
-	title = {Representation-based just-in-time specialization and the Psyco prototype for Python},
+	title = {Representation-based just-in-time specialization and the {P}syco prototype for {P}ython},
 	isbn = {1-58113-835-0},
 	url = {http://portal.acm.org/citation.cfm?id=1014010},
 	doi = {10.1145/1014007.1014010},
@@ -329,7 +344,7 @@ Via Code Specialization Using Precise Runtime Type Inference},
 },
 
 @incollection{carl_friedrich_bolz_back_2008,
-	title = {Back to the Future in One Week — Implementing a Smalltalk {VM} in {PyPy}},
+	title = {Back to the Future in One Week — Implementing a {S}malltalk {VM} in {PyPy}},
 	url = {http://dx.doi.org/10.1007/978-3-540-89275-5_7},
 	abstract = {We report on our experiences with the Spy project, including implementation details and benchmark results. Spy is a re-implementation of the Squeak (i.e. Smalltalk-80) {VM} using the {PyPy} toolchain. The {PyPy} project allows code written in {RPython,} a subset of Python, to be translated
 to a multitude of different backends and architectures. During the translation, many aspects of the implementation can be
@@ -341,14 +356,4 @@ which still run slower than in Squeak itself. Spy was built from scratch over th
 	author = {Carl Friedrich Bolz and Adrian Kuhn and Adrian Lienhard and Nicholas Matsakis and Oscar Nierstrasz and Lukas Renggli and Armin Rigo and Toon Verwaest},
 	year = {2008},
 	pages = {123--139}
-}
-@inproceedings{Mogensen:PEPM93,
-   author =    {Torben Mogensen},
-   title =     {Constructor Specialization},
-   booktitle = {Proceedings of PEPM'93, the ACM Sigplan Symposium on Partial 
-                Evaluation and Semantics-Based Program Manipulation},
-   year =      1993,
-   month =     {June},
-   publisher = {ACM Press},
-   pages =     {22--32},
 }
