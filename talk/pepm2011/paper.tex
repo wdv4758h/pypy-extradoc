@@ -765,10 +765,9 @@ traces and of the optimizer and liken the optimization to partial evaluation.
 We focus on the operations for manipulating heap allocated objects,
 as those are the only ones that are actually optimized. We also consider only
 objects with two fields $L$ and $R$ in this section, generalizing to arbitrary many fields
-is straightforward.
-
-Traces are lists of operations. The operations considered here are
+is straightforward. Traces are lists of operations. The operations considered here are
 \lstinline{new}, \lstinline{get}, \lstinline{set} and \lstinline{guard_class}.
+
 The values of all
 variables are locations (\ie pointers). Locations are mapped to objects, which
 are represented by triples $(T,l_1,l_2)$ of a type $T$, and two locations that represent the
@@ -813,6 +812,8 @@ The \lstinline{guard_class} operation is used to check whether the object stored
 that variable $v$ maps to is of type $T$. If that is the case, then execution
 continues without changing heap and environment. Otherwise, execution is
 stopped.
+
+% subsection Operational Semantics of Traces (end)
 
 \subsection{Optimizing Traces}
 \label{sub:formalopt}
@@ -1210,7 +1211,7 @@ are constructed and immediately matched again, completely disappear in the
 residual program. This is similar to what our optimization does for an
 imperative language.
 In functional programming this idea was introduced as
- constructor specialisation by Mogensen \cite{Mogensen:PEPM93}.
+ constructor specialisation by Mogensen \cite{mogensen_constructor_1993}.
 
 %xxx:
 %partially static data structures: kenichi asai's thesis?
