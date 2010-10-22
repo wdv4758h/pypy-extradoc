@@ -477,9 +477,9 @@ in Figure~\ref{fig:objmodel}:
     \item \lstinline{guard_true} checks that a boolean is true.
 \end{itemize}
 
-The method calls in the trace are always preceded by a \lstinline{guard_class}
+Method calls in the trace are preceded by a \lstinline{guard_class}
 operation, to check that the class of the receiver is the same as the one that
-was observed during tracing.\footnote{\lstinline{guard_class} XXX lstinline too large in footnotes
+was observed during tracing.\footnote{\lstinline{guard_class}
 performs a precise
 class check, not checking for subclasses.} These guards make the trace specific
 to the situation where \lstinline{y} is really a \lstinline{BoxedInteger}. When
