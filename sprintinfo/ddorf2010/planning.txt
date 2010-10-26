@@ -9,14 +9,15 @@ people present:
 
 topics:
 
-- get mmap to work on Beagleboard (David, Armin)
-- bridges in the ARM backend (David, Armin)
-- hg conversion (Ronny, Anto)
-- memory benchmarks (Carl Friedrich, Lukas)
+- get mmap to work on Beagleboard DONE
+- bridges in the ARM backend SORT OF DONE
+- add spilling and location support (David, Armin around)
+- hg conversion WE HAVE A PLAN (Anto, Ronny)
+- memory benchmarks IN PROGRESS (Carl Friedrich, Lukas when he shows up)
 - buildbot improvements, locks, email on failing tests
 - run pypy-c-nojit in the benchmarks
 - make it possible to run benchmark on branches
-- understand problems of mapdict
+- understand problems of mapdict (Carl Friedrich, Armin)
 - rewrite ctypes to use _ffi
 - can classes with non-type metaclasses use typeversion?
 
@@ -25,3 +26,4 @@ scheduled discussions:
 
 - hg migration planning
 - understand håkan's branch
+- JIT introduction (today after lunch)
