@@ -7,10 +7,37 @@ Session type: Talk
 Classification: Discuss in depth
 Abstract:
 
-This talk is 3 parts, what's hard to optimize about Python, how PyPy is organized, and what optimizations our JIT can do.
+The talk would contain a list of features that are hard to optimize
+in Python, why and how we're fixing it in PyPy. This also might be
+used as a rough guide what features in Python are optimizable right
+now and what are not.
 
+The list of mentioned features is not exhaustive, however we will try to
+focus at least on the following:
+
+* Dynamic language - In Python code we have no known types, like a
+  static language.  Even operations like "a + b" can do anything,
+  unless we know more about the code.
+
+* Frame introspection - Frame objects need to be allocated for every
+  function call, and all local variables are stored on the frame, and
+  must be accessible from further down the call stack.
+
+* Object model - All user defined Python objects have a dictionary which
+  stores their attributes, as does every type.  When Python does an
+  attribute lookup this requires 2 dictionary lookups.
+
+  In PyPy we use an approach similar to one used by v8 with hidden classes
+  (except more pypy specific) called shared dictionaries.
+
+* FFI calls - calling C from Python is costly and hard to optimize.
+  In PyPy we decided to go via ctypes, this part will explain how are
+  we going to handle ctypes calls to be fast.
+
+This talk is 3 parts, what's hard to optimize about Python, how PyPy is organized, and what optimizations our JIT can do.
+ 
 I. Why Python is hard (8 minutes)
-    A) Dynamic language
+    A) Dynamic language - No known types, even operations such as "+" can
     B) Frame introspection.
     C) Object model.
     D) CPython
