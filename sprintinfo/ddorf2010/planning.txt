@@ -11,19 +11,22 @@ topics:
 
 - get mmap to work on Beagleboard DONE
 - bridges in the ARM backend SORT OF DONE
-- add spilling and location support (David, Armin around)
-- hg conversion WE HAVE A PLAN (Anto, Ronny)
-- memory benchmarks IN PROGRESS (Carl Friedrich, Lukas when he shows up)
+- add spilling and location support IN PROGRESS (David, Armin around)
+- ARM int trace operations (David)
+- hg conversion WE HAVE MORE OF A PLAN (Anto, Ronny)
+- memory benchmarks DONE
+- refine heap analysis CONFUSING (Carl Friedrich, Lukas)
+- (Re)write _bisect module (Armin)
 - buildbot improvements, locks, email on failing tests
 - run pypy-c-nojit in the benchmarks
 - make it possible to run benchmark on branches
 - understand problems of mapdict (Carl Friedrich, Armin)
 - rewrite ctypes to use _ffi
-- can classes with non-type metaclasses use typeversion?
+- can classes with non-type metaclasses use typeversion? DONE
 
 
 scheduled discussions:
 
 - hg migration planning
 - understand håkan's branch
-- JIT introduction (today after lunch)
+- JIT introduction (still today after lunch)
