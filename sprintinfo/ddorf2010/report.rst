@@ -9,7 +9,7 @@ Düsseldorf all the time.
 
 David spent the sprint working on the `arm-backend`_ branch, which is adding an
 ARM backend to the JIT. With the help of Armin he added support for bridges in
-the JIT and generally implemented missing operations, mostly for handling integers.
+the JIT and generally implemented missing operations, mostly for handling integers so far.
 
 .. _`arm-backend`: http://codespeak.net/svn/pypy/branch/arm-backend/
 
@@ -27,7 +27,7 @@ that every day, so who knows?).
 Carl Friedrich and Lukas started working in earnest on memory benchmarks to
 understand the memory behaviour of Python code better. They have now
 implemented a generic memory benchmark runner and a simple analysis that walks
-all objectsf and collects size information about them. They also added some
+all objects and collects size information about them. They also added some
 benchmarks that were proposed in the comments of the recent `call for
 benchmarks`_. As soon as some results from that work are there, we will post
 about them.
