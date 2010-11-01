@@ -1,4 +1,4 @@
-Title: Optimizations in PyPy
+Title: Why is Python slow and how PyPy can help?
 Description:
 
 PyPy is a virtual machine for Python, featuring an advanced just in time
