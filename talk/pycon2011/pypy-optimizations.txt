@@ -37,7 +37,7 @@ focus at least on the following:
   this requires at least two dictionary lookups.
 
   In PyPy we use an approach similar to the one used by V8 with hidden classes
-  (except more PyPy specific) called map dictionaries. XXX type versions?
+  (except more PyPy specific) called map dictionaries and other optimizations.
 
 * FFI calls - Calling C from Python is costly and hard to optimize. In PyPy we
   expose C APIs to Python code via ctypes. This part explains how we can 
