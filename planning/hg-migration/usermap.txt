@@ -4,7 +4,7 @@
 # it below.
 
 arigo=Armin Rigo <arigo@tunes.org>
-fijal=Maciej Fijalkowski
+fijal=Maciej Fijalkowski <fijall@gmail.com>
 cfbolz=Carl Friedrich Bolz <cfbolz@gmx.de>
 pedronis=Samuele Pedroni
 antocuni=Antonio Cuni <anto.cuni@gmail.com>
