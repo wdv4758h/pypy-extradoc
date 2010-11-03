@@ -32,7 +32,7 @@ Mercurial migration plan
       e.g. the bitbucket account, so that it is easier for the system to link
       the two correctly.
 
-    * I left "anna", "gintas" e "ignas" out of usermap.txt, because they
+    * I left "anna", "gintas" and "ignas" out of usermap.txt, because they
       explicitly chose not to be in the contributor list.  Their hg username
       will be simply left untouched (i.e., without real name).
 
