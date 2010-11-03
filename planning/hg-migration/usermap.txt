@@ -5,7 +5,7 @@
 
 arigo=Armin Rigo
 fijal=Maciej Fijalkowski
-cfbolz=Carl Friedrich Bolz
+cfbolz=Carl Friedrich Bolz <cfbolz@gmx.de>
 pedronis=Samuele Pedroni
 antocuni=Antonio Cuni <anto.cuni@gmail.com>
 mwh=Michael Hudson
