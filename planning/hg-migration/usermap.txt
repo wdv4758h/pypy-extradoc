@@ -3,7 +3,7 @@
 # If you want your email address to be in the "official" PyPy repo, please add
 # it below.
 
-arigo=Armin Rigo
+arigo=Armin Rigo <arigo@tunes.org>
 fijal=Maciej Fijalkowski
 cfbolz=Carl Friedrich Bolz <cfbolz@gmx.de>
 pedronis=Samuele Pedroni
