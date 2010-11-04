@@ -47,7 +47,8 @@ Mercurial migration plan
 - I tentatively tried to send the commits of the bot2 repo to
   pypy-svn@codespeak.net, but they did not arrive.  Probably because the
   mailing list blocks mails if the author is not subscribed?
+  <hpk> i added *@bitbucket.org to allowed addresses.
 
 - IRC bot: bitbucket has a builtin hook for CIA.vc; alternatively, we can try
   to adapt kenaan: who owns it?
-
+  <hpk> exarkun ASFAIK
