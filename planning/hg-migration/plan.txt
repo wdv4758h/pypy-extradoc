@@ -48,6 +48,7 @@ Mercurial migration plan
   pypy-svn@codespeak.net, but they did not arrive.  Probably because the
   mailing list blocks mails if the author is not subscribed?
   <hpk> i added *@bitbucket.org to allowed addresses.
+  <anto> cool, it works :-)
 
 - IRC bot: bitbucket has a builtin hook for CIA.vc; alternatively, we can try
   to adapt kenaan: who owns it?
