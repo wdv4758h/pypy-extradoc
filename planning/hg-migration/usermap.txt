@@ -104,3 +104,4 @@ mcherm=Michael Chermside
 tav=tav
 blais=Martin Blais
 haypo=Victor Stinner
+trundle=Andreas Stührk <andy-python@hammerhartes.de>
