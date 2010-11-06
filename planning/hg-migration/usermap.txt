@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+﻿# -*- encoding: utf-8 -*-
 #
 # map codespeak usernames to mercurial usernames
 #
@@ -88,7 +88,7 @@ njriley=Nicholas Riley
 igorto=Igor Trindade Oliveira
 micktwomey=Michael Twomey
 rocco=Rocco Moretti
-wildchild=Gabriel Lavoie
+wildchild=Gabriel Lavoie <glavoie@mutehq.net>
 lucian=Lucian Branescu Mihaila
 dinu=Dinu Gherman
 jared.grubb=Jared Grubb
