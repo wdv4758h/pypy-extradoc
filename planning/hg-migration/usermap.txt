@@ -105,3 +105,4 @@ tav=tav
 blais=Martin Blais
 haypo=Victor Stinner
 trundle=Andreas Stührk <andy-python@hammerhartes.de>
+verte=William ML Leslie <william.leslie.ttg@gmail.com>
