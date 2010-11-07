@@ -86,6 +86,20 @@ nice code at all so far:
 
 - xxx (find more examples :-)
 
+BACKEND TASKS
+-------------
+
+Look into avoiding double load of memory into register on 64bit.
+In case we want to first read a value, increment it and store (for example),
+we end up with double load of memory into register. Like:
+
+movabs 0xsomemem,r11
+mov    (r11), r10
+add    0x1, r10
+movabs 0xsomemem,r11
+mov    r10, (r11)
+
+(second movabs could have been avoided)
 
 LATER (maybe) TASKS
 -------------------
