@@ -34,6 +34,13 @@ NEW TASKS
   is a compile time constant (and call unrolled version of string formatting
   loop in this case).
 
+- generators are still fairly inefficient. We get a lot of:
+  i = ptr_eq(frame, some_other_frame)
+  guard_value(i, 0)
+  every second instruction.
+
+  there is also manipulating of valuestackdepth and such.
+
 
 OPTIMIZATIONS
 -------------
