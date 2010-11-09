@@ -1,4 +1,4 @@
-﻿# -*- encoding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 #
 # map codespeak usernames to mercurial usernames
 #
@@ -35,7 +35,7 @@ jacob=Jacob Hallen
 guido=Guido Wesdorp
 ludal=Ludovic Aubry
 jlg=Jakub Gustak <jlg@usrsrc.net>
-bea=Beatrice During
+bea=Beatrice During <bea@changemaker.nu>
 hakanardo=Hakan Ardo <hakan@debian.org>
 niko=Niko Matsakis
 alex=Alex Martelli
