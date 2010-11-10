@@ -8,7 +8,7 @@
 arigo=Armin Rigo <arigo@tunes.org>
 fijal=Maciej Fijalkowski <fijall@gmail.com>
 cfbolz=Carl Friedrich Bolz <cfbolz@gmx.de>
-pedronis=Samuele Pedroni
+pedronis=Samuele Pedroni <pedronis@lucediurna.net>
 antocuni=Antonio Cuni <anto.cuni@gmail.com>
 hpk=Holger Krekel <holger.krekel@gmail.com>
 mwh=Michael Hudson <micahel@gmail.com>
