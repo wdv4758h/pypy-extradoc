@@ -91,6 +91,9 @@ nice code at all so far:
 - 64-bit issues: in test_pypy_c, test_array_intimg, the STORE_SUBSCR turns
   into strange code (truncate the int to 32 bits).
 
+- foo(*args) generates sub-optimal code even if foo takes a fixed number of
+  arguments, because we always allocate the Arguments class in that case
+
 - xxx (find more examples :-)
 
 BACKEND TASKS
