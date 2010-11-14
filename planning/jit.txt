@@ -41,6 +41,7 @@ NEW TASKS
 
   there is also manipulating of valuestackdepth and such.
 
+- consider how much old style classes in stdlib hurt us.
 
 OPTIMIZATIONS
 -------------
