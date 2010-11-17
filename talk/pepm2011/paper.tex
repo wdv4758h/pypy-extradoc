@@ -263,7 +263,7 @@ interpreter for the less commonly executed parts. VMs that use a tracing JIT are
 mostly mixed-mode execution environments, they contain both an interpreter and a
 JIT compiler. By default the interpreter is used to execute the program, doing
 some light-weight profiling at the same time. This profiling is used to identify
-the hot loops of the program. If a hot loop is found in that way, the
+the hot loops\reva{what is that? clarify} of the program. If a hot loop is found in that way, the
 interpreter enters a special \emph{tracing mode}. In this tracing mode, the
 interpreter tries to record all operations that it is executing while running one
 iteration of the hot loop. This history of executed operations of one loop is
@@ -296,7 +296,7 @@ the machine code is stopped, and interpreter continues to run from that point
 on. These guards are the only mechanism to stop the execution of a trace, the
 loop end condition also takes the form of a guard.
 
-If one specific guard fails often enough, the tracing JIT will generate a new
+If one specific guard fails often enough\reva{when is that?}, the tracing JIT will generate a new
 trace that starts exactly at the position of the failing guard
 \cite{andreas_gal_incremental_2006}. The existing assembler is patched to jump
 to the new trace when the guard fails.  This approach guarantees that all the
@@ -373,7 +373,7 @@ Using these classes to implement arithmetic shows the basic problem of a
 dynamic language implementation. All the numbers are instances of either
 \lstinline{BoxedInteger} or \lstinline{BoxedFloat}, therefore they consume space on the
 heap. Performing many arithmetic operations produces lots of garbage quickly,
-putthing pressure on the garbage collector. Using double dispatching to
+putting pressure on the garbage collector. Using double dispatching to
 implement the numeric tower needs two method calls per arithmetic operation,
 which is costly due to the method dispatch.
 
@@ -1174,7 +1174,8 @@ split into an analysis and an optimization phase. The analysis can be a lot more
 complex than our simple one-pass optimization. Also, stack-allocation reduces
 garbage-collection pressure but does not optimize away the actual accesses to
 the stack-allocated object. In our case, an object is not needed at all any
-more.
+more. \reva{Has this relation pointed out before in some paper? Is it a
+novel contribution of your work?}
 
 Chang \etal describe a tracing JIT for JavaScript running on top of a JVM
 \cite{mason_chang_efficient_2007}. They mention in passing an approach to
@@ -1212,6 +1213,10 @@ residual program. This is similar to what our optimization does for an
 imperative language.
 In functional programming this idea was introduced as
  constructor specialisation by Mogensen \cite{mogensen_constructor_1993}.
+\reva{I'd refer here to
+  deforestation (by Philip Wadler) and "short cut
+  deforestation" by Andrew Gill, John Launchbury, and Simon L 
+  Peyton Jones}
 
 %xxx:
 %partially static data structures: kenichi asai's thesis?
