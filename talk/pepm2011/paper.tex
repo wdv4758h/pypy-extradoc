@@ -1214,19 +1214,16 @@ In functional programming this idea was introduced as
  constructor specialisation by Mogensen \cite{mogensen_constructor_1993}.
 
 A related optimization is also that of deforestation
-\cite{wadler_deforestation:_1988,gill_short_1993} which tries to remove
-intermediate lists or trees in functional languages. More explicitly geared at
-optimizing boxing is boxing analysis \cite{jrgensen_calculus_1996} which tries
-to fully remove pairs of calls to box/unbox in a functional language.
+\cite{wadler_deforestation:_1988,gill_short_1993} which removes intermediate
+lists or trees in functional languages. A more general approach is boxing
+analysis \cite{jrgensen_calculus_1996} which optimizes pairs of calls to
+box/unbox in a functional language. Similarly, "dynamic typing"
+\cite{Henglein:1994:DTS:190865.190867} tries to remove dynamic type coercions
+in a dynamically typed lambda-calculus. All these optimizations work by
+analyzing the program before execution, which makes them unsuitable for dynamic
+languages like Python, where almost nothing can be inferred purely by looking
+at the source code.
 
-%xxx:
-%partially static data structures: kenichi asai's thesis?
-
-%xxx: 
-%Other related work is compile-time garbage collection \cite{mazur_practical_2001}, which
-%tries to ....;
-%  separation logic
-  %; John Hughes: type specialization
 
 \section{Conclusion and Future Work}
 \label{sec:conclusion}
