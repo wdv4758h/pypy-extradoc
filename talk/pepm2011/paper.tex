@@ -1174,8 +1174,7 @@ split into an analysis and an optimization phase. The analysis can be a lot more
 complex than our simple one-pass optimization. Also, stack-allocation reduces
 garbage-collection pressure but does not optimize away the actual accesses to
 the stack-allocated object. In our case, an object is not needed at all any
-more. \reva{Has this relation pointed out before in some paper? Is it a
-novel contribution of your work?}
+more.
 
 Chang \etal describe a tracing JIT for JavaScript running on top of a JVM
 \cite{mason_chang_efficient_2007}. They mention in passing an approach to
