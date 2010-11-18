@@ -296,7 +296,7 @@ the machine code is stopped, and interpreter continues to run from that point
 on. These guards are the only mechanism to stop the execution of a trace, the
 loop end condition also takes the form of a guard.
 
-If one specific guard fails often enough\reva{when is that?}, the tracing JIT will generate a new
+If one specific guard fails a lot (\ie more than some threshold), the tracing JIT will generate a new
 trace that starts exactly at the position of the failing guard
 \cite{andreas_gal_incremental_2006}. The existing assembler is patched to jump
 to the new trace when the guard fails.  This approach guarantees that all the
