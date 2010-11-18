@@ -132,8 +132,6 @@ Languages, Performance, Experimentation
 
 \section{Introduction}
 
-% XXX insert "practical" somewhere
-
 The objective of a just-in-time (JIT) compiler for a dynamic language is to
 improve the speed of the language over an implementation of the language that
 uses interpretation. The first goal of a JIT is therefore to remove the
@@ -166,7 +164,7 @@ operations need it.
 
 A recently popular approach to implementing just-in-time compilers for dynamic
 languages is that of a tracing JIT. A tracing JIT works by observing the running
-program and recording its hot spots into \emph{linear execution traces}. Those
+program and recording its commonly executed parts into \emph{linear execution traces}. Those
 traces are optimized and turned into machine code.
 
 One reason for the popularity of tracing JITs is their relative
@@ -198,8 +196,8 @@ interpreter.
 The contributions made by this paper are:
 
 \begin{enumerate}
-    \item A description of an efficient and effective algorithm for removing
-          object allocations in a tracing JIT.
+    \item A description of a practical, efficient and effective algorithm for
+    removing object allocations in a tracing JIT.
     \item A characterization of this algorithm as partial evaluation.
     \item Performance benchmarks for this algorithm.
 \end{enumerate}
@@ -265,7 +263,7 @@ interpreter for the less commonly executed parts. VMs that use a tracing JIT are
 mostly mixed-mode execution environments, they contain both an interpreter and a
 JIT compiler. By default the interpreter is used to execute the program, doing
 some light-weight profiling at the same time. This profiling is used to identify
-the hot loops\reva{what is that? clarify} of the program. If a hot loop is found in that way, the
+the hot loops of the program. If a hot loop is found in that way, the
 interpreter enters a special \emph{tracing mode}. In this tracing mode, the
 interpreter tries to record all operations that it is executing while running one
 iteration of the hot loop. This history of executed operations of one loop is
