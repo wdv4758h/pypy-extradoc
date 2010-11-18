@@ -132,6 +132,8 @@ Languages, Performance, Experimentation
 
 \section{Introduction}
 
+% XXX insert "practical" somewhere
+
 The objective of a just-in-time (JIT) compiler for a dynamic language is to
 improve the speed of the language over an implementation of the language that
 uses interpretation. The first goal of a JIT is therefore to remove the
@@ -1213,9 +1215,12 @@ residual program. This is similar to what our optimization does for an
 imperative language.
 In functional programming this idea was introduced as
  constructor specialisation by Mogensen \cite{mogensen_constructor_1993}.
-\reva{I'd refer here to \cite{wadler_deforestation:_1988}
-  and \cite{gill_short_1993}}
-\revb{cite and relate to: boxing analysis}
+
+A related optimization is also that of deforestation
+\cite{wadler_deforestation:_1988,gill_short_1993} which tries to remove
+intermediate lists or trees in functional languages. More explicitly geared at
+optimizing boxing is boxing analysis \cite{jrgensen_calculus_1996} which tries
+to fully remove pairs of calls to box/unbox in a functional language.
 
 %xxx:
 %partially static data structures: kenichi asai's thesis?
