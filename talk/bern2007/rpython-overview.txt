@@ -86,9 +86,9 @@ Data Types
 Numerical Types
 ===============
 
- - Python ``int``s are C ``long``s
+ - Python ``int`` are C ``long``
  - have kind of the obvious C/Java-like behaviour
- - difference between Python and RPython: RPython ``int``s wrap around silently
+ - difference between Python and RPython: RPython ``int`` wrap around silently
 
 
 Strings

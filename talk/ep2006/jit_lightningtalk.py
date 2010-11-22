@@ -195,9 +195,9 @@ if __name__ == '__main__':
     timings = []
     print '%-20s  %12s %12s' %('', '', 'magnitudes')
     print '%-20s  %12s %12s' %('', 'us/call', 'speedup')
-    for name, fn, repeat in (('Python interpreter', f, 1000),
-                             ('RPython interpreter', fc, 100000),
-                             ('Compiled', fjc, 10000000)):
-        timings.append(measure(fn, 41, repeat))
+    for name, fn, repeat in (#('Python interpreter', f, 1000),
+                             #('RPython interpreter', fc, 100000),
+                             ('Compiled', fjc, 1)):
+        timings.append(measure(fn, 99999999, repeat))
         print '%-20s: %12f %12f'%(name, timings[-1]*10**6,
                                   math.log10(timings[0] / timings[-1]))
