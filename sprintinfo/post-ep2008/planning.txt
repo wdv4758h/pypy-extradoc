@@ -19,7 +19,7 @@ Tasks:
    * started http://code.djangoproject.com/wiki/DjangoAndPyPy
 
  - support for profiling the calls to builtins with
-   sys.setprofile(): TESTING
+   sys.setprofile(): DONE
 
  - fix the default options of "translate.py", make "--help"
    show only the reasonable options, remove "--faassen",
