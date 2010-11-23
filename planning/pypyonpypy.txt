@@ -1,0 +1,1 @@
+* rpython/test/test_rclass.py fails for GC reasons
