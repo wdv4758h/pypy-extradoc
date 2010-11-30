@@ -14,7 +14,8 @@ straightforward (i.e., you just get "real" conflicts).
 
 The problem with "merge from trunk" is that mercurial does not know that we
 have already applied a set of changes in our branch, so it tries to redo them
-and we get false conflicts.
+(plus all the other changes that were done on trunk) and we get false
+conflicts.
 
 To solve, we need to explicitly tell mercurial that trunk has already been
 merged into our branch up to the right revision:
