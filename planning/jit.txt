@@ -82,18 +82,7 @@ nice code at all so far:
   This is treated as a megamorphic call (promotion of w_self in typeobject.py)
   while in fact it is not.
 
-- pypy/objspace/std/inlinedict: put the class into the structure to get
-  only one promote when using an instance, instead of two: the promotion
-  of the '.w__class__' and the promotion of the '.structure'
-  DONE on the better-map-instances branch
-
 - guard_true(frame.is_being_profiled) all over the place
-
-- "op = getattr(llop, spaceop.opname)" at app-level ends up in a long chain
-  of calls to 'll_streq__rpy_stringPtr_rpy_stringPtr'
-
-- foo(*args) generates sub-optimal code even if foo takes a fixed number of
-  arguments, because we always allocate the Arguments class in that case
 
 - xxx (find more examples :-)
 
@@ -114,8 +103,6 @@ mov    r10, (r11)
 
 LATER (maybe) TASKS
 -------------------
-
-- think about code memory management
 
 - think out looking into functions or not, based on arguments,
   for example contains__Tuple should be unrolled if tuple is of constant
