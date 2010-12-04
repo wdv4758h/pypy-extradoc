@@ -14,4 +14,10 @@ Differences between releases 1.4 and 1.4.1
 
 Plan:
 
-* ?
+* Fix bug in optimizeopt
+
+* Out of line guards (?)
+
+* Merge jit-unroll-loops (?)
+
+* Migrate to mercurial
