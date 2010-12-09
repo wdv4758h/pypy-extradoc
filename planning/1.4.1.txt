@@ -25,3 +25,9 @@ Plan:
 * Merge jit-unroll-loops (?)
 
 * Migrate to mercurial
+
+* Finish looking in the ctypes bug::
+
+    c = cast(cast(c_char_p("hello"), c_void_p), c_char_p)
+    gc.collect()
+    c.value       # garbage
