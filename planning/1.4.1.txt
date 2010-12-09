@@ -11,7 +11,7 @@ Differences between releases 1.4 and 1.4.1
 
 * Fix a corner case in the GC (minimark).
 
-* Fix cpyext on Mac OS/X.  (Loading C extension modules in PyPy is still
+* Fix cpyext on Mac OS X.  (Loading C extension modules in PyPy is still
   considered *alpha stage!*)
 
 * Fixed a corner case in the JIT, leading to "Fatal RPython error:
