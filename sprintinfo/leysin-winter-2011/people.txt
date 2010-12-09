@@ -10,7 +10,7 @@ available yet from them.
 ==================== ============== =======================
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =======================
-Armin Rigo           --             private
+Armin Rigo           --/23          private
 Antonio Cuni         15/22          ermina
 ==================== ============== =======================
 
