@@ -14,7 +14,8 @@ Goals and topics of the sprint
   (possibly before the sprint), the sprint itself is going to be
   mainly working on fixing issues reported by various users. Of
   course this does not prevent people from showing up with a more
-  precise interest in mind.
+  precise interest in mind.  If there are newcomers, we will gladly
+  give introduction talks.
 
 * We will also work on polishing and merging the long-standing
   branches that are around, which could eventually lead to the
