@@ -17,6 +17,8 @@ Differences between releases 1.4 and 1.4.1
 * Fixed a corner case in the JIT, leading to "Fatal RPython error:
   AssertionError".
 
+* Added some missing functions from the 'os' module.
+
 
 Plan:
 
