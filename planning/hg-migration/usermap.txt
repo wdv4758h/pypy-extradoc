@@ -137,3 +137,4 @@ jan=Jan Balster
 lamby=Chris Lamb
 mcherm=Michael Chermside
 zooko=Zooko Wilcox-O Hearn
+danchr=Dan Villiom Podlaski Christiansen <danchr@gmail.com>
