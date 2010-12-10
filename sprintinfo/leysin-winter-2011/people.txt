@@ -12,6 +12,7 @@ available yet from them.
 ==================== ============== =======================
 Armin Rigo           --/23          private
 Antonio Cuni         15/22          ermina
+Michael Foord        16/22 (maybe)  ermina
 ==================== ============== =======================
 
 
