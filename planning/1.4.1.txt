@@ -24,8 +24,12 @@ Differences between releases 1.4 and 1.4.1
 
 Plan:
 
-* Out of line guards (?)
+* Out of line guards (?) -> after the release
 
-* Merge jit-unroll-loops (?)
+* Merge jit-unroll-loops (?) -> after the release
 
-* Migrate to mercurial
+* Migrate to mercurial -> should not be a blocker
+
+* Understand what's going on on Windows with pypy-c translate.py -Ojit
+
+* finish the removal of sys.setrecursionlimit()
