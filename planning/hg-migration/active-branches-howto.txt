@@ -1,7 +1,32 @@
 .. -*- mode: rst -*-
 
+Complete the migration of active branches
+==========================================
+
+Now that the SVN repo has been migrate to mercurial, there are two small steps
+that have to be done manually if you want to continue the devlopment of a
+branch:
+
+  1. import the svn externals
+
+  2. tell mercurial the last revision where you "merged from trunk", to avoid
+     false conflicts during the merge
+
+Import the svn externals
+-------------------------
+
+This is easy. There is already a changeset that contains all the needed
+externals (as subrepo), you just need to merge it into your branch::
+
+    $ hg up the-name-of-your-branch
+
+    $ hg merge -r bf2c629d0071
+
+    $ hg ci -m 'import svn externals into the branch'
+
+
 How to merge existing SVN branches in mercurial
-================================================
+------------------------------------------------
 
 This document applies to branches that:
 
