@@ -456,7 +456,7 @@ set
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula ${\displaystyle \frac{E(v)\notin\mathrm{dom}\left(S\right),\,\left(E(v),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathtt{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathtt{set}\left(E(v),F,E(u)\right)\right\rangle ,E,S^{\prime}}}$
+\begin_inset Formula ${\displaystyle \frac{E(v)\notin\mathrm{dom}\left(S\right),\,\left(E(u),S\right)\overset{\mathrm{lift}}{\Longrightarrow}\left(\mathrm{ops},S^{\prime}\right)}{\mathtt{set}\left(v,F,u\right),E,S\overset{\mathrm{opt}}{\Longrightarrow}\mathrm{ops}::\left\langle \mathtt{set}\left(E(v),F,E(u)\right)\right\rangle ,E,S^{\prime}}}$
 \end_inset
 
 
