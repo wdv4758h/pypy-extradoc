@@ -1,15 +1,35 @@
+@inproceedings{PyPyTracing,
+	address = {Genova, Italy},
+	title = {Tracing the meta-level: {PyPy's} tracing {JIT} compiler},
+	isbn = {978-1-60558-541-3},
+	shorttitle = {Tracing the meta-level},
+	url = {http://portal.acm.org/citation.cfm?id=1565827},
+	doi = {10.1145/1565824.1565827},
+	abstract = {We attempt to apply the technique of Tracing {JIT} Compilers in the context of the {PyPy} project, i.e., to programs that are interpreters for some dynamic languages, including Python. Tracing {JIT} compilers can greatly speed up programs that spend most of their time in loops in which they take similar code paths. However, applying an unmodified tracing {JIT} to a program that is itself a bytecode interpreter results in very limited or no speedup. In this paper we show how to guide tracing {JIT} compilers to greatly improve the speed of bytecode interpreters. One crucial point is to unroll the bytecode dispatch loop, based on two kinds of hints provided by the implementer of the bytecode interpreter. We evaluate our technique by applying it to two {PyPy} interpreters: one is a small example, and the other one is the full Python interpreter.},
+	booktitle = {Proceedings of the 4th workshop on the Implementation, Compilation, Optimization of {Object-Oriented} Languages and Programming Systems},
+	publisher = {{ACM}},
+	author = {Carl Friedrich Bolz and Antonio Cuni and Maciej Fijałkowski and Armin Rigo},
+	year = {2009},
+	pages = {18--25}
+},
 
-@Article{PyPyTracing,
- author = {Carl Friedrich Bolz and Antonio Cuni and Armin Rigo and Maciej Fijalkowski},
- title = {Tracing the Meta-Level: PyPy's Tracing JIT Compiler},
- journal = {\emph{Submitted to} ICOOOLPS'09},
- }
+@inproceedings{antocuni_2009
+ author = {Cuni, Antonio and Ancona, Davide and Rigo, Armin},
+ title = {Faster than C\#: efficient implementation of dynamic languages on .NET},
+ booktitle = {Proceedings of the 4th workshop on the Implementation, Compilation, Optimization of Object-Oriented Languages and Programming Systems},
+ series = {ICOOOLPS '09},
+ year = {2009},
+ isbn = {978-1-60558-541-3},
+ location = {Genova, Italy},
+ pages = {26--33},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/1565824.1565828},
+ doi = {http://doi.acm.org/10.1145/1565824.1565828},
+ acmid = {1565828},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
 
-@Article{antocuni_2009,
- author = {Antonio Cuni and Davide Ancona and Armin Rigo},
- title = {Faster than {C}\#: Efficient Implementation of Dynamic Languages on {.NET}},
- journal = {\emph{Submitted to} ICOOOLPS'09},
- }
 
 @phdthesis{carl_friedrich_bolz_automatic_2008,
     type = {Master Thesis},
