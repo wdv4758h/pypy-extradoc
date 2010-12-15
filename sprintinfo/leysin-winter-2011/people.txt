@@ -14,6 +14,7 @@ Armin Rigo           --/23          private
 Antonio Cuni         15/22          ermina
 Michael Foord        16/22 (maybe)  ermina
 Maciej Fijalkowski   17/22          ermina
+David Schneider      15/23          ermina
 ==================== ============== =======================
 
 
