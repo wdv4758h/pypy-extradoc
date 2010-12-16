@@ -1,20 +1,10 @@
 NEW TASKS
 ---------
 
-- look at assembler-assembler calls again: if the inner function is
-  traced after the outer one, the call is slow.  DONE
-
 - have benchmarks for jit compile time and jit memory usage
 
 - generators are not really fast.  DONE, with the only restriction
   that the code in generators is never inlined into some caller.
-
-- think again about perfect specialization. Check if we loose anything
-  if we turn it off. Another approach to specialization: specialize things
-  in locals even if they're not referenced (that will solve bridges using
-  new local variables, which I think is pretty common). Specialize things
-  that are never changed, but read from (an into which is a loop constant
-  will stay as a getfield).
 
 - kill GUARD_(NO)_EXCEPTION; replace that by LAST_EXC_VALUE to load the
   current exception from the struct in memory, followed by a regular
@@ -74,7 +64,7 @@ nice code at all so far:
 
 - string manipulation: s[n], s[-n], s[i:j], most operations on single
   chars, building a big string with repeated "s += t", "a,b=s.split()",
-  etc.
+  etc.  PARTIALLY DONE with virtual strings
 
 - http://paste.pocoo.org/show/188520/
   this will compile new assembler path for each new type, even though that's
@@ -83,6 +73,11 @@ nice code at all so far:
   while in fact it is not.
 
 - guard_true(frame.is_being_profiled) all over the place
+
+- cProfile should be supported (right now it prevents JITting completely):
+  the calls to get the time should be done with the single assembler
+  instruction "read high-perf time stamp".  The dict lookups done by
+  cProfile should be folded away.
 
 - xxx (find more examples :-)
 
