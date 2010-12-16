@@ -33,7 +33,7 @@ lower.  We did not investigate much so far.
 
 * Fix ctypes (it was not propagating keepalive information from c_void_p).
 
-* Made sys.setrecursionlimit() a no-op that just prints a warning.
+* Made sys.setrecursionlimit() a no-op.
   Instead, we rely purely on the built-in stack overflow detection mechanism,
   which also gives you a RuntimeError -- just not at some exact recursion
   level.
