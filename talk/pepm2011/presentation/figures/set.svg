@@ -217,6 +217,17 @@
          d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
          transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" /></marker><marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-99"
+       style="overflow:visible"><path
+         id="path4114-52"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
          inkscape:connector-curvature="0" /></marker></defs><sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -231,12 +242,12 @@
      id="namedview4"
      showgrid="false"
      inkscape:zoom="2.1195876"
-     inkscape:cx="180.74703"
+     inkscape:cx="121.3015"
      inkscape:cy="162.53716"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g48-3-7-6"
+     inkscape:current-layer="layer3"
      showguides="false"
      inkscape:guide-bbox="true"
      fit-margin-top="0"
@@ -271,11 +282,6 @@
    d="m 109.22568,161.92607 c 0,-20.36 -53.175478,-42.93243 -66.630349,-63.797665 C 31.67285,81.190291 33.399788,34.454854 51.004152,27.173782"
    sodipodi:nodetypes="csc" /><path
    inkscape:connector-curvature="0"
-   id="path98"
-   style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-   d="m 151.47082,87.92607 c 0,-38.9801 -25.13698,-25.916184 -38.84718,-50.876384"
-   sodipodi:nodetypes="cc" /><path
-   inkscape:connector-curvature="0"
    id="path112"
    style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 201.73541,87.92607 c 0,-8.85 7.16795,-40.017288 26.11676,-41.017433"
@@ -298,6 +304,7 @@
      sodipodi:role="line"
      id="tspan28-5">0x02</tspan></text>
 
+
 <g
    id="g5153-4"
    transform="translate(91.031128,-73.715751)"><g
@@ -312,6 +319,7 @@
      x="0"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">T2</tspan></text>
 
+
 </g><g
      id="g24-7"><text
    id="text26-8"
@@ -323,6 +331,7 @@
      y="0"
      x="0 9 18"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x03</tspan></text>
+
 
 </g><g
      id="g5121-8"
@@ -351,6 +360,7 @@
      x="0 9 18"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x04</tspan></text>
 
+
 </g></g></g><text
    xml:space="preserve"
    style="font-size:9.60000038px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
@@ -364,6 +374,7 @@
      x="0.37743226"
      y="-211.7393"
      style="font-size:12.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans">Heap</tspan></text>
+
 
 <g
    id="g5827"><g
@@ -379,6 +390,7 @@
      x="0 10.27705"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">T1</tspan></text>
 
+
 </g><g
      id="g24"><text
    id="text26"
@@ -390,6 +402,7 @@
      y="0"
      x="0 9 18 27"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x02</tspan></text>
+
 
 </g><g
      id="g5121"
@@ -418,6 +431,7 @@
      x="0 9 18 27"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x03</tspan></text>
 
+
 </g></g><text
    transform="scale(1,-1)"
    sodipodi:linespacing="125%"
@@ -431,6 +445,7 @@
      sodipodi:role="line"
      id="tspan28-5-9">0x01</tspan></text>
 
+
 </g><text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
@@ -443,6 +458,7 @@
      id="tspan5343"
      x="157.10603"
      y="102.3784"> </tspan></text>
+
 
 <g
    id="g5791"><g
@@ -459,6 +475,7 @@
      x="0"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">T3</tspan></text>
 
+
 </g><g
      id="g24-7-1"><text
    id="text26-8-6"
@@ -470,6 +487,7 @@
      id="tspan28-59-1"
      sodipodi:role="line"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">...</tspan></text>
+
 
 </g><g
      id="g5121-8-9"
@@ -498,6 +516,7 @@
      x="0 9 18"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x02</tspan></text>
 
+
 </g></g><text
    transform="scale(1,-1)"
    sodipodi:linespacing="125%"
@@ -511,6 +530,7 @@
      sodipodi:role="line"
      id="tspan28-5-2">0x03</tspan></text>
 
+
 </g><flowRoot
    xml:space="preserve"
    id="flowRoot5398"
@@ -522,7 +542,12 @@
        height="107.56809"
        x="-157.57782"
        y="-52.840466" /></flowRegion><flowPara
-     id="flowPara5404" /></flowRoot></g><g
+     id="flowPara5404" /></flowRoot><path
+   inkscape:connector-curvature="0"
+   id="path98-1"
+   style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+   d="m 151.47082,87.926069 c 0,-38.9801 -52.245352,-26.37081 -65.955552,-51.33101"
+   sodipodi:nodetypes="cc" /></g><g
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="bindings"
@@ -544,6 +569,7 @@
      x="20.429684"
      y="15.464007">Bindings</tspan></text>
 
+
 <g
    transform="matrix(1.25,0,0,-1.25,123.95782,280.13814)"
    id="g5433"><text
@@ -558,6 +584,7 @@
      sodipodi:role="line"
      x="-55.199982"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">u</tspan></text>
+
 
 <path
    inkscape:connector-curvature="0"
@@ -577,6 +604,7 @@
      sodipodi:role="line"
      id="tspan20-4-3-2"
      y="-67.377312">w</tspan></text>
+
 
 <path
    sodipodi:nodetypes="cc"
@@ -600,6 +628,7 @@
      x="281.09436"
      y="-8.9075718">set(w, R, u)</tspan></text>
 
+
 </g><g
      inkscape:groupmode="layer"
      id="layer3"
@@ -615,8 +644,8 @@
        inkscape:connector-curvature="0"
        id="path62-4"
        style="fill:none;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:none;marker-mid:none;marker-end:url(#Arrow1Mend)"
-       d="m 373.39476,143.16486 c 0,-28.3375 -47.16463,-78.227672 -78.63919,-79.146102"
-       sodipodi:nodetypes="cc" /><rect
+       d="m 373.39476,143.16486 c 0,-14.16875 -14.60021,-73.620646 -43.0857,-91.844502 C 285.21992,22.474166 208.58623,28.621942 169.73125,50.336852"
+       sodipodi:nodetypes="cac" /><rect
        style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect6596-3"
        width="53.490429"
@@ -635,5 +664,6 @@
      y="0"
      x="0 9 18"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x01</tspan></text>
+
 
 </g></g></svg>

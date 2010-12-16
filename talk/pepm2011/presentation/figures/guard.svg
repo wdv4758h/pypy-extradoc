@@ -195,6 +195,17 @@
          d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" /></marker><marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-65"
+       style="overflow:visible"><path
+         id="path4114-71"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
          inkscape:connector-curvature="0" /></marker></defs><sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -214,7 +225,7 @@
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="g10"
      showguides="false"
      inkscape:guide-bbox="true"
      fit-margin-top="0"
@@ -249,11 +260,6 @@
    d="m 109.22568,161.92607 c 0,-20.36 -53.175478,-42.93243 -66.630349,-63.797665 C 31.67285,81.190291 33.399788,34.454854 51.004152,27.173782"
    sodipodi:nodetypes="csc" /><path
    inkscape:connector-curvature="0"
-   id="path98"
-   style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-   d="m 151.47082,87.92607 c 0,-38.9801 -25.13698,-25.916184 -38.84718,-50.876384"
-   sodipodi:nodetypes="cc" /><path
-   inkscape:connector-curvature="0"
    id="path112"
    style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
    d="m 201.73541,87.92607 c 0,-8.85 7.16795,-40.017288 26.11676,-41.017433"
@@ -277,6 +283,7 @@
      id="tspan28-5">0x02</tspan></text>
 
 
+
 <g
    id="g5153-4"
    transform="translate(91.031128,-73.715751)"><g
@@ -292,6 +299,7 @@
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">T2</tspan></text>
 
 
+
 </g><g
      id="g24-7"><text
    id="text26-8"
@@ -303,6 +311,7 @@
      y="0"
      x="0 9 18"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x03</tspan></text>
+
 
 
 </g><g
@@ -333,6 +342,7 @@
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x04</tspan></text>
 
 
+
 </g></g></g><text
    xml:space="preserve"
    style="font-size:9.60000038px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
@@ -346,6 +356,7 @@
      x="0.37743226"
      y="-211.7393"
      style="font-size:12.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans">Heap</tspan></text>
+
 
 
 <g
@@ -363,6 +374,7 @@
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">T1</tspan></text>
 
 
+
 </g><g
      id="g24"><text
    id="text26"
@@ -374,6 +386,7 @@
      y="0"
      x="0 9 18 27"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x02</tspan></text>
+
 
 
 </g><g
@@ -404,6 +417,7 @@
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x03</tspan></text>
 
 
+
 </g></g><text
    transform="scale(1,-1)"
    sodipodi:linespacing="125%"
@@ -418,6 +432,7 @@
      id="tspan28-5-9">0x01</tspan></text>
 
 
+
 </g><text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
@@ -430,6 +445,7 @@
      id="tspan5343"
      x="157.10603"
      y="102.3784"> </tspan></text>
+
 
 
 <g
@@ -448,6 +464,7 @@
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">T3</tspan></text>
 
 
+
 </g><g
      id="g24-7-1"><text
    id="text26-8-6"
@@ -459,6 +476,7 @@
      id="tspan28-59-1"
      sodipodi:role="line"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">...</tspan></text>
+
 
 
 </g><g
@@ -489,6 +507,7 @@
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Andale Mono;-inkscape-font-specification:Andale Mono">0x02</tspan></text>
 
 
+
 </g></g><text
    transform="scale(1,-1)"
    sodipodi:linespacing="125%"
@@ -503,6 +522,7 @@
      id="tspan28-5-2">0x03</tspan></text>
 
 
+
 </g><flowRoot
    xml:space="preserve"
    id="flowRoot5398"
@@ -514,7 +534,12 @@
        height="107.56809"
        x="-157.57782"
        y="-52.840466" /></flowRegion><flowPara
-     id="flowPara5404" /></flowRoot></g><g
+     id="flowPara5404" /></flowRoot><path
+   inkscape:connector-curvature="0"
+   id="path98-3"
+   style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+   d="m 151.47082,87.926069 c 0,-38.9801 -52.245352,-26.37081 -65.955552,-51.33101"
+   sodipodi:nodetypes="cc" /></g><g
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="bindings"
@@ -537,6 +562,7 @@
      y="15.464007">Bindings</tspan></text>
 
 
+
 <g
    transform="matrix(1.25,0,0,-1.25,123.95782,280.13814)"
    id="g5433"><text
@@ -551,6 +577,7 @@
      sodipodi:role="line"
      x="-55.199982"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">u</tspan></text>
+
 
 
 <path
@@ -571,6 +598,7 @@
      sodipodi:role="line"
      id="tspan20-4-3-2"
      y="-67.377312">w</tspan></text>
+
 
 
 <path
@@ -596,6 +624,7 @@
      y="-8.9075718">guard(u, T1)</tspan></text>
 
 
+
 </g><g
      inkscape:groupmode="layer"
      id="layer3"
@@ -609,7 +638,7 @@
        sodipodi:cy="90.558067"
        sodipodi:rx="27.363813"
        sodipodi:ry="16.984436"
-       d="m 157.57782,90.558067 a 27.363813,16.984436 0 1 1 -54.72763,0 27.363813,16.984436 0 1 1 54.72763,0 z"
+       d="m 157.57782,90.558067 c 0,9.380245 -12.2512,16.984433 -27.36382,16.984433 -15.11261,0 -27.36381,-7.604188 -27.36381,-16.984433 0,-9.380245 12.2512,-16.984436 27.36381,-16.984436 15.11262,0 27.36382,7.604191 27.36382,16.984436 z"
        transform="translate(21.999996,-25.600931)" /></g><g
      transform="translate(-21.999996,25.600931)"
      style="display:inline"
@@ -626,6 +655,7 @@
      x="273.09436"
      id="tspan3549"
      sodipodi:role="line">guard(w, T1)</tspan></text>
+
 
 
 </g><g
