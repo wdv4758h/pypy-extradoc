@@ -15,6 +15,8 @@ Antonio Cuni         15/22          ermina
 Michael Foord        15/22          ermina
 Maciej Fijalkowski   17/22          ermina
 David Schneider      15/23          ermina
+Jacob Hallen         15/21          ermina
+Laura Creighton      15/21          ermina
 ==================== ============== =======================
 
 
@@ -46,8 +48,6 @@ Stephan Diehl        ?              ?
 Alexander Schremmer  ?              ?
 Anders Chrigstroem   ?              ?
 Eric van Riet Paap   ?              ?
-Jacob Hallen         ?              ?
-Laura Creighton      ?              ?
 Holger Krekel        ?              ?
 Guido Wesdorp        ?              ?
 Leonardo Santagada   ?              ?
