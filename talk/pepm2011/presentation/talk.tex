@@ -454,7 +454,7 @@ i3 = int_add(i1, i2)
 guard_class(c, Integer)
 \sout{i4 = get(x, intval)}
 i5 = get(c, intval)
-i6 = int_add(i4, \emph{i3})
+i6 = int_add(\emph{i3}, i5)
 y = new(Integer)
 set(y, intval, i6)
 \end{alltt}
