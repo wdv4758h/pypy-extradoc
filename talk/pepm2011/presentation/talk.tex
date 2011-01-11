@@ -18,6 +18,8 @@
 
 \usepackage[english]{babel}
 \usepackage{listings}
+\usepackage{ulem}
+\usepackage{alltt}
 
 \usepackage[utf8x]{inputenc}
 % or whatever
@@ -118,7 +120,9 @@
 
 \begin{frame}
   \frametitle{Dynamic Languages are Slow: Example}
-  Evaluate \texttt{x = a + b; y = x + c} in an interpreter:
+  \texttt{x = a + b; y = x + c}
+
+  evaluated in an interpreter:
   \pause
   \begin{enumerate}
       \item What's the type of a? \texttt{Integer}
@@ -127,7 +131,7 @@
       \item unbox a
       \item unbox b
       \item compute the sum
-      \item box the result
+      \item box the result as an \texttt{Integer}
       \item store into x
   \pause
       \item What's the type of x? \texttt{Integer}
@@ -136,7 +140,7 @@
       \item unbox x
       \item unbox c
       \item compute the sum
-      \item box the result
+      \item box the result as an \texttt{Integer}
       \item store into y
   \end{enumerate}
 \end{frame}
@@ -147,6 +151,8 @@
       \item Hard to improve in an interpreter
       \item Use a JIT compiler
       \item \textbf{Add a optimization that can deal with heap operations}
+      \pause
+      \item optimize short-lived objects
   \end{itemize}
 \end{frame}
 
@@ -198,6 +204,29 @@ x = new(Integer)
 set(x, intval, i3)
 \end{verbatim}
 \pause
+\begin{verbatim}
+guard_class(x, Integer)
+guard_class(c, Integer)
+i4 = get(x, intval)
+i5 = get(c, intval)
+i6 = int_add(i4, i5)
+y = new(Integer)
+set(y, intval, i6)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Example Trace}
+  Trace of \texttt{x = a + b; y = x + c}:
+\begin{verbatim}
+guard_class(a, Integer)
+guard_class(b, Integer)
+i1 = get(a, intval)
+i2 = get(b, intval)
+i3 = int_add(i1, i2)
+x = new(Integer)
+set(x, intval, i3)
+\end{verbatim}
 \begin{verbatim}
 guard_class(x, Integer)
 guard_class(c, Integer)
@@ -409,6 +438,28 @@ set(y, intval, i6)
   \includegraphics[scale=0.8]{figures/opt_set_dynamic2}
 \end{frame}
 
+\begin{frame}[containsverbatim]
+  \frametitle{Optimized Example Trace}
+  Trace of \texttt{x = a + b; y = x + c}:
+\begin{alltt}
+guard_class(a, Integer)
+guard_class(b, Integer)
+i1 = get(a, intval)
+i2 = get(b, intval)
+i3 = int_add(i1, i2)
+\sout{x = new(Integer)}
+\sout{set(x, intval, i3)}
+\sout{guard_class(x, Integer)}
+guard_class(c, Integer)
+\sout{i4 = get(x, intval)}
+i5 = get(c, intval)
+i6 = int_add(i4, \emph{i3})
+y = new(Integer)
+set(y, intval, i6)
+\end{alltt}
+\end{frame}
+
+
 \begin{frame}
   \frametitle{Benchmark Results}
   \begin{itemize}
@@ -431,7 +482,7 @@ set(y, intval, i6)
 \begin{frame}
   \frametitle{Conclusion}
   \begin{itemize}
-      \item straightforward interpreter can be efficient, given enough technology
+      \item very simple partial-evaluation-based
       \item successful application of partial evaluation
       \item Prolog can benefit from dynamic compilation
   \end{itemize}
