@@ -482,21 +482,23 @@ set(y, intval, i6)
 \begin{frame}
   \frametitle{Conclusion}
   \begin{itemize}
-      \item very simple partial-evaluation-based
-      \item successful application of partial evaluation
-      \item Prolog can benefit from dynamic compilation
+      \item very simple partial-evaluation-based optimization
+      \item can remove a lot of allocations and type checks in practical programs
+      \item no control issues
+      \item all control decisions made by the tracer
+      \item based on observing executing program
   \end{itemize}
-  \pause
-  \begin{block}{Future}
-      \begin{itemize}
-          \item Scale up to larger programs
-          \item need some optimization on the interpreter level – indexing
-          \item investigate memory usage
-      \end{itemize}
-  \end{block}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Questions?}
+  \begin{itemize}
+      \item very simple partial-evaluation-based optimization for tracing JITs of dynamic languages
+      \item can remove a lot of allocations and type checks in practical programs
+      \item no control issues
+      \item all control decisions made by the tracing JIT
+      \item based on observing executing program
+  \end{itemize}
+\end{frame}
 
 \end{document}
-
-
