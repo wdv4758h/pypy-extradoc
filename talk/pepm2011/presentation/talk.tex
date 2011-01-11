@@ -502,4 +502,45 @@ set(y, intval, i6)
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Backup Slides}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What About Correctness?}
+  \begin{itemize}
+      \item We haven't proven correctness yet
+      \item should not be too hard
+      \item lifting needs to be carefully handled
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comparison to Escape Analysis}
+  \begin{itemize}
+      \item Effect very similar to escape analysis
+      \item Escape analysis needs a complex upfront analysis
+      \item our optimization automatically has a lot of context, due to the inlining tracing does
+      \item our optimization can optimize operations on objects even if they escape later
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Comparison to "Dynamic Typing"/Boxing Analysis}
+  \begin{itemize}
+      \item those optimizations work ahead of time
+      \item don't work for many dynamic languages, where the source simply does not contain enough information
+  \end{itemize}
+  
+  \begin{block}{Python Example:}
+  \begin{verbatim}
+def sum(container, initial):
+    result = initial
+    for element in container:
+        result = result + element
+    return result
+  \end{verbatim}
+  \end{block}
+\end{frame}
+
 \end{document}
