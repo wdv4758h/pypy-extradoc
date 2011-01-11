@@ -187,7 +187,7 @@
       \item JIT works by observing and logging what the interpreter does
       \item for interesting, commonly executed code paths
       \item produces a linear list of operations (trace)
-      \item trace is optimized turned into machine code
+      \item trace is optimized and then turned into machine code
   \end{itemize}
 \end{frame}
 
@@ -245,6 +245,7 @@ set(y, intval, i6)
       \item most of the time correspond to loops
       \item everything called in the trace is inlined
       \item can perform good optimizations on the loop
+      \item rarer paths run by the interpreter
   \end{itemize}
 \end{frame}
 
@@ -254,7 +255,7 @@ set(y, intval, i6)
       \item Contribution of our paper
       \item A simple, efficient and effective optimization of heap operations in a trace
       \item using online partial evaluation
-      \item fully implemented an in use in large-scale interpreters
+      \item fully implemented and in use in large-scale interpreters
   \end{itemize}
   \pause
   \begin{block}{Ingredients}
