@@ -11,7 +11,7 @@ available yet from them.
     Name              Arrive/Depart     Accomodation 
 ==================== ============== =======================
 Armin Rigo           --/23          private
-Antonio Cuni         15/22          ermina
+Antonio Cuni         14/22          ermina
 Michael Foord        15/22          ermina
 Maciej Fijalkowski   17/22          ermina
 David Schneider      15/23          ermina
