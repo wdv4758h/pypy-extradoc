@@ -109,3 +109,28 @@ LATER (maybe) TASKS
   pieces of assembler)
 
 - merge tails of loops-and-bridges?
+
+UNROLLING
+---------
+ -  Replace full preamble with short preamble
+
+ -  Move forcings of the failargs of inlined guards into the mini
+    bridges
+
+ -  Reenable string optimizations in the preamble. This could be done
+    currently, but would not make much sense as all string virtuals would
+    be forced at the end of the preamble. Only the virtuals that
+    contains new boxes inserted by the optimization that can possible be
+    reused in the loops needs to be forced.
+
+ -  Loop invariant operations that might raise OverflowError should
+    be moved out of the loop. Currently only the guard checking if there
+    was an OverflowError raise are moved out.
+
+ -  The preamble of the second generated version of a loop 
+    is probably not needed if a short preamble was generated. It's
+    probably a better idea to have the mini bridges jump to the preamble
+    of the first generated version.
+
+ -  Fix bug causing test_mod in test_pypy_c.py to trace the loop every 
+    second iteration
