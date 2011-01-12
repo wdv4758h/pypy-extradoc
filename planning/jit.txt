@@ -85,6 +85,8 @@ nice code at all so far:
 
 - Optimize default __eq__ and __ne__ to not call space.id() on things.
 
+- let super() work with the method cache.
+
 - xxx (find more examples :-)
 
 BACKEND TASKS
