@@ -134,3 +134,13 @@ UNROLLING
 
  -  Fix bug causing test_mod in test_pypy_c.py to trace the loop every 
     second iteration
+
+ -  To remove more of the short preamble a lot more of the optimizer
+    state would have to be saved and inherited by the bridges. However
+    it should be possible to recreate much of this state from the short
+    preamble. To do that, the bridge have to know which of it's input
+    boxes corresponds to which of the output boxes (arguments of the
+    last jump) of the short preamble. One idea of how to store this
+    information is to introduce some VFromStartValue virtuals that
+    would be some pseudo virtuals containing a single input argument
+    box and it's index.
