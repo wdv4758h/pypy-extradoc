@@ -33,6 +33,10 @@ NEW TASKS
 
 - consider how much old style classes in stdlib hurt us.
 
+- support raw mallocs
+
+- support casting from Signed to an opaque pointer
+
 OPTIMIZATIONS
 -------------
 
