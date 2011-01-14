@@ -17,6 +17,7 @@ Maciej Fijalkowski   17/22          ermina
 David Schneider      15/23          ermina
 Jacob Hallen         15/21          ermina
 Laura Creighton      15/21          ermina
+Hakan Ardo           20/23          ermina
 ==================== ============== =======================
 
 
