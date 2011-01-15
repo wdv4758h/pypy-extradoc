@@ -140,8 +140,12 @@ UNROLLING
     probably a better idea to have the mini bridges jump to the preamble
     of the first generated version.
 
- -  Fix bug causing test_mod in test_pypy_c.py to trace the loop every 
-    second iteration
+ -  Replace the list of short preambles with a tree, similar to the
+    tree formed by the full preamble and it's bridges. This should
+    enable specialisaton of loops in more complicated situations, e.g.
+    test_dont_trace_every_iteration in test_basic.py. Currently the
+    second case there become a badly optimized bridge from the
+    preamble to the preamble.
 
  -  To remove more of the short preamble a lot more of the optimizer
     state would have to be saved and inherited by the bridges. However
