@@ -1,0 +1,26 @@
+
+People present
+--------------
+
+* Antonio Cuni
+* Michael Foord
+* David Schneider
+* Laura Creighton
+* Jacob Hallén
+* Armin Rigo
+
+Things we want to do
+--------------------
+
+* skiing DONE (anto, arigo)
+* fast-forward (arigo, laura, jacob, everybody around)
+* arm backend: floating-point operations (david)
+* arm backend: testing with pypy
+* discuss either support trackgcroot on arm,
+  or support shadowstacks in the jit
+* jitypes2 (anto, arigo around)
+* other branches: jit-longlong
+* general testing of external code (michael, anto around)
+* edit getting-started.txt and review a bit the doc
+
+* alpha on fast-forward
