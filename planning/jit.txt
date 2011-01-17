@@ -83,8 +83,6 @@ nice code at all so far:
   instruction "read high-perf time stamp".  The dict lookups done by
   cProfile should be folded away.
 
-- Optimize default __eq__ and __ne__ to not call space.id() on things.
-
 - let super() work with the method cache.
 
 - xxx (find more examples :-)
