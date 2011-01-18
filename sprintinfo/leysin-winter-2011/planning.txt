@@ -8,19 +8,25 @@ People present
 * Laura Creighton
 * Jacob Hallén
 * Armin Rigo
+* Holger Krekel
+* Maciej Fijalkowski
 
 Things we want to do
 --------------------
 
-* skiing DONE (anto, arigo)
-* fast-forward (arigo, laura, jacob, everybody around)
+* more skiing (tomorrow)
+* fast-forward merged, tests to be fixed (everyone, including armin)
+* investigate twisted_tcp regression (fijal, ...)
+* port pypy to pytest 2 (hpk, ...)
 * arm backend: floating-point operations (david)
 * arm backend: testing with pypy
 * discuss either support trackgcroot on arm,
   or support shadowstacks in the jit
-* jitypes2 (anto, arigo around)
+* jitypes2 (anto, fijal)
+* virtualenv is broken
 * other branches: jit-longlong
 * general testing of external code (michael, anto around)
 * edit getting-started.txt and review a bit the doc
+* look into out-of-line guards
 
 * alpha on fast-forward
