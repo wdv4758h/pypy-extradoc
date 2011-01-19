@@ -295,10 +295,12 @@ set(y, intval, i6)
       \begin{itemize}
           \item a slightly simplified model for objects on the heap
           \item operational semantics of trace operations that manipulate the heap
-          \item optimization rules for those operations
+          \item optimization rules for those operations, following the operational semantics
       \end{itemize}
   \end{block}
 \end{frame}
+
+
 
 \begin{frame}
   \frametitle{Heap Model}
@@ -383,7 +385,8 @@ set(y, intval, i6)
       \item static heap contains objects that are allocated within the trace
       \item (as opposed to before the trace is executed)
       \pause
-      \item operations acting on the static heap can be removed
+      \item operations acting on the static heap can be executed
+      \item follows operational semantics
       \item all others need to be residualized
       \item all fairly straightforward
   \end{itemize}
