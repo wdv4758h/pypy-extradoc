@@ -37,6 +37,9 @@ NEW TASKS
 
 - support casting from Signed to an opaque pointer
 
+- geninterp fun :-(  geninterp'ed functions are not JITted,
+  unlike plain app-level functions.  How about we just kill geninterp?
+
 OPTIMIZATIONS
 -------------
 
