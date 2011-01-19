@@ -18,7 +18,7 @@
    sodipodi:docname="opt_set.svg"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><marker
        inkscape:stockid="Arrow1Mend"
        orient="auto"
@@ -260,16 +260,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1169"
+     inkscape:window-height="1170"
      id="namedview4"
      showgrid="false"
      inkscape:zoom="2.1195876"
-     inkscape:cx="153.58117"
+     inkscape:cx="94.135644"
      inkscape:cy="192.75066"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="g48-3-74"
      showguides="false"
      inkscape:guide-bbox="true"
      fit-margin-top="0"
@@ -338,6 +338,7 @@
      x="95.964378"
      y="-111.82005">w</tspan></text>
 
+
 <g
    id="g5153-4"
    transform="translate(91.031128,-73.715751)"><g
@@ -352,6 +353,7 @@
      x="0"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">T2</tspan></text>
 
+
 </g><g
      id="g24-7"><text
    id="text26-8"
@@ -363,6 +365,7 @@
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono"
      x="0"
      y="0"> x</tspan></text>
+
 
 </g><g
      id="g5121-8"
@@ -391,6 +394,7 @@
      x="0"
      y="0">...</tspan></text>
 
+
 </g></g></g><g
    transform="translate(5.7469054e-6,-3.3476562e-6)"
    style="display:inline"
@@ -407,6 +411,7 @@
      x="0 10.27705"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">T1</tspan></text>
 
+
 </g><g
      id="g24"><text
    id="text26"
@@ -418,6 +423,7 @@
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono"
      x="0"
      y="0"> x</tspan></text>
+
 
 </g><g
      id="g5121"
@@ -446,6 +452,7 @@
      x="0"
      y="0"> w</tspan></text>
 
+
 </g></g><text
    transform="scale(1,-1)"
    sodipodi:linespacing="125%"
@@ -459,6 +466,7 @@
      x="4.5355892"
      y="-186.53522">u</tspan></text>
 
+
 </g><text
    xml:space="preserve"
    style="font-size:9.60000038px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
@@ -471,6 +479,7 @@
      id="tspan5343"
      x="125.68484"
      y="-112.09727"> </tspan></text>
+
 
 <g
    style="display:inline"
@@ -488,6 +497,7 @@
      x="59.640648"
      y="-33.675301">x</tspan></text>
 
+
 <text
    xml:space="preserve"
    style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
@@ -500,6 +510,7 @@
      id="tspan8167"
      x="177.86479"
      y="284.46371">?</tspan></text>
+
 
 </g><text
    xml:space="preserve"
@@ -515,6 +526,7 @@
      y="-43.739048"
      style="font-size:12.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans">Dynamic Heap</tspan></text>
 
+
 <text
    xml:space="preserve"
    style="font-size:9.60000038px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans;-inkscape-font-specification:Sans"
@@ -528,6 +540,7 @@
      x="0.37743798"
      y="-43.739048"
      style="font-size:12.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans">Dynamic Heap</tspan></text>
+
 
 <path
    style="fill:none;stroke:#acacac;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
@@ -547,6 +560,7 @@
      x="0.37743399"
      y="-211.7393"
      style="font-size:12.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans">Static Heap</tspan></text>
+
 
 </g><g
      inkscape:groupmode="layer"
@@ -572,6 +586,7 @@
 
 
 
+
 <g
    transform="matrix(1.25,0,0,-1.25,123.95782,280.13814)"
    id="g5433"><text
@@ -586,6 +601,7 @@
      sodipodi:role="line"
      x="-55.199982"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">u</tspan></text>
+
 
 
 
@@ -610,6 +626,7 @@
 
 
 
+
 <path
    sodipodi:nodetypes="cc"
    style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:3, 1;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -630,6 +647,7 @@
      sodipodi:role="line"
      x="-55.199982"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">x</tspan></text>
+
 
 <path
    inkscape:connector-curvature="0"
@@ -652,6 +670,7 @@
      x="-55.199982"
      style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">v</tspan></text>
 
+
 <path
    inkscape:connector-curvature="0"
    id="path5406-1"
@@ -673,6 +692,7 @@
      id="tspan5758"
      x="303.09436"
      y="-8.9075718">set(u,R,v)</tspan></text>
+
 
 
 
@@ -703,4 +723,24 @@
        id="path92-7"
        style="color:#000000;fill:none;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        d="m 257.5169,77.607156 c 0.47178,25.921784 -27.94996,51.873864 -38.93969,79.275274 -10.98974,27.40143 -14.79696,72.9869 -16.85279,98.60088"
-       sodipodi:nodetypes="czc" /></g></svg>
+       sodipodi:nodetypes="czc" /><rect
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4154"
+       width="32.553501"
+       height="13.210117"
+       x="220.32588"
+       y="83.481216"
+       transform="translate(21.999996,-25.600931)" /><g
+       style="display:inline"
+       transform="matrix(1.25,0,0,-1.25,70.29215,188.55861)"
+       id="g48-3-74"><text
+         sodipodi:linespacing="125%"
+         id="text50-5-4"
+         transform="matrix(1,0,0,-1,138,94.4)"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Andale Mono;-inkscape-font-specification:Andale Mono"><tspan
+           id="tspan52-7-0"
+           sodipodi:role="line"
+           style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Andale Mono;-inkscape-font-specification:Andale Mono"
+           x="0"
+           y="0"> x</tspan></text>
+</g></g></svg>
