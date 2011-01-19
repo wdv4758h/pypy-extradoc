@@ -193,6 +193,17 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{The Advantages of Tracing JITs}
+  \begin{itemize}
+      \item Traces are interesting linear pieces of code
+      \item most of the time correspond to loops
+      \item everything called in the trace is inlined
+      \item can perform good optimizations on the trace
+      \item rarer paths run by the interpreter
+  \end{itemize}
+\end{frame}
+
 \begin{frame}[containsverbatim]
   \frametitle{Example Trace}
   Trace of \texttt{x = a + b; y = x + c}:
@@ -261,17 +272,6 @@ i6 = int_add(\emph{i3}, i5)
 y = new(Integer)
 set(y, intval, i6)
 \end{alltt}
-\end{frame}
-
-\begin{frame}
-  \frametitle{The Advantages of Tracing JITs}
-  \begin{itemize}
-      \item Traces are interesting linear pieces of code
-      \item most of the time correspond to loops
-      \item everything called in the trace is inlined
-      \item can perform good optimizations on the loop
-      \item rarer paths run by the interpreter
-  \end{itemize}
 \end{frame}
 
 \section{Proposed Optimization}
@@ -452,6 +452,8 @@ set(y, intval, i6)
       \item lose track of the static object because of possibility of aliasing
       \item need to \emph{lift} the static object
       \item lifting produces operations that recreate the static object
+      \pause
+      \item needs to be careful due to recursive structures
   \end{itemize}
 \end{frame}
 
@@ -555,7 +557,7 @@ set(y, intval, i6)
       \item those optimizations work ahead of time
       \item don't work for many dynamic languages, where the source simply does not contain enough information
   \end{itemize}
-  
+  \pause  
   \begin{block}{Python Example:}
   \begin{verbatim}
 def sum(container, initial):
