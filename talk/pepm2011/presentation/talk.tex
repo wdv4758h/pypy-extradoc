@@ -19,9 +19,14 @@
 \usepackage[english]{babel}
 \usepackage{listings}
 \usepackage{ulem}
+\usepackage{color}
 \usepackage{alltt}
 
 \usepackage[utf8x]{inputenc}
+
+
+\newcommand\redsout[1]{{\color{red}\sout{\hbox{\color{black}{#1}}}}}
+
 % or whatever
 
 % Or whatever. Note that the encoding and the font should match. If T1
@@ -143,7 +148,7 @@
   \frametitle{What to do?}
   \begin{itemize}
       \item Use a JIT compiler
-      \item \textbf{Add a optimization that can deal with heap operations}
+      \item \textbf{Add an optimization that can deal with heap operations}
       \pause
       \item optimize short-lived objects
       \item remove some of the redundancy
@@ -187,8 +192,10 @@
   \begin{itemize}
       \item VM contains both an interpreter and the tracing JIT compiler
       \item JIT works by observing and logging what the interpreter does
-      \item for interesting, commonly executed code paths
-      \item produces a linear list of operations (trace)
+      \begin{itemize}
+          \item for interesting, commonly executed code paths
+          \item produces a linear list of operations (trace)
+      \end{itemize}
       \item trace is optimized and then turned into machine code
   \end{itemize}
 \end{frame}
@@ -260,13 +267,13 @@ guard_class(b, Integer)
 i1 = get(a, intval)
 i2 = get(b, intval)
 i3 = int_add(i1, i2)
-\sout{x = new(Integer)}
-\sout{set(x, intval, i3)}
+\redsout{x = new(Integer)}
+\redsout{set(x, intval, i3)}
 \end{alltt}
 \begin{alltt}
-\sout{guard_class(x, Integer)}
+\redsout{guard_class(x, Integer)}
 guard_class(c, Integer)
-\sout{i4 = get(x, intval)}
+\redsout{i4 = get(x, intval)}
 i5 = get(c, intval)
 i6 = int_add(\emph{i3}, i5)
 y = new(Integer)
@@ -277,10 +284,9 @@ set(y, intval, i6)
 \section{Proposed Optimization}
 
 \begin{frame}
-  \frametitle{Optimizing the Heap Operations in a Trace}
+  \frametitle{Contribution of our Paper}
   \begin{itemize}
-      \item Contribution of our paper
-      \item A simple, efficient and effective optimization of heap operations in a trace
+      \item a simple, efficient and effective optimization of heap operations in a trace
       \item using online partial evaluation
       \item fully implemented and in use in large-scale interpreters
   \end{itemize}
@@ -557,7 +563,6 @@ set(y, intval, i6)
       \item those optimizations work ahead of time
       \item don't work for many dynamic languages, where the source simply does not contain enough information
   \end{itemize}
-  \pause  
   \begin{block}{Python Example:}
   \begin{verbatim}
 def sum(container, initial):
