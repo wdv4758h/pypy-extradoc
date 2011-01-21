@@ -498,25 +498,42 @@ set(y, intval, i6)
   \includegraphics[scale=0.8]{figures/opt_set_dynamic2}
 \end{frame}
 
-\begin{frame}[containsverbatim]
-  \frametitle{Optimized Example Trace}
-  Trace of \texttt{x = a + b; y = x + c}:
-\begin{alltt}
-guard_class(a, Integer)
-guard_class(b, Integer)
-i1 = get(a, intval)
-i2 = get(b, intval)
-i3 = int_add(i1, i2)
-\sout{x = new(Integer)}
-\sout{set(x, intval, i3)}
-\sout{guard_class(x, Integer)}
-guard_class(c, Integer)
-\sout{i4 = get(x, intval)}
-i5 = get(c, intval)
-i6 = int_add(\emph{i3}, i5)
-y = new(Integer)
-set(y, intval, i6)
-\end{alltt}
+\begin{frame}[plain]
+    \frametitle{Optimizing the Example Trace}
+\only<1>
+{\includegraphics[scale=0.8]{figures/ex00}}
+\only<2>
+{\includegraphics[scale=0.8]{figures/ex01}}
+\only<3>
+{\includegraphics[scale=0.8]{figures/ex02}}
+\only<4>
+{\includegraphics[scale=0.8]{figures/ex03}}
+\only<5>
+{\includegraphics[scale=0.8]{figures/ex04}}
+\only<6>
+{\includegraphics[scale=0.8]{figures/ex05}}
+\only<7>
+{\includegraphics[scale=0.8]{figures/ex06}}
+\only<8>
+{\includegraphics[scale=0.8]{figures/ex07}}
+\only<9>
+{\includegraphics[scale=0.8]{figures/ex08}}
+\only<10>
+{\includegraphics[scale=0.8]{figures/ex09}}
+\only<11>
+{\includegraphics[scale=0.8]{figures/ex10}}
+\only<12>
+{\includegraphics[scale=0.8]{figures/ex11}}
+\only<13>
+{\includegraphics[scale=0.8]{figures/ex12}}
+\only<14>
+{\includegraphics[scale=0.8]{figures/ex13}}
+\only<15>
+{\includegraphics[scale=0.8]{figures/ex14}}
+\only<16>
+{\includegraphics[scale=0.8]{figures/ex15}}
+\only<17>
+{\includegraphics[scale=0.8]{figures/ex16}}
 \end{frame}
 
 \section{Benchmarks}
@@ -532,11 +549,16 @@ set(y, intval, i6)
           \item 93\% of all \texttt{guard} operations
       \pause
       \item Timings improve by a factor between 1.1 and 6.95
-      \item outperforming standard Python on all benchmarks but one
-      \pause
-      \item more details in the paper
+      \item outperforming standard Python on all benchmarks but two
       \end{itemize}
   \end{itemize}
+\end{frame}
+
+\section{Benchmarks}
+
+\begin{frame}
+  \frametitle{Benchmark}
+  \includegraphics[scale=0.4]{figures/benchmarks}
 \end{frame}
 
 \begin{frame}
