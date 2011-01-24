@@ -158,7 +158,7 @@
       \item \textbf{Add an optimization that can deal with heap operations}
       \pause
       \item optimize short-lived objects
-      \item remove some of the redundancy
+      \item remove some of the redundant type checks
   \end{itemize}
 \end{frame}
 
@@ -262,6 +262,7 @@ i5 = get(c, intval)
 i6 = int_add(i4, i5)
 y = new(Integer)
 set(y, intval, i6)
+return(y)
 \end{verbatim}
 \end{frame}
 
@@ -285,6 +286,7 @@ i5 = get(c, intval)
 i6 = int_add(\emph{i3}, i5)
 y = new(Integer)
 set(y, intval, i6)
+return(y)
 \end{alltt}
 \end{frame}
 
@@ -498,6 +500,24 @@ set(y, intval, i6)
   \includegraphics[scale=0.8]{figures/opt_set_dynamic2}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Properties of the Optimization}
+  \begin{itemize}
+      \item output trace is never longer than input trace
+      \item runtime linear in the length of the trace
+  \end{itemize}
+  \pause
+  \begin{block}{Implementation}
+      \begin{itemize}
+          \item about 400 lines of code
+          \item some added complexity over presentation
+          \item objects with arbitrary numbers of fields
+          \item array support
+      \end{itemize}
+  \end{block}
+\end{frame}
+
+
 \begin{frame}[plain]
     \frametitle{Optimizing the Example Trace}
 \only<1>
@@ -542,19 +562,21 @@ set(y, intval, i6)
   \frametitle{Benchmark Results}
   \begin{itemize}
       \item to evaluate the optimization we used PyPy's Python interpreter with real-world programs
+      \begin{itemize}
+          \item interpreter is about 30'000 lines of code
+      \end{itemize}
+      \pause
       \item optimization can remove
       \begin{itemize}
           \item 70\% of all \texttt{new} operations
           \item 14\% of all \texttt{get/set} operations
           \item 93\% of all \texttt{guard} operations
+      \end{itemize}
       \pause
       \item Timings improve by a factor between 1.1 and 6.95
       \item outperforming standard Python on all benchmarks but two
-      \end{itemize}
   \end{itemize}
 \end{frame}
-
-\section{Benchmarks}
 
 \begin{frame}
   \frametitle{Benchmark}
