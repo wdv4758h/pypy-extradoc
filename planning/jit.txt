@@ -3,9 +3,6 @@ NEW TASKS
 
 - have benchmarks for jit compile time and jit memory usage
   
-- generators are not really fast.  DONE, with the only restriction
-  that the code in generators is never inlined into some caller.
-
 - kill GUARD_(NO)_EXCEPTION; replace that by LAST_EXC_VALUE to load the
   current exception from the struct in memory, followed by a regular
   GUARD_CLASS.  (Armin: Look like a simplification, but it's a bit messy too)
