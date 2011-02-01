@@ -24,6 +24,7 @@ NEW TASKS
   every second instruction.
 
   there is also manipulating of valuestackdepth and such.
+  XXX find precise python code
 
 - consider how much old style classes in stdlib hurt us.
 
