@@ -2,7 +2,7 @@ NEW TASKS
 ---------
 
 - have benchmarks for jit compile time and jit memory usage
-
+  
 - generators are not really fast.  DONE, with the only restriction
   that the code in generators is never inlined into some caller.
 
@@ -16,9 +16,6 @@ NEW TASKS
 
 - maybe refactor a bit the x86 backend, particularly the register
   allocation
-
-- work more on visualization tools for traces or any profiler (unusable outside
-  the core group)
 
 - think about having different bytecode for "xyz %s" % stuff when left side
   is a compile time constant (and call unrolled version of string formatting
