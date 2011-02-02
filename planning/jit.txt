@@ -2,6 +2,9 @@ INVESTIGATIONS
 --------------
 
 * 25% slowdown on pyflate fast (Jan 29)
+  - pyflate_fast uses python longs on 32bit
+  - some places don't create SmallLongs even when they should (like conts)
+  - we end up with comparison of Longs and SmallLongs
 
 * 10% slowdown on spitfire (Feb 01)
 
