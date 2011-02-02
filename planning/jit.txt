@@ -1,3 +1,10 @@
+INVESTIGATIONS
+--------------
+
+* 25% slowdown on pyflate fast (Jan 29)
+
+* 10% slowdown on spitfire (Feb 01)
+
 NEW TASKS
 ---------
 
@@ -40,7 +47,7 @@ OPTIMIZATIONS
 
 Things we can do mostly by editing optimizeopt.py:
 
-- getfields which result is never used never get removed (probably cause -
+- getfields which result is never used never get removed (probable cause -
   they used to be as livevars in removed guards). also getfields which result
   is only used as a livevar in a guard should be removed and encoded in
   the guard recovert code (only if we are sure that the stored field cannot
@@ -79,7 +86,7 @@ nice code at all so far:
 - cProfile should be supported (right now it prevents JITting completely):
   the calls to get the time should be done with the single assembler
   instruction "read high-perf time stamp".  The dict lookups done by
-  cProfile should be folded away.
+  cProfile should be folded away. IN PROGRESS
 
 - let super() work with the method cache.
 
