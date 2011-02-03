@@ -1,0 +1,20 @@
+
+Authors: Armin Rigo, Maciej Fijalkowski
+# XXX get bios from laura
+
+The PyPy project has gathered recently a lot of attention for its progress
+on speeding up the Python language. In this talk we would like to discuss
+what the PyPy project achieved particularly in the past two years in the area
+of dynamic language interpreters:
+
+* most Python benchmarks run much faster than with CPython or Psyco
+* the realworld PyPy compiler toolchain itself (200 KLocs) runs twice as fast
+* 64bit and ARM are now supported
+* full compatibility to CPython (much deeper and more than Jython/IronPython)
+* fully pluggable Garbage Collection
+* ctypes and new "cpyext" layer to integrate existing CPython C Extensions
+* experimental super-fast JIT-compilation of calls from Python to C++ libraries
+
+We'll also see to briefly highlight project backgrounds like number of
+active developers and funding background to round up the view
+on the project.
