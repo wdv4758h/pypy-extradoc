@@ -14,6 +14,7 @@ past two years in the area of dynamic (Just-in-Time) interpreters:
 * full compatibility to CPython (more than Jython/IronPython)
 * full (and JIT-ed) ctypes support to call C libraries from Python
 * fully pluggable Garbage Collection
+* supports Stackless Python (in-progress)
 * new "cpyext" layer to integrate existing CPython C extensions
 * experimental super-fast JIT-compilation of calls to C++ libraries
 
