@@ -15,8 +15,9 @@ past two years in the area of dynamic (Just-in-Time) interpreters:
 * full (and JIT-ed) ctypes support to call C libraries from Python
 * fully pluggable Garbage Collection
 * new "cpyext" layer to integrate existing CPython C extensions
-* (also, future work: SWIG and/or Cython compatibility)
 * experimental super-fast JIT-compilation of calls to C++ libraries
 
-We will also briefly highlight who the active developers are and
-their funding background.
+We want to reserve time for discussing potential future work like SWIG
+and/or Cython compatibility and other areas brought up by the audience.
+We will also briefly highlight who the active developers are and their
+funding background.
