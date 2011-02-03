@@ -12,11 +12,11 @@ past two years in the area of dynamic (Just-in-Time) interpreters:
 * the real-world PyPy compiler toolchain itself (200 KLocs) runs twice as fast
 * supports 64bit and (in-progress) ARM
 * full compatibility to CPython (more than Jython/IronPython)
-* full (and fast) ctypes support to call C libraries from Python
-* new "cpyext" layer to integrate existing CPython C extensions
+* full (and JIT-ed) ctypes support to call C libraries from Python
 * fully pluggable Garbage Collection
+* new "cpyext" layer to integrate existing CPython C extensions
+* (also, future work: SWIG and/or Cython compatibility)
 * experimental super-fast JIT-compilation of calls to C++ libraries
-* future work now possible: SWIG and Cython compatibility
 
 We will also briefly highlight who the active developers are and
 their funding background.
