@@ -1,0 +1,23 @@
+
+Authors: Armin Rigo, Maciej Fijalkowski
+# XXX get bios from laura
+
+The PyPy project has gathered recently a lot of attention for its
+progress on speeding up the Python language -- it is the fastest,
+most compatible and stable alternative Python interpreter:
+
+* most Python benchmarks run much faster than with CPython or Psyco
+* the real-world PyPy compiler toolchain itself (200 KLocs) runs twice as fast
+* full compatibility to CPython (more than Jython/IronPython)
+
+In this talk we will focus on how we reached this goal:
+
+* "RPython", a subset of Python that our toolchain analyzes and compiles to C
+* our Python interpreter is written in RPython
+* pluggable GCs, also written in RPython
+* JIT support automatically generated from the interpreter source code
+* the JIT itself is also written in RPython
+
+There are many interesting details that can be explored further;
+we will focus on the points the audiance is most interested in.
+
