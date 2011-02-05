@@ -1,4 +1,4 @@
-XXX Need title here
+PyPy Mozilla Talk:  Monday March 7th, 2011 at 2:30
 Speakers: Armin Rigo, Maciej Fijalkowski
 
 Bios:
