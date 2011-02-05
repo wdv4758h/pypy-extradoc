@@ -1,5 +1,5 @@
 
-BayPIGgies Talk at Yelp: Speakers: Armin Rigo, Maciej Fijalkowski
+BayPIGgies Talk at Yelp: Speaker: Armin Rigo
 
 Bio:
 Armin Rigo is a researcher at Heinrich-Heine-Universität in Düsseldorf,
