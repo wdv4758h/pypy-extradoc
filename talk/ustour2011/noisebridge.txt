@@ -1,0 +1,8 @@
+*PyPy mini-sprint*
+
+Programming Language topic: this is a "sprint" (intensive
+collaborative work) on PyPy, the Python interpreter written in Python.
+ Everybody is welcome.  The goal is to show off and work on whatever
+parts of PyPy people are interested in: the Just-in-Time Compiler,
+Garbage Collectors, Stackless Python, or the Python 2.7 language
+itself.
