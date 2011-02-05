@@ -31,8 +31,12 @@ Abstract:
 The PyPy project has recently gathered a lot of attention for its
 progress in speeding up the Python language -- it is the fastest,
 most compatible and most stable 'alternative´ Python interpreter.  No
-longer merely a research curiosity, PyPy is now suitablefor production
-use.  We will discuss what the PyPy project has achieved, with a particular
+longer merely a research curiosity, PyPy is now suitable for production
+use.  Since 2009, the PyPy project has received funding from the Eurostars 
+Eureka program, which targets small European firms which produce research.
+(See: http://www.eurostars-eureka.eu/)
+
+We will discuss what the PyPy project has achieved, with a particular
 focus on the past two years' work  in the area of dynamic (Just-in-Time) 
 interpreters:
 
@@ -48,4 +52,5 @@ interpreters:
 We want to reserve time for discussing potential future work like SWIG
 and/or Cython compatibility and other areas brought up by the audience.
 We will also briefly highlight who the active developers are and their
-funding background.
+funding background.  The PyPy project has a blog which you can read at
+http://morepypy.blogspot.com/
