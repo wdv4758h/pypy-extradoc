@@ -44,8 +44,7 @@ Using a Tracing JIT Compiler}
 
 \date{
 %\includegraphics[scale=0.25]{figures/hpi_logo_kl.jpg}\\
-%IBM Watson Research Center, February 9th, 2011
-Microsoft Research, January 31st, 2011
+IBM Watson Research Center, February 8th, 2011
 }
 
 %\pgfdeclareimage[height=0.5cm]{pypy-logo}{image/py-web.png}
@@ -384,15 +383,16 @@ Microsoft Research, January 31st, 2011
 
 \begin{frame}
   \frametitle{How do Interpreters Meet the Requirements?}
-  \begin{enumerate}
-      \item \alert{control flow slowed by bytecode or AST dispatch overhead}
-      \item \alert{late binding works but slow}
-      \item \alert{dispatching works but slow}
-      \item \alert{no special dependencies support}
-      \item \alert{everything is boxed}
-      \item \alert{reified frames are easy but slow}
-%      \item \alert{access to native libraries easy but slow}
-  \end{enumerate}
+  \includegraphics[scale=0.6]{figures/output1.pdf}
+%  \begin{enumerate}
+%      \item \alert{control flow slowed by bytecode or AST dispatch overhead}
+%      \item \alert{late binding works but slow}
+%      \item \alert{dispatching works but slow}
+%      \item \alert{no special dependencies support}
+%      \item \alert{everything is boxed}
+%      \item \alert{reified frames are easy but slow}
+%%      \item \alert{access to native libraries easy but slow}
+%  \end{enumerate}
 \end{frame}
 
 
@@ -422,15 +422,16 @@ Microsoft Research, January 31st, 2011
 
 \begin{frame}
   \frametitle{How do Static Compilers Meet the Requirements?}
-  \begin{enumerate}
-      \item control flow works well
-      \item \alert{late binding not improved}
-      \item \alert{dispatching not improved}
-      \item \alert{dependencies not improved}
-      \item \alert{everything is boxed}
-      \item \alert{reified frames often not supported}
-%      \item direct access to native libraries
-  \end{enumerate}
+  \includegraphics[scale=0.6]{figures/output2.pdf}
+%  \begin{enumerate}
+%      \item control flow works well
+%      \item \alert{late binding not improved}
+%      \item \alert{dispatching not improved}
+%      \item \alert{dependencies not improved}
+%      \item \alert{everything is boxed}
+%      \item \alert{reified frames often not supported}
+%%      \item direct access to native libraries
+%  \end{enumerate}
 \end{frame}
 
 
@@ -513,15 +514,16 @@ Microsoft Research, January 31st, 2011
 
 \begin{frame}
   \frametitle{How do Method-Based JIT Compilers Meet the Requirements?}
-  \begin{enumerate}
-      \item control flow works well
-      \item late binding can be handled
-      \item dispatching can be handled
-      \item \alert{dependencies not necessarily improved}
-      \item boxing hard to support
-      \item \alert{reified frames hard to support}
-%      \item \alert{access to native libraries not improved}
-  \end{enumerate}
+  \includegraphics[scale=0.6]{figures/output3.pdf}
+%  \begin{enumerate}
+%      \item control flow works well
+%      \item late binding can be handled
+%      \item dispatching can be handled
+%      \item \alert{dependencies not necessarily improved}
+%      \item boxing hard to support
+%      \item \alert{reified frames hard to support}
+%%      \item \alert{access to native libraries not improved}
+%  \end{enumerate}
 \end{frame}
 
 
@@ -671,16 +673,17 @@ Microsoft Research, January 31st, 2011
 
 \begin{frame}
   \frametitle{How do Tracing JITs Meet the Requirements?}
-  \begin{enumerate}
-      \item control flow works rather well
-      \item late binding can be handled
-      \item dispatching can be handled
-      \item dependencies improved by path splitting
-      \item unboxing optimization much simpler
-      \item reified frames can be implemented \\
-      by falling back to the interpreter
-%      \item \alert{access to native libraries not improved}
-  \end{enumerate}
+  \includegraphics[scale=0.6]{figures/output4.pdf}
+%  \begin{enumerate}
+%      \item control flow works rather well
+%      \item late binding can be handled
+%      \item dispatching can be handled
+%      \item dependencies improved by path splitting
+%      \item unboxing optimization much simpler
+%      \item reified frames can be implemented \\
+%      by falling back to the interpreter
+%%      \item \alert{access to native libraries not improved}
+%  \end{enumerate}
 \end{frame}
 
 
@@ -770,15 +773,16 @@ Microsoft Research, January 31st, 2011
 
 \begin{frame}
   \frametitle{How do OO VMs Meet the Requirements?}
-  \begin{enumerate}
-      \item control flow works well
-      \item late binding can be handled with a lot of effort
-      \item dispatching can be handled with a lot of effort
-      \item \alert{dependencies not improved}
-      \item \alert{boxing not necessarily improved}
-      \item \alert{reified frames are inefficient}
-%      \item access to native libraries not improved, but VM libraries help
-  \end{enumerate}
+  \includegraphics[scale=0.6]{figures/output5.pdf}
+%  \begin{enumerate}
+%      \item control flow works well
+%      \item late binding can be handled with a lot of effort
+%      \item dispatching can be handled with a lot of effort
+%      \item \alert{dependencies not improved}
+%      \item \alert{boxing not necessarily improved}
+%      \item \alert{reified frames are inefficient}
+%%      \item access to native libraries not improved, but VM libraries help
+%  \end{enumerate}
 \end{frame}
 
 \section{PyPy's Approach to VM Construction}
