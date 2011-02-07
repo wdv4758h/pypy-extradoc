@@ -24,8 +24,8 @@
 \usepackage{wrapfig}
 \usepackage{url}
 \usepackage{alltt}
-\usepackage{tikz}
-\usetikzlibrary{arrows,positioning,shadows,shapes,calc,backgrounds,fit}
+
+\newcommand\redsout[1]{{\color{red}\sout{\hbox{\color{black}{#1}}}}}
 
 %\input{pygmentheader.tex}
 
@@ -638,6 +638,26 @@ IBM Watson Research Center, February 8th, 2011
   \end{itemize}
 \end{frame}
 
+\begin{frame}[containsverbatim]
+  \frametitle{Example: Dispatching in a Tracing JIT}
+\begin{verbatim}
+x = ADD(a : Integer, b : Integer)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Example: Dispatching in a Tracing JIT}
+\begin{verbatim}
+guard_class(a, Integer)
+guard_class(b, Integer)
+u_a = unbox(a)
+u_b = unbox(b)
+u_x = int_add(a, b)
+x = new(Integer, u_x)
+\end{verbatim}
+\end{frame}
+
+
 
 \begin{frame}
   \frametitle{Dispatching Dependencies in a Tracing JIT}
@@ -650,6 +670,44 @@ IBM Watson Research Center, February 8th, 2011
   \end{itemize}
 \end{frame}
 
+\begin{frame}[containsverbatim]
+  \frametitle{Example: Dependencies in a Tracing JIT}
+\begin{alltt}
+guard_class(a, Integer)
+guard_class(b, Integer)
+u_a = unbox(a)
+u_b = unbox(b)
+u_x = int_add(u_a, u_b)
+x = new(Integer, u_x)
+
+guard_class(x, Integer)
+guard_class(c, Integer)
+u_x2 = unbox(x)
+u_c = unbox(c)
+u_r = int_add(u_x2, u_c)
+r = new(Integer, u_r)
+\end{alltt}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Example: Dependencies in a Tracing JIT}
+\begin{alltt}
+guard_class(a, Integer)
+guard_class(b, Integer)
+u_a = unbox(a)
+u_b = unbox(b)
+u_x = int_add(u_a, u_b)
+x = new(Integer, u_x)
+
+\redsout{guard_class(x, Integer)}
+guard_class(c, Integer)
+u_x2 = unbox(x)
+u_c = unbox(c)
+u_r = int_add(u_x2, u_c)
+r = new(Integer, u_r)
+\end{alltt}
+\end{frame}
+
 \begin{frame}
   \frametitle{Boxing Optimizations in a Tracing JIT}
   \begin{itemize}
@@ -659,6 +717,41 @@ IBM Watson Research Center, February 8th, 2011
   \end{itemize}
 \end{frame}
 
+\begin{frame}[containsverbatim]
+  \frametitle{Example: Boxing in a Tracing JIT}
+\begin{alltt}
+guard_class(a, Integer)
+guard_class(b, Integer)
+u_a = unbox(a)
+u_b = unbox(b)
+u_x = int_add(u_a, u_b)
+x = new(Integer, u_x)
+
+guard_class(c, Integer)
+u_x2 = unbox(x)
+u_c = unbox(c)
+u_r = int_add(u_x2, u_c)
+r = new(Integer, u_r)
+\end{alltt}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Example: Boxing in a Tracing JIT}
+\begin{alltt}
+guard_class(a, Integer)
+guard_class(b, Integer)
+u_a = unbox(a)
+u_b = unbox(b)
+u_x = int_add(u_a, u_b)
+\redsout{x = new(Integer, u_x)}
+
+guard_class(c, Integer)
+\redsout{u_x2 = unbox(x)}
+u_c = unbox(c)
+u_r = int_add(u_x, u_c)
+r = new(Integer, u_r)
+\end{alltt}
+\end{frame}
 
 \begin{frame}
     \frametitle{Advantages of Tracing JITs}
