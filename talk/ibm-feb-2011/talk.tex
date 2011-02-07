@@ -493,23 +493,32 @@ IBM Watson Research Center, February 8th, 2011
 
 \begin{frame}[containsverbatim, plain]
   \frametitle{Method-Based JITs and Dispatching Dependencies}
-\begin{verbatim}
-    if isinstance(a, Integer):
-        if isinstance(b, Integer):
-            x = Integer(<perform int addition>)
-        else:
-            x = Float(<perform float addition>)
-    else:
-        x = Float(<perform float addition>)
-    # x can be Float or Integer here
-    if isinstance(x, Integer):
-        if isinstance(c, Integer):
-            r = Integer(<perform int addition>)
-        else:
-            r = Float(<perform float addition>)
-    else:
-        r = Float(<perform float addition>)
-\end{verbatim}
+  \includegraphics[scale=0.5]{figures/add1.pdf}
+%\begin{verbatim}
+%    if (isinstance(a, Integer) and
+%            isinstance(b, Integer)):
+%        x = Integer(<perform int addition>)
+%    else:
+%        x = Float(<perform float addition>)
+%
+%    # x can be Float or Integer here
+%
+%    if (isinstance(x, Integer) and
+%            isinstance(c, Integer)):
+%        r = Integer(<perform int addition>)
+%    else:
+%        r = Float(<perform float addition>)
+%\end{verbatim}
+\end{frame}
+
+\begin{frame}[containsverbatim, plain]
+  \frametitle{Method-Based JITs and Dispatching Dependencies}
+  \includegraphics[scale=0.39]{figures/add2.pdf}
+\end{frame}
+
+\begin{frame}[containsverbatim, plain]
+  \frametitle{Method-Based JITs and Dispatching Dependencies}
+  \includegraphics[scale=0.41]{figures/add_fast.pdf}
 \end{frame}
 
 \begin{frame}

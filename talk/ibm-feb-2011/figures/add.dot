@@ -21,8 +21,8 @@ digraph G {
     b_int -> long [label="Long"];
     b_int -> user [label="User defined"];
 
-    b_float -> float [label="Integer"];
-    b_long -> long [label="Integer"];
+    b_float -> float [label="Float"];
+    b_long -> long [label="Long"];
 
     int [label="Integer"];
     float [label="Float"];
