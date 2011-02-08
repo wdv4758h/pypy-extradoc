@@ -1,0 +1,25 @@
+Agenda:
+
+Wednesday March 2, 4:15 p.m.  Armin gives talk at Stanford.
+http://www.stanford.edu/class/ee380/winter-schedule-20102011.html
+open to the public.
+
+Thursday March 3, 6:00 p.m.  General talk at Yelp, 706 Mission St 9th Floor,
+San Francisco CA 94103 
+open to the public.  See yelp-abstract.txt
+
+Saturday and Sunday March 5 and 6.
+PyPy mini sprint at noisebridge. 2169 mission street between 17th and 18th in 
+san francisco. http://www.noisebridge.net   Open to the public.
+See noisebridge.txt
+
+Monday March 7th.
+11:30 a.m.  Google Tech talk.  Not open to the public.  See
+google-abstract2.txt 
+
+2:30 p.m. Talk at Mozilla.  Not open to the public.  See mozilla-abstract.txt
+
+--------
+We're open to meeting more people at other times.  We're especially interested
+in discussing PyPy consulting opportunities with interested companies.
+Insert plug here about what we would be willing to do.
