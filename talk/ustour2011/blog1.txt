@@ -19,7 +19,7 @@ and sprints:
   later).
 
 * Monday March 7th.  2:30 p.m. Talk at Mozilla in Mountain View.  Not 
-  open to the public (but Mozilla develoeprs can videoconference).
+  open to the public (but Mozilla developers can videoconference).
 
 From the PyPy project team we will have Armin Rigo, Maciej Fijalkowski
 (from 6th March), Laura Creighton and Jacob Hallén and possibly 
@@ -47,7 +47,7 @@ You can either reply to this blog post, or mail Laura directly at
 lac at openend.se .
 
 Apart from getting more technical and project insight, our travel is
-a also a good possibility for companies in the SF area to talk to us
+also a good possibility for companies in the SF area to talk to us
 regarding contracting.  In September 2011 our current "Eurostars" research
 project ends and some of us are looking for ways to continue working on
 PyPy through consulting, subcontracting or hiring.  The two companies, 
