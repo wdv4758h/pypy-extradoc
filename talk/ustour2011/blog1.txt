@@ -43,7 +43,8 @@ directions for PyPy.  We want to reserve a certain amount of time at
 each talk purely to discuss things that are of interest to audience 
 members.  However, if you already know what you wish we would discuss,
 and are attending a talk (or even if you aren't), please let us know.
-You can either reply to this blog post, 
+You can either reply to this blog post, or mail Laura directly at
+lac at openend.se .
 
 Apart from getting more technical and project insight, our travel is
 a also a good possibility for companies in the SF area to talk to us
