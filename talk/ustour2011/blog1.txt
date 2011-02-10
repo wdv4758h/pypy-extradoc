@@ -60,7 +60,7 @@ the powers-that-be at your place of employment that investing time and
 money in PyPy would be a good idea, let us know! 
 
 On Tuesday March 8th we will be heading for Atlanta for the Python VM
-and Language Summits before attending PyCon.  Maciej Fijalkowski and
+and Language Summits before attending PyCon.  Maciej Fijałkowski and
 Alex Gaynor will be giving a talk entitled _Why is Python slow and how
 can PyPy help?_ http://us.pycon.org/2011/schedule/presentations/160/
 Maciej will also be giving the talk _Running ultra large telescopes
