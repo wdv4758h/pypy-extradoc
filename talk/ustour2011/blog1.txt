@@ -3,7 +3,7 @@ The PyPy San Franciso tour 2011
 PyPy is coming to San Francisco beginning of March with a series of talks
 and sprints:
 
-* Wednesday March 2, 4:15 p.m.  Armin gives talk at Stanford.
+* Wednesday March 2, 4:15 p.m.  Armin Rigo gives talk at Stanford.
   http://www.stanford.edu/class/ee380/winter-schedule-20102011.html
   open to the public.
 
@@ -21,8 +21,8 @@ and sprints:
 * Monday March 7th.  2:30 p.m. Talk at Mozilla in Mountain View.  Not 
   open to the public (but Mozilla developers can videoconference).
 
-From the PyPy project team we will have Armin Rigo, Maciej Fijalkowski
-(from 6th March), Laura Creighton and Jacob Hall�n and possibly 
+From the PyPy project team we will have Armin Rigo, Maciej Fijałkowski
+(from 6th March), Laura Creighton and Jacob Hallén and possibly 
 Christian Tismer attending.
 
 Most of the talks will focus on (some of) the highlights and the
