@@ -1,7 +1,7 @@
-The PyPy San Franciso tour 2011
+The PyPy San Franciso Bay Area Tour 2011
 
-PyPy is coming to San Francisco beginning of March with a series of talks
-and sprints:
+PyPy is coming to the San Francisco Bay Area in the beginning of March with 
+a series of talks and a mini sprint.
 
 * Wednesday March 2, 4:15 p.m.  Armin Rigo gives talk at Stanford.
   http://www.stanford.edu/class/ee380/winter-schedule-20102011.html
@@ -11,8 +11,8 @@ and sprints:
   San Francisco CA 94103 open to the public.
 
 * Saturday and Sunday March 5 and 6.
-  PyPy mini sprint at noisebridge. 2169 mission street between 17th and 18th in
-  san francisco. http://www.noisebridge.net   Open to the public.
+  PyPy mini sprint at noisebridge. 2169 Mission street between 17th and 18th in
+  San Francisco. http://www.noisebridge.net   Open to the public.
 
 * Monday March 7th.  11:30 a.m.  Google Tech talk in Mountain View at the
   Googleplex.  Not open to the public (but the video should be available 
