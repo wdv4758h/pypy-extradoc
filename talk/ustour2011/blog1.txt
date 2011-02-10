@@ -22,7 +22,9 @@ and sprints:
   open to the public (but Mozilla develoeprs can videoconference).
 
 From the PyPy project team we will have Armin Rigo, Maciej Fijalkowski
-(from 6th March), Laura Creighton and Jacob Hallen at these events.
+(from 6th March), Laura Creighton and Jacob Hallén and possibly 
+Christian Tismer attending.
+
 Most of the talks will focus on (some of) the highlights and the
 status of pypy:
 
@@ -35,10 +37,34 @@ status of pypy:
 * new "cpyext" layer which integrates existing CPython C extensions
 * an experimental super-fast JIT-compilation of calls to C++ libraries
 
+As is usual for us, there is vastly more material that is available for
+us to cover than time, especially when it comes to possible future 
+directions for PyPy.  We want to reserve a certain amount of time at
+each talk purely to discuss things that are of interest to audience 
+members.  However, if you already know what you wish we would discuss,
+and are attending a talk (or even if you aren't), please let us know.
+You can either reply to this blog post, 
+
 Apart from getting more technical and project insight, our travel is
 a also a good possibility for companies in the SF area to talk to us
 regarding contracting.  In September 2011 our current "Eurostars" research
-project ends and some of us are looking for consulting/subcontracts or hiring
-related to PyPy.  We have two companies, Open End and merlinux, who
-have successfully done a number of contracts and projects in the past.
-If you want to talk business or get together for dinner, let us know!
+project ends and some of us are looking for ways to continue working on
+PyPy through consulting, subcontracting or hiring.  The two companies, 
+Open End and merlinux, have successfully done a number of such contracts 
+and projects in the past.  If you want to talk business or get together for
+lunch or dinner, let us know! If you would like us to come to your company
+and make a presentation, let us know!  If you have any ideas about what
+we should discuss in a presentation so that you could use it to convince
+the powers-that-be at your place of employment that investing time and 
+money in PyPy would be a good idea, let us know! 
+
+On Tuesday March 8th we will be heading for Atlanta for the Python VM
+and Language Summits before attending PyCon.  Maciej Fijalkowski and
+Alex Gaynor will be giving a talk entitled _Why is Python slow and how
+can PyPy help?_ http://us.pycon.org/2011/schedule/presentations/160/
+Maciej will also be giving the talk _Running ultra large telescopes
+in Python_ http://us.pycon.org/2011/schedule/presentations/159/ which is
+partially about his experiences using PyPy in the  Square Kilometer Array
+project in South Africa.  There will be a PyPy Sprint March 14-17.  
+All are welcome.
+
