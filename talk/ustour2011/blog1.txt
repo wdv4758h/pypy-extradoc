@@ -1,25 +1,43 @@
-Agenda:
+The PyPy San Franciso tour 2011
 
-Wednesday March 2, 4:15 p.m.  Armin gives talk at Stanford.
-http://www.stanford.edu/class/ee380/winter-schedule-20102011.html
-open to the public.
+PyPy is coming to San Francisco beginning of March with a series of talks
+and sprints:
 
-Thursday March 3, 6:00 p.m.  General talk at Yelp, 706 Mission St 9th Floor,
-San Francisco CA 94103 
-open to the public.  See yelp-abstract.txt
+* Wednesday March 2, 4:15 p.m.  Armin gives talk at Stanford.
+  http://www.stanford.edu/class/ee380/winter-schedule-20102011.html
+  open to the public.
 
-Saturday and Sunday March 5 and 6.
-PyPy mini sprint at noisebridge. 2169 mission street between 17th and 18th in 
-san francisco. http://www.noisebridge.net   Open to the public.
-See noisebridge.txt
+* Thursday March 3, 6:00 p.m.  General talk at Yelp, 706 Mission St 9th Floor,
+  San Francisco CA 94103 open to the public.
 
-Monday March 7th.
-11:30 a.m.  Google Tech talk.  Not open to the public.  See
-google-abstract2.txt 
+* Saturday and Sunday March 5 and 6.
+  PyPy mini sprint at noisebridge. 2169 mission street between 17th and 18th in
+  san francisco. http://www.noisebridge.net   Open to the public.
 
-2:30 p.m. Talk at Mozilla.  Not open to the public.  See mozilla-abstract.txt
+* Monday March 7th.  11:30 a.m.  Google Tech talk.  Not open to the public
+  (but probably to Googlers).
 
---------
-We're open to meeting more people at other times.  We're especially interested
-in discussing PyPy consulting opportunities with interested companies.
-Insert plug here about what we would be willing to do.
+* Monday March 7th.  2:30 p.m. Talk at Mozilla.  Not open to the public
+  (but probably to Mozilla devs).
+
+From the PyPy project team we will have Armin Rigo, Maciej Fijalkowski
+(from 6th March), Laura Creighton and Jacob Hallen at these events.
+Most of the talks will focus on (some of) the highlights and the
+status of pypy:
+
+* most Python benchmarks run much faster than with CPython or Psyco
+* the real-world PyPy compiler toolchain itself (200 KLocs) runs twice as fast
+* supports 64bit and is in the process of supporting ARM
+* full compatibility with CPython (more than Jython/IronPython)
+* full (and JIT-ed) ctypes support to call C libraries from Python
+* supports Stackless Python (in-progress)
+* new "cpyext" layer which integrates existing CPython C extensions
+* an experimental super-fast JIT-compilation of calls to C++ libraries
+
+Apart from getting more technical and project insight, our travel is
+a also a good possibility for companies in the SF area to talk to us
+regarding contracting.  In September 2011 our current "Eurostars" research
+project ends and some of us are looking for consulting/subcontracts or hiring
+related to PyPy.  We have two companies, Open End and merlinux, who
+have successfully done a number of contracts and projects in the past.
+If you want to talk business or get together for dinner, let us know!
