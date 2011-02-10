@@ -30,7 +30,7 @@ status of pypy:
 
 * most Python benchmarks run much faster than with CPython or Psyco
 * the real-world PyPy compiler toolchain itself (200 KLocs) runs twice as fast
-* supports 64bit and is in the process of supporting ARM
+* supports x86 32 and 64bit and is in the process of supporting ARM
 * full compatibility with CPython (more than Jython/IronPython)
 * full (and JIT-ed) ctypes support to call C libraries from Python
 * supports Stackless Python (in-progress)
