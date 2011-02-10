@@ -14,11 +14,12 @@ and sprints:
   PyPy mini sprint at noisebridge. 2169 mission street between 17th and 18th in
   san francisco. http://www.noisebridge.net   Open to the public.
 
-* Monday March 7th.  11:30 a.m.  Google Tech talk.  Not open to the public
-  (but probably to Googlers).
+* Monday March 7th.  11:30 a.m.  Google Tech talk in Mountain View at the
+  Googleplex.  Not open to the public (but the video should be available 
+  later).
 
-* Monday March 7th.  2:30 p.m. Talk at Mozilla.  Not open to the public
-  (but probably to Mozilla devs).
+* Monday March 7th.  2:30 p.m. Talk at Mozilla in Mountain View.  Not 
+  open to the public (but Mozilla develoeprs can videoconference).
 
 From the PyPy project team we will have Armin Rigo, Maciej Fijalkowski
 (from 6th March), Laura Creighton and Jacob Hallen at these events.
