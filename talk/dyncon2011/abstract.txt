@@ -8,8 +8,10 @@ curiosity, PyPy is now suitable for production use.
 
 PyPy is not only a Python implementation, but also a general framework to
 implement dynamic languages and get many features for free, like a JIT
-compiler and a fast GC.  Examples of other languages implemented in PyPy are
-Smalltalk, Prolog and Javascript.
+compiler and a fast GC.  In addition to the Python interpreter, which is the
+main focus of the core development team, there are experimental Smalltalk,
+Prolog and Javascript implementations (and even a Gameboy emulator) for PyPy,
+with different degrees of completeness.
 
 This talk will be divided in two parts, with different target audience:
 
