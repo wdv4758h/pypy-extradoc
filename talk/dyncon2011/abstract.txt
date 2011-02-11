@@ -16,4 +16,4 @@ This talk will be divided in two parts, with different target audience:
   * for Python developers: why (and how) to use PyPy instead of CPython?
 
   * for language implementors: why should you use PyPy to implement your
-    revolutionary language?
+    revolutionary dynamic language?
