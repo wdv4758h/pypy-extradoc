@@ -19,6 +19,7 @@ interpreters:
 * full compatibility with  CPython (more than Jython/IronPython)
 * full (and JIT-ed) ctypes support to call C libraries from Python
 * supports Stackless Python (in-progress)
+* experimental JVM and .NET backend (to get alternatives to Jython and IronPython)
 * new "cpyext" layer which integrates existing CPython C extensions
 * an experimental super-fast JIT-compilation of calls to C++ libraries
 
