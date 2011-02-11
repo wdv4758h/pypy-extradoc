@@ -1,0 +1,19 @@
+PyPy: JIT (and more) for free
+=============================
+
+The PyPy project has recently gathered a lot of attention for its progress in
+speeding up the Python language -- it is the fastest, most compatible and most
+stable 'alternative´ Python interpreter.  No longer merely a research
+curiosity, PyPy is now suitable for production use.  
+
+PyPy is not only a Python implementation, but also a general framework to
+implement dynamic languages and get many features for free, like a JIT
+compiler and a fast GC.  Examples of other languages implemented in PyPy are
+Smalltalk, Prolog and Javascript.
+
+This talk will be divided in two parts, with different target audience:
+
+  * for Python developers: why (and how) to use PyPy instead of CPython?
+
+  * for language implementors: why should you use PyPy to implement your
+    revolutionary language?
