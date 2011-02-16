@@ -128,30 +128,19 @@ UNROLLING
 ---------
  -  Replace full preamble with short preamble
 
- -  Move forcings of the failargs of inlined guards into the mini
-    bridges
-
  -  Reenable string optimizations in the preamble. This could be done
     currently, but would not make much sense as all string virtuals would
     be forced at the end of the preamble. Only the virtuals that
     contains new boxes inserted by the optimization that can possible be
     reused in the loops needs to be forced.
 
- -  Loop invariant operations that might raise OverflowError should
-    be moved out of the loop. Currently only the guard checking if there
-    was an OverflowError raise are moved out.
-
- -  The preamble of the second generated version of a loop 
-    is probably not needed if a short preamble was generated. It's
-    probably a better idea to have the mini bridges jump to the preamble
-    of the first generated version.
-
  -  Replace the list of short preambles with a tree, similar to the
     tree formed by the full preamble and it's bridges. This should
     enable specialisaton of loops in more complicated situations, e.g.
     test_dont_trace_every_iteration in test_basic.py. Currently the
     second case there become a badly optimized bridge from the
-    preamble to the preamble.
+    preamble to the preamble. This is solved differently with
+    jit-virtual_state, make sure the case mentioned is optimized.
 
  -  To remove more of the short preamble a lot more of the optimizer
     state would have to be saved and inherited by the bridges. However
@@ -162,3 +151,27 @@ UNROLLING
     information is to introduce some VFromStartValue virtuals that
     would be some pseudo virtuals containing a single input argument
     box and it's index.
+
+  - When retracing a loop, make the optimizer optimizing the retraced
+    loop inherit the state of the optimizer optimizing the bridge
+    causing the loop to be retraced.
+
+  - After the jit-virtual_state is merge it should be possible to
+    generate the short preamble from the internal state of the
+    optimizer. This should be a lot easier and cleaner than trying to
+    decide when it is safe to reorder operations.
+
+  - Could the retracing be generalized to the point where the current
+    result after unrolling could be achieved by retracing a second
+    iteration of the loop instead of inlining the same trace? That
+    would remove the restricting assumptions made in unroll.py and
+    e.g. allow virtual string's to be kept alive across boundaries. It
+    should also better handle loops that don't take the exact same
+    path through the loop twice in a row.
+
+  - After the jit-virtual_state is merged, the curent policy of always
+    retracing (or jumping to the preamble) instead of forcing virtuals
+    when jumping to a loop should render the force_all_lazy_setfields()
+    at the end of the preamble unnessesary. If that policy wont hold
+    in the long run it should be straight forward to augument the
+    VirtualState objects with information about storesinking.
