@@ -33,7 +33,8 @@ the CPython C-API, and implementing third party modules such as PostgreSQL
 bindings for PyPy. He is also a core developer of Django (a popular Python web
 framework), where he works on all elements on the framework. He is presently
 an independent contractor, primarily working in web development where he uses
-Python exclusively.
+Python exclusively. Alex a student at Rensselaer Polytechnic Institute where
+he is a Junior pursuing a bachelors degree in Computer Science.
 
 Abstract:
 
