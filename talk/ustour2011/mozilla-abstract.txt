@@ -27,13 +27,14 @@ for MeerKAT, a very large radio telescope under construction in the
 Karoo desert. The infrastructure is largely python-based and employs
 Twisted and PyPy among other technologies.
 
-Alex Gaynor is a core developer of PyPy. Since 2009 he has contributed to the
-JIT, the Python interpreter, working on issues of Python 2.7 compatibility and
-the CPython C-API, and implementing third party modules such as PostgreSQL
-bindings for PyPy. He is also a core developer of Django (a popular Python web
-framework), where he works on all elements on the framework. He is presently
-an independent contractor, primarily working in web development where he uses
-Python exclusively. Alex a student at Rensselaer Polytechnic Institute where
+Alex Gaynor is a core developer of PyPy. Since 2009 he has contributed
+to the JIT, and the Python interpreter, working on issues of Python
+2.7 compatibility and the CPython C-API, and implementing third party
+modules such as PostgreSQL bindings for PyPy. He is also a core
+developer of Django (a popular Python web framework), where he works
+on all elements of the framework. He is presently an independent
+contractor, primarily working in web development where he uses Python
+exclusively. Alex is a student at Rensselaer Polytechnic Institute where
 he is a Junior pursuing a bachelors degree in Computer Science.
 
 Abstract:
