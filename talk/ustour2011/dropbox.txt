@@ -25,7 +25,7 @@ use.  Since 2009, the PyPy project has received funding from the Eurostars
 Eureka program, which targets small European firms which produce research.
 (See: http://www.eurostars-eureka.eu/)
 
-This talk will being with an introduction to PyPy and then a more detailed
+This talk will begin with an introduction to PyPy and then a more detailed
 discussion of what we have accomplished with the past two years' work in 
 the area of dynamic (Just-in-Time) interpreters.  We have had some very
 useful comments from Rian Hunter about areas of interest to dropbox, and
@@ -64,6 +64,10 @@ py2app, and bfreeze (in that order)
 We're not going to embed a Cpython stub into an exe as py2exe does.
 We can produce executables with the python files embedded.  A PyPy packager.
 what it would look like.  What would be its advantages?
+(Actually we can produce a single exe that contains all
+necessary .py files already loaded; then there are no .py/.pyc files
+to distribute and obfuscate any more, and it's all in just one .exe.
+Such an .exe is maybe relatively large but compresses a lot.)
 
 *Future directions (what to do when Eurostars funding runs out)
 re: "The engineering resources to migrate won't require >1 month of work"
