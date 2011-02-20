@@ -33,9 +33,15 @@ collection (GC), of execution model (regular vs. "Stackless"),
 choice of backend (C/JVM/.NET), and even the
 Just-in-Time Compiler (JIT).  There are great practical benefits
 to this.  For example, CPython's GC is stuck with using reference
-counting, while we offer a number of choices.  I will explain how
-this is done, and describe in particular the JIT Compiler, which
-is a "meta" tracing JIT --- it works for any language.
+counting, while we offer a number of choices.
+
+I will explain how this is done, and describe in more details the
+JIT Compiler.  It is a "tracing JIT", as pioneered in recent
+years for Java and Javascript.  However, it is also a "meta JIT":
+it works for any language, by tracing at the level of the
+language's interpreter.  In other words, from an interpreter for
+any language, we produce quasi automatically a JIT suited to this
+language.
 
 I will conclude by comparing PyPy to other projects, old and new:
 Squeak, CPython, Jython and IronPython, the Jikes RVM, as well as
