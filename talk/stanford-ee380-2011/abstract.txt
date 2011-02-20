@@ -40,7 +40,7 @@ JIT Compiler.  It is a "tracing JIT", as pioneered in recent
 years for Java and Javascript.  However, it is also a "meta JIT":
 it works for any language, by tracing at the level of the
 language's interpreter.  In other words, from an interpreter for
-any language, we produce quasi automatically a JIT suited to this
+any language, we produce quasi-automatically a JIT suited to this
 language.
 
 I will conclude by comparing PyPy to other projects, old and new:
