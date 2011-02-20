@@ -9,28 +9,31 @@ During this talk I will describe what PyPy is: a mature,
 8-years-old project of roughly 200K lines of code and 150K lines
 of tests, implementing the full Python language.  I will show our
 results: faster execution of most programs (by a factor between
-1.5x and 20x) and a lower memory usage.
+1.5x and 20x), and smaller total memory usage for large programs.
 
 I will then focus on the architecture of PyPy.  On the one hand,
 we have written a straightforward interpreter for the Python
 language, using a (large) subset of Python called RPython.  On
 the other hand, we have a complex translation toolchain which is
-able to compile interpreters from RPython to efficient code
-(either C, or experimentally JVM/.NET).
+able to compile interpreters from RPython to efficient C code.
+(We also have experimental backends for producing JVM/.NET code.)
 
-This separation has two benefits.  On the one hand, we can easily
-write interpreters for other languages too -- we have a Prolog
-interpreter and played with at least Smalltalk and JavaScript.
+There are two distinct benefits from keeping the interpreter and
+the translation toolchain separate.  On the one hand, we keep our
+interpreter simple, and we can easily write interpreters for
+other languages -- we have a Prolog interpreter and played with
+at least Smalltalk and JavaScript.
 On the other hand, it allows us to keep architectural choices
 independent from the original interpreter's source code, instead
 of getting stuck with one particular set of choices.  Our
 toolchain "weaves" into the final executable various aspects not
 present in the source of the interpreter: the object model,
-garbage collection (GC), and even the Just-in-Time Compiler
-(JIT).  For example, CPython's GC is stuck to be reference
-counting, while we offer a number of choices.  I will explain how
-this is done, and describe in particular the JIT Compiler, which
-is a "meta" tracing JIT --- it works for any language.
+garbage collection (GC), the backend (C/JVM/.NET), and even the
+Just-in-Time Compiler (JIT).  For example, CPython's GC is stuck
+to be reference counting, while we offer a number of choices.  I
+will explain how this is done, and describe in particular the JIT
+Compiler, which is a "meta" tracing JIT --- it works for any
+language.
 
 I will conclude by comparing PyPy with other projects, old and
 new: Squeak, CPython, Jython and IronPython, the Jikes RVM, as
