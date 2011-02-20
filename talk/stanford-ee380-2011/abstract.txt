@@ -5,23 +5,33 @@ Python in Python: the PyPy system
 PyPy is a complete Python implementation in Python, in the
 old tradition of Squeak and Scheme48 --- or so it seems.
 
-During this talk I will describe what PyPy more precisely is,
-contrasting it with the other Python implementations, and showing
+During this talk I will describe what PyPy is: a mature,
+8-years-old project of roughly 200K lines of code and 150K lines
+of tests, implementing the full Python language.  I will show our
 results: faster execution of most programs (by a factor between
-1.5x and 20x) and a lower memory usage, while being fully
-compatible.
+1.5x and 20x) and a lower memory usage.
 
-I will then focus on the architecture of PyPy: on the one hand,
-Python itself is written as a straightforward interpreter,
-written in a (large) subset of Python called RPython.  On the
-other hand, we have a complex translation toolchain able to
-compile interpreters from RPython to efficient code (either C, or
-experimentally JVM/.NET).  This toolchain "weaves" into the final
-executable various aspects not present in the source of the
-interpreter: the object model, garbage collection, and even the
-Just-in-Time Compiler.  I will explain how this is done,
-particularly the JIT Compiler, which is a "meta" tracing JIT.
+I will then focus on the architecture of PyPy.  On the one hand,
+we have written a straightforward interpreter for the Python
+language, using a (large) subset of Python called RPython.  On
+the other hand, we have a complex translation toolchain which is
+able to compile interpreters from RPython to efficient code
+(either C, or experimentally JVM/.NET).
+
+This separation has two benefits.  On the one hand, we can easily
+write interpreters for other languages too -- we have a Prolog
+interpreter and played with at least Smalltalk and JavaScript.
+On the other hand, it allows us to keep architectural choices
+independent from the original interpreter's source code, instead
+of getting stuck with one particular set of choices.  Our
+toolchain "weaves" into the final executable various aspects not
+present in the source of the interpreter: the object model,
+garbage collection (GC), and even the Just-in-Time Compiler
+(JIT).  For example, CPython's GC is stuck to be reference
+counting, while we offer a number of choices.  I will explain how
+this is done, and describe in particular the JIT Compiler, which
+is a "meta" tracing JIT --- it works for any language.
 
 I will conclude by comparing PyPy with other projects, old and
-new: Squeak, CPython, Jython and IronPython, as well as the
-various recent tracing JITs like TraceMonkey.
+new: Squeak, CPython, Jython and IronPython, the Jikes RVM, as
+well as the various recent tracing JITs such as TraceMonkey.
