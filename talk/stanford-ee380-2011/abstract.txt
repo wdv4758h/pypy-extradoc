@@ -2,8 +2,9 @@
 Python in Python: the PyPy system
 ---------------------------------
 
-PyPy is a complete Python implementation in Python, in the
-old tradition of Squeak and Scheme48 --- or so it seems.
+PyPy is a complete Python implementation in Python, in the old
+tradition of Squeak and Scheme48 --- but there is more to PyPy
+than just this.
 
 During this talk I will describe what PyPy is: a mature,
 8-years-old project of roughly 200K lines of code and 150K lines
