@@ -32,7 +32,7 @@ interpreters:
 
 * most Python benchmarks run much faster than with CPython or Psyco
 * tight loops run much faster, up to 20-60 times faster
-* speed.pypy.org
+* http://speed.pypy.org/
 * the real-world PyPy compiler toolchain itself (200 KLocs) runs twice as fast
 * pypy already supports 64bit and is in the process of supporting ARM
 * full compatibility with  CPython (more than Jython/IronPython)
