@@ -61,7 +61,7 @@ Highlights include:
 
 * speed.pypy.org
 * most Python benchmarks run much faster than with CPython or Psyco
-* tight loops run much faster, how much faster varies but XXX can we say on average  XXX faster?
+* tight loops run much faster, up to 20-60 times faster
 * the real-world PyPy compiler toolchain itself (200 KLocs) runs twice as fast
 * pypy already supports 64bit and is in the process of supporting ARM
 * full compatibility with  CPython (more than Jython/IronPython)
