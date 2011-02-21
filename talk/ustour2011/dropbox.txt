@@ -18,8 +18,8 @@ has outperformed Psyco, while being much more general and robust.
 
 Abstract:
 
-The PyPy project (http://pypy.org/) has recently gathered a lot of attention for its
-progress in speeding up the Python language -- it is the fastest,
+The PyPy project (http://pypy.org/) has recently gathered a lot of attention
+for its progress in speeding up the Python language -- it is the fastest,
 most compatible and most stable 'alternative´ Python interpreter.  No
 longer merely a research curiosity, PyPy is now suitable for production
 use.  Since 2009, the PyPy project has received funding from the Eurostars 
@@ -50,7 +50,7 @@ interpreters:
   which produce research.  What should we do when the funding runs out?
   One thing we would like is to be hired to migrate projects from CPython 
   to PyPy.
-*Any other aspect of interest to audience members. 
+* Any other aspect of interest to audience members. 
 
 If there is something you are interested in which isn't mentioned in this
 abstract, please send a note to lac@openend.se and we will make sure that 
