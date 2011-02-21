@@ -7,7 +7,7 @@ tradition of Squeak and Scheme48 --- but there is more to PyPy
 than just this.
 
 During this talk I will describe what PyPy is: a mature,
-8-years-old project of roughly 200K lines of code and 150K lines
+8 year old project of roughly 200K lines of code and 150K lines
 of tests, implementing the full Python language.  I will show our
 results: faster execution of most programs (by a factor between
 1.5x and 20x), and smaller total memory usage for large programs.
