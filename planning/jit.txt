@@ -45,6 +45,9 @@ NEW TASKS
 - geninterp fun :-(  geninterp'ed functions are not JITted,
   unlike plain app-level functions.  How about we just kill geninterp?
 
+- local imports should be jitted more efficiently, right now they produce a
+  long trace and they are rather common (e.g. in translate.py)
+
 OPTIMIZATIONS
 -------------
 
