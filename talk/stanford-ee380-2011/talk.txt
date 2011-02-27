@@ -1,0 +1,421 @@
+.. include:: <s5defs.txt>
+
+=========================================================
+Python in Python: the PyPy system
+=========================================================
+
+
+.. admonition:: Armin Rigo
+
+    - *Heinrich-Heine Universität, Germany*
+    - *Open End AB, Sweden*
+
+    March 2011
+
+
+
+
+What is Python
+---------------------------------------------------------
+
+
+What is Python
+---------------------
+
+::
+
+  class Foo(object):
+
+      def __init__(self, value):
+          self.value = value
+
+      def double(self):
+          return Foo(self.value * 2)
+
+  print Foo(42).double().value
+  print Foo("hello").double().value
+
+
+In two words
+------------
+
+* Strongly, trivially, dynamically typed language
+
+* Ints, floats, longs, string, unicode,
+  lists, tuples, dicts, iterators,
+  functions, classes...
+
+
+Python likes its dictionaries
+-----------------------------
+
+::
+
+  d = {}
+  for i in [1, 2, 3, 4]:
+      d[i] = i*i
+  print d
+
+* in this example, we get ``{1:1, 2:4, 3:9, 4:16}``
+
+
+Python is not Java
+------------------
+
+::
+
+  for name in ["add", "sub", "mul"]:
+      def f(x, y):
+          ...
+      globals()[name] = f
+
+
+Python is complicated
+---------------------
+
+How ``a + b`` works (simplified!):
+
+* look up the method __add__ on the type of a
+
+* if there is one, call it
+
+* if it returns NotImplemented, or if there is none,
+  look up the method __radd__ on the type of b
+
+* if there is one, call it
+
+* if there is none, or we get NotImplemented again,
+  raise an exception TypeError
+
+
+Python is a mess
+----------------
+
+How ``a.attr`` or ``a.method()`` works:
+
+* ...
+
+* no way to write it down in just one slide
+
+
+What this talk is about
+-----------------------
+
+* The PyPy project: a framework in which to write interpreters for
+  this kind of language
+
+* "Python in Python" -- roughly
+
+* From the user's point of view (i.e. the programmer in Python),
+  PyPy is very similar to CPython.
+
+
+
+
+CPython and PyPy
+--------------------------------------------------------------------
+
+
+CPython and PyPy
+----------------
+
+* Two implementations
+
+* Two interpreters
+
+* CPython is written in C, PyPy is written in Python
+
+* PyPy tries to be equivalent to CPython
+
+
+...and Jython and IronPython
+----------------------------
+
+* Jython: Python for the Java VM
+
+* IronPython: Python for .NET
+
+* Both try to integrate well with their VM
+
+
+What is PyPy
+------------
+
+* A project started in 2003
+
+* An Open Source effort of volunteers
+
+* With some funding support: 2 years from the European Union (2005-2007),
+  and now from Germany and Sweden (2010-2011).
+
+
+What is PyPy
+------------
+
+* Test-driven development
+
+* Now contains about 200 KLoC, and 150 KLoc of tests
+
+
+What is the point of PyPy?
+--------------------------
+
+* CPython is older, it's the "official" version
+
+* PyPy is just a replacement, so why?
+
+* Moreover PyPy is not quite complete (e.g. C extension
+  modules are only partially supported)
+
+
+Speed
+-----
+
+* First answer: PyPy is faster, and may use less memory
+
+* ...or at least, it is "often" the case
+
+
+Speed
+-----
+
+.. image:: speed.png
+
+http://speed.pypy.org/
+
+
+And (optionally) extra features
+-------------------------------
+
+* "Stackless"
+
+* Non-Python
+
+* and many smaller experiments
+
+* it is a better experimentation platform than CPython
+
+
+Multi-threading
+---------------
+
+* Bad support on CPython (GIL)
+
+* PyPy has no answer to this question (there is also a GIL)
+
+
+
+
+Architecture
+------------------------------------------------------------------------
+
+
+Architecture
+------------
+
+PyPy has two parts:
+
+* A Python interpreter, written in *RPython*
+
+* A compilation toolchain -- the "translator" -- that translates
+  RPython code into C code (mainly)
+
+
+The translation toolchain
+-------------------------
+
+* Takes a program written in RPython, a custom subset of Python
+
+* Outputs the "same" program written in C
+
+* See demo
+
+
+PyPy's Python interpreter
+-------------------------
+
+* A priori similar to CPython, but written in RPython.
+
+* See demo (py.py)
+
+
+RPython is still mostly Python
+------------------------------
+
+* Completely valid Python (can be tested directly)
+
+* Can use lists, dicts, tuples, classes and instances, and so on
+
+* Contains no garbage collection detail (Py_INCREF/Py_DECREF in CPython)
+
+* Really a subset of Python: roughly "how a Java programmer writes his
+  first Python program"
+
+* ...well, plus tons of tricks ``:-)``
+
+
+RPython meta-programming
+------------------------
+
+* RPython is actually only a restriction on the code after being imported,
+  so we can build up everything in (normal) full Python::
+
+    for name in ["add", "sub", "mul"]:
+        def f(x, y):
+            ...
+        globals()[name] = f
+
+* here, the code in ``f()`` is RPython, but the loop around it is not.
+
+
+A bit of history
+----------------
+
+* Squeak and Scheme48 are also interpreters written in themselves
+
+* Or more precisely, like PyPy, a subset of themselves
+
+* In PyPy, the RPython subset is at a higher level
+
+* General rule: *every aspect that is independent from the high-level
+  description of the interpreter is left out of RPython*
+
+
+
+
+Architecture: the interpreter
+--------------------------------------------------------------------------
+
+
+Overview of the interpreter
+---------------------------
+
+* A compiler that produces a custom bytecode format
+
+* An interpreter for this bytecode
+
+* A large library of object types (the "object space")
+
+* A collection of extension modules
+
+
+The bytecode interpreter
+------------------------
+
+* A straightforward, recursive interpreter
+
+* Stack-based
+
+* Every call to a Python function makes a frame object
+
+* Then the interpreter is written as methods on this frame object
+
+
+The object space
+----------------
+
+* Implements all the built-in types
+
+* Structure more flexible than CPython's family of C functions
+
+* Very open to experimentation
+
+
+Separation of levels
+--------------------
+
+* Important: *all* objects that appear in the interpreted program are,
+  in the interpreter, instances of W_XxxObject.
+
+* Again, similar to CPython: an object in Python is implemented,
+  in the interpreter, as a C structure PyXxxObject.
+
+
+Example: smalllong
+------------------
+
+* Standard Python types: int (32/64-bit) and long
+  (integer of unlimited size)
+
+* In CPython, the type is directly linked to its (single) implementation in C.
+  In PyPy, it is not.
+
+* So we could easily add an implementation W_SmallLongObject for
+  integers that happen to fit in 64 bits
+
+* And there is also W_LongObject for the general case
+
+
+Example: smallint
+-----------------
+
+* *Tagged integers,* common in interpreters (but not in CPython)
+
+* Idea, in C terms: take the integer objects whose value fits in 31/63
+  bits, and encode them as odd-valued pseudo-pointers, instead of
+  pointers to separately-allocated integer objects
+
+* We did it in PyPy, but it's disabled now because it does not give
+  the expected performance gain
+
+
+Example: multidict
+------------------
+
+* Similarly, we have several implementations of dict
+
+* For the different typical usage patterns of dicts in Python
+
+* E.g. module dicts (containing all global names of a module),
+  class dicts, instance dicts, user dicts (typically containing
+  non-string keys)
+
+
+Example: mapdict
+----------------
+
+* An instance in Python uses a dictionary to store attributes::
+
+     >>> x = MyClass()
+     >>> x.a = 5
+     >>> x.__dict__
+     {'a': 5}
+     >>> x.__dict__ = {'b': 6}
+     >>> x.b
+     6
+
+
+Example: mapdict
+----------------
+
+* An instance is thus two objects: a dict and a wrapper around it
+
+* Requires a lot of memory
+
+* This is different than Java, Smalltalk or C++, where the class
+  enforces the exact set of attributes of its instances
+
+* But it is like Self and JavaScript
+
+
+Maps
+----------------
+
+* We can reuse the technique introduced in Self: "maps"
+
+* The JavaScript engine V8 also uses them, calling them "hidden classes"
+
+* Idea: it is likely that a lot of instances of a given class will
+  have the same set of attributes
+
+* So we split the attributes into a per-instance part (just an array of
+  field values) and a shared part (giving the attribute names, and their
+  indices in the arrays of the individual instances).
+
+
+
+
+Architecture: the translation toolchain
+---------------------------------------------------------------------
+
+xxx
