@@ -11,6 +11,9 @@ INVESTIGATIONS
 NEW TASKS
 ---------
 
+- think about whether W_TypeObject._pure_lookup_where_with_method_cache needs a
+  different decorator, because it cannot be moved around arbitrarily.
+
 - have benchmarks for jit compile time and jit memory usage
   
 - kill GUARD_(NO)_EXCEPTION; replace that by LAST_EXC_VALUE to load the
@@ -105,6 +108,9 @@ nice code at all so far:
   cProfile should be folded away. IN PROGRESS
 
 - let super() work with the method cache.
+
+- turn max(x, y)/min(x, y) into MAXSD, MINSD instructions when x and y are
+  floats.
 
 - xxx (find more examples :-)
 

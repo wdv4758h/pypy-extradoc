@@ -78,10 +78,16 @@
 
 \title{Runtime Feedback in a Meta-Tracing JIT for Efficient Dynamic Languages}
 
-\authorinfo{Carl Friedrich Bolz \and XXX}
-           {Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany
+\authorinfo{Carl Friedrich Bolz$^a$ \and Antonio Cuni$^a$ \and Maciej Fijałkowski$^b$ \and Michael Leuschel$^a$ \and \\
+            Samuele Pedroni$^c$ \and Armin Rigo$^a$}
+           {$^a$Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany
+
+            $^b$merlinux GmbH, Hildesheim, Germany
+
+            $^c$Open End, Göteborg, Sweden
            }
-           {cfbolz@gmx.de \and XXX}
+           {cfbolz@gmx.de \and anto.cuni@gmail.com \and fijal@merlinux.eu \and
+           leuschel@cs.uni-duesseldorf.de \and samuele.pedroni@gmail.com \and arigo@tunes.org}
 
 \conferenceinfo{ICOOOLPS}{'11 Lancaster, UK}
 \CopyrightYear{2011}
@@ -94,6 +100,13 @@ incremental compilers, interpreters, run-time environments]
 
 \begin{abstract}
 
+Meta-tracing JITs can be applied to a variety of different
+languages without explicitly encoding language semantics into the compiler. So
+far, they lacked a way to feed back runtime information into the
+compiler, which restricted their performance. In this paper we describe the
+flexible mechanisms in PyPy's meta-tracing JIT that can be used to control runtime feedback in language-specific ways. These mechanisms are flexible
+enough to implement classical VM techniques such as maps and polymorphic inline
+caches.
 
 \end{abstract}
 
@@ -235,7 +248,7 @@ tracing JIT typically contain an interpreter. After a user program is
 started the interpreter is used; only the most frequently executed paths through the user
 program are turned into machine code. The tracing JIT tries to produce traces
 that correspond to loops in the traced program, but most tracing JITs now also
-have support for tracing non-loops \cite{XXX}.
+have support for tracing non-loops \cite{andreas_gal_incremental_2006}.
 
 Because the traces always correspond to a concrete execution they cannot
 contain any control flow splits. Therefore they encode the control flow
@@ -255,8 +268,7 @@ RPython-level operations that the interpreter did to execute the program.
 Tracing through the execution of an interpreter has many advantages. It makes
 the tracer, its optimizers and backends reusable for a variety of languages. The
 language semantics do not need to be encoded into the JIT. Instead the tracer
-just picks them up from the interpreter. XXX mention disadvantage of long
-traces?
+just picks them up from the interpreter.
 
 While the operations in a trace are those of the interpreter, the loops that are
 traced by the tracer are the loops in the
@@ -835,6 +847,71 @@ be promoted after the map has been.
 \section{Evaluation}
 \label{sec:evaluation}
 
+For space reasons we cannot perform a full evaluation here, but still want to
+present some benchmark numbers. We chose to present two benchmarks, a port of
+the classical Richards benchmark in Python and a Python version of the Telco
+decimal benchmark\footnote{\texttt{http://speleotrove.com/decimal/telco.html}},
+using a pure Python decimal floating point implementation. The results we see in
+these two benchmarks seem to repeat themselves in other benchmarks using
+object-oriented code; for purely numerical algorithms the speedups are 
+significantly smaller.
+
+The benchmarks were run on an otherwise idle Intel Core2 Duo P8400 processor
+with 2.26 GHz and 3072 KB of cache on a machine with 3GB RAM running Linux
+2.6.35. We compared the performance of various Python implementations on the
+benchmarks. As a baseline, we used the standard Python implementation in C,
+CPython 2.6.6\footnote{\texttt{http://python.org}}, which uses a bytecode-based
+interpreter. We compare it against four versions of PyPy's Python interpreter,
+all of them with JIT enabled. The PyPy baseline does not enable maps or type
+versions. We then benchmarked PyPy, first using each technique separately,
+and finally using both together.
+
+All benchmarks were run 50 times in the same process, to give the JIT time to
+produce machine code. The arithmetic mean of the times of the last 30 runs were
+used as the result. The errors were computed using a confidence interval with a
+95\% confidence level \cite{georges_statistically_2007}. The results are
+reported in Figure~\ref{fig:times}.
+
+Versioned types speed up both benchmarks by a significant factor of around 7.
+The speed advantage of maps alone is a lot less clear. Maps also have a memory
+advantage which we did not measure here. By themselves, maps improved the
+Richards benchmark slightly, but made the Telco benchmark slower. Enabling both
+maps and versioned types together yields a significant improvement over just
+versioned types for Richards. XXX good explanation. For Telco, enabling both
+has little effect over the gains for versioned types alone.
+
+\pedronis{XXX radical idea, given that there may be no space to discuss the subtle points and that this is really about showing that we can enable such mechanisms and there is already literature that shows that/how they work, to just consider the benchmarks with no maps and no versions and with both?}
+
+
+\begin{figure}
+{\footnotesize
+\begin{center}
+\begin{tabular}{|l|r|r|}
+\hline
+        &richards[ms]       &telco[ms] \\
+\hline
+CPython &357.79 $\pm$ 1.32     &1209.67 $\pm$ 2.20\\
+speedup &1.00 $\times$ &1.00 $\times$\\
+\hline
+JIT baseline    &421.87 $\pm$ 0.48     &738.18 $\pm$ 3.29\\
+speedup &0.85 $\times$ &1.64 $\times$\\
+\hline
+JIT map &382.88 $\pm$ 4.40     &834.19 $\pm$ 4.91\\
+speedup &0.93 $\times$ &1.45 $\times$\\
+\hline
+JIT version     &49.87 $\pm$ 0.29      &157.88 $\pm$ 1.79    \\
+speedup &7.17 $\times$ &7.66 $\times$\\
+\hline
+JIT full        &17.89 $\pm$ 1.15      &153.48 $\pm$ 1.86    \\
+speedup &20.00 $\times$        &7.88 $\times$\\
+\hline
+\end{tabular}
+\end{center}
+}
+\caption{Benchmark Results}
+\label{fig:times}
+\end{figure}
+
 \section{Related Work}
 
 The very first meta-tracer is described by Sullivan et. al.
@@ -866,7 +943,8 @@ they were not described in this paper).
 
 Partial evaluation \cite{jones_partial_1993} tries to automatically transform
 interpreters into compilers using the second futamura projection
-\cite{futamura_partial_1999}. XXX
+\cite{futamura_partial_1999}. Given that classical partial evaluation works
+strictly ahead of time, it inherently cannot support runtime feedback.
 
 An early attempt at building a general environment for implementing languages
 efficiently is described by Wolczko et. al. \cite{mario_wolczko_towards_1999}.
@@ -878,37 +956,34 @@ compiler.
 
 Somewhat relatedly, the proposed ``invokedynamic'' bytecode
 \cite{rose_bytecodes_2009} that will be added to the JVM is supposed to make the
-implementation of dynamic languages on top of JVMs easier. The bytecode gives
-the language implementor control over how the JIT optimizes the language's
-features. XXX
+implementation of dynamic languages on top of JVMs easier. The bytecode gives access to user accessible generalized inline cache. It requires of course compilation to JVM bytecode instead of simply writing an interpreter, predictability of performance across JVMs is also an open question.
 
-%We already explored promotion in other context, such as earlier examples of
-%promotion \cite{carl_friedrich_bolz_towards_????}, \cite{armin_rigo_jit_2007}
-
-\cite{chambers_efficient_1989} maps
-\cite{hoelzle_optimizing_1994} Type feedback
-\cite{hoelzle_optimizing_1991} PICs
-find the web page of V8 about maps
+We already explored promotion in other context, such as earlier versions of
+PyPy's JIT \cite{armin_rigo_jit_2007} as well as a Prolog partial evaluator
+\cite{carl_friedrich_bolz_towards_????}. Promotion is quite similar to
+(polymorphic) inline caching and runtime type feedback techniques which were
+first used in Smalltalk \cite{deutsch_efficient_1984} and SELF
+\cite{hoelzle_optimizing_1991,hoelzle_optimizing_1994} implementations.
+Promotion is more general because any information can be cached in line, not
+just classes of method receivers.
 
 %is there anything about versions? smalltalks tend to clear their method caches
 %when new methods are added. self and java use dependency tracking and
 %deoptimization. this is better what we have above, because we need runtime
 %checks. mention out of line guard?
 
-jruby used versions at some point, jvm-l mailing list discusses them
+%jruby used versions at some point, jvm-l mailing list discusses them
 
 
-\section{Conclusion and Next Steps}
+\section{Conclusion}
 
 In this paper we presented two hints that can be used in the source code of an
-interpreter written with PyPy. They are used to influence what the optimizer
-does with the trace. We also showed how a small but still relevant dynamic
-object model can use these hints to no longer use any dictionary lookups after
-tracing. Instead a number of guards are inserted into the trace to check whether
-the assumptions about the objects are still true. This makes operations on
-objects seriously faster.
+interpreter written with PyPy. They give control over runtime feedback and
+optimization to the language implementor. They are expressive enough for
+building well-known virtual machine optimization techniques, such as maps and
+inline caches. We believe that they are flexible enough to express a wide
+variety of language semantics efficiently.
 
-XXX
 
 \section*{Acknowledgements}
 
