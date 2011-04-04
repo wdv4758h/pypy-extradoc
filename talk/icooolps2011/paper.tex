@@ -147,23 +147,15 @@ bare meta-tracing.
 In this paper we present two of these hints that are extensively used in the
 PyPy project to improve the performance of its Python interpreter. 
 
-% XXX: paragraph rephrased by anto; feel free to pick the one you like best
-
-Conceptually, it is possible to achieve significant speed-ups by feeding into
-the compiler some information that is observed at runtime: in particular, if
+Conceptually, the significant speed-ups that can be achieved with
+dynamic compilation depend on feeding into compilation and exploiting
+values observed at runtime. In particular, if
 there are values which vary very slowly, it is possible to compile multiple
 specialized versions of the same code, one for each actual value.  To exploit
 the runtime feedback, the implementation code and data structures need to be
 structured so that many such slow-varying values are at hand. The hints that
 we present allow exactly to implement such feedback and exploitation in a
 meta-tracing context.
-
-% Conceptually the significant speed-ups that can be achieved with
-% dynamic compilation depend on feeding into compilation and exploiting
-% values observed at runtime that are slow-varying in practice. To exploit the
-% runtime feedback, the implementation code and data structures need to be
-% structured so that many such values are at hand. The hints that we present allow
-% exactly to implement such feedback and exploitation in a meta-tracing context.
 
 Concretely these hints are used to control how the optimizer of the
 tracing JIT can improve the traces of the object model. More
@@ -442,7 +434,7 @@ of PyPy's JIT. Promotion is a technique that only works well in JIT compilers;
 in static compilers it is significantly less applicable.
 
 Promotion is essentially a tool for trace specialization. There are places in
-the interpreter where knowing that a value if constant opens a lot of
+the interpreter where knowing that a value is constant opens a lot of
 optimization opportunities, even though it
 could have different values in practice. In such a place, promotion is used. The
 typical reason to do that is if there is
@@ -643,7 +635,7 @@ cache its results. If this function is analyzed, it looks like the function has
 side effects, because it changes the memoizing dictionary. However, because this side
 effect is not externally visible, the function from the outside is pure. This is
 a property that is not easily detectable by analysis. Therefore, the purity
-of this function needs to be manually annotated.
+of this function needs to be annotated manually.
 
 
 
