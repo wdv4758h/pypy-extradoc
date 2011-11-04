@@ -1,0 +1,24 @@
+NEW TASKS
+---------
+
+- add in numpy.generic and the various subclasses, use them in returning
+  instances from subscripting (and possibly internally), also make them valid
+  for the dtype arguments
+
+- astype
+
+- a good sort function
+
+- indexing by arrays and lists
+
+- endianness
+
+- scalar types like numpy.int8
+
+- add multi-dim arrays
+
+  - will need to refactor some functions
+
+- frompyfunc to create ufuncs from python functions
+
+- more ufuncs
