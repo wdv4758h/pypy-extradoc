@@ -1,0 +1,21 @@
+NEW TASKS
+---------
+
+- astype
+
+- a good sort function
+
+- indexing by arrays and lists
+
+- endianness
+
+- frompyfunc to create ufuncs from python functions
+
+- more ufuncs
+
+- linspace/other ranges
+
+- more attributes/methods on numpy.flatiter
+
+- axis= parameter to various methods
+
