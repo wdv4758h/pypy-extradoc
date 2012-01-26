@@ -1,0 +1,27 @@
+
+People present
+--------------
+
+* Antonio Cuni
+* Armin Rigo
+* Romain Guillebert
+
+Things we want to do
+--------------------
+
+* some skiing: wednesday (last day of sun :-/ )
+
+* review the JVM backend pull request (DONE)
+
+* py3k (romain, anto later)
+
+* ffistruct
+
+* Cython backend
+
+* STM
+  - refactored the RPython API: mostly done, must adapt targetdemo*.py
+    (anto, arigo)
+  - start work on the GC (arigo later?)
+
+* concurrent-marksweep GC
