@@ -1,0 +1,492 @@
+\documentclass[10pt]{sigplanconf}
+
+\usepackage{ifthen}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{ulem}
+\usepackage{xspace}
+\usepackage{relsize}
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+
+\usepackage{listings}
+
+\usepackage[T1]{fontenc}
+\usepackage[scaled=0.81]{beramono}
+
+
+\definecolor{commentgray}{rgb}{0.3,0.3,0.3}
+
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  language=Python,
+  keywordstyle=\bfseries,
+  stringstyle=\color{blue},
+  commentstyle=\color{commentgray}\textit,
+  fancyvrb=true,
+  showstringspaces=false,
+  %keywords={def,while,if,elif,return,class,get,set,new,guard_class}
+  numberstyle = \tiny,
+  numbersep = -20pt,
+}
+
+\newboolean{showcomments}
+\setboolean{showcomments}{true}
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\nb}[2]{
+    \fbox{\bfseries\sffamily\scriptsize#1}
+    {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+   }
+   \newcommand{\version}{\emph{\scriptsize$-$Id: main.tex 19055 2008-06-05 11:20:31Z cfbolz $-$}}
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{}
+  }
+
+\newcommand\cfbolz[1]{\nb{CFB}{#1}}
+\newcommand\toon[1]{\nb{TOON}{#1}}
+\newcommand\anto[1]{\nb{ANTO}{#1}}
+\newcommand\arigo[1]{\nb{AR}{#1}}
+\newcommand\fijal[1]{\nb{FIJAL}{#1}}
+\newcommand\pedronis[1]{\nb{PEDRONIS}{#1}}
+\newcommand\bivab[1]{\nb{DAVID}{#1}}
+\newcommand{\commentout}[1]{}
+
+\newcommand{\noop}{}
+
+
+\newcommand\ie{i.e.,\xspace}
+\newcommand\eg{e.g.,\xspace}
+
+\normalem
+
+\let\oldcite=\cite
+
+\renewcommand\cite[1]{\ifthenelse{\equal{#1}{XXX}}{[citation~needed]}{\oldcite{#1}}}
+
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+
+\begin{document}
+
+\title{Efficiently Handling Guards in the low level design of RPython's tracing JIT}
+
+\authorinfo{David Schneider$^{a}$ \and Carl Friedrich Bolz$^a$}
+           {$^a$Heinrich-Heine-Universität Düsseldorf, STUPS Group, Germany
+           }
+           {XXX emails}
+
+\conferenceinfo{VMIL'12}{}
+\CopyrightYear{2012}
+\crdata{}
+
+\maketitle
+
+\category{D.3.4}{Programming Languages}{Processors}[code generation,
+incremental compilers, interpreters, run-time environments]
+
+\terms
+Languages, Performance, Experimentation
+
+\keywords{XXX}
+
+\begin{abstract}
+
+\end{abstract}
+
+
+%___________________________________________________________________________
+\section{Introduction}
+
+In this paper we describe and analyze how deoptimization works in the context
+of tracing just-in-time compilers. What instructions are used in the
+intermediate and low-level representation of the JIT instructions and how these
+are implemented.
+
+Although there are several publications about tracing just-in-time compilers, to
+our knowledge, there are none that describe the use and implementation of
+guards in this context. With the following contributions we aim to shed some
+light (to much?) on this topic.
+The contributions of this paper are:
+\begin{itemize}
+ \item
+\end{itemize}
+
+The paper is structured as follows:
+
+\section{Background}
+\label{sec:Background}
+
+\subsection{RPython and the PyPy Project}
+\label{sub:pypy}
+
+
+The RPython language and the PyPy Project were started in 2002 with the goal of
+creating a Python interpreter written in a high level language, allowing easy
+language experimentation and extension. PyPy is now a fully compatible
+alternative implementation of the Python language\bivab{mention speed}. The
+Implementation takes advantage of the language features provided by RPython
+such as the provided tracing just-in-time compiler described below.
+
+RPython, the language and the toolset originally developed to implement the
+Python interpreter have developed into a general environment for experimenting
+and developing fast and maintainable dynamic language implementations.
+\bivab{Mention the different language impls}
+
+RPython is built of two components, the language and the translation toolchain
+used to transform RPython programs to executable units.  The RPython language
+is a statically typed object oriented high level language. The language provides
+several features such as automatic memory management (aka. Garbage Collection)
+and just-in-time compilation. When writing an interpreter using RPython the
+programmer only has to write the interpreter for the language she is
+implementing.  The second RPython component, the translation toolchain, is used
+to transform the program to a low level representations suited to be compiled
+and run on one of the different supported target platforms/architectures such
+as C, .NET and Java. During the transformation process
+different low level aspects suited for the target environment are automatically
+added to program such as (if needed) a garbage collector and with some hints
+provided by the author a just-in-time compiler.
+
+
+
+\subsection{PyPy's Meta-Tracing JIT Compilers}
+\label{sub:tracing}
+
+ * Tracing JITs
+ * JIT Compiler
+   * describe the tracing jit stuff in pypy
+   * reference tracing the meta level paper for a high level description of what the JIT does
+   * JIT Architecture
+   * Explain the aspects of tracing and optimization
+
+%___________________________________________________________________________
+
+\begin{figure}
+    \input{figures/example.tex}
+    \caption{Example Program}
+    \label{fig:trace-log}
+\end{figure}
+
+\section{Resume Data}
+\label{sec:Resume Data}
+
+Since tracing linearizes control flow by following one concrete execution,
+not the full control flow of a program is observed.
+The possible points of deviation from the trace are guard operations
+that check whether the same assumptions as during tracing still hold.
+In later executions of the trace the guards can fail.
+If that happens, execution needs to continue in the interpreter.
+This means it is necessary to attach enough information to a guard
+to construct the interpreter state when that guard fails.
+This information is called the \emph{resume data}.
+
+To do this reconstruction, it is necessary to take the values
+of the SSA variables of the trace
+and build interpreter stack frames.
+Tracing aggressively inlines functions.
+Therefore the reconstructed state of the interpreter
+can consist of several interpreter frames.
+
+If a guard fails often enough, a trace is started from it
+to create a trace tree.
+When that happens another use case of resume data
+is to construct the tracer state.
+
+There are several forces guiding the design of resume data handling.
+Guards are a very common operations in the traces.
+However, a large percentage of all operations
+are optimized away before code generation.
+Since there are a lot of guards
+the resume data needs to be stored in a very compact way.
+On the other hand, tracing should be as fast as possible,
+so the construction of resume data must not take too much time.
+
+\subsection{Capturing of Resume Data During Tracing}
+\label{sub:capturing}
+
+Every time a guard is recorded during tracing
+the tracer attaches preliminary resume data to it.
+The data is preliminary in that it is not particularly compact yet.
+The preliminary resume data takes the form of a stack of symbolic frames.
+The stack contains only those interpreter frames seen by the tracer.
+The frames are symbolic in that the local variables in the frames
+do not contain values.
+Instead, every local variables contains the SSA variable of the trace
+where the value would later come from, or a constant.
+
+\subsection{Compression of Resume Data}
+\label{sub:compression}
+
+The core idea of storing resume data as compactly as possible
+is to share parts of the data structure between subsequent guards.
+This is often useful because the density of guards in traces is so high,
+that quite often not much changes between them.
+Since resume data is a linked list of symbolic frames
+often only the information in the top frame changes from one guard to the next.
+The other frames can often be just reused.
+The reason for this is that during tracing only the variables
+of the currently executing frames can change.
+Therefore if two guards are generated from code in the same function
+the resume data of the rest of the stack can be reused.
+
+In addition to sharing as much as possible between subsequent guards
+a compact representation of the local variables of symbolic frames is used.
+Every variable in the symbolic frame is encoded using two bytes.
+Two bits are used as a tag to denote where the value of the variable
+comes from.
+The remaining 14 bits are a payload that depends on the tag bits.
+
+The possible source of information are:
+
+\begin{itemize}
+    \item For small integer constants
+        the payload contains the value of the constant.
+    \item For other constants
+        the payload contains an index into a per-loop list of constants.
+    \item For SSA variables,
+        the payload is the number of the variable.
+    \item For virtuals,
+        the payload is an index into a list of virtuals, see next section.
+\end{itemize}
+
+
+\subsection{Interaction With Optimization}
+\label{sub:optimization}
+
+Guards interact with optimizations in various ways.
+Most importantly optimizations try to remove as many operations
+and therefore guards as possible.
+This is done with many classical compiler optimizations.
+In particular guards can be removed by subexpression elimination.
+If the same guard is encountered a second time in the trace,
+the second one can be removed.
+This also works if a later guard is weaker implied by a earlier guard.
+
+One of the techniques in the optimizer specific to tracing for removing guards
+is guard strengthening~\cite{bebenita_spur:_2010}.
+The idea of guard strengthening is that if a later guard is stronger
+than an earlier guard it makes sense to move the stronger guard
+to the point of the earlier, weaker guard and to remove the weaker guard.
+Moving a guard to an earlier point is always valid,
+it just means that the guard fails earlier during the trace execution
+(the other direction is clearly not valid).
+
+The other important point of interaction between resume data and the optimizer
+is RPython's allocation removal optimization~\cite{bolz_allocation_2011}.
+This optimization discovers allocations in the trace that create objects
+that do not survive long.
+An example is the instance of \lstinline{Even} in the example\cfbolz{reference figure}.
+Allocation removal makes resume data more complex.
+Since allocations are removed from the trace it becomes necessary
+to reconstruct the objects that were not allocated so far when a guard fails.
+Therefore the resume data needs to store enough information
+to make this reconstruction possible.
+
+Adding this additional information is done as follows.
+So far, every variable in the symbolic frames
+contains a constant or an SSA variable.
+After allocation removal the variables in the symbolic frames can also contain
+``virtual'' objects.
+These are objects that were not allocated so far,
+because the optimizer removed their allocation.
+The virtual objects in the symbolic frames describe exactly
+how the heap objects that have to be allocated on guard failure look like.
+To this end, the content of every field of the virtual object is described
+in the same way that the local variables of symbolic frames are described.
+The fields of the virtual objects can therefore be SSA variables, constants
+or other virtual objects.
+They are encoded using the same compact two-byte representation
+as local variables.
+
+During the storing of resume data virtual objects are also shared
+between subsequent guards as much as possible.
+The same observation as about frames applies:
+Quite often a virtual object does not change from one guard to the next.
+Then the data structure is shared.
+
+Similarly, stores into the heap are delayed as long as possible.
+This can make it necessary to perform these delayed stores
+when leaving the trace via a guard.
+Therefore the resume data needs to contain a description
+of the delayed stores to be able to perform them when the guard fails.
+So far no special compression is done with this information.
+
+% subsection Interaction With Optimization (end)
+
+   * tracing and attaching bridges and throwing away resume data
+   * compiling bridges
+\bivab{mention that the failargs also go into the bridge}
+% section Resume Data (end)
+
+\begin{figure}
+    \input{figures/log.tex}
+    \caption{Optimized trace}
+    \label{fig:trace-log}
+\end{figure}
+% section Resume Data (end)
+\section{Guards in the Backend}
+\label{sec:Guards in the Backend}
+
+After optimization the resulting trace is handed to the backend to be compiled
+to machine code. The compilation phase consists of two passes over the lists of
+instructions, a backwards pass to calculate live ranges of IR-level variables
+and a forward one to emit the instructions. During the forward pass IR-level
+variables are assigned to registers and stack locations by the register
+allocator according to the requirements of the to be emitted instructions.
+Eviction/spilling is performed based on the live range information collected in
+the first pass. Each IR instruction is transformed into one or more machine
+level instructions that implement the required semantics, operations withouth
+side effects whose result is not used are not emitted. Guards instructions are
+transformed into fast checks at the machine code level that verify the
+corresponding condition.  In cases the value being checked by the guard is not
+used anywhere else the guard and the operation producing the value can merged,
+reducing even more the overhead of the guard. Figure \ref{fig:trace-compiled}
+shows how an \texttt{int\_eq} operation followed by a guard that checks the
+result of the operation are compiled to pseudo-assembler if the operation and
+the guard are compiled separated or if they are merged.
+
+\bivab{Figure needs better formatting}
+\begin{figure}[ht]
+  \noindent
+  \centering
+  \begin{minipage}{1\columnwidth}
+    \begin{lstlisting}
+    i8 = int_eq(i6, 1)
+    guard_false(i8) [i6, i1, i0]
+    \end{lstlisting}
+  \end{minipage}
+  \begin{minipage}{.40\columnwidth}
+    \begin{lstlisting}
+CMP r6, #1
+MOVEQ r8, #1
+MOVNE r8, #0
+CMP r8, #0
+BEQ <bailout>
+    \end{lstlisting}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{.40\columnwidth}
+    \begin{lstlisting}
+CMP r6, #1
+BNE <bailout>
+...
+...
+...
+    \end{lstlisting}
+  \end{minipage}
+  \caption{Separated and merged compilation of operations and guards}
+  \label{fig:trace-compiled}
+\end{figure}
+
+Each guard in the IR has attached to it a list of the IR-variables required to
+rebuild the execution state in case the trace is left through the side-exit
+corresponding to the guard. When a guard is compiled, additionally to the
+condition check two things are generated/compiled. First a special data
+structure called \emph{low-level resume data} is created that encodes the
+information provided by the register allocator about where the values
+corresponding to each IR-variable required by the guard will be stored when
+execution reaches the code emitted for the corresponding guard. \bivab{go into
+more detail here?!} This encoding needs to be as compact as possible to
+maintain an acceptable memory profile.
+
+\bivab{example for low-level resume data goes here}
+
+Second a piece of code is generated for each guard that acts as a trampoline.
+Guards are implemented as a conditional jump to this trampoline. In case the
+condition checked in the guard fails execution and a side-exit should be taken
+execution jumps to the trampoline. In the trampoline the pointer to the
+\emph{low-level resume data} is loaded and jumps to generic bail-out handler
+that is used to leave the compiled trace in case of a guard failure.
+
+Using the encoded location information the bail-out handler reads from the
+saved execution state the values that the IR-variables had  at the time of the
+guard failure and stores them in a location that can be read by the fronted.
+After saving the information the control is passed to the frontend signaling
+which guard failed so the frontend can read the information passed and restore
+the state corresponding to the point in the program.
+
+As in previous sections the underlying idea for the design of guards is to have
+a fast on-trace profile and a potentially slow one in the bail-out case where
+the execution takes one of the side exits due to a guard failure. At the same
+time the data stored in the backend needed to rebuild the state should be be
+as compact as possible to reduce the memory overhead produced by the large
+number of guards\bivab{back this}.
+
+As explained in previous sections, when a specific guard has failed often enough
+a new trace, referred to as a \emph{bridge}, starting from this guard is recorded and
+compiled. When compiling bridges the goal is that future failures of the guards
+that led to the compilation of the bridge should execute the bridge without
+additional overhead, in particular the failure of the guard should not lead
+to leaving the compiled code prior to execution the code of the bridge.
+
+The process of compiling a bridge is very similar to compiling a loop.
+Instructions and guards are processed in the same way as described above. The
+main difference is the setup phase. When compiling a trace we start with a clean
+slate. The compilation of a bridge is started from a state (register and stack
+bindings) that corresponds to the state during the compilation of the original
+guard. To restore the state needed to compile the bridge we use the encoded
+representation created for the guard to rebuild the bindings from IR-variables
+to stack locations and registers used in the register allocator.  With this
+reconstruction all bindings are restored to the state as they were in the
+original loop up to the guard.
+
+Once the bridge has been compiled the trampoline method stub is redirected to
+the code of the bridge. In future if the guard fails again it jumps to the code
+compiled for the bridge instead of bailing out. Once the guard has been
+compiled and attached to the loop the guard becomes just a point where
+control-flow can split. The loop after the guard and the bridge are just
+conditional paths. \cfbolz{maybe add the unpatched and patched assembler of the trampoline as well?}
+
+%* Low level handling of guards
+%   * Fast guard checks v/s memory usage
+%   * memory efficient encoding of low level resume data
+%   * fast checks for guard conditions
+%   * slow bail out
+%
+% section Guards in the Backend (end)
+
+%___________________________________________________________________________
+
+
+\section{Evaluation}
+\label{sec:evaluation}
+
+\include{figures/benchmarks_table}
+
+* Evaluation
+   * Measure guard memory consumption and machine code size
+   * Extrapolate memory consumption for guard other guard encodings
+      * compare to naive variant
+   * Measure how many guards survive optimization
+   * Measure the of guards and how many of these ever fail
+
+\section{Related Work}
+
+SPUR~\cite{bebenita_spur:_2010} is a tracing JIT compiler
+for a C\# virtual machine.
+It handles guards by always generating code for every one of them
+that transfers control back to the unoptimized code.
+Since the transfer code needs to reconstruct the stack frames
+of the unoptimized code,
+the transfer code is quite large.
+
+\bivab{mention Gal et al.~\cite{Gal:2009ux} trace stitching}
+and also mention \bivab{Dynamo's fragment linking~\cite{Bala:2000wv}} in
+relation to the low-level guard handling.
+
+
+
+
+\section{Conclusion}
+
+
+\section*{Acknowledgements}
+
+\bibliographystyle{abbrv}
+\bibliography{paper}
+
+\end{document}
