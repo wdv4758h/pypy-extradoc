@@ -262,13 +262,24 @@ language interpreter instead of tracing the user program directly. This
 approach is called \emph{meta-tracing}. For the purpose of this paper the fact
 that RPython's tracing JIT is a meta-tracing JIT can be ignored.
 
-\todo{explain example}
-%___________________________________________________________________________
-
 \begin{figure}
     \input{figures/example.tex}
     \caption{Example Program}
-    \label{fig:trace-log}
+    \label{fig:example}
+\end{figure}
+
+Figure~\ref{fig:example} shows an example RPython function that checks
+whether a number reduces to 1 with less than 100 steps of the Collatz process.
+It uses an \lstinline{Even} and an \lstinline{Odd} class to box the numbers, to
+make the example more interesting. If the loop in \lstinline{check_reduces} is
+traced when \lstinline{a} is a multiple of four, the unoptimized
+trace looks like in Figure~\ref{fig:unopt-trace}. The line numbers in the trace
+correspond to the line numbers in Figure~\ref{fig:trace-log}.
+
+\begin{figure}
+    \input{figures/unopt-log.tex}
+    \caption{Unoptimized trace}
+    \label{fig:unopt-trace}
 \end{figure}
 
 \section{Guards in the Frontend} %{Resume Data}
