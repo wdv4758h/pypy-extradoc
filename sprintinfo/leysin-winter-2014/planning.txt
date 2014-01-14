@@ -1,0 +1,40 @@
+
+People
+------
+
+Johan Rade
+Remi Meier
+Maciej Fijalkowski
+Romain Guillebert
+Armin Rigo
+Manuel Jacob
+
+
+Topics
+------
+
+* numpy stuff, fix bugs from bug tracker (rguillebert, ?)
+
+* look at codespeed2
+
+* resume-refactor branch (rguillebert, fijal) (PROGRESS)
+
+* GC pinning
+
+* asmgcc bug with greenlets and --shared (FIXED)
+
+* think about --shared by default
+
+* CFFI 1.0
+
+* STM (remi, armin) SOME PROGRESS in transaction breaks
+
+* discuss about C++ / cppyy, look into importing pyshiboken (johan pessimistic, ?)
+
+* ctypes: https://bugs.pypy.org/issue1671
+
+* longs multiplication: patch at https://bugs.pypy.org/issue892
+
+* look into merging refactor-str-types (johan, mjacob)
+
+* tweaking ast classes: https://bugs.pypy.org/issue1673
